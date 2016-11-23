@@ -12,6 +12,9 @@
 
 @protocol APIInteractor <NSObject>
 
+#pragma mark - User 
+- (void)editUserWithRequest:(Request *)request andCompletionBlock:(completionBlock)block;
+
 @required
 
 - (void)putObject:(Request *)request withCompletionBlock:(completionBlock)block;

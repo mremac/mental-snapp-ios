@@ -13,4 +13,6 @@
 + (void)postNotification:(NSString *)name withDict:(NSDictionary *)dict;
 + (void)saveCustomObject:(id)object toUserDefaultsForKey:(NSString *)key;
 + (id)fetchCustomObjectForKey:(NSString *)key;
++(BOOL)isValidEmail:(NSString *)email;
++ (BOOL)validatePhone:(NSString *)phoneNumber;
 @end

@@ -7,6 +7,8 @@
 //
 
 #import "RequestManager.h"
+#import "UserInterface.h"
+#import "UserRequest.h"
 
 NSString *const kDefaultErrorMessage =  @"Error! Please try again.";
 
@@ -32,6 +34,13 @@ NSString *const kDefaultErrorMessage =  @"Error! Please try again.";
 //    if ([ApplicationDelegate hasNetworkAvailable]) {
     
 //    }
+}
+- (void)editUserWithUserModel:(UserModel *)userModel withCompletionBlock:(completionBlock)block {
+        if ([ApplicationDelegate hasNetworkAvailable]) {
+            [[UserInterface alloc] editUserWithRequest:[[UserRequest alloc] initForEditUser:userModel] andCompletionBlock:^(BOOL success, id response) {
+                block(success,response);
+            }];
+        }
 }
 
 @end

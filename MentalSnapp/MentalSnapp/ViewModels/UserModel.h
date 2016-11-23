@@ -10,7 +10,13 @@
 @property(strong, nonatomic) NSString <Optional> *userName;
 @property(strong, nonatomic) NSString <Optional> *email;
 @property(strong, nonatomic) NSString <Optional> *password;
+@property(strong, nonatomic) NSString <Optional> *dateOfBirth;
+@property(strong, nonatomic) NSString <Optional> *phoneNumber;
+@property(strong, nonatomic) NSString <Optional> *gender;
+@property(strong, nonatomic) NSString <Optional> *userId;
+@property(strong, nonatomic) NSString <Optional> *profilePicURL;
 
 - (UserModel *)initWithUserEmail:(NSString *)email andPassword:(NSString *)password;
+- (UserModel *)initWithUserId:(NSString *)userId andEmail:(NSString *)email andUserName:(NSString *)userName andPhone:(NSString *)phone andGender:(NSString *)gender andDateOfBirth:(NSString *)dateOfBirth andProfilePic:(NSString *)profilePicURL;
 
 @end

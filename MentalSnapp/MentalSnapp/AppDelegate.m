@@ -10,6 +10,7 @@
  #import "Flurry.h"
 
 @interface AppDelegate ()
+@property (nonatomic) BOOL isNetworkAvailable;
 
 @end
 
@@ -74,4 +75,45 @@
     return YES;   
 }
 
+#pragma mark - 
+
+#pragma mark - AFNetworking methods
+    
+-(void)setupNetworkMonitoring {
+    self.isNetworkAvailable = YES;
+    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        switch (status) {
+            case AFNetworkReachabilityStatusReachableViaWWAN:
+            case AFNetworkReachabilityStatusReachableViaWiFi:
+            self.isNetworkAvailable = YES;
+            // Save response in MobiLogger
+            [[SMobiLogger sharedInterface] info:@"Network:" withDescription:@"ON"];
+            
+            break;
+            
+            case AFNetworkReachabilityStatusNotReachable:
+            default:
+            self.isNetworkAvailable = NO;
+            // Save response in MobiLogger
+            [[SMobiLogger sharedInterface] info:@"Network:" withDescription:@"OFF"];
+            break;
+        }
+    }];
+    
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+}
+    
+- (BOOL)hasNetworkAvailable {
+
+    [[SMobiLogger sharedInterface] info:[NSString stringWithFormat:@"%s", __FUNCTION__] withDescription:[NSString stringWithFormat:@"Info: isNetworkAvailable: %@", self.isNetworkAvailable?@"ON":@"OFF"]];
+        if (!self.isNetworkAvailable) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+//                [self showAlertWithMessage:kNoNetworkAvailable isLogout:NO];
+//                      [Banner showNetworkFailureBanner];
+           });
+        }
+        
+        return self.isNetworkAvailable;
+}
+    
 @end

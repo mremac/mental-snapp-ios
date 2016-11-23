@@ -21,6 +21,14 @@
 
 @implementation RealAPI
 
+#pragma mark - User
+    
+- (void)editUserWithRequest:(Request *)request andCompletionBlock:(completionBlock)block {
+    [self interactAPIWithPostObject:request withCompletionBlock:block];
+}
+    
+#pragma mark -
+    
 - (void)putObject:(Request *)request withCompletionBlock:(completionBlock)block {
     [self interactAPIWithPutObject:request withCompletionBlock:block];
 }

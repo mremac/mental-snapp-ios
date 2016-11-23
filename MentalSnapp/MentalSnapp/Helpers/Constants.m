@@ -41,3 +41,10 @@ NSString *const kUserEmail = @"UserEmail";
 NSString *const kUserPassword = @"UserPassword";
 NSString *const kRememberMe = @"RememberMe";
 
+#pragma mark - StoryBboard Identifier
+NSString *const KProfileViewControllerIdentifier  = @"ProfileViewController";
+NSString *const KProfileStoryboard = @"ProfileStoryboard";
+NSString *const KChangePasswordViewController = @"ChangePasswordViewController";
+
+
+

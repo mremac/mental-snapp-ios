@@ -15,6 +15,16 @@
 
 @implementation TestAPI
 
+#pragma mark - User
+    
+- (void)editUserWithRequest:(Request *)request andCompletionBlock:(completionBlock)block  {
+        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"1", @"success", nil];
+        block(YES, dict);
+}
+
+    
+#pragma mark -
+    
 - (void)putObject:(Request *)request withCompletionBlock:(completionBlock)block {
 
 }

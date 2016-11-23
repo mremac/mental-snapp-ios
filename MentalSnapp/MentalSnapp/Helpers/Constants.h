@@ -49,6 +49,11 @@ typedef NS_ENUM(NSInteger, RequestType){
     RequestPUT
 };
 
+typedef NS_ENUM(NSInteger, genderType){
+    MaleGender,
+    FemaleGender
+  };
+
 #pragma mark - Session keys
 extern NSString *const kSessionCookies;
 
@@ -56,9 +61,12 @@ extern NSString *const kSessionCookies;
 extern NSString *const kAPSKey;
 
 #pragma mark - Userdefault keys
-
 extern NSString *const kUserEmail;
 extern NSString *const kUserPassword;
 extern NSString *const kRememberMe;
 
+#pragma mark - StoryBboard Identifier
+extern NSString *const KProfileViewControllerIdentifier;
+extern NSString *const KProfileStoryboard;
+extern NSString *const KChangePasswordViewController;
 

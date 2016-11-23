@@ -11,5 +11,6 @@
 @interface RequestManager : NSObject
 
 - (void)loginWithUserModel:(UserModel *)userModel withCompletionBlock:(completionBlock)block;
+- (void)editUserWithUserModel:(UserModel *)userModel withCompletionBlock:(completionBlock)block;
 
 @end

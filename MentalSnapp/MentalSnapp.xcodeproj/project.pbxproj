@@ -18,6 +18,9 @@
 		6A1D50E81DE57A170073F479 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6AAA013C1DE56F8600208022 /* Info.plist */; };
 		6A1D50EF1DE57BEF0073F479 /* MentalSnappTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1D50EE1DE57BEF0073F479 /* MentalSnappTests.m */; };
 		6A1D50F11DE57C520073F479 /* MentalSnappUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1D50F01DE57C520073F479 /* MentalSnappUITests.m */; };
+		6A24284A1DE814CD00FF15A9 /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A2428491DE814CD00FF15A9 /* ChangePasswordViewController.m */; };
+		6A7D95B01DE6C5120065573E /* UserRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D95AF1DE6C5120065573E /* UserRequest.m */; };
+		6A7D95BA1DE6CD6A0065573E /* UserInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D95B91DE6CD6A0065573E /* UserInterface.m */; };
 		6A7D95EF1DE6FA050065573E /* Apache License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6A7D95E21DE6FA050065573E /* Apache License.txt */; };
 		6A7D95F01DE6FA050065573E /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6A7D95E31DE6FA050065573E /* Roboto-Black.ttf */; };
 		6A7D95F11DE6FA050065573E /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6A7D95E41DE6FA050065573E /* Roboto-BlackItalic.ttf */; };
@@ -31,6 +34,9 @@
 		6A7D95F91DE6FA050065573E /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6A7D95EC1DE6FA050065573E /* Roboto-Regular.ttf */; };
 		6A7D95FA1DE6FA050065573E /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6A7D95ED1DE6FA050065573E /* Roboto-Thin.ttf */; };
 		6A7D95FB1DE6FA050065573E /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6A7D95EE1DE6FA050065573E /* Roboto-ThinItalic.ttf */; };
+		6A98B1291DE5A3F4009F1412 /* ProfileStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A98B1281DE5A3F4009F1412 /* ProfileStoryboard.storyboard */; };
+		6A98B12E1DE5A463009F1412 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A98B12D1DE5A463009F1412 /* ProfileViewController.m */; };
+		6A98B1321DE5A4BA009F1412 /* MSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A98B1311DE5A4BA009F1412 /* MSViewController.m */; };
 		6AAA013E1DE56F8600208022 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AAA00D71DE56F8500208022 /* AppDelegate.m */; };
 		6AAA013F1DE56F8600208022 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6AAA00D81DE56F8500208022 /* Assets.xcassets */; };
 		6AAA01401DE56F8600208022 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AAA00DB1DE56F8500208022 /* Constants.m */; };
@@ -125,6 +131,12 @@
 		6A1D50EA1DE57AC30073F479 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		6A1D50EE1DE57BEF0073F479 /* MentalSnappTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MentalSnappTests.m; sourceTree = "<group>"; };
 		6A1D50F01DE57C520073F479 /* MentalSnappUITests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MentalSnappUITests.m; sourceTree = "<group>"; };
+		6A2428481DE814CD00FF15A9 /* ChangePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordViewController.h; sourceTree = "<group>"; };
+		6A2428491DE814CD00FF15A9 /* ChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordViewController.m; sourceTree = "<group>"; };
+		6A7D95AE1DE6C5120065573E /* UserRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserRequest.h; sourceTree = "<group>"; };
+		6A7D95AF1DE6C5120065573E /* UserRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserRequest.m; sourceTree = "<group>"; };
+		6A7D95B81DE6CD6A0065573E /* UserInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInterface.h; sourceTree = "<group>"; };
+		6A7D95B91DE6CD6A0065573E /* UserInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInterface.m; sourceTree = "<group>"; };
 		6A7D95E21DE6FA050065573E /* Apache License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Apache License.txt"; sourceTree = "<group>"; };
 		6A7D95E31DE6FA050065573E /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
 		6A7D95E41DE6FA050065573E /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BlackItalic.ttf"; sourceTree = "<group>"; };
@@ -138,6 +150,11 @@
 		6A7D95EC1DE6FA050065573E /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		6A7D95ED1DE6FA050065573E /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		6A7D95EE1DE6FA050065573E /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
+		6A98B1281DE5A3F4009F1412 /* ProfileStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProfileStoryboard.storyboard; sourceTree = "<group>"; };
+		6A98B12C1DE5A463009F1412 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		6A98B12D1DE5A463009F1412 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		6A98B1301DE5A4BA009F1412 /* MSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSViewController.h; sourceTree = "<group>"; };
+		6A98B1311DE5A4BA009F1412 /* MSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSViewController.m; sourceTree = "<group>"; };
 		6AAA00D61DE56F8500208022 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6AAA00D71DE56F8500208022 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		6AAA00D81DE56F8500208022 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -270,6 +287,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6A2428461DE814A900FF15A9 /* ChangePasswordScreen */ = {
+			isa = PBXGroup;
+			children = (
+				6A2428481DE814CD00FF15A9 /* ChangePasswordViewController.h */,
+				6A2428491DE814CD00FF15A9 /* ChangePasswordViewController.m */,
+			);
+			path = ChangePasswordScreen;
+			sourceTree = "<group>";
+		};
 		6A7D95E11DE6FA050065573E /* RobotoFont */ = {
 			isa = PBXGroup;
 			children = (
@@ -288,6 +314,24 @@
 				6A7D95EE1DE6FA050065573E /* Roboto-ThinItalic.ttf */,
 			);
 			path = RobotoFont;
+			sourceTree = "<group>";
+		};
+		6A98B12B1DE5A447009F1412 /* ProfileScreen */ = {
+			isa = PBXGroup;
+			children = (
+				6A98B12C1DE5A463009F1412 /* ProfileViewController.h */,
+				6A98B12D1DE5A463009F1412 /* ProfileViewController.m */,
+			);
+			path = ProfileScreen;
+			sourceTree = "<group>";
+		};
+		6A98B12F1DE5A49F009F1412 /* MentalSnappViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6A98B1301DE5A4BA009F1412 /* MSViewController.h */,
+				6A98B1311DE5A4BA009F1412 /* MSViewController.m */,
+			);
+			path = MentalSnappViewController;
 			sourceTree = "<group>";
 		};
 		6AAA00D51DE56F8500208022 /* MentalSnapp */ = {
@@ -433,6 +477,8 @@
 			children = (
 				6AAA01211DE56F8600208022 /* Request.h */,
 				6AAA01221DE56F8600208022 /* Request.m */,
+				6A7D95AE1DE6C5120065573E /* UserRequest.h */,
+				6A7D95AF1DE6C5120065573E /* UserRequest.m */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -444,6 +490,8 @@
 				6AAA01251DE56F8600208022 /* CategoryInterface.m */,
 				6AAA01261DE56F8600208022 /* LoginInterface.h */,
 				6AAA01271DE56F8600208022 /* LoginInterface.m */,
+				6A7D95B81DE6CD6A0065573E /* UserInterface.h */,
+				6A7D95B91DE6CD6A0065573E /* UserInterface.m */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -451,6 +499,9 @@
 		6AAA01281DE56F8600208022 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				6A2428461DE814A900FF15A9 /* ChangePasswordScreen */,
+				6A98B12F1DE5A49F009F1412 /* MentalSnappViewController */,
+				6A98B12B1DE5A447009F1412 /* ProfileScreen */,
 				6AAA01291DE56F8600208022 /* ViewController.h */,
 				6AAA012A1DE56F8600208022 /* ViewController.m */,
 				5C8A3A211DE5D07F00706925 /* MentalSnappViewController.h */,
@@ -476,6 +527,7 @@
 			children = (
 				6AAA01311DE56F8600208022 /* LaunchScreen.storyboard */,
 				6AAA01321DE56F8600208022 /* Main.storyboard */,
+				6A98B1281DE5A3F4009F1412 /* ProfileStoryboard.storyboard */,
 			);
 			path = StoryboardAndXIBs;
 			sourceTree = "<group>";
@@ -741,6 +793,7 @@
 				6A7D95F31DE6FA050065573E /* Roboto-BoldItalic.ttf in Resources */,
 				6A7D95F81DE6FA050065573E /* Roboto-MediumItalic.ttf in Resources */,
 				6AAA013F1DE56F8600208022 /* Assets.xcassets in Resources */,
+				6A98B1291DE5A3F4009F1412 /* ProfileStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -837,8 +890,11 @@
 				6AAA01461DE56F8600208022 /* UIApplication+Properties.m in Sources */,
 				6AAA01561DE56F8600208022 /* RMMapper.m in Sources */,
 				6AAA01491DE56F8600208022 /* UIFont+Properties.m in Sources */,
+				6A7D95B01DE6C5120065573E /* UserRequest.m in Sources */,
 				6AAA01471DE56F8600208022 /* UIButton+Properties.m in Sources */,
+				6A7D95BA1DE6CD6A0065573E /* UserInterface.m in Sources */,
 				6AAA01591DE56F8600208022 /* RemoteNotificationManager.m in Sources */,
+				6A98B12E1DE5A463009F1412 /* ProfileViewController.m in Sources */,
 				6AAA015A1DE56F8600208022 /* SocialManager.m in Sources */,
 				6AAA014E1DE56F8600208022 /* UIView+Badge.m in Sources */,
 				6AAA015B1DE56F8600208022 /* APIInteractorProvider.m in Sources */,
@@ -856,11 +912,13 @@
 				6AAA01441DE56F8600208022 /* NSString+Properties.m in Sources */,
 				6AC660EC1DE5740B00BB8949 /* SMobiLogger.xcdatamodeld in Sources */,
 				5C8A3A291DE5D5B800706925 /* UserModel.m in Sources */,
+				6A98B1321DE5A4BA009F1412 /* MSViewController.m in Sources */,
 				6AAA01551DE56F8600208022 /* NSUserDefaults+RMSaveCustomObject.m in Sources */,
 				6AAA015C1DE56F8600208022 /* NetworkHttpClient.m in Sources */,
 				6AAA01631DE56F8600208022 /* ViewController.m in Sources */,
 				6AAA015E1DE56F8600208022 /* TestAPI.m in Sources */,
 				6AC660EB1DE5740B00BB8949 /* SMobiLogger.m in Sources */,
+				6A24284A1DE814CD00FF15A9 /* ChangePasswordViewController.m in Sources */,
 				6AAA01401DE56F8600208022 /* Constants.m in Sources */,
 				6AAA01571DE56F8600208022 /* main.m in Sources */,
 				6AAA015D1DE56F8600208022 /* RealAPI.m in Sources */,

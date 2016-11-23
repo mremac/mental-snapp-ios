@@ -15,6 +15,7 @@
 #import "Constants.h"
 #import "Util.h"
 #import "NetworkHttpClient.h"
+#import "MSViewController.h"
 
 // Categories
 #import "NSArray+Properties.h"
