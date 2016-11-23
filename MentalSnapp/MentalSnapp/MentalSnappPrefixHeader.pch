@@ -1,0 +1,57 @@
+//
+//  SkeletonPrefixHeader.pch
+//  Skeleton
+//
+//  Created by Systango on 12/22/15.
+//  Copyright © 2016 Systango. All rights reserved.
+//
+
+#ifdef __OBJC__
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#import "AppDelegate.h"
+#import <SystemConfiguration/SystemConfiguration.h>
+#import "Constants.h"
+#import "Util.h"
+#import "NetworkHttpClient.h"
+
+// Categories
+#import "NSArray+Properties.h"
+#import "NSDate+Properties.h"
+#import "NSDictionary+Properties.h"
+#import "NSString+Properties.h"
+#import "NSURL+Properties.h"
+#import "UIApplication+Properties.h"
+#import "UIButton+Properties.h"
+#import "UIColor+Properties.h"
+#import "UIFont+Properties.h"
+#import "UIImage+fixOrientation.h"
+#import "UIImage+ImageBlur.h"
+#import "UIImage+ImageEffects.h"
+#import "UILabel+Properties.h"
+#import "UIView+Badge.h"
+#import "UIView+LayerOperation.h"
+#import "UIView+ReFrame.h"
+
+// Libraries
+#import <SDWebImage/UIImageView+WebCache.h>
+#import "SDWebImageManager.h"
+#import "UIButton+WebCache.h"
+#import "SVPullToRefresh.h"
+#import "SMobiLogger.h"
+#import <ALAlertBanner/ALAlertBanner.h>
+#import <MagicalRecord/MagicalRecord.h>
+#import "DateTools.h"
+#import "JSONModel.h"
+
+// Managers
+
+#import "SocialManager.h"
+#import "AppSettingsManager.h"
+
+// Models
+
+#import "AppSettings.h"
+
+#endif

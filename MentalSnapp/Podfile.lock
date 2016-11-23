@@ -1,0 +1,52 @@
+PODS:
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
+  - ALAlertBanner (0.3.1)
+  - DateTools (1.7.0)
+  - Flurry-iOS-SDK/FlurryAds (7.6.3):
+    - Flurry-iOS-SDK/FlurrySDK
+  - Flurry-iOS-SDK/FlurrySDK (7.6.3)
+  - JSONModel (1.2.0)
+  - MagicalRecord (2.3.2):
+    - MagicalRecord/Core (= 2.3.2)
+  - MagicalRecord/Core (2.3.2)
+  - SDWebImage (3.7.6):
+    - SDWebImage/Core (= 3.7.6)
+  - SDWebImage/Core (3.7.6)
+  - SVPullToRefresh (0.4.1)
+
+DEPENDENCIES:
+  - AFNetworking (~> 3.0)
+  - ALAlertBanner (~> 0.3.1)
+  - DateTools
+  - Flurry-iOS-SDK/FlurryAds
+  - Flurry-iOS-SDK/FlurrySDK
+  - JSONModel
+  - MagicalRecord
+  - SDWebImage (~> 3.7)
+  - SVPullToRefresh
+
+SPEC CHECKSUMS:
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  ALAlertBanner: 08d82be509cd9b70c4ac0ee1e7ac250003a8b34b
+  DateTools: 53288ee8b905fdc75897a1e6b5cc0144b14cba60
+  Flurry-iOS-SDK: 5ea9c76a73ce16bff005d21a4f0b539d2c15d97d
+  JSONModel: 12523685c4b623553ccf844bbbf7007624317b2c
+  MagicalRecord: 53bed74b4323b930992a725be713e53b37d19755
+  SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
+  SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
+
+COCOAPODS: 0.39.0

@@ -1,0 +1,21 @@
+
+target 'Skeleton' do
+
+pod 'AFNetworking', '~> 3.0'
+pod 'SDWebImage', '~>3.7'
+pod 'SVPullToRefresh'
+pod "MagicalRecord"
+pod 'ALAlertBanner', '~>0.3.1'
+
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '9.1'
+pod 'Flurry-iOS-SDK/FlurrySDK'
+pod 'Flurry-iOS-SDK/FlurryAds'
+
+pod 'DateTools'
+pod 'JSONModel'
+
+end
+
+
+

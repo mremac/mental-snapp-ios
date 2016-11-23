@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "3FD0E0161B1784826F0CE8079565F24337E7E0E7",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "3FD0E0161B1784826F0CE8079565F24337E7E0E7" : 0,
+    "2E1F3B6D184B7A33CB230734F4101D6EC9BA482C" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "09357BCD-7527-4421-A51E-F144524117CF",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "3FD0E0161B1784826F0CE8079565F24337E7E0E7" : "skeleton_ios\/",
+    "2E1F3B6D184B7A33CB230734F4101D6EC9BA482C" : "skeleton_ios\/Skeleton\/Skeleton\/Lib\/SMobiLogger\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Skeleton",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Skeleton\/Skeleton.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/zsheikh-systango\/SMobiLogger.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "2E1F3B6D184B7A33CB230734F4101D6EC9BA482C"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/gitlab.systech-soft.com\/zsheikh\/skeleton_ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3FD0E0161B1784826F0CE8079565F24337E7E0E7"
+    }
+  ]
+}

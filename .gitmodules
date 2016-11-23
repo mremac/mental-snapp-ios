@@ -1,0 +1,6 @@
+[submodule "SMobiLogger"]
+	path = SMobiLogger
+	url = https://github.com/zsheikh-systango/SMobiLogger.git
+[submodule "MentalSnapp/SMobiLogger"]
+	path = MentalSnapp/SMobiLogger
+	url = https://github.com/zsheikh-systango/SMobiLogger.git
