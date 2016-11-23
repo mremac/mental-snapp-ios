@@ -1,5 +1,5 @@
 
-target 'Skeleton' do
+target 'MentalSnapp' do
 
 pod 'AFNetworking', '~> 3.0'
 pod 'SDWebImage', '~>3.7'

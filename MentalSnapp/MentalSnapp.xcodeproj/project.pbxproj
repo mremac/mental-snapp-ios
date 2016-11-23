@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		62BA18C4ECD1A696EBB4A50F /* libPods-Skeleton.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 99FE379E361FC100787B65D3 /* libPods-Skeleton.a */; };
+		26E53943AD4503D45E53BE0D /* libPods-MentalSnapp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16BE09BFE2D2D9B160A61EE5 /* libPods-MentalSnapp.a */; };
 		6A1D50E11DE5792C0073F479 /* Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = 6AAA013C1DE56F8600208022 /* Info.plist */; };
 		6A1D50E21DE5793B0073F479 /* Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = 6AAA01391DE56F8600208022 /* Info.plist */; };
 		6A1D50E71DE57A140073F479 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6AAA01391DE56F8600208022 /* Info.plist */; };
@@ -95,6 +95,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		16BE09BFE2D2D9B160A61EE5 /* libPods-MentalSnapp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MentalSnapp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F7537821A7A1F2617B8A585 /* Pods-MentalSnapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MentalSnapp.release.xcconfig"; path = "Pods/Target Support Files/Pods-MentalSnapp/Pods-MentalSnapp.release.xcconfig"; sourceTree = "<group>"; };
 		6A1D50EA1DE57AC30073F479 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		6A1D50EE1DE57BEF0073F479 /* MentalSnappTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MentalSnappTests.m; sourceTree = "<group>"; };
 		6A1D50F01DE57C520073F479 /* MentalSnappUITests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MentalSnappUITests.m; sourceTree = "<group>"; };
@@ -196,9 +198,7 @@
 		6AC660E11DE5740B00BB8949 /* SMobiLogger.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SMobiLogger.xcdatamodel; sourceTree = "<group>"; };
 		6AC660E21DE5740B00BB8949 /* SMobiLogger.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SMobiLogger.podspec; sourceTree = "<group>"; };
 		6AC660E31DE5740B00BB8949 /* SMobiLogger.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = SMobiLogger.xcodeproj; sourceTree = "<group>"; };
-		814809D022FE6C32F4E3D6CF /* Pods-Skeleton.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skeleton.release.xcconfig"; path = "Pods/Target Support Files/Pods-Skeleton/Pods-Skeleton.release.xcconfig"; sourceTree = "<group>"; };
-		99FE379E361FC100787B65D3 /* libPods-Skeleton.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Skeleton.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A3753D179F5CEFA1067F04DF /* Pods-Skeleton.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skeleton.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Skeleton/Pods-Skeleton.debug.xcconfig"; sourceTree = "<group>"; };
+		8D30F0C0BCD48254CA253F4A /* Pods-MentalSnapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MentalSnapp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MentalSnapp/Pods-MentalSnapp.debug.xcconfig"; sourceTree = "<group>"; };
 		EE5108D01CFEEEC200E8A3F9 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		EECB25A51CF5AAF10012E315 /* MentalSnapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MentalSnapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EECB25C11CF5AAF10012E315 /* MentalSnappTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MentalSnappTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -211,7 +211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE5108D11CFEEEC200E8A3F9 /* Social.framework in Frameworks */,
-				62BA18C4ECD1A696EBB4A50F /* libPods-Skeleton.a in Frameworks */,
+				26E53943AD4503D45E53BE0D /* libPods-MentalSnapp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,15 +232,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2158E4DA372A9B56F88A4AE3 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				A3753D179F5CEFA1067F04DF /* Pods-Skeleton.debug.xcconfig */,
-				814809D022FE6C32F4E3D6CF /* Pods-Skeleton.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		6AAA00D51DE56F8500208022 /* MentalSnapp */ = {
 			isa = PBXGroup;
 			children = (
@@ -497,12 +488,21 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		CEF2466D2BD8B139CFA7E5CE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8D30F0C0BCD48254CA253F4A /* Pods-MentalSnapp.debug.xcconfig */,
+				2F7537821A7A1F2617B8A585 /* Pods-MentalSnapp.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		DBB04730B22C9A22F3001E5D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				6A1D50EA1DE57AC30073F479 /* XCTest.framework */,
 				EE5108D01CFEEEC200E8A3F9 /* Social.framework */,
-				99FE379E361FC100787B65D3 /* libPods-Skeleton.a */,
+				16BE09BFE2D2D9B160A61EE5 /* libPods-MentalSnapp.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -515,8 +515,8 @@
 				6AAA01381DE56F8600208022 /* MentalSnappTests */,
 				6AAA013B1DE56F8600208022 /* MentalSnappUITests */,
 				EECB25A61CF5AAF10012E315 /* Products */,
-				2158E4DA372A9B56F88A4AE3 /* Pods */,
 				DBB04730B22C9A22F3001E5D /* Frameworks */,
+				CEF2466D2BD8B139CFA7E5CE /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -537,12 +537,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EECB25D51CF5AAF10012E315 /* Build configuration list for PBXNativeTarget "MentalSnapp" */;
 			buildPhases = (
-				17E7395852B19200B7C5AF34 /* Check Pods Manifest.lock */,
+				CE2ECCD4727FED6A83471790 /* [CP] Check Pods Manifest.lock */,
 				EECB25A11CF5AAF10012E315 /* Sources */,
 				EECB25A21CF5AAF10012E315 /* Frameworks */,
 				EECB25A31CF5AAF10012E315 /* Resources */,
-				D9C986F87041F40F13810C77 /* Embed Pods Frameworks */,
-				F077DE26D624E569918E3E93 /* Copy Pods Resources */,
+				8BF5110F3F922EBC0EC4AEAC /* [CP] Embed Pods Frameworks */,
+				0E6FA0E8690BC4CA828A68C7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -685,49 +685,49 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		17E7395852B19200B7C5AF34 /* Check Pods Manifest.lock */ = {
+		0E6FA0E8690BC4CA828A68C7 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MentalSnapp/Pods-MentalSnapp-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D9C986F87041F40F13810C77 /* Embed Pods Frameworks */ = {
+		8BF5110F3F922EBC0EC4AEAC /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Skeleton/Pods-Skeleton-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MentalSnapp/Pods-MentalSnapp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F077DE26D624E569918E3E93 /* Copy Pods Resources */ = {
+		CE2ECCD4727FED6A83471790 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Skeleton/Pods-Skeleton-resources.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -898,7 +898,7 @@
 		};
 		EECB25D61CF5AAF10012E315 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A3753D179F5CEFA1067F04DF /* Pods-Skeleton.debug.xcconfig */;
+			baseConfigurationReference = 8D30F0C0BCD48254CA253F4A /* Pods-MentalSnapp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited) ";
@@ -914,7 +914,7 @@
 		};
 		EECB25D71CF5AAF10012E315 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 814809D022FE6C32F4E3D6CF /* Pods-Skeleton.release.xcconfig */;
+			baseConfigurationReference = 2F7537821A7A1F2617B8A585 /* Pods-MentalSnapp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited) ";
