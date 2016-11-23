@@ -1,0 +1,16 @@
+*.pyc
+*.py~
+*.*~
+*.html~
+*.DS_Store
+MentalSnapp/MentalSnapp/Lib/SMobiLogger/SMobiLogger.xcodeproj/xcuserdata/
+MentalSnapp/MentalSnapp/Lib/SMobiLogger/build
+MentalSnapp/MentalSnapp.xcodeproj/project.xcworkspace/
+MentalSnapp/MentalSnapp.xcodeproj/xcuserdata/
+MentalSnapp/MentalSnapp.xcodeproj/project.xcworkspace/xcuserdata/
+MentalSnapp/Pods/Pods.xcodeproj/xcuserdata/
+MentalSnapp/MentalSnapp.xcodeproj/project.xcworkspace/
+MentalSnapp/MentalSnapp.xcodeproj/xcuserdata/
+MentalSnapp/MentalSnapp.xcworkspace/xcuserdata/
+MentalSnapp/MentalSnapp.xcworkspace/contents.xcworkspacedata
+MentalSnapp/MentalSnapp.xcworkspace/xcshareddata/MentalSnapp.xcscmblueprint
