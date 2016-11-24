@@ -1,14 +1,13 @@
 //
 //  RequestManager.m
-//  Skeleton
-//
-//  Created by Systango on 14/08/15.
-//  Copyright © 2016 Systango. All rights reserved.
+//  MentalSnapp
 //
 
 #import "RequestManager.h"
 #import "UserInterface.h"
 #import "UserRequest.h"
+#import "LoginInterface.h"
+#import "LoginRequest.h"
 
 NSString *const kDefaultErrorMessage =  @"Error! Please try again.";
 
@@ -32,7 +31,9 @@ NSString *const kDefaultErrorMessage =  @"Error! Please try again.";
 
 - (void)loginWithUserModel:(UserModel *)userModel withCompletionBlock:(completionBlock)block {
 //    if ([ApplicationDelegate hasNetworkAvailable]) {
-    
+        [[LoginInterface alloc] loginWithUserRequest:[[LoginRequest alloc]initWithLoginUserModel:userModel] andCompletionBlock:^(BOOL success, id response) {
+            block(success, response);
+        }];
 //    }
 }
 - (void)editUserWithUserModel:(UserModel *)userModel withCompletionBlock:(completionBlock)block {

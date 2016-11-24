@@ -7,14 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "LoginRequest.h"
 
-@class LogoutRequest;
-@interface LoginInterface : NSObject{
-    NSObject *_target;
-    SEL _callBack;
-}
+@interface LoginInterface : NSObject
 
-//- (void)
+@property (nonatomic, strong) void (^block)(BOOL success, id response);
+
+- (void)loginWithUserRequest:(LoginRequest *)loginRequest andCompletionBlock:(completionBlock)block;
 
 - (NSMutableArray *)getSavedSessionCookies;
 

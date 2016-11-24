@@ -51,10 +51,13 @@
 #import "SocialManager.h"
 #import "AppSettingsManager.h"
 #import "Banner.h"
+#import "APIInteractor.h"
+#import "APIInteractorProvider.h"
 
 // Models
 
 #import "AppSettings.h"
+#import "UserManager.h"
 #import "UserModel.h"
 
 #endif

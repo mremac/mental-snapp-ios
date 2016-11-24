@@ -8,10 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		26E53943AD4503D45E53BE0D /* libPods-MentalSnapp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16BE09BFE2D2D9B160A61EE5 /* libPods-MentalSnapp.a */; };
+		5C5309E01DE6C865005E14A4 /* LoginRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5309DF1DE6C865005E14A4 /* LoginRequest.m */; };
 		5C8A3A201DE5D04100706925 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8A3A1F1DE5D04100706925 /* LoginViewController.m */; };
 		5C8A3A231DE5D07F00706925 /* MentalSnappViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8A3A221DE5D07F00706925 /* MentalSnappViewController.m */; };
 		5C8A3A261DE5D26300706925 /* Banner.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8A3A251DE5D26300706925 /* Banner.m */; };
 		5C8A3A291DE5D5B800706925 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8A3A281DE5D5B800706925 /* UserModel.m */; };
+		5CC7CCAC1DE8476F00DC661F /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC7CCAB1DE8476F00DC661F /* UserManager.m */; };
 		6A1D50E11DE5792C0073F479 /* Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = 6AAA013C1DE56F8600208022 /* Info.plist */; };
 		6A1D50E21DE5793B0073F479 /* Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = 6AAA01391DE56F8600208022 /* Info.plist */; };
 		6A1D50E71DE57A140073F479 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6AAA01391DE56F8600208022 /* Info.plist */; };
@@ -71,7 +73,6 @@
 		6AAA015E1DE56F8600208022 /* TestAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AAA011C1DE56F8600208022 /* TestAPI.m */; };
 		6AAA015F1DE56F8600208022 /* RequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AAA011F1DE56F8600208022 /* RequestManager.m */; };
 		6AAA01601DE56F8600208022 /* Request.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AAA01221DE56F8600208022 /* Request.m */; };
-		6AAA01611DE56F8600208022 /* CategoryInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AAA01251DE56F8600208022 /* CategoryInterface.m */; };
 		6AAA01621DE56F8600208022 /* LoginInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AAA01271DE56F8600208022 /* LoginInterface.m */; };
 		6AAA01631DE56F8600208022 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AAA012A1DE56F8600208022 /* ViewController.m */; };
 		6AAA01641DE56F8600208022 /* AppSettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6AAA012C1DE56F8600208022 /* AppSettings.plist */; };
@@ -120,6 +121,8 @@
 /* Begin PBXFileReference section */
 		16BE09BFE2D2D9B160A61EE5 /* libPods-MentalSnapp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MentalSnapp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F7537821A7A1F2617B8A585 /* Pods-MentalSnapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MentalSnapp.release.xcconfig"; path = "Pods/Target Support Files/Pods-MentalSnapp/Pods-MentalSnapp.release.xcconfig"; sourceTree = "<group>"; };
+		5C5309DE1DE6C865005E14A4 /* LoginRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginRequest.h; sourceTree = "<group>"; };
+		5C5309DF1DE6C865005E14A4 /* LoginRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginRequest.m; sourceTree = "<group>"; };
 		5C8A3A1E1DE5D04100706925 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		5C8A3A1F1DE5D04100706925 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		5C8A3A211DE5D07F00706925 /* MentalSnappViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MentalSnappViewController.h; sourceTree = "<group>"; };
@@ -128,6 +131,8 @@
 		5C8A3A251DE5D26300706925 /* Banner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Banner.m; sourceTree = "<group>"; };
 		5C8A3A271DE5D5B800706925 /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
 		5C8A3A281DE5D5B800706925 /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
+		5CC7CCAA1DE8476F00DC661F /* UserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserManager.h; sourceTree = "<group>"; };
+		5CC7CCAB1DE8476F00DC661F /* UserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManager.m; sourceTree = "<group>"; };
 		6A1D50EA1DE57AC30073F479 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		6A1D50EE1DE57BEF0073F479 /* MentalSnappTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MentalSnappTests.m; sourceTree = "<group>"; };
 		6A1D50F01DE57C520073F479 /* MentalSnappUITests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MentalSnappUITests.m; sourceTree = "<group>"; };
@@ -224,8 +229,6 @@
 		6AAA011F1DE56F8600208022 /* RequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestManager.m; sourceTree = "<group>"; };
 		6AAA01211DE56F8600208022 /* Request.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Request.h; sourceTree = "<group>"; };
 		6AAA01221DE56F8600208022 /* Request.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Request.m; sourceTree = "<group>"; };
-		6AAA01241DE56F8600208022 /* CategoryInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryInterface.h; sourceTree = "<group>"; };
-		6AAA01251DE56F8600208022 /* CategoryInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryInterface.m; sourceTree = "<group>"; };
 		6AAA01261DE56F8600208022 /* LoginInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginInterface.h; sourceTree = "<group>"; };
 		6AAA01271DE56F8600208022 /* LoginInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginInterface.m; sourceTree = "<group>"; };
 		6AAA01291DE56F8600208022 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -479,6 +482,8 @@
 				6AAA01221DE56F8600208022 /* Request.m */,
 				6A7D95AE1DE6C5120065573E /* UserRequest.h */,
 				6A7D95AF1DE6C5120065573E /* UserRequest.m */,
+				5C5309DE1DE6C865005E14A4 /* LoginRequest.h */,
+				5C5309DF1DE6C865005E14A4 /* LoginRequest.m */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -486,8 +491,6 @@
 		6AAA01231DE56F8600208022 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				6AAA01241DE56F8600208022 /* CategoryInterface.h */,
-				6AAA01251DE56F8600208022 /* CategoryInterface.m */,
 				6AAA01261DE56F8600208022 /* LoginInterface.h */,
 				6AAA01271DE56F8600208022 /* LoginInterface.m */,
 				6A7D95B81DE6CD6A0065573E /* UserInterface.h */,
@@ -539,6 +542,8 @@
 				6AAA01351DE56F8600208022 /* AppSettings.m */,
 				6AAA01361DE56F8600208022 /* TestModel.h */,
 				6AAA01371DE56F8600208022 /* TestModel.m */,
+				5CC7CCAA1DE8476F00DC661F /* UserManager.h */,
+				5CC7CCAB1DE8476F00DC661F /* UserManager.m */,
 				5C8A3A271DE5D5B800706925 /* UserModel.h */,
 				5C8A3A281DE5D5B800706925 /* UserModel.m */,
 			);
@@ -880,10 +885,12 @@
 				6AAA014A1DE56F8600208022 /* UIImage+fixOrientation.m in Sources */,
 				6AAA01511DE56F8600208022 /* Util.m in Sources */,
 				6AAA016A1DE56F8600208022 /* TestModel.m in Sources */,
+				5CC7CCAC1DE8476F00DC661F /* UserManager.m in Sources */,
 				6AAA01531DE56F8600208022 /* NSObject+RMArchivable.m in Sources */,
 				5C8A3A261DE5D26300706925 /* Banner.m in Sources */,
 				6AAA014F1DE56F8600208022 /* UIView+LayerOperation.m in Sources */,
 				6AAA01601DE56F8600208022 /* Request.m in Sources */,
+				5C5309E01DE6C865005E14A4 /* LoginRequest.m in Sources */,
 				6AAA01581DE56F8600208022 /* AppSettingsManager.m in Sources */,
 				6AAA01411DE56F8600208022 /* NSArray+Properties.m in Sources */,
 				5C8A3A201DE5D04100706925 /* LoginViewController.m in Sources */,
@@ -908,7 +915,6 @@
 				6AAA014C1DE56F8600208022 /* UIImage+ImageEffects.m in Sources */,
 				6AAA01501DE56F8600208022 /* UIView+ReFrame.m in Sources */,
 				6AAA013E1DE56F8600208022 /* AppDelegate.m in Sources */,
-				6AAA01611DE56F8600208022 /* CategoryInterface.m in Sources */,
 				6AAA01441DE56F8600208022 /* NSString+Properties.m in Sources */,
 				6AC660EC1DE5740B00BB8949 /* SMobiLogger.xcdatamodeld in Sources */,
 				5C8A3A291DE5D5B800706925 /* UserModel.m in Sources */,

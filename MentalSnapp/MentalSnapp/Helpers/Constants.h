@@ -64,6 +64,7 @@ extern NSString *const kAPSKey;
 extern NSString *const kUserEmail;
 extern NSString *const kUserPassword;
 extern NSString *const kRememberMe;
+extern NSString *const kIsUserLoggedIn;
 
 #pragma mark - StoryBboard Identifier
 extern NSString *const KProfileViewControllerIdentifier;

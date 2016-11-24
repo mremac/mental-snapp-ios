@@ -12,8 +12,13 @@
 
 @protocol APIInteractor <NSObject>
 
-#pragma mark - User 
+#pragma mark - User
+
 - (void)editUserWithRequest:(Request *)request andCompletionBlock:(completionBlock)block;
+
+#pragma mark - Login
+
+- (void)loginWithRequest:(Request *)request andCompletionBlock:(completionBlock)block;
 
 @required
 

@@ -169,10 +169,11 @@ static CGFloat const kForceHideAnimationDuration = 0.1f;
     _titleLabel.backgroundColor = [UIColor clearColor];
     _titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:13.f];
     _titleLabel.textColor = [UIColor colorWithWhite:1.f alpha:0.9f];
-    _titleLabel.textAlignment = NSTextAlignmentLeft;
+    _titleLabel.textAlignment = NSTextAlignmentCenter;
     _titleLabel.numberOfLines = 1;
     _titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
     _titleLabel.layer.shadowColor = [UIColor blackColor].CGColor;
+    _titleLabel.textColor = [UIColor colorWithRed:(228/255.0) green:(80/255.0) blue:(45/255.0) alpha:1.f];
 //    _titleLabel.layer.shadowOffset = CGSizeMake(0.f, -1.f);
 //    _titleLabel.layer.shadowOpacity = 0.3f;
 //    _titleLabel.layer.shadowRadius = 0.f;
@@ -182,10 +183,11 @@ static CGFloat const kForceHideAnimationDuration = 0.1f;
     _subtitleLabel.backgroundColor = [UIColor clearColor];
     _subtitleLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:10.f];
     _subtitleLabel.textColor = [UIColor colorWithWhite:1.f alpha:0.9f];
-    _subtitleLabel.textAlignment = NSTextAlignmentLeft;
+    _subtitleLabel.textAlignment = NSTextAlignmentCenter;
     _subtitleLabel.numberOfLines = 0;
     _subtitleLabel.lineBreakMode = NSLineBreakByWordWrapping;
     _subtitleLabel.layer.shadowColor = [UIColor blackColor].CGColor;
+    _subtitleLabel.textColor = [UIColor colorWithRed:(228/255.0) green:(80/255.0) blue:(45/255.0) alpha:1.f];
 //    _subtitleLabel.layer.shadowOffset = CGSizeMake(0.f, -1.f);
 //    _subtitleLabel.layer.shadowOpacity = 0.3f;
 //    _subtitleLabel.layer.shadowRadius = 0.f;
@@ -695,8 +697,8 @@ static CGFloat const kForceHideAnimationDuration = 0.1f;
     UIColor *fillColor;
     switch (self.style) {
         case ALAlertBannerStyleCustomSuccess:
-            fillColor = [UIColor colorWithRed:(228/255.0) green:(80/255.0) blue:(45/255.0) alpha:1.f];
         case ALAlertBannerStyleCustomFailure:
+            fillColor = [UIColor colorWithRed:(200/255.0) green:(200/255.0) blue:(200/255.0) alpha:1.f];
             break;
         case ALAlertBannerStyleSuccess:
             fillColor = [UIColor colorWithRed:(77/255.0) green:(175/255.0) blue:(67/255.0) alpha:1.f];

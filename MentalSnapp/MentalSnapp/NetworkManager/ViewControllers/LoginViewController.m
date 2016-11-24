@@ -23,9 +23,6 @@
 
 @property(weak, nonatomic) IBOutlet NSLayoutConstraint *logoTopConstraint;
 
-@property(weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
-@property(strong, nonatomic) NSNotification *notification;
-
 @end
 
 @implementation LoginViewController
@@ -34,11 +31,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self initialSetup];
-}
-
-- (void)showOrderScreen:(NSNotification *)bnoti {
     
 }
 
@@ -49,53 +41,34 @@
         self.passwordTextField.text = [[NSUserDefaults standardUserDefaults]valueForKey:kUserPassword];
         self.rememberMeButton.selected = YES;
     }
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    if (![[NSUserDefaults standardUserDefaults]boolForKey:kRememberMe]) {
-        [self.userEmailTextField becomeFirstResponder];
-    }
-}
-
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - IBAction methods
 
 - (IBAction)loginButtonTapped:(id)sender {
     if (self.userEmailTextField.text.length < 1) {
-        [Banner showFailureBannerWithSubtitle:@"Enter username"];
+        [Banner showSuccessBannerWithSubtitle:@"Enter email"];
     } else if (self.passwordTextField.text.length < 1) {
-        [Banner showFailureBannerWithSubtitle:@"Enter password"];
+        [Banner showSuccessBannerWithSubtitle:@"Enter password"];
     } else {
-        [self.activityIndicator startAnimating];
         
         UserModel *userModel = [[UserModel alloc]initWithUserEmail:self.userEmailTextField.text andPassword:self.passwordTextField.text];
         [[RequestManager alloc] loginWithUserModel:userModel withCompletionBlock:^(BOOL success, id response) {
             if (success){
-                [[NSUserDefaults standardUserDefaults]setBool:self.rememberMeButton.selected forKey:kRememberMe];
-                [[NSUserDefaults standardUserDefaults]setValue:self.userEmailTextField.text forKey:kUserEmail];
-                [[NSUserDefaults standardUserDefaults]setValue:self.passwordTextField.text forKey:kUserPassword];
+                [UserDefaults setBool:self.rememberMeButton.selected forKey:kRememberMe];
+                [UserDefaults setValue:self.userEmailTextField.text forKey:kUserEmail];
+                [UserDefaults setValue:self.passwordTextField.text forKey:kUserPassword];
+                [UserDefaults setBool:YES forKey:kIsUserLoggedIn];
+                [UserDefaults synchronize];
                 
-                NSString *userId = (NSString *)response;
+//                [self getUserCall:userId];
                 
-                NSLog(@"UserId: %@", userId);
-                
-                [self getUserCall:userId];
-                
-                NSMutableDictionary *deviceDetailDict = [NSMutableDictionary dictionary];
+//                NSMutableDictionary *deviceDetailDict = [NSMutableDictionary dictionary];
                 //                [[RequestManager alloc] postDeviceDetailWithDataDictionary:deviceDetailDict withCompletionBlock:^(BOOL success, id response) {
                 //
                 //                }];
             } else {
                 [Banner showFailureBannerWithSubtitle:response];
-                [self.activityIndicator stopAnimating];
             }
         }];
     }
@@ -115,7 +88,6 @@
 - (void)getUserCall:(NSString *)userID {
 //    [[RequestManager alloc] getUserWithID:userID
 //                      withCompletionBlock:^(BOOL success, id response) {
-//                          [self.activityIndicator stopAnimating];
 //                          if (success) {
 //                              User *user = (User *)response;
 //                              [[Util sharedInstance] saveUser:user];
@@ -126,76 +98,11 @@
 //                      }];
 }
 
-- (void)openLoginViewController {
-    dispatch_async(dispatch_get_main_queue(), ^{
-
-    });
-}
-
-- (void)initialSetup {
-    self.userEmailTextField.delegate = self;
-    self.passwordTextField.delegate = self;
-    
-    self.titleLabel.text = @"The Evolution of\nDry Cleaning & Laundry";
-    
-    self.userNameView.layer.cornerRadius = 3;
-    self.userNameView.clipsToBounds = YES;
-    self.userNameView.layer.borderWidth = 1;
-    [self.userNameView.layer setBorderColor:[UIColor colorWithRed:134/255.0f green:134/255.0f blue:134/255.0f alpha:1.0].CGColor];
-    
-    self.passwordView.layer.cornerRadius = 3;
-    self.passwordView.clipsToBounds = YES;
-    self.passwordView.layer.borderWidth = 1;
-    [self.passwordView.layer setBorderColor:[UIColor colorWithRed:134/255.0f green:134/255.0f blue:134/255.0f alpha:1.0].CGColor];
-    
-    self.loginButton.layer.cornerRadius = 3;
-    
-    kLogoTopConstraintDefaultValue = self.logoTopConstraint.constant;
-}
-
-#pragma mark Notification Methods
-
-- (void)keyboardWillShow:(NSNotification *)notification {
-    _notification = notification;
-    UITextField *textField = nil;
-    UIView *viewOfTextField = nil;
-    [[notification.userInfo valueForKey:UIKeyboardFrameEndUserInfoKey] getValue:&keyboardBounds];
-    
-    if ([self.userEmailTextField isFirstResponder]) {
-        textField = self.userEmailTextField;
-        viewOfTextField = self.userNameView;
-    } else if ([self.passwordTextField isFirstResponder]) {
-        textField = self.passwordTextField;
-        viewOfTextField = self.passwordView;
-    }
-    
-    CGFloat difference = ( self.view.frame.size.height - keyboardBounds.size.height) - (textField.frame.size.height + viewOfTextField.frame.origin.y) ;
-    
-    if (difference < 0) {
-        //Note: difference is negative so it's added
-        self.logoTopConstraint.constant = kLogoTopConstraintDefaultValue + difference - (kLogoTopConstraintDefaultValue - self.logoTopConstraint.constant);
-    }
-    [UIView animateWithDuration:0.5 animations:^{
-        [self.view layoutIfNeeded];
-    }];
-}
-
-- (void)keyboardWillHide:(NSNotification *)notification {
-    _notification = notification;
-    [[notification.userInfo valueForKey:UIKeyboardFrameEndUserInfoKey] getValue:&keyboardBounds];
-    
-    self.logoTopConstraint.constant = kLogoTopConstraintDefaultValue;
-    [UIView animateWithDuration:0.5 animations:^{
-        [self.view layoutIfNeeded];
-    }];
-}
-
 #pragma mark - TextField Delegate methods
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if(textField == self.userEmailTextField) {
         [self.passwordTextField becomeFirstResponder];
-        [self keyboardWillShow:_notification];
     } else {
         [textField resignFirstResponder];
         [self loginButtonTapped:self.loginButton];
@@ -206,15 +113,5 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     [self.view endEditing:YES];
 }
-
-//- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-//    if (self.userNameTextField == textField) {
-//        return YES;
-//    } else {
-//        NSString *modifiedString = [textField.text stringByReplacingCharactersInRange:range withString:string];
-//        textField.text = modifiedString;
-//        return NO;
-//    }
-//}
 
 @end

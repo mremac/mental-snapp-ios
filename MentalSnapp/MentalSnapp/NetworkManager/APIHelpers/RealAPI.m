@@ -26,9 +26,13 @@
 - (void)editUserWithRequest:(Request *)request andCompletionBlock:(completionBlock)block {
     [self interactAPIWithPostObject:request withCompletionBlock:block];
 }
-    
-#pragma mark -
-    
+
+#pragma mark - Login
+
+- (void)loginWithRequest:(Request *)request andCompletionBlock:(completionBlock)block {
+    [self postObject:request withCompletionBlock:block];
+}
+
 - (void)putObject:(Request *)request withCompletionBlock:(completionBlock)block {
     [self interactAPIWithPutObject:request withCompletionBlock:block];
 }

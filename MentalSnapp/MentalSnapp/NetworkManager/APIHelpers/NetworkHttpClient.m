@@ -27,6 +27,9 @@
     
     AppSettings *appSettings = [[AppSettingsManager sharedInstance] fetchSettings];
     self.urlPathSubstring = [appSettings URLPathSubstring];
+    if ([UserDefaults boolForKey:kIsUserLoggedIn]) {
+        [self.requestSerializer setValue:[UserManager sharedManager].authorizationToken forHTTPHeaderField:@"Authorization"];
+    }
     
     return self;
 }

@@ -22,9 +22,12 @@
         block(YES, dict);
 }
 
+#pragma mark - Login
+
+- (void)loginWithRequest:(Request *)request andCompletionBlock:(completionBlock)block {
     
-#pragma mark -
-    
+}
+
 - (void)putObject:(Request *)request withCompletionBlock:(completionBlock)block {
 
 }

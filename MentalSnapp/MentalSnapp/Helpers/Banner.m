@@ -29,6 +29,7 @@
 
 + (ALAlertBanner *)showBannerWithTitle:(NSString *)title subtitle:(NSString *)subtitle style:(ALAlertBannerStyle)style position:(ALAlertBannerPosition)position
 {
+    [ALAlertBanner hideAllAlertBanners];
     ALAlertBanner *banner = [ALAlertBanner alertBannerForView:ApplicationDelegate.window
                                                         style:style
                                                      position:position

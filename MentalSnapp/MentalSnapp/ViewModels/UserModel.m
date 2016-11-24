@@ -9,12 +9,14 @@
 
 + (JSONKeyMapper *)keyMapper {
     return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{
-                                                                  @"user_name": @"userName",
+                                                                  @"authorizationToken": @"auth_token",
+                                                                  @"email": @"email",
                                                                   @"password": @"password",
-                                                                  @"dob": @"dateOfBirth",
-                                                                  @"phone_number": @"PhoneNumber",
+                                                                  @"userName": @"user_name",
+                                                                  @"dateOfBirth": @"dob",
+                                                                  @"PhoneNumber": @"phone_number",
                                                                   @"gender": @"gender",
-                                                                  @"user_id": @"userId",
+                                                                  @"userId": @"user_id"
                                                                   }];
 }
     
@@ -38,6 +40,5 @@
     self.profilePicURL = profilePicURL;
     return self;
 }
-
 
 @end
