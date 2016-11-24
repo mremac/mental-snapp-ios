@@ -14,21 +14,7 @@
     SEL _callBack;
 }
 
-//- (void)loginWithFacebookUser:(SocialUser *)socialUser target:(NSObject *)target callBack:(SEL)callBack;
-//
-//- (void)loginUser:(User *)user target:(NSObject *)target callBack:(SEL)callBack;
-//
-//- (void)logoutUser:(LogoutRequest *)logoutRequest target:(NSObject *)target callBack:(SEL)callBack;
-//
-//- (void)signupUser:(User *)user target:(NSObject *)target callBack:(SEL)callBack;
-//
-//- (void)checkUserNameAvailability:(UserAvailabilityRequest *)userAvailability target:(NSObject *)target callBack:(SEL)callBack;
-//
-//- (void)checkEmailAvailability:(UserAvailabilityRequest *)userAvailability target:(NSObject *)target callBack:(SEL)callBack;
-//
-//- (void)forgotUserName:(ForgotUserRequest *)forgotUserRequest target:(NSObject *)target callBack:(SEL)callBack;
-//
-//- (void)forgotPassword:(ForgotUserRequest *)forgotUserRequest target:(NSObject *)target callBack:(SEL)callBack;
+//- (void)
 
 - (NSMutableArray *)getSavedSessionCookies;
 

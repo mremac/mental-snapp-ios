@@ -10,4 +10,6 @@
 
 @interface RequestManager : NSObject
 
+- (void)loginWithUserModel:(UserModel *)userModel withCompletionBlock:(completionBlock)block;
+
 @end

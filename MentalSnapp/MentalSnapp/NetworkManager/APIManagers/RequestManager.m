@@ -28,4 +28,10 @@ NSString *const kDefaultErrorMessage =  @"Error! Please try again.";
 //    }
 //}
 
+- (void)loginWithUserModel:(UserModel *)userModel withCompletionBlock:(completionBlock)block {
+//    if ([ApplicationDelegate hasNetworkAvailable]) {
+    
+//    }
+}
+
 @end

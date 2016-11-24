@@ -35,3 +35,9 @@ NSString *const kSessionCookies = @"session_cookies"; // application session
 
 NSString *const kAPSKey = @"aps";
 
+#pragma mark - Userdefault keys
+
+NSString *const kUserEmail = @"UserEmail";
+NSString *const kUserPassword = @"UserPassword";
+NSString *const kRememberMe = @"RememberMe";
+

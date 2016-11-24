@@ -49,9 +49,11 @@
 
 #import "SocialManager.h"
 #import "AppSettingsManager.h"
+#import "Banner.h"
 
 // Models
 
 #import "AppSettings.h"
+#import "UserModel.h"
 
 #endif

@@ -54,3 +54,11 @@ extern NSString *const kSessionCookies;
 
 #pragma mark - Push Notifications
 extern NSString *const kAPSKey;
+
+#pragma mark - Userdefault keys
+
+extern NSString *const kUserEmail;
+extern NSString *const kUserPassword;
+extern NSString *const kRememberMe;
+
+

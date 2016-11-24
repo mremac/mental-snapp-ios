@@ -72,7 +72,7 @@ static CGFloat const kForceHideAnimationDuration = 0.1f;
 @implementation UIColor (LightAndDark)
 
 - (UIColor *)darkerColor {
-    float h, s, b, a;
+    CGFloat h, s, b, a;
     if ([self getHue:&h saturation:&s brightness:&b alpha:&a])
         return [UIColor colorWithHue:h saturation:s brightness:b * 0.75 alpha:a];
     return nil;
@@ -173,9 +173,9 @@ static CGFloat const kForceHideAnimationDuration = 0.1f;
     _titleLabel.numberOfLines = 1;
     _titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
     _titleLabel.layer.shadowColor = [UIColor blackColor].CGColor;
-    _titleLabel.layer.shadowOffset = CGSizeMake(0.f, -1.f);
-    _titleLabel.layer.shadowOpacity = 0.3f;
-    _titleLabel.layer.shadowRadius = 0.f;
+//    _titleLabel.layer.shadowOffset = CGSizeMake(0.f, -1.f);
+//    _titleLabel.layer.shadowOpacity = 0.3f;
+//    _titleLabel.layer.shadowRadius = 0.f;
     [self addSubview:_titleLabel];
     
     _subtitleLabel = [[UILabel alloc] init];
@@ -186,9 +186,9 @@ static CGFloat const kForceHideAnimationDuration = 0.1f;
     _subtitleLabel.numberOfLines = 0;
     _subtitleLabel.lineBreakMode = NSLineBreakByWordWrapping;
     _subtitleLabel.layer.shadowColor = [UIColor blackColor].CGColor;
-    _subtitleLabel.layer.shadowOffset = CGSizeMake(0.f, -1.f);
-    _subtitleLabel.layer.shadowOpacity = 0.3f;
-    _subtitleLabel.layer.shadowRadius = 0.f;
+//    _subtitleLabel.layer.shadowOffset = CGSizeMake(0.f, -1.f);
+//    _subtitleLabel.layer.shadowOpacity = 0.3f;
+//    _subtitleLabel.layer.shadowRadius = 0.f;
     [self addSubview:_subtitleLabel];
 }
 
@@ -401,7 +401,7 @@ static CGFloat const kForceHideAnimationDuration = 0.1f;
     });
     
     [UIView animateWithDuration:self.fadeInDuration delay:0.0 options:UIViewAnimationOptionCurveLinear animations:^{
-        self.alpha = self.bannerOpacity;
+        self.alpha = 1.0;// self.bannerOpacity;
     } completion:nil];
 }
 
@@ -694,6 +694,10 @@ static CGFloat const kForceHideAnimationDuration = 0.1f;
     
     UIColor *fillColor;
     switch (self.style) {
+        case ALAlertBannerStyleCustomSuccess:
+            fillColor = [UIColor colorWithRed:(228/255.0) green:(80/255.0) blue:(45/255.0) alpha:1.f];
+        case ALAlertBannerStyleCustomFailure:
+            break;
         case ALAlertBannerStyleSuccess:
             fillColor = [UIColor colorWithRed:(77/255.0) green:(175/255.0) blue:(67/255.0) alpha:1.f];
             break;
