@@ -18,4 +18,6 @@
 - (void)setValueInLoggedInUserObjectFromUserDefault;
 - (void)removeUserFromUserDefault;
 
++ (BOOL)isValidEmail:(NSString *)checkString;
+
 @end

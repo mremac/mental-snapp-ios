@@ -35,4 +35,44 @@
     [self.navigationController.navigationBar endEditing:YES];
 }
 
+#pragma mark - Navigation property setters
+
+- (void)setLeftMenuButtons:(NSArray *)barButtons {
+    self.navigationItem.leftBarButtonItems = barButtons;
+}
+
+- (void)setRightMenuButtons:(NSArray *)barButtons {
+    self.navigationItem.rightBarButtonItems = barButtons;
+}
+
+- (UIBarButtonItem *)backButton {
+    UIButton *leftButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 4, 25, 30)];
+    [leftButton setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
+    [leftButton addTarget:self action:@selector(backButtonTapped) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *leftBarButton = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
+    return leftBarButton;
+}
+
+- (void)backButtonTapped {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)setNavigationBarButtonTitle:(NSString *)title
+{
+    UIButton* centralButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 120, 44)];
+    [centralButton setTitle:title forState:UIControlStateNormal];
+    [centralButton.titleLabel setFont:[UIFont fontWithName:@"Raleway" size:16.0f]];
+    [centralButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    centralButton.userInteractionEnabled = NO;
+    [centralButton addTarget:self action:@selector(centerTitleButtonTapped) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:16/255.f green:166/255.f blue:192/255.f alpha:1.f];
+    self.navigationItem.titleView = centralButton;
+    
+}
+
+- (void)centerTitleButtonTapped {
+    
+}
+
 @end

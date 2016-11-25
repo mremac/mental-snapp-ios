@@ -35,6 +35,11 @@
     }
     
     [self setupNetworkMonitoring];
+
+    if ([UserDefaults boolForKey:kIsUserLoggedIn]) {
+        MainTabBarController *tabBarController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MainTabController"];
+        ApplicationDelegate.window.rootViewController = tabBarController;
+    }
     
     return YES;
 }

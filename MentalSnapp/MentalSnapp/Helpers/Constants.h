@@ -74,3 +74,13 @@ exNS *KChangePasswordViewController;
 
 #pragma mark - API URL
 exNS *KUserAPI;
+
+#pragma mark - StoryBoard segue identifiers
+#pragma mark Main
+exNS *kGoToReportIssueScreen;
+exNS *kGoToQueuedExercisesScreen;
+
+#pragma mark - TableViewCell identifiers
+exNS *kMoreScreenTableViewCellIdentifier;
+
+

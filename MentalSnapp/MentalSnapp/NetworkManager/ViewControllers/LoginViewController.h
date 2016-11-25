@@ -4,8 +4,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MentalSnappViewController.h"
+#import "MSViewController.h"
 
-@interface LoginViewController : MentalSnappViewController
+@interface LoginViewController : MSViewController
 
 @end

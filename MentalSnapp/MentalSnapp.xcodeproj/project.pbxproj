@@ -9,8 +9,15 @@
 /* Begin PBXBuildFile section */
 		26E53943AD4503D45E53BE0D /* libPods-MentalSnapp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16BE09BFE2D2D9B160A61EE5 /* libPods-MentalSnapp.a */; };
 		5C5309E01DE6C865005E14A4 /* LoginRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5309DF1DE6C865005E14A4 /* LoginRequest.m */; };
+		5C7BE3C41DE8570100C15CB5 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7BE3C31DE8570100C15CB5 /* MainTabBarController.m */; };
+		5C7BE3D01DE85BDC00C15CB5 /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7BE3CF1DE85BDC00C15CB5 /* MoreViewController.m */; };
+		5C7BE3D41DE86F3900C15CB5 /* MoreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7BE3D31DE86F3900C15CB5 /* MoreTableViewCell.m */; };
+		5C7BE3D81DE882CC00C15CB5 /* ReportIssueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7BE3D71DE882CC00C15CB5 /* ReportIssueViewController.m */; };
+		5C7BE3DC1DE8869700C15CB5 /* ExerciseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7BE3DB1DE8869700C15CB5 /* ExerciseViewController.m */; };
+		5C7BE3DF1DE886BA00C15CB5 /* RecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7BE3DE1DE886BA00C15CB5 /* RecordViewController.m */; };
+		5C7BE3E21DE886D600C15CB5 /* StatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7BE3E11DE886D600C15CB5 /* StatsViewController.m */; };
+		5C7BE3E51DE8877400C15CB5 /* QueuedExercisesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7BE3E41DE8877400C15CB5 /* QueuedExercisesViewController.m */; };
 		5C8A3A201DE5D04100706925 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8A3A1F1DE5D04100706925 /* LoginViewController.m */; };
-		5C8A3A231DE5D07F00706925 /* MentalSnappViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8A3A221DE5D07F00706925 /* MentalSnappViewController.m */; };
 		5C8A3A261DE5D26300706925 /* Banner.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8A3A251DE5D26300706925 /* Banner.m */; };
 		5C8A3A291DE5D5B800706925 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8A3A281DE5D5B800706925 /* UserModel.m */; };
 		5CC7CCAC1DE8476F00DC661F /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC7CCAB1DE8476F00DC661F /* UserManager.m */; };
@@ -123,10 +130,24 @@
 		2F7537821A7A1F2617B8A585 /* Pods-MentalSnapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MentalSnapp.release.xcconfig"; path = "Pods/Target Support Files/Pods-MentalSnapp/Pods-MentalSnapp.release.xcconfig"; sourceTree = "<group>"; };
 		5C5309DE1DE6C865005E14A4 /* LoginRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginRequest.h; sourceTree = "<group>"; };
 		5C5309DF1DE6C865005E14A4 /* LoginRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginRequest.m; sourceTree = "<group>"; };
+		5C7BE3C21DE8570100C15CB5 /* MainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarController.h; sourceTree = "<group>"; };
+		5C7BE3C31DE8570100C15CB5 /* MainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarController.m; sourceTree = "<group>"; };
+		5C7BE3CE1DE85BDC00C15CB5 /* MoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreViewController.h; sourceTree = "<group>"; };
+		5C7BE3CF1DE85BDC00C15CB5 /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreViewController.m; sourceTree = "<group>"; };
+		5C7BE3D21DE86F3900C15CB5 /* MoreTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreTableViewCell.h; sourceTree = "<group>"; };
+		5C7BE3D31DE86F3900C15CB5 /* MoreTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreTableViewCell.m; sourceTree = "<group>"; };
+		5C7BE3D61DE882CC00C15CB5 /* ReportIssueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportIssueViewController.h; sourceTree = "<group>"; };
+		5C7BE3D71DE882CC00C15CB5 /* ReportIssueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportIssueViewController.m; sourceTree = "<group>"; };
+		5C7BE3DA1DE8869700C15CB5 /* ExerciseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseViewController.h; sourceTree = "<group>"; };
+		5C7BE3DB1DE8869700C15CB5 /* ExerciseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseViewController.m; sourceTree = "<group>"; };
+		5C7BE3DD1DE886BA00C15CB5 /* RecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordViewController.h; sourceTree = "<group>"; };
+		5C7BE3DE1DE886BA00C15CB5 /* RecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordViewController.m; sourceTree = "<group>"; };
+		5C7BE3E01DE886D600C15CB5 /* StatsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsViewController.h; sourceTree = "<group>"; };
+		5C7BE3E11DE886D600C15CB5 /* StatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsViewController.m; sourceTree = "<group>"; };
+		5C7BE3E31DE8877400C15CB5 /* QueuedExercisesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueuedExercisesViewController.h; sourceTree = "<group>"; };
+		5C7BE3E41DE8877400C15CB5 /* QueuedExercisesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueuedExercisesViewController.m; sourceTree = "<group>"; };
 		5C8A3A1E1DE5D04100706925 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		5C8A3A1F1DE5D04100706925 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		5C8A3A211DE5D07F00706925 /* MentalSnappViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MentalSnappViewController.h; sourceTree = "<group>"; };
-		5C8A3A221DE5D07F00706925 /* MentalSnappViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MentalSnappViewController.m; sourceTree = "<group>"; };
 		5C8A3A241DE5D26300706925 /* Banner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Banner.h; sourceTree = "<group>"; };
 		5C8A3A251DE5D26300706925 /* Banner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Banner.m; sourceTree = "<group>"; };
 		5C8A3A271DE5D5B800706925 /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
@@ -290,6 +311,76 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C7BE3C01DE8569200C15CB5 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				5C7BE3C21DE8570100C15CB5 /* MainTabBarController.h */,
+				5C7BE3C31DE8570100C15CB5 /* MainTabBarController.m */,
+				5C7BE3C51DE85B6100C15CB5 /* Exercise */,
+				5C7BE3C71DE85B6100C15CB5 /* Record */,
+				5C7BE3C91DE85B6100C15CB5 /* Videos */,
+				5C7BE3C81DE85B6100C15CB5 /* Stats */,
+				5C7BE3CD1DE85BD200C15CB5 /* More */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		5C7BE3C51DE85B6100C15CB5 /* Exercise */ = {
+			isa = PBXGroup;
+			children = (
+				5C7BE3DA1DE8869700C15CB5 /* ExerciseViewController.h */,
+				5C7BE3DB1DE8869700C15CB5 /* ExerciseViewController.m */,
+			);
+			path = Exercise;
+			sourceTree = "<group>";
+		};
+		5C7BE3C71DE85B6100C15CB5 /* Record */ = {
+			isa = PBXGroup;
+			children = (
+				5C7BE3DD1DE886BA00C15CB5 /* RecordViewController.h */,
+				5C7BE3DE1DE886BA00C15CB5 /* RecordViewController.m */,
+			);
+			path = Record;
+			sourceTree = "<group>";
+		};
+		5C7BE3C81DE85B6100C15CB5 /* Stats */ = {
+			isa = PBXGroup;
+			children = (
+				5C7BE3E01DE886D600C15CB5 /* StatsViewController.h */,
+				5C7BE3E11DE886D600C15CB5 /* StatsViewController.m */,
+			);
+			path = Stats;
+			sourceTree = "<group>";
+		};
+		5C7BE3C91DE85B6100C15CB5 /* Videos */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Videos;
+			sourceTree = "<group>";
+		};
+		5C7BE3CD1DE85BD200C15CB5 /* More */ = {
+			isa = PBXGroup;
+			children = (
+				5C7BE3CE1DE85BDC00C15CB5 /* MoreViewController.h */,
+				5C7BE3CF1DE85BDC00C15CB5 /* MoreViewController.m */,
+				5C7BE3E31DE8877400C15CB5 /* QueuedExercisesViewController.h */,
+				5C7BE3E41DE8877400C15CB5 /* QueuedExercisesViewController.m */,
+				5C7BE3D61DE882CC00C15CB5 /* ReportIssueViewController.h */,
+				5C7BE3D71DE882CC00C15CB5 /* ReportIssueViewController.m */,
+			);
+			path = More;
+			sourceTree = "<group>";
+		};
+		5C7BE3D11DE86E0300C15CB5 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				5C7BE3D21DE86F3900C15CB5 /* MoreTableViewCell.h */,
+				5C7BE3D31DE86F3900C15CB5 /* MoreTableViewCell.m */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
 		6A2428461DE814A900FF15A9 /* ChangePasswordScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -353,6 +444,7 @@
 				6AAA012B1DE56F8600208022 /* Resources */,
 				6AAA01301DE56F8600208022 /* StoryboardAndXIBs */,
 				6AAA01331DE56F8600208022 /* ViewModels */,
+				5C7BE3D11DE86E0300C15CB5 /* TableViewCells */,
 			);
 			path = MentalSnapp;
 			sourceTree = "<group>";
@@ -502,15 +594,14 @@
 		6AAA01281DE56F8600208022 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				6A2428461DE814A900FF15A9 /* ChangePasswordScreen */,
 				6A98B12F1DE5A49F009F1412 /* MentalSnappViewController */,
+				6A2428461DE814A900FF15A9 /* ChangePasswordScreen */,
 				6A98B12B1DE5A447009F1412 /* ProfileScreen */,
 				6AAA01291DE56F8600208022 /* ViewController.h */,
 				6AAA012A1DE56F8600208022 /* ViewController.m */,
-				5C8A3A211DE5D07F00706925 /* MentalSnappViewController.h */,
-				5C8A3A221DE5D07F00706925 /* MentalSnappViewController.m */,
 				5C8A3A1E1DE5D04100706925 /* LoginViewController.h */,
 				5C8A3A1F1DE5D04100706925 /* LoginViewController.m */,
+				5C7BE3C01DE8569200C15CB5 /* TabBar */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -875,9 +966,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C7BE3D81DE882CC00C15CB5 /* ReportIssueViewController.m in Sources */,
 				6A1D50E21DE5793B0073F479 /* Info.plist in Sources */,
 				6A1D50E11DE5792C0073F479 /* Info.plist in Sources */,
-				5C8A3A231DE5D07F00706925 /* MentalSnappViewController.m in Sources */,
 				6AAA01431DE56F8600208022 /* NSDictionary+Properties.m in Sources */,
 				6AAA01541DE56F8600208022 /* NSObject+RMCopyable.m in Sources */,
 				6AAA015F1DE56F8600208022 /* RequestManager.m in Sources */,
@@ -887,7 +978,9 @@
 				6AAA016A1DE56F8600208022 /* TestModel.m in Sources */,
 				5CC7CCAC1DE8476F00DC661F /* UserManager.m in Sources */,
 				6AAA01531DE56F8600208022 /* NSObject+RMArchivable.m in Sources */,
+				5C7BE3DC1DE8869700C15CB5 /* ExerciseViewController.m in Sources */,
 				5C8A3A261DE5D26300706925 /* Banner.m in Sources */,
+				5C7BE3E21DE886D600C15CB5 /* StatsViewController.m in Sources */,
 				6AAA014F1DE56F8600208022 /* UIView+LayerOperation.m in Sources */,
 				6AAA01601DE56F8600208022 /* Request.m in Sources */,
 				5C5309E01DE6C865005E14A4 /* LoginRequest.m in Sources */,
@@ -903,13 +996,18 @@
 				6AAA01591DE56F8600208022 /* RemoteNotificationManager.m in Sources */,
 				6A98B12E1DE5A463009F1412 /* ProfileViewController.m in Sources */,
 				6AAA015A1DE56F8600208022 /* SocialManager.m in Sources */,
+				5C7BE3C41DE8570100C15CB5 /* MainTabBarController.m in Sources */,
+				5C7BE3E51DE8877400C15CB5 /* QueuedExercisesViewController.m in Sources */,
 				6AAA014E1DE56F8600208022 /* UIView+Badge.m in Sources */,
 				6AAA015B1DE56F8600208022 /* APIInteractorProvider.m in Sources */,
 				6AAA01481DE56F8600208022 /* UIColor+Properties.m in Sources */,
 				6AC660EA1DE5740B00BB8949 /* SLog.m in Sources */,
+				5C7BE3D01DE85BDC00C15CB5 /* MoreViewController.m in Sources */,
 				6AAA01621DE56F8600208022 /* LoginInterface.m in Sources */,
 				6AAA01421DE56F8600208022 /* NSDate+Properties.m in Sources */,
 				6AC660E81DE5740B00BB8949 /* README.md in Sources */,
+				5C7BE3DF1DE886BA00C15CB5 /* RecordViewController.m in Sources */,
+				5C7BE3D41DE86F3900C15CB5 /* MoreTableViewCell.m in Sources */,
 				6AAA01691DE56F8600208022 /* AppSettings.m in Sources */,
 				6AAA01451DE56F8600208022 /* NSURL+Properties.m in Sources */,
 				6AAA014C1DE56F8600208022 /* UIImage+ImageEffects.m in Sources */,

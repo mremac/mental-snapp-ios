@@ -21,8 +21,6 @@
 @property(weak, nonatomic) IBOutlet UITextField *userEmailTextField;
 @property(weak, nonatomic) IBOutlet UITextField *passwordTextField;
 
-@property(weak, nonatomic) IBOutlet NSLayoutConstraint *logoTopConstraint;
-
 @end
 
 @implementation LoginViewController
@@ -48,10 +46,12 @@
 - (IBAction)loginButtonTapped:(id)sender {
     if (self.userEmailTextField.text.length < 1) {
         [Banner showSuccessBannerWithSubtitle:@"Enter email"];
+    } else if (![UserManager isValidEmail:self.userEmailTextField.text.trim]) {
+        [Banner showSuccessBannerWithSubtitle:@"Enter valid email"];
     } else if (self.passwordTextField.text.length < 1) {
         [Banner showSuccessBannerWithSubtitle:@"Enter password"];
     } else {
-        
+    
         UserModel *userModel = [[UserModel alloc]initWithUserEmail:self.userEmailTextField.text andPassword:self.passwordTextField.text];
         [[RequestManager alloc] loginWithUserModel:userModel withCompletionBlock:^(BOOL success, id response) {
             if (success){
@@ -60,13 +60,9 @@
                 [UserDefaults setValue:self.passwordTextField.text forKey:kUserPassword];
                 [UserDefaults setBool:YES forKey:kIsUserLoggedIn];
                 [UserDefaults synchronize];
-                
-//                [self getUserCall:userId];
-                
-//                NSMutableDictionary *deviceDetailDict = [NSMutableDictionary dictionary];
-                //                [[RequestManager alloc] postDeviceDetailWithDataDictionary:deviceDetailDict withCompletionBlock:^(BOOL success, id response) {
-                //
-                //                }];
+    
+                MainTabBarController *tabBarController = [self.storyboard instantiateViewControllerWithIdentifier:@"MainTabController"];
+                ApplicationDelegate.window.rootViewController = tabBarController;
             } else {
                 [Banner showFailureBannerWithSubtitle:response];
             }

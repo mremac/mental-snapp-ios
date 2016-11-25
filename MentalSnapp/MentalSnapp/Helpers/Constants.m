@@ -50,3 +50,15 @@ ns * KChangePasswordViewController = @"ChangePasswordViewController";
 #pragma mark - API URL
 ns *KUserAPI = @"/users/%@";
 
+#pragma mark - StoryBoard segue identifiers
+#pragma mark Main
+
+ns *kGoToReportIssueScreen = @"goToReportIssueScreen";
+ns *kGoToQueuedExercisesScreen = @"goToQueuedExercisesScreen";
+
+#pragma mark - TableViewCell identifiers
+
+ns *kMoreScreenTableViewCellIdentifier = @"MoreScreenTableViewCellIdentifier";
+
+
+

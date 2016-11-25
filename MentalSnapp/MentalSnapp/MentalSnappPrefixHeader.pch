@@ -60,4 +60,8 @@
 #import "UserManager.h"
 #import "UserModel.h"
 
+//Others
+
+#import "MainTabBarController.h"
+
 #endif
