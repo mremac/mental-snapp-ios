@@ -38,6 +38,7 @@
 - (IBAction)toolBarDoneButtonAction:(id)sender;
 - (IBAction)dateOfBirthButtonAction:(id)sender;
 - (IBAction)addPictureProfileAction:(id)sender;
+- (IBAction)deleteProfileAction:(id)sender;
 
 @end
 
@@ -51,6 +52,7 @@
     
     //show pre fileld users data
     [self showDataOfUsers];
+    [self getUserDetail];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -103,36 +105,49 @@
 
 #pragma mark - Private methods
 
+- (void)getUserDetail {
+    [[RequestManager alloc] getUserDetailWithUserModel:self.user withCompletionBlock:^(BOOL success, id response) {
+        if(success){
+            self.user = response;
+            [self showDataOfUsers];
+        }
+    }];
+}
+
 -(void)showDataOfUsers {
     if(self.user){
         profilePicURL = self.user.profilePicURL;
-        selectedGender = ([self.user.gender isEqualToString:@"1"])?0:1;
+        selectedGender = ([self.user.gender caseInsensitiveCompare:@"male"])?0:1;
         [self.userNameLabel setText:self.user.userName];
         [self.emailTextFeild setText:self.user.email];
         [self.dateOfBirthButton setTitle:self.user.dateOfBirth forState:UIControlStateNormal];
         [self.phoneTextField setText:self.user.phoneNumber];
-        [self.maleGenderButton setSelected:([self.user.gender isEqualToString:@"0"])?YES:NO];
-        [self.femaleGenderButton setSelected:([self.user.gender isEqualToString:@"0"])?NO:YES];
-        [self.profilePictureImageView sd_setImageWithURL:[NSURL URLWithString:self.user.profilePicURL] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@""] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-            
+        [self.maleGenderButton setSelected:([self.user.gender caseInsensitiveCompare:@"male"])?YES:NO];
+        [self.femaleGenderButton setSelected:([self.user.gender caseInsensitiveCompare:@"male"])?NO:YES];
+        [self.profilePictureImageView sd_setImageWithURL:[NSURL URLWithString:self.user.profilePicURL] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"profile-image"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         }];
     }
 }
 
 -(BOOL)isValidateFeilds {
     if([self.emailTextFeild.text isEqualToString:@""]) {
+        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Please enter email."];
         return NO;
     }
     if(![Util isValidEmail:self.emailTextFeild.text]){
+        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Please enter valid email."];
         return NO;
     }
     if([self.phoneTextField.text isEqualToString:@""]) {
+        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Please enter phone."];
         return NO;
     }
     if(![Util validatePhone:self.phoneTextField.text]){
+        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Please enter valid phone."];
         return NO;
     }
     if([[self.dateOfBirthButton titleForState:UIControlStateNormal] isEqualToString:@""]){
+        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Please enter date of birth."];
         return NO;
     }
     return YES;
@@ -160,7 +175,7 @@
 
 - (IBAction)saveButtonAction:(id)sender {
     if([self isValidateFeilds]){
-        UserModel *user = [[UserModel alloc] initWithUserId:self.user.userId andEmail:self.emailTextFeild.text andUserName:self.user.userName andPhone:self.phoneTextField.text andGender:[NSString stringWithFormat:@"%ld",(long)selectedGender] andDateOfBirth:[self.dateOfBirthButton titleForState:UIControlStateNormal] andProfilePic:profilePicURL];
+        UserModel *user = [[UserModel alloc] initWithUserId:self.user.userId andEmail:self.emailTextFeild.text andUserName:self.user.userName andPhone:self.phoneTextField.text andGender:[NSString stringWithFormat:@"%@",(selectedGender == MaleGender)?@"male":@"female"] andDateOfBirth:[self.dateOfBirthButton titleForState:UIControlStateNormal] andProfilePic:profilePicURL];
         
         [[RequestManager alloc] editUserWithUserModel:user withCompletionBlock:^(BOOL success, id response) {
             
@@ -199,6 +214,12 @@
 }
 
 - (IBAction)addPictureProfileAction:(id)sender {
+}
+
+- (IBAction)deleteProfileAction:(id)sender {
+    [[RequestManager alloc] userDeactivateWithUserModel:self.user withCompletionBlock:^(BOOL success, id response) {
+        
+    }];
 }
 
 @end

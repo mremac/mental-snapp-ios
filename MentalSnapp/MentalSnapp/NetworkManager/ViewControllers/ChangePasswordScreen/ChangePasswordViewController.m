@@ -6,6 +6,7 @@
 //
 
 #import "ChangePasswordViewController.h"
+#import "RequestManager.h"
 
 @interface ChangePasswordViewController ()
 @property (strong, nonatomic) IBOutlet UITextField *currentPasswordTextField;
@@ -38,6 +39,75 @@
 }
 */
 
+#pragma mark - Private method
+
+-(BOOL)isValidateFeilds {
+    if([self.currentPasswordTextField.text isEqualToString:@""]) {
+        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Please enter current password."];
+        return NO;
+    }
+       if([self.passwordNewTextField.text isEqualToString:@""]) {
+        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Please enter new password."];
+        return NO;
+    }
+    if([self.reNewPasswordTextField.text isEqualToString:@""]) {
+        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Please enter confirm new password."];
+        return NO;
+    }
+    if(![self.reNewPasswordTextField.text isEqualToString:self.passwordNewTextField.text]) {
+        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Re-enter new password is not match with new password."];
+        return NO;
+    }
+    return YES;
+}
+
+
+#pragma mark  - TextField Delegates
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField{
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
+    return YES;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+    
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    return YES;
+}  // return NO to not change text
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    
+    if([textField isEqual:self.currentPasswordTextField]){
+        [self.passwordNewTextField becomeFirstResponder];
+    } else  if([textField isEqual:self.passwordNewTextField]){
+        [self.reNewPasswordTextField becomeFirstResponder];
+    }else  if([textField isEqual:self.reNewPasswordTextField]){
+        if(![self.reNewPasswordTextField.text isEqualToString:self.passwordNewTextField.text]) {
+            [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Re-enter new password is not match with new password."];
+            return YES;
+        }
+        [self.reNewPasswordTextField resignFirstResponder];
+    }
+        return YES;
+}
+
+
+#pragma mark - IBActions
+
 - (IBAction)saveButtonAction:(id)sender {
+    if([self isValidateFeilds]){        
+        [[RequestManager alloc] changePassword:self.currentPasswordTextField.text andNewPassword:self.passwordNewTextField.text withCompletionBlock:^(BOOL success, id response) {
+            
+        }];
+    }
+
 }
 @end

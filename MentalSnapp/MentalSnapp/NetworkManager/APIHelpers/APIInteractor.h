@@ -15,6 +15,11 @@
 #pragma mark - User
 
 - (void)editUserWithRequest:(Request *)request andCompletionBlock:(completionBlock)block;
+- (void)changePasswordWithRequest:(Request *)request andCompletionBlock:(completionBlock)block;
+- (void)getUserDetailWithRequest:(Request *)request andCompletionBlock:(completionBlock)block;
+- (void)userDeactivateWithRequest:(Request *)request andCompletionBlock:(completionBlock)block;
+- (void)userLogoutWithRequest:(Request *)request andCompletionBlock:(completionBlock)block;
+
 
 #pragma mark - Login
 

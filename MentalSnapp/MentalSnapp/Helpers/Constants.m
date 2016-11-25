@@ -7,44 +7,46 @@
 //
 
 #import "Constants.h"
+#define ns NSString
 
 #pragma mark - Constant
 
-NSString *const kEmptyString = @"";
-NSString *const keyDeviceToken = @"DeviceToken";
-NSString *const kPlistFileName = @"AppSettings";
+ns * kEmptyString = @"";
+ns * keyDeviceToken = @"DeviceToken";
+ns * kPlistFileName = @"AppSettings";
 
 #pragma mark - Network keys
 
-NSString *const kInsecureProtocol = @"http://";
-NSString *const kSecureProtocol = @"https://";
-NSString *const kLocalEnviroment = @"LOCAL";
-NSString *const kStagingEnviroment = @"STAGING";
-NSString *const kLiveEnviroment = @"LIVE";
+ns * kInsecureProtocol = @"http://";
+ns * kSecureProtocol = @"https://";
+ns * kLocalEnviroment = @"LOCAL";
+ns * kStagingEnviroment = @"STAGING";
+ns * kLiveEnviroment = @"LIVE";
 
 #pragma mark - Json key
 
-NSString *const kJsonKeyName = @"name";
-NSString *const kJsonKeyId = @"id";
+ns * kJsonKeyName = @"name";
+ns * kJsonKeyId = @"id";
 
 #pragma mark - Session keys
 
-NSString *const kSessionCookies = @"session_cookies"; // application session
+ns * kSessionCookies = @"session_cookies"; // application session
 
 #pragma mark - Push Notifications
 
-NSString *const kAPSKey = @"aps";
+ns * kAPSKey = @"aps";
 
 #pragma mark - Userdefault keys
-
-NSString *const kUserEmail = @"UserEmail";
-NSString *const kUserPassword = @"UserPassword";
-NSString *const kRememberMe = @"RememberMe";
-NSString *const kIsUserLoggedIn = @"IsUserLoggedIn";
+ns * kUserEmail = @"UserEmail";
+ns * kUserPassword = @"UserPassword";
+ns * kRememberMe = @"RememberMe";
+ns *kIsUserLoggedIn = @"IsUserLoggedIn";
 
 #pragma mark - StoryBboard Identifier
+ns * KProfileViewControllerIdentifier  = @"ProfileViewController";
+ns * KProfileStoryboard = @"ProfileStoryboard";
+ns * KChangePasswordViewController = @"ChangePasswordViewController";
 
-NSString *const KProfileViewControllerIdentifier  = @"ProfileViewController";
-NSString *const KProfileStoryboard = @"ProfileStoryboard";
-NSString *const KChangePasswordViewController = @"ChangePasswordViewController";
+#pragma mark - API URL
+ns *KUserAPI = @"/users/%@";
 

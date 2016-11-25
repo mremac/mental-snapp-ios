@@ -14,6 +14,7 @@ pod 'Flurry-iOS-SDK/FlurryAds'
 
 pod 'DateTools'
 pod 'JSONModel'
+pod 'JTProgressHUD'
 
 end
 

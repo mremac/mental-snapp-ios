@@ -22,12 +22,33 @@
         block(YES, dict);
 }
 
+- (void)changePasswordWithRequest:(Request *)request andCompletionBlock:(completionBlock)block {
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"1", @"success", nil];
+    block(YES, dict);
+}
+
+- (void)getUserDetailWithRequest:(Request *)request andCompletionBlock:(completionBlock)block {
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"1", @"success", nil];
+    block(YES, dict);
+}
+
+- (void)userDeactivateWithRequest:(Request *)request andCompletionBlock:(completionBlock)block {
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"1", @"success", nil];
+    block(YES, dict);
+}
+- (void)userLogoutWithRequest:(Request *)request andCompletionBlock:(completionBlock)block {
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"1", @"success", nil];
+    block(YES, dict);
+}
+
 #pragma mark - Login
 
 - (void)loginWithRequest:(Request *)request andCompletionBlock:(completionBlock)block {
     
 }
 
+#pragma mark -
+    
 - (void)putObject:(Request *)request withCompletionBlock:(completionBlock)block {
 
 }

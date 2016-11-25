@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#define exNS extern NSString
 
 #define ApplicationDelegate ((AppDelegate *)[UIApplication sharedApplication].delegate)
 #define UserDefaults [NSUserDefaults standardUserDefaults]
@@ -15,22 +16,22 @@ typedef void (^completionBlock)(BOOL success, id response);
 
 #pragma mark - Constant
 
-extern NSString *const kEmptyString;
-extern NSString *const keyDeviceToken;
-extern NSString *const kPlistFileName;
+exNS *kEmptyString;
+exNS *keyDeviceToken;
+exNS *kPlistFileName;
 
 #pragma mark - Network keys
 
-extern NSString *const kInsecureProtocol;
-extern NSString *const kSecureProtocol;
-extern NSString *const kLocalEnviroment;
-extern NSString *const kStagingEnviroment;
-extern NSString *const kLiveEnviroment;
+exNS *kInsecureProtocol;
+exNS *kSecureProtocol;
+exNS *kLocalEnviroment;
+exNS *kStagingEnviroment;
+exNS *kLiveEnviroment;
 
 #pragma mark - Json
 
-extern NSString *const kJsonKeyName;
-extern NSString *const kJsonKeyId;
+exNS *kJsonKeyName;
+exNS *kJsonKeyId;
 
 #pragma mark - Numerical Constants
 
@@ -55,19 +56,21 @@ typedef NS_ENUM(NSInteger, genderType){
   };
 
 #pragma mark - Session keys
-extern NSString *const kSessionCookies;
+exNS *kSessionCookies;
 
 #pragma mark - Push Notifications
-extern NSString *const kAPSKey;
+exNS *kAPSKey;
 
 #pragma mark - Userdefault keys
-extern NSString *const kUserEmail;
-extern NSString *const kUserPassword;
-extern NSString *const kRememberMe;
-extern NSString *const kIsUserLoggedIn;
+exNS *kUserEmail;
+exNS *kUserPassword;
+exNS *kRememberMe;
+exNS *kIsUserLoggedIn;
 
 #pragma mark - StoryBboard Identifier
-extern NSString *const KProfileViewControllerIdentifier;
-extern NSString *const KProfileStoryboard;
-extern NSString *const KChangePasswordViewController;
+exNS *KProfileViewControllerIdentifier;
+exNS *KProfileStoryboard;
+exNS *KChangePasswordViewController;
 
+#pragma mark - API URL
+exNS *KUserAPI;

@@ -20,6 +20,7 @@ PODS:
     - Flurry-iOS-SDK/FlurrySDK
   - Flurry-iOS-SDK/FlurrySDK (7.8.2)
   - JSONModel (1.7.0)
+  - JTProgressHUD (1.0.5)
   - MagicalRecord (2.3.2):
     - MagicalRecord/Core (= 2.3.2)
   - MagicalRecord/Core (2.3.2)
@@ -35,6 +36,7 @@ DEPENDENCIES:
   - Flurry-iOS-SDK/FlurryAds
   - Flurry-iOS-SDK/FlurrySDK
   - JSONModel
+  - JTProgressHUD
   - MagicalRecord
   - SDWebImage (~> 3.7)
   - SVPullToRefresh
@@ -45,10 +47,11 @@ SPEC CHECKSUMS:
   DateTools: 53288ee8b905fdc75897a1e6b5cc0144b14cba60
   Flurry-iOS-SDK: 8ed76252016d0162a893363c108a010ab97d424c
   JSONModel: 840bc0fcffb24b8454d2c026bf26fea454b8e98d
+  JTProgressHUD: 7eb019487a92731c8716c15f19e94690cf35f644
   MagicalRecord: 53bed74b4323b930992a725be713e53b37d19755
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
 
-PODFILE CHECKSUM: 88f5cb386ce89c2233b9534bfd6c21979767a3d0
+PODFILE CHECKSUM: 16609f3ab5fff3cda9ec0f41abf46284c165c692
 
 COCOAPODS: 1.1.1

@@ -181,7 +181,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="saveButtonAction:" destination="LIS-ij-MlS" eventType="touchUpInside" id="Xf2-k4-yIH"/>
                                     <action selector="saveButtonAction:" destination="o3I-kv-AVa" eventType="touchUpInside" id="Z35-CS-gUf"/>
                                 </connections>
                             </button>
@@ -529,6 +528,9 @@
                                                                 <state key="normal" title="  DELETE PROFILE" image="delete">
                                                                     <color key="titleColor" red="0.9137254901960784" green="0.396078431372549" blue="0.22745098039215686" alpha="1" colorSpace="calibratedRGB"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="deleteProfileAction:" destination="LIS-ij-MlS" eventType="touchUpInside" id="67q-v7-qdW"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

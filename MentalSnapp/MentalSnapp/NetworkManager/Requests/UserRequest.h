@@ -10,5 +10,9 @@
 @interface UserRequest : Request
     
 - (id)initForEditUser:(UserModel *)user;
-    
+- (id)initForChangePassword:(NSString *)currentPassword andNewPassword:(NSString *)newPassword ;
+- (id)initForUserDetail:(UserModel *)user;
+- (id)initForUserLogout:(UserModel *)user;
+- (id)initForUserDeactivate:(UserModel *)user;
+
 @end

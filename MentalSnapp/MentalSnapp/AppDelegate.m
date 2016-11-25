@@ -34,6 +34,8 @@
         [Flurry startSession:@"YVV32ZQDD6V64NP45PVY"];
     }
     
+    [self setupNetworkMonitoring];
+    
     return YES;
 }
 

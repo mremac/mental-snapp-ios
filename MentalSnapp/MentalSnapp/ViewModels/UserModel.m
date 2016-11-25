@@ -13,10 +13,12 @@
                                                                   @"email": @"email",
                                                                   @"password": @"password",
                                                                   @"userName": @"user_name",
-                                                                  @"dateOfBirth": @"dob",
-                                                                  @"PhoneNumber": @"phone_number",
+                                                                  @"phoneNumber": @"phone_number",
                                                                   @"gender": @"gender",
-                                                                  @"userId": @"user_id"
+                                                                  @"userId": @"user_id",
+                                                                  @"userName" : @"name",
+                                                                  @"dateOfBirth" : @"date_of_birth",
+                                                                  @"profilePicURL" : @"profile_url",
                                                                   }];
 }
     

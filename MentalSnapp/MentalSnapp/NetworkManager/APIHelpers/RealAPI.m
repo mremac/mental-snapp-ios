@@ -27,12 +27,27 @@
     [self interactAPIWithPostObject:request withCompletionBlock:block];
 }
 
+- (void)changePasswordWithRequest:(Request *)request andCompletionBlock:(completionBlock)block {
+    [self interactAPIWithPostObject:request withCompletionBlock:block];
+}
+
+- (void)getUserDetailWithRequest:(Request *)request andCompletionBlock:(completionBlock)block {
+    [self interactAPIWithGetObject:request withCompletionBlock:block];
+}
+
+- (void)userDeactivateWithRequest:(Request *)request andCompletionBlock:(completionBlock)block {
+}
+- (void)userLogoutWithRequest:(Request *)request andCompletionBlock:(completionBlock)block {
+}
+
 #pragma mark - Login
 
 - (void)loginWithRequest:(Request *)request andCompletionBlock:(completionBlock)block {
     [self postObject:request withCompletionBlock:block];
 }
 
+#pragma mark -
+    
 - (void)putObject:(Request *)request withCompletionBlock:(completionBlock)block {
     [self interactAPIWithPutObject:request withCompletionBlock:block];
 }

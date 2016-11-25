@@ -12,5 +12,9 @@
 
 - (void)loginWithUserModel:(UserModel *)userModel withCompletionBlock:(completionBlock)block;
 - (void)editUserWithUserModel:(UserModel *)userModel withCompletionBlock:(completionBlock)block;
+- (void)changePassword:(NSString *)currentPassword andNewPassword:(NSString *)newPassword withCompletionBlock:(completionBlock)block;
+- (void)getUserDetailWithUserModel:(UserModel *)userModel withCompletionBlock:(completionBlock)block;
+- (void)userLogoutWithUserModel:(UserModel *)userModel withCompletionBlock:(completionBlock)block;
+- (void)userDeactivateWithUserModel:(UserModel *)userModel withCompletionBlock:(completionBlock)block;
 
 @end
