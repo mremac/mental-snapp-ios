@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MentalSnapp/NetworkManager/Services/UserInterface.m"
-            timestampString = "502006984.76426"
+            filePath = "MentalSnapp/NetworkManager/ViewControllers/ChangePasswordScreen/ChangePasswordViewController.m"
+            timestampString = "502032227.525034"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
-            landmarkName = "-parseUserResponse:"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "-saveButtonAction:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

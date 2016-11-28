@@ -4,6 +4,7 @@
 //
 
 #import "UserManager.h"
+#import "LoginViewController.h"
 
 @implementation UserManager
 
@@ -34,15 +35,13 @@ static dispatch_once_t userOnceToken;
     
     [UserDefaults setValue:_authorizationToken forKey:@"authorizationToken"];
     [UserDefaults setValue:_userModel.email forKey:@"email"];
-    [UserDefaults setValue:_userModel.userName forKey:@"userName"];
     [UserDefaults setValue:_userModel.password forKey:@"password"];
-    [UserDefaults setValue:_userModel.dateOfBirth forKey:@"dateOfBirth"];
-    [UserDefaults setValue:_userModel.phoneNumber forKey:@"phoneNumber"];
+    [UserDefaults setValue:_userModel.userName forKey:@"name"];
+    [UserDefaults setValue:_userModel.userId forKey:@"id"];
+    [UserDefaults setValue:_userModel.profilePicURL forKey:@"profile_url"];
+    [UserDefaults setValue:_userModel.dateOfBirth forKey:@"date_of_birth"];
     [UserDefaults setValue:_userModel.gender forKey:@"gender"];
-    [UserDefaults setValue:_userModel.userId forKey:@"userId"];
-    [UserDefaults setValue:_userModel.profilePicURL forKey:@"profilePicURL"];
-    [UserDefaults setValue:_userModel.phoneCountryCode forKey:@"phoneCountryCode"];
-    
+    [UserDefaults setValue:_userModel.phoneNumber forKey:@"phone_number"];
     [UserDefaults synchronize];
 }
 
@@ -50,14 +49,22 @@ static dispatch_once_t userOnceToken;
 {
     _authorizationToken = [UserDefaults valueForKey:@"authorizationToken"];
     _userModel.email = [UserDefaults valueForKey:@"email"];
-    _userModel.userName = [UserDefaults valueForKey:@"userName"];
+    _userModel.userName = [UserDefaults valueForKey:@"name"];
     _userModel.password = [UserDefaults valueForKey:@"password"];
-    _userModel.dateOfBirth = [UserDefaults valueForKey:@"dateOfBirth"];
-    _userModel.phoneNumber = [UserDefaults valueForKey:@"phoneNumber"];
+    _userModel.dateOfBirth = [UserDefaults valueForKey:@"date_of_birth"];
+    _userModel.phoneNumber = [UserDefaults valueForKey:@"phone_number"];
     _userModel.gender = [UserDefaults valueForKey:@"gender"];
-    _userModel.userId = [UserDefaults valueForKey:@"userId"];
-    _userModel.profilePicURL = [UserDefaults valueForKey:@"profilePicURL"];
-    _userModel.phoneCountryCode = [UserDefaults valueForKey:@"phoneCountryCode"];
+    _userModel.userId = [UserDefaults valueForKey:@"id"];
+    _userModel.profilePicURL = [UserDefaults valueForKey:@"profile_url"];
+    NSError *error;
+    NSDictionary *dictionary = [UserDefaults dictionaryRepresentation];
+    _userModel = [[UserModel alloc] initWithDictionary:dictionary error:&error];
+}
+
+-(void)logoutUser {
+    [self removeUserFromUserDefault];
+    LoginViewController *loginViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    [[ApplicationDelegate window] setRootViewController:[[UINavigationController alloc] initWithRootViewController:loginViewController]];
 }
 
 //*>    Save Logged in user's info in user default
@@ -65,15 +72,13 @@ static dispatch_once_t userOnceToken;
 {
     [UserDefaults removeObjectForKey:@"authorizationToken"];
     [UserDefaults removeObjectForKey:@"email"];
-    [UserDefaults removeObjectForKey:@"userName"];
+    [UserDefaults removeObjectForKey:@"name"];
     [UserDefaults removeObjectForKey:@"password"];
-    [UserDefaults removeObjectForKey:@"dateOfBirth"];
-    [UserDefaults removeObjectForKey:@"phoneNumber"];
+    [UserDefaults removeObjectForKey:@"date_of_birth"];
+    [UserDefaults removeObjectForKey:@"phone_number"];
     [UserDefaults removeObjectForKey:@"gender"];
-    [UserDefaults removeObjectForKey:@"userId"];
-    [UserDefaults removeObjectForKey:@"profilePicURL"];
-    [UserDefaults removeObjectForKey:@"phoneCountryCode"];
-    
+    [UserDefaults removeObjectForKey:@"id"];
+    [UserDefaults removeObjectForKey:@"profile_url"];    
     [UserDefaults synchronize];
 }
 

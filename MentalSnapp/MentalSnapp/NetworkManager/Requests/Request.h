@@ -18,6 +18,11 @@
 @property (nonatomic, strong) NSString *fileName;
 @property (nonatomic, strong) NSString *mimeType;
 
+@property (nonatomic, strong) NSData *imageData;
+@property (nonatomic, strong) NSString *dataImageName;
+@property (nonatomic, strong) NSString *imageName;
+@property (nonatomic, strong) NSString *imageMimeType;
+
 - (NSMutableDictionary *)getParams;
 - (instancetype)initForDeviceRegistration;
 - (NSString *)appendUrlForDeviceToken:(NSString *)urlString;

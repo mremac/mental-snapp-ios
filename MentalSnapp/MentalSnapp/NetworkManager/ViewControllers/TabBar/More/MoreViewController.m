@@ -5,10 +5,14 @@
 
 #import "MoreViewController.h"
 #import "MoreTableViewCell.h"
+#import "ProfileViewController.h"
+#import "SupportScreenViewController.h"
 
 @interface MoreViewController () <UITableViewDelegate, UITableViewDataSource> {
     NSArray *tableViewCellTitles;
     NSArray *tableViewCellTitleImageNames;
+    ProfileViewController *profileViewController;
+    SupportScreenViewController *supportScreenViewController;
 }
 
 @property(weak, nonatomic) IBOutlet UITableView *tableView;
@@ -60,12 +64,19 @@
         case 0:
             [self performSegueWithIdentifier:kGoToQueuedExercisesScreen sender:self];
             break;
-        case 1:
             
+        case 1: {
+            UIStoryboard *profileStoryboard = [UIStoryboard storyboardWithName:KProfileStoryboard bundle:nil];
+            profileViewController = [profileStoryboard instantiateViewControllerWithIdentifier:KProfileViewControllerIdentifier];
+            [self.navigationController pushViewController:profileViewController animated:YES];
             break;
-        case 2:
-            [self performSegueWithIdentifier:kGoToReportIssueScreen sender:self];
+        }
+        case 2: {
+            UIStoryboard *profileStoryboard = [UIStoryboard storyboardWithName:KProfileStoryboard bundle:nil];
+            supportScreenViewController = [profileStoryboard instantiateViewControllerWithIdentifier:KSupportScreenViewController];
+            [self.navigationController pushViewController:supportScreenViewController animated:YES];
             break;
+        }
             
         default:
             break;

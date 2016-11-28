@@ -17,11 +17,10 @@
     dispatch_once(&onceToken, ^{
         _networkHttpClient = [[self alloc] initWithBaseURL:[NSURL URLWithString:[NetworkHttpClient baseUrl]]];
     });
-    
-    if ([UserDefaults boolForKey:kIsUserLoggedIn]) {
+
+    if (_networkHttpClient && [UserDefaults boolForKey:kIsUserLoggedIn]) {
         [_networkHttpClient.requestSerializer setValue:[UserManager sharedManager].authorizationToken forHTTPHeaderField:@"Authorization"];
     }
-    
     return _networkHttpClient;
 }
 
@@ -30,7 +29,6 @@
     
     AppSettings *appSettings = [[AppSettingsManager sharedInstance] fetchSettings];
     self.urlPathSubstring = [appSettings URLPathSubstring];
-    
     return self;
 }
 
@@ -68,6 +66,16 @@
         failure(task, error);
     }];
 }
+
+- (void)patchAPICallWithUrl:(NSString *)url parameters:(NSDictionary *)parameters successBlock:(successBlock)success failureBlock:(failureBlock)failure {
+    
+    [self PATCH:url parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(task, responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(task, error);
+     }];
+}
+
 
 - (void)postAPICallWithUrl:(NSString *)url parameters:(NSDictionary *)parameters successBlock:(successBlock)success failureBlock:(failureBlock)failure {
     

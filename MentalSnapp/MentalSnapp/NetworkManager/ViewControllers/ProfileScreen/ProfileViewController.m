@@ -1,4 +1,4 @@
-//
+ //
 //  ProfileViewController.m
 //  MentalSnapp
 //
@@ -8,6 +8,7 @@
 #import "ProfileViewController.h"
 #import "RequestManager.h"
 #import "ChangePasswordViewController.h"
+#import "UserManager.h"
 
 @interface ProfileViewController () <UITextFieldDelegate>
 {
@@ -49,7 +50,10 @@
     // Do any additional setup after loading the view.
     [self.datePicker addTarget:self action:@selector(dateIsChanged:) forControlEvents:UIControlEventValueChanged];
     [self.maleGenderButton setSelected:YES];
-    
+    self.user = [UserManager sharedManager].userModel;
+    [self setNavigationBarButtonTitle:@"Profile"];
+    [self setLeftMenuButtons:[NSArray arrayWithObject:[self backButton]]];
+    [self setRightMenuButtons:[NSArray arrayWithObject:[self logoutButtonAction]]];
     //show pre fileld users data
     [self showDataOfUsers];
     [self getUserDetail];
@@ -105,6 +109,15 @@
 
 #pragma mark - Private methods
 
+- (UIBarButtonItem *)logoutButtonAction {
+    UIButton *leftButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 4, 25, 30)];
+    [leftButton setImage:[UIImage imageNamed:@"logout"] forState:UIControlStateNormal];
+    [leftButton addTarget:self action:@selector(logoutButtonTapped) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *leftBarButton = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
+    return leftBarButton;
+}
+
+
 - (void)getUserDetail {
     [self showInProgress:YES];
     [[RequestManager alloc] getUserDetailWithUserModel:self.user withCompletionBlock:^(BOOL success, id response) {
@@ -157,6 +170,17 @@
 
 #pragma mark - IBActions
 
+- (void)logoutButtonTapped {
+    [self showInProgress:YES];
+    [[RequestManager alloc] userLogoutWithUserModel:self.user withCompletionBlock:^(BOOL success, id response) {
+        if(success){
+            [[UserManager sharedManager] logoutUser];
+        }
+        [self showInProgress:NO];
+    }];
+}
+
+
 - (IBAction)genderButtonAction:(id)sender {
     selectedGender = [sender tag];
     if([sender tag] == MaleGender){
@@ -169,18 +193,20 @@
  }
 
 - (IBAction)changePasswordButtonAction:(id)sender {
-    
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:KProfileStoryboard bundle:nil];
     ChangePasswordViewController *changePasswordScreen = [storyboard instantiateViewControllerWithIdentifier:KChangePasswordViewController];
-    [self presentViewController:changePasswordScreen animated:YES completion:nil];
+    [self.navigationController pushViewController:changePasswordScreen animated:YES];
 }
 
 - (IBAction)saveButtonAction:(id)sender {
     if([self isValidateFeilds]){
         UserModel *user = [[UserModel alloc] initWithUserId:self.user.userId andEmail:self.emailTextFeild.text andUserName:self.user.userName andPhone:self.phoneTextField.text andGender:[NSString stringWithFormat:@"%@",(selectedGender == MaleGender)?@"male":@"female"] andDateOfBirth:[self.dateOfBirthButton titleForState:UIControlStateNormal] andProfilePic:profilePicURL];
-        
+        [self showInProgress:YES];
         [[RequestManager alloc] editUserWithUserModel:user withCompletionBlock:^(BOOL success, id response) {
-            
+            if(success){
+                [Banner showSuccessBannerWithSubtitle:@"Successfully updated."];
+            }
+            [self showInProgress:NO];
         }];
     }
 }
@@ -219,8 +245,11 @@
 }
 
 - (IBAction)deleteProfileAction:(id)sender {
+
     [[RequestManager alloc] userDeactivateWithUserModel:self.user withCompletionBlock:^(BOOL success, id response) {
-        
+        if(success){
+            [[UserManager sharedManager] logoutUser];
+        }
     }];
 }
 

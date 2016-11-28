@@ -19,7 +19,7 @@
                                                                   @"userName" : @"name",
                                                                   @"dateOfBirth" : @"date_of_birth",
                                                                   @"profilePicURL" : @"profile_url",
-                                                                  @"phoneCountryCode": @"phone_country_code",
+                                                                  @"phoneCountryCode" : @"phone_country_code",
                                                                   }];
 }
     
@@ -41,6 +41,7 @@
     self.gender = gender;
     self.dateOfBirth = dateOfBirth;
     self.profilePicURL = profilePicURL;
+    self.phoneCountryCode = @"+44";
     return self;
 }
 

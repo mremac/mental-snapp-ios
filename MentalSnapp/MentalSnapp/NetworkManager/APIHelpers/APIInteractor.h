@@ -20,6 +20,8 @@
 - (void)userDeactivateWithRequest:(Request *)request andCompletionBlock:(completionBlock)block;
 - (void)userLogoutWithRequest:(Request *)request andCompletionBlock:(completionBlock)block;
 
+#pragma mark - Support
+- (void)sendSupportRequest:(Request *)request andCompletionBlock:(completionBlock)block;
 
 #pragma mark - Login
 

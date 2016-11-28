@@ -71,12 +71,16 @@ exNS *kIsUserLoggedIn;
 exNS *KProfileViewControllerIdentifier;
 exNS *KProfileStoryboard;
 exNS *KChangePasswordViewController;
+exNS *KSupportScreenViewController;
 
 #pragma mark - API URL
 exNS *KUserAPI;
 exNS *kLoginAPI;
 exNS *kSignUpAPI;
 exNS *kForgotPassAPI;
+exNS *kChangePassword;
+exNS *kDeactivateUser;
+exNS  *KPostSupportLog;
 
 #pragma mark - StoryBoard segue identifiers
 #pragma mark Main

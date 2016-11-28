@@ -46,6 +46,10 @@
         if ([success integerValue] == kStatusSuccess) {
             if ([response hasValueForKey:@"auth_token"]) {
                 [UserManager sharedManager].authorizationToken = [response valueForKey:@"auth_token"];
+                if([response hasValueForKey:@"user"] && [response hasValueForKey:@"user"] != nil && [response hasValueForKey:@"user"]!=[NSNull null]) {
+                    NSError *error;
+                    [UserManager sharedManager].userModel = [[UserModel alloc] initWithDictionary:[response objectForKey:@"user"] error:&error];
+                }
                 [[UserManager sharedManager] saveLoggedinUserInfoInUserDefault];
             }
             

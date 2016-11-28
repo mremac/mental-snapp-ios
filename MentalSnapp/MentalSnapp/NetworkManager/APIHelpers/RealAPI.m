@@ -24,11 +24,11 @@
 #pragma mark - User
     
 - (void)editUserWithRequest:(Request *)request andCompletionBlock:(completionBlock)block {
-    [self interactAPIWithPostObject:request withCompletionBlock:block];
+    [self interactAPIWithPatchObject:request withCompletionBlock:block];
 }
 
 - (void)changePasswordWithRequest:(Request *)request andCompletionBlock:(completionBlock)block {
-    [self interactAPIWithPostObject:request withCompletionBlock:block];
+    [self putObject:request withCompletionBlock:block];
 }
 
 - (void)getUserDetailWithRequest:(Request *)request andCompletionBlock:(completionBlock)block {
@@ -36,8 +36,15 @@
 }
 
 - (void)userDeactivateWithRequest:(Request *)request andCompletionBlock:(completionBlock)block {
+    [self putObject:request withCompletionBlock:block];
 }
 - (void)userLogoutWithRequest:(Request *)request andCompletionBlock:(completionBlock)block {
+    [self getObject:request withCompletionBlock:block];
+}
+
+#pragma mark - Support
+- (void)sendSupportRequest:(Request *)request andCompletionBlock:(completionBlock)block {
+    [self multiPartObjectPost:request withCompletionBlock:block];
 }
 
 #pragma mark - Login
@@ -85,6 +92,15 @@
 - (void)interactAPIWithGetObject:(Request *)getObject  withCompletionBlock:(completionBlock)block {
     [self initialSetupWithRequest:getObject requestType:RequestGET];
     [[NetworkHttpClient sharedInstance] getAPICallWithUrl:getObject.urlPath parameters:getObject.getParams successBlock:^(NSURLSessionDataTask *task, id responseObject) {
+        [self handleSuccessResponse:task response:responseObject withBlock:block];
+    } failureBlock:^(NSURLSessionDataTask *task, NSError *error) {
+        [self handleError:error operation:task withBlock:block];
+    }];
+}
+
+- (void)interactAPIWithPatchObject:(Request *)postObject withCompletionBlock:(completionBlock)block {
+    [self initialSetupWithRequest:postObject requestType:RequestPOST];
+    [[NetworkHttpClient sharedInstance] patchAPICallWithUrl:postObject.urlPath parameters:postObject.getParams successBlock:^(NSURLSessionDataTask *task, id responseObject) {
         [self handleSuccessResponse:task response:responseObject withBlock:block];
     } failureBlock:^(NSURLSessionDataTask *task, NSError *error) {
         [self handleError:error operation:task withBlock:block];

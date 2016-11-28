@@ -21,5 +21,6 @@
 - (void)getUserDetailWithUserModel:(UserModel *)userModel withCompletionBlock:(completionBlock)block;
 - (void)userLogoutWithUserModel:(UserModel *)userModel withCompletionBlock:(completionBlock)block;
 - (void)userDeactivateWithUserModel:(UserModel *)userModel withCompletionBlock:(completionBlock)block;
+- (void)sendSupportLogs:(NSMutableDictionary *)dictionary withCompletionBlock:(completionBlock)block;
 
 @end

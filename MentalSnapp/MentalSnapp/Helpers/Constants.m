@@ -46,13 +46,16 @@ ns *kIsUserLoggedIn = @"IsUserLoggedIn";
 ns * KProfileViewControllerIdentifier  = @"ProfileViewController";
 ns * KProfileStoryboard = @"ProfileStoryboard";
 ns * KChangePasswordViewController = @"ChangePasswordViewController";
+ns * KSupportScreenViewController  = @"SupportScreenViewController";
 
 #pragma mark - API URL
 ns *KUserAPI = @"/users/%@";
 ns *kLoginAPI = @"/api/v1/authenticate";
 ns *kSignUpAPI = @"/api/v1/users";
-NSString *kForgotPassAPI = @"/api/v1/users/forgot_password";
-
+ns *kForgotPassAPI = @"/api/v1/users/forgot_password";
+ns *kChangePassword = @"/users/update_password";
+ns *kDeactivateUser = @"/users/deactivate_account";
+ns *KPostSupportLog = @"/supports/record";
 #pragma mark - StoryBoard segue identifiers
 #pragma mark Main
 

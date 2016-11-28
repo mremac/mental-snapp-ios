@@ -19,5 +19,5 @@
 - (void)removeUserFromUserDefault;
 
 + (BOOL)isValidEmail:(NSString *)checkString;
-
+- (void)logoutUser;
 @end

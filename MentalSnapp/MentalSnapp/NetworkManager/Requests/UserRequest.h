@@ -14,5 +14,6 @@
 - (id)initForUserDetail:(UserModel *)user;
 - (id)initForUserLogout:(UserModel *)user;
 - (id)initForUserDeactivate:(UserModel *)user;
+- (NSMutableDictionary *)getParams;
 
 @end

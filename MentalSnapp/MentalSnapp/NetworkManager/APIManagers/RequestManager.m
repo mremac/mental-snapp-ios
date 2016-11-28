@@ -80,4 +80,9 @@ NSString *const kDefaultErrorMessage =  @"Error! Please try again.";
     }
 }
 
+#pragma mark - support
+- (void)sendSupportLogs:(NSMutableDictionary *)dictionary withCompletionBlock:(completionBlock)block {
+
+}
+
 @end

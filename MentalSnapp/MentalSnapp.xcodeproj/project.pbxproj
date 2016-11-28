@@ -31,6 +31,10 @@
 		6A1D50EF1DE57BEF0073F479 /* MentalSnappTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1D50EE1DE57BEF0073F479 /* MentalSnappTests.m */; };
 		6A1D50F11DE57C520073F479 /* MentalSnappUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1D50F01DE57C520073F479 /* MentalSnappUITests.m */; };
 		6A24284A1DE814CD00FF15A9 /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A2428491DE814CD00FF15A9 /* ChangePasswordViewController.m */; };
+		6A3F7A6D1DEC69810070415C /* SupportScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A3F7A6C1DEC69810070415C /* SupportScreenViewController.m */; };
+		6A3F7A731DEC6F820070415C /* SupportRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A3F7A721DEC6F820070415C /* SupportRequest.m */; };
+		6A3F7A761DEC6F920070415C /* SupportInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A3F7A751DEC6F920070415C /* SupportInterface.m */; };
+		6A3F7A7C1DEC758C0070415C /* GZIP.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A3F7A7B1DEC758C0070415C /* GZIP.m */; };
 		6A7D95B01DE6C5120065573E /* UserRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D95AF1DE6C5120065573E /* UserRequest.m */; };
 		6A7D95BA1DE6CD6A0065573E /* UserInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D95B91DE6CD6A0065573E /* UserInterface.m */; };
 		6A7D95EF1DE6FA050065573E /* Apache License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6A7D95E21DE6FA050065573E /* Apache License.txt */; };
@@ -168,6 +172,14 @@
 		6A1D50F01DE57C520073F479 /* MentalSnappUITests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MentalSnappUITests.m; sourceTree = "<group>"; };
 		6A2428481DE814CD00FF15A9 /* ChangePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordViewController.h; sourceTree = "<group>"; };
 		6A2428491DE814CD00FF15A9 /* ChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordViewController.m; sourceTree = "<group>"; };
+		6A3F7A6B1DEC69810070415C /* SupportScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupportScreenViewController.h; sourceTree = "<group>"; };
+		6A3F7A6C1DEC69810070415C /* SupportScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupportScreenViewController.m; sourceTree = "<group>"; };
+		6A3F7A711DEC6F820070415C /* SupportRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupportRequest.h; sourceTree = "<group>"; };
+		6A3F7A721DEC6F820070415C /* SupportRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupportRequest.m; sourceTree = "<group>"; };
+		6A3F7A741DEC6F920070415C /* SupportInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupportInterface.h; sourceTree = "<group>"; };
+		6A3F7A751DEC6F920070415C /* SupportInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupportInterface.m; sourceTree = "<group>"; };
+		6A3F7A7A1DEC758C0070415C /* GZIP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZIP.h; sourceTree = "<group>"; };
+		6A3F7A7B1DEC758C0070415C /* GZIP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZIP.m; sourceTree = "<group>"; };
 		6A7D95AE1DE6C5120065573E /* UserRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserRequest.h; sourceTree = "<group>"; };
 		6A7D95AF1DE6C5120065573E /* UserRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserRequest.m; sourceTree = "<group>"; };
 		6A7D95B81DE6CD6A0065573E /* UserInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInterface.h; sourceTree = "<group>"; };
@@ -399,6 +411,24 @@
 			path = ChangePasswordScreen;
 			sourceTree = "<group>";
 		};
+		6A3F7A6A1DEC69810070415C /* SupportScreen */ = {
+			isa = PBXGroup;
+			children = (
+				6A3F7A6B1DEC69810070415C /* SupportScreenViewController.h */,
+				6A3F7A6C1DEC69810070415C /* SupportScreenViewController.m */,
+			);
+			path = SupportScreen;
+			sourceTree = "<group>";
+		};
+		6A3F7A791DEC758C0070415C /* GZIP */ = {
+			isa = PBXGroup;
+			children = (
+				6A3F7A7A1DEC758C0070415C /* GZIP.h */,
+				6A3F7A7B1DEC758C0070415C /* GZIP.m */,
+			);
+			path = GZIP;
+			sourceTree = "<group>";
+		};
 		6A7D95E11DE6FA050065573E /* RobotoFont */ = {
 			isa = PBXGroup;
 			children = (
@@ -461,6 +491,7 @@
 		6AAA00D91DE56F8500208022 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				6A3F7A791DEC758C0070415C /* GZIP */,
 				5C8A3A241DE5D26300706925 /* Banner.h */,
 				5C8A3A251DE5D26300706925 /* Banner.m */,
 				6AAA00DA1DE56F8500208022 /* Constants.h */,
@@ -579,6 +610,8 @@
 		6AAA01201DE56F8600208022 /* Requests */ = {
 			isa = PBXGroup;
 			children = (
+				6A3F7A711DEC6F820070415C /* SupportRequest.h */,
+				6A3F7A721DEC6F820070415C /* SupportRequest.m */,
 				6AAA01211DE56F8600208022 /* Request.h */,
 				6AAA01221DE56F8600208022 /* Request.m */,
 				6A7D95AE1DE6C5120065573E /* UserRequest.h */,
@@ -592,6 +625,8 @@
 		6AAA01231DE56F8600208022 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				6A3F7A741DEC6F920070415C /* SupportInterface.h */,
+				6A3F7A751DEC6F920070415C /* SupportInterface.m */,
 				6AAA01261DE56F8600208022 /* LoginInterface.h */,
 				6AAA01271DE56F8600208022 /* LoginInterface.m */,
 				6A7D95B81DE6CD6A0065573E /* UserInterface.h */,
@@ -603,6 +638,7 @@
 		6AAA01281DE56F8600208022 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				6A3F7A6A1DEC69810070415C /* SupportScreen */,
 				6A98B12F1DE5A49F009F1412 /* MentalSnappViewController */,
 				6A2428461DE814A900FF15A9 /* ChangePasswordScreen */,
 				6A98B12B1DE5A447009F1412 /* ProfileScreen */,
@@ -981,17 +1017,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A3F7A7C1DEC758C0070415C /* GZIP.m in Sources */,
 				5C7BE3D81DE882CC00C15CB5 /* ReportIssueViewController.m in Sources */,
 				6A1D50E21DE5793B0073F479 /* Info.plist in Sources */,
 				6A1D50E11DE5792C0073F479 /* Info.plist in Sources */,
 				6AAA01431DE56F8600208022 /* NSDictionary+Properties.m in Sources */,
 				6AAA01541DE56F8600208022 /* NSObject+RMCopyable.m in Sources */,
 				6AAA015F1DE56F8600208022 /* RequestManager.m in Sources */,
+				6A3F7A6D1DEC69810070415C /* SupportScreenViewController.m in Sources */,
 				6AAA014B1DE56F8600208022 /* UIImage+ImageBlur.m in Sources */,
 				6AAA014A1DE56F8600208022 /* UIImage+fixOrientation.m in Sources */,
 				5CF694FD1DEDBED100F00EA2 /* SignUpViewController.m in Sources */,
 				6AAA01511DE56F8600208022 /* Util.m in Sources */,
 				6AAA016A1DE56F8600208022 /* TestModel.m in Sources */,
+				6A3F7A731DEC6F820070415C /* SupportRequest.m in Sources */,
 				5CC7CCAC1DE8476F00DC661F /* UserManager.m in Sources */,
 				6AAA01531DE56F8600208022 /* NSObject+RMArchivable.m in Sources */,
 				5C7BE3DC1DE8869700C15CB5 /* ExerciseViewController.m in Sources */,
@@ -1040,6 +1079,7 @@
 				6AAA015E1DE56F8600208022 /* TestAPI.m in Sources */,
 				6AC660EB1DE5740B00BB8949 /* SMobiLogger.m in Sources */,
 				6A24284A1DE814CD00FF15A9 /* ChangePasswordViewController.m in Sources */,
+				6A3F7A761DEC6F920070415C /* SupportInterface.m in Sources */,
 				6AAA01401DE56F8600208022 /* Constants.m in Sources */,
 				6AAA01571DE56F8600208022 /* main.m in Sources */,
 				6AAA015D1DE56F8600208022 /* RealAPI.m in Sources */,

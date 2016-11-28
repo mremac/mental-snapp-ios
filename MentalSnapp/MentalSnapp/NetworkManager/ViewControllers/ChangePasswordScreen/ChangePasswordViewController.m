@@ -22,6 +22,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [self setNavigationBarButtonTitle:@"Change Password"];
+    [self setLeftMenuButtons:[NSArray arrayWithObject:[self backButton]]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -103,9 +106,14 @@
 #pragma mark - IBActions
 
 - (IBAction)saveButtonAction:(id)sender {
-    if([self isValidateFeilds]){        
+    if([self isValidateFeilds]){
+        [self showInProgress:YES];
         [[RequestManager alloc] changePassword:self.currentPasswordTextField.text andNewPassword:self.passwordNewTextField.text withCompletionBlock:^(BOOL success, id response) {
-            
+            [self showInProgress:NO];
+            if(success) {
+                [Banner showSuccessBannerWithSubtitle:@"Password changed successfully."];
+                [self backButtonTapped];
+            }
         }];
     }
 
