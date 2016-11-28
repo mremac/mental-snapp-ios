@@ -106,11 +106,13 @@
 #pragma mark - Private methods
 
 - (void)getUserDetail {
+    [self showInProgress:YES];
     [[RequestManager alloc] getUserDetailWithUserModel:self.user withCompletionBlock:^(BOOL success, id response) {
         if(success){
             self.user = response;
             [self showDataOfUsers];
         }
+         [self showInProgress:NO];
     }];
 }
 

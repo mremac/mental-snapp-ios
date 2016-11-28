@@ -45,6 +45,7 @@
 #import <MagicalRecord/MagicalRecord.h>
 #import "DateTools.h"
 #import "JSONModel.h"
+#import "JTProgressHUD.h"
 
 // Managers
 

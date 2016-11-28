@@ -72,7 +72,18 @@
 }
 
 - (void)centerTitleButtonTapped {
-    
+}
+
+- (void)showInProgress:(BOOL)state {
+    if(state) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [JTProgressHUD show];
+        });
+    } else {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [JTProgressHUD hide];
+        });
+    }
 }
 
 @end

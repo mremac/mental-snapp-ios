@@ -10,6 +10,7 @@
 @interface MSViewController : UIViewController
 
 @property (strong, nonatomic) UIView *touchView;
+- (void)showInProgress:(BOOL)state;
 
 - (void)setLeftMenuButtons:(NSArray *)barButtons;
 - (void)setRightMenuButtons:(NSArray *)barButtons;

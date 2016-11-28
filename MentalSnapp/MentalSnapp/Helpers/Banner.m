@@ -19,7 +19,7 @@
 }
 
 + (ALAlertBanner *)showFailureBannerWithSubtitle:(NSString *)subtitle {
-    ALAlertBanner *banner = [self showFailureBannerOnTopWithTitle:@"Glowvita" subtitle:subtitle];
+    ALAlertBanner *banner = [self showFailureBannerOnTopWithTitle:@"MentalSnapp" subtitle:subtitle];
     return banner;
 }
 
