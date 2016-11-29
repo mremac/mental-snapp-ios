@@ -7,6 +7,7 @@
 //
 
 #import "AFHTTPSessionManager.h"
+#import "Request.h"
 
 typedef void(^successBlock)(NSURLSessionDataTask *task, id responseObject);
 typedef void (^failureBlock)(NSURLSessionDataTask *task, NSError *error);
@@ -21,4 +22,5 @@ typedef void (^failureBlock)(NSURLSessionDataTask *task, NSError *error);
 - (void)putAPICallWithUrl:(NSString *)url parameters:(NSDictionary *)parameters successBlock:(successBlock)success failureBlock:(failureBlock)failure;
 - (void)multipartApiCallWithUrl:(NSString *)url parameters:(NSDictionary *)parameters data:(NSData *)data name:(NSString *)dataFileName fileName:(NSString *)fileName mimeType:(NSString *)mimeType successBlock:(successBlock)success failureBlock:(failureBlock)failure;
 - (void)patchAPICallWithUrl:(NSString *)url parameters:(NSDictionary *)parameters successBlock:(successBlock)success failureBlock:(failureBlock)failure;
+- (void)multipartObjectApiCallWithUrl:(NSString *)url parameters:(NSDictionary *)parameters withObject:(Request *)object successBlock:(successBlock)success failureBlock:(failureBlock)failure;
 @end

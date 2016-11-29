@@ -19,9 +19,12 @@
     self = [super init];
     
     if(self) {
-        _parameters = [NSMutableDictionary dictionary];
-        [_parameters setValue:dictionary[@"from_email"] forKey:@"from_email"];
-        [_parameters setValue:dictionary[@"description"] forKey:@"description"];
+        NSMutableDictionary *requestParams  = [NSMutableDictionary dictionary];
+        [requestParams setValue:dictionary[@"from_email"] forKey:@"from_email"];
+        [requestParams setValue:dictionary[@"description"] forKey:@"description"];
+        [requestParams setValue:dictionary[@"title"] forKey:@"title"];
+
+        _parameters = [NSMutableDictionary dictionaryWithObject:requestParams forKey:@"support"];
         
         if ([dictionary hasValueForKey:@"screen_shot"]) {
             self.imageData = UIImagePNGRepresentation([dictionary objectForKey:@"screen_shot"]);

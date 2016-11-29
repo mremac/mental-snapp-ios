@@ -7,6 +7,7 @@
 //
 
 #import "NetworkHttpClient.h"
+#import "Request.h"
 
 @implementation NetworkHttpClient
 
@@ -109,5 +110,27 @@
         failure(task, error);
     }];
 }
+
+- (void)multipartObjectApiCallWithUrl:(NSString *)url parameters:(NSDictionary *)parameters withObject:(Request *)object successBlock:(successBlock)success failureBlock:(failureBlock)failure {
+    
+    [self POST:url parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        [formData appendPartWithFileData:object.fileData name:object.dataFilename fileName:object.fileName mimeType:object.mimeType];
+        if(object.imageData)
+        {
+            [formData appendPartWithFileData:object.imageData
+                                        name:object.dataImageName
+                                    fileName:object.imageName
+                                    mimeType:object.imageMimeType];
+        }
+        
+    } progress:^(NSProgress *uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask *task, id responseObject) {
+        success(task, responseObject);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        failure(task, error);
+    }];
+}
+
 
 @end

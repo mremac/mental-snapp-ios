@@ -158,14 +158,16 @@ NSString *const supportTextViewPlaceholder = @"Write your text...";
     }
     if([self isLogFileAttached]){
         NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
+        [dictionary setValue:self.titleTextField.text forKey:@"title"];
         [dictionary setValue:[self.textView.text isEqualToString:supportTextViewPlaceholder]?@"":self.textView.text forKey:@"description"];
         [dictionary setObject:self.textFileContentsData forKey:@"log_file"];
          [dictionary setObject:[[UserManager sharedManager] userModel].email forKey:@"from_email"];
         if(self.attachedScreenShot) {
             [dictionary setObject:self.attachedScreenShot forKey:@"screenshot"];
         }
-        [self.view setUserInteractionEnabled:NO];
+        [self showInProgress:YES];
         [[RequestManager alloc] sendSupportLogs:dictionary withCompletionBlock:^(BOOL success, id response) {
+            [self showInProgress:NO];
             if(success) {
                 [self backButtonTapped];
             }

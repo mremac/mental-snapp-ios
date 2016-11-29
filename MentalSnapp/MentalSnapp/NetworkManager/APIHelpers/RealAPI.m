@@ -44,7 +44,7 @@
 
 #pragma mark - Support
 - (void)sendSupportRequest:(Request *)request andCompletionBlock:(completionBlock)block {
-    [self multiPartObjectPost:request withCompletionBlock:block];
+    [self interactAPIWithTwoMultipartFormRequestWithObject:request withCompletionBlock:block];
 }
 
 #pragma mark - Login
@@ -132,6 +132,15 @@
 - (void)interactAPIWithMultipartFormRequestWithObject:(Request *)object withCompletionBlock:(completionBlock)block {
     [self initialSetupWithRequest:object requestType:RequestMutiPartPost];
     [[NetworkHttpClient sharedInstance] multipartApiCallWithUrl:object.urlPath parameters:object.getParams data:object.fileData name:object.dataFilename fileName:object.fileName mimeType:object.mimeType successBlock:^(NSURLSessionDataTask *task, id responseObject) {
+        [self handleSuccessResponse:task response:responseObject withBlock:block];
+    } failureBlock:^(NSURLSessionDataTask *task, NSError *error) {
+        [self handleError:error operation:task withBlock:block];
+    }];
+}
+
+- (void)interactAPIWithTwoMultipartFormRequestWithObject:(Request *)object withCompletionBlock:(completionBlock)block {
+    [self initialSetupWithRequest:object requestType:RequestMutiPartPost];
+    [[NetworkHttpClient sharedInstance] multipartObjectApiCallWithUrl:object.urlPath parameters:object.getParams withObject:object successBlock:^(NSURLSessionDataTask *task, id responseObject) {
         [self handleSuccessResponse:task response:responseObject withBlock:block];
     } failureBlock:^(NSURLSessionDataTask *task, NSError *error) {
         [self handleError:error operation:task withBlock:block];

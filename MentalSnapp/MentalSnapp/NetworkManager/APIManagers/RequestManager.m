@@ -8,6 +8,8 @@
 #import "UserRequest.h"
 #import "LoginInterface.h"
 #import "LoginRequest.h"
+#import "SupportRequest.h"
+#import "SupportInterface.h"
 
 NSString *const kDefaultErrorMessage =  @"Error! Please try again.";
 
@@ -19,6 +21,8 @@ NSString *const kDefaultErrorMessage =  @"Error! Please try again.";
         [[LoginInterface alloc] loginWithUserRequest:[[LoginRequest alloc]initWithLoginUserModel:userModel] andCompletionBlock:^(BOOL success, id response) {
             block(success, response);
         }];
+    }else {
+        block(NO, nil);
     }
 }
 
@@ -27,6 +31,8 @@ NSString *const kDefaultErrorMessage =  @"Error! Please try again.";
         [[LoginInterface alloc] signUpWithUserRequest:[[LoginRequest alloc] initWithSignUpUserModel:userModel] andCompletionBlock:^(BOOL success, id response) {
             block(success, response);
         }];
+    }else {
+        block(NO, nil);
     }
 }
 
@@ -35,6 +41,8 @@ NSString *const kDefaultErrorMessage =  @"Error! Please try again.";
         [[LoginInterface alloc] forgotPasswordWithUserRequest:[[LoginRequest alloc] initWithForgotPassEmail:email] andCompletionBlock:^(BOOL success, id response) {
             block(success, response);
         }];
+    }else {
+            block(NO, nil);
     }
 }
 
@@ -44,6 +52,8 @@ NSString *const kDefaultErrorMessage =  @"Error! Please try again.";
             [[UserInterface alloc] editUserWithRequest:[[UserRequest alloc] initForEditUser:userModel] andCompletionBlock:^(BOOL success, id response) {
                 block(success,response);
             }];
+        }else {
+            block(NO, nil);
         }
 }
 
@@ -52,6 +62,8 @@ NSString *const kDefaultErrorMessage =  @"Error! Please try again.";
         [[UserInterface alloc] getUserDetailWithRequest:[[UserRequest alloc] initForUserDetail:userModel] andCompletionBlock:^(BOOL success, id response) {
             block(success,response);
         }];
+    }else {
+        block(NO, nil);
     }
 }
 
@@ -61,6 +73,8 @@ NSString *const kDefaultErrorMessage =  @"Error! Please try again.";
         [[UserInterface alloc] changePasswordWithRequest:[[UserRequest alloc] initForChangePassword:currentPassword andNewPassword:newPassword] andCompletionBlock:^(BOOL success, id response) {
             block(success,response);
         }];
+    }else {
+        block(NO, nil);
     }
 }
 
@@ -69,6 +83,8 @@ NSString *const kDefaultErrorMessage =  @"Error! Please try again.";
         [[UserInterface alloc] userLogout:[[UserRequest alloc] initForUserDetail:userModel] andCompletionBlock:^(BOOL success, id response) {
             block(success,response);
         }];
+    }else {
+        block(NO, nil);
     }
 }
 
@@ -77,12 +93,21 @@ NSString *const kDefaultErrorMessage =  @"Error! Please try again.";
         [[UserInterface alloc] userDeactivate:[[UserRequest alloc] initForUserDetail:userModel] andCompletionBlock:^(BOOL success, id response) {
             block(success,response);
         }];
+    }else {
+        block(NO, nil);
     }
 }
 
 #pragma mark - support
 - (void)sendSupportLogs:(NSMutableDictionary *)dictionary withCompletionBlock:(completionBlock)block {
+    if ([ApplicationDelegate hasNetworkAvailable]) {
+        [[SupportInterface alloc] sendSupportRequest:[[SupportRequest alloc] initWithSupportDetails:dictionary] withCompletionBlock:^(BOOL success, id response) {
+            block(success,response);
+        }];
 
+    }else {
+        block(NO, nil);
+    }
 }
 
 @end
