@@ -55,6 +55,12 @@ typedef NS_ENUM(NSInteger, genderType){
     FemaleGender
   };
 
+#pragma mark - Other constants
+exNS *kAfter;
+exNS *kBefore;
+exNS *kJPage;
+exNS *kJPerPage;
+
 #pragma mark - Session keys
 exNS *kSessionCookies;
 
@@ -72,6 +78,7 @@ exNS *KProfileViewControllerIdentifier;
 exNS *KProfileStoryboard;
 exNS *KChangePasswordViewController;
 exNS *KSupportScreenViewController;
+exNS *kGuidedExcerciseViewController;
 
 #pragma mark - API URL
 exNS *KUserAPI;
@@ -92,5 +99,5 @@ exNS *kGoToForgotPasswordSecondScreen;
 
 #pragma mark - TableViewCell identifiers
 exNS *kMoreScreenTableViewCellIdentifier;
-
+exNS *kguidedExcerciseCellCollectionViewCell;
 

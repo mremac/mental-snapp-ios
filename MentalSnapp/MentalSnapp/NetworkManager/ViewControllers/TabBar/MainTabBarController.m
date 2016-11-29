@@ -4,6 +4,7 @@
 //
 
 #import "MainTabBarController.h"
+#import "GuidedExcerciseViewController.h"
 
 @interface MainTabBarController() {
     UIColor *normalColor;
@@ -29,8 +30,8 @@
     normalColor = [UIColor colorWithRed:15/255.f green:175/255.f blue:199/255.f alpha:1.f];
     
     [self addViewInTabBar];
-    
     [self setTabBarItems];
+    [self addGuidedExcerciseTab];
     
 }
 
@@ -126,6 +127,19 @@
     UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return img;
+  }
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+-(void)addGuidedExcerciseTab {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:KProfileStoryboard bundle:nil];
+    GuidedExcerciseViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:kGuidedExcerciseViewController];
+    NSMutableArray *tabArray = [NSMutableArray arrayWithArray:self.viewControllers];
+    [tabArray insertObject:[[UINavigationController alloc] initWithRootViewController:viewController] atIndex:0];
+    [self setViewControllers:tabArray];
 }
 
 @end

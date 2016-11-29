@@ -31,6 +31,10 @@
 		6A1D50EF1DE57BEF0073F479 /* MentalSnappTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1D50EE1DE57BEF0073F479 /* MentalSnappTests.m */; };
 		6A1D50F11DE57C520073F479 /* MentalSnappUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1D50F01DE57C520073F479 /* MentalSnappUITests.m */; };
 		6A24284A1DE814CD00FF15A9 /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A2428491DE814CD00FF15A9 /* ChangePasswordViewController.m */; };
+		6A288EBC1DED882200273CCC /* guidedExcerciseCellCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A288EBB1DED882200273CCC /* guidedExcerciseCellCollectionViewCell.m */; };
+		6A288EC51DED8BB100273CCC /* CommentsPaginate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A288EC01DED8BB100273CCC /* CommentsPaginate.m */; };
+		6A288EC61DED8BB100273CCC /* DatePaginate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A288EC21DED8BB100273CCC /* DatePaginate.m */; };
+		6A288EC71DED8BB100273CCC /* Paginate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A288EC41DED8BB100273CCC /* Paginate.m */; };
 		6A3F7A6D1DEC69810070415C /* SupportScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A3F7A6C1DEC69810070415C /* SupportScreenViewController.m */; };
 		6A3F7A731DEC6F820070415C /* SupportRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A3F7A721DEC6F820070415C /* SupportRequest.m */; };
 		6A3F7A761DEC6F920070415C /* SupportInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A3F7A751DEC6F920070415C /* SupportInterface.m */; };
@@ -95,6 +99,7 @@
 		6AAA01681DE56F8600208022 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AAA01321DE56F8600208022 /* Main.storyboard */; };
 		6AAA01691DE56F8600208022 /* AppSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AAA01351DE56F8600208022 /* AppSettings.m */; };
 		6AAA016A1DE56F8600208022 /* TestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AAA01371DE56F8600208022 /* TestModel.m */; };
+		6AC2A25F1DED848D00196FFA /* GuidedExcerciseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AC2A25E1DED848D00196FFA /* GuidedExcerciseViewController.m */; };
 		6AC660E61DE5740B00BB8949 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 6AC660D41DE5740B00BB8949 /* .gitignore */; };
 		6AC660E71DE5740B00BB8949 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6AC660D51DE5740B00BB8949 /* LICENSE.txt */; };
 		6AC660E81DE5740B00BB8949 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 6AC660D61DE5740B00BB8949 /* README.md */; };
@@ -172,6 +177,14 @@
 		6A1D50F01DE57C520073F479 /* MentalSnappUITests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MentalSnappUITests.m; sourceTree = "<group>"; };
 		6A2428481DE814CD00FF15A9 /* ChangePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordViewController.h; sourceTree = "<group>"; };
 		6A2428491DE814CD00FF15A9 /* ChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordViewController.m; sourceTree = "<group>"; };
+		6A288EBA1DED882200273CCC /* guidedExcerciseCellCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = guidedExcerciseCellCollectionViewCell.h; sourceTree = "<group>"; };
+		6A288EBB1DED882200273CCC /* guidedExcerciseCellCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = guidedExcerciseCellCollectionViewCell.m; sourceTree = "<group>"; };
+		6A288EBF1DED8BB100273CCC /* CommentsPaginate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsPaginate.h; sourceTree = "<group>"; };
+		6A288EC01DED8BB100273CCC /* CommentsPaginate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsPaginate.m; sourceTree = "<group>"; };
+		6A288EC11DED8BB100273CCC /* DatePaginate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePaginate.h; sourceTree = "<group>"; };
+		6A288EC21DED8BB100273CCC /* DatePaginate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePaginate.m; sourceTree = "<group>"; };
+		6A288EC31DED8BB100273CCC /* Paginate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Paginate.h; sourceTree = "<group>"; };
+		6A288EC41DED8BB100273CCC /* Paginate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Paginate.m; sourceTree = "<group>"; };
 		6A3F7A6B1DEC69810070415C /* SupportScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupportScreenViewController.h; sourceTree = "<group>"; };
 		6A3F7A6C1DEC69810070415C /* SupportScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupportScreenViewController.m; sourceTree = "<group>"; };
 		6A3F7A711DEC6F820070415C /* SupportRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupportRequest.h; sourceTree = "<group>"; };
@@ -285,6 +298,8 @@
 		6AAA01371DE56F8600208022 /* TestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestModel.m; sourceTree = "<group>"; };
 		6AAA01391DE56F8600208022 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6AAA013C1DE56F8600208022 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6AC2A25D1DED848D00196FFA /* GuidedExcerciseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuidedExcerciseViewController.h; sourceTree = "<group>"; };
+		6AC2A25E1DED848D00196FFA /* GuidedExcerciseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuidedExcerciseViewController.m; sourceTree = "<group>"; };
 		6AC660D41DE5740B00BB8949 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		6AC660D51DE5740B00BB8949 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		6AC660D61DE5740B00BB8949 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -409,6 +424,28 @@
 				6A2428491DE814CD00FF15A9 /* ChangePasswordViewController.m */,
 			);
 			path = ChangePasswordScreen;
+			sourceTree = "<group>";
+		};
+		6A288EB61DED864300273CCC /* GuidedExcerciseIconView */ = {
+			isa = PBXGroup;
+			children = (
+				6A288EBA1DED882200273CCC /* guidedExcerciseCellCollectionViewCell.h */,
+				6A288EBB1DED882200273CCC /* guidedExcerciseCellCollectionViewCell.m */,
+			);
+			path = GuidedExcerciseIconView;
+			sourceTree = "<group>";
+		};
+		6A288EBE1DED8BB100273CCC /* Pagination */ = {
+			isa = PBXGroup;
+			children = (
+				6A288EBF1DED8BB100273CCC /* CommentsPaginate.h */,
+				6A288EC01DED8BB100273CCC /* CommentsPaginate.m */,
+				6A288EC11DED8BB100273CCC /* DatePaginate.h */,
+				6A288EC21DED8BB100273CCC /* DatePaginate.m */,
+				6A288EC31DED8BB100273CCC /* Paginate.h */,
+				6A288EC41DED8BB100273CCC /* Paginate.m */,
+			);
+			path = Pagination;
 			sourceTree = "<group>";
 		};
 		6A3F7A6A1DEC69810070415C /* SupportScreen */ = {
@@ -638,6 +675,7 @@
 		6AAA01281DE56F8600208022 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				6AC2A2571DED7E7800196FFA /* GuidedExercise */,
 				6A3F7A6A1DEC69810070415C /* SupportScreen */,
 				6A98B12F1DE5A49F009F1412 /* MentalSnappViewController */,
 				6A2428461DE814A900FF15A9 /* ChangePasswordScreen */,
@@ -680,6 +718,7 @@
 		6AAA01331DE56F8600208022 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				6A288EBE1DED8BB100273CCC /* Pagination */,
 				6AAA01341DE56F8600208022 /* AppSettings.h */,
 				6AAA01351DE56F8600208022 /* AppSettings.m */,
 				6AAA01361DE56F8600208022 /* TestModel.h */,
@@ -708,6 +747,16 @@
 				6A1D50F01DE57C520073F479 /* MentalSnappUITests.m */,
 			);
 			path = MentalSnappUITests;
+			sourceTree = "<group>";
+		};
+		6AC2A2571DED7E7800196FFA /* GuidedExercise */ = {
+			isa = PBXGroup;
+			children = (
+				6A288EB61DED864300273CCC /* GuidedExcerciseIconView */,
+				6AC2A25D1DED848D00196FFA /* GuidedExcerciseViewController.h */,
+				6AC2A25E1DED848D00196FFA /* GuidedExcerciseViewController.m */,
+			);
+			path = GuidedExercise;
 			sourceTree = "<group>";
 		};
 		6AC660D31DE5740B00BB8949 /* SMobiLogger */ = {
@@ -1023,6 +1072,7 @@
 				6A1D50E11DE5792C0073F479 /* Info.plist in Sources */,
 				6AAA01431DE56F8600208022 /* NSDictionary+Properties.m in Sources */,
 				6AAA01541DE56F8600208022 /* NSObject+RMCopyable.m in Sources */,
+				6A288EBC1DED882200273CCC /* guidedExcerciseCellCollectionViewCell.m in Sources */,
 				6AAA015F1DE56F8600208022 /* RequestManager.m in Sources */,
 				6A3F7A6D1DEC69810070415C /* SupportScreenViewController.m in Sources */,
 				6AAA014B1DE56F8600208022 /* UIImage+ImageBlur.m in Sources */,
@@ -1031,6 +1081,7 @@
 				6AAA01511DE56F8600208022 /* Util.m in Sources */,
 				6AAA016A1DE56F8600208022 /* TestModel.m in Sources */,
 				6A3F7A731DEC6F820070415C /* SupportRequest.m in Sources */,
+				6A288EC61DED8BB100273CCC /* DatePaginate.m in Sources */,
 				5CC7CCAC1DE8476F00DC661F /* UserManager.m in Sources */,
 				6AAA01531DE56F8600208022 /* NSObject+RMArchivable.m in Sources */,
 				5C7BE3DC1DE8869700C15CB5 /* ExerciseViewController.m in Sources */,
@@ -1053,6 +1104,7 @@
 				6AAA015A1DE56F8600208022 /* SocialManager.m in Sources */,
 				5C7BE3C41DE8570100C15CB5 /* MainTabBarController.m in Sources */,
 				5C7BE3E51DE8877400C15CB5 /* QueuedExercisesViewController.m in Sources */,
+				6A288EC51DED8BB100273CCC /* CommentsPaginate.m in Sources */,
 				6AAA014E1DE56F8600208022 /* UIView+Badge.m in Sources */,
 				6AAA015B1DE56F8600208022 /* APIInteractorProvider.m in Sources */,
 				6AAA01481DE56F8600208022 /* UIColor+Properties.m in Sources */,
@@ -1074,11 +1126,13 @@
 				5C8A3A291DE5D5B800706925 /* UserModel.m in Sources */,
 				6A98B1321DE5A4BA009F1412 /* MSViewController.m in Sources */,
 				6AAA01551DE56F8600208022 /* NSUserDefaults+RMSaveCustomObject.m in Sources */,
+				6AC2A25F1DED848D00196FFA /* GuidedExcerciseViewController.m in Sources */,
 				6AAA015C1DE56F8600208022 /* NetworkHttpClient.m in Sources */,
 				6AAA01631DE56F8600208022 /* ViewController.m in Sources */,
 				6AAA015E1DE56F8600208022 /* TestAPI.m in Sources */,
 				6AC660EB1DE5740B00BB8949 /* SMobiLogger.m in Sources */,
 				6A24284A1DE814CD00FF15A9 /* ChangePasswordViewController.m in Sources */,
+				6A288EC71DED8BB100273CCC /* Paginate.m in Sources */,
 				6A3F7A761DEC6F920070415C /* SupportInterface.m in Sources */,
 				6AAA01401DE56F8600208022 /* Constants.m in Sources */,
 				6AAA01571DE56F8600208022 /* main.m in Sources */,

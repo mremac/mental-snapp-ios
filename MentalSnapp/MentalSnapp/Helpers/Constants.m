@@ -36,6 +36,12 @@ ns * kSessionCookies = @"session_cookies"; // application session
 
 ns * kAPSKey = @"aps";
 
+#pragma mark - Other constants
+ns *kAfter = @"after";
+ns *kBefore = @"before";
+ns *kJPage = @"page";
+ns *kJPerPage = @"per_page";
+
 #pragma mark - Userdefault keys
 ns * kUserEmail = @"UserEmail";
 ns * kUserPassword = @"UserPassword";
@@ -47,6 +53,7 @@ ns * KProfileViewControllerIdentifier  = @"ProfileViewController";
 ns * KProfileStoryboard = @"ProfileStoryboard";
 ns * KChangePasswordViewController = @"ChangePasswordViewController";
 ns * KSupportScreenViewController  = @"SupportScreenViewController";
+ns *kGuidedExcerciseViewController = @"GuidedExcerciseViewController";
 
 #pragma mark - API URL
 ns *KUserAPI = @"/users/%@";
@@ -56,6 +63,8 @@ ns *kForgotPassAPI = @"/api/v1/users/forgot_password";
 ns *kChangePassword = @"/users/update_password";
 ns *kDeactivateUser = @"/users/deactivate_account";
 ns *KPostSupportLog = @"/supports/record";
+
+
 #pragma mark - StoryBoard segue identifiers
 #pragma mark Main
 
@@ -68,6 +77,6 @@ ns *kGoToForgotPasswordSecondScreen = @"GoToForgotPasswordSecondViewController";
 #pragma mark - TableViewCell identifiers
 
 ns *kMoreScreenTableViewCellIdentifier = @"MoreScreenTableViewCellIdentifier";
-
+ns *kguidedExcerciseCellCollectionViewCell = @"guidedExcerciseCellCollectionViewCell";
 
 

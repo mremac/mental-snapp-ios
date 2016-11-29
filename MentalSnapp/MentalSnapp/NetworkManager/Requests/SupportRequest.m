@@ -24,7 +24,7 @@
         [requestParams setValue:dictionary[@"description"] forKey:@"description"];
         [requestParams setValue:dictionary[@"title"] forKey:@"title"];
 
-        _parameters = [NSMutableDictionary dictionaryWithObject:requestParams forKey:@"support"];
+        _parameters = [[NSMutableDictionary alloc] initWithDictionary:dictionary];
         
         if ([dictionary hasValueForKey:@"screen_shot"]) {
             self.imageData = UIImagePNGRepresentation([dictionary objectForKey:@"screen_shot"]);
