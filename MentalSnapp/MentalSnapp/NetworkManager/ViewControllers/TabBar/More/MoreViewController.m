@@ -8,6 +8,7 @@
 
 @interface MoreViewController () <UITableViewDelegate, UITableViewDataSource> {
     NSArray *tableViewCellTitles;
+    NSArray *tableViewCellTitleImageNames;
 }
 
 @property(weak, nonatomic) IBOutlet UITableView *tableView;
@@ -28,6 +29,7 @@
     [self setNavigationBarButtonTitle:@"More"];
     
     tableViewCellTitles = @[@"Queued Exercises", @"Profile", @"Report an Issue"];
+    tableViewCellTitleImageNames = @[@"MoreQueuedExercise", @"MoreProfile", @"MoreReport"];
     [self.tableView reloadData];
 }
 
@@ -45,6 +47,7 @@
     }
     
     moreTableViewCell.headingLabel.text = tableViewCellTitles[indexPath.row];
+    [moreTableViewCell.headingIconButton setImage:[UIImage imageNamed:[tableViewCellTitleImageNames objectAtIndex:indexPath.row]] forState:UIControlStateNormal];
     moreTableViewCell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return moreTableViewCell;
