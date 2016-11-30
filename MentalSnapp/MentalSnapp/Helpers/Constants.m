@@ -54,6 +54,7 @@ ns * KProfileStoryboard = @"ProfileStoryboard";
 ns * KChangePasswordViewController = @"ChangePasswordViewController";
 ns * KSupportScreenViewController  = @"SupportScreenViewController";
 ns *kGuidedExcerciseViewController = @"GuidedExcerciseViewController";
+ns *kExcerciseSubCategoryViewController = @"ExcerciseSubCategoryViewController";
 
 #pragma mark - API URL
 ns *KUserAPI = @"/users/%@";

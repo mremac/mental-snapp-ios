@@ -10,20 +10,26 @@
 
 @implementation guidedExcerciseCellCollectionViewCell
 
--(void)setSelectedViewDetail :(NSInteger )count{
+-(void)setSelectedViewDetail :(NSInteger )count withAnimation:(BOOL)animate andValue:(CGFloat)value{
     if(self.index != 0 && self.index != count){
-    self.guidedExcerciseWidthCinstraint.constant = self.guidedExcerciseHeightCinstraint.constant = 102;
+        self.guidedExcerciseWidthCinstraint.constant = self.guidedExcerciseHeightCinstraint.constant = (animate)?102: value;
     [self.guidedExcerciseImageButton setBackgroundColor:[UIColor colorWithRed:233.0/255.0 green:101.0/255.0 blue:58.0/255.0 alpha:1.0]];
     [self.guidedExcerciseTitleButton setTitleColor:[UIColor colorWithRed:233.0/255.0 green:101.0/255.0 blue:58.0/255.0 alpha:1.0] forState:UIControlStateNormal];
     [self.guidedExcerciseTitleButton.titleLabel setFont:[UIFont fontWithName:@"Roboto-Bold" size:16]];
     self.guidedExcerciseImageButton.layer.masksToBounds = YES;
-
-    [UIView animateWithDuration:0.3 animations:^{
-        [self layoutIfNeeded];
-        [self.guidedExcerciseImageButton.layer setCornerRadius:(102/2)];
-    } completion:^(BOOL finished) {
-        
-    }];
+    
+        if(animate){
+            CGFloat radius = (102/2);
+            [UIView animateWithDuration:0.1 animations:^{
+                [self layoutIfNeeded];
+                [self.guidedExcerciseImageButton.layer setCornerRadius:radius];
+            } completion:^(BOOL finished) {
+                
+            }];
+        } else {
+            [self.guidedExcerciseImageButton.layer setCornerRadius:value/2];
+            [self layoutIfNeeded];
+        }
     } else {
         [self setDefaultViewDetail];
     }
@@ -35,24 +41,29 @@
     [self.guidedExcerciseTitleButton setTitle:@"" forState:UIControlStateNormal];
 }
 
--(void)setUnSelectedViewDetail :(NSInteger )count{
+-(void)setUnSelectedViewDetail :(NSInteger )count withAnimation:(BOOL)animate andValue:(CGFloat)value{
     if(self.index != 0 && self.index != count){
-    self.guidedExcerciseWidthCinstraint.constant = self.guidedExcerciseHeightCinstraint.constant = 68;
+    self.guidedExcerciseWidthCinstraint.constant = self.guidedExcerciseHeightCinstraint.constant = (animate)?68: value;
     [self.guidedExcerciseImageButton setBackgroundColor:[UIColor colorWithRed:15.0/255.0 green:175.0/255.0 blue:198.0/255.0 alpha:1.0]];
     [self.guidedExcerciseTitleButton setTitleColor:[UIColor colorWithRed:15.0/255.0 green:175.0/255.0 blue:198.0/255.0 alpha:1.0] forState:UIControlStateNormal];
     [self.guidedExcerciseTitleButton.titleLabel setFont:[UIFont fontWithName:@"Roboto" size:13]];
     self.guidedExcerciseImageButton.layer.masksToBounds = YES;
         
-    [UIView animateWithDuration:0.3 animations:^{
-        [self layoutIfNeeded];
-        [self.guidedExcerciseImageButton.layer setCornerRadius:(68/2)];
-    } completion:^(BOOL finished) {
-        
-    }];
+        if(animate){
+            CGFloat radius = (68/2);
+            [UIView animateWithDuration:0.1 animations:^{
+                [self layoutIfNeeded];
+                [self.guidedExcerciseImageButton.layer setCornerRadius:radius];
+            } completion:^(BOOL finished) {
+                
+            }];
+        } else {
+            [self.guidedExcerciseImageButton.layer setCornerRadius:value/2];
+            [self layoutIfNeeded];
+        }
     }else {
         [self setDefaultViewDetail];
     }
 }
-
 
 @end

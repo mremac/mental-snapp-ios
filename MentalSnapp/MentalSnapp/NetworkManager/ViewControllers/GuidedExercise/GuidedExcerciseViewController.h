@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GuidedExcerciseViewController : UIViewController
+@interface GuidedExcerciseViewController : MSViewController
 
 @end

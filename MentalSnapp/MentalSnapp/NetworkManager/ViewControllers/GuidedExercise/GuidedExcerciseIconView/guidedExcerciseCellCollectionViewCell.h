@@ -16,8 +16,8 @@
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *guidedExcerciseWidthCinstraint;
 @property (assign, nonatomic) NSInteger index;
 
-- (void)setSelectedViewDetail:(NSInteger )count;
-- (void)setUnSelectedViewDetail:(NSInteger )count;
+- (void)setSelectedViewDetail:(NSInteger )count withAnimation:(BOOL)animate andValue:(CGFloat)value;
+- (void)setUnSelectedViewDetail:(NSInteger )count withAnimation:(BOOL)animate andValue:(CGFloat)value;
 - (void)setDefaultViewDetail;
 
 @end

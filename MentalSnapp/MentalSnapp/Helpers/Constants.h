@@ -79,6 +79,7 @@ exNS *KProfileStoryboard;
 exNS *KChangePasswordViewController;
 exNS *KSupportScreenViewController;
 exNS *kGuidedExcerciseViewController;
+exNS *kExcerciseSubCategoryViewController;
 
 #pragma mark - API URL
 exNS *KUserAPI;

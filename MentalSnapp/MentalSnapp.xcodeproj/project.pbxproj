@@ -100,6 +100,7 @@
 		6AAA01691DE56F8600208022 /* AppSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AAA01351DE56F8600208022 /* AppSettings.m */; };
 		6AAA016A1DE56F8600208022 /* TestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AAA01371DE56F8600208022 /* TestModel.m */; };
 		6AC2A25F1DED848D00196FFA /* GuidedExcerciseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AC2A25E1DED848D00196FFA /* GuidedExcerciseViewController.m */; };
+		6AC2A9501DEED9FB009A21EF /* ExcerciseSubCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AC2A94F1DEED9FB009A21EF /* ExcerciseSubCategoryViewController.m */; };
 		6AC660E61DE5740B00BB8949 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 6AC660D41DE5740B00BB8949 /* .gitignore */; };
 		6AC660E71DE5740B00BB8949 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6AC660D51DE5740B00BB8949 /* LICENSE.txt */; };
 		6AC660E81DE5740B00BB8949 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 6AC660D61DE5740B00BB8949 /* README.md */; };
@@ -300,6 +301,8 @@
 		6AAA013C1DE56F8600208022 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6AC2A25D1DED848D00196FFA /* GuidedExcerciseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuidedExcerciseViewController.h; sourceTree = "<group>"; };
 		6AC2A25E1DED848D00196FFA /* GuidedExcerciseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuidedExcerciseViewController.m; sourceTree = "<group>"; };
+		6AC2A94E1DEED9FB009A21EF /* ExcerciseSubCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExcerciseSubCategoryViewController.h; sourceTree = "<group>"; };
+		6AC2A94F1DEED9FB009A21EF /* ExcerciseSubCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExcerciseSubCategoryViewController.m; sourceTree = "<group>"; };
 		6AC660D41DE5740B00BB8949 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		6AC660D51DE5740B00BB8949 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		6AC660D61DE5740B00BB8949 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -675,6 +678,7 @@
 		6AAA01281DE56F8600208022 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				6AC2A94D1DEED9DB009A21EF /* GuidedExcerciseSubCategoryView */,
 				6AC2A2571DED7E7800196FFA /* GuidedExercise */,
 				6A3F7A6A1DEC69810070415C /* SupportScreen */,
 				6A98B12F1DE5A49F009F1412 /* MentalSnappViewController */,
@@ -718,6 +722,7 @@
 		6AAA01331DE56F8600208022 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				6AC2A94B1DEED9B4009A21EF /* GuidedExcercise */,
 				6A288EBE1DED8BB100273CCC /* Pagination */,
 				6AAA01341DE56F8600208022 /* AppSettings.h */,
 				6AAA01351DE56F8600208022 /* AppSettings.m */,
@@ -757,6 +762,22 @@
 				6AC2A25E1DED848D00196FFA /* GuidedExcerciseViewController.m */,
 			);
 			path = GuidedExercise;
+			sourceTree = "<group>";
+		};
+		6AC2A94B1DEED9B4009A21EF /* GuidedExcercise */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = GuidedExcercise;
+			sourceTree = "<group>";
+		};
+		6AC2A94D1DEED9DB009A21EF /* GuidedExcerciseSubCategoryView */ = {
+			isa = PBXGroup;
+			children = (
+				6AC2A94E1DEED9FB009A21EF /* ExcerciseSubCategoryViewController.h */,
+				6AC2A94F1DEED9FB009A21EF /* ExcerciseSubCategoryViewController.m */,
+			);
+			path = GuidedExcerciseSubCategoryView;
 			sourceTree = "<group>";
 		};
 		6AC660D31DE5740B00BB8949 /* SMobiLogger */ = {
@@ -1086,6 +1107,7 @@
 				6AAA01531DE56F8600208022 /* NSObject+RMArchivable.m in Sources */,
 				5C7BE3DC1DE8869700C15CB5 /* ExerciseViewController.m in Sources */,
 				5C8A3A261DE5D26300706925 /* Banner.m in Sources */,
+				6AC2A9501DEED9FB009A21EF /* ExcerciseSubCategoryViewController.m in Sources */,
 				5C7BE3E21DE886D600C15CB5 /* StatsViewController.m in Sources */,
 				6AAA014F1DE56F8600208022 /* UIView+LayerOperation.m in Sources */,
 				6AAA01601DE56F8600208022 /* Request.m in Sources */,
