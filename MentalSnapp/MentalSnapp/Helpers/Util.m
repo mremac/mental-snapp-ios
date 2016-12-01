@@ -32,6 +32,7 @@
 
 + (BOOL)validatePhone:(NSString *)phoneNumber
 {
+    return YES;
     NSString *phoneRegex = @"^((\\+)|(00))[0-9]{6,14}$";
     NSPredicate *phoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", phoneRegex];
     

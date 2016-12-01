@@ -50,6 +50,10 @@
     [self postObject:request withCompletionBlock:block];
 }
 
+- (void)forgotPasswordWithRequest:(Request *)request andCompletionBlock:(completionBlock)block {
+    [self getObject:request withCompletionBlock:block];
+}
+
 #pragma mark -
     
 - (void)putObject:(Request *)request withCompletionBlock:(completionBlock)block {

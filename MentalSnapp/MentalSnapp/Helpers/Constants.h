@@ -76,12 +76,15 @@ exNS *KChangePasswordViewController;
 exNS *KUserAPI;
 exNS *kLoginAPI;
 exNS *kSignUpAPI;
+exNS *kForgotPassAPI;
 
 #pragma mark - StoryBoard segue identifiers
 #pragma mark Main
 exNS *kGoToReportIssueScreen;
 exNS *kGoToQueuedExercisesScreen;
 exNS *kGoToSignUp;
+exNS *kGoToForgotPasswordFirstScreen;
+exNS *kGoToForgotPasswordSecondScreen;
 
 #pragma mark - TableViewCell identifiers
 exNS *kMoreScreenTableViewCellIdentifier;

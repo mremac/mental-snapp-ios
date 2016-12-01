@@ -39,6 +39,8 @@
         self.passwordTextField.text = [[NSUserDefaults standardUserDefaults]valueForKey:kUserPassword];
         self.rememberMeButton.selected = YES;
     }
+    
+    self.navigationController.navigationBar.hidden = YES;
 }
 
 #pragma mark - IBAction methods
@@ -75,8 +77,7 @@
 }
 
 - (IBAction)forgotPasswordButtonTapped:(id)sender {
-//    ForgotPasswordViewController *forgotPasswordViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ForgotPasswordViewController"];
-//    [self.navigationController pushViewController:forgotPasswordViewController animated:YES];
+    [self performSegueWithIdentifier:kGoToForgotPasswordFirstScreen sender:self];
 }
 
 - (IBAction)rememberMeButtonTapped:(id)sender {
@@ -87,7 +88,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:kGoToSignUp]) {
-        
+        segue.destinationViewController.navigationController.navigationBar.hidden = NO;
     }
 }
 

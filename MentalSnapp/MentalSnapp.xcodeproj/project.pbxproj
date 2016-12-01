@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		26E53943AD4503D45E53BE0D /* libPods-MentalSnapp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16BE09BFE2D2D9B160A61EE5 /* libPods-MentalSnapp.a */; };
 		5C5309E01DE6C865005E14A4 /* LoginRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5309DF1DE6C865005E14A4 /* LoginRequest.m */; };
+		5C545E7C1DF02035004610B0 /* ForgotPasswordFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C545E7B1DF02035004610B0 /* ForgotPasswordFirstViewController.m */; };
+		5C545E801DF02281004610B0 /* ForgotPasswordSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C545E7F1DF02281004610B0 /* ForgotPasswordSecondViewController.m */; };
 		5C7BE3C41DE8570100C15CB5 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7BE3C31DE8570100C15CB5 /* MainTabBarController.m */; };
 		5C7BE3D01DE85BDC00C15CB5 /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7BE3CF1DE85BDC00C15CB5 /* MoreViewController.m */; };
 		5C7BE3D41DE86F3900C15CB5 /* MoreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7BE3D31DE86F3900C15CB5 /* MoreTableViewCell.m */; };
@@ -131,6 +133,10 @@
 		2F7537821A7A1F2617B8A585 /* Pods-MentalSnapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MentalSnapp.release.xcconfig"; path = "Pods/Target Support Files/Pods-MentalSnapp/Pods-MentalSnapp.release.xcconfig"; sourceTree = "<group>"; };
 		5C5309DE1DE6C865005E14A4 /* LoginRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginRequest.h; sourceTree = "<group>"; };
 		5C5309DF1DE6C865005E14A4 /* LoginRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginRequest.m; sourceTree = "<group>"; };
+		5C545E7A1DF02035004610B0 /* ForgotPasswordFirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgotPasswordFirstViewController.h; sourceTree = "<group>"; };
+		5C545E7B1DF02035004610B0 /* ForgotPasswordFirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgotPasswordFirstViewController.m; sourceTree = "<group>"; };
+		5C545E7E1DF02281004610B0 /* ForgotPasswordSecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgotPasswordSecondViewController.h; sourceTree = "<group>"; };
+		5C545E7F1DF02281004610B0 /* ForgotPasswordSecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgotPasswordSecondViewController.m; sourceTree = "<group>"; };
 		5C7BE3C21DE8570100C15CB5 /* MainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarController.h; sourceTree = "<group>"; };
 		5C7BE3C31DE8570100C15CB5 /* MainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarController.m; sourceTree = "<group>"; };
 		5C7BE3CE1DE85BDC00C15CB5 /* MoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreViewController.h; sourceTree = "<group>"; };
@@ -606,6 +612,10 @@
 				5C8A3A1F1DE5D04100706925 /* LoginViewController.m */,
 				5CF694FB1DEDBED100F00EA2 /* SignUpViewController.h */,
 				5CF694FC1DEDBED100F00EA2 /* SignUpViewController.m */,
+				5C545E7A1DF02035004610B0 /* ForgotPasswordFirstViewController.h */,
+				5C545E7B1DF02035004610B0 /* ForgotPasswordFirstViewController.m */,
+				5C545E7E1DF02281004610B0 /* ForgotPasswordSecondViewController.h */,
+				5C545E7F1DF02281004610B0 /* ForgotPasswordSecondViewController.m */,
 				5C7BE3C01DE8569200C15CB5 /* TabBar */,
 			);
 			path = ViewControllers;
@@ -1015,6 +1025,7 @@
 				5C7BE3DF1DE886BA00C15CB5 /* RecordViewController.m in Sources */,
 				5C7BE3D41DE86F3900C15CB5 /* MoreTableViewCell.m in Sources */,
 				6AAA01691DE56F8600208022 /* AppSettings.m in Sources */,
+				5C545E7C1DF02035004610B0 /* ForgotPasswordFirstViewController.m in Sources */,
 				6AAA01451DE56F8600208022 /* NSURL+Properties.m in Sources */,
 				6AAA014C1DE56F8600208022 /* UIImage+ImageEffects.m in Sources */,
 				6AAA01501DE56F8600208022 /* UIView+ReFrame.m in Sources */,
@@ -1032,6 +1043,7 @@
 				6AAA01401DE56F8600208022 /* Constants.m in Sources */,
 				6AAA01571DE56F8600208022 /* main.m in Sources */,
 				6AAA015D1DE56F8600208022 /* RealAPI.m in Sources */,
+				5C545E801DF02281004610B0 /* ForgotPasswordSecondViewController.m in Sources */,
 				6AAA014D1DE56F8600208022 /* UILabel+Properties.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

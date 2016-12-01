@@ -11,6 +11,8 @@
 
 - (id)initWithSignUpUserModel:(UserModel *)userModel;
 
+- (id)initWithForgotPassEmail:(NSString *)email;
+
 - (NSMutableDictionary *)getParams;
 
 @end

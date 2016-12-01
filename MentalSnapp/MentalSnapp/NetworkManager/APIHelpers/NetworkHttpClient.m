@@ -16,8 +16,11 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _networkHttpClient = [[self alloc] initWithBaseURL:[NSURL URLWithString:[NetworkHttpClient baseUrl]]];
-        
     });
+    
+    if ([UserDefaults boolForKey:kIsUserLoggedIn]) {
+        [_networkHttpClient.requestSerializer setValue:[UserManager sharedManager].authorizationToken forHTTPHeaderField:@"Authorization"];
+    }
     
     return _networkHttpClient;
 }
@@ -27,9 +30,6 @@
     
     AppSettings *appSettings = [[AppSettingsManager sharedInstance] fetchSettings];
     self.urlPathSubstring = [appSettings URLPathSubstring];
-    if ([UserDefaults boolForKey:kIsUserLoggedIn]) {
-        [self.requestSerializer setValue:[UserManager sharedManager].authorizationToken forHTTPHeaderField:@"Authorization"];
-    }
     
     return self;
 }

@@ -10,8 +10,12 @@
 
 @interface RequestManager : NSObject
 
+#pragma mark - Login
 - (void)loginWithUserModel:(UserModel *)userModel withCompletionBlock:(completionBlock)block;
 - (void)signUpWithUserModel:(UserModel *)userModel withCompletionBlock:(completionBlock)block;
+- (void)forgotPasswordWithEmail:(NSString *)email withCompletionBlock:(completionBlock)block;
+
+#pragma mark - User
 - (void)editUserWithUserModel:(UserModel *)userModel withCompletionBlock:(completionBlock)block;
 - (void)changePassword:(NSString *)currentPassword andNewPassword:(NSString *)newPassword withCompletionBlock:(completionBlock)block;
 - (void)getUserDetailWithUserModel:(UserModel *)userModel withCompletionBlock:(completionBlock)block;

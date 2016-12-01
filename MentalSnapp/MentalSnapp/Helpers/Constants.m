@@ -51,6 +51,7 @@ ns * KChangePasswordViewController = @"ChangePasswordViewController";
 ns *KUserAPI = @"/users/%@";
 ns *kLoginAPI = @"/api/v1/authenticate";
 ns *kSignUpAPI = @"/api/v1/users";
+NSString *kForgotPassAPI = @"/api/v1/users/forgot_password";
 
 #pragma mark - StoryBoard segue identifiers
 #pragma mark Main
@@ -58,6 +59,8 @@ ns *kSignUpAPI = @"/api/v1/users";
 ns *kGoToReportIssueScreen = @"goToReportIssueScreen";
 ns *kGoToQueuedExercisesScreen = @"goToQueuedExercisesScreen";
 ns *kGoToSignUp = @"toSignUp";
+ns *kGoToForgotPasswordFirstScreen = @"GoToForgotPasswordFirstViewController";
+ns *kGoToForgotPasswordSecondScreen = @"GoToForgotPasswordSecondViewController";
 
 #pragma mark - TableViewCell identifiers
 

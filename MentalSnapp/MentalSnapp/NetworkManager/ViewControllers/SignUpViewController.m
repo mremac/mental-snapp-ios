@@ -46,6 +46,12 @@
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardDidHide) name:UIKeyboardWillHideNotification object:nil];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    self.navigationController.navigationBar.hidden = YES;
+}
+
 - (void)keyboardDidHide {
     if (_scrollView.frame.size.height + _scrollView.contentOffset.y > _containerView.frame.size.height) {
         [UIView animateWithDuration:0.3f animations:^{
@@ -90,7 +96,7 @@
 
 #pragma mark - Date picker Selector method
 - (void)dateIsChanged:(id)sender{
-    [self.dateOfBirthButton setTitle:[NSDate stringFromDate:self.datePicker.date format:@"MM/dd/yyyy"] forState:UIControlStateNormal];
+    [self.dateOfBirthButton setTitle:[NSDate stringFromDate:self.datePicker.date format:@"dd/MM/yyyy"] forState:UIControlStateNormal];
 }
 
 #pragma mark - Private methods
@@ -158,10 +164,17 @@
         user.gender = [NSString stringWithFormat:@"%@",(selectedGender == MaleGender)?@"male":@"female"];
         user.password = self.passwordTextField.text;
         user.confirmPassword = self.confirmPasswordTextField.text;
-        user.phoneCountryCode = @"";
+        user.phoneCountryCode = @"+1";
 
         [[RequestManager alloc] signUpWithUserModel:user withCompletionBlock:^(BOOL success, id response) {
-            
+            if (success) {
+                [UIView transitionWithView:ApplicationDelegate.window
+                                  duration:0.5f
+                                   options:UIViewAnimationOptionTransitionFlipFromLeft
+                                animations:^{
+                                    ApplicationDelegate.window.rootViewController = [[UIStoryboard storyboardWithName:KProfileStoryboard bundle:nil] instantiateViewControllerWithIdentifier:KProfileViewControllerIdentifier];
+                                } completion:nil];
+            }
         }];
     }
 }
@@ -176,7 +189,7 @@
 }
 
 - (IBAction)toolBarDoneButtonAction:(id)sender {
-    [self.dateOfBirthButton setTitle:[NSDate stringFromDate:self.datePicker.date format:@"MM/dd/yyyy"] forState:UIControlStateNormal];
+    [self.dateOfBirthButton setTitle:[NSDate stringFromDate:self.datePicker.date format:@"dd/MM/yyyy"] forState:UIControlStateNormal];
     self.datePickerViewBottomConstraint.constant = -self.dateOfBirthView.frame.size.width;
     [UIView animateWithDuration:0.5 animations:^{
         [self.view layoutIfNeeded];

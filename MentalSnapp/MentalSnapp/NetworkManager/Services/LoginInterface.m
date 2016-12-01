@@ -22,7 +22,15 @@
     _block = block;
     id apiInteractorProvider = [[APIInteractorProvider sharedInterface] getAPIInetractor];
     [apiInteractorProvider signUpWithRequest:loginRequest andCompletionBlock:^(BOOL success, id response) {
-        
+        [self parseSignUpResponse:response];
+    }];
+}
+
+- (void)forgotPasswordWithUserRequest:(LoginRequest *)loginRequest andCompletionBlock:(completionBlock)block {
+    _block = block;
+    id apiInteractorProvider = [[APIInteractorProvider sharedInterface] getAPIInetractor];
+    [apiInteractorProvider forgotPasswordWithRequest:loginRequest andCompletionBlock:^(BOOL success, id response) {
+        [self parseForgotPasswordResponse:response];
     }];
 }
 
@@ -50,7 +58,74 @@
                 errorMessage = [response valueForKey:@"message"];
             }
             _block([success integerValue], errorMessage);
-            [Banner showSuccessBannerWithSubtitle:errorMessage];
+            [Banner showFailureBannerWithSubtitle:errorMessage];
+        }
+        
+    } else if([response isKindOfClass:[NSError class]]) {
+        
+        NSString *errorMessage = ((NSError *)response).localizedDescription;
+        _block(NO, errorMessage);
+    } else {
+        _block(NO, @"Something went wrong while processing your request");
+    }
+}
+
+- (void)parseSignUpResponse:(id)response {
+    if ([response isKindOfClass:[NSDictionary class]])
+    {
+        NSString *success = nil;
+        if([(NSDictionary *)response hasValueForKey:@"success"]) {
+            success = [response valueForKey:@"success"];
+        }
+        if ([success integerValue] == kStatusSuccess) {
+            if ([response hasValueForKey:@"auth_token"]) {
+                [UserManager sharedManager].authorizationToken = [response valueForKey:@"auth_token"];
+            }
+            if ([response hasValueForKey:@"users"]) {
+                UserModel *user = [[UserModel alloc] initWithDictionary:[response valueForKey:@"users"] error:nil];
+                [UserManager sharedManager].userModel = user;
+                [[UserManager sharedManager] saveLoggedinUserInfoInUserDefault];
+            }
+            self.block([success integerValue], @"Signup successfull.");
+        } else
+        {
+            NSString *errorMessage = nil;
+            if([response hasValueForKey:@"message"])
+            {
+                errorMessage = [response valueForKey:@"message"];
+            }
+            _block([success integerValue], errorMessage);
+            [Banner showFailureBannerWithSubtitle:errorMessage];
+        }
+        
+    } else if([response isKindOfClass:[NSError class]]) {
+        
+        NSString *errorMessage = ((NSError *)response).localizedDescription;
+        _block(NO, errorMessage);
+    } else {
+        _block(NO, @"Something went wrong while processing your request");
+    }
+}
+
+- (void)parseForgotPasswordResponse:(id)response {
+    if ([response isKindOfClass:[NSDictionary class]])
+    {
+        NSString *success = nil;
+        if([(NSDictionary *)response hasValueForKey:@"success"]) {
+            success = [response valueForKey:@"success"];
+        }
+        if ([success integerValue] == kStatusSuccess) {
+            
+            self.block([success integerValue], @"");
+        } else
+        {
+            NSString *errorMessage = nil;
+            if([response hasValueForKey:@"message"])
+            {
+                errorMessage = [response valueForKey:@"message"];
+            }
+            _block([success integerValue], errorMessage);
+            [Banner showFailureBannerWithSubtitle:errorMessage];
         }
         
     } else if([response isKindOfClass:[NSError class]]) {

@@ -25,6 +25,7 @@
 
 - (void)loginWithRequest:(Request *)request andCompletionBlock:(completionBlock)block;
 - (void)signUpWithRequest:(Request *)request andCompletionBlock:(completionBlock)block;
+- (void)forgotPasswordWithRequest:(Request *)request andCompletionBlock:(completionBlock)block;
 
 @required
 
