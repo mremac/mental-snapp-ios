@@ -18,6 +18,14 @@
     }];
 }
 
+- (void)signUpWithUserRequest:(LoginRequest *)loginRequest andCompletionBlock:(completionBlock)block {
+    _block = block;
+    id apiInteractorProvider = [[APIInteractorProvider sharedInterface] getAPIInetractor];
+    [apiInteractorProvider signUpWithRequest:loginRequest andCompletionBlock:^(BOOL success, id response) {
+        
+    }];
+}
+
 #pragma mark - Parsing methods
 
 - (void)parseLoginResponse:(id)response {

@@ -11,6 +11,7 @@
 @interface RequestManager : NSObject
 
 - (void)loginWithUserModel:(UserModel *)userModel withCompletionBlock:(completionBlock)block;
+- (void)signUpWithUserModel:(UserModel *)userModel withCompletionBlock:(completionBlock)block;
 - (void)editUserWithUserModel:(UserModel *)userModel withCompletionBlock:(completionBlock)block;
 - (void)changePassword:(NSString *)currentPassword andNewPassword:(NSString *)newPassword withCompletionBlock:(completionBlock)block;
 - (void)getUserDetailWithUserModel:(UserModel *)userModel withCompletionBlock:(completionBlock)block;

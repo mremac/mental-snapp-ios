@@ -70,6 +70,10 @@
     }
 }
 
+- (IBAction)signUpButtonTapped:(id)sender {
+    [self performSegueWithIdentifier:kGoToSignUp sender:self];
+}
+
 - (IBAction)forgotPasswordButtonTapped:(id)sender {
 //    ForgotPasswordViewController *forgotPasswordViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ForgotPasswordViewController"];
 //    [self.navigationController pushViewController:forgotPasswordViewController animated:YES];
@@ -81,17 +85,10 @@
 
 #pragma mark - Private methods
 
-- (void)getUserCall:(NSString *)userID {
-//    [[RequestManager alloc] getUserWithID:userID
-//                      withCompletionBlock:^(BOOL success, id response) {
-//                          if (success) {
-//                              User *user = (User *)response;
-//                              [[Util sharedInstance] saveUser:user];
-//                              [self.navigationController dismissViewControllerAnimated:NO completion:nil];
-//                          } else {
-//                              [self showToastWithText:response on:Failure];
-//                          }
-//                      }];
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:kGoToSignUp]) {
+        
+    }
 }
 
 #pragma mark - TextField Delegate methods

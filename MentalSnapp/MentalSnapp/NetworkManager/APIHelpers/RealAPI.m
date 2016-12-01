@@ -46,6 +46,10 @@
     [self postObject:request withCompletionBlock:block];
 }
 
+- (void)signUpWithRequest:(Request *)request andCompletionBlock:(completionBlock)block {
+    [self postObject:request withCompletionBlock:block];
+}
+
 #pragma mark -
     
 - (void)putObject:(Request *)request withCompletionBlock:(completionBlock)block {

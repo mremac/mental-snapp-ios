@@ -15,6 +15,8 @@
 
 - (void)loginWithUserRequest:(LoginRequest *)loginRequest andCompletionBlock:(completionBlock)block;
 
+- (void)signUpWithUserRequest:(LoginRequest *)loginRequest andCompletionBlock:(completionBlock)block;
+
 - (NSMutableArray *)getSavedSessionCookies;
 
 - (BOOL)setSavedSessionCookies;

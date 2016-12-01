@@ -21,6 +21,7 @@
 		5C8A3A261DE5D26300706925 /* Banner.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8A3A251DE5D26300706925 /* Banner.m */; };
 		5C8A3A291DE5D5B800706925 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8A3A281DE5D5B800706925 /* UserModel.m */; };
 		5CC7CCAC1DE8476F00DC661F /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC7CCAB1DE8476F00DC661F /* UserManager.m */; };
+		5CF694FD1DEDBED100F00EA2 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF694FC1DEDBED100F00EA2 /* SignUpViewController.m */; };
 		6A1D50E11DE5792C0073F479 /* Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = 6AAA013C1DE56F8600208022 /* Info.plist */; };
 		6A1D50E21DE5793B0073F479 /* Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = 6AAA01391DE56F8600208022 /* Info.plist */; };
 		6A1D50E71DE57A140073F479 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6AAA01391DE56F8600208022 /* Info.plist */; };
@@ -154,6 +155,8 @@
 		5C8A3A281DE5D5B800706925 /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
 		5CC7CCAA1DE8476F00DC661F /* UserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserManager.h; sourceTree = "<group>"; };
 		5CC7CCAB1DE8476F00DC661F /* UserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManager.m; sourceTree = "<group>"; };
+		5CF694FB1DEDBED100F00EA2 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
+		5CF694FC1DEDBED100F00EA2 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		6A1D50EA1DE57AC30073F479 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		6A1D50EE1DE57BEF0073F479 /* MentalSnappTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MentalSnappTests.m; sourceTree = "<group>"; };
 		6A1D50F01DE57C520073F479 /* MentalSnappUITests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MentalSnappUITests.m; sourceTree = "<group>"; };
@@ -601,6 +604,8 @@
 				6AAA012A1DE56F8600208022 /* ViewController.m */,
 				5C8A3A1E1DE5D04100706925 /* LoginViewController.h */,
 				5C8A3A1F1DE5D04100706925 /* LoginViewController.m */,
+				5CF694FB1DEDBED100F00EA2 /* SignUpViewController.h */,
+				5CF694FC1DEDBED100F00EA2 /* SignUpViewController.m */,
 				5C7BE3C01DE8569200C15CB5 /* TabBar */,
 			);
 			path = ViewControllers;
@@ -974,6 +979,7 @@
 				6AAA015F1DE56F8600208022 /* RequestManager.m in Sources */,
 				6AAA014B1DE56F8600208022 /* UIImage+ImageBlur.m in Sources */,
 				6AAA014A1DE56F8600208022 /* UIImage+fixOrientation.m in Sources */,
+				5CF694FD1DEDBED100F00EA2 /* SignUpViewController.m in Sources */,
 				6AAA01511DE56F8600208022 /* Util.m in Sources */,
 				6AAA016A1DE56F8600208022 /* TestModel.m in Sources */,
 				5CC7CCAC1DE8476F00DC661F /* UserManager.m in Sources */,

@@ -12,6 +12,7 @@
                                                                   @"authorizationToken": @"auth_token",
                                                                   @"email": @"email",
                                                                   @"password": @"password",
+                                                                  @"confirmPassword": @"password_confirmation",
                                                                   @"userName": @"user_name",
                                                                   @"phoneNumber": @"phone_number",
                                                                   @"gender": @"gender",
@@ -19,6 +20,7 @@
                                                                   @"userName" : @"name",
                                                                   @"dateOfBirth" : @"date_of_birth",
                                                                   @"profilePicURL" : @"profile_url",
+                                                                  @"phoneCountryCode": @"phone_country_code",
                                                                   }];
 }
     

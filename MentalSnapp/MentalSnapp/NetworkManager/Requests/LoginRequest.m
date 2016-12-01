@@ -18,7 +18,18 @@
     if (self) {
         _parameters = [[userModel toDictionary] mutableCopy];
         
-        self.urlPath = @"/authenticate";
+        self.urlPath = kLoginAPI;
+    }
+    return self;
+}
+
+- (id)initWithSignUpUserModel:(UserModel *)userModel {
+    self = [super init];
+    if (self) {
+        NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObject:[[userModel toDictionary] mutableCopy] forKey:@"user"];
+        _parameters = dict;
+        
+        self.urlPath = kSignUpAPI;
     }
     return self;
 }

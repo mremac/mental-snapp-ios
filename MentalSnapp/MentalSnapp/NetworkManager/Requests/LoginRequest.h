@@ -9,6 +9,8 @@
 
 - (id)initWithLoginUserModel:(UserModel *)userModel;
 
+- (id)initWithSignUpUserModel:(UserModel *)userModel;
+
 - (NSMutableDictionary *)getParams;
 
 @end
