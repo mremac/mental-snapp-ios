@@ -11,6 +11,7 @@
 
 + (Paginate *)getPaginateFrom:(NSDictionary *)jsonDict {
     Paginate *pagination = [[Paginate alloc] init];
+    
     if ([jsonDict hasValueForKey:kJPage] ) {
         pagination.pageNumber = [NSNumber numberWithInteger:[[jsonDict valueForKey:kJPage] integerValue]];
     }
@@ -18,8 +19,10 @@
         pagination.perPage = [NSNumber numberWithInteger:[[jsonDict valueForKey:@"perPage"] integerValue]];
     }
     if([jsonDict hasValueForKey:@"per_page"]){
-        //TODO: Remove this on API Updation - Removing "data" key and giving appropriate response
         pagination.perPage = [NSNumber numberWithInteger:[[jsonDict valueForKey:@"per_page"] integerValue]];
+    }
+    if([jsonDict hasValueForKey:@"current_page"]){
+        pagination.perPage = [NSNumber numberWithInteger:[[jsonDict valueForKey:@"current_page"] integerValue]];
     }
 
     pagination.pageResults = [NSArray new];

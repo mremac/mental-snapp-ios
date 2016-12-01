@@ -39,6 +39,9 @@
 		6A3F7A731DEC6F820070415C /* SupportRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A3F7A721DEC6F820070415C /* SupportRequest.m */; };
 		6A3F7A761DEC6F920070415C /* SupportInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A3F7A751DEC6F920070415C /* SupportInterface.m */; };
 		6A3F7A7C1DEC758C0070415C /* GZIP.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A3F7A7B1DEC758C0070415C /* GZIP.m */; };
+		6A63D1AB1DF00D2200B8E188 /* GuidedExcercise.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A63D1AA1DF00D2200B8E188 /* GuidedExcercise.m */; };
+		6A63D1B01DF025C600B8E188 /* ExcercixeInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A63D1AF1DF025C600B8E188 /* ExcercixeInterface.m */; };
+		6A63D1B31DF0261A00B8E188 /* ExcerciseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A63D1B21DF0261A00B8E188 /* ExcerciseRequest.m */; };
 		6A7D95B01DE6C5120065573E /* UserRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D95AF1DE6C5120065573E /* UserRequest.m */; };
 		6A7D95BA1DE6CD6A0065573E /* UserInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D95B91DE6CD6A0065573E /* UserInterface.m */; };
 		6A7D95EF1DE6FA050065573E /* Apache License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6A7D95E21DE6FA050065573E /* Apache License.txt */; };
@@ -194,6 +197,12 @@
 		6A3F7A751DEC6F920070415C /* SupportInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupportInterface.m; sourceTree = "<group>"; };
 		6A3F7A7A1DEC758C0070415C /* GZIP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZIP.h; sourceTree = "<group>"; };
 		6A3F7A7B1DEC758C0070415C /* GZIP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZIP.m; sourceTree = "<group>"; };
+		6A63D1A91DF00D2200B8E188 /* GuidedExcercise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuidedExcercise.h; sourceTree = "<group>"; };
+		6A63D1AA1DF00D2200B8E188 /* GuidedExcercise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuidedExcercise.m; sourceTree = "<group>"; };
+		6A63D1AE1DF025C600B8E188 /* ExcercixeInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExcercixeInterface.h; sourceTree = "<group>"; };
+		6A63D1AF1DF025C600B8E188 /* ExcercixeInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExcercixeInterface.m; sourceTree = "<group>"; };
+		6A63D1B11DF0261A00B8E188 /* ExcerciseRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExcerciseRequest.h; sourceTree = "<group>"; };
+		6A63D1B21DF0261A00B8E188 /* ExcerciseRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExcerciseRequest.m; sourceTree = "<group>"; };
 		6A7D95AE1DE6C5120065573E /* UserRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserRequest.h; sourceTree = "<group>"; };
 		6A7D95AF1DE6C5120065573E /* UserRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserRequest.m; sourceTree = "<group>"; };
 		6A7D95B81DE6CD6A0065573E /* UserInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInterface.h; sourceTree = "<group>"; };
@@ -658,6 +667,8 @@
 				6A7D95AF1DE6C5120065573E /* UserRequest.m */,
 				5C5309DE1DE6C865005E14A4 /* LoginRequest.h */,
 				5C5309DF1DE6C865005E14A4 /* LoginRequest.m */,
+				6A63D1B11DF0261A00B8E188 /* ExcerciseRequest.h */,
+				6A63D1B21DF0261A00B8E188 /* ExcerciseRequest.m */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -671,6 +682,8 @@
 				6AAA01271DE56F8600208022 /* LoginInterface.m */,
 				6A7D95B81DE6CD6A0065573E /* UserInterface.h */,
 				6A7D95B91DE6CD6A0065573E /* UserInterface.m */,
+				6A63D1AE1DF025C600B8E188 /* ExcercixeInterface.h */,
+				6A63D1AF1DF025C600B8E188 /* ExcercixeInterface.m */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -767,6 +780,8 @@
 		6AC2A94B1DEED9B4009A21EF /* GuidedExcercise */ = {
 			isa = PBXGroup;
 			children = (
+				6A63D1A91DF00D2200B8E188 /* GuidedExcercise.h */,
+				6A63D1AA1DF00D2200B8E188 /* GuidedExcercise.m */,
 			);
 			path = GuidedExcercise;
 			sourceTree = "<group>";
@@ -1133,6 +1148,7 @@
 				6AC660EA1DE5740B00BB8949 /* SLog.m in Sources */,
 				5C7BE3D01DE85BDC00C15CB5 /* MoreViewController.m in Sources */,
 				6AAA01621DE56F8600208022 /* LoginInterface.m in Sources */,
+				6A63D1B31DF0261A00B8E188 /* ExcerciseRequest.m in Sources */,
 				6AAA01421DE56F8600208022 /* NSDate+Properties.m in Sources */,
 				6AC660E81DE5740B00BB8949 /* README.md in Sources */,
 				5C7BE3DF1DE886BA00C15CB5 /* RecordViewController.m in Sources */,
@@ -1149,11 +1165,13 @@
 				6A98B1321DE5A4BA009F1412 /* MSViewController.m in Sources */,
 				6AAA01551DE56F8600208022 /* NSUserDefaults+RMSaveCustomObject.m in Sources */,
 				6AC2A25F1DED848D00196FFA /* GuidedExcerciseViewController.m in Sources */,
+				6A63D1B01DF025C600B8E188 /* ExcercixeInterface.m in Sources */,
 				6AAA015C1DE56F8600208022 /* NetworkHttpClient.m in Sources */,
 				6AAA01631DE56F8600208022 /* ViewController.m in Sources */,
 				6AAA015E1DE56F8600208022 /* TestAPI.m in Sources */,
 				6AC660EB1DE5740B00BB8949 /* SMobiLogger.m in Sources */,
 				6A24284A1DE814CD00FF15A9 /* ChangePasswordViewController.m in Sources */,
+				6A63D1AB1DF00D2200B8E188 /* GuidedExcercise.m in Sources */,
 				6A288EC71DED8BB100273CCC /* Paginate.m in Sources */,
 				6A3F7A761DEC6F920070415C /* SupportInterface.m in Sources */,
 				6AAA01401DE56F8600208022 /* Constants.m in Sources */,

@@ -47,10 +47,18 @@
     block(YES, dict);
 }
 
-#pragma mark - Login
+#pragma mark - Guided Excercise
+#pragma mark - Guided Excercise
+- (void)getGuidedExcerciseWithRequest:(Request *)request andCompletionBlock:(completionBlock)block {
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"1", @"success", nil];
+    block(YES, dict);
+}
 
+
+#pragma mark - Login
 - (void)loginWithRequest:(Request *)request andCompletionBlock:(completionBlock)block {
-    
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"1", @"success", nil];
+    block(YES, dict);
 }
 
 - (void)signUpWithRequest:(Request *)request andCompletionBlock:(completionBlock)block {

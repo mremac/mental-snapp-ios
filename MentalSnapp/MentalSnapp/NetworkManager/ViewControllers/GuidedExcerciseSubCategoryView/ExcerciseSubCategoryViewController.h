@@ -7,7 +7,9 @@
 //
 
 #import "MSViewController.h"
+#import "GuidedExcercise.h"
 
 @interface ExcerciseSubCategoryViewController : MSViewController
 
+@property (strong, nonatomic) GuidedExcercise *excercise;
 @end

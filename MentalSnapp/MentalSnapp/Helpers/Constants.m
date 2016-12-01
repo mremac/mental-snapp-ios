@@ -41,6 +41,7 @@ ns *kAfter = @"after";
 ns *kBefore = @"before";
 ns *kJPage = @"page";
 ns *kJPerPage = @"per_page";
+ns *kJlimit = @"limit";
 
 #pragma mark - Userdefault keys
 ns * kUserEmail = @"UserEmail";
@@ -57,14 +58,14 @@ ns *kGuidedExcerciseViewController = @"GuidedExcerciseViewController";
 ns *kExcerciseSubCategoryViewController = @"ExcerciseSubCategoryViewController";
 
 #pragma mark - API URL
-ns *KUserAPI = @"/users/%@";
 ns *kLoginAPI = @"/api/v1/authenticate";
 ns *kSignUpAPI = @"/api/v1/users";
 ns *kForgotPassAPI = @"/api/v1/users/forgot_password";
-ns *kChangePassword = @"/users/update_password";
-ns *kDeactivateUser = @"/users/deactivate_account";
-ns *KPostSupportLog = @"/supports/record";
-
+ns *KUserAPI = @"/api/v1/users/%@";
+ns *kChangePassword = @"api/v1/users/update_password";
+ns *kDeactivateUser = @"api/v1/users/deactivate_account";
+ns *KPostSupportLog = @"api/v1/supports/record";
+ns *KGetGuidedExcercise = @"api/v1/guided_exercise";
 
 #pragma mark - StoryBoard segue identifiers
 #pragma mark Main

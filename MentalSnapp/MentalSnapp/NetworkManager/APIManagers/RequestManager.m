@@ -10,6 +10,8 @@
 #import "LoginRequest.h"
 #import "SupportRequest.h"
 #import "SupportInterface.h"
+#import "ExcercixeInterface.h"
+#import "ExcerciseRequest.h"
 
 NSString *const kDefaultErrorMessage =  @"Error! Please try again.";
 
@@ -108,6 +110,20 @@ NSString *const kDefaultErrorMessage =  @"Error! Please try again.";
     }else {
         block(NO, nil);
     }
+}
+
+#pragma mark - Guided Excercise
+- (void)getGuidedExcerciseWithPaginate:(Paginate *)paginate withCompletionBlock:(completionBlock)block{
+    if ([ApplicationDelegate hasNetworkAvailable]) {
+        
+        [[ExcercixeInterface alloc] getGuidedExcerciseWithRequest:[[ExcerciseRequest alloc] initWithFetchGuidedExcerciseWithPaginate:paginate] andCompletionBlock:^(BOOL success, id response) {
+            block(success,response);
+        }];
+        
+    }else {
+        block(NO, nil);
+    }
+
 }
 
 @end

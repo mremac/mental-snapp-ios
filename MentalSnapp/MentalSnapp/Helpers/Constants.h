@@ -55,11 +55,17 @@ typedef NS_ENUM(NSInteger, genderType){
     FemaleGender
   };
 
+typedef NS_ENUM(NSInteger, ExerciseType){
+    mainExcercise = 0,
+    subcategoryExcercise
+};
+
 #pragma mark - Other constants
 exNS *kAfter;
 exNS *kBefore;
 exNS *kJPage;
 exNS *kJPerPage;
+exNS *kJlimit;
 
 #pragma mark - Session keys
 exNS *kSessionCookies;
@@ -89,6 +95,7 @@ exNS *kForgotPassAPI;
 exNS *kChangePassword;
 exNS *kDeactivateUser;
 exNS  *KPostSupportLog;
+exNS *KGetGuidedExcercise;
 
 #pragma mark - StoryBoard segue identifiers
 #pragma mark Main

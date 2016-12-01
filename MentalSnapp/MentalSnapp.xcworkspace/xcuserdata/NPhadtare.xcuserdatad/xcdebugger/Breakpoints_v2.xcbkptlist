@@ -9,10 +9,11 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MentalSnapp/NetworkManager/ViewControllers/ChangePasswordScreen/ChangePasswordViewController.m"
-            timestampString = "502032227.525034"
+            filePath = "MentalSnapp/NetworkManager/Services/ExcercixeInterface.m"
+            timestampString = "502290458.381896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
+<<<<<<< 671618726d72c74d603a1ff6d9988be4fe067dee
             startingLineNumber = "113"
             endingLineNumber = "113"
             landmarkName = "-saveButtonAction:"
@@ -144,6 +145,11 @@
             startingLineNumber = "300"
             endingLineNumber = "300"
             landmarkName = "-pageViewController:viewControllerAfterViewController:"
+=======
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "-parseGuidedExcercise:"
+>>>>>>> Working on Swiper for guided excercise.
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -23,6 +23,9 @@
 #pragma mark - Support
 - (void)sendSupportRequest:(Request *)request andCompletionBlock:(completionBlock)block;
 
+#pragma mark - Guided excercise
+- (void)getGuidedExcerciseWithRequest:(Request *)request andCompletionBlock:(completionBlock)block;
+
 #pragma mark - Login
 
 - (void)loginWithRequest:(Request *)request andCompletionBlock:(completionBlock)block;
