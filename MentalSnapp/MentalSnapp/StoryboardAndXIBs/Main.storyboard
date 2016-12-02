@@ -244,7 +244,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="evG-dm-COo" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="917-VJ-Diz">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="917-VJ-Diz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -260,6 +260,7 @@
         <!--Main Tab Bar Controller-->
         <scene sceneID="Tqm-m0-Hzf">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aC7-p9-RPQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tabBarController storyboardIdentifier="MainTabController" automaticallyAdjustsScrollViewInsets="NO" id="zNb-Gi-1Ti" customClass="MainTabBarController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Wxj-9A-5wa">
@@ -275,7 +276,6 @@
                         <segue destination="ea6-22-dcP" kind="relationship" relationship="viewControllers" id="jNU-a3-sz6"/>
                     </connections>
                 </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aC7-p9-RPQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2135.1999999999998" y="98.50074962518741"/>
         </scene>
@@ -490,13 +490,13 @@
             </objects>
             <point key="canvasLocation" x="6320.8000000000002" y="1486.5067466266867"/>
         </scene>
-        <!--More-->
+        <!--Navigation Controller-->
         <scene sceneID="wPs-Ww-mx8">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ea6-22-dcP" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="4" title="More" image="TabbarMore" id="pLc-5M-03v"/>
+                    <tabBarItem key="tabBarItem" tag="4" title="" image="more" selectedImage="more_select" id="pLc-5M-03v"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="osg-Bk-j07">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="osg-Bk-j07">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -509,13 +509,13 @@
             </objects>
             <point key="canvasLocation" x="3168.8000000000002" y="1482.9085457271365"/>
         </scene>
-        <!--Stats-->
+        <!--Navigation Controller-->
         <scene sceneID="eSH-DS-Rz5">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="r1p-Tj-Snl" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="3" title="Stats" image="TabbarStats" id="tx5-ds-DTt"/>
+                    <tabBarItem key="tabBarItem" tag="3" title="" image="stats" selectedImage="stats_select" id="tx5-ds-DTt"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="TWf-gw-yYx">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TWf-gw-yYx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -528,13 +528,13 @@
             </objects>
             <point key="canvasLocation" x="3168.8000000000002" y="772.26386806596713"/>
         </scene>
-        <!--Record-->
+        <!--Navigation Controller-->
         <scene sceneID="VXz-xE-X7N">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="olk-hQ-QB6" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="2" title="Record" image="TabbarRecord" id="16e-aA-4fL"/>
+                    <tabBarItem key="tabBarItem" tag="2" title="" image="record" selectedImage="record_select" id="16e-aA-4fL"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="a5i-vM-KMF">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="a5i-vM-KMF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -547,13 +547,13 @@
             </objects>
             <point key="canvasLocation" x="3168.8000000000002" y="98.50074962518741"/>
         </scene>
-        <!--Videos-->
+        <!--Navigation Controller-->
         <scene sceneID="dt0-7K-Aay">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="foe-lB-Bwv" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="1" title="Videos" image="TabbarVideo" id="HrM-Hn-fDR"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="" image="video" selectedImage="video_select" id="HrM-Hn-fDR"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="fxH-1a-3AF">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fxH-1a-3AF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -566,13 +566,13 @@
             </objects>
             <point key="canvasLocation" x="3168.8000000000002" y="-590.55472263868069"/>
         </scene>
-        <!--Exercise-->
+        <!--Navigation Controller-->
         <scene sceneID="8EY-yy-UUz">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6uW-Rc-TLa" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Exercise" image="TabbarExercise" id="2E9-el-KU0"/>
+                    <tabBarItem key="tabBarItem" title="" image="exercise" selectedImage="exercise_select" id="2E9-el-KU0"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ouf-0w-g2P">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ouf-0w-g2P">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -591,10 +591,16 @@
         <image name="MoreRightArrow" width="12" height="18"/>
         <image name="RememberMeCheck" width="19" height="19"/>
         <image name="RememberMeUnCheck" width="19" height="19"/>
-        <image name="TabbarExercise" width="24" height="24"/>
-        <image name="TabbarMore" width="24" height="24"/>
-        <image name="TabbarRecord" width="24" height="24"/>
-        <image name="TabbarStats" width="24" height="24"/>
-        <image name="TabbarVideo" width="24" height="24"/>
+        <image name="exercise" width="63" height="46"/>
+        <image name="exercise_select" width="63" height="46"/>
+        <image name="more" width="64" height="46"/>
+        <image name="more_select" width="64" height="46"/>
+        <image name="record" width="63" height="46"/>
+        <image name="record_select" width="63" height="46"/>
+        <image name="stats" width="63" height="46"/>
+        <image name="stats_select" width="63" height="46"/>
+        <image name="video" width="63" height="46"/>
+        <image name="video_select" width="63" height="47"/>
     </resources>
+    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
 </document>
