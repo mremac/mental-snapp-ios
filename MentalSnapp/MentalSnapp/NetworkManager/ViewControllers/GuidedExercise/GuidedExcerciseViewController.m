@@ -135,15 +135,17 @@
     [self didMoveToParentViewController:self];
     UIStoryboard *profileStoryboard = [UIStoryboard storyboardWithName:KProfileStoryboard bundle:[NSBundle mainBundle]];
     self.guideExcerciseViewControllers = [[NSMutableArray alloc] init];
-    for (GuidedExcercise *excercise in [self.guidedExcercidePaginate pageResults]) {
-        ExcerciseSubCategoryViewController *guidedExcercisePage = [profileStoryboard instantiateViewControllerWithIdentifier:kExcerciseSubCategoryViewController];
-        [guidedExcercisePage.view setFrame:self.view.frame];
-        [guidedExcercisePage setExcercise:excercise];
-        [self.guideExcerciseViewControllers addObject:guidedExcercisePage];
-    }
-    self.index = 0;
-    if(self.guideExcerciseViewControllers.count>0){
-        [self.pageViewController setViewControllers:self.guideExcerciseViewControllers[0] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    if(self.guidedExcercidePaginate){
+        for (GuidedExcercise *excercise in [self.guidedExcercidePaginate pageResults]) {
+            ExcerciseSubCategoryViewController *guidedExcercisePage = [profileStoryboard instantiateViewControllerWithIdentifier:kExcerciseSubCategoryViewController];
+            [guidedExcercisePage.view setFrame:self.view.frame];
+            [guidedExcercisePage setExcercise:excercise];
+            [self.guideExcerciseViewControllers addObject:guidedExcercisePage];
+        }
+        self.index = 0;
+        if(self.guideExcerciseViewControllers.count>0){
+            [self.pageViewController setViewControllers:[NSArray arrayWithObject:self.guideExcerciseViewControllers[0]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+        }
     }
 }
 
@@ -244,7 +246,7 @@
     guidedExcerciseCellCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kguidedExcerciseCellCollectionViewCell forIndexPath:indexPath];
     cell.index = indexPath.item;
     [cell setDefaultViewDetail];
-    if(indexPath.item < [self.guidedExcercidePaginate.pageResults count]){
+    if(indexPath.item <= [self.guidedExcercidePaginate.pageResults count]){
         if(indexPath.item != 0 && indexPath.item !=([self.guidedExcercidePaginate.pageResults count]+1)){
             [cell setExcercise:[self.guidedExcercidePaginate.pageResults objectAtIndex:indexPath.item-1]];
             if(self.selectedIndexPath == indexPath.item){

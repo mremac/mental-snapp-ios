@@ -65,9 +65,7 @@
     
                 MainTabBarController *tabBarController = [self.storyboard instantiateViewControllerWithIdentifier:@"MainTabController"];
                 ApplicationDelegate.window.rootViewController = tabBarController;
-            } else {
-                [Banner showFailureBannerWithSubtitle:response];
-            }
+            } 
         }];
     }
 }

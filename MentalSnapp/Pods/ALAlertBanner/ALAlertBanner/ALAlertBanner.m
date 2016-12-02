@@ -74,7 +74,7 @@ static CGFloat const kForceHideAnimationDuration = 0.1f;
 - (UIColor *)darkerColor {
     CGFloat h, s, b, a;
     if ([self getHue:&h saturation:&s brightness:&b alpha:&a])
-        return [UIColor colorWithHue:h saturation:s brightness:b * 0.75 alpha:a];
+        return [UIColor whiteColor];//[UIColor colorWithHue:h saturation:s brightness:b * 0.75 alpha:a];
     return nil;
 }
 
@@ -167,13 +167,13 @@ static CGFloat const kForceHideAnimationDuration = 0.1f;
     
     _titleLabel = [[UILabel alloc] init];
     _titleLabel.backgroundColor = [UIColor clearColor];
-    _titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:13.f];
+    _titleLabel.font = [UIFont fontWithName:@"Roboto-Bold" size:13.f];
     _titleLabel.textColor = [UIColor colorWithWhite:1.f alpha:0.9f];
     _titleLabel.textAlignment = NSTextAlignmentCenter;
     _titleLabel.numberOfLines = 1;
     _titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
     _titleLabel.layer.shadowColor = [UIColor blackColor].CGColor;
-    _titleLabel.textColor = [UIColor colorWithRed:(228/255.0) green:(80/255.0) blue:(45/255.0) alpha:1.f];
+    _titleLabel.textColor = [UIColor colorWithRed:(15.0/255.0) green:(175.0/255.0) blue:(199.0/255.0) alpha:1.f];
 //    _titleLabel.layer.shadowOffset = CGSizeMake(0.f, -1.f);
 //    _titleLabel.layer.shadowOpacity = 0.3f;
 //    _titleLabel.layer.shadowRadius = 0.f;
@@ -181,13 +181,13 @@ static CGFloat const kForceHideAnimationDuration = 0.1f;
     
     _subtitleLabel = [[UILabel alloc] init];
     _subtitleLabel.backgroundColor = [UIColor clearColor];
-    _subtitleLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:10.f];
+    _subtitleLabel.font = [UIFont fontWithName:@"Roboto" size:10.f];
     _subtitleLabel.textColor = [UIColor colorWithWhite:1.f alpha:0.9f];
     _subtitleLabel.textAlignment = NSTextAlignmentCenter;
     _subtitleLabel.numberOfLines = 0;
     _subtitleLabel.lineBreakMode = NSLineBreakByWordWrapping;
     _subtitleLabel.layer.shadowColor = [UIColor blackColor].CGColor;
-    _subtitleLabel.textColor = [UIColor colorWithRed:(228/255.0) green:(80/255.0) blue:(45/255.0) alpha:1.f];
+    _subtitleLabel.textColor = [UIColor grayColor];//[UIColor colorWithRed:(228/255.0) green:(80/255.0) blue:(45/255.0) alpha:1.f];
 //    _subtitleLabel.layer.shadowOffset = CGSizeMake(0.f, -1.f);
 //    _subtitleLabel.layer.shadowOpacity = 0.3f;
 //    _subtitleLabel.layer.shadowRadius = 0.f;
@@ -698,19 +698,19 @@ static CGFloat const kForceHideAnimationDuration = 0.1f;
     switch (self.style) {
         case ALAlertBannerStyleCustomSuccess:
         case ALAlertBannerStyleCustomFailure:
-            fillColor = [UIColor colorWithRed:(200/255.0) green:(200/255.0) blue:(200/255.0) alpha:1.f];
+            fillColor = [UIColor colorWithRed:(255.0/255.0) green:(255.0/255.0) blue:(255.0/255.0) alpha:1.f];
             break;
         case ALAlertBannerStyleSuccess:
-            fillColor = [UIColor colorWithRed:(77/255.0) green:(175/255.0) blue:(67/255.0) alpha:1.f];
+            fillColor = [UIColor colorWithRed:(255.0/255.0) green:(255.0/255.0) blue:(255.0/255.0) alpha:1.f];
             break;
         case ALAlertBannerStyleFailure:
-            fillColor = [UIColor colorWithRed:(173/255.0) green:(48/255.0) blue:(48/255.0) alpha:1.f];
+            fillColor = [UIColor colorWithRed:(255.0/255.0) green:(255.0/255.0) blue:(255.0/255.0) alpha:1.f];
             break;
         case ALAlertBannerStyleNotify:
-            fillColor = [UIColor colorWithRed:(48/255.0) green:(110/255.0) blue:(173/255.0) alpha:1.f];
+            fillColor = [UIColor colorWithRed:(255.0/255.0) green:(255.0/255.0) blue:(255.0/255.0) alpha:1.f];
             break;
         case ALAlertBannerStyleWarning:
-            fillColor = [UIColor colorWithRed:(211/255.0) green:(209/255.0) blue:(100/255.0) alpha:1.f];
+            fillColor = [UIColor colorWithRed:(255.0/255.0) green:(255.0/255.0) blue:(255.0/255.0) alpha:1.f];
             break;
     }
     
