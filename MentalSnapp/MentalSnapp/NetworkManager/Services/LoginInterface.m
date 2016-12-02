@@ -49,7 +49,7 @@
                 [[UserManager sharedManager] saveLoggedinUserInfoInUserDefault];
             }
             
-            self.block([success integerValue], @"");
+            self.block([success integerValue], @"Login successfull");
         } else
         {
             NSString *errorMessage = nil;

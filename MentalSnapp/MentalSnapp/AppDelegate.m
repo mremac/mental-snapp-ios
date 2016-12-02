@@ -37,6 +37,8 @@
     [self setupNetworkMonitoring];
 
     if ([UserDefaults boolForKey:kIsUserLoggedIn]) {
+        [[UserManager sharedManager] setValueInLoggedInUserObjectFromUserDefault];
+        
         MainTabBarController *tabBarController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MainTabController"];
         ApplicationDelegate.window.rootViewController = tabBarController;
     }

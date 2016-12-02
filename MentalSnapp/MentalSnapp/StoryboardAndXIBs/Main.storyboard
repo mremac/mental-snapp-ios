@@ -357,7 +357,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="evG-dm-COo" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="917-VJ-Diz">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="917-VJ-Diz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -609,7 +609,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ea6-22-dcP" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" tag="4" title="" image="more" selectedImage="more_select" id="pLc-5M-03v"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="osg-Bk-j07">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="osg-Bk-j07">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -628,7 +628,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="r1p-Tj-Snl" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" tag="3" title="" image="stats" selectedImage="stats_select" id="tx5-ds-DTt"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="TWf-gw-yYx">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TWf-gw-yYx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -647,7 +647,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="olk-hQ-QB6" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" tag="2" title="" image="record" selectedImage="record_select" id="16e-aA-4fL"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="a5i-vM-KMF">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="a5i-vM-KMF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -666,7 +666,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="foe-lB-Bwv" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" tag="1" title="" image="video" selectedImage="video_select" id="HrM-Hn-fDR"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="fxH-1a-3AF">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fxH-1a-3AF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -685,7 +685,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6uW-Rc-TLa" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="exercise" selectedImage="exercise_select" id="2E9-el-KU0"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ouf-0w-g2P">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ouf-0w-g2P">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -892,10 +892,9 @@
                                                             <constraint firstAttribute="bottom" secondItem="c5f-kH-Ole" secondAttribute="bottom" constant="2" id="4E2-DT-ylA"/>
                                                             <constraint firstAttribute="trailing" secondItem="ufB-4g-nKZ" secondAttribute="trailing" constant="109" id="5Dx-p2-dws"/>
                                                             <constraint firstAttribute="trailing" secondItem="Gag-OD-1J5" secondAttribute="trailing" constant="42" id="7uH-Zs-BDB"/>
-                                                            <constraint firstItem="Gag-OD-1J5" firstAttribute="top" secondItem="ufB-4g-nKZ" secondAttribute="bottom" constant="-0.5" id="H3z-YD-sqn"/>
+                                                            <constraint firstItem="Gag-OD-1J5" firstAttribute="top" secondItem="ufB-4g-nKZ" secondAttribute="bottom" id="H3z-YD-sqn"/>
                                                             <constraint firstItem="ufB-4g-nKZ" firstAttribute="top" secondItem="Ejk-K4-LNK" secondAttribute="top" constant="22" id="Txv-0S-ILV"/>
                                                             <constraint firstItem="c5f-kH-Ole" firstAttribute="leading" secondItem="ufB-4g-nKZ" secondAttribute="leading" id="U9X-pB-9dP"/>
-                                                            <constraint firstAttribute="height" constant="77" id="jFU-zN-qki"/>
                                                             <constraint firstItem="c5f-kH-Ole" firstAttribute="leading" secondItem="Gag-OD-1J5" secondAttribute="leading" id="k5d-ni-bME"/>
                                                             <constraint firstAttribute="trailing" secondItem="c5f-kH-Ole" secondAttribute="trailing" constant="46" id="qGh-qZ-nVm"/>
                                                             <constraint firstItem="c5f-kH-Ole" firstAttribute="top" secondItem="Gag-OD-1J5" secondAttribute="bottom" constant="5" id="xG6-rb-2Ds"/>
