@@ -33,6 +33,7 @@
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *swipableViewLeadingConstraint;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *swipableViewTrailingConstraint;
 @property (assign, nonatomic) NSInteger index;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *guidedExcerciseTopViewTopConstraint;
 
 @end
 
@@ -40,6 +41,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view.
     _selectedIndexPath = 1;
     [self setNavigationBarButtonTitle:@"Mental Snapp"];
@@ -55,6 +57,17 @@
     [panGesture setDelegate:self];
     [panGesture setMinimumNumberOfTouches:1];
     [self.guidedExcerciseCollectionView addGestureRecognizer:panGesture];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.guidedExcerciseTopViewTopConstraint.constant = 0;
+    [self.view layoutIfNeeded];
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        self.guidedExcerciseTopViewTopConstraint.constant = 64;
+        [self.view layoutIfNeeded];
+    });
 }
 
 - (void)didReceiveMemoryWarning {

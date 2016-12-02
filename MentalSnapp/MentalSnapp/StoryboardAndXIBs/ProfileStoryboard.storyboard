@@ -871,10 +871,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SubCategoryTableViewCell" rowHeight="81" id="kJZ-xh-eMo" customClass="SubCategoryTableViewCell">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="81"/>
+                                        <rect key="frame" x="0.0" y="28" width="1000" height="81"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kJZ-xh-eMo" id="WYO-1L-Q6w">
-                                            <frame key="frameInset" width="375" height="80"/>
+                                            <frame key="frameInset" width="1000" height="80"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1tR-Ds-vMV">
@@ -1085,13 +1085,14 @@
                             <constraint firstItem="hgm-c6-B3G" firstAttribute="leading" secondItem="kZC-Aj-nG7" secondAttribute="leading" id="4mw-qK-nXH"/>
                             <constraint firstAttribute="bottom" secondItem="yDc-Pi-A5n" secondAttribute="bottom" id="EJD-FW-kNt"/>
                             <constraint firstAttribute="trailing" secondItem="hgm-c6-B3G" secondAttribute="trailing" id="EPf-ki-4G9"/>
-                            <constraint firstItem="hgm-c6-B3G" firstAttribute="top" secondItem="kZC-Aj-nG7" secondAttribute="top" constant="64" id="KKP-bl-tru"/>
+                            <constraint firstItem="hgm-c6-B3G" firstAttribute="top" secondItem="kZC-Aj-nG7" secondAttribute="top" id="KKP-bl-tru"/>
                             <constraint firstAttribute="trailing" secondItem="yDc-Pi-A5n" secondAttribute="trailing" id="N9g-7b-faH"/>
                             <constraint firstItem="yDc-Pi-A5n" firstAttribute="leading" secondItem="kZC-Aj-nG7" secondAttribute="leading" id="m4M-tn-JJF"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="guidedExcerciseCollectionView" destination="jA9-0H-scD" id="q1u-hB-1Tv"/>
+                        <outlet property="guidedExcerciseTopViewTopConstraint" destination="KKP-bl-tru" id="iRi-Fn-g8m"/>
                         <outlet property="paginationContainerView" destination="yDc-Pi-A5n" id="fM6-Yk-uj3"/>
                         <outlet property="swipableView" destination="8vf-eD-UbG" id="uvW-FR-ch9"/>
                         <outlet property="swipableViewLeadingConstraint" destination="3CU-C2-la5" id="uli-wf-IWz"/>

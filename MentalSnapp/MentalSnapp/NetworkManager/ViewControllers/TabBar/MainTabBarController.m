@@ -17,8 +17,6 @@
 @property(strong, nonatomic) UIView *view3;
 @property(strong, nonatomic) UIView *view4;
 @property(strong, nonatomic) UIView *view5;
-
-@property(assign, nonatomic) NSInteger selectedIndex;
 @end
 
 @implementation MainTabBarController
@@ -28,11 +26,9 @@
     
     selectionColor = [UIColor colorWithRed:233/255.f green:101/255.f blue:58/255.f alpha:1.f];
     normalColor = [UIColor colorWithRed:15/255.f green:175/255.f blue:199/255.f alpha:1.f];
-    
     [self addViewInTabBar];
-    [self setTabBarItems];
     [self addGuidedExcerciseTab];
-    
+    [self setTabBarItems];
 }
 
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
@@ -53,7 +49,7 @@
     _view5 = [UIView new];
     
     [_view1 setBackgroundColor:selectionColor];
-    [_view2 setBackgroundColor:[UIColor redColor]];
+    [_view2 setBackgroundColor:normalColor];
     [_view3 setBackgroundColor:normalColor];
     [_view4 setBackgroundColor:normalColor];
     [_view5 setBackgroundColor:normalColor];
@@ -89,8 +85,7 @@
 
 - (void)setTabBarItems {
     //TODO: [optimize] Clean Constants
- 
-    
+     
     UITabBarItem *tabBarItem0 = [self.tabBar.items objectAtIndex:0];
     tabBarItem0.image =[[UIImage imageNamed:@"exercise"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     tabBarItem0.selectedImage = [[UIImage imageNamed:@"exercise_select"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -100,7 +95,7 @@
     tabBarItem1.selectedImage = [[UIImage imageNamed:@"video_select"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     UITabBarItem *tabBarItem2 = [self.tabBar.items objectAtIndex:2];
-    tabBarItem2.image =[[UIImage imageNamed:@"record"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    tabBarItem2.image =[[UIImage imageNamed:@"record_tab"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     tabBarItem2.selectedImage = [[UIImage imageNamed:@"record_select"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     UITabBarItem *tabBarItem3 = [self.tabBar.items objectAtIndex:3];
