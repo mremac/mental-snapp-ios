@@ -25,6 +25,7 @@
 
 #pragma mark - Guided excercise
 - (void)getGuidedExcerciseWithRequest:(Request *)request andCompletionBlock:(completionBlock)block;
+- (void)getSubCategoryExcerciseWithRequest:(Request *)request andCompletionBlock:(completionBlock)block;
 
 #pragma mark - Login
 

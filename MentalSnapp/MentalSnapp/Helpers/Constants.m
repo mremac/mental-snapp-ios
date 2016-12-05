@@ -66,6 +66,7 @@ ns *kChangePassword = @"api/v1/users/update_password";
 ns *kDeactivateUser = @"api/v1/users/deactivate_account";
 ns *KPostSupportLog = @"api/v1/supports/record";
 ns *KGetGuidedExcercise = @"api/v1/guided_exercise";
+ns *KGetSubCategoryExcercise = @"api/v1/guided_exercise/%@/sub_categories";
 
 #pragma mark - StoryBoard segue identifiers
 #pragma mark Main
@@ -75,10 +76,11 @@ ns *kGoToQueuedExercisesScreen = @"goToQueuedExercisesScreen";
 ns *kGoToSignUp = @"toSignUp";
 ns *kGoToForgotPasswordFirstScreen = @"GoToForgotPasswordFirstViewController";
 ns *kGoToForgotPasswordSecondScreen = @"GoToForgotPasswordSecondViewController";
+ns *kPickerViewController = @"PickerViewController";
 
 #pragma mark - TableViewCell identifiers
 
 ns *kMoreScreenTableViewCellIdentifier = @"MoreScreenTableViewCellIdentifier";
 ns *kguidedExcerciseCellCollectionViewCell = @"guidedExcerciseCellCollectionViewCell";
-
+ns *kSubCategoryExcerciseTableViewCell = @"SubCategoryTableViewCell";
 

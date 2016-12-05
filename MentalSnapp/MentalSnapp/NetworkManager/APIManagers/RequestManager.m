@@ -123,7 +123,19 @@ NSString *const kDefaultErrorMessage =  @"Error! Please try again.";
     }else {
         block(NO, nil);
     }
+}
 
+- (void)getSubCategoryExcerciseWithPaginate:(Paginate *)paginate withCompletionBlock:(completionBlock)block{
+    if ([ApplicationDelegate hasNetworkAvailable]) {
+        
+        [[ExcercixeInterface alloc] getSubCategoryExcerciseWithRequest:[[ExcerciseRequest alloc] initWithFetchSubCategoryExcerciseWithPaginate:paginate] andCompletionBlock:^(BOOL success, id response) {
+            block(success,response);
+        }];
+        
+    }else {
+        block(NO, nil);
+    }
+    
 }
 
 @end

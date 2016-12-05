@@ -23,6 +23,9 @@
 - (void)userLogoutWithUserModel:(UserModel *)userModel withCompletionBlock:(completionBlock)block;
 - (void)userDeactivateWithUserModel:(UserModel *)userModel withCompletionBlock:(completionBlock)block;
 - (void)sendSupportLogs:(NSMutableDictionary *)dictionary withCompletionBlock:(completionBlock)block;
+
+#pragma mark - Excercise
 - (void)getGuidedExcerciseWithPaginate:(Paginate *)paginate withCompletionBlock:(completionBlock)block;
+- (void)getSubCategoryExcerciseWithPaginate:(Paginate *)paginate withCompletionBlock:(completionBlock)block;
 
 @end

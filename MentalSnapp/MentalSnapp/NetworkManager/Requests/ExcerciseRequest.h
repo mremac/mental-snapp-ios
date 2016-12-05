@@ -12,6 +12,7 @@
 @interface ExcerciseRequest : Request
 
 - (id)initWithFetchGuidedExcerciseWithPaginate:(Paginate *)paginate;
+- (id)initWithFetchSubCategoryExcerciseWithPaginate:(Paginate *)paginate;
 
 - (NSMutableDictionary *)getParams;
 

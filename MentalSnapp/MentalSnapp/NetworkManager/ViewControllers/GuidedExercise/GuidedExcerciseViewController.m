@@ -19,10 +19,11 @@
 {
     BOOL isSelectedTab;
     UIScrollView *pageScrollView;
+    BOOL isNext;
 }
 
 @property (strong, nonatomic) IBOutlet UIView *topTabScrollableView;
-@property (strong, nonatomic) Paginate *guidedExcercidePaginate;
+@property (strong, nonatomic) Paginate *guidedExcercisePaginate;
 @property (assign, nonatomic) NSInteger selectedIndexPath;
 @property (strong, nonatomic) IBOutlet UICollectionView *guidedExcerciseCollectionView;
 @property (nonatomic, assign) CGFloat lastContentOffset;
@@ -94,9 +95,9 @@
 -(void)showScrollSelectedExcerciseForIndexpath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate andGrowValue:(CGFloat)growValue andShrinkValue:(CGFloat)value{
     if(indexPath.item != _selectedIndexPath){
         guidedExcerciseCellCollectionViewCell *selectedCell = (guidedExcerciseCellCollectionViewCell *)[self.guidedExcerciseCollectionView cellForItemAtIndexPath:indexPath];
-        [selectedCell setSelectedViewDetail:([self.guidedExcercidePaginate.pageResults count]+1) withAnimation:animate andValue:(animate?0:growValue)];
+        [selectedCell setSelectedViewDetail:([self.guidedExcercisePaginate.pageResults count]+1) withAnimation:animate andValue:(animate?0:growValue)];
         guidedExcerciseCellCollectionViewCell *unSelectedcell = (guidedExcerciseCellCollectionViewCell *)[self.guidedExcerciseCollectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:_selectedIndexPath inSection:0]];
-        [unSelectedcell setUnSelectedViewDetail:([self.guidedExcercidePaginate.pageResults count]+1) withAnimation:animate andValue:(animate?0:value)];
+        [unSelectedcell setUnSelectedViewDetail:([self.guidedExcercisePaginate.pageResults count]+1) withAnimation:animate andValue:(animate?0:value)];
     }
 }
 
@@ -104,9 +105,9 @@
     if(indexPath.item != _selectedIndexPath){
         [self.guidedExcerciseCollectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
         guidedExcerciseCellCollectionViewCell *selectedCell = (guidedExcerciseCellCollectionViewCell *)[self.guidedExcerciseCollectionView cellForItemAtIndexPath:indexPath];
-        [selectedCell setSelectedViewDetail:([self.guidedExcercidePaginate.pageResults count]+1) withAnimation:animate andValue:(animate?0:growValue)];
+        [selectedCell setSelectedViewDetail:([self.guidedExcercisePaginate.pageResults count]+1) withAnimation:animate andValue:(animate?0:growValue)];
         guidedExcerciseCellCollectionViewCell *unSelectedcell = (guidedExcerciseCellCollectionViewCell *)[self.guidedExcerciseCollectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:_selectedIndexPath inSection:0]];
-        [unSelectedcell setUnSelectedViewDetail:([self.guidedExcercidePaginate.pageResults count]+1) withAnimation:animate andValue:(animate?0:value)];
+        [unSelectedcell setUnSelectedViewDetail:([self.guidedExcercisePaginate.pageResults count]+1) withAnimation:animate andValue:(animate?0:value)];
         _selectedIndexPath = indexPath.item;
     }
 }
@@ -129,11 +130,15 @@
     [self.paginationContainerView addSubview:self.pageViewController.view];
     [self.pageViewController.view setBackgroundColor:[UIColor clearColor]];
     NSDictionary *viewsDictionary = [[NSDictionary alloc] init];
+    CGRect frame = self.view.frame;
+    frame.size.height = [self.paginationContainerView frame].size.height-50;
+    frame.origin.y = 0;
+    [self.pageViewController.view setBounds:frame];
+    [self.pageViewController.view setFrame:frame];
     viewsDictionary = @{@"view":self.pageViewController.view};
-    
     if([viewsDictionary count] > 0)
     {
-        NSArray *verticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[view]|" options:0 metrics:nil views:viewsDictionary];
+        NSArray *verticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[view]|" options:0 metrics:nil views:viewsDictionary];
         NSArray *horizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[view]|" options:0 metrics:nil views:viewsDictionary];
         [self.paginationContainerView addConstraints:verticalConstraints];
         [self.paginationContainerView addConstraints:horizontalConstraints];
@@ -148,22 +153,28 @@
     [self didMoveToParentViewController:self];
     UIStoryboard *profileStoryboard = [UIStoryboard storyboardWithName:KProfileStoryboard bundle:[NSBundle mainBundle]];
     self.guideExcerciseViewControllers = [[NSMutableArray alloc] init];
-    if(self.guidedExcercidePaginate){
-        for (GuidedExcercise *excercise in [self.guidedExcercidePaginate pageResults]) {
+    if(self.guidedExcercisePaginate && self.guidedExcercisePaginate.pageResults.count>0){
+        for (GuidedExcercise *excercise in [self.guidedExcercisePaginate pageResults]) {
             ExcerciseSubCategoryViewController *guidedExcercisePage = [profileStoryboard instantiateViewControllerWithIdentifier:kExcerciseSubCategoryViewController];
-            [guidedExcercisePage.view setFrame:self.view.frame];
+            CGRect frame = self.pageViewController.view.frame;
+            frame.origin.y=0;
+            [guidedExcercisePage.view setFrame:frame];
             [guidedExcercisePage setExcercise:excercise];
             [self.guideExcerciseViewControllers addObject:guidedExcercisePage];
         }
         self.index = 0;
         if(self.guideExcerciseViewControllers.count>0){
-            [self.pageViewController setViewControllers:[NSArray arrayWithObject:self.guideExcerciseViewControllers[0]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+            ExcerciseSubCategoryViewController *guidedExcercisePage = (ExcerciseSubCategoryViewController *) [self viewControllerAtIndex:0];
+            CGRect frame = self.pageViewController.view.frame;
+            frame.origin.y=0;
+            [guidedExcercisePage.view setFrame:frame];
+            [self.pageViewController setViewControllers:[NSArray arrayWithObject:guidedExcercisePage] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
         }
     }
 }
 
 - (void)initGuidedPaginate {
-    self.guidedExcercidePaginate = [[Paginate alloc] initWithPageNumber:[NSNumber numberWithInt:1] withMoreRecords:YES andPerPageLimit:10];
+    self.guidedExcercisePaginate = [[Paginate alloc] initWithPageNumber:[NSNumber numberWithInt:1] withMoreRecords:YES andPerPageLimit:30];
 }
 
 #pragma mark - API Call
@@ -173,11 +184,13 @@
 }
 
 -(void)fetchGuidedExcercise {
-    [[RequestManager alloc] getGuidedExcerciseWithPaginate:self.guidedExcercidePaginate withCompletionBlock:^(BOOL success, id response) {
+    [[RequestManager alloc] getGuidedExcerciseWithPaginate:self.guidedExcercisePaginate withCompletionBlock:^(BOOL success, id response) {
         if(success){
-            [self.guidedExcercidePaginate updatePaginationWith:response];
-            [self.guidedExcerciseCollectionView reloadData];
-            [self addViewControllerInPagination];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.guidedExcercisePaginate updatePaginationWith:response];
+                [self.guidedExcerciseCollectionView reloadData];
+                [self addViewControllerInPagination];
+            });
         }
         [self showInProgress:NO];
    }];
@@ -187,6 +200,8 @@
 
 - (IBAction)panGestureRecognizer:(UIPanGestureRecognizer *)panGesture
 {
+    if(self.guidedExcercisePaginate.pageResults.count>0){
+    
     CGPoint translatedPoint = [panGesture translationInView:self.swipableView];
     //    NSLog(@"%@ \n %f",panGesture, translatedPoint.x);
          switch (panGesture.state) {
@@ -226,14 +241,20 @@
                     if(_selectedIndexPath >0){
                         [self showSelectedExcerciseForIndexpath:[NSIndexPath indexPathForRow:(_selectedIndexPath-1) inSection:0] withAnimation:YES andGrowValue:0 andShrinkValue:0];
                         GuidedExcerciseViewController *controller = [self.guideExcerciseViewControllers objectAtIndex:((_selectedIndexPath)-1)];
+                        CGRect frame = self.pageViewController.view.frame;
+                        frame.origin.y = 0;
+                        [controller.view setFrame:frame];
                         [self.pageViewController setViewControllers:@[controller] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:nil];
                     }
                 }
                 else if (translatedPoint.x < 0.0)
                 {
-                    if(_selectedIndexPath < ([self.guidedExcercidePaginate.pageResults count]+1)){
+                    if(_selectedIndexPath < ([self.guidedExcercisePaginate.pageResults count]+1)){
                         [self showSelectedExcerciseForIndexpath:[NSIndexPath indexPathForRow:(_selectedIndexPath+1) inSection:0] withAnimation:YES andGrowValue:0 andShrinkValue:0];
                         GuidedExcerciseViewController *controller = [self.guideExcerciseViewControllers objectAtIndex:((_selectedIndexPath)-1)];
+                        CGRect frame = self.pageViewController.view.frame;
+                        frame.origin.y = 0;
+                        [controller.view setFrame:frame];
                         [self.pageViewController setViewControllers:@[controller] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
 
                     }
@@ -246,6 +267,7 @@
         }
         default:
             break;
+         }
     }
 }
 
@@ -253,19 +275,19 @@
 #pragma mark - Collection view Data Souarce
 
 -(NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return self.guidedExcercidePaginate.pageResults.count+2;
+    return (self.guidedExcercisePaginate.pageResults.count>0)?(self.guidedExcercisePaginate.pageResults.count+2):0;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     guidedExcerciseCellCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kguidedExcerciseCellCollectionViewCell forIndexPath:indexPath];
     cell.index = indexPath.item;
     [cell setDefaultViewDetail];
-    if(indexPath.item <= [self.guidedExcercidePaginate.pageResults count]){
-        if(indexPath.item != 0 && indexPath.item !=([self.guidedExcercidePaginate.pageResults count]+1)){
-            [cell setExcercise:[self.guidedExcercidePaginate.pageResults objectAtIndex:indexPath.item-1]];
+    if(indexPath.item <= [self.guidedExcercisePaginate.pageResults count]){
+        if(indexPath.item != 0 && indexPath.item !=([self.guidedExcercisePaginate.pageResults count]+1)){
+            [cell setExcercise:[self.guidedExcercisePaginate.pageResults objectAtIndex:indexPath.item-1]];
             if(self.selectedIndexPath == indexPath.item){
-                [cell setSelectedViewDetail:([self.guidedExcercidePaginate.pageResults count]+1) withAnimation:YES andValue:0];
+                [cell setSelectedViewDetail:([self.guidedExcercisePaginate.pageResults count]+1) withAnimation:YES andValue:0];
             } else {
-                [cell setUnSelectedViewDetail:([self.guidedExcercidePaginate.pageResults count]+1) withAnimation:YES andValue:0];
+                [cell setUnSelectedViewDetail:([self.guidedExcercisePaginate.pageResults count]+1) withAnimation:YES andValue:0];
             }
         }
     }
@@ -274,13 +296,16 @@
 
 #pragma mark - Collection View Delegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    if(indexPath.row == 0 || indexPath.row>=([self.guidedExcercidePaginate.pageResults count]+2)){
+    if(indexPath.row == 0 || indexPath.row>=([self.guidedExcercisePaginate.pageResults count]+2)){
         return;
     }
     isSelectedTab = YES;
     BOOL scrollDirectionLeft = (indexPath.row < _selectedIndexPath)?YES:NO;
     [self showSelectedExcerciseForIndexpath:indexPath withAnimation:YES andGrowValue:0 andShrinkValue:0];
     GuidedExcerciseViewController *controller = [self.guideExcerciseViewControllers objectAtIndex:indexPath.row-1];
+    CGRect frame = self.pageViewController.view.frame;
+    frame.origin.y = 0;
+    [controller.view setFrame:frame];
     [self.pageViewController setViewControllers:@[controller] direction:(scrollDirectionLeft)?UIPageViewControllerNavigationDirectionReverse:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
 
 }
@@ -343,7 +368,13 @@
     // Decrease the index by 1 to return
     index--;
     self.index = index;
-    return [self viewControllerAtIndex:index];
+    isNext = NO;
+    
+    CGRect frame = self.pageViewController.view.frame;
+    ExcerciseSubCategoryViewController *guidedExcercisePage = (ExcerciseSubCategoryViewController *) [self viewControllerAtIndex:index];
+    frame.origin.y = 0;
+    [guidedExcercisePage.view setBounds:frame];
+    return guidedExcercisePage;
 }
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
@@ -358,15 +389,22 @@
     if (index >= [self.guideExcerciseViewControllers count]) { return nil; }
     
     self.index = index;
-    return [self viewControllerAtIndex:index];
+     isNext = YES;
+    CGRect frame = self.pageViewController.view.frame;
+    ExcerciseSubCategoryViewController *guidedExcercisePage = (ExcerciseSubCategoryViewController *) [self viewControllerAtIndex:index];
+    frame.origin.y = 0;
+    [guidedExcercisePage.view setBounds:frame];
+    return guidedExcercisePage;
 }
 
 - (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed {
     if(finished && [previousViewControllers count]>0) {
-        NSUInteger index =[self.guideExcerciseViewControllers indexOfObject:previousViewControllers[0]];
-        if(index==0){
-            index +=2;
-        }
+//        NSUInteger index =[self.guideExcerciseViewControllers indexOfObject:previousViewControllers[0]];
+//        if(index==0){
+//            index +=2;
+//        }
+
+        NSUInteger index = self.index+1;
         isSelectedTab = NO;
         dispatch_async(dispatch_get_main_queue(), ^{
             [self showSelectedExcerciseForIndexpath:[NSIndexPath indexPathForRow:index inSection:0] withAnimation:YES andGrowValue:0 andShrinkValue:0];

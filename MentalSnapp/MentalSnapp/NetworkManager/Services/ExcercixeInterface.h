@@ -14,6 +14,6 @@
 @property (nonatomic, strong) void (^block)(BOOL success, id response);
 
 - (void)getGuidedExcerciseWithRequest:(ExcerciseRequest *)excerciseRequest andCompletionBlock:(completionBlock)block;
-
+- (void)getSubCategoryExcerciseWithRequest:(ExcerciseRequest *)excerciseRequest andCompletionBlock:(completionBlock)block;
 
 @end

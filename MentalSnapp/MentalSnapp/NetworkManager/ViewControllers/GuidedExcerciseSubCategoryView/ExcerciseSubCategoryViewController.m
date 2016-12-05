@@ -7,8 +7,24 @@
 //
 
 #import "ExcerciseSubCategoryViewController.h"
+#import "Paginate.h"
+#import "RequestManager.h"
+#import "SubCategoryTableViewCell.h"
+#import "GuidedExcercise.h"
+#import "PickerViewController.h"
 
-@interface ExcerciseSubCategoryViewController ()
+@interface ExcerciseSubCategoryViewController () <PickerViewControllerDelegate, UIImagePickerControllerDelegate>
+
+@property (strong, nonatomic) Paginate *guidedExcercisePaginate;
+
+@property (strong, nonatomic) IBOutlet UIView *topHeadingView;
+@property (strong, nonatomic) IBOutlet UILabel *excerciseDetailLabel;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) IBOutlet UIView *noContentView;
+@property (strong, nonatomic) IBOutlet UIButton *calenderButton;
+@property (strong, nonatomic) IBOutlet UIButton *recordButton;
+@property (strong, nonatomic) PickerViewController *pickerViewController;
+@property (strong, nonatomic) GuidedExcercise *selectedExcercise;
 
 @end
 
@@ -17,11 +33,160 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    __unsafe_unretained ExcerciseSubCategoryViewController *weakSelf = self;
+    // setup infinite scrolling
+    [self.tableView addInfiniteScrollingWithActionHandler:^{
+        [weakSelf insertRowAtBottom];
+    }];
+    self.pickerViewController = [[UIStoryboard storyboardWithName:KProfileStoryboard bundle:nil] instantiateViewControllerWithIdentifier:kPickerViewController];
+    self.pickerViewController.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    [self.pickerViewController setPickerType:dateTime];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.excerciseDetailLabel setText:self.excercise.excerciseDescription.trim];
+        [self.view layoutIfNeeded];
+        [self getGuidedExcercise];
+    });
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Private methods
+
+- (void)performInfinteScroll
+{
+    NSLog(@"performSearchResultsInfinteScroll");
+    if (self.guidedExcercisePaginate.hasMoreRecords) {
+        [self.tableView.infiniteScrollingView startAnimating];
+        [self fetchGuidedExcercise];
+        // [self performMyMusicTracksAPICall];
+    }else {
+        [self.tableView.infiniteScrollingView stopAnimating];
+    }
+}
+
+
+- (void)insertRowAtBottom
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if ([self.guidedExcercisePaginate.pageResults count]) {
+            [self.tableView.infiniteScrollingView startAnimating];
+            [self performInfinteScroll];
+        }else {
+            [self.tableView.infiniteScrollingView stopAnimating];
+        }
+    });
+}
+
+- (void)initGuidedPaginate {
+    self.guidedExcercisePaginate = [[Paginate alloc] initWithPageNumber:[NSNumber numberWithInt:1] withMoreRecords:YES andPerPageLimit:10];
+    self.guidedExcercisePaginate.details = self.excercise.excerciseId;
+}
+
+
+#pragma mark - API Call
+-(void)getGuidedExcercise {
+    [self initGuidedPaginate];
+    [self fetchGuidedExcercise];
+}
+
+-(void)fetchGuidedExcercise {
+    [[RequestManager alloc] getSubCategoryExcerciseWithPaginate:self.guidedExcercisePaginate withCompletionBlock:^(BOOL success, id response) {
+        if(success){
+            [self.guidedExcercisePaginate updatePaginationWith:response];
+            if([self.guidedExcercisePaginate.pageResults count]>0){
+                [self.tableView setHidden:NO];
+                [self.noContentView setHidden:YES];
+                [self.tableView reloadData];
+            } else {
+                [self.tableView setHidden:YES];
+                [self.noContentView setHidden:NO];
+            }
+        }
+        [self showInProgress:NO];
+    }];
+}
+
+#pragma mark - Table View DataSource Methods
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if(self.guidedExcercisePaginate.pageResults.count>0){
+        [self.noContentView setHidden:YES];
+    }
+    return [self.guidedExcercisePaginate.pageResults count];
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    SubCategoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSubCategoryExcerciseTableViewCell forIndexPath:indexPath];
+    if (!cell)
+    {
+        cell = [[SubCategoryTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kSubCategoryExcerciseTableViewCell];
+    }
+    [cell setTag:indexPath.row];
+    cell.calenderButton.tag = cell.recordButton.tag = indexPath.row;
+    
+    [cell.calenderButton addTarget:self action:@selector(subcategoryCalenderAction:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.recordButton addTarget:self action:@selector(subcategoryRecordAction:) forControlEvents:UIControlEventTouchUpInside];
+
+    GuidedExcercise *excercixe  = [self.guidedExcercisePaginate.pageResults objectAtIndex:indexPath.row];
+    if(excercixe)
+        [cell setContentsFromExcercise:excercixe];
+    
+    return cell;
+}
+
+#pragma mark - Table View Delegate Methods
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewAutomaticDimension;
+}
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 60;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+
+}
+
+#pragma mark - Date Picker view Delegate
+- (void)didSelectDoneButton:(NSDate *)date {
+
+}
+
+- (void)didSelectCancelButton {}
+
+#pragma mark - Image picker delegate
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - IBActions
+
+-(IBAction)subcategoryCalenderAction:(id)sender {
+    _selectedExcercise  = [self.guidedExcercisePaginate.pageResults objectAtIndex:[sender tag]];
+    [[[ApplicationDelegate window] rootViewController] presentViewController:self.pickerViewController animated:YES completion:nil];
+}
+
+-(IBAction)subcategoryRecordAction:(id)sender {
+    _selectedExcercise  = [self.guidedExcercisePaginate.pageResults objectAtIndex:[sender tag]];
+    [Util openCameraView:self];
+}
+
+-(IBAction)guidedExcerciseCalenderAction:(id)sender {
+    [[[ApplicationDelegate window] rootViewController] presentViewController:self.pickerViewController animated:YES completion:nil];
+}
+
+-(IBAction)guidedExcerciseRecordAction:(id)sender {
+     [Util openCameraView:self];
 }
 
 /*

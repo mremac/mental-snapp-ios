@@ -51,6 +51,9 @@
 - (void)getGuidedExcerciseWithRequest:(Request *)request andCompletionBlock:(completionBlock)block {
       [self getObject:request withCompletionBlock:block];
 }
+- (void)getSubCategoryExcerciseWithRequest:(Request *)request andCompletionBlock:(completionBlock)block {
+     [self getObject:request withCompletionBlock:block];
+}
 
 #pragma mark - Login
 

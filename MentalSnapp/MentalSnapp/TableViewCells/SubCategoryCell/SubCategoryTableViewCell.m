@@ -21,4 +21,12 @@
     // Configure the view for the selected state
 }
 
+-(void)setContentsFromExcercise:(GuidedExcercise *)excercise {
+    [self.categoryImageView sd_setImageWithURL:[NSURL URLWithString:excercise.excerciseCoverURL] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@""] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        
+    }];
+    [self.categoryTitle setText:excercise.excerciseName];
+    [self.categorySubdisciption setText:excercise.excerciseDescription];    
+}
+
 @end

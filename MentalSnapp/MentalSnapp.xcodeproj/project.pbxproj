@@ -35,6 +35,7 @@
 		6A288EC51DED8BB100273CCC /* CommentsPaginate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A288EC01DED8BB100273CCC /* CommentsPaginate.m */; };
 		6A288EC61DED8BB100273CCC /* DatePaginate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A288EC21DED8BB100273CCC /* DatePaginate.m */; };
 		6A288EC71DED8BB100273CCC /* Paginate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A288EC41DED8BB100273CCC /* Paginate.m */; };
+		6A3EDEDB1DF56A6100C7BB16 /* PickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A3EDEDA1DF56A6100C7BB16 /* PickerViewController.m */; };
 		6A3F7A6D1DEC69810070415C /* SupportScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A3F7A6C1DEC69810070415C /* SupportScreenViewController.m */; };
 		6A3F7A731DEC6F820070415C /* SupportRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A3F7A721DEC6F820070415C /* SupportRequest.m */; };
 		6A3F7A761DEC6F920070415C /* SupportInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A3F7A751DEC6F920070415C /* SupportInterface.m */; };
@@ -190,6 +191,8 @@
 		6A288EC21DED8BB100273CCC /* DatePaginate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePaginate.m; sourceTree = "<group>"; };
 		6A288EC31DED8BB100273CCC /* Paginate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Paginate.h; sourceTree = "<group>"; };
 		6A288EC41DED8BB100273CCC /* Paginate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Paginate.m; sourceTree = "<group>"; };
+		6A3EDED91DF56A6100C7BB16 /* PickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerViewController.h; sourceTree = "<group>"; };
+		6A3EDEDA1DF56A6100C7BB16 /* PickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerViewController.m; sourceTree = "<group>"; };
 		6A3F7A6B1DEC69810070415C /* SupportScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupportScreenViewController.h; sourceTree = "<group>"; };
 		6A3F7A6C1DEC69810070415C /* SupportScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupportScreenViewController.m; sourceTree = "<group>"; };
 		6A3F7A711DEC6F820070415C /* SupportRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupportRequest.h; sourceTree = "<group>"; };
@@ -464,6 +467,15 @@
 			path = Pagination;
 			sourceTree = "<group>";
 		};
+		6A3EDED71DF56A3400C7BB16 /* PickerPopView */ = {
+			isa = PBXGroup;
+			children = (
+				6A3EDED91DF56A6100C7BB16 /* PickerViewController.h */,
+				6A3EDEDA1DF56A6100C7BB16 /* PickerViewController.m */,
+			);
+			path = PickerPopView;
+			sourceTree = "<group>";
+		};
 		6A3F7A6A1DEC69810070415C /* SupportScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -541,6 +553,7 @@
 				6AAA01091DE56F8500208022 /* main.m */,
 				6AAA010A1DE56F8500208022 /* Manager */,
 				6AAA01111DE56F8600208022 /* MentalSnappPrefixHeader.pch */,
+				6AAA01281DE56F8600208022 /* ViewControllers */,
 				6AAA01121DE56F8600208022 /* NetworkManager */,
 				6AAA012B1DE56F8600208022 /* Resources */,
 				6AAA01301DE56F8600208022 /* StoryboardAndXIBs */,
@@ -639,7 +652,6 @@
 				6AAA011D1DE56F8600208022 /* APIManagers */,
 				6AAA01201DE56F8600208022 /* Requests */,
 				6AAA01231DE56F8600208022 /* Services */,
-				6AAA01281DE56F8600208022 /* ViewControllers */,
 			);
 			path = NetworkManager;
 			sourceTree = "<group>";
@@ -704,6 +716,7 @@
 		6AAA01281DE56F8600208022 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				6A3EDED71DF56A3400C7BB16 /* PickerPopView */,
 				6AC2A94D1DEED9DB009A21EF /* GuidedExcerciseSubCategoryView */,
 				6AC2A2571DED7E7800196FFA /* GuidedExercise */,
 				6A3F7A6A1DEC69810070415C /* SupportScreen */,
@@ -722,7 +735,8 @@
 				5C545E7F1DF02281004610B0 /* ForgotPasswordSecondViewController.m */,
 				5C7BE3C01DE8569200C15CB5 /* TabBar */,
 			);
-			path = ViewControllers;
+			name = ViewControllers;
+			path = NetworkManager/ViewControllers;
 			sourceTree = "<group>";
 		};
 		6AAA012B1DE56F8600208022 /* Resources */ = {
@@ -964,6 +978,7 @@
 				TargetAttributes = {
 					EECB25A41CF5AAF10012E315 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 2W8FH84P94;
 					};
 					EECB25C01CF5AAF10012E315 = {
 						CreatedOnToolsVersion = 7.2;
@@ -1157,6 +1172,7 @@
 				5C7BE3E51DE8877400C15CB5 /* QueuedExercisesViewController.m in Sources */,
 				6A288EC51DED8BB100273CCC /* CommentsPaginate.m in Sources */,
 				6AAA014E1DE56F8600208022 /* UIView+Badge.m in Sources */,
+				6A3EDEDB1DF56A6100C7BB16 /* PickerViewController.m in Sources */,
 				6AAA015B1DE56F8600208022 /* APIInteractorProvider.m in Sources */,
 				6AAA01481DE56F8600208022 /* UIColor+Properties.m in Sources */,
 				6AC660EA1DE5740B00BB8949 /* SLog.m in Sources */,
@@ -1313,6 +1329,8 @@
 			baseConfigurationReference = 8D30F0C0BCD48254CA253F4A /* Pods-MentalSnapp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEVELOPMENT_TEAM = 2W8FH84P94;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited) ";
 				GCC_PREFIX_HEADER = MentalSnapp/MentalSnappPrefixHeader.pch;
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
@@ -1329,6 +1347,8 @@
 			baseConfigurationReference = 2F7537821A7A1F2617B8A585 /* Pods-MentalSnapp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEVELOPMENT_TEAM = 2W8FH84P94;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited) ";
 				GCC_PREFIX_HEADER = MentalSnapp/MentalSnappPrefixHeader.pch;
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;

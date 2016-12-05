@@ -49,4 +49,18 @@
     return [emailTest evaluateWithObject:email];
 }
 
++ (void)openCameraView:(id)target {
+    if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera]) {
+        UIImagePickerController *imgPicker = [[UIImagePickerController alloc] init];
+        imgPicker.delegate = target;
+        imgPicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        imgPicker.mediaTypes = [NSArray arrayWithObjects:(NSString *)kUTTypeMovie, nil];
+        imgPicker.allowsEditing = NO;
+        [imgPicker setVideoMaximumDuration:2*60];
+        [[ApplicationDelegate window].rootViewController presentViewController:imgPicker animated:YES completion:nil];
+    } else {
+        [Banner showFailureBannerWithSubtitle:@"Camera not available."];
+    }
+}
+
 @end

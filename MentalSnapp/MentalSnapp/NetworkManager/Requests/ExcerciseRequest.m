@@ -29,6 +29,19 @@
     return self;
 }
 
+- (id)initWithFetchSubCategoryExcerciseWithPaginate:(Paginate *)paginate {
+    self = [super init];
+    if (self) {
+        if (paginate.hasMoreRecords) {
+            [_parameters setObject:paginate.pageNumber forKey:kJPage];
+        }
+        [_parameters setObject:[NSNumber numberWithInteger:paginate.perPageLimit] forKey:kJlimit];
+        
+        self.urlPath = [NSString stringWithFormat:KGetSubCategoryExcercise,paginate.details];
+    }
+    return self;
+}
+
 - (NSMutableDictionary *)getParams {
     if (_parameters) {
         return _parameters;

@@ -9,11 +9,13 @@
 #import "RequestManager.h"
 #import "ChangePasswordViewController.h"
 #import "UserManager.h"
+#import "PickerViewController.h"
 
-@interface ProfileViewController () <UITextFieldDelegate>
+@interface ProfileViewController () <UITextFieldDelegate, PickerViewControllerDelegate>
 {
     NSInteger selectedGender;
     NSString *profilePicURL;
+    NSDate *selectedDate;
 }
     
 @property (strong, nonatomic) IBOutlet UITextField *emailTextFeild;
@@ -29,15 +31,11 @@
 @property (strong, nonatomic) IBOutlet UIView *containerView;
 @property (strong, nonatomic) IBOutlet UIView *emailFieldview;
 @property (strong, nonatomic) IBOutlet UIView *phoneFieldView;
-@property (strong, nonatomic) IBOutlet UIDatePicker *datePicker;
-@property (strong, nonatomic) IBOutlet UIView *dateOfBirthView;
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *datePickerViewBottomConstraint;
+@property (strong, nonatomic) PickerViewController *pickerViewController;
 
 - (IBAction)genderButtonAction:(id)sender;
 - (IBAction)changePasswordButtonAction:(id)sender;
 - (IBAction)saveButtonAction:(id)sender;
-- (IBAction)toolBarDoneButtonAction:(id)sender;
-- (IBAction)dateOfBirthButtonAction:(id)sender;
 - (IBAction)addPictureProfileAction:(id)sender;
 - (IBAction)deleteProfileAction:(id)sender;
 
@@ -48,7 +46,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self.datePicker addTarget:self action:@selector(dateIsChanged:) forControlEvents:UIControlEventValueChanged];
     [self.maleGenderButton setSelected:YES];
     self.user = [UserManager sharedManager].userModel;
     [self setNavigationBarButtonTitle:@"Profile"];
@@ -57,6 +54,10 @@
     //show pre fileld users data
     [self showDataOfUsers];
     [self getUserDetail];
+    self.pickerViewController = [[UIStoryboard storyboardWithName:KProfileStoryboard bundle:nil] instantiateViewControllerWithIdentifier:kPickerViewController];
+    self.pickerViewController.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    [self.pickerViewController setPickerType:dateOnly];
+    [self.pickerViewController setDelegate:self];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -77,7 +78,7 @@
 #pragma mark  - TextField Delegates
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-    [self toolBarCancelButtonAction:nil];
+    //[self toolBarCancelButtonAction:nil];
     return YES;
 }
 
@@ -100,11 +101,6 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     return YES;
-}
-
-#pragma mark - Date picker Selector method
-- (void)dateIsChanged:(id)sender{
-    [self.dateOfBirthButton setTitle:[NSDate stringFromDate:self.datePicker.date format:@"MM/dd/yyyy"] forState:UIControlStateNormal];
 }
 
 #pragma mark - Private methods
@@ -135,12 +131,13 @@
         selectedGender = ([self.user.gender caseInsensitiveCompare:@"male"])?0:1;
         [self.userNameLabel setText:self.user.userName];
         [self.emailTextFeild setText:self.user.email];
-        [self.dateOfBirthButton setTitle:self.user.dateOfBirth forState:UIControlStateNormal];
         [self.phoneTextField setText:self.user.phoneNumber];
         [self.maleGenderButton setSelected:([self.user.gender caseInsensitiveCompare:@"male"])?YES:NO];
         [self.femaleGenderButton setSelected:([self.user.gender caseInsensitiveCompare:@"male"])?NO:YES];
         [self.profilePictureImageView sd_setImageWithURL:[NSURL URLWithString:self.user.profilePicURL] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"profile-image"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         }];
+        selectedDate = [NSDate dateFromString:self.user.dateOfBirth format:@"yyyy-MM-dd"];
+        [self.dateOfBirthButton setTitle:[NSDate stringFromDate:selectedDate format:@"dd MMM yyyy"] forState:UIControlStateNormal];
     }
 }
 
@@ -166,6 +163,16 @@
         return NO;
     }
     return YES;
+}
+
+#pragma mark - Date Picker view Delegate
+- (void)didSelectDoneButton:(NSDate *)date {
+    selectedDate = date;
+    [self.dateOfBirthButton setTitle:[NSDate stringFromDate:date format:@"dd MMM yyyy"] forState:UIControlStateNormal];
+}
+- (void)didSelectCancelButton {
+    selectedDate = [NSDate dateFromString:self.user.dateOfBirth format:@"yyyy-dd-MM"];
+    [self.dateOfBirthButton setTitle:[NSDate stringFromDate:selectedDate format:@"dd MMM yyyy"] forState:UIControlStateNormal];
 }
 
 #pragma mark - IBActions
@@ -211,34 +218,13 @@
     }
 }
 
-- (IBAction)toolBarCancelButtonAction:(id)sender {
-    self.datePickerViewBottomConstraint.constant = -self.dateOfBirthView.frame.size.width;
-    [UIView animateWithDuration:0.5 animations:^{
-        [self.view layoutIfNeeded];
-    } completion:^(BOOL finished) {
-        
-    }];
-}
-
-- (IBAction)toolBarDoneButtonAction:(id)sender {
-    [self.dateOfBirthButton setTitle:[NSDate stringFromDate:self.datePicker.date format:@"MM/dd/yyyy"] forState:UIControlStateNormal];
-    self.datePickerViewBottomConstraint.constant = -self.dateOfBirthView.frame.size.width;
-    [UIView animateWithDuration:0.5 animations:^{
-        [self.view layoutIfNeeded];
-    } completion:^(BOOL finished) {
-        
-    }];
-}
-
 - (IBAction)dateOfBirthButtonAction:(id)sender {
     [self.view endEditing:YES];
     [self.navigationController.navigationBar endEditing:YES];
-    self.datePickerViewBottomConstraint.constant = 0;
-    [UIView animateWithDuration:0.5 animations:^{
-        [self.view layoutIfNeeded];
-    } completion:^(BOOL finished) {
-        
-    }];
+    if(selectedDate){
+        [self.pickerViewController setSelectedDate:selectedDate];
+    }
+    [[[ApplicationDelegate window] rootViewController] presentViewController:self.pickerViewController animated:YES completion:nil];
 }
 
 - (IBAction)addPictureProfileAction:(id)sender {

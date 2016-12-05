@@ -96,6 +96,7 @@ exNS *kChangePassword;
 exNS *kDeactivateUser;
 exNS  *KPostSupportLog;
 exNS *KGetGuidedExcercise;
+exNS *KGetSubCategoryExcercise;
 
 #pragma mark - StoryBoard segue identifiers
 #pragma mark Main
@@ -104,8 +105,10 @@ exNS *kGoToQueuedExercisesScreen;
 exNS *kGoToSignUp;
 exNS *kGoToForgotPasswordFirstScreen;
 exNS *kGoToForgotPasswordSecondScreen;
+exNS *kPickerViewController;
 
 #pragma mark - TableViewCell identifiers
 exNS *kMoreScreenTableViewCellIdentifier;
 exNS *kguidedExcerciseCellCollectionViewCell;
+exNS *kSubCategoryExcerciseTableViewCell;
 
