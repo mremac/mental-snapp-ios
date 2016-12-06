@@ -782,7 +782,7 @@
                                 <constraints>
                                     <constraint firstItem="s9Y-JD-1qV" firstAttribute="top" secondItem="OfR-zi-vQB" secondAttribute="top" constant="3" id="A32-Gl-vSg"/>
                                     <constraint firstAttribute="bottom" secondItem="s9Y-JD-1qV" secondAttribute="bottom" constant="4" id="QQK-C3-cuS"/>
-                                    <constraint firstAttribute="height" constant="240" id="em2-AM-VBg"/>
+                                    <constraint firstAttribute="height" constant="180" id="em2-AM-VBg"/>
                                     <constraint firstItem="s9Y-JD-1qV" firstAttribute="leading" secondItem="OfR-zi-vQB" secondAttribute="leading" constant="5" id="sTD-hs-hO5"/>
                                     <constraint firstAttribute="trailing" secondItem="s9Y-JD-1qV" secondAttribute="trailing" constant="3" id="uFF-JA-dVm"/>
                                 </constraints>
@@ -849,15 +849,15 @@
                             <constraint firstItem="OfR-zi-vQB" firstAttribute="top" secondItem="zVl-jr-b8K" secondAttribute="bottom" constant="5" id="8e6-Om-46r"/>
                             <constraint firstItem="hUJ-LU-Y5a" firstAttribute="leading" secondItem="9vR-1E-hGy" secondAttribute="leading" id="NeY-me-Noc"/>
                             <constraint firstItem="zVl-jr-b8K" firstAttribute="leading" secondItem="9vR-1E-hGy" secondAttribute="leadingMargin" constant="26" id="Xkv-ek-2dp"/>
-                            <constraint firstItem="wBM-ga-ita" firstAttribute="leading" secondItem="9vR-1E-hGy" secondAttribute="leadingMargin" constant="26" id="d6o-qn-HN4"/>
+                            <constraint firstItem="wBM-ga-ita" firstAttribute="leading" secondItem="9vR-1E-hGy" secondAttribute="leadingMargin" constant="15" id="d6o-qn-HN4"/>
                             <constraint firstItem="zlZ-ia-QmK" firstAttribute="centerX" secondItem="9vR-1E-hGy" secondAttribute="centerX" id="hDb-nH-wgr"/>
-                            <constraint firstItem="wBM-ga-ita" firstAttribute="top" secondItem="OfR-zi-vQB" secondAttribute="bottom" constant="12" id="hWh-7b-3pL"/>
+                            <constraint firstItem="wBM-ga-ita" firstAttribute="top" secondItem="OfR-zi-vQB" secondAttribute="bottom" constant="8" id="hWh-7b-3pL"/>
                             <constraint firstAttribute="trailing" secondItem="hUJ-LU-Y5a" secondAttribute="trailing" id="khG-ir-b1G"/>
-                            <constraint firstItem="odt-Kd-Hty" firstAttribute="top" secondItem="OfR-zi-vQB" secondAttribute="bottom" constant="14" id="m11-pp-tls"/>
-                            <constraint firstItem="odt-Kd-Hty" firstAttribute="leading" secondItem="wBM-ga-ita" secondAttribute="trailing" constant="3" id="oIQ-z2-3gQ"/>
+                            <constraint firstItem="odt-Kd-Hty" firstAttribute="top" secondItem="OfR-zi-vQB" secondAttribute="bottom" constant="10" id="m11-pp-tls"/>
+                            <constraint firstItem="odt-Kd-Hty" firstAttribute="leading" secondItem="wBM-ga-ita" secondAttribute="trailing" constant="1" id="oIQ-z2-3gQ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="zVl-jr-b8K" secondAttribute="trailing" constant="89" id="onn-L6-YUH"/>
-                            <constraint firstItem="zlZ-ia-QmK" firstAttribute="top" secondItem="wBM-ga-ita" secondAttribute="bottom" constant="56" id="q65-Sp-9hR"/>
-                            <constraint firstItem="OfR-zi-vQB" firstAttribute="leading" secondItem="9vR-1E-hGy" secondAttribute="leading" constant="32" id="qCg-fN-vXS"/>
+                            <constraint firstItem="zlZ-ia-QmK" firstAttribute="top" secondItem="wBM-ga-ita" secondAttribute="bottom" constant="40" id="q65-Sp-9hR"/>
+                            <constraint firstItem="OfR-zi-vQB" firstAttribute="leading" secondItem="9vR-1E-hGy" secondAttribute="leading" constant="33" id="qCg-fN-vXS"/>
                             <constraint firstItem="zVl-jr-b8K" firstAttribute="top" secondItem="hUJ-LU-Y5a" secondAttribute="bottom" constant="13" id="qQN-7X-G0J"/>
                         </constraints>
                     </view>
@@ -871,7 +871,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e8o-T5-QAI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6412" y="-564"/>
+            <point key="canvasLocation" x="-7076" y="-717"/>
         </scene>
         <!--Excercise Sub Category View Controller-->
         <scene sceneID="G2p-mk-00l">
