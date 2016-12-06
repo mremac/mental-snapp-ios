@@ -12,4 +12,6 @@
 @interface ExcerciseSubCategoryViewController : MSViewController
 
 @property (strong, nonatomic) GuidedExcercise *excercise;
+@property (assign, nonatomic) NSInteger viewTag;
+
 @end

@@ -35,6 +35,7 @@
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *swipableViewTrailingConstraint;
 @property (assign, nonatomic) NSInteger index;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *guidedExcerciseTopViewTopConstraint;
+@property (assign, nonatomic) NSInteger selectedViewTag;
 
 @end
 
@@ -109,6 +110,9 @@
         guidedExcerciseCellCollectionViewCell *unSelectedcell = (guidedExcerciseCellCollectionViewCell *)[self.guidedExcerciseCollectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:_selectedIndexPath inSection:0]];
         [unSelectedcell setUnSelectedViewDetail:([self.guidedExcercisePaginate.pageResults count]+1) withAnimation:animate andValue:(animate?0:value)];
         _selectedIndexPath = indexPath.item;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            isSelectedTab = NO;
+        });
     }
 }
 
@@ -153,11 +157,14 @@
     [self didMoveToParentViewController:self];
     UIStoryboard *profileStoryboard = [UIStoryboard storyboardWithName:KProfileStoryboard bundle:[NSBundle mainBundle]];
     self.guideExcerciseViewControllers = [[NSMutableArray alloc] init];
+    int tag=1;
     if(self.guidedExcercisePaginate && self.guidedExcercisePaginate.pageResults.count>0){
         for (GuidedExcercise *excercise in [self.guidedExcercisePaginate pageResults]) {
             ExcerciseSubCategoryViewController *guidedExcercisePage = [profileStoryboard instantiateViewControllerWithIdentifier:kExcerciseSubCategoryViewController];
             CGRect frame = self.pageViewController.view.frame;
             frame.origin.y=0;
+            [guidedExcercisePage setViewTag:tag];
+            tag++;
             [guidedExcercisePage.view setFrame:frame];
             [guidedExcercisePage setExcercise:excercise];
             [self.guideExcerciseViewControllers addObject:guidedExcercisePage];
@@ -168,6 +175,7 @@
             CGRect frame = self.pageViewController.view.frame;
             frame.origin.y=0;
             [guidedExcercisePage.view setFrame:frame];
+            self.selectedViewTag = guidedExcercisePage.viewTag;
             [self.pageViewController setViewControllers:[NSArray arrayWithObject:guidedExcercisePage] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
         }
     }
@@ -240,10 +248,11 @@
                 {
                     if(_selectedIndexPath >0){
                         [self showSelectedExcerciseForIndexpath:[NSIndexPath indexPathForRow:(_selectedIndexPath-1) inSection:0] withAnimation:YES andGrowValue:0 andShrinkValue:0];
-                        GuidedExcerciseViewController *controller = [self.guideExcerciseViewControllers objectAtIndex:((_selectedIndexPath)-1)];
+                        ExcerciseSubCategoryViewController *controller = [self.guideExcerciseViewControllers objectAtIndex:((_selectedIndexPath)-1)];
                         CGRect frame = self.pageViewController.view.frame;
                         frame.origin.y = 0;
                         [controller.view setFrame:frame];
+                        self.selectedViewTag = controller.viewTag;
                         [self.pageViewController setViewControllers:@[controller] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:nil];
                     }
                 }
@@ -251,10 +260,11 @@
                 {
                     if(_selectedIndexPath < ([self.guidedExcercisePaginate.pageResults count]+1)){
                         [self showSelectedExcerciseForIndexpath:[NSIndexPath indexPathForRow:(_selectedIndexPath+1) inSection:0] withAnimation:YES andGrowValue:0 andShrinkValue:0];
-                        GuidedExcerciseViewController *controller = [self.guideExcerciseViewControllers objectAtIndex:((_selectedIndexPath)-1)];
+                        ExcerciseSubCategoryViewController *controller = [self.guideExcerciseViewControllers objectAtIndex:((_selectedIndexPath)-1)];
                         CGRect frame = self.pageViewController.view.frame;
                         frame.origin.y = 0;
                         [controller.view setFrame:frame];
+                        self.selectedViewTag = controller.viewTag;
                         [self.pageViewController setViewControllers:@[controller] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
 
                     }
@@ -302,10 +312,11 @@
     isSelectedTab = YES;
     BOOL scrollDirectionLeft = (indexPath.row < _selectedIndexPath)?YES:NO;
     [self showSelectedExcerciseForIndexpath:indexPath withAnimation:YES andGrowValue:0 andShrinkValue:0];
-    GuidedExcerciseViewController *controller = [self.guideExcerciseViewControllers objectAtIndex:indexPath.row-1];
+    ExcerciseSubCategoryViewController *controller = [self.guideExcerciseViewControllers objectAtIndex:indexPath.row-1];
     CGRect frame = self.pageViewController.view.frame;
     frame.origin.y = 0;
     [controller.view setFrame:frame];
+     self.selectedViewTag = controller.viewTag;
     [self.pageViewController setViewControllers:@[controller] direction:(scrollDirectionLeft)?UIPageViewControllerNavigationDirectionReverse:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
 
 }
@@ -340,17 +351,24 @@
         if (self.lastContentOffset > scrollView.contentOffset.x) {
             if(offset.x>(([self.guidedExcerciseCollectionView getWidth]/3)*(_selectedIndexPath-1))-(([self.guidedExcerciseCollectionView getWidth]/3))) {
                 [self.guidedExcerciseCollectionView setContentOffset:offset];
+                self.selectedViewTag = (_selectedIndexPath-1);
                 [self showScrollSelectedExcerciseForIndexpath:[NSIndexPath indexPathForRow:(_selectedIndexPath-1) inSection:0] withAnimation:NO andGrowValue:growRadius andShrinkValue:shrinkRadius];
             }
         } else if (self.lastContentOffset < scrollView.contentOffset.x) {
             if(offset.x<(([self.guidedExcerciseCollectionView getWidth]/3)*_selectedIndexPath)) {
                 [self.guidedExcerciseCollectionView setContentOffset:offset];
+                self.selectedViewTag = (_selectedIndexPath+1);
                 [self showScrollSelectedExcerciseForIndexpath:[NSIndexPath indexPathForRow:(_selectedIndexPath+1) inSection:0] withAnimation:NO andGrowValue:growRadius andShrinkValue:shrinkRadius];
             }
         }
-        self.lastContentOffset = scrollView.contentOffset.x;
     }
 }
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    
+    self.lastContentOffset = scrollView.contentOffset.x;
+}
+
 
 #pragma mark -
 #pragma mark -Page Delegate and Data Source
@@ -398,16 +416,9 @@
 }
 
 - (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed {
-    if(finished && [previousViewControllers count]>0) {
-//        NSUInteger index =[self.guideExcerciseViewControllers indexOfObject:previousViewControllers[0]];
-//        if(index==0){
-//            index +=2;
-//        }
-
-        NSUInteger index = self.index+1;
-        isSelectedTab = NO;
+    if(finished) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self showSelectedExcerciseForIndexpath:[NSIndexPath indexPathForRow:index inSection:0] withAnimation:YES andGrowValue:0 andShrinkValue:0];
+            [self showSelectedExcerciseForIndexpath:[NSIndexPath indexPathForRow:self.selectedViewTag inSection:0] withAnimation:YES andGrowValue:0 andShrinkValue:0];
         });
     }
 }
