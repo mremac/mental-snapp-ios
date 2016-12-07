@@ -58,6 +58,7 @@ ns * KSupportScreenViewController  = @"SupportScreenViewController";
 ns *kGuidedExcerciseViewController = @"GuidedExcerciseViewController";
 ns *kExcerciseSubCategoryViewController = @"ExcerciseSubCategoryViewController";
 ns *kSubCategoryDetailViewController = @"SubCategoryDetailViewController";
+ns *kRecordAlertViewController = @"RecordAlertViewController";
 
 #pragma mark - API URL
 ns *kLoginAPI = @"api/v1/authenticate";

@@ -35,6 +35,7 @@
 		6A288EC51DED8BB100273CCC /* CommentsPaginate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A288EC01DED8BB100273CCC /* CommentsPaginate.m */; };
 		6A288EC61DED8BB100273CCC /* DatePaginate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A288EC21DED8BB100273CCC /* DatePaginate.m */; };
 		6A288EC71DED8BB100273CCC /* Paginate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A288EC41DED8BB100273CCC /* Paginate.m */; };
+		6A3DEAB51DF82E9000B6E007 /* RecordAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A3DEAB41DF82E9000B6E007 /* RecordAlertViewController.m */; };
 		6A3EDEDB1DF56A6100C7BB16 /* PickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A3EDEDA1DF56A6100C7BB16 /* PickerViewController.m */; };
 		6A3F7A6D1DEC69810070415C /* SupportScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A3F7A6C1DEC69810070415C /* SupportScreenViewController.m */; };
 		6A3F7A731DEC6F820070415C /* SupportRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A3F7A721DEC6F820070415C /* SupportRequest.m */; };
@@ -193,6 +194,8 @@
 		6A288EC21DED8BB100273CCC /* DatePaginate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePaginate.m; sourceTree = "<group>"; };
 		6A288EC31DED8BB100273CCC /* Paginate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Paginate.h; sourceTree = "<group>"; };
 		6A288EC41DED8BB100273CCC /* Paginate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Paginate.m; sourceTree = "<group>"; };
+		6A3DEAB31DF82E9000B6E007 /* RecordAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordAlertViewController.h; sourceTree = "<group>"; };
+		6A3DEAB41DF82E9000B6E007 /* RecordAlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordAlertViewController.m; sourceTree = "<group>"; };
 		6A3EDED91DF56A6100C7BB16 /* PickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerViewController.h; sourceTree = "<group>"; };
 		6A3EDEDA1DF56A6100C7BB16 /* PickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerViewController.m; sourceTree = "<group>"; };
 		6A3F7A6B1DEC69810070415C /* SupportScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupportScreenViewController.h; sourceTree = "<group>"; };
@@ -473,6 +476,15 @@
 			path = Pagination;
 			sourceTree = "<group>";
 		};
+		6A3DEAB11DF82E7C00B6E007 /* RecordAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				6A3DEAB31DF82E9000B6E007 /* RecordAlertViewController.h */,
+				6A3DEAB41DF82E9000B6E007 /* RecordAlertViewController.m */,
+			);
+			path = RecordAlertView;
+			sourceTree = "<group>";
+		};
 		6A3EDED71DF56A3400C7BB16 /* PickerPopView */ = {
 			isa = PBXGroup;
 			children = (
@@ -724,6 +736,7 @@
 		6AAA01281DE56F8600208022 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				6A3DEAB11DF82E7C00B6E007 /* RecordAlertView */,
 				6A3EDED71DF56A3400C7BB16 /* PickerPopView */,
 				6AC2A94D1DEED9DB009A21EF /* GuidedExcerciseSubCategoryView */,
 				6AC2A2571DED7E7800196FFA /* GuidedExercise */,
@@ -1219,6 +1232,7 @@
 				6A3F7A761DEC6F920070415C /* SupportInterface.m in Sources */,
 				6AAA01401DE56F8600208022 /* Constants.m in Sources */,
 				6AAA01571DE56F8600208022 /* main.m in Sources */,
+				6A3DEAB51DF82E9000B6E007 /* RecordAlertViewController.m in Sources */,
 				6AAA015D1DE56F8600208022 /* RealAPI.m in Sources */,
 				5C545E801DF02281004610B0 /* ForgotPasswordSecondViewController.m in Sources */,
 				6AAA014D1DE56F8600208022 /* UILabel+Properties.m in Sources */,

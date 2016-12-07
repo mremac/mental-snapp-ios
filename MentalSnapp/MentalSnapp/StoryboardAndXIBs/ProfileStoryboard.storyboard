@@ -9,6 +9,9 @@
         <array key="Lato-Regular.ttf">
             <string>Lato-Regular</string>
         </array>
+        <array key="Roboto-Bold.ttf">
+            <string>Roboto-Bold</string>
+        </array>
         <array key="Roboto-Light.ttf">
             <string>Roboto-Light</string>
         </array>
@@ -972,7 +975,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SubCategoryTableViewCell" rowHeight="81" id="kJZ-xh-eMo" customClass="SubCategoryTableViewCell">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="81"/>
+                                        <rect key="frame" x="0.0" y="28" width="1000" height="81"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kJZ-xh-eMo" id="WYO-1L-Q6w">
                                             <frame key="frameInset" width="375" height="80"/>
@@ -1326,6 +1329,89 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n8e-ki-LzJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-7202.3999999999996" y="-1401.049475262369"/>
+        </scene>
+        <!--Record Alert View Controller-->
+        <scene sceneID="3X2-vI-xJj">
+            <objects>
+                <viewController storyboardIdentifier="RecordAlertViewController" id="Lxk-my-cQm" customClass="RecordAlertViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Vmz-66-wQO"/>
+                        <viewControllerLayoutGuide type="bottom" id="kyX-fj-n1r"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ibW-Ho-4hy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1eW-2P-KqG">
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alert" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rwd-yS-Scr">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="RPI-ae-kzc"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="21"/>
+                                        <color key="textColor" red="0.058823529409999999" green="0.68627450980000004" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can record videos that are up to 15 minutes long." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V1q-d5-III">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="69" id="tP7-yM-JzX"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
+                                        <color key="textColor" red="0.34706471529999999" green="0.34706471529999999" blue="0.34706471529999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rJM-uJ-YdU">
+                                        <color key="backgroundColor" red="0.91372549020000005" green="0.39607843139999999" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="41" id="uaZ-U7-dq1"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="17"/>
+                                        <state key="normal" title="OK"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="okButtonAction:" destination="Lxk-my-cQm" eventType="touchUpInside" id="yr2-TJ-Vf5"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="rJM-uJ-YdU" firstAttribute="leading" secondItem="1eW-2P-KqG" secondAttribute="leading" constant="25" id="7RN-Wd-Q43"/>
+                                    <constraint firstItem="rwd-yS-Scr" firstAttribute="leading" secondItem="1eW-2P-KqG" secondAttribute="leading" constant="14" id="AO8-iM-rvT"/>
+                                    <constraint firstItem="rJM-uJ-YdU" firstAttribute="top" secondItem="V1q-d5-III" secondAttribute="bottom" constant="12" id="BHE-bZ-CWh"/>
+                                    <constraint firstItem="rwd-yS-Scr" firstAttribute="centerX" secondItem="1eW-2P-KqG" secondAttribute="centerX" id="Ipe-qD-Q8v"/>
+                                    <constraint firstAttribute="trailing" secondItem="V1q-d5-III" secondAttribute="trailing" constant="14" id="MG7-8N-JPZ"/>
+                                    <constraint firstItem="V1q-d5-III" firstAttribute="leading" secondItem="1eW-2P-KqG" secondAttribute="leading" constant="14" id="Pfi-Xe-Y60"/>
+                                    <constraint firstAttribute="trailing" secondItem="rwd-yS-Scr" secondAttribute="trailing" constant="14" id="ZxI-QN-dFK"/>
+                                    <constraint firstAttribute="trailing" secondItem="rJM-uJ-YdU" secondAttribute="trailing" constant="23" id="ciq-tt-MIT"/>
+                                    <constraint firstItem="rwd-yS-Scr" firstAttribute="top" secondItem="1eW-2P-KqG" secondAttribute="top" constant="19" id="csu-77-n5c"/>
+                                    <constraint firstItem="V1q-d5-III" firstAttribute="top" secondItem="rwd-yS-Scr" secondAttribute="bottom" constant="11" id="e15-zs-APQ"/>
+                                    <constraint firstAttribute="height" constant="200" id="mHL-Lt-McQ"/>
+                                    <constraint firstAttribute="width" constant="281" id="sda-qJ-pOi"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.44894935344827586" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="1eW-2P-KqG" firstAttribute="centerY" secondItem="ibW-Ho-4hy" secondAttribute="centerY" constant="-60" id="Jef-9u-jk8"/>
+                            <constraint firstItem="1eW-2P-KqG" firstAttribute="centerX" secondItem="ibW-Ho-4hy" secondAttribute="centerX" constant="-4" id="mf0-K2-LhQ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="alertContainerView" destination="1eW-2P-KqG" id="ObT-Zv-447"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="58X-GF-0go" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-8846" y="-1005"/>
         </scene>
     </scenes>
     <resources>

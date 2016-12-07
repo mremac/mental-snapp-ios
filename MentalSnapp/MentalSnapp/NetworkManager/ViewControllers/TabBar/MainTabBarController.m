@@ -37,13 +37,16 @@
 }
 
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
+    [self setSelectedIndex:item.tag];
+}
+
+-(void)setSelectTabIndex:(NSInteger)index {
     [_view1 setBackgroundColor:normalColor];
     [_view2 setBackgroundColor:normalColor];
     [_view3 setBackgroundColor:normalColor];
     [_view4 setBackgroundColor:normalColor];
     [_view5 setBackgroundColor:normalColor];
-        
-    [[subViews objectAtIndex:item.tag] setBackgroundColor:selectionColor];
+    [[subViews objectAtIndex:index] setBackgroundColor:selectionColor];
 }
 
 - (void)addViewInTabBar {

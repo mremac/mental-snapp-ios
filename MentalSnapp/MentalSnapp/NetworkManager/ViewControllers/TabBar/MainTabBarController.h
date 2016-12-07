@@ -7,4 +7,6 @@
 
 @interface MainTabBarController : UITabBarController
 
+-(void)setSelectTabIndex:(NSInteger)index;
+
 @end

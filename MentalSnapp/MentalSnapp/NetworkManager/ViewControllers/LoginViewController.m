@@ -70,8 +70,8 @@
                 [UserDefaults setBool:YES forKey:kIsUserLoggedIn];
                 [UserDefaults synchronize];
     
-                MainTabBarController *tabBarController = [self.storyboard instantiateViewControllerWithIdentifier:@"MainTabController"];
-                ApplicationDelegate.window.rootViewController = tabBarController;
+                ApplicationDelegate.tabBarController = [self.storyboard instantiateViewControllerWithIdentifier:@"MainTabController"];
+                ApplicationDelegate.window.rootViewController = ApplicationDelegate.tabBarController;
             } 
         }];
     }

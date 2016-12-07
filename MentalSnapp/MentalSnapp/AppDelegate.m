@@ -40,8 +40,8 @@
 
     if ([UserDefaults boolForKey:kIsUserLoggedIn]) {
         [[UserManager sharedManager] setValueInLoggedInUserObjectFromUserDefault];
-        MainTabBarController *tabBarController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MainTabController"];
-        ApplicationDelegate.window.rootViewController = tabBarController;
+        self.tabBarController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MainTabController"];
+        ApplicationDelegate.window.rootViewController = self.tabBarController;
     }
     
     return YES;

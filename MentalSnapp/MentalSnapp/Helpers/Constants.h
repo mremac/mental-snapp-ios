@@ -95,6 +95,7 @@ exNS *KSupportScreenViewController;
 exNS *kGuidedExcerciseViewController;
 exNS *kExcerciseSubCategoryViewController;
 exNS *kSubCategoryDetailViewController;
+exNS *kRecordAlertViewController;
 
 #pragma mark - API URL
 exNS *KUserAPI;

@@ -190,7 +190,7 @@
 
 -(IBAction)subcategoryRecordAction:(id)sender {
     _selectedExcercise  = [self.guidedExcercisePaginate.pageResults objectAtIndex:[sender tag]];
-    [Util openCameraView:self];
+    [Util openCameraView:self WithAnimation:YES];
 }
 
 -(IBAction)guidedExcerciseCalenderAction:(id)sender {
@@ -198,7 +198,7 @@
 }
 
 -(IBAction)guidedExcerciseRecordAction:(id)sender {
-     [Util openCameraView:self];
+     [Util openCameraView:self WithAnimation:YES];
 }
 
 /*
