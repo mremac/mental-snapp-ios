@@ -15,7 +15,7 @@
 #define KShrinkValue 68
 
 @property (strong, nonatomic) IBOutlet UIButton *guidedExcerciseImageButton;
-@property (strong, nonatomic) IBOutlet UIButton *guidedExcerciseTitleButton;
+@property (strong, nonatomic) IBOutlet UILabel *guidedExcerciseTitleLabel;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *guidedExcerciseHeightCinstraint;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *guidedExcerciseWidthCinstraint;
 @property (assign, nonatomic) NSInteger index;

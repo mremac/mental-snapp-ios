@@ -208,6 +208,7 @@
 
 - (IBAction)panGestureRecognizer:(UIPanGestureRecognizer *)panGesture
 {
+    isSelectedTab = YES;
     if(self.guidedExcercisePaginate.pageResults.count>0){
     
     CGPoint translatedPoint = [panGesture translationInView:self.swipableView];
@@ -242,7 +243,7 @@
             
         case UIGestureRecognizerStateCancelled:
         case UIGestureRecognizerStateEnded:
-        {
+        {            
             dispatch_async(dispatch_get_main_queue(), ^{
                 if(translatedPoint.x > 0.0)
                 {
@@ -345,8 +346,9 @@
         CGFloat shrinkRadius= ratio+fabs(offset.x);
         growRadius += KShrinkValue;
         shrinkRadius -= KGrowValue;
+        shrinkRadius = (fabs(shrinkRadius)<KGrowValue)?KShrinkValue:shrinkRadius;
         growRadius = (growRadius >=KGrowValue)?KGrowValue:growRadius;
-        shrinkRadius = (shrinkRadius <= KShrinkValue)?KShrinkValue:shrinkRadius;
+        shrinkRadius = (shrinkRadius < KShrinkValue)?shrinkRadius:KShrinkValue;
         
         if (self.lastContentOffset > scrollView.contentOffset.x) {
             if(offset.x>(([self.guidedExcerciseCollectionView getWidth]/3)*(_selectedIndexPath-1))-(([self.guidedExcerciseCollectionView getWidth]/3))) {
@@ -357,8 +359,12 @@
         } else if (self.lastContentOffset < scrollView.contentOffset.x) {
             if(offset.x<(([self.guidedExcerciseCollectionView getWidth]/3)*_selectedIndexPath)) {
                 [self.guidedExcerciseCollectionView setContentOffset:offset];
-                self.selectedViewTag = (_selectedIndexPath+1);
-                [self showScrollSelectedExcerciseForIndexpath:[NSIndexPath indexPathForRow:(_selectedIndexPath+1) inSection:0] withAnimation:NO andGrowValue:growRadius andShrinkValue:shrinkRadius];
+                if(self.selectedViewTag<self.guidedExcercisePaginate.pageResults.count){
+                    self.selectedViewTag = (_selectedIndexPath+1);
+                    [self showScrollSelectedExcerciseForIndexpath:[NSIndexPath indexPathForRow:(_selectedIndexPath+1) inSection:0] withAnimation:NO andGrowValue:growRadius andShrinkValue:shrinkRadius];
+                } else {
+                    [self.guidedExcerciseCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:_selectedIndexPath inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+                }
             }
         }
     }

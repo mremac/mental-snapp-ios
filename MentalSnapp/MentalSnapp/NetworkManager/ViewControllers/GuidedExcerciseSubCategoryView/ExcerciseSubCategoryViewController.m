@@ -93,6 +93,7 @@
 }
 
 -(void)fetchGuidedExcercise {
+    [self showDefaultIndicatorProgress:YES];
     [[RequestManager alloc] getSubCategoryExcerciseWithPaginate:self.guidedExcercisePaginate withCompletionBlock:^(BOOL success, id response) {
         if(success){
             [self.guidedExcercisePaginate updatePaginationWith:response];
@@ -105,6 +106,7 @@
                 [self.noContentView setHidden:NO];
             }
         }
+        [self showDefaultIndicatorProgress:NO];
         [self showInProgress:NO];
     }];
 }

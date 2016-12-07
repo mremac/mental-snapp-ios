@@ -17,5 +17,5 @@
 - (UIBarButtonItem *)backButton;
 - (void)backButtonTapped;
 - (void)setNavigationBarButtonTitle:(NSString *)title;
-
+- (void)showDefaultIndicatorProgress:(BOOL)state;
 @end

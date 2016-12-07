@@ -9,6 +9,8 @@
 
 @interface MSViewController() <UIGestureRecognizerDelegate>
 
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+
 @end
 
 @implementation MSViewController
@@ -76,6 +78,8 @@
 - (void)centerTitleButtonTapped {
 }
 
+#pragma mark - Public Methods
+
 - (void)showInProgress:(BOOL)state {
     if(state) {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -87,5 +91,18 @@
         });
     }
 }
+
+- (void)showDefaultIndicatorProgress:(BOOL)state {
+    if(state) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.activityIndicator startAnimating];
+        });
+    } else {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.activityIndicator stopAnimating];
+        });
+    }
+}
+
 
 @end

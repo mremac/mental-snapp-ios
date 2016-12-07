@@ -942,7 +942,7 @@
                                             <frame key="frameInset" width="375" height="80"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1tR-Ds-vMV">
+                                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1tR-Ds-vMV">
                                                     <color key="backgroundColor" red="0.058823529411764705" green="0.68627450980392157" blue="0.7803921568627451" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="48" id="OjC-8J-Oov"/>
@@ -1026,6 +1026,9 @@
                                     <outlet property="delegate" destination="aXm-rM-rGv" id="FbQ-ej-i9Y"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="As0-nO-w9j">
+                                <color key="color" red="0.23921568630000001" green="0.23921568630000001" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1034,9 +1037,11 @@
                             <constraint firstItem="RFA-xc-COO" firstAttribute="leading" secondItem="6qE-QF-7cO" secondAttribute="leading" id="YKa-oN-cms"/>
                             <constraint firstItem="hDG-OH-rmI" firstAttribute="leading" secondItem="6qE-QF-7cO" secondAttribute="leading" id="dOU-88-OmB"/>
                             <constraint firstItem="RFA-xc-COO" firstAttribute="top" secondItem="hDG-OH-rmI" secondAttribute="bottom" id="fGo-jZ-xfT"/>
+                            <constraint firstItem="As0-nO-w9j" firstAttribute="centerY" secondItem="6qE-QF-7cO" secondAttribute="centerY" id="gCc-qC-dYz"/>
                             <constraint firstAttribute="bottom" secondItem="Tya-sz-dRZ" secondAttribute="bottom" id="kkq-pX-SdD"/>
                             <constraint firstAttribute="trailing" secondItem="RFA-xc-COO" secondAttribute="trailing" id="sdp-kD-EmK"/>
                             <constraint firstItem="Tya-sz-dRZ" firstAttribute="top" secondItem="hDG-OH-rmI" secondAttribute="bottom" constant="8" id="ulL-Xy-tob"/>
+                            <constraint firstItem="As0-nO-w9j" firstAttribute="centerX" secondItem="6qE-QF-7cO" secondAttribute="centerX" id="xAJ-U4-Ey3"/>
                             <constraint firstItem="hDG-OH-rmI" firstAttribute="top" secondItem="6qE-QF-7cO" secondAttribute="top" id="xAk-31-vkh"/>
                             <constraint firstItem="Tya-sz-dRZ" firstAttribute="leading" secondItem="6qE-QF-7cO" secondAttribute="leading" id="xXt-37-prW"/>
                             <constraint firstAttribute="bottom" secondItem="RFA-xc-COO" secondAttribute="bottom" id="yL0-W2-c40"/>
@@ -1044,6 +1049,7 @@
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="As0-nO-w9j" id="BmB-BY-CcM"/>
                         <outlet property="calenderButton" destination="q8N-7g-ppm" id="nH9-6R-Anh"/>
                         <outlet property="excerciseDetailLabel" destination="Q5p-Pd-hYg" id="VrO-qd-Rc4"/>
                         <outlet property="noContentView" destination="RFA-xc-COO" id="Wrv-hc-bif"/>
@@ -1099,26 +1105,26 @@
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bos-dC-WMg">
                                                             <subviews>
-                                                                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7r4-bw-6vy">
+                                                                <button opaque="NO" contentMode="scaleAspectFit" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7r4-bw-6vy">
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="102" id="A6M-DT-ICx"/>
                                                                         <constraint firstAttribute="width" constant="102" id="hh0-UV-PtZ"/>
                                                                     </constraints>
                                                                 </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xeh-XR-RAe">
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="height" constant="25" id="pGi-On-cnF"/>
-                                                                        <constraint firstAttribute="width" constant="125" id="uEV-Wx-b7A"/>
-                                                                    </constraints>
-                                                                </button>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="middleTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="OX8-pN-4wc">
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
                                                             </subviews>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <constraints>
+                                                                <constraint firstItem="OX8-pN-4wc" firstAttribute="leading" secondItem="Bos-dC-WMg" secondAttribute="leading" id="0in-KL-9MV"/>
                                                                 <constraint firstItem="7r4-bw-6vy" firstAttribute="centerY" secondItem="Bos-dC-WMg" secondAttribute="centerY" constant="-16" id="3iS-2E-J7C"/>
-                                                                <constraint firstItem="Xeh-XR-RAe" firstAttribute="top" secondItem="7r4-bw-6vy" secondAttribute="bottom" constant="8" id="Zfh-dt-UoA"/>
+                                                                <constraint firstAttribute="trailing" secondItem="OX8-pN-4wc" secondAttribute="trailing" id="X8s-HU-WNG"/>
                                                                 <constraint firstItem="7r4-bw-6vy" firstAttribute="centerX" secondItem="Bos-dC-WMg" secondAttribute="centerX" id="hyg-3m-4ED"/>
-                                                                <constraint firstItem="Xeh-XR-RAe" firstAttribute="leading" secondItem="Bos-dC-WMg" secondAttribute="leading" id="uar-HA-LUl"/>
-                                                                <constraint firstAttribute="trailing" secondItem="Xeh-XR-RAe" secondAttribute="trailing" id="uq2-JV-BHN"/>
+                                                                <constraint firstItem="OX8-pN-4wc" firstAttribute="top" secondItem="7r4-bw-6vy" secondAttribute="bottom" constant="7" id="ofr-y1-Nyk"/>
+                                                                <constraint firstAttribute="bottom" secondItem="OX8-pN-4wc" secondAttribute="bottom" id="qFR-lC-A5m"/>
                                                             </constraints>
                                                         </view>
                                                     </subviews>
@@ -1134,7 +1140,7 @@
                                                 <connections>
                                                     <outlet property="guidedExcerciseHeightCinstraint" destination="A6M-DT-ICx" id="HQ2-97-ibD"/>
                                                     <outlet property="guidedExcerciseImageButton" destination="7r4-bw-6vy" id="uGd-aA-46E"/>
-                                                    <outlet property="guidedExcerciseTitleButton" destination="Xeh-XR-RAe" id="5D2-GU-nBU"/>
+                                                    <outlet property="guidedExcerciseTitleLabel" destination="OX8-pN-4wc" id="Fof-DX-zDB"/>
                                                     <outlet property="guidedExcerciseWidthCinstraint" destination="hh0-UV-PtZ" id="1oV-cg-nTE"/>
                                                 </connections>
                                             </collectionViewCell>
