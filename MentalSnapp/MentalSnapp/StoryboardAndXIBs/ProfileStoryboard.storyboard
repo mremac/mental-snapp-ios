@@ -1491,8 +1491,7 @@
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Ho-Uu-ex0">
                                                 <subviews>
-                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="What's going on? you can write about  it here.
-You can also use hashtags (like #happy or tired)." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0eS-OP-ax4">
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="What's going on? you can write about  it here. You can also use hashtags (like #happy or tired)." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0eS-OP-ax4">
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="13"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1576,7 +1575,7 @@ You can also use hashtags (like #happy or tired)." textAlignment="natural" trans
         <image name="profile-image" width="85" height="84"/>
         <image name="record" width="31" height="31"/>
         <image name="moodWheelbg" width="320" height="247"/>
-        <image name="profile-image" width="102" height="102"/>
+        <image name="profile-image" width="85" height="84"/>
         <image name="record_big" width="37" height="37"/>
         <image name="shedule" width="31" height="31"/>
     </resources>

@@ -60,6 +60,7 @@ ns *kExcerciseSubCategoryViewController = @"ExcerciseSubCategoryViewController";
 ns *kSubCategoryDetailViewController = @"SubCategoryDetailViewController";
 ns *kRecordAlertViewController = @"RecordAlertViewController";
 ns *kMoodViewController = @"MoodViewController";
+
 #pragma mark - API URL
 ns *kLoginAPI = @"api/v1/authenticate";
 ns *kSignUpAPI = @"api/v1/users";

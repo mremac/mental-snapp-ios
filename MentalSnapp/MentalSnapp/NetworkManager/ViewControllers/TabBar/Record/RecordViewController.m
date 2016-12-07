@@ -23,6 +23,7 @@
     if(![[Util fetchCustomObjectForKey:@"isMoodViewController"] boolValue]) {
         [Util openCameraView:self WithAnimation:NO];
     }
+
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
@@ -42,6 +43,7 @@
         moodViewController.videoURL = urlvideo;
         [self.navigationController pushViewController:moodViewController animated:YES];
     }];
+
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
