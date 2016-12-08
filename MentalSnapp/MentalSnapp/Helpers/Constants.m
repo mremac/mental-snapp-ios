@@ -60,6 +60,7 @@ ns *kExcerciseSubCategoryViewController = @"ExcerciseSubCategoryViewController";
 ns *kSubCategoryDetailViewController = @"SubCategoryDetailViewController";
 ns *kRecordAlertViewController = @"RecordAlertViewController";
 ns *kMoodViewController = @"MoodViewController";
+ns *kFeelingListViewController = @"FeelingListViewController";
 
 #pragma mark - API URL
 ns *kLoginAPI = @"api/v1/authenticate";
@@ -71,10 +72,11 @@ ns *kDeactivateUser = @"api/v1/users/deactivate_account";
 ns *KPostSupportLog = @"api/v1/supports/record";
 ns *KGetGuidedExcercise = @"api/v1/guided_exercise";
 ns *KGetSubCategoryExcercise = @"api/v1/guided_exercise/%@/sub_categories";
+ns *KFeelingList = @"api/v1/feelings";
+ns *kRecordPostAPI = @"api/v1/posts";
 
 #pragma mark - StoryBoard segue identifiers
 #pragma mark Main
-
 ns *kGoToReportIssueScreen = @"goToReportIssueScreen";
 ns *kGoToQueuedExercisesScreen = @"goToQueuedExercisesScreen";
 ns *kGoToSignUp = @"toSignUp";
@@ -87,6 +89,7 @@ ns *kPickerViewController = @"PickerViewController";
 ns *kMoreScreenTableViewCellIdentifier = @"MoreScreenTableViewCellIdentifier";
 ns *kguidedExcerciseCellCollectionViewCell = @"guidedExcerciseCellCollectionViewCell";
 ns *kSubCategoryExcerciseTableViewCell = @"SubCategoryTableViewCell";
+ns *kFeelingTableViewCell = @"FeelingTableViewCell";
 
 #pragma mark - S3Buckets
 

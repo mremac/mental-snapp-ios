@@ -20,5 +20,7 @@
 - (void)didFinishPickingVideoFile:(NSURL *)videoURL fileType:(UploadFileType)fileType completionBlock:(completionBlock)block;
 + (BOOL)formatePhoneNumberOftextField:(UITextField *)textField withRange:(NSRange)range ReplacemenString:(NSString *)string;
 + (void)openCameraView:(id)target WithAnimation:(BOOL)animate;
++ (NSString*)getMoodString:(MoodType)type;
++ (UIColor*)getMoodColor:(MoodType)type;
 
 @end

@@ -55,6 +55,16 @@
      [self getObject:request withCompletionBlock:block];
 }
 
+#pragma mark - Record post data
+- (void)postRecordPostWithRequest:(Request *)request andCompletionBlock:(completionBlock)block {
+    [self postObject:request withCompletionBlock:block];
+}
+
+#pragma mark - Feeling data
+- (void)getFeelingWithRequest:(Request *)request andCompletionBlock:(completionBlock)block {
+    [self getObject:request withCompletionBlock:block];
+}
+
 #pragma mark - Login
 
 - (void)loginWithRequest:(Request *)request andCompletionBlock:(completionBlock)block {

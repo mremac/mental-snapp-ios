@@ -35,7 +35,6 @@
     [self.pickerViewController setPickerType:dateTime];
      [self.pickerViewController setDateSelection:futureDateOnly];
     [self.pickerViewController setDelegate:self];
-
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -89,7 +88,7 @@
 }
 
 -(IBAction)subcategoryRecordAction:(id)sender {
-    [Util openCameraView:self];
+    [Util openCameraView:self WithAnimation:YES];
 }
 
 

@@ -68,6 +68,17 @@ typedef NS_ENUM(NSInteger, ExerciseType){
     subcategoryExcercise
 };
 
+typedef NS_ENUM(NSInteger, MoodType){
+    KNone = 0,
+    TheBestMood,
+    VeryGoodMood,
+    GoodMood,
+    OkMood,
+    BadMood,
+    VeryBadMood,
+    TheWorstMood,
+};
+
 #pragma mark - Other constants
 exNS *kAfter;
 exNS *kBefore;
@@ -97,6 +108,7 @@ exNS *kExcerciseSubCategoryViewController;
 exNS *kSubCategoryDetailViewController;
 exNS *kRecordAlertViewController;
 exNS *kMoodViewController;
+exNS *kFeelingListViewController;
 
 #pragma mark - API URL
 exNS *KUserAPI;
@@ -108,6 +120,8 @@ exNS *kDeactivateUser;
 exNS  *KPostSupportLog;
 exNS *KGetGuidedExcercise;
 exNS *KGetSubCategoryExcercise;
+exNS *KFeelingList;
+exNS *kRecordPostAPI;
 
 #pragma mark - StoryBoard segue identifiers
 #pragma mark Main
@@ -122,6 +136,7 @@ exNS *kPickerViewController;
 exNS *kMoreScreenTableViewCellIdentifier;
 exNS *kguidedExcerciseCellCollectionViewCell;
 exNS *kSubCategoryExcerciseTableViewCell;
+exNS *kFeelingTableViewCell;
 
 #pragma mark - S3Buckets
 

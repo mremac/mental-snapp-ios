@@ -54,6 +54,17 @@
     block(YES, dict);
 }
 
+#pragma mark - Record post data
+- (void)postRecordPostWithRequest:(Request *)request andCompletionBlock:(completionBlock)block {
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"1", @"success", nil];
+    block(YES, dict);
+}
+
+#pragma mark - Feeling data
+- (void)getFeelingWithRequest:(Request *)request andCompletionBlock:(completionBlock)block {
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"1", @"success", nil];
+    block(YES, dict);
+}
 
 #pragma mark - Login
 - (void)loginWithRequest:(Request *)request andCompletionBlock:(completionBlock)block {

@@ -35,6 +35,8 @@
 		6A288EC51DED8BB100273CCC /* CommentsPaginate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A288EC01DED8BB100273CCC /* CommentsPaginate.m */; };
 		6A288EC61DED8BB100273CCC /* DatePaginate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A288EC21DED8BB100273CCC /* DatePaginate.m */; };
 		6A288EC71DED8BB100273CCC /* Paginate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A288EC41DED8BB100273CCC /* Paginate.m */; };
+		6A36F72A1DFAB37100C6A852 /* RecordPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A36F7291DFAB37100C6A852 /* RecordPost.m */; };
+		6A36F72E1DFAB3C000C6A852 /* Feeling.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A36F72D1DFAB3C000C6A852 /* Feeling.m */; };
 		6A39C1671DF95B950085C6EA /* EFCircularSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A39C1661DF95B950085C6EA /* EFCircularSlider.m */; };
 		6A39C16C1DF95BF40085C6EA /* MoodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A39C16B1DF95BF40085C6EA /* MoodViewController.m */; };
 		6A3DEAB51DF82E9000B6E007 /* RecordAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A3DEAB41DF82E9000B6E007 /* RecordAlertViewController.m */; };
@@ -44,6 +46,12 @@
 		6A3F7A761DEC6F920070415C /* SupportInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A3F7A751DEC6F920070415C /* SupportInterface.m */; };
 		6A3F7A7C1DEC758C0070415C /* GZIP.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A3F7A7B1DEC758C0070415C /* GZIP.m */; };
 		6A449EE21DFE774C00EE8875 /* SubCategoryDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A449EE11DFE774C00EE8875 /* SubCategoryDetailViewController.m */; };
+		6A449EF21DFEA2F400EE8875 /* RecordPostRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A449EF11DFEA2F400EE8875 /* RecordPostRequest.m */; };
+		6A449EF61DFEA45100EE8875 /* RecordPostInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A449EF51DFEA45100EE8875 /* RecordPostInterface.m */; };
+		6A5BBBAA1DFAEBCD00C67CE9 /* FeelingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A5BBBA91DFAEBCD00C67CE9 /* FeelingTableViewCell.m */; };
+		6A5BBBAE1DFAECA100C67CE9 /* FeelingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A5BBBAD1DFAECA100C67CE9 /* FeelingListViewController.m */; };
+		6A5BBBB31DFAFB9D00C67CE9 /* FeelingRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A5BBBB21DFAFB9D00C67CE9 /* FeelingRequest.m */; };
+		6A5BBBB61DFAFC7300C67CE9 /* FeelingInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A5BBBB51DFAFC7300C67CE9 /* FeelingInterface.m */; };
 		6A63D1AB1DF00D2200B8E188 /* GuidedExcercise.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A63D1AA1DF00D2200B8E188 /* GuidedExcercise.m */; };
 		6A63D1B01DF025C600B8E188 /* ExcercixeInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A63D1AF1DF025C600B8E188 /* ExcercixeInterface.m */; };
 		6A63D1B31DF0261A00B8E188 /* ExcerciseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A63D1B21DF0261A00B8E188 /* ExcerciseRequest.m */; };
@@ -196,6 +204,10 @@
 		6A288EC21DED8BB100273CCC /* DatePaginate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePaginate.m; sourceTree = "<group>"; };
 		6A288EC31DED8BB100273CCC /* Paginate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Paginate.h; sourceTree = "<group>"; };
 		6A288EC41DED8BB100273CCC /* Paginate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Paginate.m; sourceTree = "<group>"; };
+		6A36F7281DFAB37100C6A852 /* RecordPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordPost.h; sourceTree = "<group>"; };
+		6A36F7291DFAB37100C6A852 /* RecordPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordPost.m; sourceTree = "<group>"; };
+		6A36F72C1DFAB3C000C6A852 /* Feeling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Feeling.h; sourceTree = "<group>"; };
+		6A36F72D1DFAB3C000C6A852 /* Feeling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Feeling.m; sourceTree = "<group>"; };
 		6A39C1651DF95B950085C6EA /* EFCircularSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EFCircularSlider.h; sourceTree = "<group>"; };
 		6A39C1661DF95B950085C6EA /* EFCircularSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EFCircularSlider.m; sourceTree = "<group>"; };
 		6A39C16A1DF95BF40085C6EA /* MoodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoodViewController.h; sourceTree = "<group>"; };
@@ -214,6 +226,18 @@
 		6A3F7A7B1DEC758C0070415C /* GZIP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZIP.m; sourceTree = "<group>"; };
 		6A449EE01DFE774C00EE8875 /* SubCategoryDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubCategoryDetailViewController.h; sourceTree = "<group>"; };
 		6A449EE11DFE774C00EE8875 /* SubCategoryDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubCategoryDetailViewController.m; sourceTree = "<group>"; };
+		6A449EF01DFEA2F400EE8875 /* RecordPostRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordPostRequest.h; sourceTree = "<group>"; };
+		6A449EF11DFEA2F400EE8875 /* RecordPostRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordPostRequest.m; sourceTree = "<group>"; };
+		6A449EF41DFEA45100EE8875 /* RecordPostInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordPostInterface.h; sourceTree = "<group>"; };
+		6A449EF51DFEA45100EE8875 /* RecordPostInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordPostInterface.m; sourceTree = "<group>"; };
+		6A5BBBA81DFAEBCD00C67CE9 /* FeelingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeelingTableViewCell.h; sourceTree = "<group>"; };
+		6A5BBBA91DFAEBCD00C67CE9 /* FeelingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeelingTableViewCell.m; sourceTree = "<group>"; };
+		6A5BBBAC1DFAECA100C67CE9 /* FeelingListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeelingListViewController.h; sourceTree = "<group>"; };
+		6A5BBBAD1DFAECA100C67CE9 /* FeelingListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeelingListViewController.m; sourceTree = "<group>"; };
+		6A5BBBB11DFAFB9D00C67CE9 /* FeelingRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeelingRequest.h; sourceTree = "<group>"; };
+		6A5BBBB21DFAFB9D00C67CE9 /* FeelingRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeelingRequest.m; sourceTree = "<group>"; };
+		6A5BBBB41DFAFC7300C67CE9 /* FeelingInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeelingInterface.h; sourceTree = "<group>"; };
+		6A5BBBB51DFAFC7300C67CE9 /* FeelingInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeelingInterface.m; sourceTree = "<group>"; };
 		6A63D1A91DF00D2200B8E188 /* GuidedExcercise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuidedExcercise.h; sourceTree = "<group>"; };
 		6A63D1AA1DF00D2200B8E188 /* GuidedExcercise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuidedExcercise.m; sourceTree = "<group>"; };
 		6A63D1AE1DF025C600B8E188 /* ExcercixeInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExcercixeInterface.h; sourceTree = "<group>"; };
@@ -444,6 +468,7 @@
 		5C7BE3D11DE86E0300C15CB5 /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				6A5BBBA61DFAEBB100C67CE9 /* FeelingCell */,
 				6A7387DE1DF1731800D3A981 /* SubCategoryCell */,
 				5C7BE3D21DE86F3900C15CB5 /* MoreTableViewCell.h */,
 				5C7BE3D31DE86F3900C15CB5 /* MoreTableViewCell.m */,
@@ -480,6 +505,24 @@
 				6A288EC41DED8BB100273CCC /* Paginate.m */,
 			);
 			path = Pagination;
+			sourceTree = "<group>";
+		};
+		6A36F7261DFAB35A00C6A852 /* RecordPost */ = {
+			isa = PBXGroup;
+			children = (
+				6A36F7281DFAB37100C6A852 /* RecordPost.h */,
+				6A36F7291DFAB37100C6A852 /* RecordPost.m */,
+			);
+			path = RecordPost;
+			sourceTree = "<group>";
+		};
+		6A36F72B1DFAB3B200C6A852 /* Feeling */ = {
+			isa = PBXGroup;
+			children = (
+				6A36F72C1DFAB3C000C6A852 /* Feeling.h */,
+				6A36F72D1DFAB3C000C6A852 /* Feeling.m */,
+			);
+			path = Feeling;
 			sourceTree = "<group>";
 		};
 		6A39C1641DF95B950085C6EA /* EFCircularSlider */ = {
@@ -534,6 +577,24 @@
 				6A3F7A7B1DEC758C0070415C /* GZIP.m */,
 			);
 			path = GZIP;
+			sourceTree = "<group>";
+		};
+		6A5BBBA61DFAEBB100C67CE9 /* FeelingCell */ = {
+			isa = PBXGroup;
+			children = (
+				6A5BBBA81DFAEBCD00C67CE9 /* FeelingTableViewCell.h */,
+				6A5BBBA91DFAEBCD00C67CE9 /* FeelingTableViewCell.m */,
+			);
+			path = FeelingCell;
+			sourceTree = "<group>";
+		};
+		6A5BBBAB1DFAEC8700C67CE9 /* FeelingListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6A5BBBAC1DFAECA100C67CE9 /* FeelingListViewController.h */,
+				6A5BBBAD1DFAECA100C67CE9 /* FeelingListViewController.m */,
+			);
+			path = FeelingListViewController;
 			sourceTree = "<group>";
 		};
 		6A7387DE1DF1731800D3A981 /* SubCategoryCell */ = {
@@ -739,6 +800,10 @@
 				5C5309DF1DE6C865005E14A4 /* LoginRequest.m */,
 				6A63D1B11DF0261A00B8E188 /* ExcerciseRequest.h */,
 				6A63D1B21DF0261A00B8E188 /* ExcerciseRequest.m */,
+				6A5BBBB11DFAFB9D00C67CE9 /* FeelingRequest.h */,
+				6A5BBBB21DFAFB9D00C67CE9 /* FeelingRequest.m */,
+				6A449EF01DFEA2F400EE8875 /* RecordPostRequest.h */,
+				6A449EF11DFEA2F400EE8875 /* RecordPostRequest.m */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -754,6 +819,10 @@
 				6A7D95B91DE6CD6A0065573E /* UserInterface.m */,
 				6A63D1AE1DF025C600B8E188 /* ExcercixeInterface.h */,
 				6A63D1AF1DF025C600B8E188 /* ExcercixeInterface.m */,
+				6A5BBBB41DFAFC7300C67CE9 /* FeelingInterface.h */,
+				6A5BBBB51DFAFC7300C67CE9 /* FeelingInterface.m */,
+				6A449EF41DFEA45100EE8875 /* RecordPostInterface.h */,
+				6A449EF51DFEA45100EE8875 /* RecordPostInterface.m */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -761,6 +830,7 @@
 		6AAA01281DE56F8600208022 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				6A5BBBAB1DFAEC8700C67CE9 /* FeelingListViewController */,
 				6A39C1691DF95BDD0085C6EA /* MoodView */,
 				6A3DEAB11DF82E7C00B6E007 /* RecordAlertView */,
 				6A3EDED71DF56A3400C7BB16 /* PickerPopView */,
@@ -809,6 +879,8 @@
 		6AAA01331DE56F8600208022 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				6A36F72B1DFAB3B200C6A852 /* Feeling */,
+				6A36F7261DFAB35A00C6A852 /* RecordPost */,
 				6AC2A94B1DEED9B4009A21EF /* GuidedExcercise */,
 				6A288EBE1DED8BB100273CCC /* Pagination */,
 				6AAA01341DE56F8600208022 /* AppSettings.h */,
@@ -1190,6 +1262,7 @@
 				6AAA015F1DE56F8600208022 /* RequestManager.m in Sources */,
 				6A3F7A6D1DEC69810070415C /* SupportScreenViewController.m in Sources */,
 				6AAA014B1DE56F8600208022 /* UIImage+ImageBlur.m in Sources */,
+				6A449EF61DFEA45100EE8875 /* RecordPostInterface.m in Sources */,
 				6AAA014A1DE56F8600208022 /* UIImage+fixOrientation.m in Sources */,
 				5CF694FD1DEDBED100F00EA2 /* SignUpViewController.m in Sources */,
 				6AAA01511DE56F8600208022 /* Util.m in Sources */,
@@ -1223,6 +1296,7 @@
 				5C7BE3C41DE8570100C15CB5 /* MainTabBarController.m in Sources */,
 				5C7BE3E51DE8877400C15CB5 /* QueuedExercisesViewController.m in Sources */,
 				6A288EC51DED8BB100273CCC /* CommentsPaginate.m in Sources */,
+				6A5BBBAE1DFAECA100C67CE9 /* FeelingListViewController.m in Sources */,
 				6AAA014E1DE56F8600208022 /* UIView+Badge.m in Sources */,
 				6A449EE21DFE774C00EE8875 /* SubCategoryDetailViewController.m in Sources */,
 				6A3EDEDB1DF56A6100C7BB16 /* PickerViewController.m in Sources */,
@@ -1233,12 +1307,16 @@
 				6AAA01621DE56F8600208022 /* LoginInterface.m in Sources */,
 				6A63D1B31DF0261A00B8E188 /* ExcerciseRequest.m in Sources */,
 				6AAA01421DE56F8600208022 /* NSDate+Properties.m in Sources */,
+				6A36F72A1DFAB37100C6A852 /* RecordPost.m in Sources */,
 				6AC660E81DE5740B00BB8949 /* README.md in Sources */,
 				5C7BE3DF1DE886BA00C15CB5 /* RecordViewController.m in Sources */,
+				6A36F72E1DFAB3C000C6A852 /* Feeling.m in Sources */,
+				6A449EF21DFEA2F400EE8875 /* RecordPostRequest.m in Sources */,
 				5C7BE3D41DE86F3900C15CB5 /* MoreTableViewCell.m in Sources */,
 				6AAA01691DE56F8600208022 /* AppSettings.m in Sources */,
 				5C545E7C1DF02035004610B0 /* ForgotPasswordFirstViewController.m in Sources */,
 				6AAA01451DE56F8600208022 /* NSURL+Properties.m in Sources */,
+				6A5BBBAA1DFAEBCD00C67CE9 /* FeelingTableViewCell.m in Sources */,
 				6AAA014C1DE56F8600208022 /* UIImage+ImageEffects.m in Sources */,
 				6AAA01501DE56F8600208022 /* UIView+ReFrame.m in Sources */,
 				6AAA013E1DE56F8600208022 /* AppDelegate.m in Sources */,
@@ -1255,6 +1333,7 @@
 				6AAA015E1DE56F8600208022 /* TestAPI.m in Sources */,
 				6AC660EB1DE5740B00BB8949 /* SMobiLogger.m in Sources */,
 				6A24284A1DE814CD00FF15A9 /* ChangePasswordViewController.m in Sources */,
+				6A5BBBB61DFAFC7300C67CE9 /* FeelingInterface.m in Sources */,
 				6A63D1AB1DF00D2200B8E188 /* GuidedExcercise.m in Sources */,
 				6A288EC71DED8BB100273CCC /* Paginate.m in Sources */,
 				6A3F7A761DEC6F920070415C /* SupportInterface.m in Sources */,
@@ -1263,6 +1342,7 @@
 				6A3DEAB51DF82E9000B6E007 /* RecordAlertViewController.m in Sources */,
 				6AAA015D1DE56F8600208022 /* RealAPI.m in Sources */,
 				5C545E801DF02281004610B0 /* ForgotPasswordSecondViewController.m in Sources */,
+				6A5BBBB31DFAFB9D00C67CE9 /* FeelingRequest.m in Sources */,
 				6AAA014D1DE56F8600208022 /* UILabel+Properties.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

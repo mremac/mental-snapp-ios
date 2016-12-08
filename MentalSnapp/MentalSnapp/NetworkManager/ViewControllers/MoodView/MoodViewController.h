@@ -7,9 +7,11 @@
 //
 
 #import "MSViewController.h"
+#import "GuidedExcercise.h"
 
 @interface MoodViewController : MSViewController
 
 @property(nonatomic, strong) NSURL *videoURL;
+@property (nonatomic, strong) GuidedExcercise *excercise;
 
 @end

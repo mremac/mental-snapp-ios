@@ -43,7 +43,6 @@
         moodViewController.videoURL = urlvideo;
         [self.navigationController pushViewController:moodViewController animated:YES];
     }];
-
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {

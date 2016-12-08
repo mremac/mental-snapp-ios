@@ -88,7 +88,6 @@
     self.guidedExcercisePaginate.details = self.excercise.excerciseId;
 }
 
-
 #pragma mark - API Call
 -(void)getGuidedExcercise {
     [self initGuidedPaginate];

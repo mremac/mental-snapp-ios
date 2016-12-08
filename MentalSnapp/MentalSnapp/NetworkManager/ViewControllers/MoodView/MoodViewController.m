@@ -9,8 +9,20 @@
 #import "MoodViewController.h"
 #import "EFCircularSlider.h"
 #import <AVFoundation/AVFoundation.h>
+#import "Feeling.h"
+#import "FeelingListViewController.h"
+#import "RequestManager.h"
 
-@interface MoodViewController ()
+#define PlaceHolderTextView @"What's going on? you can write about  it here. You can also use hashtags (like #happy or tired)."
+#define PlaceHolderColor [UIColor colorWithRed:90.0/255.0 green:90.0/255.0 blue:90.0/255.0 alpha:1.0]
+#define DefaultTextViewColor [UIColor colorWithRed:61.0/255.0 green:61.0/255.0 blue:61.0/255.0 alpha:1.0]
+
+@interface MoodViewController () <UITextFieldDelegate, UITextViewDelegate, FeelingListDalegate>
+{
+    BOOL isUserEditedName;
+    MoodType selectedMood;
+    Feeling *selectedFeeling;
+}
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UIView *containerView;
@@ -21,6 +33,9 @@
 @property (strong, nonatomic) IBOutlet UIButton *addFeelingButton;
 @property (strong, nonatomic) IBOutlet UIView *descriptionView;
 @property (strong, nonatomic) IBOutlet UITextView *descriptionTextView;
+@property (strong, nonatomic) IBOutlet UILabel *moodLabel;
+@property (strong, nonatomic) IBOutlet UIView *descptionView;
+@property (strong, nonatomic) FeelingListViewController *feelingListViewController;
 
 @property(nonatomic, strong) NSString *videoURLPath;
 @property(nonatomic, strong) NSString *videoThumbnailURLPath;
@@ -38,8 +53,17 @@
     [self setRightMenuButtons:[NSArray arrayWithObjects:[self uploadButton], nil]];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self addMoodWheel];
+        [self populateNameOfVideo];
     });
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
+//[self.scrollView setScrollEnabled:NO];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -58,6 +82,12 @@
 */
 
 #pragma mark - Private methods
+- (void)populateNameOfVideo {
+    if(!isUserEditedName) {
+        NSString *formatedVideoName = (selectedMood!=KNone)?((selectedFeeling)?[NSString stringWithFormat:@"%@_%@_%@_%f",[UserManager sharedManager].userModel.userName,[Util getMoodString:selectedMood],selectedFeeling.feelingName,([[NSDate date] timeIntervalSince1970] * 1000)]:[NSString stringWithFormat:@"%@_%@_%f",[UserManager sharedManager].userModel.userName,[Util getMoodString:selectedMood],([[NSDate date] timeIntervalSince1970] * 1000)]):((selectedFeeling)?[NSString stringWithFormat:@"%@_%@_%f",[UserManager sharedManager].userModel.userName,selectedFeeling.feelingName,([[NSDate date] timeIntervalSince1970] * 1000)]:[NSString stringWithFormat:@"%@_%f",[UserManager sharedManager].userModel.userName,([[NSDate date] timeIntervalSince1970] * 1000)]);
+        [self.videoNameTextField setText:formatedVideoName];
+    }
+}
 
 - (void)willUploadVideoOnAWS
 {
@@ -121,10 +151,46 @@
     }
 }
 
-- (void)didPerformAPICall
-{
-    //TODO: Use self.videoURLPath & self.videoThumbnailURLPath for API params
-    [self didClearStateOnPop];
+-(BOOL)isValidateField{
+    if([self.videoNameTextField.text isEqualToString:@""]){
+        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Please enter video title."];
+        return NO;
+    }
+     if([self.videoThumbnailURLPath isEqualToString:@""]){
+         [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Video cover image is missing."];
+         return NO;
+    }
+    if([self.descriptionTextView.text isEqualToString:PlaceHolderTextView] || [self.descriptionTextView.text isEqualToString:@""]){
+        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Please enter description."];
+        return NO;
+    }
+    
+    if([self.videoURLPath isEqualToString:@""]){
+        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Video url is missing."];
+        return NO;
+    }
+    if(selectedMood == KNone){
+        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Please select you mood."];
+        return NO;
+    }
+    if(selectedFeeling){
+        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Please select feeling."];
+        return NO;
+    }
+    
+        return YES;
+}
+
+- (void)didPerformAPICall {
+    if([self isValidateField]) {
+        RecordPost *post = [[RecordPost alloc] initWithVideoName:self.videoNameTextField.text andExcerciseType:((_excercise)?(([_excercise.excerciseStringType isEqualToString:@""])?@"GuidedExcercise":_excercise.excerciseStringType):@"") andCoverURL:self.videoThumbnailURLPath andPostDesciption:self.descriptionTextView.text andVideoURL:self.videoURLPath andUserId:[UserManager sharedManager].userModel.userId andMoodId:[NSString stringWithFormat:@"%d",selectedMood] andFeelingId:selectedFeeling.feelingId andWithExcercise:_excercise];
+        
+        [[RequestManager alloc] postRecordPost:post withCompletionBlock:^(BOOL success, id response) {
+            if(success){
+                [self didClearStateOnPop];
+            }
+        }];
+    }
 }
 
 - (void)didClearStateOnPop
@@ -143,7 +209,6 @@
     UIBarButtonItem *leftBarButton = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
     return leftBarButton;
 }
-
 
 -(void)addMoodWheel {
     CGFloat xValue = (self.moodWheelView.frame.size.width-250)/2;
@@ -170,24 +235,125 @@
 }
 
 -(void)sliderValueChanged:(EFCircularSlider*)slider {
-    
+    [self.view endEditing:YES];
     CGFloat value = 100.0/7.0;
     if(slider.currentValue<=(value)){
-        [slider setFilledColor:[UIColor colorWithRed:0.0/255.0 green:255.0/255.0 blue:0.0/255.0 alpha:1.0f]];
+        selectedMood = TheBestMood;
+        [slider setFilledColor:[Util getMoodColor:TheBestMood]];
     }else if(slider.currentValue<=(value*2)){
-        [slider setFilledColor:[UIColor colorWithRed:34.0/255.0 green:139.0/255.0 blue:34.0/255.0 alpha:1.0f]];
+        selectedMood = VeryGoodMood;
+        [slider setFilledColor:[Util getMoodColor:VeryGoodMood]];
     }else if(slider.currentValue<=(value*3)){
-        [slider setFilledColor:[UIColor colorWithRed:245.0/255.0 green:130.0/255.0 blue:32.0/255.0 alpha:1.0f]];
+        selectedMood = GoodMood;
+        [slider setFilledColor:[Util getMoodColor:GoodMood]];
     }else if(slider.currentValue<=(value*4)){
-        [slider setFilledColor:[UIColor colorWithRed:253.0/255.0 green:185.0/255.0 blue:19.0/255.0 alpha:1.0f]];
+        selectedMood = OkMood;
+        [slider setFilledColor:[Util getMoodColor:OkMood]];
     }else if(slider.currentValue<=(value*5)){
-        [slider setFilledColor:[UIColor colorWithRed:237.0/255.0 green:28.0/255.0 blue:36.0/255.0 alpha:1.0f]];
+        selectedMood = BadMood;
+        [slider setFilledColor:[Util getMoodColor:BadMood]];
     }else if(slider.currentValue<=(value*6)){
-        [slider setFilledColor:[UIColor colorWithRed:83.0/255.0 green:79.0/255.0 blue:161.0/255.0 alpha:1.0f]];
+        selectedMood = VeryBadMood;
+        [slider setFilledColor:[Util getMoodColor:VeryBadMood]];
     }else if(slider.currentValue<=(100)){
-        [slider setFilledColor:[UIColor colorWithRed:50.0/255.0 green:0.0/255.0 blue:74.0/255.0 alpha:1.0f]];
+        selectedMood = TheWorstMood;
+        [slider setFilledColor:[Util getMoodColor:TheWorstMood]];
     }
+    [self.moodLabel setText:[Util getMoodString:selectedMood].uppercaseString];
+    [self populateNameOfVideo];
 }
+
+#pragma mark  - TextField Delegates
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    //[self toolBarCancelButtonAction:nil];
+    return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField{
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
+    return YES;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+    
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    isUserEditedName = YES;
+    return YES;
+}  // return NO to not change text
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
+}
+
+#pragma mark - Text View Delegate
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView {
+    NSString *string = textView.text;
+    if([string.trim isEqualToString:PlaceHolderTextView]){
+        textView.text = @"";
+        [textView setTextColor:DefaultTextViewColor];
+    }
+    return YES;
+}
+- (BOOL)textViewShouldEndEditing:(UITextView *)textView {
+    return YES;
+}
+- (void)textViewDidBeginEditing:(UITextView *)textView {
+    CGPoint point = self.descptionView.frame.origin;
+    point.y = point.y-100;
+    [self.scrollView setContentOffset:point];
+}
+- (void)textViewDidEndEditing:(UITextView *)textView {
+}
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    
+    const char * _char = [text cStringUsingEncoding:NSUTF8StringEncoding];
+    int backSpace = strcmp(_char, "\b");
+    if (backSpace == -8 && textView.text.length<=1) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            textView.text = PlaceHolderTextView;
+            [textView setTextColor:PlaceHolderColor];
+            textView.selectedRange = NSMakeRange(0, 0);
+        });
+        return YES;
+    }
+    
+    NSString *string = textView.text;
+    if([string.trim isEqualToString:PlaceHolderTextView]){
+        textView.text = @"";
+        [textView setTextColor:DefaultTextViewColor];
+        return YES;
+    }
+
+    NSString * newString = [textView.text stringByReplacingCharactersInRange:range withString:text];
+    if(newString.length > 160){
+        return NO;
+    }
+    return YES;
+}
+- (void)textViewDidChange:(UITextView *)textView {
+}
+
+#pragma mark - KeyBoard Show/Hide Delegate
+
+- (void)keyboardWillShow:(NSNotification *)note {
+}
+
+- (void)keyboardWillHide:(NSNotification *)note {
+    [self.scrollView setContentOffset:CGPointMake(0, 0)];
+}
+
+#pragma mark - feeling Delegate
+-(void)didSelectFeeling:(Feeling *)feeling {
+    selectedFeeling = feeling;
+}
+
 
 #pragma mark - IBActions
 - (IBAction)uploadButtonAction:(id)sender {
@@ -195,5 +361,12 @@
 }
 
 - (IBAction)addFeelingButtonAction:(id)sender {
+     [self.view endEditing:YES];
+    self.feelingListViewController = [[UIStoryboard storyboardWithName:KProfileStoryboard bundle:nil] instantiateViewControllerWithIdentifier:kFeelingListViewController];
+    if(selectedFeeling){
+        self.feelingListViewController.selectedFeeling = selectedFeeling;
+    }
+    self.feelingListViewController.delegate = self;
+    [self.navigationController pushViewController:self.feelingListViewController animated:YES];
 }
 @end

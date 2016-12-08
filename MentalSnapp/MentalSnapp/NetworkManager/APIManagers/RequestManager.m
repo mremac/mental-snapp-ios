@@ -12,6 +12,10 @@
 #import "SupportInterface.h"
 #import "ExcercixeInterface.h"
 #import "ExcerciseRequest.h"
+#import "FeelingRequest.h"
+#import "FeelingInterface.h"
+#import "RecordPostRequest.h"
+#import "RecordPostInterface.h"
 
 NSString *const kDefaultErrorMessage =  @"Error! Please try again.";
 
@@ -136,6 +140,31 @@ NSString *const kDefaultErrorMessage =  @"Error! Please try again.";
         block(NO, nil);
     }
     
+}
+
+#pragma mark - Record Post data
+- (void)postRecordPost:(RecordPost *)post withCompletionBlock:(completionBlock)block {
+    if ([ApplicationDelegate hasNetworkAvailable]) {
+            [[RecordPostInterface alloc] postRecordPostWithRequest:[[RecordPostRequest alloc] initForPostRecordPost:post] andCompletionBlock:^(BOOL success, id response) {
+                block(success, response);
+            }];
+        
+    }else {
+        block(NO, nil);
+    }
+}
+
+#pragma mark - Feeling data
+- (void)getFeelingWithPaginate:(Paginate *)paginate withCompletionBlock:(completionBlock)block{
+    if ([ApplicationDelegate hasNetworkAvailable]) {
+        
+        [[FeelingInterface alloc] getFeelingWithRequest:[[FeelingRequest alloc] initWithFetchFeelingsWithPaginate:paginate] andCompletionBlock:^(BOOL success, id response) {
+            block(success, response);
+        }];
+        
+    }else {
+        block(NO, nil);
+    }
 }
 
 @end

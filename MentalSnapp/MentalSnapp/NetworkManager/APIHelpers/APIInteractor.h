@@ -27,8 +27,13 @@
 - (void)getGuidedExcerciseWithRequest:(Request *)request andCompletionBlock:(completionBlock)block;
 - (void)getSubCategoryExcerciseWithRequest:(Request *)request andCompletionBlock:(completionBlock)block;
 
-#pragma mark - Login
+#pragma mark - Record post data
+- (void)postRecordPostWithRequest:(Request *)request andCompletionBlock:(completionBlock)block;
 
+#pragma mark - Feeling data
+- (void)getFeelingWithRequest:(Request *)request andCompletionBlock:(completionBlock)block;
+
+#pragma mark - Login
 - (void)loginWithRequest:(Request *)request andCompletionBlock:(completionBlock)block;
 - (void)signUpWithRequest:(Request *)request andCompletionBlock:(completionBlock)block;
 - (void)forgotPasswordWithRequest:(Request *)request andCompletionBlock:(completionBlock)block;
