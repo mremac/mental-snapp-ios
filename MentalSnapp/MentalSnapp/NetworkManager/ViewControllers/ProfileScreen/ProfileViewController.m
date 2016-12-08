@@ -48,6 +48,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self.maleGenderButton setSelected:YES];
+    [[UserManager sharedManager] setValueInLoggedInUserObjectFromUserDefault];
     self.user = [UserManager sharedManager].userModel;
     [self setNavigationBarButtonTitle:@"Profile"];
     [self setLeftMenuButtons:[NSArray arrayWithObject:[self backButton]]];
@@ -80,11 +81,15 @@
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     //[self toolBarCancelButtonAction:nil];
+    if(textField.text.length<=0 && [textField isEqual:self.phoneTextField]){
+        textField.text = @"+44 ";
+    }
     return YES;
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
     [self.scrollView setContentOffset:(([textField isEqual:self.emailTextFeild])?self.emailFieldview.frame.origin:self.phoneFieldView.frame.origin)];
+    
 }
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
@@ -95,7 +100,7 @@
 
 }
 
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     return YES;
 }  // return NO to not change text
 
@@ -103,6 +108,45 @@
     [textField resignFirstResponder];
     return YES;
 }
+-(BOOL)formatePhoneNumberOftextField:(UITextField *)textField withRange:(NSRange)range ReplacemenString:(NSString *)string
+{
+    BOOL result = YES;
+    BOOL valid;
+    NSCharacterSet *alphaNums = [NSCharacterSet decimalDigitCharacterSet];
+    NSCharacterSet *inStringSet = [NSCharacterSet characterSetWithCharactersInString:string];
+    valid = [alphaNums isSupersetOfSet:inStringSet];
+    
+    if (![string length] && [textField.text length]==1) {
+        textField.text = @"+44 ";
+    }
+    
+    if (!valid || [string isEqualToString:@"+44 "]){
+        return NO;
+    }
+    
+    if (string.length != 0) {
+        NSMutableString *text = [NSMutableString stringWithString:[[textField.text componentsSeparatedByCharactersInSet:[[NSCharacterSet decimalDigitCharacterSet] invertedSet]] componentsJoinedByString:@""]];
+        [text insertString:@"(" atIndex:0];
+        
+        if (text.length > 3)
+            [text insertString:@") " atIndex:4];
+        
+        if (text.length > 8)
+            [text insertString:@"-" atIndex:9];
+        
+        if (text.length > 13) {
+            text = [NSMutableString stringWithString:[text substringToIndex:textField.text.length]];
+            // result = NO;
+        }
+        textField.text = text;
+    }
+    NSString * newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    // if(result)
+    //[textField sizeToFit];
+    
+    return result;
+}
+
 
 #pragma mark - Private methods
 
@@ -196,7 +240,10 @@
 
 - (void)didPerformUpdateUserDetailsAPICall
 {
-    UserModel *user = [[UserModel alloc] initWithUserId:self.user.userId andEmail:self.emailTextFeild.text andUserName:self.user.userName andPhone:self.phoneTextField.text andGender:[NSString stringWithFormat:@"%@",(selectedGender == MaleGender)?@"male":@"female"] andDateOfBirth:[self.dateOfBirthButton titleForState:UIControlStateNormal] andProfilePic:profilePicURL];
+    NSString *phoneNumber = self.phoneTextField.text;
+    phoneNumber = [phoneNumber stringByReplacingOccurrencesOfString:@"+44" withString:@""];
+    phoneNumber = [phoneNumber stringByReplacingOccurrencesOfString:@" " withString:@""];
+    UserModel *user = [[UserModel alloc] initWithUserId:self.user.userId andEmail:self.emailTextFeild.text andUserName:self.user.userName andPhone:phoneNumber andGender:[NSString stringWithFormat:@"%@",(selectedGender == MaleGender)?@"male":@"female"] andDateOfBirth:[self.dateOfBirthButton titleForState:UIControlStateNormal] andProfilePic:profilePicURL];
     
     [[RequestManager alloc] editUserWithUserModel:user withCompletionBlock:^(BOOL success, id response) {
         if(success)

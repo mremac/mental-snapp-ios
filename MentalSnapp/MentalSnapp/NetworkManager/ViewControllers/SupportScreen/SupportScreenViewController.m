@@ -19,7 +19,6 @@
 @property (nonatomic, strong) NSData *textFileContentsData;
 @property (strong, nonatomic) IBOutlet UITextField *titleTextField;
 
-
 - (IBAction)attachScreenShotAction:(id)sender;
 - (IBAction)sendButtonAction:(id)sender;
 
@@ -99,10 +98,14 @@ NSString *const supportTextViewPlaceholder = @"Write your text...";
 }
 
 - (void)selectPhoto {
-    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-    picker.delegate = self;
-    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    [ApplicationDelegate.window.rootViewController.presentedViewController presentViewController:picker animated:YES completion:NULL];
+    if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypePhotoLibrary]) {
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.delegate = (id)self;
+        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        [ApplicationDelegate.window.rootViewController presentViewController:picker animated:YES completion:NULL];
+    } else  {
+        [Banner showFailureBannerWithSubtitle:@"Photo libarary not available."];
+    }
 }
 
 #pragma mark - Text View Delegate Methods

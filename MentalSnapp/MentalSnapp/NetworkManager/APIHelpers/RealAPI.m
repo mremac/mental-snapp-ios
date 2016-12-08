@@ -191,7 +191,6 @@
     {
         realAPIBlock = block;
         [self renewLogin];
-        
         return;
     }
     

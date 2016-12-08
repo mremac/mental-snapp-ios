@@ -117,7 +117,6 @@
             self.isNetworkAvailable = YES;
             // Save response in MobiLogger
             [[SMobiLogger sharedInterface] info:@"Network:" withDescription:@"ON"];
-            
             break;
             
             case AFNetworkReachabilityStatusNotReachable:
@@ -137,11 +136,9 @@
     [[SMobiLogger sharedInterface] info:[NSString stringWithFormat:@"%s", __FUNCTION__] withDescription:[NSString stringWithFormat:@"Info: isNetworkAvailable: %@", self.isNetworkAvailable?@"ON":@"OFF"]];
         if (!self.isNetworkAvailable) {
             dispatch_async(dispatch_get_main_queue(), ^{
-//                [self showAlertWithMessage:kNoNetworkAvailable isLogout:NO];
-//                      [Banner showNetworkFailureBanner];
+                 [Banner showNetworkFailureBanner];
            });
         }
-        
         return self.isNetworkAvailable;
 }
     

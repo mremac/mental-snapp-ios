@@ -96,7 +96,7 @@
 
 #pragma mark - Date picker Selector method
 - (void)dateIsChanged:(id)sender{
-    [self.dateOfBirthButton setTitle:[NSDate stringFromDate:self.datePicker.date format:@"dd/MM/yyyy"] forState:UIControlStateNormal];
+    [self.dateOfBirthButton setTitle:[NSDate stringFromDate:self.datePicker.date format:@"dd MMM yyyy"] forState:UIControlStateNormal];
 }
 
 #pragma mark - Private methods
@@ -156,18 +156,22 @@
 
 - (IBAction)signUpButtonTapped:(id)sender {
     if([self isValidateFields]){
+        NSString *phoneNumber = self.phoneTextField.text;
+        phoneNumber = [phoneNumber stringByReplacingOccurrencesOfString:@"+44" withString:@""];
+        phoneNumber = [phoneNumber stringByReplacingOccurrencesOfString:@" " withString:@""];
         UserModel *user = [UserModel new];
         user.userName = self.nameTextFeild.text.trim;
         user.email = self.emailTextFeild.text.trim;
-        user.phoneNumber = self.phoneTextField.text.trim;
+        user.phoneNumber = phoneNumber;
         user.dateOfBirth = self.dateOfBirthButton.titleLabel.text;
         user.gender = [NSString stringWithFormat:@"%@",(selectedGender == MaleGender)?@"male":@"female"];
         user.password = self.passwordTextField.text;
         user.confirmPassword = self.confirmPasswordTextField.text;
-        user.phoneCountryCode = @"+1";
+        user.phoneCountryCode = @"+44";
 
         [[RequestManager alloc] signUpWithUserModel:user withCompletionBlock:^(BOOL success, id response) {
             if (success) {
+                [[UserManager sharedManager] saveLoggedinUserInfoInUserDefault];
                 [UIView transitionWithView:ApplicationDelegate.window
                                   duration:0.5f
                                    options:UIViewAnimationOptionTransitionFlipFromLeft
@@ -189,7 +193,7 @@
 }
 
 - (IBAction)toolBarDoneButtonAction:(id)sender {
-    [self.dateOfBirthButton setTitle:[NSDate stringFromDate:self.datePicker.date format:@"dd/MM/yyyy"] forState:UIControlStateNormal];
+    [self.dateOfBirthButton setTitle:[NSDate stringFromDate:self.datePicker.date format:@"dd MMM yyyy"] forState:UIControlStateNormal];
     self.datePickerViewBottomConstraint.constant = -self.dateOfBirthView.frame.size.width;
     [UIView animateWithDuration:0.5 animations:^{
         [self.view layoutIfNeeded];

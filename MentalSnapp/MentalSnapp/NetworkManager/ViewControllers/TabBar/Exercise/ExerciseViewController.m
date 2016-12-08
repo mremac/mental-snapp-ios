@@ -18,6 +18,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [self setNavigationBarButtonTitle:@"Mental Snapp"];
+    [self setLeftMenuButtons:[NSArray arrayWithObject:[self backButton]]];
 }
 
 @end

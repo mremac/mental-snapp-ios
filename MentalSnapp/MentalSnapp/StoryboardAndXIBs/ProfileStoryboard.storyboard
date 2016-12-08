@@ -115,7 +115,7 @@
                                         <color key="textColor" red="0.91372549020000005" green="0.39607843139999999" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EiG-Tx-q7x">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="•••••••••••••" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EiG-Tx-q7x">
                                         <constraints>
                                             <constraint firstAttribute="height" constant="26" id="W53-YU-JRD"/>
                                         </constraints>
@@ -161,7 +161,7 @@
                                         <color key="textColor" red="0.95294117649999999" green="0.36470588240000001" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bZX-Rr-vaa">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="•••••••••••••••" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bZX-Rr-vaa">
                                         <constraints>
                                             <constraint firstAttribute="height" constant="26" id="mrf-yQ-q1R"/>
                                         </constraints>
@@ -207,7 +207,7 @@
                                         <color key="textColor" red="0.95294117649999999" green="0.36470588240000001" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jfW-es-dSV">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="•••••••••••••••" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jfW-es-dSV">
                                         <constraints>
                                             <constraint firstAttribute="height" constant="26" id="XBw-ov-bZy"/>
                                         </constraints>
@@ -316,7 +316,10 @@
                                                             <constraint firstAttribute="height" constant="104" id="X54-fE-FcZ"/>
                                                             <constraint firstAttribute="width" constant="104" id="yG4-g7-2xD"/>
                                                         </constraints>
-                                                        <state key="normal" image="profile-image"/>
+                                                        <size key="titleShadowOffset" width="1" height="1"/>
+                                                        <state key="normal" backgroundImage="profile-image">
+                                                            <color key="titleShadowColor" red="0.70362580129999996" green="0.70362580129999996" blue="0.70362580129999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                                 <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1206,7 +1209,7 @@
         <image name="female_disable" width="67" height="15"/>
         <image name="male" width="67" height="15"/>
         <image name="male_desable" width="67" height="15"/>
-        <image name="profile-image" width="102" height="102"/>
+        <image name="profile-image" width="85" height="84"/>
         <image name="record" width="23" height="23"/>
         <image name="record_big" width="37" height="37"/>
         <image name="shedule" width="23" height="23"/>

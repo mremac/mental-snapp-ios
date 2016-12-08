@@ -129,6 +129,8 @@
     {
         cell = [[SubCategoryTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kSubCategoryExcerciseTableViewCell];
     }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [cell setTag:indexPath.row];
     cell.calenderButton.tag = cell.recordButton.tag = indexPath.row;
     
