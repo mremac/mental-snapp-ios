@@ -5,6 +5,7 @@
 
 #import "RecordViewController.h"
 #import "RecordAlertViewController.h"
+#import "MoodViewController.h"
 
 @interface RecordViewController () <UIImagePickerControllerDelegate>
 
@@ -19,7 +20,9 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [self setNavigationBarButtonTitle:@"Mental Snapp"];
-    [Util openCameraView:self WithAnimation:NO];
+    if(![Util fetchCustomObjectForKey:@"isMoodViewController"]) {
+        [Util openCameraView:self WithAnimation:NO];
+    }
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
@@ -32,7 +35,11 @@
 
 #pragma mark - Image picker delegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
-    [picker dismissViewControllerAnimated:YES completion:nil];
+    [Util saveCustomObject:[NSNumber numberWithBool:YES] toUserDefaultsForKey:@"isMoodViewController"];
+    [picker dismissViewControllerAnimated:YES completion:^{
+        MoodViewController *moodViewController = [[UIStoryboard storyboardWithName:KProfileStoryboard bundle:nil] instantiateViewControllerWithIdentifier:kMoodViewController];
+        [self.navigationController pushViewController:moodViewController animated:YES];
+    }];
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {

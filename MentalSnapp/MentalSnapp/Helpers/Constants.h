@@ -96,6 +96,7 @@ exNS *kGuidedExcerciseViewController;
 exNS *kExcerciseSubCategoryViewController;
 exNS *kSubCategoryDetailViewController;
 exNS *kRecordAlertViewController;
+exNS *kMoodViewController;
 
 #pragma mark - API URL
 exNS *KUserAPI;

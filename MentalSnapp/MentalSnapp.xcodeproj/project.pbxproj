@@ -35,6 +35,8 @@
 		6A288EC51DED8BB100273CCC /* CommentsPaginate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A288EC01DED8BB100273CCC /* CommentsPaginate.m */; };
 		6A288EC61DED8BB100273CCC /* DatePaginate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A288EC21DED8BB100273CCC /* DatePaginate.m */; };
 		6A288EC71DED8BB100273CCC /* Paginate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A288EC41DED8BB100273CCC /* Paginate.m */; };
+		6A39C1671DF95B950085C6EA /* EFCircularSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A39C1661DF95B950085C6EA /* EFCircularSlider.m */; };
+		6A39C16C1DF95BF40085C6EA /* MoodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A39C16B1DF95BF40085C6EA /* MoodViewController.m */; };
 		6A3DEAB51DF82E9000B6E007 /* RecordAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A3DEAB41DF82E9000B6E007 /* RecordAlertViewController.m */; };
 		6A3EDEDB1DF56A6100C7BB16 /* PickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A3EDEDA1DF56A6100C7BB16 /* PickerViewController.m */; };
 		6A3F7A6D1DEC69810070415C /* SupportScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A3F7A6C1DEC69810070415C /* SupportScreenViewController.m */; };
@@ -194,6 +196,10 @@
 		6A288EC21DED8BB100273CCC /* DatePaginate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePaginate.m; sourceTree = "<group>"; };
 		6A288EC31DED8BB100273CCC /* Paginate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Paginate.h; sourceTree = "<group>"; };
 		6A288EC41DED8BB100273CCC /* Paginate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Paginate.m; sourceTree = "<group>"; };
+		6A39C1651DF95B950085C6EA /* EFCircularSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EFCircularSlider.h; sourceTree = "<group>"; };
+		6A39C1661DF95B950085C6EA /* EFCircularSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EFCircularSlider.m; sourceTree = "<group>"; };
+		6A39C16A1DF95BF40085C6EA /* MoodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoodViewController.h; sourceTree = "<group>"; };
+		6A39C16B1DF95BF40085C6EA /* MoodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoodViewController.m; sourceTree = "<group>"; };
 		6A3DEAB31DF82E9000B6E007 /* RecordAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordAlertViewController.h; sourceTree = "<group>"; };
 		6A3DEAB41DF82E9000B6E007 /* RecordAlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordAlertViewController.m; sourceTree = "<group>"; };
 		6A3EDED91DF56A6100C7BB16 /* PickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerViewController.h; sourceTree = "<group>"; };
@@ -476,6 +482,24 @@
 			path = Pagination;
 			sourceTree = "<group>";
 		};
+		6A39C1641DF95B950085C6EA /* EFCircularSlider */ = {
+			isa = PBXGroup;
+			children = (
+				6A39C1651DF95B950085C6EA /* EFCircularSlider.h */,
+				6A39C1661DF95B950085C6EA /* EFCircularSlider.m */,
+			);
+			path = EFCircularSlider;
+			sourceTree = "<group>";
+		};
+		6A39C1691DF95BDD0085C6EA /* MoodView */ = {
+			isa = PBXGroup;
+			children = (
+				6A39C16A1DF95BF40085C6EA /* MoodViewController.h */,
+				6A39C16B1DF95BF40085C6EA /* MoodViewController.m */,
+			);
+			path = MoodView;
+			sourceTree = "<group>";
+		};
 		6A3DEAB11DF82E7C00B6E007 /* RecordAlertView */ = {
 			isa = PBXGroup;
 			children = (
@@ -584,6 +608,7 @@
 		6AAA00D91DE56F8500208022 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				6A39C1641DF95B950085C6EA /* EFCircularSlider */,
 				6A3F7A791DEC758C0070415C /* GZIP */,
 				5C8A3A241DE5D26300706925 /* Banner.h */,
 				5C8A3A251DE5D26300706925 /* Banner.m */,
@@ -736,6 +761,7 @@
 		6AAA01281DE56F8600208022 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				6A39C1691DF95BDD0085C6EA /* MoodView */,
 				6A3DEAB11DF82E7C00B6E007 /* RecordAlertView */,
 				6A3EDED71DF56A3400C7BB16 /* PickerPopView */,
 				6AC2A94D1DEED9DB009A21EF /* GuidedExcerciseSubCategoryView */,
@@ -1187,6 +1213,7 @@
 				6AAA01461DE56F8600208022 /* UIApplication+Properties.m in Sources */,
 				6AAA01561DE56F8600208022 /* RMMapper.m in Sources */,
 				6AAA01491DE56F8600208022 /* UIFont+Properties.m in Sources */,
+				6A39C1671DF95B950085C6EA /* EFCircularSlider.m in Sources */,
 				6A7D95B01DE6C5120065573E /* UserRequest.m in Sources */,
 				6AAA01471DE56F8600208022 /* UIButton+Properties.m in Sources */,
 				6A7D95BA1DE6CD6A0065573E /* UserInterface.m in Sources */,
@@ -1220,6 +1247,7 @@
 				5C8A3A291DE5D5B800706925 /* UserModel.m in Sources */,
 				6A98B1321DE5A4BA009F1412 /* MSViewController.m in Sources */,
 				6AAA01551DE56F8600208022 /* NSUserDefaults+RMSaveCustomObject.m in Sources */,
+				6A39C16C1DF95BF40085C6EA /* MoodViewController.m in Sources */,
 				6AC2A25F1DED848D00196FFA /* GuidedExcerciseViewController.m in Sources */,
 				6A63D1B01DF025C600B8E188 /* ExcercixeInterface.m in Sources */,
 				6AAA015C1DE56F8600208022 /* NetworkHttpClient.m in Sources */,
