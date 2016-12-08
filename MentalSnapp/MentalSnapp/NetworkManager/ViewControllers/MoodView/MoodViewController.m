@@ -32,7 +32,9 @@
     // Do any additional setup after loading the view.
     [self setNavigationBarButtonTitle:@"Mental Snapp"];
     [self setRightMenuButtons:[NSArray arrayWithObjects:[self uploadButton], nil]];
-    [self addMoodWheel];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self addMoodWheel];
+    });
     
 }
 
@@ -63,15 +65,14 @@
 
 
 -(void)addMoodWheel {
-    CGFloat xValue = (self.moodWheelView.frame.size.width-220)/2;
-    CGFloat yValue = (self.moodWheelView.frame.size.height-220)/2;
-    CGRect sliderFrame = CGRectMake(xValue, yValue, 220, 220);
+    CGFloat xValue = (self.moodWheelView.frame.size.width-250)/2;
+    CGFloat yValue = (self.moodWheelView.frame.size.height-250)/2;
+    CGRect sliderFrame = CGRectMake(xValue, yValue, 250, 250);
     EFCircularSlider* circularSlider = [[EFCircularSlider alloc] initWithFrame:sliderFrame];
     [circularSlider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
     UITapGestureRecognizer *seekbarGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(seekBarTapped:)];
     [circularSlider addGestureRecognizer:seekbarGesture];
-    
-    circularSlider.lineWidth = 20;
+    circularSlider.lineWidth = 25;
     circularSlider.handleType = EFDoubleCircleWithOpenCenter;
     NSArray* labels = @[@"B", @"C", @"D", @"E",@"F",@"G", @"A"];
     [circularSlider setInnerMarkingLabels:labels];
