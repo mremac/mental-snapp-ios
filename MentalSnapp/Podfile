@@ -16,6 +16,9 @@ pod 'DateTools'
 pod 'JSONModel'
 pod 'JTProgressHUD'
 
+pod 'AWSCore'
+pod 'AWSS3'
+
 end
 
 
