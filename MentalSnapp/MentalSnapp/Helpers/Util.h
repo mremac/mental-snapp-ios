@@ -19,5 +19,6 @@
 + (void)openCameraView:(id)target;
 - (UIImage *)didFinishPickingImageFile:(UIImage *)image fileType:(UploadFileType)fileType completionBlock:(completionBlock)block;
 - (NSData *)didFinishPickingVideoFile:(NSData *)videoData fileType:(UploadFileType)fileType completionBlock:(completionBlock)block;
++ (BOOL)formatePhoneNumberOftextField:(UITextField *)textField withRange:(NSRange)range ReplacemenString:(NSString *)string;
 
 @end

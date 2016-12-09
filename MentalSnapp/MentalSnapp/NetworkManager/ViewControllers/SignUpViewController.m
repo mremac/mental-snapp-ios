@@ -79,6 +79,14 @@
     return YES;
 }
 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    if([textField isEqual:self.phoneTextField]){
+        return [Util formatePhoneNumberOftextField:textField withRange:range ReplacemenString:string];
+    }
+    return YES;
+}  // return NO to not change text
+
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if ([textField isEqual:_nameTextFeild]) {
         [_emailTextFeild becomeFirstResponder];
@@ -176,7 +184,7 @@
                                   duration:0.5f
                                    options:UIViewAnimationOptionTransitionFlipFromLeft
                                 animations:^{
-                                    ApplicationDelegate.window.rootViewController = [[UIStoryboard storyboardWithName:KProfileStoryboard bundle:nil] instantiateViewControllerWithIdentifier:KProfileViewControllerIdentifier];
+                                    ApplicationDelegate.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[UIStoryboard storyboardWithName:KProfileStoryboard bundle:nil] instantiateViewControllerWithIdentifier:KProfileViewControllerIdentifier]];
                                 } completion:nil];
             }
         }];

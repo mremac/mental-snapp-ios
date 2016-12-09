@@ -81,15 +81,13 @@
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     //[self toolBarCancelButtonAction:nil];
-    if(textField.text.length<=0 && [textField isEqual:self.phoneTextField]){
-        textField.text = @"+44 ";
-    }
     return YES;
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
-    [self.scrollView setContentOffset:(([textField isEqual:self.emailTextFeild])?self.emailFieldview.frame.origin:self.phoneFieldView.frame.origin)];
-    
+    CGPoint point = (([textField isEqual:self.emailTextFeild])?self.emailFieldview.frame.origin:self.phoneFieldView.frame.origin);
+    point.y = point.y+20;
+    [self.scrollView setContentOffset:point];
 }
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
@@ -101,6 +99,10 @@
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    if([textField isEqual:self.phoneTextField]){
+        return [Util formatePhoneNumberOftextField:textField withRange:range ReplacemenString:string];
+    }
+    
     return YES;
 }  // return NO to not change text
 
@@ -108,44 +110,7 @@
     [textField resignFirstResponder];
     return YES;
 }
--(BOOL)formatePhoneNumberOftextField:(UITextField *)textField withRange:(NSRange)range ReplacemenString:(NSString *)string
-{
-    BOOL result = YES;
-    BOOL valid;
-    NSCharacterSet *alphaNums = [NSCharacterSet decimalDigitCharacterSet];
-    NSCharacterSet *inStringSet = [NSCharacterSet characterSetWithCharactersInString:string];
-    valid = [alphaNums isSupersetOfSet:inStringSet];
-    
-    if (![string length] && [textField.text length]==1) {
-        textField.text = @"+44 ";
-    }
-    
-    if (!valid || [string isEqualToString:@"+44 "]){
-        return NO;
-    }
-    
-    if (string.length != 0) {
-        NSMutableString *text = [NSMutableString stringWithString:[[textField.text componentsSeparatedByCharactersInSet:[[NSCharacterSet decimalDigitCharacterSet] invertedSet]] componentsJoinedByString:@""]];
-        [text insertString:@"(" atIndex:0];
-        
-        if (text.length > 3)
-            [text insertString:@") " atIndex:4];
-        
-        if (text.length > 8)
-            [text insertString:@"-" atIndex:9];
-        
-        if (text.length > 13) {
-            text = [NSMutableString stringWithString:[text substringToIndex:textField.text.length]];
-            // result = NO;
-        }
-        textField.text = text;
-    }
-    NSString * newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
-    // if(result)
-    //[textField sizeToFit];
-    
-    return result;
-}
+
 
 
 #pragma mark - Private methods
@@ -176,7 +141,10 @@
         selectedGender = ([self.user.gender caseInsensitiveCompare:@"male"])?0:1;
         [self.userNameLabel setText:self.user.userName];
         [self.emailTextFeild setText:self.user.email];
-        [self.phoneTextField setText:self.user.phoneNumber];
+        NSMutableString *phoneNumber = [NSMutableString stringWithString:self.user.phoneNumber] ;
+        [phoneNumber insertString:@" " atIndex:0];
+        [phoneNumber insertString:@" " atIndex:5];
+        [self.phoneTextField setText:phoneNumber];
         [self.maleGenderButton setSelected:([self.user.gender caseInsensitiveCompare:@"male"])?YES:NO];
         [self.femaleGenderButton setSelected:([self.user.gender caseInsensitiveCompare:@"male"])?NO:YES];
         [self displayProfileImageFromURL];

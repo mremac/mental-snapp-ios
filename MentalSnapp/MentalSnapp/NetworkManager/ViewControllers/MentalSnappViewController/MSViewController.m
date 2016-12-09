@@ -6,6 +6,7 @@
 //
 
 #import "MSViewController.h"
+#import "ProfileViewController.h"
 
 @interface MSViewController() <UIGestureRecognizerDelegate>
 
@@ -56,7 +57,23 @@
 }
 
 - (void)backButtonTapped {
-    [self.navigationController popViewControllerAnimated:YES];
+    if([self isKindOfClass:[ProfileViewController class]]){
+        if([ApplicationDelegate.window.rootViewController isKindOfClass:[UINavigationController class]]){
+            UINavigationController *navController = (UINavigationController *)ApplicationDelegate.window.rootViewController;
+            NSArray *array = navController.viewControllers;
+            if(array.count>0 && [[array firstObject] isKindOfClass:[ProfileViewController class]]) {
+                [[UserManager sharedManager] setValueInLoggedInUserObjectFromUserDefault];
+                MainTabBarController *tabBarController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MainTabController"];
+                ApplicationDelegate.window.rootViewController = tabBarController;
+            } else {
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+        } else {
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+    } else {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 - (void)setNavigationBarButtonTitle:(NSString *)title

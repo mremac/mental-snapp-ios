@@ -828,7 +828,7 @@
                                                                     <constraint firstAttribute="height" constant="26" id="TnC-jd-Ue9"/>
                                                                 </constraints>
                                                                 <color key="textColor" red="0.32549019610000002" green="0.32549019610000002" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                                                 <textInputTraits key="textInputTraits" keyboardType="namePhonePad" returnKeyType="next"/>
                                                                 <connections>
                                                                     <outlet property="delegate" destination="vX0-rh-xaN" id="ol7-Go-0Vu"/>
@@ -843,20 +843,32 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cYI-dk-RQi">
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="28" id="4eI-SQ-4oQ"/>
+                                                                    <constraint firstAttribute="width" constant="30" id="tOF-4r-Eoi"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                                                                <state key="normal" title="+44">
+                                                                    <color key="titleColor" red="0.32549019610000002" green="0.32549019610000002" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                                </state>
+                                                            </button>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="trailing" secondItem="56H-g1-E0I" secondAttribute="trailing" constant="104" id="78o-RX-DaF"/>
                                                             <constraint firstAttribute="height" constant="77" id="BTz-st-EWc"/>
-                                                            <constraint firstItem="wA1-nw-noe" firstAttribute="leading" secondItem="ktA-RM-39O" secondAttribute="leading" constant="42" id="C1t-iI-6gH"/>
                                                             <constraint firstItem="56H-g1-E0I" firstAttribute="top" secondItem="ktA-RM-39O" secondAttribute="top" constant="22" id="DrZ-cb-sVF"/>
                                                             <constraint firstAttribute="trailing" secondItem="wA1-nw-noe" secondAttribute="trailing" constant="42" id="HaG-lK-aGb"/>
                                                             <constraint firstItem="56H-g1-E0I" firstAttribute="leading" secondItem="ktA-RM-39O" secondAttribute="leading" constant="43" id="Icq-K3-VLi"/>
                                                             <constraint firstItem="0nP-IR-rLF" firstAttribute="top" secondItem="wA1-nw-noe" secondAttribute="bottom" constant="5" id="M3H-gk-T6J"/>
                                                             <constraint firstAttribute="trailing" secondItem="0nP-IR-rLF" secondAttribute="trailing" constant="46" id="R62-zD-0v7"/>
                                                             <constraint firstItem="wA1-nw-noe" firstAttribute="top" secondItem="56H-g1-E0I" secondAttribute="bottom" id="Vse-l3-YcH"/>
+                                                            <constraint firstItem="wA1-nw-noe" firstAttribute="leading" secondItem="cYI-dk-RQi" secondAttribute="trailing" constant="2" id="Z49-a6-nw6"/>
                                                             <constraint firstAttribute="bottom" secondItem="0nP-IR-rLF" secondAttribute="bottom" constant="2" id="mAW-sK-7hW"/>
+                                                            <constraint firstItem="cYI-dk-RQi" firstAttribute="top" secondItem="56H-g1-E0I" secondAttribute="bottom" id="qz2-v7-x3t"/>
                                                             <constraint firstItem="0nP-IR-rLF" firstAttribute="leading" secondItem="ktA-RM-39O" secondAttribute="leading" constant="42" id="rfa-aa-8Ir"/>
+                                                            <constraint firstItem="cYI-dk-RQi" firstAttribute="leading" secondItem="ktA-RM-39O" secondAttribute="leading" constant="42" id="zT1-VO-mMo"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ejk-K4-LNK" userLabel="DateOfBirthView">
@@ -968,7 +980,7 @@
                                                                 <color key="textColor" red="0.91372549020000005" green="0.39607843139999999" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="•••••••••••••••" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jgo-X4-2KM">
+                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jgo-X4-2KM">
                                                                 <color key="tintColor" red="0.05086936064" green="0.64109499349999999" blue="0.73025193249999998" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="26" id="SFi-1B-02o"/>
@@ -1015,7 +1027,7 @@
                                                                 <color key="textColor" red="0.91372549020000005" green="0.39607843139999999" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="•••••••••••••••" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JiR-vh-GHH">
+                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Re-enter password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JiR-vh-GHH">
                                                                 <color key="tintColor" red="0.05086936064" green="0.64109499349999999" blue="0.73025193249999998" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="26" id="8wS-dl-A2v"/>
@@ -1294,7 +1306,7 @@
                                         <color key="textColor" red="0.91372549020000005" green="0.39607843139999999" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="•••••••••••••••" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jL4-Rl-h6M">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jL4-Rl-h6M">
                                         <color key="tintColor" red="0.05086936064" green="0.64109499349999999" blue="0.73025193249999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="26" id="Y4i-mw-R4n"/>
@@ -1338,7 +1350,7 @@
                                         <color key="textColor" red="0.91372549020000005" green="0.39607843139999999" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="•••••••••••••••" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3w3-dq-D75">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Re-enter password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3w3-dq-D75">
                                         <color key="tintColor" red="0.05086936064" green="0.64109499349999999" blue="0.73025193249999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="26" id="Qgd-Ux-RSA"/>

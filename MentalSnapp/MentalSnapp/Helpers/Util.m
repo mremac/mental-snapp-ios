@@ -32,9 +32,35 @@
 
 + (BOOL)validatePhone:(NSString *)phoneNumber
 {
-    NSString *phoneRegex =@"^([0-9]{3}) [0-9]{3}-[0-9]{4}$";// @"^((\\+)|(00))[0-9]{6,14}$";
+    NSString *phoneRegex =@"^ [0-9]{4} [0-9]{3,6}$";
     NSPredicate *phoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", phoneRegex];
     return [phoneTest evaluateWithObject:phoneNumber];
+}
+
++(BOOL)formatePhoneNumberOftextField:(UITextField *)textField withRange:(NSRange)range ReplacemenString:(NSString *)string
+{
+    BOOL result = YES;
+    BOOL valid;
+    NSCharacterSet *alphaNums = [NSCharacterSet decimalDigitCharacterSet];
+    NSCharacterSet *inStringSet = [NSCharacterSet characterSetWithCharactersInString:string];
+    valid = [alphaNums isSupersetOfSet:inStringSet];
+    
+    if (string.length != 0) {
+        NSMutableString *text = [NSMutableString stringWithString:[[textField.text componentsSeparatedByCharactersInSet:[[NSCharacterSet decimalDigitCharacterSet] invertedSet]] componentsJoinedByString:@""]];
+        [text insertString:@" " atIndex:0];
+        
+        if (text.length > 4)
+            [text insertString:@" " atIndex:5];
+        
+        if (text.length > 11) {
+            text = [NSMutableString stringWithString:[text substringToIndex:textField.text.length]];
+            result = NO;
+        } else {
+            textField.text = text;
+        }
+    }
+    
+    return result;
 }
 
 +(BOOL)isValidEmail:(NSString *)email
