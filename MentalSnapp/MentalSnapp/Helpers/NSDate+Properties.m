@@ -64,4 +64,24 @@
     return [date stringInISO8601Format];
 }
 
+- (NSString *)firstPartOfDate
+{
+    NSString *string = [[NSNumber numberWithDouble:[self timeIntervalSince1970]] stringValue];
+    return [[string componentsSeparatedByString:@"."] firstObject];
+}
+
+- (NSString *)getMilliSeconds
+{
+    NSString *milliSecondsString = kEmptyString;
+    milliSecondsString = [NSString stringWithFormat:@"%.0f",[self timeIntervalSince1970] *1000];
+    return milliSecondsString;
+}
+
+- (NSString *)getSeconds
+{
+    NSString *milliSecondsString = kEmptyString;
+    milliSecondsString = [NSString stringWithFormat:@"%.0f",[self timeIntervalSince1970]];
+    return milliSecondsString;
+}
+
 @end

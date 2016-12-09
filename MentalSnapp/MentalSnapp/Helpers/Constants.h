@@ -7,6 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+
+typedef enum {
+    Gallery,
+    Camera,
+    DeleteImage
+} ImagePickerType;
+
 #define exNS extern NSString
 
 #define ApplicationDelegate ((AppDelegate *)[UIApplication sharedApplication].delegate)
@@ -19,6 +26,7 @@ typedef void (^completionBlock)(BOOL success, id response);
 exNS *kEmptyString;
 exNS *keyDeviceToken;
 exNS *kPlistFileName;
+exNS *kBoolTrue;
 
 #pragma mark - Network keys
 
@@ -111,4 +119,14 @@ exNS *kPickerViewController;
 exNS *kMoreScreenTableViewCellIdentifier;
 exNS *kguidedExcerciseCellCollectionViewCell;
 exNS *kSubCategoryExcerciseTableViewCell;
+
+
+#pragma mark - S3Buckets
+
+exNS *kLiveProfileImageBucket;
+exNS *kLiveVideoBucket;
+
+exNS *kStagingProfileImageBucket;
+exNS *kStagingVideoBucket;
+
 

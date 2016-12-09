@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "S3Manager.h"
 
 @interface Util : NSObject
 
@@ -16,5 +17,7 @@
 + (BOOL)isValidEmail:(NSString *)email;
 + (BOOL)validatePhone:(NSString *)phoneNumber;
 + (void)openCameraView:(id)target;
+- (UIImage *)didFinishPickingImageFile:(UIImage *)image fileType:(UploadFileType)fileType completionBlock:(completionBlock)block;
+- (NSData *)didFinishPickingVideoFile:(NSData *)videoData fileType:(UploadFileType)fileType completionBlock:(completionBlock)block;
 
 @end

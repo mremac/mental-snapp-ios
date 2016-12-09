@@ -16,6 +16,7 @@
 
 - (void)saveLoggedinUserInfoInUserDefault;
 - (void)setValueInLoggedInUserObjectFromUserDefault;
+- (void)updateProfileURL:(NSString *)profileURL;
 - (void)removeUserFromUserDefault;
 
 + (BOOL)isValidEmail:(NSString *)checkString;

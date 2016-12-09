@@ -61,6 +61,13 @@ static dispatch_once_t userOnceToken;
     _userModel = [[UserModel alloc] initWithDictionary:dictionary error:&error];
 }
 
+- (void)updateProfileURL:(NSString *)profileURL
+{
+    _userModel.profilePicURL = profileURL;
+    [UserDefaults setValue:_userModel.profilePicURL forKey:@"profile_url"];
+    [UserDefaults synchronize];
+}
+
 -(void)logoutUser {
     [self removeUserFromUserDefault];
     LoginViewController *loginViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"LoginViewController"];

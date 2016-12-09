@@ -11,7 +11,7 @@
 #import "UserManager.h"
 #import "PickerViewController.h"
 
-@interface ProfileViewController () <UITextFieldDelegate, PickerViewControllerDelegate>
+@interface ProfileViewController () <UITextFieldDelegate, PickerViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 {
     NSInteger selectedGender;
     NSString *profilePicURL;
@@ -32,6 +32,7 @@
 @property (strong, nonatomic) IBOutlet UIView *emailFieldview;
 @property (strong, nonatomic) IBOutlet UIView *phoneFieldView;
 @property (strong, nonatomic) PickerViewController *pickerViewController;
+@property (strong, nonatomic) UIImage *userImage;
 
 - (IBAction)genderButtonAction:(id)sender;
 - (IBAction)changePasswordButtonAction:(id)sender;
@@ -134,8 +135,7 @@
         [self.phoneTextField setText:self.user.phoneNumber];
         [self.maleGenderButton setSelected:([self.user.gender caseInsensitiveCompare:@"male"])?YES:NO];
         [self.femaleGenderButton setSelected:([self.user.gender caseInsensitiveCompare:@"male"])?NO:YES];
-        [self.profilePictureImageView sd_setImageWithURL:[NSURL URLWithString:self.user.profilePicURL] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"profile-image"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-        }];
+        [self displayProfileImageFromURL];
         selectedDate = [NSDate dateFromString:self.user.dateOfBirth format:@"yyyy-MM-dd"];
         [self.dateOfBirthButton setTitle:[NSDate stringFromDate:selectedDate format:@"dd MMM yyyy"] forState:UIControlStateNormal];
     }
@@ -163,6 +163,151 @@
         return NO;
     }
     return YES;
+}
+
+- (void)willPerformUpdateUserDetailsAPICall
+{
+    [self showInProgress:YES];
+    if(self.userImage)
+    {
+        [[[Util alloc] init] didFinishPickingImageFile:self.userImage fileType:ImageProfile completionBlock:^(BOOL success, id response)
+         {
+             NSLog([NSString stringWithFormat:@"response : : %@", response]);
+             if(success)
+             {
+                 AppSettings *appSettings = [AppSettingsManager sharedInstance].appSettings;
+                 NSString *bucketName = ([appSettings.NetworkMode isEqualToString:kLiveEnviroment]) ? kLiveProfileImageBucket : kStagingProfileImageBucket;
+                 profilePicURL = [NSString stringWithFormat:@"https://s3-eu-west-1.amazonaws.com/%@/%@", bucketName, response];
+                 [self didPerformUpdateUserDetailsAPICall];
+             }
+             else
+             {
+                 [Banner showFailureBannerWithSubtitle:@"Image could not be uploaded. Please try again"];
+                 [self removeProfileImage];
+                 [self showInProgress:NO];
+             }
+         }];
+    }
+    else
+    {
+        [self didPerformUpdateUserDetailsAPICall];
+    }
+}
+
+- (void)didPerformUpdateUserDetailsAPICall
+{
+    UserModel *user = [[UserModel alloc] initWithUserId:self.user.userId andEmail:self.emailTextFeild.text andUserName:self.user.userName andPhone:self.phoneTextField.text andGender:[NSString stringWithFormat:@"%@",(selectedGender == MaleGender)?@"male":@"female"] andDateOfBirth:[self.dateOfBirthButton titleForState:UIControlStateNormal] andProfilePic:profilePicURL];
+    
+    [[RequestManager alloc] editUserWithUserModel:user withCompletionBlock:^(BOOL success, id response) {
+        if(success)
+        {
+            [[UserManager sharedManager] updateProfileURL:profilePicURL];
+            self.userImage = nil;
+            [self backButtonTapped];
+            [Banner showSuccessBannerWithSubtitle:@"Successfully updated."];
+        }
+        [self showInProgress:NO];
+    }];
+}
+
+
+-(void)displayProfileImageFromURL
+{
+    if(profilePicURL.length > 0)
+    {
+        [self.profilePictureImageView sd_setImageWithURL:[NSURL URLWithString:profilePicURL] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"profile-image"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+            [self.profilePictureImageView setClipsToBounds:YES];
+        }];
+    }
+    else
+    {
+        [self.profilePictureImageView setImage:[UIImage imageNamed:@"profile-image"] forState:UIControlStateNormal];
+    }
+}
+
+- (void)performImageChangeAction
+{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *alertActionGallery = [UIAlertAction actionWithTitle:@"Choose Photo" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self selectPhoto:Gallery];
+    } ];
+    UIAlertAction *alertActionCamera = [UIAlertAction actionWithTitle:@"Take Photo" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self selectPhoto:Camera];
+    }];
+    UIAlertAction *alertActionCancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
+    
+    if(self.userImage || profilePicURL.trim.length > 0)
+    {
+        UIAlertAction *alertActionDeleteImage = [UIAlertAction actionWithTitle:@"Delete Photo" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+            [self selectPhoto:DeleteImage];
+        }];
+        
+        [alertController addAction:alertActionDeleteImage];
+    }
+    
+    [alertController addAction:alertActionGallery];
+    [alertController addAction:alertActionCamera];
+    [alertController addAction:alertActionCancel];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
+- (void)removeProfileImage
+{
+    profilePicURL = kEmptyString;
+    self.userImage = nil;
+    [self.profilePictureImageView setImage:[UIImage imageNamed:@"profile-image"] forState:UIControlStateNormal];
+}
+
+#pragma mark - ImagePicker Delegate Method
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    self.userImage = info[UIImagePickerControllerEditedImage];
+    CGSize profileImageSize = CGSizeMake(self.profilePictureImageView.frame.size.width * 3, self.profilePictureImageView.frame.size.height * 3);
+    self.userImage = [self.userImage imageByScalingProportionallyToSize:profileImageSize withPriority:PriorityWidth];
+    if (self.userImage)
+    {
+        [self.profilePictureImageView setImage:self.userImage forState:UIControlStateNormal];
+    }
+    else
+    {
+        [self.profilePictureImageView setImage:[UIImage imageNamed:@"profile-image"] forState:UIControlStateNormal];
+    }
+    
+    [self.profilePictureImageView setClipsToBounds:YES];
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (void)selectPhoto:(ImagePickerType)type
+{
+    if(type == Camera && (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]))
+    {
+        return;
+    }
+    else if (type == DeleteImage)
+    {
+        [self removeProfileImage];
+    }
+    else
+    {
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.allowsEditing = YES;
+        picker.delegate = self;
+        if (type == Gallery)
+        {
+            picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        }
+        else if (type == Camera) {
+            picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        }
+        
+        [picker setMediaTypes:[NSArray arrayWithObjects:(NSString *)kUTTypeImage, nil]];
+        [self presentViewController:picker animated:YES completion:NULL];
+    }
 }
 
 #pragma mark - Date Picker view Delegate
@@ -205,16 +350,11 @@
     [self.navigationController pushViewController:changePasswordScreen animated:YES];
 }
 
-- (IBAction)saveButtonAction:(id)sender {
-    if([self isValidateFeilds]){
-        UserModel *user = [[UserModel alloc] initWithUserId:self.user.userId andEmail:self.emailTextFeild.text andUserName:self.user.userName andPhone:self.phoneTextField.text andGender:[NSString stringWithFormat:@"%@",(selectedGender == MaleGender)?@"male":@"female"] andDateOfBirth:[self.dateOfBirthButton titleForState:UIControlStateNormal] andProfilePic:profilePicURL];
-        [self showInProgress:YES];
-        [[RequestManager alloc] editUserWithUserModel:user withCompletionBlock:^(BOOL success, id response) {
-            if(success){
-                [Banner showSuccessBannerWithSubtitle:@"Successfully updated."];
-            }
-            [self showInProgress:NO];
-        }];
+- (IBAction)saveButtonAction:(id)sender
+{
+    if([self isValidateFeilds])
+    {
+        [self willPerformUpdateUserDetailsAPICall];
     }
 }
 
@@ -228,6 +368,7 @@
 }
 
 - (IBAction)addPictureProfileAction:(id)sender {
+    [self performImageChangeAction];
 }
 
 - (IBAction)deleteProfileAction:(id)sender {

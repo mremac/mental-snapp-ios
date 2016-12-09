@@ -14,6 +14,7 @@
 ns * kEmptyString = @"";
 ns * keyDeviceToken = @"DeviceToken";
 ns * kPlistFileName = @"AppSettings";
+ns *kBoolTrue = @"true";
 
 #pragma mark - Network keys
 
@@ -83,4 +84,12 @@ ns *kPickerViewController = @"PickerViewController";
 ns *kMoreScreenTableViewCellIdentifier = @"MoreScreenTableViewCellIdentifier";
 ns *kguidedExcerciseCellCollectionViewCell = @"guidedExcerciseCellCollectionViewCell";
 ns *kSubCategoryExcerciseTableViewCell = @"SubCategoryTableViewCell";
+
+#pragma mark - S3Buckets
+
+ns *kLiveProfileImageBucket = @"mentalsnapp/production/profile_images";
+ns *kLiveVideoBucket = @"mentalsnapp/production/videos";
+
+ns *kStagingProfileImageBucket = @"mentalsnapp/staging/profile_images";
+ns *kStagingVideoBucket = @"mentalsnapp/staging/videos";
 

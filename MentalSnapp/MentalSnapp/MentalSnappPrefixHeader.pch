@@ -46,6 +46,7 @@
 #import "DateTools.h"
 #import "JSONModel.h"
 #import "JTProgressHUD.h"
+#import "NSDate+Properties.h"
 
 // Managers
 

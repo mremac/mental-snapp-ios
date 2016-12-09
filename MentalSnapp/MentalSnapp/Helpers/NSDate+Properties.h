@@ -16,5 +16,7 @@
 + (NSDate *)dateFromMilliseconds:(NSString *)milliseconds format:(NSString *)format;
 - (NSString *)stringInISO8601Format;
 + (NSString *)stringFromMilliSecondsInISO8601Format:(NSString *)milliSeconds;
-
+- (NSString *)firstPartOfDate;
+- (NSString *)getMilliSeconds;
+- (NSString *)getSeconds;
 @end

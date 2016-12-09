@@ -7,7 +7,8 @@
 //
 
 #import "AppDelegate.h"
- #import "Flurry.h"
+#import "Flurry.h"
+#import <AWSCore/AWSCore.h>
 
 @interface AppDelegate ()
 @property (nonatomic) BOOL isNetworkAvailable;
@@ -35,6 +36,8 @@
     }
     
     [self setupNetworkMonitoring];
+    
+    [self setUpAmazonS3];
 
     if ([UserDefaults boolForKey:kIsUserLoggedIn]) {
         [[UserManager sharedManager] setValueInLoggedInUserObjectFromUserDefault];
@@ -84,6 +87,21 @@
   sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {    
     return YES;   
+}
+
+#pragma mark - Private Methods
+
+- (void)setUpAmazonS3
+{
+    // Initialize the Amazon Cognito credentials provider
+    
+    AWSCognitoCredentialsProvider *credentialsProvider = [[AWSCognitoCredentialsProvider alloc]
+                                                          initWithRegionType:AWSRegionEUWest1
+                                                          identityPoolId:@"eu-west-1:3361fea2-28fb-4b73-b82e-3f50f8c25bed"];
+    
+    AWSServiceConfiguration *configuration = [[AWSServiceConfiguration alloc] initWithRegion:AWSRegionEUWest1 credentialsProvider:credentialsProvider];
+    
+    [AWSServiceManager defaultServiceManager].defaultServiceConfiguration = configuration;
 }
 
 #pragma mark - 
