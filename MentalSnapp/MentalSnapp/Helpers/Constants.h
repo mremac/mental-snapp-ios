@@ -94,6 +94,7 @@ exNS *KChangePasswordViewController;
 exNS *KSupportScreenViewController;
 exNS *kGuidedExcerciseViewController;
 exNS *kExcerciseSubCategoryViewController;
+exNS *kSubCategoryDetailViewController;
 
 #pragma mark - API URL
 exNS *KUserAPI;
@@ -119,7 +120,6 @@ exNS *kPickerViewController;
 exNS *kMoreScreenTableViewCellIdentifier;
 exNS *kguidedExcerciseCellCollectionViewCell;
 exNS *kSubCategoryExcerciseTableViewCell;
-
 
 #pragma mark - S3Buckets
 

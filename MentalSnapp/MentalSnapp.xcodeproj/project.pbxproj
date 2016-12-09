@@ -40,6 +40,7 @@
 		6A3F7A731DEC6F820070415C /* SupportRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A3F7A721DEC6F820070415C /* SupportRequest.m */; };
 		6A3F7A761DEC6F920070415C /* SupportInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A3F7A751DEC6F920070415C /* SupportInterface.m */; };
 		6A3F7A7C1DEC758C0070415C /* GZIP.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A3F7A7B1DEC758C0070415C /* GZIP.m */; };
+		6A449EE21DFE774C00EE8875 /* SubCategoryDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A449EE11DFE774C00EE8875 /* SubCategoryDetailViewController.m */; };
 		6A63D1AB1DF00D2200B8E188 /* GuidedExcercise.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A63D1AA1DF00D2200B8E188 /* GuidedExcercise.m */; };
 		6A63D1B01DF025C600B8E188 /* ExcercixeInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A63D1AF1DF025C600B8E188 /* ExcercixeInterface.m */; };
 		6A63D1B31DF0261A00B8E188 /* ExcerciseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A63D1B21DF0261A00B8E188 /* ExcerciseRequest.m */; };
@@ -202,6 +203,8 @@
 		6A3F7A751DEC6F920070415C /* SupportInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupportInterface.m; sourceTree = "<group>"; };
 		6A3F7A7A1DEC758C0070415C /* GZIP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZIP.h; sourceTree = "<group>"; };
 		6A3F7A7B1DEC758C0070415C /* GZIP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZIP.m; sourceTree = "<group>"; };
+		6A449EE01DFE774C00EE8875 /* SubCategoryDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubCategoryDetailViewController.h; sourceTree = "<group>"; };
+		6A449EE11DFE774C00EE8875 /* SubCategoryDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubCategoryDetailViewController.m; sourceTree = "<group>"; };
 		6A63D1A91DF00D2200B8E188 /* GuidedExcercise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuidedExcercise.h; sourceTree = "<group>"; };
 		6A63D1AA1DF00D2200B8E188 /* GuidedExcercise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuidedExcercise.m; sourceTree = "<group>"; };
 		6A63D1AE1DF025C600B8E188 /* ExcercixeInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExcercixeInterface.h; sourceTree = "<group>"; };
@@ -823,6 +826,8 @@
 			children = (
 				6AC2A94E1DEED9FB009A21EF /* ExcerciseSubCategoryViewController.h */,
 				6AC2A94F1DEED9FB009A21EF /* ExcerciseSubCategoryViewController.m */,
+				6A449EE01DFE774C00EE8875 /* SubCategoryDetailViewController.h */,
+				6A449EE11DFE774C00EE8875 /* SubCategoryDetailViewController.m */,
 			);
 			path = GuidedExcerciseSubCategoryView;
 			sourceTree = "<group>";
@@ -1178,6 +1183,7 @@
 				5C7BE3E51DE8877400C15CB5 /* QueuedExercisesViewController.m in Sources */,
 				6A288EC51DED8BB100273CCC /* CommentsPaginate.m in Sources */,
 				6AAA014E1DE56F8600208022 /* UIView+Badge.m in Sources */,
+				6A449EE21DFE774C00EE8875 /* SubCategoryDetailViewController.m in Sources */,
 				6A3EDEDB1DF56A6100C7BB16 /* PickerViewController.m in Sources */,
 				6AAA015B1DE56F8600208022 /* APIInteractorProvider.m in Sources */,
 				6AAA01481DE56F8600208022 /* UIColor+Properties.m in Sources */,

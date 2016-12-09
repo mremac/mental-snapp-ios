@@ -65,11 +65,20 @@
     [super viewWillAppear:animated];
     self.guidedExcerciseTopViewTopConstraint.constant = 0;
     [self.view layoutIfNeeded];
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
+    if(![UserManager sharedManager].isLoginViaSignUp) {
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            self.guidedExcerciseTopViewTopConstraint.constant = 64;
+            [self.view layoutIfNeeded];
+        });
+    }
+    [UserManager sharedManager].isLoginViaSignUp = NO;
+
+    if([UserManager sharedManager].isBackFromView){
         self.guidedExcerciseTopViewTopConstraint.constant = 64;
         [self.view layoutIfNeeded];
-    });
+        [UserManager sharedManager].isBackFromView = NO;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -167,6 +176,7 @@
             tag++;
             [guidedExcercisePage.view setFrame:frame];
             [guidedExcercisePage setExcercise:excercise];
+            [guidedExcercisePage setExcerciseParentViewController:self];
             [self.guideExcerciseViewControllers addObject:guidedExcercisePage];
         }
         self.index = 0;
@@ -217,25 +227,29 @@
             
         case UIGestureRecognizerStateBegan:
                  break;
-        case UIGestureRecognizerStateChanged:{
+        case UIGestureRecognizerStateChanged: {
             
             if(translatedPoint.x > 0.0) // left slide
             {
-                // change left slide alpha value
-                translatedPoint.y = 0;
-                translatedPoint.x = -translatedPoint.x;
-                if(self.guidedExcerciseCollectionView.contentOffset.x>0 && translatedPoint.x <0){
-                    translatedPoint.x=0;
+                if(_selectedIndexPath>1){
+                    // change left slide alpha value
+                    translatedPoint.y = 0;
+                    translatedPoint.x = -translatedPoint.x;
+                    if(self.guidedExcerciseCollectionView.contentOffset.x>0 && translatedPoint.x <0){
+                        translatedPoint.x=0;
+                    }
+                    [self.guidedExcerciseCollectionView setContentOffset:translatedPoint animated:YES];
                 }
-                [self.guidedExcerciseCollectionView setContentOffset:translatedPoint animated:YES];
             }
             else if(translatedPoint.x < 0.0) // right slide
             {
-                // change right slide alpha value
-                translatedPoint.y = 0;
-                translatedPoint.x = -translatedPoint.x;
-                if(translatedPoint.x < self.guidedExcerciseCollectionView.frame.size.width){
-                    [self.guidedExcerciseCollectionView setContentOffset:translatedPoint animated:YES];
+                if(_selectedIndexPath < ([self.guidedExcercisePaginate.pageResults count])){
+                    // change right slide alpha value
+                    translatedPoint.y = 0;
+                    translatedPoint.x = -translatedPoint.x;
+                    if(translatedPoint.x < self.guidedExcerciseCollectionView.frame.size.width){
+                        [self.guidedExcerciseCollectionView setContentOffset:translatedPoint animated:YES];
+                    }
                 }
             }
             break;
@@ -243,11 +257,11 @@
             
         case UIGestureRecognizerStateCancelled:
         case UIGestureRecognizerStateEnded:
-        {            
+        {
             dispatch_async(dispatch_get_main_queue(), ^{
                 if(translatedPoint.x > 0.0)
                 {
-                    if(_selectedIndexPath >0){
+                    if(_selectedIndexPath>1){
                         [self showSelectedExcerciseForIndexpath:[NSIndexPath indexPathForRow:(_selectedIndexPath-1) inSection:0] withAnimation:YES andGrowValue:0 andShrinkValue:0];
                         ExcerciseSubCategoryViewController *controller = [self.guideExcerciseViewControllers objectAtIndex:((_selectedIndexPath)-1)];
                         CGRect frame = self.pageViewController.view.frame;
@@ -259,7 +273,7 @@
                 }
                 else if (translatedPoint.x < 0.0)
                 {
-                    if(_selectedIndexPath < ([self.guidedExcercisePaginate.pageResults count]+1)){
+                    if(_selectedIndexPath < ([self.guidedExcercisePaginate.pageResults count])){
                         [self showSelectedExcerciseForIndexpath:[NSIndexPath indexPathForRow:(_selectedIndexPath+1) inSection:0] withAnimation:YES andGrowValue:0 andShrinkValue:0];
                         ExcerciseSubCategoryViewController *controller = [self.guideExcerciseViewControllers objectAtIndex:((_selectedIndexPath)-1)];
                         CGRect frame = self.pageViewController.view.frame;

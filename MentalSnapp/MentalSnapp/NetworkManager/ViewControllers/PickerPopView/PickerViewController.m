@@ -24,6 +24,7 @@
     if(self.selectedDate){
         [self.datePickerView setDate:self.selectedDate];
     }
+    [self.datePickerView setMaximumDate:[NSDate date]];
     switch (self.pickerType) {
         case dateOnly:
             [self.datePickerView setDatePickerMode:UIDatePickerModeDate];
@@ -60,9 +61,9 @@
 
 #pragma mark - Date picker Selector method
 - (void)dateIsChanged:(id)sender{
-    if([self.delegate respondsToSelector:@selector(didSelectDoneButton:)]){
-        [self.delegate didSelectDoneButton:self.datePickerView.date];
-    }
+//    if([self.delegate respondsToSelector:@selector(didSelectDoneButton:)]){
+//        [self.delegate didSelectDoneButton:self.datePickerView.date];
+//    }
 }
 
 

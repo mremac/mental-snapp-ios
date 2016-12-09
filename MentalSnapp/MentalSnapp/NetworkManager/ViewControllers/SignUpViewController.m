@@ -39,7 +39,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    [self.datePicker setMaximumDate:[NSDate date]];
     [self.datePicker addTarget:self action:@selector(dateIsChanged:) forControlEvents:UIControlEventValueChanged];
     [self.maleGenderButton setSelected:YES];
     
@@ -68,11 +68,14 @@
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
-    CGRect superRect = [textField convertRect:textField.frame toView:_containerView];
-    [UIView animateWithDuration:0.3f animations:^{
-        //This calculation ensures that the selected textField will be in the upper 3rd part of view
-        [self.scrollView setContentOffset:CGPointMake(0, superRect.origin.y - _scrollView.frame.size.height / 3)];
-    }];
+    
+    if(![textField isEqual:self.nameTextFeild]){
+        CGRect superRect = [textField convertRect:textField.frame toView:_containerView];
+        [UIView animateWithDuration:0.3f animations:^{
+            //This calculation ensures that the selected textField will be in the upper 3rd part of view
+            [self.scrollView setContentOffset:CGPointMake(0, superRect.origin.y - _scrollView.frame.size.height / 3)];
+        }];
+    }
 }
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
@@ -104,7 +107,7 @@
 
 #pragma mark - Date picker Selector method
 - (void)dateIsChanged:(id)sender{
-    [self.dateOfBirthButton setTitle:[NSDate stringFromDate:self.datePicker.date format:@"dd MMM yyyy"] forState:UIControlStateNormal];
+   //Profile [self.dateOfBirthButton setTitle:[NSDate stringFromDate:self.datePicker.date format:@"dd MMM yyyy"] forState:UIControlStateNormal];
 }
 
 #pragma mark - Private methods
@@ -201,6 +204,7 @@
 }
 
 - (IBAction)toolBarDoneButtonAction:(id)sender {
+    [self.dateOfBirthButton setTitleColor:[UIColor colorWithRed:83.0/255.0 green:83.0/255.0 blue:83.0/255.0 alpha:1] forState:UIControlStateNormal];
     [self.dateOfBirthButton setTitle:[NSDate stringFromDate:self.datePicker.date format:@"dd MMM yyyy"] forState:UIControlStateNormal];
     self.datePickerViewBottomConstraint.constant = -self.dateOfBirthView.frame.size.width;
     [UIView animateWithDuration:0.5 animations:^{

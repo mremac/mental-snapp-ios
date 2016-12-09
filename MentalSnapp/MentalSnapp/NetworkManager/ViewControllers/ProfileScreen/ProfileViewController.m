@@ -138,15 +138,15 @@
 -(void)showDataOfUsers {
     if(self.user){
         profilePicURL = self.user.profilePicURL;
-        selectedGender = ([self.user.gender caseInsensitiveCompare:@"male"])?0:1;
+        selectedGender = ([self.user.gender caseInsensitiveCompare:@"female"])?0:1;
         [self.userNameLabel setText:self.user.userName];
         [self.emailTextFeild setText:self.user.email];
         NSMutableString *phoneNumber = [NSMutableString stringWithString:self.user.phoneNumber] ;
         [phoneNumber insertString:@" " atIndex:0];
         [phoneNumber insertString:@" " atIndex:5];
         [self.phoneTextField setText:phoneNumber];
-        [self.maleGenderButton setSelected:([self.user.gender caseInsensitiveCompare:@"male"])?YES:NO];
-        [self.femaleGenderButton setSelected:([self.user.gender caseInsensitiveCompare:@"male"])?NO:YES];
+        [self.maleGenderButton setSelected:(selectedGender == MaleGender)?YES:NO];
+        [self.femaleGenderButton setSelected:(selectedGender == MaleGender)?NO:YES];
         [self displayProfileImageFromURL];
         selectedDate = [NSDate dateFromString:self.user.dateOfBirth format:@"yyyy-MM-dd"];
         [self.dateOfBirthButton setTitle:[NSDate stringFromDate:selectedDate format:@"dd MMM yyyy"] forState:UIControlStateNormal];

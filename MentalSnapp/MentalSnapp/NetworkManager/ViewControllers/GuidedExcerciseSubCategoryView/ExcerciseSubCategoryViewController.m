@@ -12,6 +12,7 @@
 #import "SubCategoryTableViewCell.h"
 #import "GuidedExcercise.h"
 #import "PickerViewController.h"
+#import "SubCategoryDetailViewController.h"
 
 @interface ExcerciseSubCategoryViewController () <PickerViewControllerDelegate, UIImagePickerControllerDelegate>
 
@@ -25,6 +26,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *recordButton;
 @property (strong, nonatomic) PickerViewController *pickerViewController;
 @property (strong, nonatomic) GuidedExcercise *selectedExcercise;
+@property (strong, nonatomic) SubCategoryDetailViewController *subCategoryDetailViewController;
 
 @end
 
@@ -152,9 +154,13 @@
     return 60;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    GuidedExcercise *excercixe  = [self.guidedExcercisePaginate.pageResults objectAtIndex:indexPath.row];
+    if(excercixe){
+        self.subCategoryDetailViewController = [[UIStoryboard storyboardWithName:KProfileStoryboard bundle:nil] instantiateViewControllerWithIdentifier:kSubCategoryDetailViewController];
+        self.subCategoryDetailViewController.selectedExcercise = excercixe;
+        [self.excerciseParentViewController.navigationController pushViewController:self.subCategoryDetailViewController animated:YES];
+    }
 }
 
 #pragma mark - Date Picker view Delegate

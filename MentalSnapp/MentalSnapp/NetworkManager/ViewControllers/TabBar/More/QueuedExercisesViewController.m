@@ -13,7 +13,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    [self setNavigationBarButtonTitle:@"Queued Excercises"];
+    [self setLeftMenuButtons:[NSArray arrayWithObject:[self backButton]]];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

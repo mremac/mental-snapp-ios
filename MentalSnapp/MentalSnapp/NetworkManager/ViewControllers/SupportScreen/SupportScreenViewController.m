@@ -10,6 +10,9 @@
 #import "UserManager.h"
 #import "RequestManager.h"
 
+#define KsupportPlaceHolderColor [UIColor colorWithRed:83.0/255.0 green:83.0/255.0 blue:83.0/255.0 alpha:1.0]
+#define KsupportDefaultColor [UIColor colorWithRed:183.0/255.0 green:183.0/255.0 blue:183.0/255.0 alpha:1.0]
+
 @interface SupportScreenViewController ()
 @property (strong, nonatomic) IBOutlet UIView *textViewContainer;
 @property (strong, nonatomic) IBOutlet UITextView *textView;
@@ -18,9 +21,11 @@
 @property (strong, nonatomic) IBOutlet UIButton *attachmentButton;
 @property (nonatomic, strong) NSData *textFileContentsData;
 @property (strong, nonatomic) IBOutlet UITextField *titleTextField;
+@property (strong, nonatomic) IBOutlet UIButton *deleteScreenShotButton;
 
 - (IBAction)attachScreenShotAction:(id)sender;
 - (IBAction)sendButtonAction:(id)sender;
+- (IBAction)deleteScreenShotBuutonAction:(id)sender;
 
 @end
 
@@ -35,10 +40,13 @@ NSString *const supportTextViewPlaceholder = @"Write your text...";
     [self setNavigationBarButtonTitle:@"Report an Issue"];
     [self setLeftMenuButtons:[NSArray arrayWithObject:[self backButton]]];
     [self performSelectorInBackground:@selector(fetchLogs) withObject:(nil)];
+    [self.deleteScreenShotButton setHidden:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [self.attachmentButton setHidden:NO];
+    [self.attachmentButton setImage:[UIImage imageNamed:@"attachment"] forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -93,7 +101,7 @@ NSString *const supportTextViewPlaceholder = @"Write your text...";
 - (void)setPlaceHolderText:(UITextView *)textView
 {
     self.textView.textAlignment = NSTextAlignmentLeft;
-    textView.textColor = [UIColor colorWithRed:182.0/255.0 green:182.0/255.0 blue:182.0/255.0 alpha:1.0f];
+    [textView setTextColor:KsupportPlaceHolderColor];
     textView.text = supportTextViewPlaceholder;
 }
 
@@ -116,7 +124,7 @@ NSString *const supportTextViewPlaceholder = @"Write your text...";
         textView.text = @"";
         self.textView.textAlignment = NSTextAlignmentLeft;
     }
-    textView.textColor = [UIColor colorWithRed:182.0/255.0 green:182.0/255.0 blue:182.0/255.0 alpha:1.0f];
+    [textView setTextColor:KsupportDefaultColor];
     return YES;
 }
 
@@ -128,6 +136,7 @@ NSString *const supportTextViewPlaceholder = @"Write your text...";
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    [textView setTextColor:KsupportDefaultColor];
     return YES;
 }
 
@@ -138,6 +147,7 @@ NSString *const supportTextViewPlaceholder = @"Write your text...";
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     UIImage *chosenImage = info[UIImagePickerControllerOriginalImage];
+    [self.deleteScreenShotButton setHidden:NO];
     self.attachedScreenShot = chosenImage;
     [[self attachmentButton] setImage:[UIImage imageNamed:@"popupCancel"] forState:UIControlStateNormal];
     [[self screenShotButton] setTitle:@"Change screenshot" forState:UIControlStateNormal];
@@ -156,7 +166,7 @@ NSString *const supportTextViewPlaceholder = @"Write your text...";
 
 - (IBAction)sendButtonAction:(id)sender {
     if([self.titleTextField.text isEqualToString:@""]){
-        [Banner showFailureBannerWithSubtitle:@"Please enter discription"];
+        [Banner showFailureBannerWithSubtitle:@"Please enter title"];
         return;
     }
     if([self isLogFileAttached]){
@@ -176,6 +186,13 @@ NSString *const supportTextViewPlaceholder = @"Write your text...";
             }
         }];
     }
+}
+
+- (IBAction)deleteScreenShotBuutonAction:(id)sender {
+    self.attachedScreenShot = nil;
+    [self.deleteScreenShotButton setHidden:YES];
+    [[self screenShotButton] setTitle:@"Attach screenshot" forState:UIControlStateNormal];
+
 }
 
 @end

@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MentalSnapp/NetworkManager/ViewControllers/GuidedExercise/GuidedExcerciseViewController.m"
-            timestampString = "502787967.232628"
+            filePath = "MentalSnapp/NetworkManager/ViewControllers/GuidedExcerciseSubCategoryView/SubCategoryDetailViewController.m"
+            timestampString = "503218964.761348"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "360"
-            endingLineNumber = "360"
-            landmarkName = "-scrollViewDidScroll:"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "-viewDidLoad"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,29 +25,45 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MentalSnapp/NetworkManager/ViewControllers/GuidedExercise/GuidedExcerciseViewController.m"
-            timestampString = "502787967.232628"
+            filePath = "MentalSnapp/NetworkManager/ViewControllers/ProfileScreen/ProfileViewController.m"
+            timestampString = "503219758.383758"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "350"
-            endingLineNumber = "350"
-            landmarkName = "-scrollViewDidScroll:"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
+            landmarkName = "-showDataOfUsers"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MentalSnapp/ViewModels/UserManager.m"
-            timestampString = "502894207.381868"
+            filePath = "MentalSnapp/NetworkManager/ViewControllers/LoginViewController.m"
+            timestampString = "503220518.230956"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
-            landmarkName = "-saveLoggedinUserInfoInUserDefault"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "-loginButtonTapped:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MentalSnapp/NetworkManager/APIHelpers/NetworkHttpClient.m"
+            timestampString = "503220522.662924"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "+sharedInstance"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
