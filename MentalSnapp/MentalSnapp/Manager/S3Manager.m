@@ -51,6 +51,10 @@
     {
         bucketName = ([appSettings.NetworkMode isEqualToString:kLiveEnviroment]) ? kLiveVideoBucket : kStagingVideoBucket;
     }
+    else if (self.fileType == VideoThumbnailImageType)
+    {
+        bucketName = ([appSettings.NetworkMode isEqualToString:kLiveEnviroment]) ? kLiveVideoThumbnailImageBucket : kStagingVideoThumbnailImageBucket;
+    }
     else if (self.fileType == ImageProfile)
     {
         bucketName = ([appSettings.NetworkMode isEqualToString:kLiveEnviroment]) ? kLiveProfileImageBucket : kStagingProfileImageBucket;

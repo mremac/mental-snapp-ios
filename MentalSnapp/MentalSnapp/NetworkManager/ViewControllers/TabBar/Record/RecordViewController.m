@@ -38,6 +38,8 @@
     [Util saveCustomObject:[NSNumber numberWithBool:YES] toUserDefaultsForKey:@"isMoodViewController"];
     [picker dismissViewControllerAnimated:YES completion:^{
         MoodViewController *moodViewController = [[UIStoryboard storyboardWithName:KProfileStoryboard bundle:nil] instantiateViewControllerWithIdentifier:kMoodViewController];
+        NSURL *urlvideo = [info objectForKey:UIImagePickerControllerMediaURL];
+        moodViewController.videoURL = urlvideo;
         [self.navigationController pushViewController:moodViewController animated:YES];
     }];
 }

@@ -10,8 +10,8 @@
 
 typedef NS_ENUM(NSInteger, UploadFileType){
     OtherType,
-    LogFileType,
     ImageProfile,
+    VideoThumbnailImageType,
     VideoFileType
 };
 

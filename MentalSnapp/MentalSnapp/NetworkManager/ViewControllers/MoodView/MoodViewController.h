@@ -10,4 +10,6 @@
 
 @interface MoodViewController : MSViewController
 
+@property(nonatomic, strong) NSURL *videoURL;
+
 @end

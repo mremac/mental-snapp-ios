@@ -90,8 +90,10 @@ ns *kSubCategoryExcerciseTableViewCell = @"SubCategoryTableViewCell";
 #pragma mark - S3Buckets
 
 ns *kLiveProfileImageBucket = @"mentalsnapp/production/profile_images";
+ns *kLiveVideoThumbnailImageBucket = @"mentalsnapp/production/video_thumbnails";
 ns *kLiveVideoBucket = @"mentalsnapp/production/videos";
 
 ns *kStagingProfileImageBucket = @"mentalsnapp/staging/profile_images";
+ns *kStagingVideoThumbnailImageBucket = @"mentalsnapp/staging/video_thumbnails";
 ns *kStagingVideoBucket = @"mentalsnapp/staging/videos";
 

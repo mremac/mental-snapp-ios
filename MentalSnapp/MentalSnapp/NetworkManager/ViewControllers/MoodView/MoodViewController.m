@@ -8,6 +8,7 @@
 
 #import "MoodViewController.h"
 #import "EFCircularSlider.h"
+#import <AVFoundation/AVFoundation.h>
 
 @interface MoodViewController ()
 
@@ -20,6 +21,9 @@
 @property (strong, nonatomic) IBOutlet UIButton *addFeelingButton;
 @property (strong, nonatomic) IBOutlet UIView *descriptionView;
 @property (strong, nonatomic) IBOutlet UITextView *descriptionTextView;
+
+@property(nonatomic, strong) NSString *videoURLPath;
+@property(nonatomic, strong) NSString *videoThumbnailURLPath;
 
 - (IBAction)addFeelingButtonAction:(id)sender;
 
@@ -54,6 +58,83 @@
 */
 
 #pragma mark - Private methods
+
+- (void)willUploadVideoOnAWS
+{
+    [self showInProgress:YES];
+    if(self.videoURL)
+    {
+        [[[Util alloc] init] didFinishPickingVideoFile:self.videoURL fileType:VideoFileType completionBlock:^(BOOL success, id response)
+         {
+             NSLog([NSString stringWithFormat:@"response : : %@", response]);
+             if(success)
+             {
+                 AppSettings *appSettings = [AppSettingsManager sharedInstance].appSettings;
+                 NSString *bucketName = ([appSettings.NetworkMode isEqualToString:kLiveEnviroment]) ? kLiveVideoBucket : kStagingVideoBucket;
+                 self.videoURLPath = [NSString stringWithFormat:@"https://s3-eu-west-1.amazonaws.com/%@/%@", bucketName, response];
+                 [self didUploadVideoOnAWS];
+             }
+             else
+             {
+                 [Banner showFailureBannerWithSubtitle:@"Video could not be uploaded. Please try again"];
+                 // handle failure case
+                 [self didClearStateOnPop];
+             }
+         }];
+    }
+    else
+    {
+        [self didUploadVideoOnAWS];
+    }
+}
+
+- (void)didUploadVideoOnAWS
+{
+    AVAsset *asset = [AVAsset assetWithURL:self.videoURL];
+    AVAssetImageGenerator *imageGenerator = [[AVAssetImageGenerator alloc]initWithAsset:asset];
+    CMTime time = CMTimeMake(0, 1);
+    CGImageRef imageRef = [imageGenerator copyCGImageAtTime:time actualTime:NULL error:NULL];
+    UIImage *thumbnail = [UIImage imageWithCGImage:imageRef];
+    if(thumbnail)
+    {
+        [[[Util alloc] init] didFinishPickingImageFile:thumbnail fileType:VideoThumbnailImageType completionBlock:^(BOOL success, id response)
+         {
+             NSLog([NSString stringWithFormat:@"response : : %@", response]);
+             if(success)
+             {
+                 AppSettings *appSettings = [AppSettingsManager sharedInstance].appSettings;
+                 NSString *bucketName = ([appSettings.NetworkMode isEqualToString:kLiveEnviroment]) ? kLiveVideoThumbnailImageBucket : kStagingVideoThumbnailImageBucket;
+                 self.videoThumbnailURLPath = [NSString stringWithFormat:@"https://s3-eu-west-1.amazonaws.com/%@/%@", bucketName, response];
+                 [self didPerformAPICall];
+             }
+             else
+             {
+                 [Banner showFailureBannerWithSubtitle:@"Video's thumbnail could not be uploaded. Please try again"];
+                 // handle failure case
+                 [self didClearStateOnPop];
+             }
+         }];
+    }
+    else
+    {
+        [self didPerformAPICall];
+    }
+}
+
+- (void)didPerformAPICall
+{
+    //TODO: Use self.videoURLPath & self.videoThumbnailURLPath for API params
+    [self didClearStateOnPop];
+}
+
+- (void)didClearStateOnPop
+{
+    [Util saveCustomObject:[NSNumber numberWithBool:NO] toUserDefaultsForKey:@"isMoodViewController"];
+    [ApplicationDelegate.tabBarController setSelectTabIndex:0];
+    [ApplicationDelegate.tabBarController setSelectedIndex:0];
+    [self showInProgress:NO];
+    [self.navigationController popViewControllerAnimated:NO];
+}
 
 - (UIBarButtonItem *)uploadButton {
     UIButton *leftButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 4, 30, 30)];
@@ -110,10 +191,7 @@
 
 #pragma mark - IBActions
 - (IBAction)uploadButtonAction:(id)sender {
-    [self.navigationController popViewControllerAnimated:NO];
-    [Util saveCustomObject:[NSNumber numberWithBool:NO] toUserDefaultsForKey:@"isMoodViewController"];
-    [ApplicationDelegate.tabBarController setSelectTabIndex:0];
-    [ApplicationDelegate.tabBarController setSelectedIndex:0];
+    [self willUploadVideoOnAWS];
 }
 
 - (IBAction)addFeelingButtonAction:(id)sender {

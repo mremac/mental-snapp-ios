@@ -120,37 +120,24 @@
     return image;
 }
 
-- (NSData *)didFinishPickingVideoFile:(NSData *)videoData fileType:(UploadFileType)fileType completionBlock:(completionBlock)block
+- (void)didFinishPickingVideoFile:(NSURL *)videoURL fileType:(UploadFileType)fileType completionBlock:(completionBlock)block
 {
     NSString *deviceToken = [UserDefaults valueForKey:keyDeviceToken];
     if(!deviceToken || deviceToken.length == 0)
         deviceToken = @"Simulator";
     
     NSString *fileName = [NSString stringWithFormat:@"%@_%@.mov", [[NSDate date] getMilliSeconds], deviceToken];
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *filePath = [documentsDirectory stringByAppendingPathComponent:fileName];
-    
-//    NSData *imageData = UIImagePNGRepresentation(image);
-    [videoData writeToFile:filePath atomically:YES];
-    
-    NSURL *videoURL = [NSURL fileURLWithPath:filePath];
-    
+
     //*> Getting size
     NSError *attributesError;
-    NSDictionary *fileAttributes = [[NSFileManager defaultManager] attributesOfItemAtPath:filePath error:&attributesError];
+    NSDictionary *fileAttributes = [[NSFileManager defaultManager] attributesOfItemAtPath:videoURL.path error:&attributesError];
     NSNumber *fileSizeNumber = [fileAttributes objectForKey:NSFileSize];
     long long fileSize = [fileSizeNumber longLongValue];
     
     S3Manager * s3Manager = [[S3Manager alloc] initWithFileURL:videoURL s3Key:fileName mediaUploadProgressBarView:nil progressBarLabel:nil fileType:fileType contentLength:[NSNumber numberWithUnsignedLongLong:fileSize]];
     [s3Manager uploadFileToS3CompletionBlock:^(BOOL success, id response) {
         block(success, response);
-        
-        NSError *error;
-        [[NSFileManager defaultManager] removeItemAtPath:filePath error:&error];
     }];
-    
-    return videoData;
 }
 
 @end

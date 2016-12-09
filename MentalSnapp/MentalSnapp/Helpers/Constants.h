@@ -126,9 +126,11 @@ exNS *kSubCategoryExcerciseTableViewCell;
 #pragma mark - S3Buckets
 
 exNS *kLiveProfileImageBucket;
+exNS *kLiveVideoThumbnailImageBucket;
 exNS *kLiveVideoBucket;
 
 exNS *kStagingProfileImageBucket;
+exNS *kStagingVideoThumbnailImageBucket;
 exNS *kStagingVideoBucket;
 
 
