@@ -112,6 +112,9 @@
     S3Manager * s3Manager = [[S3Manager alloc] initWithFileURL:imageURL s3Key:fileName mediaUploadProgressBarView:nil progressBarLabel:nil fileType:fileType contentLength:[NSNumber numberWithUnsignedLongLong:fileSize]];
     [s3Manager uploadFileToS3CompletionBlock:^(BOOL success, id response) {
         block(success, response);
+        
+        NSError *error;
+        [[NSFileManager defaultManager] removeItemAtPath:filePath error:&error];
     }];
     
     return image;
@@ -142,6 +145,9 @@
     S3Manager * s3Manager = [[S3Manager alloc] initWithFileURL:videoURL s3Key:fileName mediaUploadProgressBarView:nil progressBarLabel:nil fileType:fileType contentLength:[NSNumber numberWithUnsignedLongLong:fileSize]];
     [s3Manager uploadFileToS3CompletionBlock:^(BOOL success, id response) {
         block(success, response);
+        
+        NSError *error;
+        [[NSFileManager defaultManager] removeItemAtPath:filePath error:&error];
     }];
     
     return videoData;
