@@ -74,7 +74,7 @@ NSString *const supportTextViewPlaceholder = @"Write your text...";
     NSString *majorVersion = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
     NSString *minorVersion = [infoDictionary objectForKey:@"CFBundleVersion"];
     
-    fetchLogString = [[NSString stringWithFormat:@"Version %@ (%@) ,",
+    fetchLogString = [[NSString stringWithFormat:@"MentalSnapp Version %@ (%@) ,",
       majorVersion, minorVersion] stringByAppendingString: fetchLogString];
     
     self.textFileContentsData = [[fetchLogString dataUsingEncoding:NSUTF8StringEncoding] gzippedData];
@@ -169,6 +169,11 @@ NSString *const supportTextViewPlaceholder = @"Write your text...";
         [Banner showFailureBannerWithSubtitle:@"Please enter title"];
         return;
     }
+    if([self.textView.text isEqualToString:@""]){
+        [Banner showFailureBannerWithSubtitle:@"Please enter description"];
+        return;
+    }
+
     if([self isLogFileAttached]){
         NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
         [dictionary setValue:self.titleTextField.text forKey:@"title"];

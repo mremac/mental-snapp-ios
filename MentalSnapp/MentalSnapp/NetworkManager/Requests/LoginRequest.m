@@ -37,7 +37,7 @@
 - (id)initWithForgotPassEmail:(NSString *)email {
     self = [super init];
     if (self) {
-        NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObject:[@{@"email": email} mutableCopy] forKey:@"user"];
+        NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithObjectsAndKeys:email,@"email", nil];
         _parameters = dict;
         
         self.urlPath = kForgotPassAPI;

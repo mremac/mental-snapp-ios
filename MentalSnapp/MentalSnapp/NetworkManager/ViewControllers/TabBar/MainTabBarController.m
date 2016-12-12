@@ -29,6 +29,11 @@
     [self addViewInTabBar];
     [self addGuidedExcerciseTab];
     [self setTabBarItems];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO
+                                            withAnimation:UIStatusBarAnimationFade];
+}
+- (BOOL)prefersStatusBarHidden {
+    return YES;
 }
 
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {

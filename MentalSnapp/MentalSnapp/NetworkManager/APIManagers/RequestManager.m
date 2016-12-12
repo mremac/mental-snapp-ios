@@ -92,7 +92,7 @@ NSString *const kDefaultErrorMessage =  @"Error! Please try again.";
 
 - (void)userDeactivateWithUserModel:(UserModel *)userModel withCompletionBlock:(completionBlock)block {
     if ([ApplicationDelegate hasNetworkAvailable]) {
-        [[UserInterface alloc] userDeactivate:[[UserRequest alloc] initForUserDetail:userModel] andCompletionBlock:^(BOOL success, id response) {
+        [[UserInterface alloc] userDeactivate:[[UserRequest alloc] initForUserDeactivate:userModel] andCompletionBlock:^(BOOL success, id response) {
             block(success,response);
         }];
     }else {

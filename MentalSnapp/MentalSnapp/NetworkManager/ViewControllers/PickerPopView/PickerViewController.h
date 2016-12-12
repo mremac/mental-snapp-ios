@@ -14,6 +14,12 @@ typedef NS_ENUM(NSInteger, DatePickerType){
     timeOnly,
 };
 
+typedef NS_ENUM(NSInteger, DateSelection){
+    KNone=0,
+    futureDateOnly,
+    pastDateOnly
+};
+
 
 @protocol PickerViewControllerDelegate <NSObject>
 
@@ -27,5 +33,5 @@ typedef NS_ENUM(NSInteger, DatePickerType){
 @property (assign, nonatomic) id <PickerViewControllerDelegate> delegate;
 @property (assign, nonatomic) NSDate *selectedDate;
 @property (assign, nonatomic) DatePickerType pickerType;
-
+@property (assign, nonatomic) DateSelection dateSelection;
 @end

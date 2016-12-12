@@ -35,6 +35,11 @@
                 if (status == kStatusSuccess) {
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                         [Banner showSuccessBannerWithSubtitle:@"Sent sucessfully."];
+                        
+                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                            [Banner hideAllBanners];
+                        });
+                        
                     });
                 } else {
                     result = ([response hasValueForKey:@"message"])?[response valueForKey:@"message"]:@"Erorr!";

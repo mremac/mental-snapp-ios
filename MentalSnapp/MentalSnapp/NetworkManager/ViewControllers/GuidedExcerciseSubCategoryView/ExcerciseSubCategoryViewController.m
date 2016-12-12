@@ -43,6 +43,7 @@
     self.pickerViewController = [[UIStoryboard storyboardWithName:KProfileStoryboard bundle:nil] instantiateViewControllerWithIdentifier:kPickerViewController];
     self.pickerViewController.modalPresentationStyle = UIModalPresentationOverFullScreen;
     [self.pickerViewController setPickerType:dateTime];
+    [self.pickerViewController setDateSelection:futureDateOnly];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self.excerciseDetailLabel setText:self.excercise.excerciseDescription.trim];
         [self.view layoutIfNeeded];
@@ -183,6 +184,7 @@
 
 -(IBAction)subcategoryCalenderAction:(id)sender {
     _selectedExcercise  = [self.guidedExcercisePaginate.pageResults objectAtIndex:[sender tag]];
+     [self.pickerViewController setDateSelection:futureDateOnly];
     [[[ApplicationDelegate window] rootViewController] presentViewController:self.pickerViewController animated:YES completion:nil];
 }
 

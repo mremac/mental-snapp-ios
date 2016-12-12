@@ -42,8 +42,13 @@
     [self.datePicker setMaximumDate:[NSDate date]];
     [self.datePicker addTarget:self action:@selector(dateIsChanged:) forControlEvents:UIControlEventValueChanged];
     [self.maleGenderButton setSelected:YES];
-    
+    [[UIApplication sharedApplication] setStatusBarHidden:YES
+                                            withAnimation:UIStatusBarAnimationFade];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardDidHide) name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (BOOL)prefersStatusBarHidden {
+    return YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -101,6 +106,7 @@
         [_confirmPasswordTextField becomeFirstResponder];
     } else if ([textField isEqual:_confirmPasswordTextField]) {
         [_confirmPasswordTextField resignFirstResponder];
+        [self signUpButtonTapped:self.signUpButton];
     }
     return YES;
 }
@@ -179,8 +185,9 @@
         user.password = self.passwordTextField.text;
         user.confirmPassword = self.confirmPasswordTextField.text;
         user.phoneCountryCode = @"+44";
-
+        [self showInProgress:YES];
         [[RequestManager alloc] signUpWithUserModel:user withCompletionBlock:^(BOOL success, id response) {
+            [self showInProgress:NO];
             if (success) {
                 [[UserManager sharedManager] saveLoggedinUserInfoInUserDefault];
                 [UIView transitionWithView:ApplicationDelegate.window

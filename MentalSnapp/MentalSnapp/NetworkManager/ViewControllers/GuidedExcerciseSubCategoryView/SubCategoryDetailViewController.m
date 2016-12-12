@@ -24,6 +24,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [UserManager sharedManager].isBackFromView = YES;
+    [self.navigationController setNavigationBarHidden:YES];
+    [self.navigationController setNavigationBarHidden:NO];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self setNavigationBarButtonTitle:[NSString stringWithFormat:@"%@",self.selectedExcercise.excerciseName]];
         [self showDetailofCategory];
@@ -33,12 +35,14 @@
     self.pickerViewController = [[UIStoryboard storyboardWithName:KProfileStoryboard bundle:nil] instantiateViewControllerWithIdentifier:kPickerViewController];
     self.pickerViewController.modalPresentationStyle = UIModalPresentationOverFullScreen;
     [self.pickerViewController setPickerType:dateTime];
-    
+     [self.pickerViewController setDateSelection:futureDateOnly];
+    [self.pickerViewController setDelegate:self];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.mainViewTopConstraint.constant = 64;
+    self.mainViewTopConstraint.constant = [self.topLayoutGuide length];
     [self.view layoutIfNeeded];
 }
 

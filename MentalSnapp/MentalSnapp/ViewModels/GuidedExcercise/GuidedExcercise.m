@@ -14,8 +14,8 @@
     return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{
                                                                   @"excerciseId": @"id",
                                                                   @"excerciseName": @"name",
-                                                                  @"excerciseCoverURL": @"cover_url",
-                                                                  @"excerciseSmallCoverURL": @"small_cover_url",
+                                                                  @"excerciseCoverURL": @"cover_url_large",
+                                                                  @"excerciseSmallCoverURL": @"cover_url_small",
                                                                   @"excerciseDescription": @"description",
                                                                   @"superExcerciseId": @"exercise_id",
                                                                   @"userId": @"created_at",

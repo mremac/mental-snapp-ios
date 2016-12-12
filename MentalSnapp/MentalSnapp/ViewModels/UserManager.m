@@ -77,6 +77,7 @@ static dispatch_once_t userOnceToken;
 //*>    Save Logged in user's info in user default
 - (void)removeUserFromUserDefault
 {
+    [UserDefaults setBool:NO forKey:kIsUserLoggedIn];
     [UserDefaults removeObjectForKey:@"authorizationToken"];
     [UserDefaults removeObjectForKey:@"email"];
     [UserDefaults removeObjectForKey:@"name"];

@@ -29,7 +29,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [[UIApplication sharedApplication] setStatusBarHidden:YES
+                                            withAnimation:UIStatusBarAnimationFade];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -43,6 +44,10 @@
     self.navigationController.navigationBar.hidden = YES;
 }
 
+- (BOOL)prefersStatusBarHidden {
+    return YES;
+}
+
 #pragma mark - IBAction methods
 
 - (IBAction)loginButtonTapped:(id)sender {
@@ -54,8 +59,10 @@
         [Banner showSuccessBannerWithSubtitle:@"Enter password"];
     } else {
     
+        [self showInProgress:YES];
         UserModel *userModel = [[UserModel alloc]initWithUserEmail:self.userEmailTextField.text andPassword:self.passwordTextField.text];
         [[RequestManager alloc] loginWithUserModel:userModel withCompletionBlock:^(BOOL success, id response) {
+            [self showInProgress:NO];
             if (success){
                 [UserDefaults setBool:self.rememberMeButton.selected forKey:kRememberMe];
                 [UserDefaults setValue:self.userEmailTextField.text forKey:kUserEmail];

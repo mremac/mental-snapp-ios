@@ -59,6 +59,7 @@
     self.pickerViewController = [[UIStoryboard storyboardWithName:KProfileStoryboard bundle:nil] instantiateViewControllerWithIdentifier:kPickerViewController];
     self.pickerViewController.modalPresentationStyle = UIModalPresentationOverFullScreen;
     [self.pickerViewController setPickerType:dateOnly];
+     [self.pickerViewController setDateSelection:pastDateOnly];
     [self.pickerViewController setDelegate:self];
 }
 
@@ -125,14 +126,16 @@
 
 
 - (void)getUserDetail {
-    [self showInProgress:YES];
-    [[RequestManager alloc] getUserDetailWithUserModel:self.user withCompletionBlock:^(BOOL success, id response) {
-        if(success){
-            self.user = response;
-            [self showDataOfUsers];
-        }
-         [self showInProgress:NO];
-    }];
+    if(self.user) {
+        [self showInProgress:YES];
+        [[RequestManager alloc] getUserDetailWithUserModel:self.user withCompletionBlock:^(BOOL success, id response) {
+            if(success){
+                self.user = response;
+                [self showDataOfUsers];
+            }
+            [self showInProgress:NO];
+        }];
+    }
 }
 
 -(void)showDataOfUsers {
@@ -331,12 +334,11 @@
     [self.dateOfBirthButton setTitle:[NSDate stringFromDate:date format:@"dd MMM yyyy"] forState:UIControlStateNormal];
 }
 - (void)didSelectCancelButton {
-    selectedDate = [NSDate dateFromString:self.user.dateOfBirth format:@"yyyy-dd-MM"];
-    [self.dateOfBirthButton setTitle:[NSDate stringFromDate:selectedDate format:@"dd MMM yyyy"] forState:UIControlStateNormal];
+//    selectedDate = [NSDate dateFromString:self.user.dateOfBirth format:@"yyyy-dd-MM"];
+//    [self.dateOfBirthButton setTitle:[NSDate stringFromDate:selectedDate format:@"dd MMM yyyy"] forState:UIControlStateNormal];
 }
 
 #pragma mark - IBActions
-
 - (void)logoutButtonTapped {
     [self showInProgress:YES];
     [[RequestManager alloc] userLogoutWithUserModel:self.user withCompletionBlock:^(BOOL success, id response) {
@@ -383,16 +385,58 @@
 }
 
 - (IBAction)addPictureProfileAction:(id)sender {
-    [self performImageChangeAction];
+    if(ApplicationDelegate.hasNetworkAvailable){
+        [self performImageChangeAction];
+    }
+}
+
+-(void)deleteProfileAPI {
+    [self showInProgress:YES];
+    [[RequestManager alloc] userDeactivateWithUserModel:self.user withCompletionBlock:^(BOOL success, id response) {
+        if(success){
+            [[UserManager sharedManager] logoutUser];
+            [Banner showSuccessBannerOnTopWithTitle:@"Good Bye" subtitle:@"Thank you for using Mentalsnapp. Hope to meet you soon!"];
+        }
+        [self showInProgress:NO];
+    }];
+}
+
+-(void)downloadVideoPopUP {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Mental Snapp" message:@"Let us know if you want to download videos you have recorded." preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self deleteProfileAPI];
+        });
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self deleteProfileAPI];
+        });
+    }];
+    
+    [alertController addAction:okAction];
+    [alertController addAction:cancelAction];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self presentViewController:alertController animated:YES completion:nil];
+    });
 }
 
 - (IBAction)deleteProfileAction:(id)sender {
 
-    [[RequestManager alloc] userDeactivateWithUserModel:self.user withCompletionBlock:^(BOOL success, id response) {
-        if(success){
-            [[UserManager sharedManager] logoutUser];
-        }
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Mental Snapp" message:@"Are you sure you want to delete your Profile?" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self downloadVideoPopUP];
+        });
     }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    }];
+
+    [alertController addAction:okAction];
+     [alertController addAction:cancelAction];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self presentViewController:alertController animated:YES completion:nil];
+    });
 }
 
 @end

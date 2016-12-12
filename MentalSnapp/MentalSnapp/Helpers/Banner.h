@@ -20,5 +20,6 @@
 + (ALAlertBanner *)showBannerWithTitle:(NSString *)title subtitle:(NSString *)subtitle style:(ALAlertBannerStyle)style position:(ALAlertBannerPosition)position;
 
 + (ALAlertBanner *)showNetworkFailureBanner;
++ (void)hideAllBanners;
 
 @end

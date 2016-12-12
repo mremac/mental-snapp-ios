@@ -60,10 +60,10 @@ ns *kExcerciseSubCategoryViewController = @"ExcerciseSubCategoryViewController";
 ns *kSubCategoryDetailViewController = @"SubCategoryDetailViewController";
 
 #pragma mark - API URL
-ns *kLoginAPI = @"/api/v1/authenticate";
-ns *kSignUpAPI = @"/api/v1/users";
-ns *kForgotPassAPI = @"/api/v1/users/forgot_password";
-ns *KUserAPI = @"/api/v1/users/%@";
+ns *kLoginAPI = @"api/v1/authenticate";
+ns *kSignUpAPI = @"api/v1/users";
+ns *kForgotPassAPI = @"api/v1/users/forgot_password";
+ns *KUserAPI = @"api/v1/users/%@";
 ns *kChangePassword = @"api/v1/users/update_password";
 ns *kDeactivateUser = @"api/v1/users/deactivate_account";
 ns *KPostSupportLog = @"api/v1/supports/record";

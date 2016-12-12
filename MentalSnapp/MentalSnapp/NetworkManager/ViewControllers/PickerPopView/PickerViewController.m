@@ -24,7 +24,19 @@
     if(self.selectedDate){
         [self.datePickerView setDate:self.selectedDate];
     }
-    [self.datePickerView setMaximumDate:[NSDate date]];
+    
+    switch (_dateSelection) {
+        case futureDateOnly:
+            [self.datePickerView setMinimumDate:[NSDate date]];
+            break;
+        case pastDateOnly:
+            [self.datePickerView setMaximumDate:[NSDate date]];
+            break;
+            
+        default:
+            break;
+    }
+    
     switch (self.pickerType) {
         case dateOnly:
             [self.datePickerView setDatePickerMode:UIDatePickerModeDate];

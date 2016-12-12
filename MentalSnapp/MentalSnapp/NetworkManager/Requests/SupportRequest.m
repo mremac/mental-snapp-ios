@@ -24,12 +24,12 @@
         [requestParams setValue:dictionary[@"description"] forKey:@"description"];
         [requestParams setValue:dictionary[@"title"] forKey:@"title"];
 
-        _parameters = [[NSMutableDictionary alloc] initWithDictionary:dictionary];
+        _parameters = [[NSMutableDictionary alloc] initWithDictionary:requestParams];
         
-        if ([dictionary hasValueForKey:@"screen_shot"]) {
-            self.imageData = UIImagePNGRepresentation([dictionary objectForKey:@"screen_shot"]);
-            self.dataImageName = @"screen_shot";
-            self.imageName = @"screen_shot.jpg";
+        if ([dictionary hasValueForKey:@"screenshot"]) {
+            self.imageData = UIImageJPEGRepresentation(([dictionary objectForKey:@"screenshot"]),0.1);
+            self.dataImageName = @"screenshot";
+            self.imageName = @"screenshot.jpeg";
             self.imageMimeType = @"image/jpeg";
 //            NSData *imageData = UIImagePNGRepresentation(user.profileImage);
 //            UIImage *image = [UIImage imageWithData:imageData];

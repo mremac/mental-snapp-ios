@@ -153,7 +153,7 @@ static CGFloat const kForceHideAnimationDuration = 0.1f;
     _hideAnimationDuration = 0.2;
     _isScheduledToHide = YES;
     _bannerOpacity = 0.93f;
-    _secondsToShow = 5;
+    _secondsToShow = 3.0f;
     _allowTapToDismiss = YES;
     _shouldForceHide = NO;
     

@@ -13,7 +13,7 @@
 #import "RequestManager.h"
 #import "GuidedExcercise.h"
 
-#define _minVoteiPhoneSwipe ([[UIScreen mainScreen] bounds].size.width * 1/4)
+#define _minsScreeniPhoneSwipe ([[UIScreen mainScreen] bounds].size.width * 1/4)
 
 @interface GuidedExcerciseViewController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource, UIGestureRecognizerDelegate, UIScrollViewDelegate>
 {
@@ -46,6 +46,7 @@
     
     // Do any additional setup after loading the view.
     _selectedIndexPath = 1;
+    self.selectedViewTag = 1;
     [self setNavigationBarButtonTitle:@"Mental Snapp"];
     dispatch_async(dispatch_get_main_queue(), ^{
         [self defaultSettings];
@@ -73,12 +74,6 @@
         });
     }
     [UserManager sharedManager].isLoginViaSignUp = NO;
-
-    if([UserManager sharedManager].isBackFromView){
-        self.guidedExcerciseTopViewTopConstraint.constant = 64;
-        [self.view layoutIfNeeded];
-        [UserManager sharedManager].isBackFromView = NO;
-    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -123,6 +118,18 @@
             isSelectedTab = NO;
         });
     }
+}
+
+-(void)showPreSelectedExcerciseForIndexpath:(NSIndexPath *)indexPath AndUnselectedIndexPath:(NSIndexPath *)unselectedIndexPath withAnimation:(BOOL)animate andGrowValue:(CGFloat)growValue andShrinkValue:(CGFloat)value{
+        [self.guidedExcerciseCollectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+        guidedExcerciseCellCollectionViewCell *selectedCell = (guidedExcerciseCellCollectionViewCell *)[self.guidedExcerciseCollectionView cellForItemAtIndexPath:indexPath];
+        [selectedCell setSelectedViewDetail:([self.guidedExcercisePaginate.pageResults count]+1) withAnimation:animate andValue:(animate?0:growValue)];
+        guidedExcerciseCellCollectionViewCell *unSelectedcell = (guidedExcerciseCellCollectionViewCell *)[self.guidedExcerciseCollectionView cellForItemAtIndexPath:unselectedIndexPath];
+        [unSelectedcell setUnSelectedViewDetail:([self.guidedExcercisePaginate.pageResults count]+1) withAnimation:animate andValue:(animate?0:value)];
+        _selectedIndexPath = indexPath.item;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            isSelectedTab = NO;
+        });
 }
 
 - (void)defaultSettings {
@@ -344,6 +351,7 @@
 }
 
 #pragma mark - ScrollViewDelegate
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if(scrollView.tag == 999 && !isSelectedTab) {
         CGPoint offset= scrollView.contentOffset;
@@ -364,11 +372,18 @@
         growRadius = (growRadius >=KGrowValue)?KGrowValue:growRadius;
         shrinkRadius = (shrinkRadius < KShrinkValue)?shrinkRadius:KShrinkValue;
         
+        if(scrollView.contentOffset.x < 0 || self.selectedViewTag ==0 || self.selectedViewTag == self.guidedExcercisePaginate.pageResults.count){
+            return;
+        }
+        
         if (self.lastContentOffset > scrollView.contentOffset.x) {
             if(offset.x>(([self.guidedExcerciseCollectionView getWidth]/3)*(_selectedIndexPath-1))-(([self.guidedExcerciseCollectionView getWidth]/3))) {
                 [self.guidedExcerciseCollectionView setContentOffset:offset];
                 self.selectedViewTag = (_selectedIndexPath-1);
                 [self showScrollSelectedExcerciseForIndexpath:[NSIndexPath indexPathForRow:(_selectedIndexPath-1) inSection:0] withAnimation:NO andGrowValue:growRadius andShrinkValue:shrinkRadius];
+            }else {
+                self.selectedViewTag = _selectedIndexPath;
+                [self.guidedExcerciseCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:_selectedIndexPath inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
             }
         } else if (self.lastContentOffset < scrollView.contentOffset.x) {
             if(offset.x<(([self.guidedExcerciseCollectionView getWidth]/3)*_selectedIndexPath)) {
@@ -377,6 +392,7 @@
                     self.selectedViewTag = (_selectedIndexPath+1);
                     [self showScrollSelectedExcerciseForIndexpath:[NSIndexPath indexPathForRow:(_selectedIndexPath+1) inSection:0] withAnimation:NO andGrowValue:growRadius andShrinkValue:shrinkRadius];
                 } else {
+                    self.selectedViewTag = _selectedIndexPath;
                     [self.guidedExcerciseCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:_selectedIndexPath inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
                 }
             }
@@ -385,8 +401,34 @@
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    
-    self.lastContentOffset = scrollView.contentOffset.x;
+        if(scrollView.contentOffset.x > self.lastContentOffset ) {
+            if(self.selectedViewTag == self.selectedIndexPath){
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self showPreSelectedExcerciseForIndexpath:[NSIndexPath indexPathForRow:_selectedIndexPath-1 inSection:0] AndUnselectedIndexPath:[NSIndexPath indexPathForRow:self.selectedViewTag inSection:0] withAnimation:YES andGrowValue:0 andShrinkValue:0];
+                    self.selectedViewTag = _selectedViewTag;
+                });
+            }
+        }
+        else if (scrollView.contentOffset.x < self.lastContentOffset) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self showPreSelectedExcerciseForIndexpath:[NSIndexPath indexPathForRow:_selectedIndexPath+1 inSection:0] AndUnselectedIndexPath:[NSIndexPath indexPathForRow:self.selectedViewTag inSection:0] withAnimation:YES andGrowValue:0 andShrinkValue:0];
+                self.selectedViewTag = _selectedViewTag;
+            });
+        }
+        else
+        {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                if(self.selectedViewTag == 0){
+                    self.selectedViewTag = _selectedIndexPath+1;
+                }
+                if(self.selectedViewTag != _selectedIndexPath){
+                    [self showPreSelectedExcerciseForIndexpath:[NSIndexPath indexPathForRow:_selectedIndexPath inSection:0] AndUnselectedIndexPath:[NSIndexPath indexPathForRow:self.selectedViewTag inSection:0] withAnimation:YES andGrowValue:0 andShrinkValue:0];
+                    self.selectedViewTag = _selectedIndexPath;
+                }
+            });
+        }
+        self.lastContentOffset = scrollView.contentOffset.x;
 }
 
 
@@ -416,7 +458,6 @@
 }
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
-    
     NSUInteger index =[self.guideExcerciseViewControllers indexOfObject:viewController];
 //    dispatch_async(dispatch_get_main_queue(), ^{
 //        if(index != _selectedIndexPath){
@@ -436,9 +477,13 @@
 }
 
 - (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed {
-    if(finished) {
+    if(completed) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self showSelectedExcerciseForIndexpath:[NSIndexPath indexPathForRow:self.selectedViewTag inSection:0] withAnimation:YES andGrowValue:0 andShrinkValue:0];
+        });
+    } else {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self showPreSelectedExcerciseForIndexpath:[NSIndexPath indexPathForRow:_selectedIndexPath inSection:0] AndUnselectedIndexPath:[NSIndexPath indexPathForRow:self.selectedViewTag inSection:0] withAnimation:YES andGrowValue:0 andShrinkValue:0];
         });
     }
 }

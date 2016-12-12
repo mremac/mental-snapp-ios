@@ -132,9 +132,6 @@
 }
 
 - (void)hideAlertBanner:(ALAlertBanner *)alertBanner forced:(BOOL)forced {
-    if (alertBanner.isScheduledToHide) {
-        return;
-    }
     
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(hideAlertBanner:) object:alertBanner];
     

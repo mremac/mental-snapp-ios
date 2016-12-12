@@ -34,12 +34,23 @@
 #pragma mark - IBAction methods
 
 - (IBAction)submitButtonTapped:(id)sender {
+    if([_emailTextField.text.trim isEqualToString:@""]){
+        [Banner hideAllBanners];
+        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Please enter email"];
+        return;
+    }
+    
     if ([Util isValidEmail:_emailTextField.text.trim]) {
+        [self showInProgress:YES];
         [[RequestManager alloc] forgotPasswordWithEmail:_emailTextField.text.trim withCompletionBlock:^(BOOL success, id response) {
             if (success) {
                 [self showPopup];
             }
+            [self showInProgress:NO];
         }];
+    } else {
+        [Banner hideAllBanners];
+        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Please enter valid email"];
     }
 }
 

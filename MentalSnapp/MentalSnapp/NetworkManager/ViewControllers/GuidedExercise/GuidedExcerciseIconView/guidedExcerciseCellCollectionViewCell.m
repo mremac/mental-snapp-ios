@@ -22,9 +22,12 @@
     [self.guidedExcerciseTitleLabel setText:@""];
     [self.guidedExcerciseImageButton setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
     [self.guidedExcerciseTitleLabel setText:self.excercise.excerciseName];
-    [self.guidedExcerciseImageButton sd_setImageWithURL:[NSURL URLWithString:self.excercise.excerciseCoverURL] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@""] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-        
-    }];
+        if([NSURL URLWithString:self.excercise.excerciseCoverURL]){
+            [self.guidedExcerciseImageButton sd_setImageWithURL:[NSURL URLWithString:self.excercise.excerciseCoverURL] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"defaultExcerciseImage"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+            }];
+        }else {
+            [self.guidedExcerciseImageButton setImage:[UIImage imageNamed:@"defaultExcerciseImage"] forState:UIControlStateNormal];
+        }
         if(animate){
             CGFloat radius = (KGrowValue/2);
             [UIView animateWithDuration:0.1 animations:^{
@@ -46,7 +49,7 @@
     [self.guidedExcerciseImageButton setBackgroundColor:[UIColor clearColor]];
     [self.guidedExcerciseTitleLabel setTextColor:[UIColor clearColor]];
     [self.guidedExcerciseTitleLabel setText:@""];
-    [self.guidedExcerciseImageButton setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+    [self.guidedExcerciseImageButton setImage:[UIImage imageNamed:@"defaultExcerciseImage"] forState:UIControlStateNormal];
 }
 
 -(void)setUnSelectedViewDetail :(NSInteger )count withAnimation:(BOOL)animate andValue:(CGFloat)value{
@@ -61,9 +64,12 @@
     [self.guidedExcerciseTitleLabel setText:@""];
     [self.guidedExcerciseImageButton setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
     [self.guidedExcerciseTitleLabel setText:self.excercise.excerciseName];
-    [self.guidedExcerciseImageButton sd_setImageWithURL:[NSURL URLWithString:self.excercise.excerciseCoverURL] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@""] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-            
-    }];
+        if([NSURL URLWithString:self.excercise.excerciseSmallCoverURL]){
+            [self.guidedExcerciseImageButton sd_setImageWithURL:[NSURL URLWithString:self.excercise.excerciseSmallCoverURL] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"defaultExcerciseImage"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+            }];
+        } else {
+            [self.guidedExcerciseImageButton setImage:[UIImage imageNamed:@"defaultExcerciseImage"] forState:UIControlStateNormal];
+        }
         if(animate){
             CGFloat radius = (KShrinkValue/2);
             [UIView animateWithDuration:0.1 animations:^{

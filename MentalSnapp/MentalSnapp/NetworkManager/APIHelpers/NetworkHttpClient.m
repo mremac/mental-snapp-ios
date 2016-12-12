@@ -22,6 +22,8 @@
     if (_networkHttpClient && [UserDefaults boolForKey:kIsUserLoggedIn]) {
         [_networkHttpClient.requestSerializer setValue:[UserManager sharedManager].authorizationToken forHTTPHeaderField:@"Authorization"];
     }
+    [_networkHttpClient.requestSerializer setTimeoutInterval:60];
+
     return _networkHttpClient;
 }
 
@@ -112,15 +114,15 @@
 }
 
 - (void)multipartObjectApiCallWithUrl:(NSString *)url parameters:(NSDictionary *)parameters withObject:(Request *)object successBlock:(successBlock)success failureBlock:(failureBlock)failure {
-    
-    [self POST:url parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-        [formData appendPartWithFileData:object.fileData name:object.dataFilename fileName:object.fileName mimeType:object.mimeType];
+    [self.requestSerializer setTimeoutInterval:240];
+    [self POST:url parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {\
+        if(object.fileData)
+        {
+            [formData appendPartWithFileData:object.fileData name:object.dataFilename fileName:object.fileName mimeType:object.mimeType];
+        }
         if(object.imageData)
         {
-            [formData appendPartWithFileData:object.imageData
-                                        name:object.dataImageName
-                                    fileName:object.imageName
-                                    mimeType:object.imageMimeType];
+            [formData appendPartWithFileData:object.imageData name:object.dataImageName fileName:object.imageName mimeType:object.imageMimeType];
         }
         
     } progress:^(NSProgress *uploadProgress) {
