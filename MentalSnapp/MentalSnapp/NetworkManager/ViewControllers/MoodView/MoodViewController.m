@@ -101,7 +101,7 @@
              {
                  AppSettings *appSettings = [AppSettingsManager sharedInstance].appSettings;
                  NSString *bucketName = ([appSettings.NetworkMode isEqualToString:kLiveEnviroment]) ? kLiveVideoBucket : kStagingVideoBucket;
-                 self.videoURLPath = [NSString stringWithFormat:@"https://s3-eu-west-1.amazonaws.com/%@/%@", bucketName, response];
+                 self.videoURLPath = [NSString stringWithFormat:@"%@/%@/%@", kAWSPath, bucketName, response];
                  [self didUploadVideoOnAWS];
              }
              else
@@ -134,7 +134,7 @@
              {
                  AppSettings *appSettings = [AppSettingsManager sharedInstance].appSettings;
                  NSString *bucketName = ([appSettings.NetworkMode isEqualToString:kLiveEnviroment]) ? kLiveVideoThumbnailImageBucket : kStagingVideoThumbnailImageBucket;
-                 self.videoThumbnailURLPath = [NSString stringWithFormat:@"https://s3-eu-west-1.amazonaws.com/%@/%@", bucketName, response];
+                 self.videoThumbnailURLPath = [NSString stringWithFormat:@"%@/%@/%@", kAWSPath, bucketName, response];
                  [self didPerformAPICall];
              }
              else

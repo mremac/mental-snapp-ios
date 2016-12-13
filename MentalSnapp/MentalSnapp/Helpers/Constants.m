@@ -92,11 +92,10 @@ ns *kSubCategoryExcerciseTableViewCell = @"SubCategoryTableViewCell";
 ns *kFeelingTableViewCell = @"FeelingTableViewCell";
 
 #pragma mark - S3Buckets
-
+ns *kAWSPath = @"https://s3-eu-west-1.amazonaws.com";
 ns *kLiveProfileImageBucket = @"mentalsnapp/production/profile_images";
 ns *kLiveVideoThumbnailImageBucket = @"mentalsnapp/production/video_thumbnails";
 ns *kLiveVideoBucket = @"mentalsnapp/production/videos";
-
 ns *kStagingProfileImageBucket = @"mentalsnapp/staging/profile_images";
 ns *kStagingVideoThumbnailImageBucket = @"mentalsnapp/staging/video_thumbnails";
 ns *kStagingVideoBucket = @"mentalsnapp/staging/videos";

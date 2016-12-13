@@ -243,7 +243,7 @@
              {
                  AppSettings *appSettings = [AppSettingsManager sharedInstance].appSettings;
                  NSString *bucketName = ([appSettings.NetworkMode isEqualToString:kLiveEnviroment]) ? kLiveProfileImageBucket : kStagingProfileImageBucket;
-                 profilePicURL = [NSString stringWithFormat:@"https://s3-eu-west-1.amazonaws.com/%@/%@", bucketName, response];
+                 profilePicURL = [NSString stringWithFormat:@"%@/%@/%@", kAWSPath, bucketName, response];
                  [self didPerformUpdateUserDetailsAPICall];
              }
              else
