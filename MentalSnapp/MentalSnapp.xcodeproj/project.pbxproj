@@ -130,6 +130,7 @@
 		6AC660F51DE576E500BB8949 /* MentalSnappTests.xctest in Resources */ = {isa = PBXBuildFile; fileRef = EECB25C11CF5AAF10012E315 /* MentalSnappTests.xctest */; };
 		EE5108D11CFEEEC200E8A3F9 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE5108D01CFEEEC200E8A3F9 /* Social.framework */; };
 		EF4F3B421DF9743200CE20FC /* S3Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = EF4F3B411DF9743200CE20FC /* S3Manager.m */; };
+		EF6DA2521DFFCC4300607C7B /* VideosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF6DA2511DFFCC4300607C7B /* VideosViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -375,6 +376,8 @@
 		EECB25CC1CF5AAF10012E315 /* MentalSnappUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MentalSnappUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF4F3B401DF9743200CE20FC /* S3Manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = S3Manager.h; sourceTree = "<group>"; };
 		EF4F3B411DF9743200CE20FC /* S3Manager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S3Manager.m; sourceTree = "<group>"; };
+		EF6DA2501DFFCC4300607C7B /* VideosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideosViewController.h; sourceTree = "<group>"; };
+		EF6DA2511DFFCC4300607C7B /* VideosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideosViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -448,6 +451,8 @@
 		5C7BE3C91DE85B6100C15CB5 /* Videos */ = {
 			isa = PBXGroup;
 			children = (
+				EF6DA2501DFFCC4300607C7B /* VideosViewController.h */,
+				EF6DA2511DFFCC4300607C7B /* VideosViewController.m */,
 			);
 			path = Videos;
 			sourceTree = "<group>";
@@ -1294,6 +1299,7 @@
 				6A98B12E1DE5A463009F1412 /* ProfileViewController.m in Sources */,
 				6AAA015A1DE56F8600208022 /* SocialManager.m in Sources */,
 				5C7BE3C41DE8570100C15CB5 /* MainTabBarController.m in Sources */,
+				EF6DA2521DFFCC4300607C7B /* VideosViewController.m in Sources */,
 				5C7BE3E51DE8877400C15CB5 /* QueuedExercisesViewController.m in Sources */,
 				6A288EC51DED8BB100273CCC /* CommentsPaginate.m in Sources */,
 				6A5BBBAE1DFAECA100C67CE9 /* FeelingListViewController.m in Sources */,
