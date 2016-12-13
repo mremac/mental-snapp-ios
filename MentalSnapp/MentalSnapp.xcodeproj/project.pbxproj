@@ -131,6 +131,7 @@
 		EE5108D11CFEEEC200E8A3F9 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE5108D01CFEEEC200E8A3F9 /* Social.framework */; };
 		EF4F3B421DF9743200CE20FC /* S3Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = EF4F3B411DF9743200CE20FC /* S3Manager.m */; };
 		EF6DA2521DFFCC4300607C7B /* VideosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF6DA2511DFFCC4300607C7B /* VideosViewController.m */; };
+		EF6DA25B1DFFE13300607C7B /* VideoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EF6DA25A1DFFE13300607C7B /* VideoTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -378,6 +379,8 @@
 		EF4F3B411DF9743200CE20FC /* S3Manager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S3Manager.m; sourceTree = "<group>"; };
 		EF6DA2501DFFCC4300607C7B /* VideosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideosViewController.h; sourceTree = "<group>"; };
 		EF6DA2511DFFCC4300607C7B /* VideosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideosViewController.m; sourceTree = "<group>"; };
+		EF6DA2591DFFE13300607C7B /* VideoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoTableViewCell.h; sourceTree = "<group>"; };
+		EF6DA25A1DFFE13300607C7B /* VideoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -473,6 +476,7 @@
 		5C7BE3D11DE86E0300C15CB5 /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				EF6DA2581DFFE13300607C7B /* VideoCell */,
 				6A5BBBA61DFAEBB100C67CE9 /* FeelingCell */,
 				6A7387DE1DF1731800D3A981 /* SubCategoryCell */,
 				5C7BE3D21DE86F3900C15CB5 /* MoreTableViewCell.h */,
@@ -1034,6 +1038,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		EF6DA2581DFFE13300607C7B /* VideoCell */ = {
+			isa = PBXGroup;
+			children = (
+				EF6DA2591DFFE13300607C7B /* VideoTableViewCell.h */,
+				EF6DA25A1DFFE13300607C7B /* VideoTableViewCell.m */,
+			);
+			path = VideoCell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1297,6 +1310,7 @@
 				6A7D95BA1DE6CD6A0065573E /* UserInterface.m in Sources */,
 				6AAA01591DE56F8600208022 /* RemoteNotificationManager.m in Sources */,
 				6A98B12E1DE5A463009F1412 /* ProfileViewController.m in Sources */,
+				EF6DA25B1DFFE13300607C7B /* VideoTableViewCell.m in Sources */,
 				6AAA015A1DE56F8600208022 /* SocialManager.m in Sources */,
 				5C7BE3C41DE8570100C15CB5 /* MainTabBarController.m in Sources */,
 				EF6DA2521DFFCC4300607C7B /* VideosViewController.m in Sources */,

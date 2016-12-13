@@ -137,6 +137,7 @@ exNS *kMoreScreenTableViewCellIdentifier;
 exNS *kguidedExcerciseCellCollectionViewCell;
 exNS *kSubCategoryExcerciseTableViewCell;
 exNS *kFeelingTableViewCell;
+exNS *kVideoTableViewCellIdentifier;
 
 #pragma mark - S3Buckets
 exNS *kAWSPath;

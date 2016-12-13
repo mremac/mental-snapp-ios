@@ -90,6 +90,7 @@ ns *kMoreScreenTableViewCellIdentifier = @"MoreScreenTableViewCellIdentifier";
 ns *kguidedExcerciseCellCollectionViewCell = @"guidedExcerciseCellCollectionViewCell";
 ns *kSubCategoryExcerciseTableViewCell = @"SubCategoryTableViewCell";
 ns *kFeelingTableViewCell = @"FeelingTableViewCell";
+ns *kVideoTableViewCellIdentifier = @"VideoTableViewCell";
 
 #pragma mark - S3Buckets
 ns *kAWSPath = @"https://s3-eu-west-1.amazonaws.com";
