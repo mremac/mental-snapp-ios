@@ -55,6 +55,12 @@
 }
 
 #pragma mark - Record post data
+- (void)getRecordPostsWithRequest:(Request *)request andCompletionBlock:(completionBlock)block{
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"1", @"success", nil];
+    block(YES, dict);
+}
+
+
 - (void)postRecordPostWithRequest:(Request *)request andCompletionBlock:(completionBlock)block {
     NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"1", @"success", nil];
     block(YES, dict);

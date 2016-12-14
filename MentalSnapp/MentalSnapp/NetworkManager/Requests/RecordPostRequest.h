@@ -9,8 +9,11 @@
 #import "Request.h"
 #import "RecordPost.h"
 
+@class Paginate;
+
 @interface RecordPostRequest : Request
 
+- (id)initWithGetRecordPostsWithPaginate:(Paginate *)paginate;
 - (id)initForPostRecordPost:(RecordPost *)post;
 - (NSMutableDictionary *)getParams;
 

@@ -28,6 +28,7 @@
 - (void)getSubCategoryExcerciseWithRequest:(Request *)request andCompletionBlock:(completionBlock)block;
 
 #pragma mark - Record post data
+- (void)getRecordPostsWithRequest:(Request *)request andCompletionBlock:(completionBlock)block;
 - (void)postRecordPostWithRequest:(Request *)request andCompletionBlock:(completionBlock)block;
 
 #pragma mark - Feeling data

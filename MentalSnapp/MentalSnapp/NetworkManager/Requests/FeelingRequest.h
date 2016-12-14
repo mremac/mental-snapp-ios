@@ -7,7 +7,8 @@
 //
 
 #import "Request.h"
-#import "Paginate.h"
+
+@class Paginate;
 
 @interface FeelingRequest : Request
 

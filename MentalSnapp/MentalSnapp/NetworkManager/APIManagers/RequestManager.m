@@ -16,6 +16,8 @@
 #import "FeelingInterface.h"
 #import "RecordPostRequest.h"
 #import "RecordPostInterface.h"
+#import "Paginate.h"
+#import "RecordPost.h"
 
 NSString *const kDefaultErrorMessage =  @"Error! Please try again.";
 
@@ -143,11 +145,22 @@ NSString *const kDefaultErrorMessage =  @"Error! Please try again.";
 }
 
 #pragma mark - Record Post data
+- (void)getRecordPostsWithPaginate:(Paginate *)paginate withCompletionBlock:(completionBlock)block {
+    if ([ApplicationDelegate hasNetworkAvailable]) {
+        [[RecordPostInterface alloc] getRecordPostsWithRequest:[[RecordPostRequest alloc] initWithGetRecordPostsWithPaginate:paginate] andCompletionBlock:^(BOOL success, id response) {
+            block(success, response);
+        }];
+        
+    }else {
+        block(NO, nil);
+    }
+}
+
 - (void)postRecordPost:(RecordPost *)post withCompletionBlock:(completionBlock)block {
     if ([ApplicationDelegate hasNetworkAvailable]) {
-            [[RecordPostInterface alloc] postRecordPostWithRequest:[[RecordPostRequest alloc] initForPostRecordPost:post] andCompletionBlock:^(BOOL success, id response) {
-                block(success, response);
-            }];
+        [[RecordPostInterface alloc] postRecordPostWithRequest:[[RecordPostRequest alloc] initForPostRecordPost:post] andCompletionBlock:^(BOOL success, id response) {
+            block(success, response);
+        }];
         
     }else {
         block(NO, nil);

@@ -7,6 +7,7 @@
 //
 
 #import "RecordPostRequest.h"
+#import "Paginate.h"
 
 @interface RecordPostRequest ()
 
@@ -15,6 +16,20 @@
 @end
 
 @implementation RecordPostRequest
+
+- (id)initWithGetRecordPostsWithPaginate:(Paginate *)paginate {
+    self = [super init];
+    if (self) {
+        _parameters = [NSMutableDictionary dictionary];
+        if (paginate.hasMoreRecords) {
+            [_parameters setObject:paginate.pageNumber forKey:kJPage];
+        }
+        [_parameters setObject:[NSNumber numberWithInteger:paginate.perPageLimit] forKey:kJPerPage];
+        
+        self.urlPath = kRecordPostAPI;
+    }
+    return self;
+}
 
 - (id)initForPostRecordPost:(RecordPost *)post {
     self = [super init];

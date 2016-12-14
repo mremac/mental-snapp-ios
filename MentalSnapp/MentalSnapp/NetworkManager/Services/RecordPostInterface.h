@@ -13,6 +13,7 @@
 
 @property (nonatomic, strong) void (^block)(BOOL success, id response);
 
+- (void)getRecordPostsWithRequest:(RecordPostRequest *)recordPostRequest andCompletionBlock:(completionBlock)block;
 - (void)postRecordPostWithRequest:(RecordPostRequest *)recordPostRequest andCompletionBlock:(completionBlock)block;
 
 

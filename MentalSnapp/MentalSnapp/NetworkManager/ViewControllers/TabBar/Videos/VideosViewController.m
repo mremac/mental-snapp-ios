@@ -9,10 +9,13 @@
 #import "VideosViewController.h"
 #import "VideoTableViewCell.h"
 #import "RecordPost.h"
+#import "RequestManager.h"
+#import "Paginate.h"
 
 @interface VideosViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSMutableArray *recordPosts;
+@property (strong, nonatomic) IBOutlet UIView *noContentView;
+@property (strong, nonatomic) Paginate *recordPostsPaginate;
 @end
 
 @implementation VideosViewController
@@ -20,9 +23,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNavigationBarButtonTitle:@"Mental Snapp"];
-    self.recordPosts = [NSMutableArray array];
-    RecordPost *record = [[RecordPost alloc] initWithVideoName:@"test" andExcerciseType:@"Test" andCoverURL:@"https://www.google.co.in/imgres?imgurl=http%3A%2F%2Fwww.linuxnix.com%2Fwp-content%2Fuploads%2F2014%2F12%2Faws.png&imgrefurl=http%3A%2F%2Fwww.linuxnix.com%2Funderstanding-awsamazon-web-services-cloud-part%2F&docid=b3DY1C1iOa6iaM&tbnid=Ko7PBMPCZdxClM%3A&vet=1&w=300&h=300&safe=active&bih=533&biw=1150&q=aws%20image&ved=0ahUKEwjPnYvjkPHQAhVLOY8KHXdECc4QMwgcKAEwAQ&iact=mrc&uact=8" andPostDesciption:@"#start #happy #fun #enjoy #health #happy #fun #enjoy #health #happy #fun #enjoy #health #happy #fun #enjoy #health #happy #fun #enjoy #health #happy #fun #enjoy #health #happy #fun #enjoy #health #happy #fun #enjoy #health #happy #fun #enjoy #health #love #happy #fun #enjoy #health #happy #fun #enjoy #health #happy #fun #enjoy #health #happy #fun #enjoy #health #end" andVideoURL:@"" andUserId:@"1" andMoodId:@"1" andFeelingId:@"1" andWithExcercise:nil];
-    [self.recordPosts addObject:record];
+    
+    __unsafe_unretained VideosViewController *weakSelf = self;
+    
+    // setup pull to refresh
+    [self.tableView addPullToRefreshWithActionHandler:^{
+        [weakSelf insertRowAtTop];
+    }];
+    
+    // setup infinite scrolling
+    [self.tableView addInfiniteScrollingWithActionHandler:^{
+        [weakSelf insertRowAtBottom];
+    }];
+    
+    [self getRecordPosts];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,11 +54,100 @@
 }
  */
 
-#pragma mark - TableView datasource
+#pragma mark - IBActions
+
+- (IBAction)filterButtonTapped:(id)sender {
+}
+- (IBAction)searchButtonTapped:(id)sender {
+}
+
+
+#pragma mark - Private methods
+
+- (void)insertRowAtTop
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self getRecordPosts];
+    });
+}
+
+- (void)insertRowAtBottom
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if ([self.recordPostsPaginate.pageResults count]) {
+            [self.tableView.infiniteScrollingView startAnimating];
+            [self performInfinteScroll];
+        }else {
+            [self.tableView.infiniteScrollingView stopAnimating];
+        }
+    });
+}
+
+- (void)performInfinteScroll
+{
+    NSLog(@"performSearchResultsInfinteScroll");
+    if (self.recordPostsPaginate.hasMoreRecords) {
+        [self.tableView.infiniteScrollingView startAnimating];
+        [self fetchRecordPosts];
+    }else {
+        [self.tableView.infiniteScrollingView stopAnimating];
+    }
+}
+
+- (void)initRecordPostsPaginate
+{
+    self.recordPostsPaginate = [[Paginate alloc] initWithPageNumber:[NSNumber numberWithInt:1] withMoreRecords:YES andPerPageLimit:10];
+//    self.recordPostsPaginate.details = self.excercise.excerciseId; TODO: check
+}
+
+#pragma mark - API Call
+
+-(void)getRecordPosts
+{
+    [self initRecordPostsPaginate];
+    [self fetchRecordPosts];
+}
+
+-(void)fetchRecordPosts
+{
+    [self showDefaultIndicatorProgress:YES];
+    
+    [[RequestManager alloc] getRecordPostsWithPaginate:self.recordPostsPaginate withCompletionBlock:^(BOOL success, id response)
+    {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView.pullToRefreshView stopAnimating];
+            [self.tableView.infiniteScrollingView stopAnimating];
+        });
+        
+        if(success)
+        {
+            [self.recordPostsPaginate updatePaginationWith:response];
+            
+            if([self.recordPostsPaginate.pageResults count] > 0)
+            {
+                [self.tableView setHidden:NO];
+                [self.noContentView setHidden:YES];
+                [self.tableView reloadData];
+            } else
+            {
+                [self.tableView setHidden:YES];
+                [self.noContentView setHidden:NO];
+            }
+        }
+        
+        [self showDefaultIndicatorProgress:NO];
+        [self showInProgress:NO];
+    }];
+}
+
+#pragma mark - Table View DataSource Methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    if(self.recordPostsPaginate.pageResults.count>0){
+        [self.noContentView setHidden:YES];
+    }
+    return [self.recordPostsPaginate.pageResults count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -56,9 +159,11 @@
         videoTableViewCell = [[VideoTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kVideoTableViewCellIdentifier];
     }
     
-    if(self.recordPosts.count > indexPath.row)
+    videoTableViewCell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    if(self.recordPostsPaginate.pageResults.count > indexPath.row)
     {
-        [videoTableViewCell assignRecordPost:[self.recordPosts objectAtIndex:indexPath.row] playBlock:^(BOOL success, id response) {
+        [videoTableViewCell assignRecordPost:[self.recordPostsPaginate.pageResults objectAtIndex:indexPath.row] playBlock:^(BOOL success, id response) {
             if([response isKindOfClass:[RecordPost class]])
             {
                 RecordPost *recordPost = response;
@@ -76,31 +181,24 @@
     return videoTableViewCell;
 }
 
-#pragma mark - TableView delegate
+#pragma mark - Table View Delegate Methods
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return UITableViewAutomaticDimension;
 }
-
-- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 400;
 }
 
-
-#pragma mark - Private methods
-
-#pragma mark - IBActions
-
-- (IBAction)filterButtonTapped:(id)sender {
-}
-- (IBAction)searchButtonTapped:(id)sender {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    RecordPost *recordPost = [self.recordPostsPaginate.pageResults objectAtIndex:indexPath.row];
+    if(recordPost){
+        NSLog([NSString stringWithFormat:@"Cell tapped recordPost: %@", recordPost]);
+//        self.subCategoryDetailViewController = [[UIStoryboard storyboardWithName:KProfileStoryboard bundle:nil] instantiateViewControllerWithIdentifier:kSubCategoryDetailViewController];
+//        self.subCategoryDetailViewController.selectedExcercise = excercixe;
+//        [self.excerciseParentViewController.navigationController pushViewController:self.subCategoryDetailViewController animated:YES];
+    }
 }
 
 @end

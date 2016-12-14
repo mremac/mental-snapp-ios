@@ -7,6 +7,7 @@
 //
 
 #import "FeelingRequest.h"
+#import "Paginate.h"
 
 @interface FeelingRequest ()
 

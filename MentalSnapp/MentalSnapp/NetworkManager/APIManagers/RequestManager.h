@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Paginate.h"
-#import "RecordPost.h"
+
+@class Paginate, RecordPost;
 
 @interface RequestManager : NSObject
 
@@ -33,6 +33,7 @@
 - (void)getFeelingWithPaginate:(Paginate *)paginate withCompletionBlock:(completionBlock)block;
 
 #pragma mark - Record Post data
+- (void)getRecordPostsWithPaginate:(Paginate *)paginate withCompletionBlock:(completionBlock)block;
 - (void)postRecordPost:(RecordPost *)post withCompletionBlock:(completionBlock)block;
 
 @end

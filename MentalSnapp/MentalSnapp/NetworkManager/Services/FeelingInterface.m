@@ -9,6 +9,7 @@
 #import "FeelingInterface.h"
 #import "FeelingRequest.h"
 #import "Feeling.h"
+#import "Paginate.h"
 
 @implementation FeelingInterface
 

@@ -56,6 +56,10 @@
 }
 
 #pragma mark - Record post data
+- (void)getRecordPostsWithRequest:(Request *)request andCompletionBlock:(completionBlock)block{
+    [self getObject:request withCompletionBlock:block];
+}
+
 - (void)postRecordPostWithRequest:(Request *)request andCompletionBlock:(completionBlock)block {
     [self postObject:request withCompletionBlock:block];
 }
