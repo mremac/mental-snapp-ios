@@ -22,7 +22,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
+    [[ApplicationDelegate window] setUserInteractionEnabled:YES];
     self.navigationController.navigationBar.hidden = NO;
 }
 
@@ -35,12 +35,12 @@
 
 - (IBAction)submitButtonTapped:(id)sender {
     if([_emailTextField.text.trim isEqualToString:@""]){
-        [Banner hideAllBanners];
         [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Please enter email"];
         return;
     }
     [self.emailTextField resignFirstResponder];
     if ([Util isValidEmail:_emailTextField.text.trim]) {
+        [[ApplicationDelegate window] setUserInteractionEnabled:YES];
         [self showInProgress:YES];
         [[RequestManager alloc] forgotPasswordWithEmail:_emailTextField.text.trim withCompletionBlock:^(BOOL success, id response) {
             if (success) {
@@ -49,7 +49,6 @@
             [self showInProgress:NO];
         }];
     } else {
-        [Banner hideAllBanners];
         [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Please enter valid email"];
     }
 }
