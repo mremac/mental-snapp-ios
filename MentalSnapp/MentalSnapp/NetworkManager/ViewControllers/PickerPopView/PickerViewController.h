@@ -15,7 +15,7 @@ typedef NS_ENUM(NSInteger, DatePickerType){
 };
 
 typedef NS_ENUM(NSInteger, DateSelection){
-    KNone=0,
+    KDefault=0,
     futureDateOnly,
     pastDateOnly
 };

@@ -63,9 +63,11 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    self.guidedExcerciseTopViewTopConstraint.constant = 0;
+    
+    self.guidedExcerciseTopViewTopConstraint.constant = [UserManager sharedManager].topGuideLength;
     [self.view layoutIfNeeded];
+    [super viewWillAppear:animated];
+    
     if(![UserManager sharedManager].isLoginViaSignUp) {
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
@@ -73,6 +75,7 @@
             [self.view layoutIfNeeded];
         });
     }
+    
     [UserManager sharedManager].isLoginViaSignUp = NO;
 }
 
@@ -186,6 +189,7 @@
             [guidedExcercisePage setExcerciseParentViewController:self];
             [self.guideExcerciseViewControllers addObject:guidedExcercisePage];
         }
+        self.lastContentOffset = pageScrollView.contentOffset.x;
         self.index = 0;
         if(self.guideExcerciseViewControllers.count>0){
             ExcerciseSubCategoryViewController *guidedExcercisePage = (ExcerciseSubCategoryViewController *) [self viewControllerAtIndex:0];
@@ -372,11 +376,11 @@
         growRadius = (growRadius >=KGrowValue)?KGrowValue:growRadius;
         shrinkRadius = (shrinkRadius < KShrinkValue)?shrinkRadius:KShrinkValue;
         
-        if(scrollView.contentOffset.x < 0 || self.selectedViewTag ==0 || self.selectedViewTag == self.guidedExcercisePaginate.pageResults.count){
-            return;
-        }
-        
         if (self.lastContentOffset > scrollView.contentOffset.x) {
+            
+            if(self.selectedViewTag<=1){
+                return;
+            }
             if(offset.x>(([self.guidedExcerciseCollectionView getWidth]/3)*(_selectedIndexPath-1))-(([self.guidedExcerciseCollectionView getWidth]/3))) {
                 [self.guidedExcerciseCollectionView setContentOffset:offset];
                 self.selectedViewTag = (_selectedIndexPath-1);
@@ -386,6 +390,11 @@
                 [self.guidedExcerciseCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:_selectedIndexPath inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
             }
         } else if (self.lastContentOffset < scrollView.contentOffset.x) {
+            
+            if(self.selectedViewTag>=self.guidedExcercisePaginate.pageResults.count){
+                return;
+            }
+            
             if(offset.x<(([self.guidedExcerciseCollectionView getWidth]/3)*_selectedIndexPath)) {
                 [self.guidedExcerciseCollectionView setContentOffset:offset];
                 if(self.selectedViewTag<self.guidedExcercisePaginate.pageResults.count){
@@ -422,6 +431,10 @@
                 if(self.selectedViewTag == 0){
                     self.selectedViewTag = _selectedIndexPath+1;
                 }
+                if(self.selectedViewTag == self.guidedExcercisePaginate.pageResults.count+1){
+                    self.selectedViewTag = _selectedIndexPath-1;
+                }
+                
                 if(self.selectedViewTag != _selectedIndexPath){
                     [self showPreSelectedExcerciseForIndexpath:[NSIndexPath indexPathForRow:_selectedIndexPath inSection:0] AndUnselectedIndexPath:[NSIndexPath indexPathForRow:self.selectedViewTag inSection:0] withAnimation:YES andGrowValue:0 andShrinkValue:0];
                     self.selectedViewTag = _selectedIndexPath;

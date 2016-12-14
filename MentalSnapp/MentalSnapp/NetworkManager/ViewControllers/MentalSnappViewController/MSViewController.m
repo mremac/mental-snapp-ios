@@ -23,6 +23,12 @@
     viewTapGestureRecognizer.delegate = self;
     viewTapGestureRecognizer.cancelsTouchesInView = FALSE;
     [self.view addGestureRecognizer:viewTapGestureRecognizer];
+
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+     [UserManager sharedManager].topGuideLength = [self.topLayoutGuide length];
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {

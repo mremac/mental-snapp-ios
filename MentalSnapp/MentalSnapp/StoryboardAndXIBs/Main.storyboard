@@ -320,7 +320,7 @@
                             <constraint firstItem="Esa-zq-KOA" firstAttribute="leading" secondItem="6vG-m0-OQi" secondAttribute="leading" constant="10" id="qAK-RI-CWN"/>
                             <constraint firstItem="V6Y-Y7-Jfb" firstAttribute="leading" secondItem="ujz-dU-Ep7" secondAttribute="leading" id="qWt-Vh-PSC"/>
                             <constraint firstItem="269-Db-26B" firstAttribute="top" secondItem="8Z5-HP-fNx" secondAttribute="bottom" constant="27" id="sMW-eG-hH9"/>
-                            <constraint firstItem="acv-bn-27g" firstAttribute="top" secondItem="6MG-01-wqA" secondAttribute="bottom" constant="30" id="xcU-a7-lPA"/>
+                            <constraint firstItem="acv-bn-27g" firstAttribute="top" secondItem="6MG-01-wqA" secondAttribute="bottom" constant="60" id="xcU-a7-lPA"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="dvo-du-PL9"/>

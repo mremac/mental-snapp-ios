@@ -10,8 +10,8 @@
 #import "UserManager.h"
 #import "RequestManager.h"
 
-#define KsupportPlaceHolderColor [UIColor colorWithRed:83.0/255.0 green:83.0/255.0 blue:83.0/255.0 alpha:1.0]
-#define KsupportDefaultColor [UIColor colorWithRed:183.0/255.0 green:183.0/255.0 blue:183.0/255.0 alpha:1.0]
+#define KsupportDefaultColor [UIColor colorWithRed:83.0/255.0 green:83.0/255.0 blue:83.0/255.0 alpha:1.0]
+#define KsupportPlaceHolderColor [UIColor colorWithRed:183.0/255.0 green:183.0/255.0 blue:183.0/255.0 alpha:1.0]
 
 @interface SupportScreenViewController ()
 @property (strong, nonatomic) IBOutlet UIView *textViewContainer;
@@ -169,7 +169,7 @@ NSString *const supportTextViewPlaceholder = @"Write your text...";
         [Banner showFailureBannerWithSubtitle:@"Please enter title"];
         return;
     }
-    if([self.textView.text isEqualToString:@""]){
+    if([self.textView.text isEqualToString:@""] || [self.textView.text isEqualToString:supportTextViewPlaceholder]){
         [Banner showFailureBannerWithSubtitle:@"Please enter description"];
         return;
     }

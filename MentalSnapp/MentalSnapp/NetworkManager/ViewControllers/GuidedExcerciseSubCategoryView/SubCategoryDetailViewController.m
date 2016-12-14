@@ -23,7 +23,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [UserManager sharedManager].isBackFromView = YES;
     [self.navigationController setNavigationBarHidden:YES];
     [self.navigationController setNavigationBarHidden:NO];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -42,7 +41,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.mainViewTopConstraint.constant = [self.topLayoutGuide length];
+    self.mainViewTopConstraint.constant = [UserManager sharedManager].topGuideLength;
     [self.view layoutIfNeeded];
 }
 
