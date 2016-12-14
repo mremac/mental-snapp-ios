@@ -132,9 +132,9 @@
     CGFloat fillNewAngle = (MAXANGLE/7)*fillValue;
     fillNewAngle = (MAXANGLE-fillNewAngle)-2;
     if((_handleType == EFDoubleCircleWithClosedCenter || _handleType == EFDoubleCircleWithOpenCenter) && fixedAngle > 5) {
-        CGContextAddArc(ctx, self.frame.size.width/2+10, self.frame.size.height/2+10, self.radius, 3*M_PI/2,((3*M_PI/2-ToRad(fillNewAngle))), 0);
+        CGContextAddArc(ctx, self.frame.size.width/2, self.frame.size.height/2, self.radius, 3*M_PI/2,((3*M_PI/2-ToRad(fillNewAngle))), 0);
     } else {
-        CGContextAddArc(ctx, self.frame.size.width/2+10  , self.frame.size.height/2+10, self.radius, 3*M_PI/2, 3*M_PI/2-ToRad(angle), 0);
+        CGContextAddArc(ctx, self.frame.size.width/2, self.frame.size.height/2, self.radius, 3*M_PI/2, 3*M_PI/2-ToRad(angle), 0);
     }
     [_filledColor setStroke];
     CGContextSetLineWidth(ctx, _lineWidth);

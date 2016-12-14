@@ -448,7 +448,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="400"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NK5-z8-BIQ" id="e0L-1f-Q4G">
-                                            <frame key="frameInset" width="375" height="399"/>
+                                            <frame key="frameInset" width="375" height="400"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xft-8H-nLy" userLabel="Description View">
@@ -482,8 +482,8 @@
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LfR-PR-cja" userLabel="Download Button">
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="30" id="aF1-gy-ViH"/>
-                                                                <constraint firstAttribute="height" constant="30" id="b4e-QU-Qhg"/>
+                                                                <constraint firstAttribute="width" constant="50" id="aF1-gy-ViH"/>
+                                                                <constraint firstAttribute="height" constant="50" id="b4e-QU-Qhg"/>
                                                             </constraints>
                                                             <state key="normal" image="download_video"/>
                                                             <connections>
@@ -500,8 +500,8 @@
                                                         <constraint firstItem="JFJ-ZD-epa" firstAttribute="top" secondItem="auP-6t-gfh" secondAttribute="top" id="ctu-9Q-LvR"/>
                                                         <constraint firstAttribute="height" constant="350" id="gXb-cY-Hvb"/>
                                                         <constraint firstItem="qLM-9i-AvB" firstAttribute="centerY" secondItem="JFJ-ZD-epa" secondAttribute="centerY" id="pSh-cU-Rzk"/>
-                                                        <constraint firstItem="LfR-PR-cja" firstAttribute="top" secondItem="auP-6t-gfh" secondAttribute="top" constant="10" id="rpH-jv-cRf"/>
-                                                        <constraint firstAttribute="trailing" secondItem="LfR-PR-cja" secondAttribute="trailing" constant="10" id="upE-3g-9dX"/>
+                                                        <constraint firstItem="LfR-PR-cja" firstAttribute="top" secondItem="auP-6t-gfh" secondAttribute="top" id="rpH-jv-cRf"/>
+                                                        <constraint firstAttribute="trailing" secondItem="LfR-PR-cja" secondAttribute="trailing" id="upE-3g-9dX"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -631,10 +631,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MoreScreenTableViewCellIdentifier" rowHeight="44" id="kF5-0v-ZKn" customClass="MoreTableViewCell">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="1000" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kF5-0v-ZKn" id="bej-D8-x61">
-                                            <frame key="frameInset" width="375" height="44"/>
+                                            <frame key="frameInset" width="1000" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xIS-9F-UEv" userLabel="ImageContainerView">
@@ -790,7 +790,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ea6-22-dcP" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" tag="4" title="" image="more" selectedImage="more_select" id="pLc-5M-03v"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="osg-Bk-j07">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="osg-Bk-j07">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

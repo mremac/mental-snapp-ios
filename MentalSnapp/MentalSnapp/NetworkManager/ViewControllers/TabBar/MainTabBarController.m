@@ -38,6 +38,10 @@
 
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
     [self setSelectedIndex:item.tag];
+    if(item.tag !=2)
+    {
+        [Util saveCustomObject:[NSNumber numberWithBool:NO] toUserDefaultsForKey:@"isMoodViewController"];
+    }
 }
 
 -(void)setSelectTabIndex:(NSInteger)index {

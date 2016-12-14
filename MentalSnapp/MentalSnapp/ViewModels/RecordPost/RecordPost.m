@@ -16,7 +16,7 @@
                                                                   @"postName": @"name",
                                                                   @"excerciseType": @"exercisable_type",
                                                                   @"coverURL": @"cover_url",
-                                                                  @"desciption":@"tags",
+                                                                  @"postDesciption":@"tags",
                                                                   @"videoURL": @"video_url",
                                                                   @"userId": @"user_id",
                                                                   @"moodId": @"mood_value",

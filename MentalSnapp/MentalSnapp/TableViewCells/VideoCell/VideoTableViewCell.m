@@ -12,8 +12,8 @@
 @interface VideoTableViewCell()
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *videoImageView;
-@property (nonatomic, strong) void (^playBlock)(BOOL success, id response);
-@property (nonatomic, strong) void (^downloadBlock)(BOOL success, id response);
+@property (copy, nonatomic) void (^playBlock)(BOOL success, id response);
+@property (copy, nonatomic) void (^downloadBlock)(BOOL success, id response);
 @property (nonatomic, strong) RecordPost *recordPost;
 
 @end

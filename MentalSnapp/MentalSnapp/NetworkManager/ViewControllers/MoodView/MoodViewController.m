@@ -92,7 +92,7 @@
 - (void)willUploadVideoOnAWS
 {
     [self showInProgress:YES];
-    if(self.videoURL)
+    if(self.videoURL && self.videoURLPath.length == 0)
     {
         [[[Util alloc] init] didFinishPickingVideoFile:self.videoURL fileType:VideoFileType completionBlock:^(BOOL success, id response)
          {
@@ -125,7 +125,7 @@
     CMTime time = CMTimeMake(0, 1);
     CGImageRef imageRef = [imageGenerator copyCGImageAtTime:time actualTime:NULL error:NULL];
     UIImage *thumbnail = [UIImage imageWithCGImage:imageRef];
-    if(thumbnail)
+    if(thumbnail && self.videoThumbnailURLPath.length == 0)
     {
         [[[Util alloc] init] didFinishPickingImageFile:thumbnail fileType:VideoThumbnailImageType completionBlock:^(BOOL success, id response)
          {
@@ -173,7 +173,7 @@
         [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Please select you mood."];
         return NO;
     }
-    if(selectedFeeling){
+    if(!selectedFeeling){
         [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Please select feeling."];
         return NO;
     }
@@ -182,23 +182,29 @@
 }
 
 - (void)didPerformAPICall {
-    if([self isValidateField]) {
-        RecordPost *post = [[RecordPost alloc] initWithVideoName:self.videoNameTextField.text andExcerciseType:((_excercise)?(([_excercise.excerciseStringType isEqualToString:@""])?@"GuidedExcercise":_excercise.excerciseStringType):@"") andCoverURL:self.videoThumbnailURLPath andPostDesciption:self.descriptionTextView.text andVideoURL:self.videoURLPath andUserId:[UserManager sharedManager].userModel.userId andMoodId:[NSString stringWithFormat:@"%d",selectedMood] andFeelingId:selectedFeeling.feelingId andWithExcercise:_excercise];
-        
-        [[RequestManager alloc] postRecordPost:post withCompletionBlock:^(BOOL success, id response) {
-            if(success){
-                [self didClearStateOnPop];
-            }
-        }];
-    }
+    RecordPost *post = [[RecordPost alloc] initWithVideoName:self.videoNameTextField.text andExcerciseType:((_excercise)?(([_excercise.excerciseStringType isEqualToString:@""])?@"GuidedExcercise":_excercise.excerciseStringType):@"") andCoverURL:self.videoThumbnailURLPath andPostDesciption:self.descriptionTextView.text andVideoURL:self.videoURLPath andUserId:[UserManager sharedManager].userModel.userId andMoodId:[NSString stringWithFormat:@"%ld",(long)selectedMood] andFeelingId:selectedFeeling.feelingId andWithExcercise:_excercise];
+    
+    [[RequestManager alloc] postRecordPost:post withCompletionBlock:^(BOOL success, id response) {
+        [self didClearStateOnPop];
+        if(success)
+        {
+            [self didSuccessAPI];
+        }
+    }];
 }
 
 - (void)didClearStateOnPop
 {
+    self.videoURLPath = kEmptyString;
+    self.videoThumbnailURLPath = kEmptyString;
+    [self showInProgress:NO];
+}
+
+- (void)didSuccessAPI
+{
     [Util saveCustomObject:[NSNumber numberWithBool:NO] toUserDefaultsForKey:@"isMoodViewController"];
     [ApplicationDelegate.tabBarController setSelectTabIndex:0];
     [ApplicationDelegate.tabBarController setSelectedIndex:0];
-    [self showInProgress:NO];
     [self.navigationController popViewControllerAnimated:NO];
 }
 
@@ -357,7 +363,10 @@
 
 #pragma mark - IBActions
 - (IBAction)uploadButtonAction:(id)sender {
-    [self willUploadVideoOnAWS];
+    if(([self isValidateField]))
+    {
+        [self willUploadVideoOnAWS];
+    }
 }
 
 - (IBAction)addFeelingButtonAction:(id)sender {

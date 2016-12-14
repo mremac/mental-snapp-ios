@@ -20,6 +20,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [Util saveCustomObject:[NSNumber numberWithBool:NO] toUserDefaultsForKey:@"isMoodViewController"];
     AppSettings *appSettings = [[AppSettingsManager sharedInstance] fetchSettings];
     
     if(appSettings.EnableCoreData)
@@ -74,7 +75,6 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     // Saves changes in the application's managed object context before the application terminates.
-    [Util saveCustomObject:[NSNumber numberWithBool:NO] toUserDefaultsForKey:@"isMoodViewController"];
     AppSettings *appSettings = [[AppSettingsManager sharedInstance] appSettings];
     if(appSettings.EnableCoreData)
     {

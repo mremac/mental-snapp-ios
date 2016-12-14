@@ -13,7 +13,7 @@
 - (void)postRecordPostWithRequest:(RecordPostRequest *)recordPostRequest andCompletionBlock:(completionBlock)block {
     _block = block;
     id apiInteractorProvider = [[APIInteractorProvider sharedInterface] getAPIInetractor];
-    [apiInteractorProvider getFeelingWithRequest:recordPostRequest andCompletionBlock:^(BOOL success, id response) {
+    [apiInteractorProvider postRecordPostWithRequest:recordPostRequest andCompletionBlock:^(BOOL success, id response) {
         [self parseRecordPostData:response];
     }];
 }
