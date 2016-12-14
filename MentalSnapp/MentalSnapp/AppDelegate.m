@@ -28,7 +28,6 @@
         [MagicalRecord setupCoreDataStackWithStoreNamed:@"Skeleton"];
     }
     
-    
     if(appSettings.EnableFlurry)
     {
         //init Flurry

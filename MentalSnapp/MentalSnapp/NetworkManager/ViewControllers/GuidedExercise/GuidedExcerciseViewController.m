@@ -34,7 +34,6 @@
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *swipableViewLeadingConstraint;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *swipableViewTrailingConstraint;
 @property (assign, nonatomic) NSInteger index;
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *guidedExcerciseTopViewTopConstraint;
 @property (assign, nonatomic) NSInteger selectedViewTag;
 
 @end
@@ -63,20 +62,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    
-    self.guidedExcerciseTopViewTopConstraint.constant = [UserManager sharedManager].topGuideLength;
-    [self.view layoutIfNeeded];
     [super viewWillAppear:animated];
-    
-    if(![UserManager sharedManager].isLoginViaSignUp) {
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-            self.guidedExcerciseTopViewTopConstraint.constant = 64;
-            [self.view layoutIfNeeded];
-        });
-    }
-    
-    [UserManager sharedManager].isLoginViaSignUp = NO;
 }
 
 - (void)didReceiveMemoryWarning {

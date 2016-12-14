@@ -14,7 +14,6 @@
 @property (strong, nonatomic) IBOutlet UIView *mainContainerView;
 @property (strong, nonatomic) IBOutlet UITextView *detailTextView;
 @property (strong, nonatomic) PickerViewController *pickerViewController;
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *mainViewTopConstraint;
 
 @end
 
@@ -41,7 +40,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.mainViewTopConstraint.constant = [UserManager sharedManager].topGuideLength;
     [self.view layoutIfNeeded];
 }
 

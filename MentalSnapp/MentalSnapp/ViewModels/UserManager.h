@@ -11,8 +11,6 @@
 
 @property (strong, nonatomic) UserModel *userModel;
 @property (strong, nonatomic) NSString *authorizationToken;
-@property (assign, nonatomic) BOOL isLoginViaSignUp;
-@property (assign, nonatomic) NSInteger topGuideLength;
 
 + (UserManager *)sharedManager;
 

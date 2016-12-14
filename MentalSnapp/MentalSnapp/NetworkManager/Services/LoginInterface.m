@@ -128,8 +128,14 @@
             {
                 errorMessage = [response valueForKey:@"message"];
             }
+            
+            if([response hasValueForKey:@"error"])
+            {
+                errorMessage = [response valueForKey:@"error"];
+            }
+            
             _block([success integerValue], errorMessage);
-            [Banner showFailureBannerWithSubtitle:errorMessage];
+            [Banner showFailureBannerWithSubtitle:[NSString stringWithFormat:@"Email %@",errorMessage]];
         }
         
     } else if([response isKindOfClass:[NSError class]]) {

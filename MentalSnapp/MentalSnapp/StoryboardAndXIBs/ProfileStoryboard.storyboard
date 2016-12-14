@@ -305,7 +305,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KQZ-7p-Ykx" userLabel="TopProfilePicView">
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y4q-jg-2iD">
-                                                        <color key="backgroundColor" red="0.05086936064459549" green="0.6410949935272412" blue="0.73025193250377074" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="backgroundColor" red="0.050980392156862744" green="0.63921568627450975" blue="0.72941176470588232" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="100" id="a8M-oH-EmU"/>
                                                         </constraints>
@@ -676,6 +676,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <color key="backgroundColor" red="0.050980392156862744" green="0.63921568627450975" blue="0.72941176470588232" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="zPg-Vc-cCP" firstAttribute="width" secondItem="Yit-ki-He4" secondAttribute="width" id="3gl-ez-wJ5"/>
                                     <constraint firstItem="zPg-Vc-cCP" firstAttribute="leading" secondItem="Yit-ki-He4" secondAttribute="leading" id="62w-D3-c7b"/>
@@ -967,7 +968,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="81"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kJZ-xh-eMo" id="WYO-1L-Q6w">
-                                            <frame key="frameInset" width="375" height="80"/>
+                                            <frame key="frameInset" width="375" height="80.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1tR-Ds-vMV">
@@ -1204,14 +1205,13 @@
                             <constraint firstItem="hgm-c6-B3G" firstAttribute="leading" secondItem="kZC-Aj-nG7" secondAttribute="leading" id="4mw-qK-nXH"/>
                             <constraint firstAttribute="bottom" secondItem="yDc-Pi-A5n" secondAttribute="bottom" id="EJD-FW-kNt"/>
                             <constraint firstAttribute="trailing" secondItem="hgm-c6-B3G" secondAttribute="trailing" id="EPf-ki-4G9"/>
-                            <constraint firstItem="hgm-c6-B3G" firstAttribute="top" secondItem="kZC-Aj-nG7" secondAttribute="top" id="KKP-bl-tru"/>
+                            <constraint firstItem="hgm-c6-B3G" firstAttribute="top" secondItem="nNM-cA-fJa" secondAttribute="bottom" id="Eu9-2B-ap6"/>
                             <constraint firstAttribute="trailing" secondItem="yDc-Pi-A5n" secondAttribute="trailing" id="N9g-7b-faH"/>
                             <constraint firstItem="yDc-Pi-A5n" firstAttribute="leading" secondItem="kZC-Aj-nG7" secondAttribute="leading" id="m4M-tn-JJF"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="guidedExcerciseCollectionView" destination="jA9-0H-scD" id="q1u-hB-1Tv"/>
-                        <outlet property="guidedExcerciseTopViewTopConstraint" destination="KKP-bl-tru" id="iRi-Fn-g8m"/>
                         <outlet property="paginationContainerView" destination="yDc-Pi-A5n" id="fM6-Yk-uj3"/>
                         <outlet property="swipableView" destination="8vf-eD-UbG" id="uvW-FR-ch9"/>
                         <outlet property="swipableViewLeadingConstraint" destination="3CU-C2-la5" id="uli-wf-IWz"/>
@@ -1283,13 +1283,12 @@
                             <constraint firstItem="CBl-w3-76o" firstAttribute="leading" secondItem="hwM-KL-BvI" secondAttribute="leading" id="FhY-aI-ZGQ"/>
                             <constraint firstAttribute="trailing" secondItem="CBl-w3-76o" secondAttribute="trailing" id="H4n-Ke-52d"/>
                             <constraint firstItem="g7d-0m-qoP" firstAttribute="top" secondItem="CBl-w3-76o" secondAttribute="bottom" id="KLV-L3-Kjn"/>
-                            <constraint firstItem="CBl-w3-76o" firstAttribute="top" secondItem="hwM-KL-BvI" secondAttribute="top" id="WFD-dV-kXC"/>
+                            <constraint firstItem="CBl-w3-76o" firstAttribute="top" secondItem="cKR-PV-mzX" secondAttribute="bottom" id="TA5-E2-ilJ"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="detailTextView" destination="z6W-kV-YD7" id="hAv-to-jcF"/>
                         <outlet property="mainContainerView" destination="CBl-w3-76o" id="5Py-q5-fSe"/>
-                        <outlet property="mainViewTopConstraint" destination="WFD-dV-kXC" id="NPb-SO-f9Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n8e-ki-LzJ" userLabel="First Responder" sceneMemberID="firstResponder"/>

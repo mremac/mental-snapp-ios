@@ -42,7 +42,7 @@
     [_view3 setBackgroundColor:normalColor];
     [_view4 setBackgroundColor:normalColor];
     [_view5 setBackgroundColor:normalColor];
-    
+        
     [[subViews objectAtIndex:item.tag] setBackgroundColor:selectionColor];
 }
 

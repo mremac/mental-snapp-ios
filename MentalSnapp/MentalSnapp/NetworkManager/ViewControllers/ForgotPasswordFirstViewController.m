@@ -39,7 +39,7 @@
         [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Please enter email"];
         return;
     }
-    
+    [self.emailTextField resignFirstResponder];
     if ([Util isValidEmail:_emailTextField.text.trim]) {
         [self showInProgress:YES];
         [[RequestManager alloc] forgotPasswordWithEmail:_emailTextField.text.trim withCompletionBlock:^(BOOL success, id response) {

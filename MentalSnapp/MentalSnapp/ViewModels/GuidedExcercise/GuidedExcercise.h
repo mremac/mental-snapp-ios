@@ -12,6 +12,7 @@
 
 @property(strong, nonatomic) NSString <Optional> *excerciseName;
 @property(strong, nonatomic) NSString <Optional> *excerciseCoverURL;
+@property(strong, nonatomic) NSString <Optional> *coverURL;
 @property(strong, nonatomic) NSString <Optional> *excerciseSmallCoverURL;
 @property(strong, nonatomic) NSString <Optional> *excerciseDescription;
 @property(strong, nonatomic) NSString <Optional> *excerciseId;
