@@ -34,6 +34,7 @@
 
 #pragma mark - Record Post data
 - (void)getRecordPostsWithPaginate:(Paginate *)paginate withCompletionBlock:(completionBlock)block;
+- (void)getSearchRecordPostsWithPaginate:(Paginate *)paginate withCompletionBlock:(completionBlock)block;
 - (void)postRecordPost:(RecordPost *)post withCompletionBlock:(completionBlock)block;
 
 @end

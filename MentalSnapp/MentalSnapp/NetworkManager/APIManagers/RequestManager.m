@@ -156,6 +156,17 @@ NSString *const kDefaultErrorMessage =  @"Error! Please try again.";
     }
 }
 
+- (void)getSearchRecordPostsWithPaginate:(Paginate *)paginate withCompletionBlock:(completionBlock)block {
+    if ([ApplicationDelegate hasNetworkAvailable]) {
+        [[RecordPostInterface alloc] getRecordPostsWithRequest:[[RecordPostRequest alloc] initWithGetSearchRecordPostsWithPaginate:paginate] andCompletionBlock:^(BOOL success, id response) {
+            block(success, response);
+        }];
+        
+    }else {
+        block(NO, nil);
+    }
+}
+
 - (void)postRecordPost:(RecordPost *)post withCompletionBlock:(completionBlock)block {
     if ([ApplicationDelegate hasNetworkAvailable]) {
         [[RecordPostInterface alloc] postRecordPostWithRequest:[[RecordPostRequest alloc] initForPostRecordPost:post] andCompletionBlock:^(BOOL success, id response) {

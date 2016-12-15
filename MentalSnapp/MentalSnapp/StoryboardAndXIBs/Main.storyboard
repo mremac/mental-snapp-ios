@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="evG-dm-COo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="evG-dm-COo">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Roboto-Black.ttf">
-            <string>Roboto-Black</string>
-        </array>
         <array key="Roboto-Bold.ttf">
             <string>Roboto-Bold</string>
         </array>
@@ -409,15 +406,23 @@
                         <viewControllerLayoutGuide type="bottom" id="izO-kU-XbZ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="rBX-Fj-WGJ">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rk6-7z-3lE" userLabel="Top Header View">
                                 <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="LL0-YH-3ra">
+                                        <color key="textColor" red="0.23921568630000001" green="0.23921568630000001" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="g78-7z-Jrw" id="nB7-2m-unQ"/>
+                                        </connections>
+                                    </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tee-zb-2th" userLabel="Search Button">
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="30" id="5FT-Q0-CJg"/>
-                                            <constraint firstAttribute="height" constant="30" id="v0p-sl-9Ax"/>
+                                            <constraint firstAttribute="width" constant="40" id="5FT-Q0-CJg"/>
+                                            <constraint firstAttribute="height" constant="40" id="v0p-sl-9Ax"/>
                                         </constraints>
                                         <state key="normal" image="search_videos"/>
                                         <connections>
@@ -426,28 +431,48 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ITE-Mn-F5k" userLabel="Filter Button">
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="30" id="6Vz-cM-eq9"/>
-                                            <constraint firstAttribute="height" constant="30" id="um9-W1-IMx"/>
+                                            <constraint firstAttribute="width" constant="40" id="6Vz-cM-eq9"/>
+                                            <constraint firstAttribute="height" constant="40" id="um9-W1-IMx"/>
                                         </constraints>
                                         <state key="normal" image="filter_videos"/>
                                         <connections>
                                             <action selector="filterButtonTapped:" destination="g78-7z-Jrw" eventType="touchUpInside" id="kvG-xr-kir"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fhx-te-eSk" userLabel="Cancel Button">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="MTF-q3-HkZ"/>
+                                            <constraint firstAttribute="height" constant="40" id="Pgw-bx-CBL"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="dpf-ic-goJ"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="oL5-P2-BFl"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <state key="normal" title="X">
+                                            <color key="titleColor" red="0.058823529411764705" green="0.68627450980392157" blue="0.7803921568627451" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="cancelSearchButtonTapped:" destination="g78-7z-Jrw" eventType="touchUpInside" id="Fky-62-pA9"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="ITE-Mn-F5k" firstAttribute="leading" secondItem="Tee-zb-2th" secondAttribute="trailing" constant="10" id="0TG-R1-WbO"/>
-                                    <constraint firstItem="Tee-zb-2th" firstAttribute="top" secondItem="rk6-7z-3lE" secondAttribute="top" constant="5" id="QU3-FZ-1yU"/>
+                                    <constraint firstItem="ITE-Mn-F5k" firstAttribute="leading" secondItem="fhx-te-eSk" secondAttribute="trailing" id="I17-bn-KDs"/>
+                                    <constraint firstItem="Tee-zb-2th" firstAttribute="top" secondItem="rk6-7z-3lE" secondAttribute="top" id="QU3-FZ-1yU"/>
                                     <constraint firstAttribute="height" constant="40" id="Xs6-yS-dxN"/>
-                                    <constraint firstAttribute="trailing" secondItem="ITE-Mn-F5k" secondAttribute="trailing" constant="12" id="pC3-j4-BZ1"/>
-                                    <constraint firstItem="ITE-Mn-F5k" firstAttribute="top" secondItem="rk6-7z-3lE" secondAttribute="top" constant="5" id="pan-h2-4TG"/>
+                                    <constraint firstItem="ITE-Mn-F5k" firstAttribute="leading" secondItem="LL0-YH-3ra" secondAttribute="trailing" constant="50" id="eYa-fX-pKD"/>
+                                    <constraint firstItem="fhx-te-eSk" firstAttribute="top" secondItem="rk6-7z-3lE" secondAttribute="top" id="fkE-mp-yI4"/>
+                                    <constraint firstItem="LL0-YH-3ra" firstAttribute="centerY" secondItem="rk6-7z-3lE" secondAttribute="centerY" id="lNY-dZ-ifp"/>
+                                    <constraint firstAttribute="trailing" secondItem="ITE-Mn-F5k" secondAttribute="trailing" constant="7" id="pC3-j4-BZ1"/>
+                                    <constraint firstItem="ITE-Mn-F5k" firstAttribute="top" secondItem="rk6-7z-3lE" secondAttribute="top" id="pan-h2-4TG"/>
+                                    <constraint firstItem="LL0-YH-3ra" firstAttribute="leading" secondItem="rk6-7z-3lE" secondAttribute="leading" constant="40" id="qxO-oq-eHg"/>
+                                    <constraint firstItem="Tee-zb-2th" firstAttribute="leading" secondItem="rk6-7z-3lE" secondAttribute="leading" id="yYi-nJ-fCF"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jZC-uO-hqh" userLabel="No Content View">
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Videos to display" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OVy-ys-l24">
-                                        <fontDescription key="fontDescription" name="Roboto-Black" family="Roboto" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -457,7 +482,7 @@
                                     <constraint firstAttribute="trailing" secondItem="OVy-ys-l24" secondAttribute="trailing" id="dGD-aD-UAh"/>
                                     <constraint firstItem="OVy-ys-l24" firstAttribute="centerX" secondItem="jZC-uO-hqh" secondAttribute="centerX" id="g88-j7-W2q"/>
                                     <constraint firstItem="OVy-ys-l24" firstAttribute="leading" secondItem="jZC-uO-hqh" secondAttribute="leading" id="gTl-f5-1aN"/>
-                                    <constraint firstItem="OVy-ys-l24" firstAttribute="centerY" secondItem="jZC-uO-hqh" secondAttribute="centerY" id="pmm-WD-f5s"/>
+                                    <constraint firstItem="OVy-ys-l24" firstAttribute="centerY" secondItem="jZC-uO-hqh" secondAttribute="centerY" constant="20" id="pmm-WD-f5s"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lH8-Rt-juu">
@@ -558,13 +583,19 @@
                             <constraint firstAttribute="trailing" secondItem="lH8-Rt-juu" secondAttribute="trailing" id="bgE-6E-jnv"/>
                             <constraint firstItem="rk6-7z-3lE" firstAttribute="top" secondItem="rBX-Fj-WGJ" secondAttribute="top" id="gE3-N0-uNW"/>
                             <constraint firstAttribute="trailing" secondItem="rk6-7z-3lE" secondAttribute="trailing" id="k4L-cw-5yb"/>
-                            <constraint firstItem="jZC-uO-hqh" firstAttribute="top" secondItem="rBX-Fj-WGJ" secondAttribute="top" id="vEe-so-1Md"/>
+                            <constraint firstItem="jZC-uO-hqh" firstAttribute="top" secondItem="rBX-Fj-WGJ" secondAttribute="top" constant="40" id="vEe-so-1Md"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="HM1-64-oIR"/>
                     <connections>
+                        <outlet property="cancelSearchButton" destination="fhx-te-eSk" id="0Mz-cW-nvx"/>
+                        <outlet property="filterButton" destination="ITE-Mn-F5k" id="Zwd-yr-zFt"/>
                         <outlet property="noContentView" destination="jZC-uO-hqh" id="uXr-rh-bSs"/>
+                        <outlet property="searchButton" destination="Tee-zb-2th" id="hxA-zk-Vn7"/>
+                        <outlet property="searchButtonLeadingContraint" destination="yYi-nJ-fCF" id="pHO-1n-2Mp"/>
+                        <outlet property="searchTextField" destination="LL0-YH-3ra" id="aPO-6B-Qs7"/>
                         <outlet property="tableView" destination="lH8-Rt-juu" id="zJY-gw-8xT"/>
+                        <outlet property="topHeaderView" destination="rk6-7z-3lE" id="RPO-wC-Hrh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zac-Bl-ggP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -852,7 +883,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="olk-hQ-QB6" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" tag="2" title="" image="record" selectedImage="record_select" id="16e-aA-4fL"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="a5i-vM-KMF">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="a5i-vM-KMF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -871,7 +902,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="foe-lB-Bwv" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" tag="1" title="" image="video" selectedImage="video_select" id="HrM-Hn-fDR"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="fxH-1a-3AF">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="fxH-1a-3AF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.058823529409999999" green="0.68627450980000004" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -897,7 +928,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6uW-Rc-TLa" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="exercise" selectedImage="exercise_select" id="2E9-el-KU0"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ouf-0w-g2P">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ouf-0w-g2P">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1668,8 +1699,8 @@
         <image name="male_desable" width="67" height="15"/>
         <image name="more" width="64" height="46"/>
         <image name="more_select" width="64" height="46"/>
-        <image name="record" width="31" height="31"/>
         <image name="play_video" width="90" height="90"/>
+        <image name="record" width="31" height="31"/>
         <image name="record_select" width="63" height="46"/>
         <image name="search_videos" width="21" height="21"/>
         <image name="stats" width="63" height="46"/>

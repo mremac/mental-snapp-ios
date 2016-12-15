@@ -14,8 +14,15 @@
 
 @interface VideosViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) IBOutlet UIView *noContentView;
+@property (weak, nonatomic) IBOutlet UIView *noContentView;
+@property (weak, nonatomic) IBOutlet UIView *topHeaderView;
+@property (weak, nonatomic) IBOutlet UITextField *searchTextField;
+@property (weak, nonatomic) IBOutlet UIButton *filterButton;
+@property (weak, nonatomic) IBOutlet UIButton *searchButton;
+@property (weak, nonatomic) IBOutlet UIButton *cancelSearchButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *searchButtonLeadingContraint;
 @property (strong, nonatomic) Paginate *recordPostsPaginate;
+@property (strong, nonatomic) Paginate *searchPaginate;
 @end
 
 @implementation VideosViewController
@@ -37,6 +44,9 @@
     }];
     
     [self getRecordPosts];
+    
+    [self.topHeaderView layoutIfNeeded];
+    [self changeSearchMode];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -54,15 +64,98 @@
 }
  */
 
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self didSearchBegin];
+    return YES;
+}
+
 #pragma mark - IBActions
 
-- (IBAction)filterButtonTapped:(id)sender {
-}
-- (IBAction)searchButtonTapped:(id)sender {
+- (IBAction)filterButtonTapped:(id)sender
+{
+    [self didFilterButtonTapped];
 }
 
+- (IBAction)searchButtonTapped:(id)sender
+{
+    [self didSearchButtonTapped];
+}
+
+- (IBAction)cancelSearchButtonTapped:(UIButton *)sender
+{
+    [self didCancelSearch];
+}
 
 #pragma mark - Private methods
+
+- (void)didFilterButtonTapped
+{
+}
+
+- (void)didSearchBegin
+{
+    if(self.searchButton.isSelected && self.searchTextField.text.trim.length > 0)
+    {
+        [self getRecordPosts];
+    }
+    else if(self.searchButton.isSelected)
+    {
+        [self didCancelSearch];
+    }
+}
+
+- (void)didSearchButtonTapped
+{
+    if(self.searchButton.isSelected)
+        return;
+    
+    self.searchButton.selected = YES;
+    
+    [self animateSearch];
+}
+
+- (void)didCancelSearch
+{
+    self.searchButton.selected = NO;
+    [self animateSearch];
+    [self.tableView reloadData];
+}
+
+- (void)changeSearchMode
+{
+    if(self.searchButton.isSelected)
+    {
+        self.searchButtonLeadingContraint.constant = 0;
+        self.searchTextField.hidden = NO;
+        self.searchTextField.alpha = 1;
+        [self.searchTextField becomeFirstResponder];
+        self.cancelSearchButton.hidden = NO;
+        self.tableView.alpha = 0.5;
+    }
+    else
+    {
+        CGFloat xpos = [self.filterButton getXPos];
+        CGFloat width = [self.searchButton getWidth];
+        self.searchButtonLeadingContraint.constant = xpos - width;
+        self.searchTextField.hidden = YES;
+        self.searchTextField.alpha = 0;
+        [self.searchTextField resignFirstResponder];
+        self.searchTextField.text = kEmptyString;
+        self.cancelSearchButton.hidden = YES;
+        self.tableView.alpha = 1;
+    }
+    [self.topHeaderView layoutIfNeeded];
+}
+
+- (void)animateSearch
+{
+    [UIView animateWithDuration:0.3 animations:^{
+        [self changeSearchMode];
+    }];
+}
 
 - (void)insertRowAtTop
 {
@@ -74,7 +167,7 @@
 - (void)insertRowAtBottom
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-        if ([self.recordPostsPaginate.pageResults count]) {
+        if ([[self getCurrentPaginate].pageResults count]) {
             [self.tableView.infiniteScrollingView startAnimating];
             [self performInfinteScroll];
         }else {
@@ -86,7 +179,7 @@
 - (void)performInfinteScroll
 {
     NSLog(@"performSearchResultsInfinteScroll");
-    if (self.recordPostsPaginate.hasMoreRecords) {
+    if ([self getCurrentPaginate].hasMoreRecords) {
         [self.tableView.infiniteScrollingView startAnimating];
         [self fetchRecordPosts];
     }else {
@@ -94,60 +187,92 @@
     }
 }
 
-- (void)initRecordPostsPaginate
-{
-    self.recordPostsPaginate = [[Paginate alloc] initWithPageNumber:[NSNumber numberWithInt:1] withMoreRecords:YES andPerPageLimit:10];
-//    self.recordPostsPaginate.details = self.excercise.excerciseId; TODO: check
-}
-
-#pragma mark - API Call
-
 -(void)getRecordPosts
 {
     [self initRecordPostsPaginate];
     [self fetchRecordPosts];
 }
 
+- (void)initRecordPostsPaginate
+{
+    if(self.searchButton.isSelected)
+    {
+        self.searchPaginate = [[Paginate alloc] initWithPageNumber:[NSNumber numberWithInt:1] withMoreRecords:YES andPerPageLimit:10];
+        self.searchPaginate.details = self.searchTextField.text.trim;
+    }
+    else
+    {
+        self.recordPostsPaginate = [[Paginate alloc] initWithPageNumber:[NSNumber numberWithInt:1] withMoreRecords:YES andPerPageLimit:10];
+    }
+}
+
+- (Paginate *)getCurrentPaginate
+{
+    return self.searchButton.isSelected ? self.searchPaginate : self.recordPostsPaginate;
+}
+
+#pragma mark - API Call
+
 -(void)fetchRecordPosts
 {
     [self showDefaultIndicatorProgress:YES];
-    
-    [[RequestManager alloc] getRecordPostsWithPaginate:self.recordPostsPaginate withCompletionBlock:^(BOOL success, id response)
+    [self showInProgress:YES];
+    [self getRecordPostsWithPaginateWithCompletionBlock:^(BOOL success, id response)
+     {
+         dispatch_async(dispatch_get_main_queue(), ^{
+             [self.tableView.pullToRefreshView stopAnimating];
+             [self.tableView.infiniteScrollingView stopAnimating];
+         });
+         
+         if(success)
+         {
+             [[self getCurrentPaginate] updatePaginationWith:response];
+             
+             if([[self getCurrentPaginate].pageResults count] > 0)
+             {
+                 self.tableView.alpha = 1;
+                 [self.tableView setHidden:NO];
+                 [self.noContentView setHidden:YES];
+                 [self.tableView reloadData];
+             } else
+             {
+                 [self.tableView setHidden:YES];
+                 [self.noContentView setHidden:NO];
+             }
+         }
+         
+         [self showDefaultIndicatorProgress:NO];
+         [self showInProgress:NO];
+     }];
+}
+
+- (void)getRecordPostsWithPaginateWithCompletionBlock:(completionBlock)block
+{
+    if(self.searchButton.isSelected)
     {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.tableView.pullToRefreshView stopAnimating];
-            [self.tableView.infiniteScrollingView stopAnimating];
-        });
-        
-        if(success)
-        {
-            [self.recordPostsPaginate updatePaginationWith:response];
-            
-            if([self.recordPostsPaginate.pageResults count] > 0)
-            {
-                [self.tableView setHidden:NO];
-                [self.noContentView setHidden:YES];
-                [self.tableView reloadData];
-            } else
-            {
-                [self.tableView setHidden:YES];
-                [self.noContentView setHidden:NO];
-            }
-        }
-        
-        [self showDefaultIndicatorProgress:NO];
-        [self showInProgress:NO];
-    }];
+        [[RequestManager alloc] getSearchRecordPostsWithPaginate:self.searchPaginate withCompletionBlock:^(BOOL success, id response)
+         {
+             block(success, response);
+         }];
+    }
+    else
+    {
+        [[RequestManager alloc] getRecordPostsWithPaginate:self.recordPostsPaginate withCompletionBlock:^(BOOL success, id response)
+         {
+             block(success, response);
+         }];
+    }
 }
 
 #pragma mark - Table View DataSource Methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if(self.recordPostsPaginate.pageResults.count>0){
+    if([self getCurrentPaginate].pageResults.count > 0){
         [self.noContentView setHidden:YES];
+        [self.tableView setHidden:NO];
     }
-    return [self.recordPostsPaginate.pageResults count];
+    return [[self getCurrentPaginate].pageResults count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -161,9 +286,9 @@
     
     videoTableViewCell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    if(self.recordPostsPaginate.pageResults.count > indexPath.row)
+    if([self getCurrentPaginate].pageResults.count > indexPath.row)
     {
-        [videoTableViewCell assignRecordPost:[self.recordPostsPaginate.pageResults objectAtIndex:indexPath.row] playBlock:^(BOOL success, id response) {
+        [videoTableViewCell assignRecordPost:[[self getCurrentPaginate].pageResults objectAtIndex:indexPath.row] playBlock:^(BOOL success, id response) {
             if([response isKindOfClass:[RecordPost class]])
             {
                 RecordPost *recordPost = response;
@@ -192,7 +317,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    RecordPost *recordPost = [self.recordPostsPaginate.pageResults objectAtIndex:indexPath.row];
+    RecordPost *recordPost = [[self getCurrentPaginate].pageResults objectAtIndex:indexPath.row];
     if(recordPost){
         NSLog([NSString stringWithFormat:@"Cell tapped recordPost: %@", recordPost]);
 //        self.subCategoryDetailViewController = [[UIStoryboard storyboardWithName:KProfileStoryboard bundle:nil] instantiateViewControllerWithIdentifier:kSubCategoryDetailViewController];

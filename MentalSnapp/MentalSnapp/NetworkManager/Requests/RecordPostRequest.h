@@ -14,6 +14,7 @@
 @interface RecordPostRequest : Request
 
 - (id)initWithGetRecordPostsWithPaginate:(Paginate *)paginate;
+- (id)initWithGetSearchRecordPostsWithPaginate:(Paginate *)paginate;
 - (id)initForPostRecordPost:(RecordPost *)post;
 - (NSMutableDictionary *)getParams;
 
