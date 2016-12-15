@@ -11,7 +11,7 @@
 @implementation Banner
 
 + (ALAlertBanner *)showSuccessBannerWithSubtitle:(NSString *)subtitle {
-    return [self showSuccessBannerOnTopWithTitle:@"MentalSnapp" subtitle:subtitle];
+    return [self showSuccessBannerOnTopWithTitle:@"Mental Snapp" subtitle:subtitle];
 }
 
 + (ALAlertBanner *)showSuccessBannerOnTopWithTitle:(NSString *)title subtitle:(NSString *)subtitle {
@@ -19,7 +19,7 @@
 }
 
 + (ALAlertBanner *)showFailureBannerWithSubtitle:(NSString *)subtitle {
-    ALAlertBanner *banner = [self showFailureBannerOnTopWithTitle:@"MentalSnapp" subtitle:subtitle];
+    ALAlertBanner *banner = [self showFailureBannerOnTopWithTitle:@"Mental Snapp" subtitle:subtitle];
     return banner;
 }
 

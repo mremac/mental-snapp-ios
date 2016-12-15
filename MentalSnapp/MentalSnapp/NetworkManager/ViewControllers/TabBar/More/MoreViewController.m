@@ -52,7 +52,7 @@
     
     moreTableViewCell.headingLabel.text = tableViewCellTitles[indexPath.row];
     [moreTableViewCell.headingIconButton setImage:[UIImage imageNamed:[tableViewCellTitleImageNames objectAtIndex:indexPath.row]] forState:UIControlStateNormal];
-    moreTableViewCell.selectionStyle = UITableViewCellSelectionStyleNone;
+    moreTableViewCell.selectionStyle = UITableViewCellSelectionStyleGray;
     
     return moreTableViewCell;
 }
@@ -60,6 +60,7 @@
 #pragma mark Delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     switch (indexPath.row) {
         case 0:
             [self performSegueWithIdentifier:kGoToQueuedExercisesScreen sender:self];

@@ -21,9 +21,9 @@
         
     [self.guidedExcerciseTitleLabel setText:@""];
     [self.guidedExcerciseImageButton setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
-    [self.guidedExcerciseTitleLabel setText:self.excercise.excerciseName];
+        [self.guidedExcerciseTitleLabel setText:(self.excercise)?self.excercise.excerciseName:@""];
         if([NSURL URLWithString:self.excercise.excerciseCoverURL]){
-            [self.guidedExcerciseImageButton sd_setImageWithURL:[NSURL URLWithString:self.excercise.excerciseCoverURL] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"defaultExcerciseImage"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+            [self.guidedExcerciseImageButton sd_setImageWithURL:[NSURL URLWithString:(self.excercise)?self.excercise.excerciseCoverURL:@""] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"defaultExcerciseImage"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
             }];
         }else {
             [self.guidedExcerciseImageButton setImage:[UIImage imageNamed:@"defaultExcerciseImage"] forState:UIControlStateNormal];

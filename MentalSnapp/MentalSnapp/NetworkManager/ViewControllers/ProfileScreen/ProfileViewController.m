@@ -33,6 +33,7 @@
 @property (strong, nonatomic) IBOutlet UIView *phoneFieldView;
 @property (strong, nonatomic) PickerViewController *pickerViewController;
 @property (strong, nonatomic) UIImage *userImage;
+@property (strong, nonatomic) IBOutlet UIView *changepasswordView;
 
 - (IBAction)genderButtonAction:(id)sender;
 - (IBAction)changePasswordButtonAction:(id)sender;
@@ -52,6 +53,7 @@
     self.user = [UserManager sharedManager].userModel;
     [self setNavigationBarButtonTitle:@"Profile"];
     [self setLeftMenuButtons:[NSArray arrayWithObject:[self backButton]]];
+    [self addLeftMenubutton];
     [self setRightMenuButtons:[NSArray arrayWithObject:[self logoutButtonAction]]];
     //show pre fileld users data
     [self showDataOfUsers];
@@ -59,13 +61,37 @@
     self.pickerViewController = [[UIStoryboard storyboardWithName:KProfileStoryboard bundle:nil] instantiateViewControllerWithIdentifier:kPickerViewController];
     self.pickerViewController.modalPresentationStyle = UIModalPresentationOverFullScreen;
     [self.pickerViewController setPickerType:dateOnly];
-     [self.pickerViewController setDateSelection:pastDateOnly];
+     [self.pickerViewController setDateSelection:past18Year];
     [self.pickerViewController setDelegate:self];
+    
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:15/255.f green:175/255.f blue:199/255.f alpha:1.f];
+    [[UINavigationBar appearance] setShadowImage:[UIImage new]];
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance]  setTranslucent:NO];
+    
+}
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:15/255.f green:175/255.f blue:199/255.f alpha:1.f];
+    [[UINavigationBar appearance] setShadowImage:[UIImage new]];
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance]  setTranslucent:NO];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)addLeftMenubutton{
+    if([ApplicationDelegate.window.rootViewController isKindOfClass:[UINavigationController class]]){
+        UINavigationController *navController = (UINavigationController *)ApplicationDelegate.window.rootViewController;
+        NSArray *array = navController.viewControllers;
+        if(array.count>0 && [[array firstObject] isKindOfClass:[ProfileViewController class]]) {
+            [self setLeftMenuButtons:nil];
+            [self setLeftMenuButtons:[NSArray arrayWithObject:[self skipButtonAction]]];
+        }
+    }
 }
 
 /*
@@ -124,6 +150,19 @@
     return leftBarButton;
 }
 
+- (UIBarButtonItem *)skipButtonAction {
+    UIButton *leftButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 4, 50, 30)];
+    [leftButton setBackgroundColor:[UIColor clearColor]];
+    [leftButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [leftButton setTitle:@"Skip" forState:UIControlStateNormal];
+    [leftButton.titleLabel setFont:[UIFont fontWithName:@"Roboto" size:15]];
+    leftButton.cornerRadius = 5;
+    leftButton.borderColor = [UIColor whiteColor];
+    leftButton.borderWidth = 1.0f;
+    [leftButton addTarget:self action:@selector(backButtonTapped) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *leftBarButton = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
+    return leftBarButton;
+}
 
 - (void)getUserDetail {
     if(self.user) {
@@ -362,6 +401,12 @@
  }
 
 - (IBAction)changePasswordButtonAction:(id)sender {
+
+    [self.changepasswordView setBackgroundColor:[UIColor colorWithRed:200.0/255.0 green:200.0/255.0 blue:200.0/255.0 alpha:1.0]];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.changepasswordView setBackgroundColor:[UIColor colorWithRed:235.0/255.0 green:235.0/255.0 blue:235.0/255.0 alpha:1.0]];
+    });
+    
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:KProfileStoryboard bundle:nil];
     ChangePasswordViewController *changePasswordScreen = [storyboard instantiateViewControllerWithIdentifier:KChangePasswordViewController];
     [self.navigationController pushViewController:changePasswordScreen animated:YES];

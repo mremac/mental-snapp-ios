@@ -39,7 +39,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.datePicker setMaximumDate:[NSDate date]];
+    
+    [self setMaxDate18Year];
     [self.datePicker addTarget:self action:@selector(dateIsChanged:) forControlEvents:UIControlEventValueChanged];
     [self.maleGenderButton setSelected:YES];
     [[UIApplication sharedApplication] setStatusBarHidden:YES
@@ -117,6 +118,19 @@
 }
 
 #pragma mark - Private methods
+
+-(void)setMaxDate18Year {
+    NSCalendar * gregorian = [[NSCalendar alloc] initWithCalendarIdentifier: NSCalendarIdentifierGregorian];
+    NSDate * currentDate = [NSDate date];
+    NSDateComponents * comps = [[NSDateComponents alloc] init];
+    [comps setYear: -18];
+    NSDate * maxDate = [gregorian dateByAddingComponents: comps toDate: currentDate options: 0];
+    [comps setYear: -120];
+    NSDate * minDate = [gregorian dateByAddingComponents: comps toDate: currentDate options: 0];
+    self.datePicker.minimumDate = minDate;
+    self.datePicker.maximumDate = maxDate;
+    self.datePicker.date = maxDate;
+}
 
 -(BOOL)isValidateFields {
     if ([self.nameTextFeild.text.trim isEqualToString:@""]) {

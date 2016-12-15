@@ -1353,7 +1353,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MentalSnapp.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "46170a10-b409-4638-9c20-21ba496a12db";
+				PROVISIONING_PROFILE = "9a91fa52-3fed-4522-8ce1-18482dc0e757";
 				PROVISIONING_PROFILE_SPECIFIER = MentalSnappDevelopmentProfile;
 			};
 			name = Debug;

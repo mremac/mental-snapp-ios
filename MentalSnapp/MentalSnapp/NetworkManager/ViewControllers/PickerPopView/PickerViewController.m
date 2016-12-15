@@ -21,10 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    if(self.selectedDate){
-        [self.datePickerView setDate:self.selectedDate];
-    }
-    
+   
     switch (_dateSelection) {
         case futureDateOnly:
             [self.datePickerView setMinimumDate:[NSDate date]];
@@ -32,7 +29,22 @@
         case pastDateOnly:
             [self.datePickerView setMaximumDate:[NSDate date]];
             break;
+        case past18Year:
+        {
+            NSCalendar * gregorian = [[NSCalendar alloc] initWithCalendarIdentifier: NSCalendarIdentifierGregorian];
+            NSDate * currentDate = [NSDate date];
+            NSDateComponents * comps = [[NSDateComponents alloc] init];
+            [comps setYear: -18];
+            NSDate * maxDate = [gregorian dateByAddingComponents: comps toDate: currentDate options: 0];
+            [comps setYear: -120];
+            NSDate * minDate = [gregorian dateByAddingComponents: comps toDate: currentDate options: 0];
             
+            self.datePickerView.minimumDate = minDate;
+            self.datePickerView.maximumDate = maxDate;
+            self.datePickerView.date = maxDate;
+            break;
+        }
+
         default:
             break;
     }
@@ -52,7 +64,9 @@
             [self.datePickerView setDatePickerMode:UIDatePickerModeDate];
             break;
     }
-    
+    if(self.selectedDate){
+        [self.datePickerView setDate:self.selectedDate];
+    }
     [self.datePickerView addTarget:self action:@selector(dateIsChanged:) forControlEvents:UIControlEventValueChanged];
 }
 

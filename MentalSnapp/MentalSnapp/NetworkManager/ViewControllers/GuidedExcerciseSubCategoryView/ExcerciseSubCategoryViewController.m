@@ -132,8 +132,7 @@
     {
         cell = [[SubCategoryTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kSubCategoryExcerciseTableViewCell];
     }
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleGray];
     [cell setTag:indexPath.row];
     cell.calenderButton.tag = cell.recordButton.tag = indexPath.row;
     
@@ -156,6 +155,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     GuidedExcercise *excercixe  = [self.guidedExcercisePaginate.pageResults objectAtIndex:indexPath.row];
     if(excercixe){
         self.subCategoryDetailViewController = [[UIStoryboard storyboardWithName:KProfileStoryboard bundle:nil] instantiateViewControllerWithIdentifier:kSubCategoryDetailViewController];
