@@ -41,6 +41,7 @@
         MoodViewController *moodViewController = [[UIStoryboard storyboardWithName:KProfileStoryboard bundle:nil] instantiateViewControllerWithIdentifier:kMoodViewController];
         NSURL *urlvideo = [info objectForKey:UIImagePickerControllerMediaURL];
         moodViewController.videoURL = urlvideo;
+        [ApplicationDelegate.tabBarController setSelectTabIndex:2];
         [self.navigationController pushViewController:moodViewController animated:YES];
     }];
 }

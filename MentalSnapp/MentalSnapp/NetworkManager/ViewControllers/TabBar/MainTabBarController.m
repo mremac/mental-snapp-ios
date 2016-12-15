@@ -42,6 +42,7 @@
     {
         [Util saveCustomObject:[NSNumber numberWithBool:NO] toUserDefaultsForKey:@"isMoodViewController"];
     }
+    [self setSelectTabIndex:item.tag];
 }
 
 -(void)setSelectTabIndex:(NSInteger)index {

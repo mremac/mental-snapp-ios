@@ -20,5 +20,9 @@ typedef NS_ENUM(NSInteger, UploadFileType){
 - (id)initWithFileURL:(NSURL *)fileURL s3Key:(NSString *)s3Key mediaUploadProgressBarView:(UIProgressView *)mediaUploadProgressBarView progressBarLabel:(UILabel *)progressBarLabel fileType:(UploadFileType)fileType contentLength:(NSNumber *)contentLength;
 
 - (void)uploadFileToS3CompletionBlock:(completionBlock)block;
+- (void)downloadFileToS3CompletionBlock:(completionBlock)block;
+-(void)cancelAllDownloads;
+-(void)pauseAllDownloads;
+-(void)resumeAllDownloads;
 
 @end

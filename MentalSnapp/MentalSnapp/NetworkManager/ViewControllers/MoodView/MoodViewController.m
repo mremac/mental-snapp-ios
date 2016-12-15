@@ -37,9 +37,12 @@
 @property (strong, nonatomic) IBOutlet UILabel *moodLabel;
 @property (strong, nonatomic) IBOutlet UIView *descptionView;
 @property (strong, nonatomic) FeelingListViewController *feelingListViewController;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *feelingViewHeightConstraint;
+@property (strong, nonatomic) IBOutlet UILabel *selectedFeelingLabel;
 
 @property(nonatomic, strong) NSString *videoURLPath;
 @property(nonatomic, strong) NSString *videoThumbnailURLPath;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *lastBorderLabelBottomConstraint;
 
 - (IBAction)addFeelingButtonAction:(id)sender;
 
@@ -72,6 +75,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [ApplicationDelegate.tabBarController setSelectTabIndex:2];
+}
+
 /*
 #pragma mark - Navigation
 
@@ -95,7 +103,9 @@
     [self showInProgress:YES];
     if(self.videoURL && self.videoURLPath.length == 0)
     {
-        [[[Util alloc] init] didFinishPickingVideoFile:self.videoURL fileType:VideoFileType completionBlock:^(BOOL success, id response)
+        NSString *videoName = self.videoNameTextField.text;
+        videoName = [videoName stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+        [[[Util alloc] init] didFinishPickingVideoFile:self.videoURL withName:videoName fileType:VideoFileType completionBlock:^(BOOL success, id response)
          {
              NSLog([NSString stringWithFormat:@"response : : %@", response]);
              if(success)
@@ -183,7 +193,10 @@
 }
 
 - (void)didPerformAPICall {
-    RecordPost *post = [[RecordPost alloc] initWithVideoName:self.videoNameTextField.text andExcerciseType:((_excercise)?(([_excercise.excerciseStringType isEqualToString:@""])?@"GuidedExcercise":_excercise.excerciseStringType):@"") andCoverURL:self.videoThumbnailURLPath andPostDesciption:self.descriptionTextView.text andVideoURL:self.videoURLPath andUserId:[UserManager sharedManager].userModel.userId andMoodId:[NSString stringWithFormat:@"%ld",(long)selectedMood] andFeelingId:selectedFeeling.feelingId andWithExcercise:_excercise];
+    
+    NSString *videoName = self.videoNameTextField.text;
+    videoName = [videoName stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+    RecordPost *post = [[RecordPost alloc] initWithVideoName:videoName andExcerciseType:((_excercise)?(([_excercise.excerciseStringType isEqualToString:@""])?@"GuidedExcercise":_excercise.excerciseStringType):@"") andCoverURL:self.videoThumbnailURLPath andPostDesciption:self.descriptionTextView.text andVideoURL:self.videoURLPath andUserId:[UserManager sharedManager].userModel.userId andMoodId:[NSString stringWithFormat:@"%ld",(long)selectedMood] andFeelingId:selectedFeeling.feelingId andWithExcercise:_excercise];
     
     [[RequestManager alloc] postRecordPost:post withCompletionBlock:^(BOOL success, id response) {
         [self didClearStateOnPop];
@@ -359,8 +372,12 @@
 #pragma mark - feeling Delegate
 -(void)didSelectFeeling:(Feeling *)feeling {
     selectedFeeling = feeling;
+    [self populateNameOfVideo];
+    [self.selectedFeelingLabel setText:[NSString stringWithFormat:@" • %@",feeling.feelingName]];
+    self.feelingViewHeightConstraint.constant = 88;
+    self.lastBorderLabelBottomConstraint.constant = 0;
+    [self.view layoutIfNeeded];
 }
-
 
 #pragma mark - IBActions
 - (IBAction)uploadButtonAction:(id)sender {

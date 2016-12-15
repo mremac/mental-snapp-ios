@@ -63,6 +63,7 @@ ns *kSubCategoryDetailViewController = @"SubCategoryDetailViewController";
 ns *kRecordAlertViewController = @"RecordAlertViewController";
 ns *kMoodViewController = @"MoodViewController";
 ns *kFeelingListViewController = @"FeelingListViewController";
+ns *kDownloadAllVideoViewController = @"DownloadAllVideoViewController";
 
 #pragma mark - API URL
 ns *kLoginAPI = @"api/v1/authenticate";

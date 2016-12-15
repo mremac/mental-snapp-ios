@@ -180,13 +180,13 @@
     return image;
 }
 
-- (void)didFinishPickingVideoFile:(NSURL *)videoURL fileType:(UploadFileType)fileType completionBlock:(completionBlock)block
+- (void)didFinishPickingVideoFile:(NSURL *)videoURL withName:(NSString *)videoName fileType:(UploadFileType)fileType completionBlock:(completionBlock)block
 {
     NSString *deviceToken = [UserDefaults valueForKey:keyDeviceToken];
     if(!deviceToken || deviceToken.length == 0)
         deviceToken = @"Simulator";
     
-    NSString *fileName = [NSString stringWithFormat:@"%@_%@.mov", [[NSDate date] getMilliSeconds], deviceToken];
+    NSString *fileName = [NSString stringWithFormat:@"%@.mov",videoName];
 
     //*> Getting size
     NSError *attributesError;

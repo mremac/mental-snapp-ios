@@ -10,8 +10,9 @@
 #import "ChangePasswordViewController.h"
 #import "UserManager.h"
 #import "PickerViewController.h"
+#import "DownloadAllVideoViewController.h"
 
-@interface ProfileViewController () <UITextFieldDelegate, PickerViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface ProfileViewController () <UITextFieldDelegate, PickerViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, DownloadVideoDelegate>
 {
     NSInteger selectedGender;
     NSString *profilePicURL;
@@ -408,6 +409,13 @@
     }
 }
 
+#pragma mark - Download Delegate
+-(void)didDownloadCompleted:(BOOL)suceess {
+    if(suceess){
+        //[self deleteProfileAPI];
+    }
+}
+
 #pragma mark - IBActions
 - (void)logoutButtonTapped {
     [self showInProgress:YES];
@@ -474,11 +482,19 @@
     }];
 }
 
+-(void)showDownloadScreen {
+    DownloadAllVideoViewController *downloadVideoController = [[UIStoryboard storyboardWithName:KProfileStoryboard bundle:nil] instantiateViewControllerWithIdentifier:kDownloadAllVideoViewController];
+    downloadVideoController.delegate = self;
+    downloadVideoController.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    [self presentViewController:downloadVideoController animated:YES completion:nil];
+}
+
 -(void)downloadVideoPopUP {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Mental Snapp" message:@"Let us know if you want to download videos you have recorded." preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self deleteProfileAPI];
+            [self showDownloadScreen];
+          //  [self deleteProfileAPI];
         });
     }];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {

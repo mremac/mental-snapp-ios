@@ -9,6 +9,8 @@
 #import "S3Manager.h"
 #import <AWSS3/AWSS3.h>
 #import <AVFoundation/AVFoundation.h>
+#import <AssetsLibrary/AssetsLibrary.h>
+#import <Photos/Photos.h>
 
 @interface S3Manager()
 
@@ -18,6 +20,7 @@
 @property (nonatomic, strong) NSString * s3Key;
 @property (nonatomic, assign) UploadFileType fileType;
 @property (nonnull, strong) NSNumber *contentLength;
+@property (nonatomic, assign) AWSS3TransferManager *transferDownloadManager;
 
 @end
 
@@ -111,7 +114,7 @@
                                                            {
                                                                NSLog(@"Upload completed");
                                                                self.progressBarLabel.hidden = YES;
-                                                               self.mediaUploadProgressBarView.hidden = YES;
+                                                               //self.mediaUploadProgressBarView.hidden = YES;
                                                            }
                                                            
                                                            [[SMobiLogger sharedInterface] info:@"Successfully uploaded file to S3." withDescription:[NSString stringWithFormat:@"At: %s, \n(URL: %@). \n  \n", __FUNCTION__, [NSString stringWithFormat:@"%@/%@", uploadRequest.bucket, uploadRequest.key]]];
@@ -120,6 +123,115 @@
                                                            
                                                            return nil;
                                                        }];
+    
+}
+
+
+- (void)downloadFileToS3CompletionBlock:(completionBlock)block
+{
+    AppSettings *appSettings = [AppSettingsManager sharedInstance].appSettings;
+    
+    AWSS3TransferManagerDownloadRequest *downloadRequest = [AWSS3TransferManagerDownloadRequest new];
+    
+    NSString *bucketName = kEmptyString;
+    
+    if (self.fileType == VideoFileType)
+    {
+        bucketName = ([appSettings.NetworkMode isEqualToString:kLiveEnviroment]) ? kLiveVideoBucket : kStagingVideoBucket;
+    }
+    else if (self.fileType == VideoThumbnailImageType)
+    {
+        bucketName = ([appSettings.NetworkMode isEqualToString:kLiveEnviroment]) ? kLiveVideoThumbnailImageBucket : kStagingVideoThumbnailImageBucket;
+    }
+    else if (self.fileType == ImageProfile)
+    {
+        bucketName = ([appSettings.NetworkMode isEqualToString:kLiveEnviroment]) ? kLiveProfileImageBucket : kStagingProfileImageBucket;
+    }
+    
+    downloadRequest.key = self.s3Key;
+    downloadRequest.bucket = bucketName;
+    
+    [[SMobiLogger sharedInterface] info:@"Started Dowloading file to S3." withDescription:[NSString stringWithFormat:@"At: %s, \n(URL: %@). \n  \n", __FUNCTION__, [NSString stringWithFormat:@"%@/%@", downloadRequest.bucket, downloadRequest.key]]];
+    
+    __unsafe_unretained typeof(self) weakSelf = self;
+    
+    downloadRequest.downloadProgress =  ^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend){
+        dispatch_async(dispatch_get_main_queue(), ^{
+            //Update progress.
+            [weakSelf uploadProgress:totalBytesSent totalBytesExpectedToSend:totalBytesExpectedToSend];
+        });
+    };
+    
+    [self.mediaUploadProgressBarView setProgress:0];
+    
+    _transferDownloadManager = [AWSS3TransferManager defaultS3TransferManager];
+    
+    [[_transferDownloadManager download:downloadRequest] continueWithExecutor:[AWSExecutor mainThreadExecutor]
+                                                           withBlock:^id(AWSTask *task) {
+                                                               if (task.error)
+                                                               {
+                                                                   if ([task.error.domain isEqualToString:AWSS3TransferManagerErrorDomain]) {
+                                                                       switch (task.error.code) {
+                                                                           case AWSS3TransferManagerErrorCancelled:
+                                                                           case AWSS3TransferManagerErrorPaused:
+                                                                               break;
+                                                                               
+                                                                           default:
+                                                                               [[SMobiLogger sharedInterface] error:@"Failed Dowloading file to S3." withDescription:[NSString stringWithFormat:@"At: %s, \n(URL: %@) \n[Error: %@]. \n  \n", __FUNCTION__, [NSString stringWithFormat:@"%@/%@", downloadRequest.bucket, downloadRequest.key], task.error]];
+                                                                               NSLog([NSString stringWithFormat:@"Error: %@", task.error ]);
+                                                                               break;
+                                                                       }
+                                                                   } else {
+                                                                       // Unknown error.
+                                                                       NSLog([NSString stringWithFormat:@"Error: %@", task.error ]);
+                                                                       
+                                                                       [[SMobiLogger sharedInterface] error:@"Failed Dowloading file to S3." withDescription:[NSString stringWithFormat:@"At: %s, \n(URL: %@) \n[Error: %@]. \n  \n", __FUNCTION__, [NSString stringWithFormat:@"%@/%@", downloadRequest.bucket, downloadRequest.key], task.error]];
+                                                                   }
+                                                                   
+                                                                   block (NO, nil);
+                                                                   return nil;
+                                                               }
+                                                               else if (task.result)
+                                                               {
+                                                                   NSLog(@"Dowloading completed");
+                                                                   self.progressBarLabel.hidden = YES;
+                                                                   //self.mediaUploadProgressBarView.hidden = YES;
+                                                               }
+                                                               
+                                                               [[SMobiLogger sharedInterface] info:@"Successfully Dowloading file to S3." withDescription:[NSString stringWithFormat:@"At: %s, \n(URL: %@). \n  \n", __FUNCTION__, [NSString stringWithFormat:@"%@/%@", downloadRequest.bucket, downloadRequest.key]]];
+                                                               
+                                                               if( task.result){
+                                                                   [self saveVideoInLibraray: task.result withCompletionBlock:block];
+                                                               }
+                                                               return nil;
+                                                           }];
+}
+
+-(void)cancelAllDownloads{
+    [_transferDownloadManager cancelAll];
+}
+-(void)pauseAllDownloads{
+    [_transferDownloadManager pauseAll];
+}
+-(void)resumeAllDownloads{
+    [_transferDownloadManager pauseAll];
+}
+
+-(void)saveVideoInLibraray:(AWSS3TransferManagerDownloadOutput *)output withCompletionBlock:(completionBlock)block {
+    __block NSURL *videoPath = output.body;
+    
+    [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^ {
+        [PHAssetChangeRequest creationRequestForAssetFromVideoAtFileURL:videoPath];
+        
+    } completionHandler:^(BOOL success, NSError *error) {
+        block (success, nil);
+        if (success) {
+            NSLog(@"Movie saved to camera roll.");
+        }
+        else {
+            NSLog(@"Could not save movie to camera roll. Error: %@", error);
+        }
+    }];
     
 }
 

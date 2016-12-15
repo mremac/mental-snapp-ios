@@ -36,6 +36,10 @@
     UIColor *color = [UIColor colorWithRed:135.0/255.0 green:215.0/255.0 blue:226.0/255.0 alpha:1.0];
     self.searchTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"search" attributes:@{NSForegroundColorAttributeName:color}];
 
+    if(self.selectedFeeling){
+        self.selectedNewFeeling = self.selectedFeeling;
+    }
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillShow:)
                                                  name:UIKeyboardWillShowNotification

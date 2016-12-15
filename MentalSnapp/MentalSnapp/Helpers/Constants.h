@@ -111,6 +111,7 @@ exNS *kSubCategoryDetailViewController;
 exNS *kRecordAlertViewController;
 exNS *kMoodViewController;
 exNS *kFeelingListViewController;
+exNS *kDownloadAllVideoViewController;
 
 #pragma mark - API URL
 exNS *KUserAPI;

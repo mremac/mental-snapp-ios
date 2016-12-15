@@ -48,6 +48,9 @@
 		6A449EE21DFE774C00EE8875 /* SubCategoryDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A449EE11DFE774C00EE8875 /* SubCategoryDetailViewController.m */; };
 		6A449EF21DFEA2F400EE8875 /* RecordPostRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A449EF11DFEA2F400EE8875 /* RecordPostRequest.m */; };
 		6A449EF61DFEA45100EE8875 /* RecordPostInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A449EF51DFEA45100EE8875 /* RecordPostInterface.m */; };
+		6A4AE6651E02A344005DF1DA /* DownloadAllVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A4AE6641E02A344005DF1DA /* DownloadAllVideoViewController.m */; };
+		6A4AE6671E02AAD7005DF1DA /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A4AE6661E02AAD7005DF1DA /* AssetsLibrary.framework */; };
+		6A4AE6691E02CAEB005DF1DA /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A4AE6681E02CAEB005DF1DA /* Photos.framework */; };
 		6A5BBBAA1DFAEBCD00C67CE9 /* FeelingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A5BBBA91DFAEBCD00C67CE9 /* FeelingTableViewCell.m */; };
 		6A5BBBAE1DFAECA100C67CE9 /* FeelingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A5BBBAD1DFAECA100C67CE9 /* FeelingListViewController.m */; };
 		6A5BBBB31DFAFB9D00C67CE9 /* FeelingRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A5BBBB21DFAFB9D00C67CE9 /* FeelingRequest.m */; };
@@ -240,6 +243,10 @@
 		6A449EF11DFEA2F400EE8875 /* RecordPostRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordPostRequest.m; sourceTree = "<group>"; };
 		6A449EF41DFEA45100EE8875 /* RecordPostInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordPostInterface.h; sourceTree = "<group>"; };
 		6A449EF51DFEA45100EE8875 /* RecordPostInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordPostInterface.m; sourceTree = "<group>"; };
+		6A4AE6631E02A344005DF1DA /* DownloadAllVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadAllVideoViewController.h; sourceTree = "<group>"; };
+		6A4AE6641E02A344005DF1DA /* DownloadAllVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadAllVideoViewController.m; sourceTree = "<group>"; };
+		6A4AE6661E02AAD7005DF1DA /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		6A4AE6681E02CAEB005DF1DA /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		6A5BBBA81DFAEBCD00C67CE9 /* FeelingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeelingTableViewCell.h; sourceTree = "<group>"; };
 		6A5BBBA91DFAEBCD00C67CE9 /* FeelingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeelingTableViewCell.m; sourceTree = "<group>"; };
 		6A5BBBAC1DFAECA100C67CE9 /* FeelingListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeelingListViewController.h; sourceTree = "<group>"; };
@@ -413,6 +420,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A4AE6691E02CAEB005DF1DA /* Photos.framework in Frameworks */,
+				6A4AE6671E02AAD7005DF1DA /* AssetsLibrary.framework in Frameworks */,
 				EE5108D11CFEEEC200E8A3F9 /* Social.framework in Frameworks */,
 				26E53943AD4503D45E53BE0D /* libPods-MentalSnapp.a in Frameworks */,
 			);
@@ -613,6 +622,15 @@
 				6A3F7A7B1DEC758C0070415C /* GZIP.m */,
 			);
 			path = GZIP;
+			sourceTree = "<group>";
+		};
+		6A4AE65B1E02A187005DF1DA /* DownloadVideoView */ = {
+			isa = PBXGroup;
+			children = (
+				6A4AE6631E02A344005DF1DA /* DownloadAllVideoViewController.h */,
+				6A4AE6641E02A344005DF1DA /* DownloadAllVideoViewController.m */,
+			);
+			path = DownloadVideoView;
 			sourceTree = "<group>";
 		};
 		6A5BBBA61DFAEBB100C67CE9 /* FeelingCell */ = {
@@ -871,6 +889,7 @@
 		6AAA01281DE56F8600208022 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				6A4AE65B1E02A187005DF1DA /* DownloadVideoView */,
 				6A5BBBAB1DFAEC8700C67CE9 /* FeelingListViewController */,
 				6A39C1691DF95BDD0085C6EA /* MoodView */,
 				6A3DEAB11DF82E7C00B6E007 /* RecordAlertView */,
@@ -1042,6 +1061,8 @@
 		DBB04730B22C9A22F3001E5D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6A4AE6681E02CAEB005DF1DA /* Photos.framework */,
+				6A4AE6661E02AAD7005DF1DA /* AssetsLibrary.framework */,
 				6A1D50EA1DE57AC30073F479 /* XCTest.framework */,
 				EE5108D01CFEEEC200E8A3F9 /* Social.framework */,
 				16BE09BFE2D2D9B160A61EE5 /* libPods-MentalSnapp.a */,
@@ -1360,6 +1381,7 @@
 				6AAA01491DE56F8600208022 /* UIFont+Properties.m in Sources */,
 				6A39C1671DF95B950085C6EA /* EFCircularSlider.m in Sources */,
 				6A7D95B01DE6C5120065573E /* UserRequest.m in Sources */,
+				6A4AE6651E02A344005DF1DA /* DownloadAllVideoViewController.m in Sources */,
 				6AAA01471DE56F8600208022 /* UIButton+Properties.m in Sources */,
 				6A7D95BA1DE6CD6A0065573E /* UserInterface.m in Sources */,
 				6AAA01591DE56F8600208022 /* RemoteNotificationManager.m in Sources */,
