@@ -435,6 +435,7 @@
                                             <constraint firstAttribute="height" constant="40" id="um9-W1-IMx"/>
                                         </constraints>
                                         <state key="normal" image="filter_videos"/>
+                                        <state key="selected" image="selected_filter_videos"/>
                                         <connections>
                                             <action selector="filterButtonTapped:" destination="g78-7z-Jrw" eventType="touchUpInside" id="kvG-xr-kir"/>
                                         </connections>
@@ -447,7 +448,7 @@
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="oL5-P2-BFl"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                        <state key="normal" title="X">
+                                        <state key="normal" image="close">
                                             <color key="titleColor" red="0.058823529411764705" green="0.68627450980392157" blue="0.7803921568627451" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
@@ -460,7 +461,7 @@
                                     <constraint firstItem="ITE-Mn-F5k" firstAttribute="leading" secondItem="fhx-te-eSk" secondAttribute="trailing" id="I17-bn-KDs"/>
                                     <constraint firstItem="Tee-zb-2th" firstAttribute="top" secondItem="rk6-7z-3lE" secondAttribute="top" id="QU3-FZ-1yU"/>
                                     <constraint firstAttribute="height" constant="40" id="Xs6-yS-dxN"/>
-                                    <constraint firstItem="ITE-Mn-F5k" firstAttribute="leading" secondItem="LL0-YH-3ra" secondAttribute="trailing" constant="50" id="eYa-fX-pKD"/>
+                                    <constraint firstItem="ITE-Mn-F5k" firstAttribute="leading" secondItem="LL0-YH-3ra" secondAttribute="trailing" constant="47" id="eYa-fX-pKD"/>
                                     <constraint firstItem="fhx-te-eSk" firstAttribute="top" secondItem="rk6-7z-3lE" secondAttribute="top" id="fkE-mp-yI4"/>
                                     <constraint firstItem="LL0-YH-3ra" firstAttribute="centerY" secondItem="rk6-7z-3lE" secondAttribute="centerY" id="lNY-dZ-ifp"/>
                                     <constraint firstAttribute="trailing" secondItem="ITE-Mn-F5k" secondAttribute="trailing" constant="7" id="pC3-j4-BZ1"/>
@@ -1689,6 +1690,7 @@
         <image name="RememberMeCheck" width="19" height="19"/>
         <image name="RememberMeUnCheck" width="19" height="19"/>
         <image name="backButton" width="15" height="26"/>
+        <image name="close" width="19" height="19"/>
         <image name="download_video" width="28" height="28"/>
         <image name="exercise" width="63" height="46"/>
         <image name="exercise_select" width="63" height="46"/>
@@ -1703,6 +1705,7 @@
         <image name="record" width="31" height="31"/>
         <image name="record_select" width="63" height="46"/>
         <image name="search_videos" width="21" height="21"/>
+        <image name="selected_filter_videos" width="27" height="19"/>
         <image name="stats" width="63" height="46"/>
         <image name="stats_select" width="63" height="46"/>
         <image name="video" width="63" height="46"/>

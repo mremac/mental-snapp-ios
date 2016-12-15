@@ -15,6 +15,7 @@
 
 - (id)initWithGetRecordPostsWithPaginate:(Paginate *)paginate;
 - (id)initWithGetSearchRecordPostsWithPaginate:(Paginate *)paginate;
+- (id)initWithGetFilteredRecordPostsWithPaginate:(Paginate *)paginate;
 - (id)initForPostRecordPost:(RecordPost *)post;
 - (NSMutableDictionary *)getParams;
 

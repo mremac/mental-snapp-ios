@@ -44,6 +44,7 @@ ns *kJPage = @"page";
 ns *kJPerPage = @"per_page";
 ns *kJlimit = @"limit";
 ns *kJSearchText = @"search_text";
+ns *kJExerciseId = @"exercise_ids";
 
 #pragma mark - Userdefault keys
 ns * kUserEmail = @"UserEmail";
@@ -76,6 +77,8 @@ ns *KGetSubCategoryExcercise = @"api/v1/guided_exercise/%@/sub_categories";
 ns *KFeelingList = @"api/v1/feelings";
 ns *kRecordPostAPI = @"api/v1/posts";
 ns *kSearchRecordPostAPI = @"api/v1/posts/search_posts";
+ns *kFilterListAPI = @"api/v1/filters/get_filters_list";
+ns *kFilteredRecordPosts = @"api/v1/filters/get_filter_posts";
 
 #pragma mark - StoryBoard segue identifiers
 #pragma mark Main

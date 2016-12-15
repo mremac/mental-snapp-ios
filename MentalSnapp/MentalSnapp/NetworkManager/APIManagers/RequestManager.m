@@ -18,6 +18,8 @@
 #import "RecordPostInterface.h"
 #import "Paginate.h"
 #import "RecordPost.h"
+#import "FilterRequest.h"
+#import "FilterInterface.h"
 
 NSString *const kDefaultErrorMessage =  @"Error! Please try again.";
 
@@ -167,6 +169,17 @@ NSString *const kDefaultErrorMessage =  @"Error! Please try again.";
     }
 }
 
+- (void)getFilteredRecordPostsWithPaginate:(Paginate *)paginate withCompletionBlock:(completionBlock)block {
+    if ([ApplicationDelegate hasNetworkAvailable]) {
+        [[RecordPostInterface alloc] getRecordPostsWithRequest:[[RecordPostRequest alloc] initWithGetFilteredRecordPostsWithPaginate:paginate] andCompletionBlock:^(BOOL success, id response) {
+            block(success, response);
+        }];
+        
+    }else {
+        block(NO, nil);
+    }
+}
+
 - (void)postRecordPost:(RecordPost *)post withCompletionBlock:(completionBlock)block {
     if ([ApplicationDelegate hasNetworkAvailable]) {
         [[RecordPostInterface alloc] postRecordPostWithRequest:[[RecordPostRequest alloc] initForPostRecordPost:post] andCompletionBlock:^(BOOL success, id response) {
@@ -183,6 +196,18 @@ NSString *const kDefaultErrorMessage =  @"Error! Please try again.";
     if ([ApplicationDelegate hasNetworkAvailable]) {
         
         [[FeelingInterface alloc] getFeelingWithRequest:[[FeelingRequest alloc] initWithFetchFeelingsWithPaginate:paginate] andCompletionBlock:^(BOOL success, id response) {
+            block(success, response);
+        }];
+        
+    }else {
+        block(NO, nil);
+    }
+}
+
+#pragma mark - Filter data
+- (void)getFilterListWithPagination:(Paginate *)paginate withCompletionBlock:(completionBlock)block {
+    if ([ApplicationDelegate hasNetworkAvailable]) {
+        [[FilterInterface alloc] getFiltersWithRequest:[[FilterRequest alloc] initWithGetFilters:paginate] withCompletionBlock:^(BOOL success, id response) {
             block(success, response);
         }];
         

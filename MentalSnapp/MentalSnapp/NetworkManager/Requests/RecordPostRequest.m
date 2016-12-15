@@ -41,9 +41,33 @@
         [_parameters setObject:[NSNumber numberWithInteger:paginate.perPageLimit] forKey:kJPerPage];
         
         if(paginate.details.length > 0)
+        {
             [_parameters setObject:paginate.details forKey:kJSearchText];
+            
+            if(paginate.hashTagText.length > 0)
+            {
+                [_parameters setObject:paginate.hashTagText forKey:kJExerciseId];
+            }
+        }
         
         self.urlPath = kSearchRecordPostAPI;
+    }
+    return self;
+}
+
+- (id)initWithGetFilteredRecordPostsWithPaginate:(Paginate *)paginate {
+    self = [super init];
+    if (self) {
+        _parameters = [NSMutableDictionary dictionary];
+        if (paginate.hasMoreRecords) {
+            [_parameters setObject:paginate.pageNumber forKey:kJPage];
+        }
+        [_parameters setObject:[NSNumber numberWithInteger:paginate.perPageLimit] forKey:kJPerPage];
+        
+        if(paginate.details.length > 0)
+            [_parameters setObject:paginate.details forKey:kJExerciseId];
+        
+        self.urlPath = kFilteredRecordPosts;
     }
     return self;
 }

@@ -34,6 +34,9 @@
 #pragma mark - Feeling data
 - (void)getFeelingWithRequest:(Request *)request andCompletionBlock:(completionBlock)block;
 
+#pragma mark - Filter data
+- (void)getFiltersWithRequest:(Request *)request andCompletionBlock:(completionBlock)block;
+
 #pragma mark - Login
 - (void)loginWithRequest:(Request *)request andCompletionBlock:(completionBlock)block;
 - (void)signUpWithRequest:(Request *)request andCompletionBlock:(completionBlock)block;

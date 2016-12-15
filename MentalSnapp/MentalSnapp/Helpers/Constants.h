@@ -86,6 +86,7 @@ exNS *kJPage;
 exNS *kJPerPage;
 exNS *kJlimit;
 exNS *kJSearchText;
+exNS *kJExerciseId;
 
 #pragma mark - Session keys
 exNS *kSessionCookies;
@@ -124,6 +125,8 @@ exNS *KGetSubCategoryExcercise;
 exNS *KFeelingList;
 exNS *kRecordPostAPI;
 exNS *kSearchRecordPostAPI;
+exNS *kFilterListAPI;
+exNS *kFilteredRecordPosts;
 
 #pragma mark - StoryBoard segue identifiers
 #pragma mark Main

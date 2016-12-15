@@ -61,6 +61,7 @@
 #import "AppSettings.h"
 #import "UserManager.h"
 #import "UserModel.h"
+#import "FilterModel.h"
 
 //Others
 

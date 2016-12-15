@@ -69,6 +69,12 @@
     [self getObject:request withCompletionBlock:block];
 }
 
+#pragma mark - Filter data
+- (void)getFiltersWithRequest:(Request *)request andCompletionBlock:(completionBlock)block
+{
+    [self getObject:request withCompletionBlock:block];
+}
+
 #pragma mark - Login
 
 - (void)loginWithRequest:(Request *)request andCompletionBlock:(completionBlock)block {

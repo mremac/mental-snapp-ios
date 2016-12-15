@@ -129,6 +129,14 @@
 		6AC660F41DE576E500BB8949 /* MentalSnappTests.xctest in Resources */ = {isa = PBXBuildFile; fileRef = EECB25C11CF5AAF10012E315 /* MentalSnappTests.xctest */; };
 		6AC660F51DE576E500BB8949 /* MentalSnappTests.xctest in Resources */ = {isa = PBXBuildFile; fileRef = EECB25C11CF5AAF10012E315 /* MentalSnappTests.xctest */; };
 		EE5108D11CFEEEC200E8A3F9 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE5108D01CFEEEC200E8A3F9 /* Social.framework */; };
+		EF49E8681E027AFA00B5AFF7 /* FPPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF49E8601E027AFA00B5AFF7 /* FPPopoverController.m */; };
+		EF49E8691E027AFA00B5AFF7 /* FPPopoverKeyboardResponsiveController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF49E8621E027AFA00B5AFF7 /* FPPopoverKeyboardResponsiveController.m */; };
+		EF49E86A1E027AFA00B5AFF7 /* FPPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = EF49E8641E027AFA00B5AFF7 /* FPPopoverView.m */; };
+		EF49E86B1E027AFA00B5AFF7 /* FPTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = EF49E8661E027AFA00B5AFF7 /* FPTouchView.m */; };
+		EF49E8721E0287CE00B5AFF7 /* FilterListTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF49E8711E0287CE00B5AFF7 /* FilterListTableController.m */; };
+		EF49E8751E028C5500B5AFF7 /* FilterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EF49E8741E028C5500B5AFF7 /* FilterModel.m */; };
+		EF49E8781E028E3F00B5AFF7 /* FilterInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = EF49E8771E028E3F00B5AFF7 /* FilterInterface.m */; };
+		EF49E87B1E028F4D00B5AFF7 /* FilterRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = EF49E87A1E028F4D00B5AFF7 /* FilterRequest.m */; };
 		EF4F3B421DF9743200CE20FC /* S3Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = EF4F3B411DF9743200CE20FC /* S3Manager.m */; };
 		EF6DA2521DFFCC4300607C7B /* VideosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF6DA2511DFFCC4300607C7B /* VideosViewController.m */; };
 		EF6DA25B1DFFE13300607C7B /* VideoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EF6DA25A1DFFE13300607C7B /* VideoTableViewCell.m */; };
@@ -375,10 +383,27 @@
 		EECB25A51CF5AAF10012E315 /* MentalSnapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MentalSnapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EECB25C11CF5AAF10012E315 /* MentalSnappTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MentalSnappTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EECB25CC1CF5AAF10012E315 /* MentalSnappUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MentalSnappUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF49E85C1E027AFA00B5AFF7 /* ARCMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARCMacros.h; sourceTree = "<group>"; };
+		EF49E85F1E027AFA00B5AFF7 /* FPPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPPopoverController.h; sourceTree = "<group>"; };
+		EF49E8601E027AFA00B5AFF7 /* FPPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPPopoverController.m; sourceTree = "<group>"; };
+		EF49E8611E027AFA00B5AFF7 /* FPPopoverKeyboardResponsiveController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPPopoverKeyboardResponsiveController.h; sourceTree = "<group>"; };
+		EF49E8621E027AFA00B5AFF7 /* FPPopoverKeyboardResponsiveController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPPopoverKeyboardResponsiveController.m; sourceTree = "<group>"; };
+		EF49E8631E027AFA00B5AFF7 /* FPPopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPPopoverView.h; sourceTree = "<group>"; };
+		EF49E8641E027AFA00B5AFF7 /* FPPopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPPopoverView.m; sourceTree = "<group>"; };
+		EF49E8651E027AFA00B5AFF7 /* FPTouchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPTouchView.h; sourceTree = "<group>"; };
+		EF49E8661E027AFA00B5AFF7 /* FPTouchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPTouchView.m; sourceTree = "<group>"; };
+		EF49E8701E0287CE00B5AFF7 /* FilterListTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = FilterListTableController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		EF49E8711E0287CE00B5AFF7 /* FilterListTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = FilterListTableController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		EF49E8731E028C5500B5AFF7 /* FilterModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterModel.h; sourceTree = "<group>"; };
+		EF49E8741E028C5500B5AFF7 /* FilterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterModel.m; sourceTree = "<group>"; };
+		EF49E8761E028E3F00B5AFF7 /* FilterInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterInterface.h; sourceTree = "<group>"; };
+		EF49E8771E028E3F00B5AFF7 /* FilterInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterInterface.m; sourceTree = "<group>"; };
+		EF49E8791E028F4D00B5AFF7 /* FilterRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterRequest.h; sourceTree = "<group>"; };
+		EF49E87A1E028F4D00B5AFF7 /* FilterRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterRequest.m; sourceTree = "<group>"; };
 		EF4F3B401DF9743200CE20FC /* S3Manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = S3Manager.h; sourceTree = "<group>"; };
 		EF4F3B411DF9743200CE20FC /* S3Manager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S3Manager.m; sourceTree = "<group>"; };
 		EF6DA2501DFFCC4300607C7B /* VideosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideosViewController.h; sourceTree = "<group>"; };
-		EF6DA2511DFFCC4300607C7B /* VideosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideosViewController.m; sourceTree = "<group>"; };
+		EF6DA2511DFFCC4300607C7B /* VideosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = VideosViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		EF6DA2591DFFE13300607C7B /* VideoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoTableViewCell.h; sourceTree = "<group>"; };
 		EF6DA25A1DFFE13300607C7B /* VideoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -456,6 +481,8 @@
 			children = (
 				EF6DA2501DFFCC4300607C7B /* VideosViewController.h */,
 				EF6DA2511DFFCC4300607C7B /* VideosViewController.m */,
+				EF49E8701E0287CE00B5AFF7 /* FilterListTableController.h */,
+				EF49E8711E0287CE00B5AFF7 /* FilterListTableController.m */,
 			);
 			path = Videos;
 			sourceTree = "<group>";
@@ -725,6 +752,7 @@
 		6AAA00FF1DE56F8500208022 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				EF49E85B1E027AFA00B5AFF7 /* FPPopover */,
 				6AAA01001DE56F8500208022 /* RMMapper */,
 			);
 			path = Lib;
@@ -813,6 +841,8 @@
 				6A5BBBB21DFAFB9D00C67CE9 /* FeelingRequest.m */,
 				6A449EF01DFEA2F400EE8875 /* RecordPostRequest.h */,
 				6A449EF11DFEA2F400EE8875 /* RecordPostRequest.m */,
+				EF49E8791E028F4D00B5AFF7 /* FilterRequest.h */,
+				EF49E87A1E028F4D00B5AFF7 /* FilterRequest.m */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -832,6 +862,8 @@
 				6A5BBBB51DFAFC7300C67CE9 /* FeelingInterface.m */,
 				6A449EF41DFEA45100EE8875 /* RecordPostInterface.h */,
 				6A449EF51DFEA45100EE8875 /* RecordPostInterface.m */,
+				EF49E8761E028E3F00B5AFF7 /* FilterInterface.h */,
+				EF49E8771E028E3F00B5AFF7 /* FilterInterface.m */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -900,6 +932,8 @@
 				5CC7CCAB1DE8476F00DC661F /* UserManager.m */,
 				5C8A3A271DE5D5B800706925 /* UserModel.h */,
 				5C8A3A281DE5D5B800706925 /* UserModel.m */,
+				EF49E8731E028C5500B5AFF7 /* FilterModel.h */,
+				EF49E8741E028C5500B5AFF7 /* FilterModel.m */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1036,6 +1070,22 @@
 				EECB25CC1CF5AAF10012E315 /* MentalSnappUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		EF49E85B1E027AFA00B5AFF7 /* FPPopover */ = {
+			isa = PBXGroup;
+			children = (
+				EF49E85C1E027AFA00B5AFF7 /* ARCMacros.h */,
+				EF49E85F1E027AFA00B5AFF7 /* FPPopoverController.h */,
+				EF49E8601E027AFA00B5AFF7 /* FPPopoverController.m */,
+				EF49E8611E027AFA00B5AFF7 /* FPPopoverKeyboardResponsiveController.h */,
+				EF49E8621E027AFA00B5AFF7 /* FPPopoverKeyboardResponsiveController.m */,
+				EF49E8631E027AFA00B5AFF7 /* FPPopoverView.h */,
+				EF49E8641E027AFA00B5AFF7 /* FPPopoverView.m */,
+				EF49E8651E027AFA00B5AFF7 /* FPTouchView.h */,
+				EF49E8661E027AFA00B5AFF7 /* FPTouchView.m */,
+			);
+			path = FPPopover;
 			sourceTree = "<group>";
 		};
 		EF6DA2581DFFE13300607C7B /* VideoCell */ = {
@@ -1273,6 +1323,7 @@
 				6A3F7A7C1DEC758C0070415C /* GZIP.m in Sources */,
 				5C7BE3D81DE882CC00C15CB5 /* ReportIssueViewController.m in Sources */,
 				6A1D50E21DE5793B0073F479 /* Info.plist in Sources */,
+				EF49E8751E028C5500B5AFF7 /* FilterModel.m in Sources */,
 				6A1D50E11DE5792C0073F479 /* Info.plist in Sources */,
 				6AAA01431DE56F8600208022 /* NSDictionary+Properties.m in Sources */,
 				6AAA01541DE56F8600208022 /* NSObject+RMCopyable.m in Sources */,
@@ -1289,8 +1340,10 @@
 				6A288EC61DED8BB100273CCC /* DatePaginate.m in Sources */,
 				5CC7CCAC1DE8476F00DC661F /* UserManager.m in Sources */,
 				6AAA01531DE56F8600208022 /* NSObject+RMArchivable.m in Sources */,
+				EF49E8781E028E3F00B5AFF7 /* FilterInterface.m in Sources */,
 				5C7BE3DC1DE8869700C15CB5 /* ExerciseViewController.m in Sources */,
 				5C8A3A261DE5D26300706925 /* Banner.m in Sources */,
+				EF49E8681E027AFA00B5AFF7 /* FPPopoverController.m in Sources */,
 				6AC2A9501DEED9FB009A21EF /* ExcerciseSubCategoryViewController.m in Sources */,
 				5C7BE3E21DE886D600C15CB5 /* StatsViewController.m in Sources */,
 				6AAA014F1DE56F8600208022 /* UIView+LayerOperation.m in Sources */,
@@ -1303,6 +1356,7 @@
 				5C8A3A201DE5D04100706925 /* LoginViewController.m in Sources */,
 				6AAA01461DE56F8600208022 /* UIApplication+Properties.m in Sources */,
 				6AAA01561DE56F8600208022 /* RMMapper.m in Sources */,
+				EF49E86B1E027AFA00B5AFF7 /* FPTouchView.m in Sources */,
 				6AAA01491DE56F8600208022 /* UIFont+Properties.m in Sources */,
 				6A39C1671DF95B950085C6EA /* EFCircularSlider.m in Sources */,
 				6A7D95B01DE6C5120065573E /* UserRequest.m in Sources */,
@@ -1325,6 +1379,7 @@
 				6AC660EA1DE5740B00BB8949 /* SLog.m in Sources */,
 				5C7BE3D01DE85BDC00C15CB5 /* MoreViewController.m in Sources */,
 				6AAA01621DE56F8600208022 /* LoginInterface.m in Sources */,
+				EF49E8691E027AFA00B5AFF7 /* FPPopoverKeyboardResponsiveController.m in Sources */,
 				6A63D1B31DF0261A00B8E188 /* ExcerciseRequest.m in Sources */,
 				6AAA01421DE56F8600208022 /* NSDate+Properties.m in Sources */,
 				6A36F72A1DFAB37100C6A852 /* RecordPost.m in Sources */,
@@ -1340,6 +1395,7 @@
 				6AAA014C1DE56F8600208022 /* UIImage+ImageEffects.m in Sources */,
 				6AAA01501DE56F8600208022 /* UIView+ReFrame.m in Sources */,
 				6AAA013E1DE56F8600208022 /* AppDelegate.m in Sources */,
+				EF49E86A1E027AFA00B5AFF7 /* FPPopoverView.m in Sources */,
 				6AAA01441DE56F8600208022 /* NSString+Properties.m in Sources */,
 				6AC660EC1DE5740B00BB8949 /* SMobiLogger.xcdatamodeld in Sources */,
 				5C8A3A291DE5D5B800706925 /* UserModel.m in Sources */,
@@ -1354,12 +1410,14 @@
 				6AC660EB1DE5740B00BB8949 /* SMobiLogger.m in Sources */,
 				6A24284A1DE814CD00FF15A9 /* ChangePasswordViewController.m in Sources */,
 				6A5BBBB61DFAFC7300C67CE9 /* FeelingInterface.m in Sources */,
+				EF49E8721E0287CE00B5AFF7 /* FilterListTableController.m in Sources */,
 				6A63D1AB1DF00D2200B8E188 /* GuidedExcercise.m in Sources */,
 				6A288EC71DED8BB100273CCC /* Paginate.m in Sources */,
 				6A3F7A761DEC6F920070415C /* SupportInterface.m in Sources */,
 				6AAA01401DE56F8600208022 /* Constants.m in Sources */,
 				6AAA01571DE56F8600208022 /* main.m in Sources */,
 				6A3DEAB51DF82E9000B6E007 /* RecordAlertViewController.m in Sources */,
+				EF49E87B1E028F4D00B5AFF7 /* FilterRequest.m in Sources */,
 				6AAA015D1DE56F8600208022 /* RealAPI.m in Sources */,
 				5C545E801DF02281004610B0 /* ForgotPasswordSecondViewController.m in Sources */,
 				6A5BBBB31DFAFB9D00C67CE9 /* FeelingRequest.m in Sources */,

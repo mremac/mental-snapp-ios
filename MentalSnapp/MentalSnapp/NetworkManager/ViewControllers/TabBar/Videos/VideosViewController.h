@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FPPopoverController.h"
+#import "FPPopoverKeyboardResponsiveController.h"
 
-@interface VideosViewController : MSViewController
+@interface VideosViewController : MSViewController<FPPopoverControllerDelegate>
+{
+    FPPopoverKeyboardResponsiveController *popover;
+}
+
+-(void)selectedFilter:(FilterModel *)filter;
 
 @end

@@ -8,6 +8,7 @@
 
 #import "VideosViewController.h"
 #import "VideoTableViewCell.h"
+#import "FilterListTableController.h"
 #import "RecordPost.h"
 #import "RequestManager.h"
 #import "Paginate.h"
@@ -23,6 +24,8 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *searchButtonLeadingContraint;
 @property (strong, nonatomic) Paginate *recordPostsPaginate;
 @property (strong, nonatomic) Paginate *searchPaginate;
+@property (strong, nonatomic) Paginate *filterPaginate;
+@property (strong, nonatomic) FilterModel *selectedFilter;
 @end
 
 @implementation VideosViewController
@@ -76,7 +79,7 @@
 
 - (IBAction)filterButtonTapped:(id)sender
 {
-    [self didFilterButtonTapped];
+    [self didFilterButtonTapped:sender];
 }
 
 - (IBAction)searchButtonTapped:(id)sender
@@ -91,8 +94,10 @@
 
 #pragma mark - Private methods
 
-- (void)didFilterButtonTapped
+- (void)didFilterButtonTapped:(id)sender
 {
+    [self didCancelSearch];
+    [self popover:sender];
 }
 
 - (void)didSearchBegin
@@ -199,6 +204,15 @@
     {
         self.searchPaginate = [[Paginate alloc] initWithPageNumber:[NSNumber numberWithInt:1] withMoreRecords:YES andPerPageLimit:10];
         self.searchPaginate.details = self.searchTextField.text.trim;
+        if(self.selectedFilter)
+        {
+            self.searchPaginate.hashTagText = self.selectedFilter.filterId;
+        }
+    }
+    else if(self.filterButton.selected)
+    {
+        self.filterPaginate = [[Paginate alloc] initWithPageNumber:[NSNumber numberWithInt:1] withMoreRecords:YES andPerPageLimit:10];
+        self.filterPaginate.details = self.selectedFilter.filterId;
     }
     else
     {
@@ -208,7 +222,7 @@
 
 - (Paginate *)getCurrentPaginate
 {
-    return self.searchButton.isSelected ? self.searchPaginate : self.recordPostsPaginate;
+    return self.searchButton.isSelected ? self.searchPaginate : self.filterButton.isSelected ? self.filterPaginate : self.recordPostsPaginate;
 }
 
 #pragma mark - API Call
@@ -255,6 +269,13 @@
              block(success, response);
          }];
     }
+    else if(self.filterButton.isSelected)
+    {
+        [[RequestManager alloc] getFilteredRecordPostsWithPaginate:self.filterPaginate withCompletionBlock:^(BOOL success, id response)
+         {
+             block(success, response);
+         }];
+    }
     else
     {
         [[RequestManager alloc] getRecordPostsWithPaginate:self.recordPostsPaginate withCompletionBlock:^(BOOL success, id response)
@@ -268,10 +289,17 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if([self getCurrentPaginate].pageResults.count > 0){
+    if([self getCurrentPaginate].pageResults.count > 0)
+    {
         [self.noContentView setHidden:YES];
         [self.tableView setHidden:NO];
     }
+    else
+    {
+        [self.noContentView setHidden:NO];
+        [self.tableView setHidden:YES];
+    }
+    
     return [[self getCurrentPaginate].pageResults count];
 }
 
@@ -324,6 +352,44 @@
 //        self.subCategoryDetailViewController.selectedExcercise = excercixe;
 //        [self.excerciseParentViewController.navigationController pushViewController:self.subCategoryDetailViewController animated:YES];
     }
+}
+
+-(IBAction)popover:(id)sender
+{
+    //NSLog(@"popover retain count: %d",[popover retainCount]);
+    
+    SAFE_ARC_RELEASE(popover); popover=nil;
+    
+    //the controller we want to present as a popover
+    FilterListTableController *controller = [[FilterListTableController alloc] initWithStyle:UITableViewStylePlain];
+    controller.delegate = self;
+    popover = [[FPPopoverKeyboardResponsiveController alloc] initWithViewController:controller];
+    popover.tint = FPPopoverWhiteTint;
+    popover.border = NO;
+    
+    popover.contentSize = CGSizeMake(200, 300);
+    //sender is the UIButton view
+    popover.arrowDirection = FPPopoverArrowDirectionAny;
+    [popover presentPopoverFromView:sender];
+    
+}
+
+-(void)selectedFilter:(FilterModel *)filter
+{
+    if(filter)
+    {
+        self.selectedFilter = [filter copy];
+        self.filterButton.selected = YES;
+        [self getRecordPosts];
+    }
+    else
+    {
+        self.selectedFilter = nil;
+        self.filterButton.selected = NO;
+        [self.tableView reloadData];
+    }
+    NSLog(filter.filterName);
+    [popover dismissPopoverAnimated:YES];
 }
 
 @end
