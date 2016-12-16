@@ -100,9 +100,13 @@ exNS *kUserPassword;
 exNS *kRememberMe;
 exNS *kIsUserLoggedIn;
 
+#pragma mark - StoryBboard
+exNS *KProfileStoryboard;
+exNS *KPlayerStoryboard;
+
 #pragma mark - StoryBboard Identifier
 exNS *KProfileViewControllerIdentifier;
-exNS *KProfileStoryboard;
+
 exNS *KChangePasswordViewController;
 exNS *KSupportScreenViewController;
 exNS *kGuidedExcerciseViewController;
@@ -112,6 +116,7 @@ exNS *kRecordAlertViewController;
 exNS *kMoodViewController;
 exNS *kFeelingListViewController;
 exNS *kDownloadAllVideoViewController;
+exNS *kPlayerViewController;
 
 #pragma mark - API URL
 exNS *KUserAPI;

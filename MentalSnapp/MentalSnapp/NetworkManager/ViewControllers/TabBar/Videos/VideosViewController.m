@@ -13,6 +13,9 @@
 #import "RequestManager.h"
 #import "Paginate.h"
 
+@import AVFoundation;
+@import AVKit;
+
 @interface VideosViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIView *noContentView;
@@ -225,6 +228,24 @@
     return self.searchButton.isSelected ? self.searchPaginate : self.filterButton.isSelected ? self.filterPaginate : self.recordPostsPaginate;
 }
 
+- (void)showPlayerWithRecordPost:(RecordPost *)recordPost
+{
+    NSURL *videoURL = [NSURL URLWithString:recordPost.videoURL];
+    // create an AVPlayer
+    AVPlayer *player = [AVPlayer playerWithURL:videoURL];
+    AVPlayerLayer *playerLayer = [AVPlayerLayer playerLayerWithPlayer:player];
+    [playerLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
+    
+    // create a player view controller
+    AVPlayerViewController *avPlayerController = [[AVPlayerViewController alloc]init];
+    avPlayerController.player = player;
+    [player play];
+    
+    // show the view controller
+    avPlayerController.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    [self presentViewController:avPlayerController animated:YES completion:nil];
+}
+
 #pragma mark - API Call
 
 -(void)fetchRecordPosts
@@ -321,6 +342,7 @@
             {
                 RecordPost *recordPost = response;
                 NSLog([NSString stringWithFormat:@"Play recordPost: %@", recordPost]);
+                [self showPlayerWithRecordPost:recordPost];
             }
         } downloadBlock:^(BOOL success, id response) {
             if([response isKindOfClass:[RecordPost class]])

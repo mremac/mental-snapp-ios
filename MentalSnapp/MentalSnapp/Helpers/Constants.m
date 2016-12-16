@@ -47,14 +47,17 @@ ns *kJSearchText = @"search_text";
 ns *kJExerciseId = @"exercise_ids";
 
 #pragma mark - Userdefault keys
-ns * kUserEmail = @"UserEmail";
-ns * kUserPassword = @"UserPassword";
-ns * kRememberMe = @"RememberMe";
+ns *kUserEmail = @"UserEmail";
+ns *kUserPassword = @"UserPassword";
+ns *kRememberMe = @"RememberMe";
 ns *kIsUserLoggedIn = @"IsUserLoggedIn";
+
+#pragma mark - StoryBboard
+ns *KProfileStoryboard = @"ProfileStoryboard";
+ns *KPlayerStoryboard = @"PlayerStoryboard";
 
 #pragma mark - StoryBboard Identifier
 ns * KProfileViewControllerIdentifier  = @"ProfileViewController";
-ns * KProfileStoryboard = @"ProfileStoryboard";
 ns * KChangePasswordViewController = @"ChangePasswordViewController";
 ns * KSupportScreenViewController  = @"SupportScreenViewController";
 ns *kGuidedExcerciseViewController = @"GuidedExcerciseViewController";
@@ -64,6 +67,7 @@ ns *kRecordAlertViewController = @"RecordAlertViewController";
 ns *kMoodViewController = @"MoodViewController";
 ns *kFeelingListViewController = @"FeelingListViewController";
 ns *kDownloadAllVideoViewController = @"DownloadAllVideoViewController";
+ns *kPlayerViewController = @"PlayerViewController";
 
 #pragma mark - API URL
 ns *kLoginAPI = @"api/v1/authenticate";
