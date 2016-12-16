@@ -47,13 +47,13 @@
                     [self downloadAllVideo:paginate.pageResults];
                 } else {
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        [self dismissViewControllerAnimated:YES completion:NO];
+                        [self dismissViewControllerAnimated:YES completion:nil];
                     });
                     [self downloadCompletion:NO];
                 }
             }else {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [self dismissViewControllerAnimated:YES completion:NO];
+                    [self dismissViewControllerAnimated:YES completion:nil];
                 });
                 [self downloadCompletion:NO];
             }
@@ -75,7 +75,7 @@
                     count++;
                     if(count>=array.count){
                         dispatch_async(dispatch_get_main_queue(), ^{
-                            [self dismissViewControllerAnimated:YES completion:NO];
+                            [self dismissViewControllerAnimated:YES completion:nil];
                             [self downloadCompletion:YES];
                         });
                     } else {
@@ -92,7 +92,7 @@
             }];
         }else {
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self dismissViewControllerAnimated:YES completion:NO];
+                [self dismissViewControllerAnimated:YES completion:nil];
             });
             [self downloadCompletion:NO];
             //break;
@@ -122,7 +122,7 @@
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         dispatch_async(dispatch_get_main_queue(), ^{
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self dismissViewControllerAnimated:YES completion:NO];
+                [self dismissViewControllerAnimated:YES completion:nil];
                 [self downloadCompletion:YES];
                 [manager cancelAllDownloads];
             });

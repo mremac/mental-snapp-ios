@@ -226,9 +226,12 @@
     } completionHandler:^(BOOL success, NSError *error) {
         block (success, nil);
         if (success) {
+            
+            [[SMobiLogger sharedInterface] info:@"Successfully saved to camera roll." withDescription:[NSString stringWithFormat:@"At: %s, \n(File name: %@). \n  \n", __FUNCTION__, videoPath]];
             NSLog(@"Movie saved to camera roll.");
         }
         else {
+            [[SMobiLogger sharedInterface] error:@"Could not save movie to camera roll." withDescription:[NSString stringWithFormat:@"At: %s, \n(File name: %@ With Error:%@). \n  \n", __FUNCTION__, videoPath, error]];
             NSLog(@"Could not save movie to camera roll. Error: %@", error);
         }
     }];
