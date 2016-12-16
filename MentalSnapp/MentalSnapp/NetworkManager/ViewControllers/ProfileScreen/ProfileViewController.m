@@ -40,6 +40,8 @@
 - (IBAction)saveButtonAction:(id)sender;
 - (IBAction)addPictureProfileAction:(id)sender;
 - (IBAction)deleteProfileAction:(id)sender;
+- (IBAction)ChangePasswordDragOutsideAction:(id)sender;
+- (IBAction)changePasswordButtontouchDown:(id)sender;
 
 @end
 
@@ -69,9 +71,19 @@
     [[UINavigationBar appearance] setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance]  setTranslucent:NO];
     
+    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(buttonDidLongPress:)];
+    [self.changePasswordButton addGestureRecognizer:longPress];
+    
 }
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.changepasswordView setBackgroundColor:[UIColor colorWithRed:235.0/255.0 green:235.0/255.0 blue:235.0/255.0 alpha:1.0]];    
+}
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    [self.changepasswordView setBackgroundColor:[UIColor colorWithRed:235.0/255.0 green:235.0/255.0 blue:235.0/255.0 alpha:1.0]];
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:15/255.f green:175/255.f blue:199/255.f alpha:1.f];
     [[UINavigationBar appearance] setShadowImage:[UIImage new]];
     [[UINavigationBar appearance] setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
@@ -377,6 +389,25 @@
 //    [self.dateOfBirthButton setTitle:[NSDate stringFromDate:selectedDate format:@"dd MMM yyyy"] forState:UIControlStateNormal];
 }
 
+#pragma mark - Tap gesture
+- (void)buttonDidLongPress:(UILongPressGestureRecognizer*)gesture
+{
+    switch (gesture.state) {
+        case UIGestureRecognizerStateBegan:
+        {
+            [self.changepasswordView setBackgroundColor:[UIColor colorWithRed:200.0/255.0 green:200.0/255.0 blue:200.0/255.0 alpha:1.0]];
+        }
+            break;
+        case UIGestureRecognizerStateEnded:
+        {
+            [self.changepasswordView setBackgroundColor:[UIColor colorWithRed:235.0/255.0 green:235.0/255.0 blue:235.0/255.0 alpha:1.0]];
+        }
+            break;
+        default:
+            break;
+    }
+}
+
 #pragma mark - IBActions
 - (void)logoutButtonTapped {
     [self showInProgress:YES];
@@ -403,13 +434,10 @@
 - (IBAction)changePasswordButtonAction:(id)sender {
 
     [self.changepasswordView setBackgroundColor:[UIColor colorWithRed:200.0/255.0 green:200.0/255.0 blue:200.0/255.0 alpha:1.0]];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.changepasswordView setBackgroundColor:[UIColor colorWithRed:235.0/255.0 green:235.0/255.0 blue:235.0/255.0 alpha:1.0]];
-    });
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:KProfileStoryboard bundle:nil];
     ChangePasswordViewController *changePasswordScreen = [storyboard instantiateViewControllerWithIdentifier:KChangePasswordViewController];
-    [self.navigationController pushViewController:changePasswordScreen animated:YES];
+    [self.navigationController pushViewController:changePasswordScreen animated:YES ];
 }
 
 - (IBAction)saveButtonAction:(id)sender
@@ -482,6 +510,14 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [self presentViewController:alertController animated:YES completion:nil];
     });
+}
+
+- (IBAction)ChangePasswordDragOutsideAction:(id)sender {
+        [self.changepasswordView setBackgroundColor:[UIColor colorWithRed:235.0/255.0 green:235.0/255.0 blue:235.0/255.0 alpha:1.0]];
+}
+
+- (IBAction)changePasswordButtontouchDown:(id)sender {
+    //[self.changepasswordView setBackgroundColor:[UIColor colorWithRed:235.0/255.0 green:235.0/255.0 blue:235.0/255.0 alpha:1.0]];
 }
 
 @end

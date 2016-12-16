@@ -8,6 +8,7 @@
 
 @interface SignUpViewController () {
     NSInteger selectedGender;
+    NSDate *selectedDate;
 }
 
 @property (nonatomic, strong) UserModel *user;
@@ -216,6 +217,9 @@
 }
 
 - (IBAction)toolBarCancelButtonAction:(id)sender {
+    if(selectedDate){
+        [self.datePicker setDate:selectedDate];
+    }
     self.datePickerViewBottomConstraint.constant = -self.dateOfBirthView.frame.size.width;
     [UIView animateWithDuration:0.5 animations:^{
         [self.view layoutIfNeeded];
@@ -226,6 +230,7 @@
 
 - (IBAction)toolBarDoneButtonAction:(id)sender {
     [self.dateOfBirthButton setTitleColor:[UIColor colorWithRed:83.0/255.0 green:83.0/255.0 blue:83.0/255.0 alpha:1] forState:UIControlStateNormal];
+    selectedDate =self.datePicker.date;
     [self.dateOfBirthButton setTitle:[NSDate stringFromDate:self.datePicker.date format:@"dd MMM yyyy"] forState:UIControlStateNormal];
     self.datePickerViewBottomConstraint.constant = -self.dateOfBirthView.frame.size.width;
     [UIView animateWithDuration:0.5 animations:^{

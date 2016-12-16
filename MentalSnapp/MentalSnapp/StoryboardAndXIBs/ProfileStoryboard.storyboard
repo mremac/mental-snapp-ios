@@ -371,7 +371,7 @@
                                                                 <color key="textColor" red="0.9137254901960784" green="0.396078431372549" blue="0.22745098039215686" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Ht-Cx-5Ag">
+                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="5Ht-Cx-5Ag">
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="26" id="GN3-s1-BRt"/>
                                                                 </constraints>
@@ -464,7 +464,7 @@
                                                                 <color key="textColor" red="0.9137254901960784" green="0.396078431372549" blue="0.22745098039215686" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tvl-jf-kdZ">
+                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="tvl-jf-kdZ">
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="26" id="g26-8p-i2M"/>
                                                                 </constraints>
@@ -582,7 +582,9 @@
                                                                     <color key="titleColor" red="0.76230321455505279" green="0.32835708876844577" blue="0.19132120330525393" alpha="1" colorSpace="calibratedRGB"/>
                                                                 </state>
                                                                 <connections>
+                                                                    <action selector="ChangePasswordDragOutsideAction:" destination="LIS-ij-MlS" eventType="touchDragOutside" id="bqe-9B-VWN"/>
                                                                     <action selector="changePasswordButtonAction:" destination="LIS-ij-MlS" eventType="touchUpInside" id="qal-6s-l5G"/>
+                                                                    <action selector="changePasswordButtontouchDown:" destination="LIS-ij-MlS" eventType="touchDownRepeat" id="gNS-ar-Ha7"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>

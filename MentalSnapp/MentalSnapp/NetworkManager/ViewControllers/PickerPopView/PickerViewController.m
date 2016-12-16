@@ -101,6 +101,11 @@
 }
 
 - (IBAction)toolBarCancelButtonAction:(id)sender {
+    
+    if(self.selectedDate){
+        [self.datePickerView setDate:self.selectedDate];
+    }
+    
     if([self.delegate respondsToSelector:@selector(didSelectCancelButton)]){
         [self.delegate didSelectCancelButton];
     }
