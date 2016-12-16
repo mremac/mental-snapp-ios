@@ -9,6 +9,7 @@
 #import "VideosViewController.h"
 #import "VideoTableViewCell.h"
 #import "FilterListTableController.h"
+#import "DownloadAllVideoViewController.h"
 #import "RecordPost.h"
 #import "RequestManager.h"
 #import "Paginate.h"
@@ -16,7 +17,7 @@
 @import AVFoundation;
 @import AVKit;
 
-@interface VideosViewController ()
+@interface VideosViewController ()<DownloadVideoDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIView *noContentView;
 @property (weak, nonatomic) IBOutlet UIView *topHeaderView;
@@ -246,6 +247,16 @@
     [self presentViewController:avPlayerController animated:YES completion:nil];
 }
 
+-(void)showDownloadScreenWithRecordPost:(RecordPost *)recordPost
+{
+    DownloadAllVideoViewController *downloadVideoController = [[UIStoryboard storyboardWithName:KProfileStoryboard bundle:nil] instantiateViewControllerWithIdentifier:kDownloadAllVideoViewController];
+    downloadVideoController.delegate = self;
+    downloadVideoController.recordPost = recordPost;
+    downloadVideoController.downloadDirectlyFromRecordPost = YES;
+    downloadVideoController.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    [self presentViewController:downloadVideoController animated:NO completion:nil];
+}
+
 #pragma mark - API Call
 
 -(void)fetchRecordPosts
@@ -349,6 +360,7 @@
             {
                 RecordPost *recordPost = response;
                 NSLog([NSString stringWithFormat:@"Download recordPost: %@", recordPost]);
+                [self showDownloadScreenWithRecordPost:recordPost];
             }
         }];
     }

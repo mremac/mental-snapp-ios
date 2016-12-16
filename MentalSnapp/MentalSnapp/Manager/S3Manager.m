@@ -214,7 +214,7 @@
     [_transferDownloadManager pauseAll];
 }
 -(void)resumeAllDownloads{
-    [_transferDownloadManager pauseAll];
+    [_transferDownloadManager resumeAll:nil];
 }
 
 -(void)saveVideoInLibraray:(AWSS3TransferManagerDownloadOutput *)output withCompletionBlock:(completionBlock)block {

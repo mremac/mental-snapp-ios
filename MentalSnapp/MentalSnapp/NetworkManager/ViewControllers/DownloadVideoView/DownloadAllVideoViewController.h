@@ -8,8 +8,11 @@
 
 #import "MSViewController.h"
 
+@class RecordPost;
+
 @protocol DownloadVideoDelegate <NSObject>
 
+@optional
 - (void)didDownloadCompleted:(BOOL)suceess;
 
 @end
@@ -17,5 +20,7 @@
 @interface DownloadAllVideoViewController : MSViewController
 
 @property (nonatomic, assign) id <DownloadVideoDelegate> delegate;
+@property (nonatomic, assign) BOOL downloadDirectlyFromRecordPost;
+@property (nonatomic, strong) RecordPost *recordPost;
 
 @end
