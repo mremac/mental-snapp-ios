@@ -17,9 +17,13 @@
 
 @implementation AppDelegate
 
+void uncaughtExceptionHandler(NSException *exception) {
+    [[SMobiLogger sharedInterface] unCaughtExceptionWithDescription:[NSString stringWithFormat:@"At: %s, \n(Exception: %@ \n \n Stack Symbols: %@). \n  \n", __FUNCTION__, exception, [exception callStackSymbols]]];
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
     [Util saveCustomObject:[NSNumber numberWithBool:NO] toUserDefaultsForKey:@"isMoodViewController"];
     AppSettings *appSettings = [[AppSettingsManager sharedInstance] fetchSettings];
     
