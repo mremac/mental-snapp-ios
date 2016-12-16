@@ -217,9 +217,14 @@
 - (void)didSuccessAPI
 {
     [Util saveCustomObject:[NSNumber numberWithBool:NO] toUserDefaultsForKey:@"isMoodViewController"];
-    [ApplicationDelegate.tabBarController setSelectTabIndex:0];
-    [ApplicationDelegate.tabBarController setSelectedIndex:0];
-    [self.navigationController popViewControllerAnimated:NO];
+    [Util postNotification:kCleanRecordViewControllerNotification withDict:nil];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [ApplicationDelegate.tabBarController setSelectTabIndex:1];
+        [ApplicationDelegate.tabBarController setSelectedIndex:1];
+        [self.navigationController popViewControllerAnimated:NO];
+    });
+    
 }
 
 - (UIBarButtonItem *)uploadButton {

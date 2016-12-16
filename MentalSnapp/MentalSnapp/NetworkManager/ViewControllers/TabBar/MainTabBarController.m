@@ -41,6 +41,7 @@
     if(item.tag !=2)
     {
         [Util saveCustomObject:[NSNumber numberWithBool:NO] toUserDefaultsForKey:@"isMoodViewController"];
+        [Util postNotification:kCleanRecordViewControllerNotification withDict:nil];
     }
     [self setSelectTabIndex:item.tag];
 }

@@ -15,6 +15,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cleanRVC) name:kCleanRecordViewControllerNotification object:nil];
 
 }
 
@@ -41,17 +43,30 @@
         MoodViewController *moodViewController = [[UIStoryboard storyboardWithName:KProfileStoryboard bundle:nil] instantiateViewControllerWithIdentifier:kMoodViewController];
         NSURL *urlvideo = [info objectForKey:UIImagePickerControllerMediaURL];
         moodViewController.videoURL = urlvideo;
+        if(self.exercise)
+        {
+            moodViewController.excercise = self.exercise;
+        }
+        
         [ApplicationDelegate.tabBarController setSelectTabIndex:2];
         [self.navigationController pushViewController:moodViewController animated:YES];
     }];
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    self.exercise = nil;
     [ApplicationDelegate.tabBarController setSelectTabIndex:0];
     [ApplicationDelegate.tabBarController setSelectedIndex:0];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [picker dismissViewControllerAnimated:YES completion:nil];
     });
+}
+
+#pragma mark - Private methods
+
+- (void)cleanRVC
+{
+    self.exercise = nil;
 }
 
 

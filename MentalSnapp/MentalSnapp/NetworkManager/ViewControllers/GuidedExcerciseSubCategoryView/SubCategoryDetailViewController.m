@@ -88,7 +88,7 @@
 }
 
 -(IBAction)subcategoryRecordAction:(id)sender {
-    [Util openCameraView:self WithAnimation:YES];
+    [Util openCameraForRecordExercise:self.selectedExcercise];
 }
 
 

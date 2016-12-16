@@ -91,6 +91,9 @@ exNS *kJExerciseId;
 #pragma mark - Session keys
 exNS *kSessionCookies;
 
+#pragma mark - Local Notifications
+exNS *kCleanRecordViewControllerNotification;
+
 #pragma mark - Push Notifications
 exNS *kAPSKey;
 

@@ -7,4 +7,6 @@
 
 @interface RecordViewController : MSViewController
 
+@property(nonatomic, strong) GuidedExcercise *exercise;
+
 @end

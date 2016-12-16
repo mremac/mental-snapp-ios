@@ -7,6 +7,8 @@
 //
 
 #import "Util.h"
+#import "GuidedExcercise.h"
+#import "RecordViewController.h"
 #import "NSUserDefaults+RMSaveCustomObject.h"
 
 @implementation Util
@@ -131,6 +133,19 @@
     NSString *emailRegex = stricterFilter ? stricterFilterString : laxString;
     NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
     return [emailTest evaluateWithObject:email];
+}
+
++ (void)openCameraForRecordExercise:(GuidedExcercise *)exercise
+{
+    [ApplicationDelegate.tabBarController setSelectTabIndex:2];
+    [ApplicationDelegate.tabBarController setSelectedIndex:2];
+    UINavigationController *navController = ApplicationDelegate.tabBarController.selectedViewController;
+    [navController popToRootViewControllerAnimated:NO];
+    RecordViewController *recordViewController = (RecordViewController *)navController.topViewController;
+    if([recordViewController isKindOfClass:[RecordViewController class]])
+    {
+        recordViewController.exercise = exercise;
+    }
 }
 
 + (void)openCameraView:(id)target WithAnimation:(BOOL)animate {
