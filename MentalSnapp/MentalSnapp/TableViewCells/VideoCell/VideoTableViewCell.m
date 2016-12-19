@@ -24,7 +24,6 @@
     [super awakeFromNib];
     // Initialization code
     self.videoImageView.layer.borderWidth = 2;
-    self.videoImageView.layer.borderColor = [[UIColor orangeColor] CGColor];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -58,9 +57,8 @@
     
     self.descriptionLabel.attributedText = att;
     [self.videoImageView sd_setImageWithURL:[NSURL URLWithString:recordPost.coverURL] placeholderImage:[UIImage imageNamed:@"video_placeholder"]];
+    self.videoImageView.layer.borderColor = [[Util getMoodColor:recordPost.moodId.length > 0 ? [recordPost.moodId integerValue] : KNone] CGColor];
 }
-
-#pragma mark - Private methods
 
 #pragma mark - IBActions
 
