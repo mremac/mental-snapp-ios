@@ -26,7 +26,6 @@
 		5CF694FD1DEDBED100F00EA2 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF694FC1DEDBED100F00EA2 /* SignUpViewController.m */; };
 		6A1D50E11DE5792C0073F479 /* Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = 6AAA013C1DE56F8600208022 /* Info.plist */; };
 		6A1D50E21DE5793B0073F479 /* Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = 6AAA01391DE56F8600208022 /* Info.plist */; };
-		6A1D50E71DE57A140073F479 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6AAA01391DE56F8600208022 /* Info.plist */; };
 		6A1D50E81DE57A170073F479 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6AAA013C1DE56F8600208022 /* Info.plist */; };
 		6A1D50EF1DE57BEF0073F479 /* MentalSnappTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1D50EE1DE57BEF0073F479 /* MentalSnappTests.m */; };
 		6A1D50F11DE57C520073F479 /* MentalSnappUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1D50F01DE57C520073F479 /* MentalSnappUITests.m */; };
@@ -1199,7 +1198,7 @@
 		EECB259D1CF5AAF10012E315 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = Systango;
 				TargetAttributes = {
 					EECB25A41CF5AAF10012E315 = {
@@ -1289,7 +1288,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6A1D50E71DE57A140073F479 /* Info.plist in Resources */,
 				6AC660F41DE576E500BB8949 /* MentalSnappTests.xctest in Resources */,
 				6A1D50E81DE57A170073F479 /* Info.plist in Resources */,
 			);
@@ -1510,8 +1508,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1553,8 +1553,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
