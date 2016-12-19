@@ -800,22 +800,118 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coming Soon...." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Npv-l5-28e">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dlO-pD-MXn" userLabel="No Content View">
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Queued Excercises to display" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nkG-JK-tZe" userLabel="No Queued Excercises to display">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="fJ8-mI-E0B"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="IM9-6n-e2f"/>
-                                    <constraint firstAttribute="width" constant="167" id="OqL-x0-afI"/>
+                                    <constraint firstAttribute="trailing" secondItem="nkG-JK-tZe" secondAttribute="trailing" id="ZkM-RX-jeo"/>
+                                    <constraint firstItem="nkG-JK-tZe" firstAttribute="leading" secondItem="dlO-pD-MXn" secondAttribute="leading" id="ewJ-Vp-OJk"/>
+                                    <constraint firstItem="nkG-JK-tZe" firstAttribute="centerX" secondItem="dlO-pD-MXn" secondAttribute="centerX" id="fb0-XV-TdR"/>
+                                    <constraint firstItem="nkG-JK-tZe" firstAttribute="centerY" secondItem="dlO-pD-MXn" secondAttribute="centerY" id="q0s-eD-44A"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="22"/>
-                                <color key="textColor" red="0.95294117649999999" green="0.36470588240000001" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vkp-M8-qHC">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="QueuedExercisesTableViewCell" rowHeight="81" id="Qls-U3-AFd" customClass="QueuedExercisesTableViewCell">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="81"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qls-U3-AFd" id="Po7-bZ-wxL">
+                                            <frame key="frameInset" width="375" height="80"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jGe-za-dLf">
+                                                    <color key="backgroundColor" red="0.058823529409999999" green="0.68627450980000004" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="48" id="FKQ-en-xET"/>
+                                                        <constraint firstAttribute="height" constant="48" id="JAY-TC-eZU"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="24"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="circularView" value="NO"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3fM-6G-cc6">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="0ak-OY-bRy"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                                    <color key="textColor" red="0.91372549020000005" green="0.39607843139999999" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hwL-Gd-LVZ">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="23" id="OBW-tG-QDj"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="12"/>
+                                                    <color key="textColor" red="0.23921568630000001" green="0.23921568630000001" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tomorrow 11:12 am" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a3a-CI-1uI" userLabel="Schedule time Label">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="0WY-Pf-yhu"/>
+                                                        <constraint firstAttribute="width" constant="70" id="uZs-2k-bdj"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
+                                                    <color key="textColor" red="0.23921568627450979" green="0.23921568627450979" blue="0.23921568627450979" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="a3a-CI-1uI" firstAttribute="leading" secondItem="3fM-6G-cc6" secondAttribute="trailing" id="2Ha-yd-XXw"/>
+                                                <constraint firstAttribute="trailing" secondItem="a3a-CI-1uI" secondAttribute="trailing" constant="10" id="3NG-fI-ziy"/>
+                                                <constraint firstItem="hwL-Gd-LVZ" firstAttribute="leading" secondItem="jGe-za-dLf" secondAttribute="trailing" constant="16" id="5A2-1b-etU"/>
+                                                <constraint firstItem="a3a-CI-1uI" firstAttribute="top" secondItem="Po7-bZ-wxL" secondAttribute="top" constant="16" id="6v5-lG-wL9"/>
+                                                <constraint firstItem="jGe-za-dLf" firstAttribute="top" secondItem="Po7-bZ-wxL" secondAttribute="top" constant="16" id="AeU-cA-Pq7"/>
+                                                <constraint firstItem="a3a-CI-1uI" firstAttribute="leading" secondItem="hwL-Gd-LVZ" secondAttribute="trailing" id="Lqq-1z-DWJ"/>
+                                                <constraint firstItem="3fM-6G-cc6" firstAttribute="leading" secondItem="jGe-za-dLf" secondAttribute="trailing" constant="16" id="QRh-Kw-6a8"/>
+                                                <constraint firstAttribute="bottom" secondItem="hwL-Gd-LVZ" secondAttribute="bottom" constant="16" id="gwg-eP-qR4"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="jGe-za-dLf" secondAttribute="bottom" constant="16" id="k5y-ME-f38"/>
+                                                <constraint firstItem="jGe-za-dLf" firstAttribute="leading" secondItem="Po7-bZ-wxL" secondAttribute="leading" constant="8" id="s5N-Sw-uPq"/>
+                                                <constraint firstItem="3fM-6G-cc6" firstAttribute="top" secondItem="Po7-bZ-wxL" secondAttribute="top" constant="16" id="yRU-Ys-jrC"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="exerciseDescriptionLabel" destination="hwL-Gd-LVZ" id="iaO-0w-1ZE"/>
+                                            <outlet property="exerciseImageButton" destination="jGe-za-dLf" id="t9a-Lq-f42"/>
+                                            <outlet property="exerciseTitleLabel" destination="3fM-6G-cc6" id="NHB-M4-d4L"/>
+                                            <outlet property="scheduledTimeLabel" destination="a3a-CI-1uI" id="AeR-6g-2q5"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="5Qa-iq-hxT" id="duH-Eq-eIc"/>
+                                    <outlet property="delegate" destination="5Qa-iq-hxT" id="8tY-aQ-8XV"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Npv-l5-28e" firstAttribute="centerX" secondItem="e89-bX-UAi" secondAttribute="centerX" id="EhL-S2-aav"/>
-                            <constraint firstItem="Npv-l5-28e" firstAttribute="centerY" secondItem="e89-bX-UAi" secondAttribute="centerY" constant="-47" id="roD-pb-GKg"/>
+                            <constraint firstAttribute="trailing" secondItem="vkp-M8-qHC" secondAttribute="trailing" id="1po-W7-hxh"/>
+                            <constraint firstAttribute="bottom" secondItem="vkp-M8-qHC" secondAttribute="bottom" id="GBU-Az-RCf"/>
+                            <constraint firstItem="dlO-pD-MXn" firstAttribute="leading" secondItem="e89-bX-UAi" secondAttribute="leading" id="HLd-8Z-3iD"/>
+                            <constraint firstAttribute="bottom" secondItem="dlO-pD-MXn" secondAttribute="bottom" id="K69-ti-eCt"/>
+                            <constraint firstItem="vkp-M8-qHC" firstAttribute="top" secondItem="e89-bX-UAi" secondAttribute="top" id="Kg2-5g-Umb"/>
+                            <constraint firstAttribute="trailing" secondItem="dlO-pD-MXn" secondAttribute="trailing" id="Yht-rA-9oO"/>
+                            <constraint firstItem="vkp-M8-qHC" firstAttribute="leading" secondItem="e89-bX-UAi" secondAttribute="leading" id="Zdw-gL-Gcw"/>
+                            <constraint firstItem="dlO-pD-MXn" firstAttribute="top" secondItem="e89-bX-UAi" secondAttribute="top" id="lLj-Xb-MaB"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="noContentView" destination="dlO-pD-MXn" id="bDm-Rh-tla"/>
+                        <outlet property="tableView" destination="vkp-M8-qHC" id="m7s-mr-Ska"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1lq-56-TfV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -883,7 +979,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="olk-hQ-QB6" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" tag="2" title="" image="record" selectedImage="record_select" id="16e-aA-4fL"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="a5i-vM-KMF">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="a5i-vM-KMF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -902,7 +998,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="foe-lB-Bwv" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" tag="1" title="" image="video" selectedImage="video_select" id="HrM-Hn-fDR"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="fxH-1a-3AF">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fxH-1a-3AF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.058823529409999999" green="0.68627450980000004" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -928,7 +1024,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6uW-Rc-TLa" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="exercise" selectedImage="exercise_select" id="2E9-el-KU0"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ouf-0w-g2P">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ouf-0w-g2P">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

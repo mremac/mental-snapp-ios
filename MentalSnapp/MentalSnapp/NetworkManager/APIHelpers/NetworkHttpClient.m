@@ -102,9 +102,9 @@
 
 - (void)deleteAPICallWithUrl:(NSString *)url parameters:(NSDictionary *)parameters successBlock:(successBlock)success failureBlock:(failureBlock)failure {
     
-    [self DELETE:url parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [self DELETE:url parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
         success(task, responseObject);
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         failure(task, error);
     }];
 }

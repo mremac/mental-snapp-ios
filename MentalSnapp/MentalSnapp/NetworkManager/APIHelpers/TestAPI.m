@@ -84,6 +84,30 @@
     block(YES, dict);
 }
 
+#pragma mark - Schedule data
+- (void)getSchedulesWithRequest:(Request *)request andCompletionBlock:(completionBlock)block
+{
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"1", @"success", nil];
+    block(YES, dict);
+}
+- (void)deleteScheduleWithRequest:(Request *)request andCompletionBlock:(completionBlock)block
+{
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"1", @"success", nil];
+    block(YES, dict);
+}
+
+- (void)patchScheduleWithRequest:(Request *)request andCompletionBlock:(completionBlock)block
+{
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"1", @"success", nil];
+    block(YES, dict);
+}
+
+- (void)postScheduleWithRequest:(Request *)request andCompletionBlock:(completionBlock)block
+{
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"1", @"success", nil];
+    block(YES, dict);
+}
+
 #pragma mark - Login
 - (void)loginWithRequest:(Request *)request andCompletionBlock:(completionBlock)block {
     NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"1", @"success", nil];

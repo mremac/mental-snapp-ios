@@ -89,6 +89,8 @@ ns *kRecordPostAPI = @"api/v1/posts";
 ns *kSearchRecordPostAPI = @"api/v1/posts/search_posts";
 ns *kFilterListAPI = @"api/v1/filters/get_filters_list";
 ns *kFilteredRecordPosts = @"api/v1/filters/get_filter_posts";
+ns *kSchedulesAPI = @"api/v1/schedules";
+ns *kEditSchedulesAPI = @"api/v1/schedules/%@";
 
 #pragma mark - StoryBoard segue identifiers
 #pragma mark Main
@@ -106,6 +108,7 @@ ns *kguidedExcerciseCellCollectionViewCell = @"guidedExcerciseCellCollectionView
 ns *kSubCategoryExcerciseTableViewCell = @"SubCategoryTableViewCell";
 ns *kFeelingTableViewCell = @"FeelingTableViewCell";
 ns *kVideoTableViewCellIdentifier = @"VideoTableViewCell";
+ns *kQueuedExercisesTableViewCellIdentifier = @"QueuedExercisesTableViewCell";
 
 #pragma mark - S3Buckets
 ns *kAWSPath = @"https://s3-eu-west-1.amazonaws.com";

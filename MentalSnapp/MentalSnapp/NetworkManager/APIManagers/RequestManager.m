@@ -20,6 +20,8 @@
 #import "RecordPost.h"
 #import "FilterRequest.h"
 #import "FilterInterface.h"
+#import "ScheduleInterface.h"
+#import "ScheduleRequest.h"
 
 NSString *const kDefaultErrorMessage =  @"Error! Please try again.";
 
@@ -219,6 +221,51 @@ NSString *const kDefaultErrorMessage =  @"Error! Please try again.";
 - (void)getFilterListWithPagination:(Paginate *)paginate withCompletionBlock:(completionBlock)block {
     if ([ApplicationDelegate hasNetworkAvailable]) {
         [[FilterInterface alloc] getFiltersWithRequest:[[FilterRequest alloc] initWithGetFilters:paginate] withCompletionBlock:^(BOOL success, id response) {
+            block(success, response);
+        }];
+        
+    }else {
+        block(NO, nil);
+    }
+}
+
+#pragma mark - Filter data
+- (void)getScheduleListWithPagination:(Paginate *)paginate withCompletionBlock:(completionBlock)block {
+    if ([ApplicationDelegate hasNetworkAvailable]) {
+        [[ScheduleInterface alloc] getSchedulesWithRequest:[[ScheduleRequest alloc] initWithGetSchedules:paginate] withCompletionBlock:^(BOOL success, id response) {
+            block(success, response);
+        }];
+        
+    }else {
+        block(NO, nil);
+    }
+}
+
+- (void)deleteSchedule:(ScheduleModel *)schedule withCompletionBlock:(completionBlock)block {
+    if ([ApplicationDelegate hasNetworkAvailable]) {
+        [[ScheduleInterface alloc] deleteScheduleWithRequest:[[ScheduleRequest alloc] initWithDeleteSchedule:schedule] withCompletionBlock:^(BOOL success, id response) {
+            block(success, response);
+        }];
+        
+    }else {
+        block(NO, nil);
+    }
+}
+
+- (void)editSchedule:(ScheduleModel *)schedule withCompletionBlock:(completionBlock)block {
+    if ([ApplicationDelegate hasNetworkAvailable]) {
+        [[ScheduleInterface alloc] editScheduleWithRequest:[[ScheduleRequest alloc] initWithEditSchedule:schedule] withCompletionBlock:^(BOOL success, id response) {
+            block(success, response);
+        }];
+        
+    }else {
+        block(NO, nil);
+    }
+}
+
+- (void)createSchedule:(ScheduleModel *)schedule withCompletionBlock:(completionBlock)block {
+    if ([ApplicationDelegate hasNetworkAvailable]) {
+        [[ScheduleInterface alloc] createScheduleWithRequest:[[ScheduleRequest alloc] initWithEditSchedule:schedule] withCompletionBlock:^(BOOL success, id response) {
             block(success, response);
         }];
         

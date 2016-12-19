@@ -38,6 +38,12 @@
 #pragma mark - Filter data
 - (void)getFiltersWithRequest:(Request *)request andCompletionBlock:(completionBlock)block;
 
+#pragma mark - Schedule data
+- (void)getSchedulesWithRequest:(Request *)request andCompletionBlock:(completionBlock)block;
+- (void)deleteScheduleWithRequest:(Request *)request andCompletionBlock:(completionBlock)block;
+- (void)patchScheduleWithRequest:(Request *)request andCompletionBlock:(completionBlock)block;
+- (void)postScheduleWithRequest:(Request *)request andCompletionBlock:(completionBlock)block;
+
 #pragma mark - Login
 - (void)loginWithRequest:(Request *)request andCompletionBlock:(completionBlock)block;
 - (void)signUpWithRequest:(Request *)request andCompletionBlock:(completionBlock)block;

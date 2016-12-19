@@ -131,6 +131,10 @@
 		6AC660F41DE576E500BB8949 /* MentalSnappTests.xctest in Resources */ = {isa = PBXBuildFile; fileRef = EECB25C11CF5AAF10012E315 /* MentalSnappTests.xctest */; };
 		6AC660F51DE576E500BB8949 /* MentalSnappTests.xctest in Resources */ = {isa = PBXBuildFile; fileRef = EECB25C11CF5AAF10012E315 /* MentalSnappTests.xctest */; };
 		EE5108D11CFEEEC200E8A3F9 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE5108D01CFEEEC200E8A3F9 /* Social.framework */; };
+		EF4651791E07D528000C5A34 /* QueuedExercisesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EF4651781E07D528000C5A34 /* QueuedExercisesTableViewCell.m */; };
+		EF46517F1E0810A4000C5A34 /* ScheduleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EF46517E1E0810A4000C5A34 /* ScheduleModel.m */; };
+		EF4651821E081282000C5A34 /* ScheduleInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = EF4651811E081282000C5A34 /* ScheduleInterface.m */; };
+		EF4651851E0812B7000C5A34 /* ScheduleRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = EF4651841E0812B7000C5A34 /* ScheduleRequest.m */; };
 		EF49E8681E027AFA00B5AFF7 /* FPPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF49E8601E027AFA00B5AFF7 /* FPPopoverController.m */; };
 		EF49E8691E027AFA00B5AFF7 /* FPPopoverKeyboardResponsiveController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF49E8621E027AFA00B5AFF7 /* FPPopoverKeyboardResponsiveController.m */; };
 		EF49E86A1E027AFA00B5AFF7 /* FPPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = EF49E8641E027AFA00B5AFF7 /* FPPopoverView.m */; };
@@ -391,6 +395,14 @@
 		EECB25A51CF5AAF10012E315 /* MentalSnapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MentalSnapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EECB25C11CF5AAF10012E315 /* MentalSnappTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MentalSnappTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EECB25CC1CF5AAF10012E315 /* MentalSnappUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MentalSnappUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF4651771E07D528000C5A34 /* QueuedExercisesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueuedExercisesTableViewCell.h; sourceTree = "<group>"; };
+		EF4651781E07D528000C5A34 /* QueuedExercisesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueuedExercisesTableViewCell.m; sourceTree = "<group>"; };
+		EF46517D1E0810A4000C5A34 /* ScheduleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleModel.h; sourceTree = "<group>"; };
+		EF46517E1E0810A4000C5A34 /* ScheduleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleModel.m; sourceTree = "<group>"; };
+		EF4651801E081282000C5A34 /* ScheduleInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleInterface.h; sourceTree = "<group>"; };
+		EF4651811E081282000C5A34 /* ScheduleInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleInterface.m; sourceTree = "<group>"; };
+		EF4651831E0812B7000C5A34 /* ScheduleRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleRequest.h; sourceTree = "<group>"; };
+		EF4651841E0812B7000C5A34 /* ScheduleRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleRequest.m; sourceTree = "<group>"; };
 		EF49E85C1E027AFA00B5AFF7 /* ARCMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARCMacros.h; sourceTree = "<group>"; };
 		EF49E85F1E027AFA00B5AFF7 /* FPPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPPopoverController.h; sourceTree = "<group>"; };
 		EF49E8601E027AFA00B5AFF7 /* FPPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPPopoverController.m; sourceTree = "<group>"; };
@@ -516,6 +528,7 @@
 		5C7BE3D11DE86E0300C15CB5 /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				EF4651761E07D528000C5A34 /* ExerciseCell */,
 				EF6DA2581DFFE13300607C7B /* VideoCell */,
 				6A5BBBA61DFAEBB100C67CE9 /* FeelingCell */,
 				6A7387DE1DF1731800D3A981 /* SubCategoryCell */,
@@ -865,6 +878,8 @@
 				6A449EF11DFEA2F400EE8875 /* RecordPostRequest.m */,
 				EF49E8791E028F4D00B5AFF7 /* FilterRequest.h */,
 				EF49E87A1E028F4D00B5AFF7 /* FilterRequest.m */,
+				EF4651831E0812B7000C5A34 /* ScheduleRequest.h */,
+				EF4651841E0812B7000C5A34 /* ScheduleRequest.m */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -886,6 +901,8 @@
 				6A449EF51DFEA45100EE8875 /* RecordPostInterface.m */,
 				EF49E8761E028E3F00B5AFF7 /* FilterInterface.h */,
 				EF49E8771E028E3F00B5AFF7 /* FilterInterface.m */,
+				EF4651801E081282000C5A34 /* ScheduleInterface.h */,
+				EF4651811E081282000C5A34 /* ScheduleInterface.m */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -959,6 +976,8 @@
 				5C8A3A281DE5D5B800706925 /* UserModel.m */,
 				EF49E8731E028C5500B5AFF7 /* FilterModel.h */,
 				EF49E8741E028C5500B5AFF7 /* FilterModel.m */,
+				EF46517D1E0810A4000C5A34 /* ScheduleModel.h */,
+				EF46517E1E0810A4000C5A34 /* ScheduleModel.m */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1097,6 +1116,15 @@
 				EECB25CC1CF5AAF10012E315 /* MentalSnappUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		EF4651761E07D528000C5A34 /* ExerciseCell */ = {
+			isa = PBXGroup;
+			children = (
+				EF4651771E07D528000C5A34 /* QueuedExercisesTableViewCell.h */,
+				EF4651781E07D528000C5A34 /* QueuedExercisesTableViewCell.m */,
+			);
+			path = ExerciseCell;
 			sourceTree = "<group>";
 		};
 		EF49E85B1E027AFA00B5AFF7 /* FPPopover */ = {
@@ -1420,6 +1448,7 @@
 				EF49E8691E027AFA00B5AFF7 /* FPPopoverKeyboardResponsiveController.m in Sources */,
 				6A63D1B31DF0261A00B8E188 /* ExcerciseRequest.m in Sources */,
 				6AAA01421DE56F8600208022 /* NSDate+Properties.m in Sources */,
+				EF4651821E081282000C5A34 /* ScheduleInterface.m in Sources */,
 				6A36F72A1DFAB37100C6A852 /* RecordPost.m in Sources */,
 				6AC660E81DE5740B00BB8949 /* README.md in Sources */,
 				5C7BE3DF1DE886BA00C15CB5 /* RecordViewController.m in Sources */,
@@ -1442,8 +1471,10 @@
 				6A39C16C1DF95BF40085C6EA /* MoodViewController.m in Sources */,
 				6AC2A25F1DED848D00196FFA /* GuidedExcerciseViewController.m in Sources */,
 				6A63D1B01DF025C600B8E188 /* ExcercixeInterface.m in Sources */,
+				EF4651791E07D528000C5A34 /* QueuedExercisesTableViewCell.m in Sources */,
 				6AAA015C1DE56F8600208022 /* NetworkHttpClient.m in Sources */,
 				6AAA01631DE56F8600208022 /* ViewController.m in Sources */,
+				EF4651851E0812B7000C5A34 /* ScheduleRequest.m in Sources */,
 				6AAA015E1DE56F8600208022 /* TestAPI.m in Sources */,
 				6AC660EB1DE5740B00BB8949 /* SMobiLogger.m in Sources */,
 				6A24284A1DE814CD00FF15A9 /* ChangePasswordViewController.m in Sources */,
@@ -1457,6 +1488,7 @@
 				6A3DEAB51DF82E9000B6E007 /* RecordAlertViewController.m in Sources */,
 				EF49E87B1E028F4D00B5AFF7 /* FilterRequest.m in Sources */,
 				6AAA015D1DE56F8600208022 /* RealAPI.m in Sources */,
+				EF46517F1E0810A4000C5A34 /* ScheduleModel.m in Sources */,
 				5C545E801DF02281004610B0 /* ForgotPasswordSecondViewController.m in Sources */,
 				6A5BBBB31DFAFB9D00C67CE9 /* FeelingRequest.m in Sources */,
 				6AAA014D1DE56F8600208022 /* UILabel+Properties.m in Sources */,

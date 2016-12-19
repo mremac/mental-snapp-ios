@@ -53,6 +53,7 @@ static const int kResponseStatusForbidden = 401;
 typedef NS_ENUM(NSInteger, RequestType){
     RequestGET,
     RequestPOST,
+    RequestPATCH,
     RequestMutiPartPost,
     RequestDELETE,
     RequestPUT
@@ -138,6 +139,8 @@ exNS *kRecordPostAPI;
 exNS *kSearchRecordPostAPI;
 exNS *kFilterListAPI;
 exNS *kFilteredRecordPosts;
+exNS *kSchedulesAPI;
+exNS *kEditSchedulesAPI;
 
 #pragma mark - StoryBoard segue identifiers
 #pragma mark Main
@@ -154,6 +157,7 @@ exNS *kguidedExcerciseCellCollectionViewCell;
 exNS *kSubCategoryExcerciseTableViewCell;
 exNS *kFeelingTableViewCell;
 exNS *kVideoTableViewCellIdentifier;
+exNS *kQueuedExercisesTableViewCellIdentifier;
 
 #pragma mark - S3Buckets
 exNS *kAWSPath;

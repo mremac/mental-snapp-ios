@@ -40,5 +40,11 @@
 - (void)deleteRecordPost:(RecordPost *)post withCompletionBlock:(completionBlock)block;
 
 #pragma mark - Filter data
-- (void)getFilterListWithPagination:(Paginate *)paginate withCompletionBlock:(completionBlock)block ;
+- (void)getFilterListWithPagination:(Paginate *)paginate withCompletionBlock:(completionBlock)block;
+
+#pragma mark - Filter data
+- (void)getScheduleListWithPagination:(Paginate *)paginate withCompletionBlock:(completionBlock)block;
+- (void)deleteSchedule:(ScheduleModel *)schedule withCompletionBlock:(completionBlock)block;
+- (void)editSchedule:(ScheduleModel *)schedule withCompletionBlock:(completionBlock)block;
+- (void)createSchedule:(ScheduleModel *)schedule withCompletionBlock:(completionBlock)block;
 @end

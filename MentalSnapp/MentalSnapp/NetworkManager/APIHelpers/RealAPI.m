@@ -24,7 +24,7 @@
 #pragma mark - User
     
 - (void)editUserWithRequest:(Request *)request andCompletionBlock:(completionBlock)block {
-    [self interactAPIWithPatchObject:request withCompletionBlock:block];
+    [self patchObject:request withCompletionBlock:block];
 }
 
 - (void)changePasswordWithRequest:(Request *)request andCompletionBlock:(completionBlock)block {
@@ -79,6 +79,27 @@
     [self getObject:request withCompletionBlock:block];
 }
 
+#pragma mark - Schedule data
+- (void)getSchedulesWithRequest:(Request *)request andCompletionBlock:(completionBlock)block
+{
+    [self getObject:request withCompletionBlock:block];
+}
+
+- (void)deleteScheduleWithRequest:(Request *)request andCompletionBlock:(completionBlock)block
+{
+    [self deleteObject:request withCompletionBlock:block];
+}
+
+- (void)patchScheduleWithRequest:(Request *)request andCompletionBlock:(completionBlock)block
+{
+    [self patchObject:request withCompletionBlock:block];
+}
+
+- (void)postScheduleWithRequest:(Request *)request andCompletionBlock:(completionBlock)block
+{
+    [self postObject:request withCompletionBlock:block];
+}
+
 #pragma mark - Login
 
 - (void)loginWithRequest:(Request *)request andCompletionBlock:(completionBlock)block {
@@ -94,9 +115,13 @@
 }
 
 #pragma mark -
-    
+
 - (void)putObject:(Request *)request withCompletionBlock:(completionBlock)block {
     [self interactAPIWithPutObject:request withCompletionBlock:block];
+}
+
+- (void)patchObject:(Request *)request withCompletionBlock:(completionBlock)block {
+    [self interactAPIWithPatchObject:request withCompletionBlock:block];
 }
 
 - (void)getObject:(Request *)request withCompletionBlock:(completionBlock)block {
@@ -131,7 +156,7 @@
 }
 
 - (void)interactAPIWithPatchObject:(Request *)postObject withCompletionBlock:(completionBlock)block {
-    [self initialSetupWithRequest:postObject requestType:RequestPOST];
+    [self initialSetupWithRequest:postObject requestType:RequestPATCH];
     [[NetworkHttpClient sharedInstance] patchAPICallWithUrl:postObject.urlPath parameters:postObject.getParams successBlock:^(NSURLSessionDataTask *task, id responseObject) {
         [self handleSuccessResponse:task response:responseObject withBlock:block];
     } failureBlock:^(NSURLSessionDataTask *task, NSError *error) {
@@ -357,6 +382,10 @@
         }
         case RequestPOST:{
             [self interactAPIWithPostObject:VMRequest withCompletionBlock:realAPIBlock];
+            break;
+        }
+        case RequestPATCH:{
+            [self interactAPIWithPatchObject:VMRequest withCompletionBlock:realAPIBlock];
             break;
         }
         case RequestPUT:{
