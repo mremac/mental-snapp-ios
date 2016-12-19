@@ -412,7 +412,9 @@
 #pragma mark - Download Delegate
 -(void)didDownloadCompleted:(BOOL)suceess {
     if(suceess){
-        //[self deleteProfileAPI];
+        [Banner showFailureBannerWithSubtitle:@"Downloading successfully."];
+        [self deleteProfileAPI];
+    } else {
     }
 }
 

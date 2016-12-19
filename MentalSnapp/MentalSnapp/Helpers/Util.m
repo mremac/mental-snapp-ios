@@ -153,6 +153,7 @@
         UIImagePickerController *imgPicker = [[UIImagePickerController alloc] init];
         imgPicker.delegate = target;
         imgPicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        imgPicker.cameraDevice = UIImagePickerControllerCameraDeviceFront;
         imgPicker.mediaTypes = [NSArray arrayWithObjects:(NSString *)kUTTypeMovie, nil];
         imgPicker.allowsEditing = NO;
         [imgPicker setVideoMaximumDuration:2*60];
@@ -201,7 +202,7 @@
     if(!deviceToken || deviceToken.length == 0)
         deviceToken = @"Simulator";
     
-    NSString *fileName = [NSString stringWithFormat:@"%@.mov",videoName];
+    NSString *fileName = [NSString stringWithFormat:@"%@_%@.mov",videoName,[[NSDate date] getMilliSeconds]];
 
     //*> Getting size
     NSError *attributesError;

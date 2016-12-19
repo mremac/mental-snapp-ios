@@ -13,7 +13,9 @@
 #import <Photos/Photos.h>
 
 @interface S3Manager()
-
+{
+    completionBlock downloadCompletionBlock;
+}
 @property (nonatomic, strong) UIProgressView *mediaUploadProgressBarView;
 @property (nonatomic, strong) UILabel *progressBarLabel;
 @property (nonatomic, strong) NSURL *fileURL;
@@ -129,6 +131,7 @@
 
 - (void)downloadFileToS3CompletionBlock:(completionBlock)block
 {
+    downloadCompletionBlock  = block;
     AppSettings *appSettings = [AppSettingsManager sharedInstance].appSettings;
     
     AWSS3TransferManagerDownloadRequest *downloadRequest = [AWSS3TransferManagerDownloadRequest new];
@@ -200,7 +203,7 @@
                                                                
                                                                [[SMobiLogger sharedInterface] info:@"Successfully Dowloading file to S3." withDescription:[NSString stringWithFormat:@"At: %s, \n(URL: %@). \n  \n", __FUNCTION__, [NSString stringWithFormat:@"%@/%@", downloadRequest.bucket, downloadRequest.key]]];
                                                                
-                                                               if( task.result){
+                                                               if(task.result){
                                                                    [self saveVideoInLibraray: task.result withCompletionBlock:block];
                                                                }
                                                                return nil;
@@ -214,11 +217,44 @@
     [_transferDownloadManager pauseAll];
 }
 -(void)resumeAllDownloads{
-    [_transferDownloadManager resumeAll:nil];
+    [_transferDownloadManager resumeAll:^(AWSRequest *request) {
+        if(request){
+            downloadCompletionBlock(NO,nil);
+        }
+    }];
+}
+
+-(uint64_t)getFreeDiskspace {
+    uint64_t totalSpace = 0;
+    uint64_t totalFreeSpace = 0;
+    NSError *error = nil;
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSDictionary *dictionary = [[NSFileManager defaultManager] attributesOfFileSystemForPath:[paths lastObject] error: &error];
+    
+    if (dictionary) {
+        NSNumber *fileSystemSizeInBytes = [dictionary objectForKey: NSFileSystemSize];
+        NSNumber *freeFileSystemSizeInBytes = [dictionary objectForKey:NSFileSystemFreeSize];
+        totalSpace = [fileSystemSizeInBytes unsignedLongLongValue];
+        totalFreeSpace = [freeFileSystemSizeInBytes unsignedLongLongValue];
+        NSLog(@"Memory Capacity of %llu MiB with %llu MiB Free memory available.", ((totalSpace/1024ll)/1024ll), ((totalFreeSpace/1024ll)/1024ll));
+    } else {
+        NSLog(@"Error Obtaining System Memory Info: Domain = %@, Code = %ld", [error domain], (long)[error code]);
+    }
+    
+    return totalFreeSpace;
 }
 
 -(void)saveVideoInLibraray:(AWSS3TransferManagerDownloadOutput *)output withCompletionBlock:(completionBlock)block {
     __block NSURL *videoPath = output.body;
+    if([self getFreeDiskspace]<[output.contentLength floatValue]){
+         block (NO, @"##Memory#");
+        [Banner showFailureBannerWithSubtitle:@"Failed to save due to low memory. Please remove some data and try again."];
+        [[SMobiLogger sharedInterface] error:@"Could not save movie to camera roll." withDescription:[NSString stringWithFormat:@"At: %s, \n(File name: %@ With Error: Memory full). \n  \n", __FUNCTION__, videoPath]];
+        return;
+    }
+    
+    [Banner showFailureBannerWithSubtitle:@"Failed to save in library"];
+
     
     [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^ {
         [PHAssetChangeRequest creationRequestForAssetFromVideoAtFileURL:videoPath];

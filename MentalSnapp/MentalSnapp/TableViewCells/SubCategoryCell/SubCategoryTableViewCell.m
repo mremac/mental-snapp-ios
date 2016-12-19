@@ -27,6 +27,7 @@
             [self.categoryImageView setImage:image forState:UIControlStateNormal];
         }
     }];
+    [self.categoryImageView setUserInteractionEnabled:NO];
     [self.categoryTitle setText:excercise.excerciseName];
     [self.categorySubdisciption setText:excercise.excerciseDescription];    
 }

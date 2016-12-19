@@ -16,7 +16,8 @@
 {
     Paginate *paginate;
     int count;
-    S3Manager *manager;
+    S3Manager *s3manager;
+    BOOL isPauseDownloading;
 }
 @property (strong, nonatomic) IBOutlet UIView *DownloadView;
 @property (strong, nonatomic) IBOutlet UILabel *TitleLabel;
@@ -48,11 +49,14 @@
 }
 
 -(void)getDownloadVideos {
+    [self showDefaultIndicatorProgress:YES];
+    [[ApplicationDelegate window] setUserInteractionEnabled:NO];
     [[RequestManager alloc] getRecordPostsWithPaginate:[[Paginate alloc] initWithPageNumber:[NSNumber numberWithInt:1] withMoreRecords:YES andPerPageLimit:100]withCompletionBlock:^(BOOL success, id response) {
+        [[ApplicationDelegate window] setUserInteractionEnabled:YES];
         if(success){
             paginate = response;
             if(paginate.pageResults.count > 0){
-                [self downloadAllVideo:paginate.pageResults];
+                    [self downloadAllVideo:paginate.pageResults];
             } else {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self dismissViewControllerAnimated:YES completion:nil];
@@ -65,6 +69,7 @@
             });
             [self downloadCompletion:NO];
         }
+        [self showDefaultIndicatorProgress:NO];
     }];
 }
 
@@ -85,17 +90,28 @@
              }
              else
              {
-                 dispatch_async(dispatch_get_main_queue(), ^{
-                     [self downloadAllVideo:paginate.pageResults];
-                 });
+                 if(!isPauseDownloading){
+                     dispatch_async(dispatch_get_main_queue(), ^{
+                         [self downloadAllVideo:paginate.pageResults];
+                     });
+                 }
              }
          }
          else
          {
-             dispatch_async(dispatch_get_main_queue(), ^{
-                 [self downloadAllVideo:paginate.pageResults];
-                 [self downloadCompletion:NO];
-             });
+             if(response && [response isKindOfClass:[NSString class]] && [response isEqualToString:@"##Memory#"]){
+                 dispatch_async(dispatch_get_main_queue(), ^{
+                     [self dismissViewControllerAnimated:YES completion:nil];
+                     [self downloadCompletion:NO];
+                 });
+             } else {
+                 if(!isPauseDownloading){
+                     dispatch_async(dispatch_get_main_queue(), ^{
+                         [self downloadAllVideo:paginate.pageResults];
+                         [self downloadCompletion:NO];
+                     });
+                 }
+             }
          }
      }];
 }
@@ -109,9 +125,8 @@
             [self.TitleLabel setText:fileName];
             [self.progressbar setProgress:0 animated:YES];
         });
-        manager = [[S3Manager alloc] initWithFileURL:nil s3Key:fileName mediaUploadProgressBarView:self.progressbar progressBarLabel:nil fileType:VideoFileType contentLength:0];
-        
-        [manager downloadFileToS3CompletionBlock:^(BOOL success, id response) {
+        s3manager = [[S3Manager alloc] initWithFileURL:nil s3Key:fileName mediaUploadProgressBarView:self.progressbar progressBarLabel:nil fileType:VideoFileType contentLength:0];
+        [s3manager downloadFileToS3CompletionBlock:^(BOOL success, id response) {
             block(success, response);
         }];
     }
@@ -152,14 +167,14 @@
  */
 
 - (IBAction)closeDownloadAction:(id)sender {
-    [manager pauseAllDownloads];
-    
+    [s3manager pauseAllDownloads];
+    isPauseDownloading = YES;
     if(self.downloadDirectlyFromRecordPost)
     {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self dismissViewControllerAnimated:YES completion:nil];
             [self downloadCompletion:YES];
-            [manager cancelAllDownloads];
+            [s3manager cancelAllDownloads];
         });
     }
     else
@@ -169,12 +184,13 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self dismissViewControllerAnimated:YES completion:nil];
                 [self downloadCompletion:YES];
-                [manager cancelAllDownloads];
+                [s3manager cancelAllDownloads];
             });
         }];
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                [manager resumeAllDownloads];
+                isPauseDownloading = NO;
+                [s3manager resumeAllDownloads];
             });
         }];
         

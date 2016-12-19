@@ -52,17 +52,17 @@
                                         <frame key="frameInset" height="44" maxY="236"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                         <items>
-                                            <barButtonItem title="Done" id="WBf-cU-7df">
-                                                <color key="tintColor" red="0.91372549020000005" green="0.39607843139999999" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
-                                                <connections>
-                                                    <action selector="toolBarDoneButtonAction:" destination="NOT-5h-3bn" id="Xdx-4B-u1j"/>
-                                                </connections>
-                                            </barButtonItem>
-                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="7TF-9O-9mX"/>
                                             <barButtonItem title="Cancel" id="pJN-3e-0pm">
                                                 <color key="tintColor" red="0.91372549020000005" green="0.39607843139999999" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
                                                 <connections>
                                                     <action selector="toolBarCancelButtonAction:" destination="NOT-5h-3bn" id="sJZ-Mg-26I"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="7TF-9O-9mX"/>
+                                            <barButtonItem title="Done" id="WBf-cU-7df">
+                                                <color key="tintColor" red="0.91372549020000005" green="0.39607843139999999" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
+                                                <connections>
+                                                    <action selector="toolBarDoneButtonAction:" destination="NOT-5h-3bn" id="Xdx-4B-u1j"/>
                                                 </connections>
                                             </barButtonItem>
                                         </items>
@@ -380,7 +380,7 @@
                                                                 </constraints>
                                                                 <color key="textColor" red="0.32549019607843138" green="0.32549019607843138" blue="0.32549019607843138" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="15"/>
-                                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
                                                                 <connections>
                                                                     <outlet property="delegate" destination="LIS-ij-MlS" id="Dks-Cl-Swh"/>
                                                                 </connections>
@@ -975,10 +975,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SubCategoryTableViewCell" rowHeight="81" id="kJZ-xh-eMo" customClass="SubCategoryTableViewCell">
-                                        <rect key="frame" x="0.0" y="28" width="1000" height="81"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="81"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kJZ-xh-eMo" id="WYO-1L-Q6w">
-                                            <frame key="frameInset" width="1000" height="81"/>
+                                            <frame key="frameInset" width="375" height="81"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1tR-Ds-vMV">
@@ -1655,10 +1655,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FeelingTableViewCell" id="iRe-4J-cDh" customClass="FeelingTableViewCell">
-                                        <rect key="frame" x="0.0" y="28" width="1000" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iRe-4J-cDh" id="VTX-Ql-YMd">
-                                            <frame key="frameInset" width="375" height="43.5"/>
+                                            <frame key="frameInset" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aey-99-ugY">
@@ -1758,7 +1758,7 @@
                                     <constraint firstItem="UHL-iT-gSK" firstAttribute="top" secondItem="L4c-N5-xZL" secondAttribute="bottom" constant="17" id="Gg0-t3-CYK"/>
                                     <constraint firstAttribute="height" constant="80" id="Pm8-kS-I22"/>
                                     <constraint firstAttribute="trailing" secondItem="UHL-iT-gSK" secondAttribute="trailing" constant="10" id="QGe-f5-FMz"/>
-                                    <constraint firstAttribute="trailing" secondItem="L4c-N5-xZL" secondAttribute="trailing" constant="8" id="T5D-vl-nXd"/>
+                                    <constraint firstAttribute="trailing" secondItem="L4c-N5-xZL" secondAttribute="trailing" constant="35" id="T5D-vl-nXd"/>
                                     <constraint firstItem="L4c-N5-xZL" firstAttribute="leading" secondItem="u4M-t7-voa" secondAttribute="leading" constant="8" id="mD6-QB-9Sc"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>

@@ -363,7 +363,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="evG-dm-COo" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="917-VJ-Diz">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="917-VJ-Diz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -614,22 +614,7 @@
                     <view key="view" contentMode="scaleToFill" id="XTm-Nq-SFf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coming Soon...." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C8z-Nf-Xyl">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="XZS-ET-lFv"/>
-                                    <constraint firstAttribute="width" constant="167" id="cxx-Kd-weO"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="22"/>
-                                <color key="textColor" red="0.95294117649999999" green="0.36470588240000001" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="C8z-Nf-Xyl" firstAttribute="centerX" secondItem="XTm-Nq-SFf" secondAttribute="centerX" id="AxV-md-80j"/>
-                            <constraint firstItem="C8z-Nf-Xyl" firstAttribute="centerY" secondItem="XTm-Nq-SFf" secondAttribute="centerY" constant="-82.5" id="x0J-o6-Nyf"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="hHJ-RP-9cg"/>
                 </viewController>
@@ -846,7 +831,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ea6-22-dcP" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" tag="4" title="" image="more" selectedImage="more_select" id="pLc-5M-03v"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="osg-Bk-j07">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="osg-Bk-j07">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -865,7 +850,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="r1p-Tj-Snl" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" tag="3" title="" image="stats" selectedImage="stats_select" id="tx5-ds-DTt"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TWf-gw-yYx">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="TWf-gw-yYx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1014,7 +999,7 @@
                                                                 </constraints>
                                                                 <color key="textColor" red="0.32549019610000002" green="0.32549019610000002" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="15"/>
-                                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next"/>
+                                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
                                                                 <connections>
                                                                     <outlet property="delegate" destination="vX0-rh-xaN" id="ow6-eB-sR1"/>
                                                                 </connections>
@@ -1061,7 +1046,7 @@
                                                                 </constraints>
                                                                 <color key="textColor" red="0.32549019610000002" green="0.32549019610000002" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="15"/>
-                                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
                                                                 <connections>
                                                                     <outlet property="delegate" destination="vX0-rh-xaN" id="WBn-JE-mA4"/>
                                                                 </connections>
@@ -1465,17 +1450,17 @@
                                         <frame key="frameInset" minX="-1" height="44" maxX="1" maxY="237"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                         <items>
-                                            <barButtonItem title="Done" id="wUI-K2-dlE">
-                                                <color key="tintColor" red="0.91372549020000005" green="0.39607843139999999" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
-                                                <connections>
-                                                    <action selector="toolBarDoneButtonAction:" destination="vX0-rh-xaN" id="fJN-cx-AM5"/>
-                                                </connections>
-                                            </barButtonItem>
-                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="K4T-Tm-whw"/>
                                             <barButtonItem title="Cancel" id="QfJ-nn-tK9">
                                                 <color key="tintColor" red="0.91372549020000005" green="0.39607843139999999" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
                                                 <connections>
                                                     <action selector="toolBarCancelButtonAction:" destination="vX0-rh-xaN" id="ppa-8P-2YU"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="K4T-Tm-whw"/>
+                                            <barButtonItem title="Done" id="wUI-K2-dlE">
+                                                <color key="tintColor" red="0.91372549020000005" green="0.39607843139999999" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
+                                                <connections>
+                                                    <action selector="toolBarDoneButtonAction:" destination="vX0-rh-xaN" id="fJN-cx-AM5"/>
                                                 </connections>
                                             </barButtonItem>
                                         </items>
