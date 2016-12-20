@@ -32,7 +32,8 @@ typedef NS_ENUM(NSInteger, DateSelection){
 @interface PickerViewController : MSViewController
 
 @property (assign, nonatomic) id <PickerViewControllerDelegate> delegate;
-@property (assign, nonatomic) NSDate *selectedDate;
 @property (assign, nonatomic) DatePickerType pickerType;
 @property (assign, nonatomic) DateSelection dateSelection;
+
+- (void)updatePickerDate:(NSDate *)date;
 @end

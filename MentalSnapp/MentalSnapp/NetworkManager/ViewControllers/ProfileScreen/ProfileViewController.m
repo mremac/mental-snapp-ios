@@ -462,7 +462,7 @@
     [self.view endEditing:YES];
     [self.navigationController.navigationBar endEditing:YES];
     if(selectedDate){
-        [self.pickerViewController setSelectedDate:selectedDate];
+        [self.pickerViewController updatePickerDate:selectedDate];
     }
     [[[ApplicationDelegate window] rootViewController] presentViewController:self.pickerViewController animated:YES completion:nil];
 }

@@ -204,7 +204,6 @@
         [[RequestManager alloc] signUpWithUserModel:user withCompletionBlock:^(BOOL success, id response) {
             [self showInProgress:NO];
             if (success) {
-                [[UserManager sharedManager] saveLoggedinUserInfoInUserDefault];
                 [UIView transitionWithView:ApplicationDelegate.window
                                   duration:0.5f
                                    options:UIViewAnimationOptionTransitionFlipFromLeft

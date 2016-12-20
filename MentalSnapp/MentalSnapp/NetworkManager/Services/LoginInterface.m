@@ -46,11 +46,13 @@
         if ([success integerValue] == kStatusSuccess) {
             if ([response hasValueForKey:@"auth_token"]) {
                 [UserManager sharedManager].authorizationToken = [response valueForKey:@"auth_token"];
-                if([response hasValueForKey:@"user"] && [response hasValueForKey:@"user"] != nil && [response hasValueForKey:@"user"]!=[NSNull null]) {
+                if([response hasValueForKey:@"user"])
+                {
                     NSError *error;
                     [UserManager sharedManager].userModel = [[UserModel alloc] initWithDictionary:[response objectForKey:@"user"] error:&error];
                 }
                 [[UserManager sharedManager] saveLoggedinUserInfoInUserDefault];
+                [[ScheduleManager sharedInstance] fetchAllSchedules];
             }
             
             self.block([success integerValue], @"Login successfull");
@@ -89,6 +91,7 @@
                 UserModel *user = [[UserModel alloc] initWithDictionary:[response valueForKey:@"users"] error:nil];
                 [UserManager sharedManager].userModel = user;
                 [[UserManager sharedManager] saveLoggedinUserInfoInUserDefault];
+                [[ScheduleManager sharedInstance] fetchAllSchedules];
             }
             self.block([success integerValue], @"Signup successfull.");
         } else

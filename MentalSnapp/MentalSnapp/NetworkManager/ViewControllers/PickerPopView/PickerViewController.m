@@ -9,8 +9,11 @@
 #import "PickerViewController.h"
 
 @interface PickerViewController ()
+
+@property (assign, nonatomic) NSDate *selectedDate;
 @property (strong, nonatomic) IBOutlet UIDatePicker *datePickerView;
 @property (strong, nonatomic) IBOutlet UIToolbar *toolBar;
+
 - (IBAction)toolBarDoneButtonAction:(id)sender;
 - (IBAction)toolBarCancelButtonAction:(id)sender;
 
@@ -73,6 +76,15 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Public methods
+- (void)updatePickerDate:(NSDate *)date
+{
+    self.selectedDate = date;
+    if(self.selectedDate){
+        [self.datePickerView setDate:self.selectedDate];
+    }
 }
 
 /*

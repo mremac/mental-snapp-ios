@@ -143,6 +143,7 @@
 		EF49E8751E028C5500B5AFF7 /* FilterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EF49E8741E028C5500B5AFF7 /* FilterModel.m */; };
 		EF49E8781E028E3F00B5AFF7 /* FilterInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = EF49E8771E028E3F00B5AFF7 /* FilterInterface.m */; };
 		EF49E87B1E028F4D00B5AFF7 /* FilterRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = EF49E87A1E028F4D00B5AFF7 /* FilterRequest.m */; };
+		EF4BFE131E090E100031EB9A /* ScheduleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EF4BFE121E090E100031EB9A /* ScheduleManager.m */; };
 		EF4F3B421DF9743200CE20FC /* S3Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = EF4F3B411DF9743200CE20FC /* S3Manager.m */; };
 		EF6DA2521DFFCC4300607C7B /* VideosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF6DA2511DFFCC4300607C7B /* VideosViewController.m */; };
 		EF6DA25B1DFFE13300607C7B /* VideoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EF6DA25A1DFFE13300607C7B /* VideoTableViewCell.m */; };
@@ -420,6 +421,8 @@
 		EF49E8771E028E3F00B5AFF7 /* FilterInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterInterface.m; sourceTree = "<group>"; };
 		EF49E8791E028F4D00B5AFF7 /* FilterRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterRequest.h; sourceTree = "<group>"; };
 		EF49E87A1E028F4D00B5AFF7 /* FilterRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterRequest.m; sourceTree = "<group>"; };
+		EF4BFE111E090E100031EB9A /* ScheduleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleManager.h; sourceTree = "<group>"; };
+		EF4BFE121E090E100031EB9A /* ScheduleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleManager.m; sourceTree = "<group>"; };
 		EF4F3B401DF9743200CE20FC /* S3Manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = S3Manager.h; sourceTree = "<group>"; };
 		EF4F3B411DF9743200CE20FC /* S3Manager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S3Manager.m; sourceTree = "<group>"; };
 		EF6DA2501DFFCC4300607C7B /* VideosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideosViewController.h; sourceTree = "<group>"; };
@@ -819,6 +822,8 @@
 				6AAA01101DE56F8600208022 /* SocialManager.m */,
 				EF4F3B401DF9743200CE20FC /* S3Manager.h */,
 				EF4F3B411DF9743200CE20FC /* S3Manager.m */,
+				EF4BFE111E090E100031EB9A /* ScheduleManager.h */,
+				EF4BFE121E090E100031EB9A /* ScheduleManager.m */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -1426,6 +1431,7 @@
 				6A39C1671DF95B950085C6EA /* EFCircularSlider.m in Sources */,
 				6A7D95B01DE6C5120065573E /* UserRequest.m in Sources */,
 				6A4AE6651E02A344005DF1DA /* DownloadAllVideoViewController.m in Sources */,
+				EF4BFE131E090E100031EB9A /* ScheduleManager.m in Sources */,
 				6AAA01471DE56F8600208022 /* UIButton+Properties.m in Sources */,
 				6A7D95BA1DE6CD6A0065573E /* UserInterface.m in Sources */,
 				6AAA01591DE56F8600208022 /* RemoteNotificationManager.m in Sources */,

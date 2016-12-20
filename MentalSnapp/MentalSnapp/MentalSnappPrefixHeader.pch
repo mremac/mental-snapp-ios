@@ -53,6 +53,9 @@
 #import "SocialManager.h"
 #import "AppSettingsManager.h"
 #import "Banner.h"
+#import "ScheduleManager.h"
+
+// APIInteractor
 #import "APIInteractor.h"
 #import "APIInteractorProvider.h"
 

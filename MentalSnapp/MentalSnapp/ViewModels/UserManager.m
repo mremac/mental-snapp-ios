@@ -70,6 +70,7 @@ static dispatch_once_t userOnceToken;
 
 -(void)logoutUser {
     [self removeUserFromUserDefault];
+    [[ScheduleManager sharedInstance] didcleanSchedules];
     LoginViewController *loginViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"LoginViewController"];
     [[ApplicationDelegate window] setRootViewController:[[UINavigationController alloc] initWithRootViewController:loginViewController]];
 }

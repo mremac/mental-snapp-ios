@@ -57,67 +57,6 @@
 
 #pragma mark - Private methods
 
-- (void)deleteRecordAtIndexPath:(NSIndexPath *)indexPath
-{
-    if(self.queuedExercisesPaginate.pageResults.count > indexPath.row)
-    {
-        [self showInProgress:YES];
-        ScheduleModel *schedule = [self.queuedExercisesPaginate.pageResults objectAtIndex:indexPath.row];
-        [[RequestManager alloc] deleteSchedule:schedule withCompletionBlock:^(BOOL success, id response) {
-            if(success)
-            {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    NSMutableArray *schedules = [NSMutableArray arrayWithArray:self.queuedExercisesPaginate.pageResults];
-                    [schedules removeObjectAtIndex:indexPath.row];
-                    self.queuedExercisesPaginate.pageResults = schedules;
-                    
-                    [self.tableView beginUpdates];
-                    [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-                    [self.tableView endUpdates];
-                });
-            }
-            else
-            {
-                [self.tableView reloadData];
-            }
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self showInProgress:NO];
-            });
-        }];
-    }
-}
-
-- (void)editRecordWithDate:(NSDate *)date
-{
-    [self showInProgress:YES];
-    self.selectedSchedule.executeAt = [NSString stringWithFormat:@"%f", [date timeIntervalSince1970]];
-    [[RequestManager alloc] editSchedule:self.selectedSchedule withCompletionBlock:^(BOOL success, id response) {
-        if(success)
-        {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                NSMutableArray *schedules = [NSMutableArray arrayWithArray:self.queuedExercisesPaginate.pageResults];
-                
-                NSUInteger index = [schedules indexOfObject:self.selectedSchedule];
-                if(index != NSNotFound)
-                {
-                    ScheduleModel *schedule = [self.selectedSchedule copy];
-                    [schedules replaceObjectAtIndex:index withObject:schedule];
-                    self.queuedExercisesPaginate.pageResults = schedules;
-                    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
-                    [self.tableView beginUpdates];
-                    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-                    [self.tableView endUpdates];
-                }
-            });
-        }
-        
-        self.selectedSchedule = nil;
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self showInProgress:NO];
-        });
-    }];
-}
-
 - (void)performInfinteScroll
 {
     NSLog(@"performSearchResultsInfinteScroll");
@@ -177,6 +116,64 @@
     }];
 }
 
+- (void)deleteRecordAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(self.queuedExercisesPaginate.pageResults.count > indexPath.row)
+    {
+        [self showInProgress:YES];
+        ScheduleModel *schedule = [self.queuedExercisesPaginate.pageResults objectAtIndex:indexPath.row];
+        [[RequestManager alloc] deleteSchedule:schedule withCompletionBlock:^(BOOL success, id response) {
+            if(success)
+            {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    NSMutableArray *schedules = [NSMutableArray arrayWithArray:self.queuedExercisesPaginate.pageResults];
+                    [schedules removeObjectAtIndex:indexPath.row];
+                    self.queuedExercisesPaginate.pageResults = schedules;
+                    
+                    [self.tableView beginUpdates];
+                    [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+                    [self.tableView endUpdates];
+                });
+            }
+            else
+            {
+                [self.tableView reloadData];
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self showInProgress:NO];
+            });
+        }];
+    }
+}
+
+- (void)editRecordWithDate:(NSDate *)date
+{
+    [self showInProgress:YES];
+    self.selectedSchedule.executeAt = [NSString stringWithFormat:@"%f", [date timeIntervalSince1970]];
+    [[RequestManager alloc] editSchedule:self.selectedSchedule withCompletionBlock:^(BOOL success, id response) {
+        if(success)
+        {
+            NSMutableArray *schedules = [NSMutableArray arrayWithArray:self.queuedExercisesPaginate.pageResults];
+            
+            NSUInteger index = [schedules indexOfObject:self.selectedSchedule];
+            if(index != NSNotFound && [response isKindOfClass:[ScheduleModel class]])
+            {
+                [schedules replaceObjectAtIndex:index withObject:response];
+                self.queuedExercisesPaginate.pageResults = schedules;
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+                    [self.tableView beginUpdates];
+                    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+                    [self.tableView endUpdates];
+                });
+            }
+        }
+        
+        self.selectedSchedule = nil;
+        [self showInProgress:NO];
+    }];
+}
+
 #pragma mark - Table View DataSource Methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -228,7 +225,7 @@
         self.selectedSchedule = [self.queuedExercisesPaginate.pageResults objectAtIndex:indexPath.row];
         if(self.selectedSchedule)
         {
-            [self.pickerViewController setDateSelection:futureDateOnly];
+            [self.pickerViewController updatePickerDate:[NSDate dateWithTimeIntervalSince1970:[self.selectedSchedule.executeAt integerValue]]];
             [[[ApplicationDelegate window] rootViewController] presentViewController:self.pickerViewController animated:YES completion:nil];
         }
     }

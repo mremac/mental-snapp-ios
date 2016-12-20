@@ -46,6 +46,7 @@ void uncaughtExceptionHandler(NSException *exception) {
         [[UserManager sharedManager] setValueInLoggedInUserObjectFromUserDefault];
         self.tabBarController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MainTabController"];
         ApplicationDelegate.window.rootViewController = self.tabBarController;
+        [[ScheduleManager sharedInstance] fetchAllSchedules];
     }
     
     return YES;
