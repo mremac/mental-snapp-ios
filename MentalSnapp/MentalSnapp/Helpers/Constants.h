@@ -93,6 +93,7 @@ exNS *kSessionCookies;
 
 #pragma mark - Local Notifications
 exNS *kCleanRecordViewControllerNotification;
+exNS *kRefreshVideosViewControllerNotification;
 
 #pragma mark - Push Notifications
 exNS *kAPSKey;

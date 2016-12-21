@@ -38,7 +38,8 @@ ns * kSessionCookies = @"session_cookies"; // application session
 ns * kAPSKey = @"aps";
 
 #pragma mark - Local Notifications
-ns *kCleanRecordViewControllerNotification = @"cleanRecordViewController";
+ns *kCleanRecordViewControllerNotification = @"CleanRecordViewController";
+ns *kRefreshVideosViewControllerNotification = @"RefreshVideosViewController";
 
 #pragma mark - Other constants
 ns *kAfter = @"after";

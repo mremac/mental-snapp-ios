@@ -55,6 +55,8 @@
     
     [self.topHeaderView layoutIfNeeded];
     [self changeSearchMode];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getRecordPosts) name:kRefreshVideosViewControllerNotification object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
