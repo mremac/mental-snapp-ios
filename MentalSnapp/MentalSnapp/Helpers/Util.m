@@ -216,4 +216,35 @@
     }];
 }
 
++ (NSString *)displayDateWithTimeInterval:(NSTimeInterval)timeInterval
+{
+    NSDate *dateAndTime = [NSDate dateWithTimeIntervalSince1970:timeInterval];
+    NSInteger yearAgo = [dateAndTime yearsAgo];
+    NSString *dateString;
+    
+    if(yearAgo == 0)
+    {
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+        [dateFormatter setDateFormat:@"dd MMM"];
+        NSDateFormatter *timeFormatter = [[NSDateFormatter alloc]init];
+        [timeFormatter setDateFormat:@"h:mm a"];
+        
+        NSString *relativeDateValue = [dateAndTime isToday] ? @"Today" : [dateAndTime isYesterday] ? @"Yesterday" : [dateFormatter stringFromDate:dateAndTime];
+        
+        dateString = [NSString stringWithFormat:@"%@, %@", relativeDateValue, [[timeFormatter stringFromDate:dateAndTime] lowercaseString]];
+    }
+    else
+    {
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"dd MMM, yyyy"];
+        dateString = [formatter stringFromDate:dateAndTime];
+    }
+    
+    if (dateString && dateString.length > 0)
+    {
+        return [NSString stringWithFormat:@" %@ ",dateString];
+    }
+    
+    return kEmptyString;
+}
 @end

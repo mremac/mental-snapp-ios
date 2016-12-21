@@ -25,5 +25,6 @@
 + (void)openCameraView:(id)target WithAnimation:(BOOL)animate;
 + (NSString*)getMoodString:(MoodType)type;
 + (UIColor*)getMoodColor:(MoodType)type;
++ (NSString *)displayDateWithTimeInterval:(NSTimeInterval)timeInterval;
 
 @end

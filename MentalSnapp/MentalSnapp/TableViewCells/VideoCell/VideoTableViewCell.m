@@ -12,6 +12,7 @@
 @interface VideoTableViewCell()
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *videoImageView;
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (copy, nonatomic) void (^playBlock)(BOOL success, id response);
 @property (copy, nonatomic) void (^downloadBlock)(BOOL success, id response);
 @property (nonatomic, strong) RecordPost *recordPost;
@@ -56,6 +57,7 @@
     }
     
     self.descriptionLabel.attributedText = att;
+    self.timeLabel.text = [Util displayDateWithTimeInterval:[recordPost.createdAt integerValue]];
     [self.videoImageView sd_setImageWithURL:[NSURL URLWithString:recordPost.coverURL] placeholderImage:[UIImage imageNamed:@"video_placeholder"]];
     self.videoImageView.layer.borderColor = [[Util getMoodColor:recordPost.moodId.length > 0 ? [recordPost.moodId integerValue] : KNone] CGColor];
 }

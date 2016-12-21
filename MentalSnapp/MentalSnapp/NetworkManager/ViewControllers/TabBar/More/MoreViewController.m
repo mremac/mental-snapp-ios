@@ -30,7 +30,7 @@
 #pragma mark - Private methods
 
 - (void)initialSetup {
-    [self setNavigationBarButtonTitle:@"More"];
+    [self setNavigationBarButtonTitle:@"Mental Snapp"];
     
     tableViewCellTitles = @[@"Queued Exercises", @"Profile", @"Report an Issue"];
     tableViewCellTitleImageNames = @[@"MoreQueuedExercise", @"MoreProfile", @"MoreReport"];

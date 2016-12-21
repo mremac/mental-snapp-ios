@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@class VideosViewController;
+@class VideosViewController, Paginate;
 
 @interface FilterListTableController : UITableViewController
 @property(nonatomic,assign) VideosViewController *delegate;
+@property (strong, nonatomic) Paginate *filterListPaginate;
+- (void)reloadData;
 @end

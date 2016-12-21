@@ -30,6 +30,7 @@
 @property (strong, nonatomic) Paginate *searchPaginate;
 @property (strong, nonatomic) Paginate *filterPaginate;
 @property (strong, nonatomic) FilterModel *selectedFilter;
+@property (strong, nonatomic) FilterListTableController *filterListController;
 @end
 
 @implementation VideosViewController
@@ -388,23 +389,36 @@
     }
 }
 
--(IBAction)popover:(id)sender
+-(IBAction)popover:(UIButton *)sender
 {
     //NSLog(@"popover retain count: %d",[popover retainCount]);
     
     SAFE_ARC_RELEASE(popover); popover=nil;
     
     //the controller we want to present as a popover
-    FilterListTableController *controller = [[FilterListTableController alloc] initWithStyle:UITableViewStylePlain];
-    controller.delegate = self;
-    popover = [[FPPopoverKeyboardResponsiveController alloc] initWithViewController:controller];
+    if(!self.filterListController)
+    {
+        self.filterListController = [[FilterListTableController alloc] initWithStyle:UITableViewStylePlain];
+        self.filterListController.delegate = self;
+    }
+    
+    self.filterListController.filterListPaginate.details = self.selectedFilter.filterId;
+    popover = [[FPPopoverKeyboardResponsiveController alloc] initWithViewController:self.filterListController];
     popover.tint = FPPopoverWhiteTint;
     popover.border = NO;
     
     popover.contentSize = CGSizeMake(200, 300);
-    //sender is the UIButton view
     popover.arrowDirection = FPPopoverArrowDirectionAny;
-    [popover presentPopoverFromView:sender];
+    CGRect frame = sender.frame;
+    frame.origin.y = frame.origin.y - 15;
+    
+    UIButton *view = sender;
+    view.frame = frame;
+    [popover presentPopoverFromView:view];
+    [self.filterListController reloadData];
+    
+    frame.origin.y = frame.origin.y + 15;
+    sender.frame = frame;
     
 }
 
@@ -424,6 +438,16 @@
     }
     NSLog(filter.filterName);
     [popover dismissPopoverAnimated:YES];
+}
+
+#pragma mark - DownloadVideoDelegate
+
+- (void)didDownloadCompleted:(BOOL)success
+{
+    if(success)
+    {
+        [Banner showSuccessBannerWithSubtitle:@"Successfully the video was downloaded."];
+    }
 }
 
 @end

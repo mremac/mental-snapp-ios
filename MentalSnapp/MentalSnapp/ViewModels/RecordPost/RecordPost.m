@@ -19,9 +19,10 @@
                                                                   @"postDesciption":@"tags",
                                                                   @"videoURL": @"video_url",
                                                                   @"userId": @"user_id",
-                                                                  @"moodId": @"mood_value",
+                                                                  @"moodId": @"mood_id",//mood_value is not comming in videos call
                                                                   @"feelingId": @"feeling_ids",
                                                                   @"excerciseId" : @"exercisable_id",
+                                                                  @"createdAt" : @"created_at"
                                                                   }];
 }
 

@@ -22,6 +22,7 @@
 @property(strong, nonatomic) NSString <Optional> *postId;
 @property(strong, nonatomic) NSString <Optional> *excerciseId;
 @property(strong, nonatomic) NSString <Optional> *subCategoryId;
+@property(strong, nonatomic) NSString <Optional> *createdAt;
 
 - (RecordPost *)initWithVideoName:(NSString *)postName andExcerciseType:(NSString *)excerciseType andCoverURL:(NSString *)coverURL andPostDesciption:(NSString *)postDesciption andVideoURL:(NSString *)videoURL andUserId:(NSString *)userId andMoodId:(NSString *)moodId andFeelingId:(NSString *)feelingId andWithExcercise:(GuidedExcercise *)excercise;
 

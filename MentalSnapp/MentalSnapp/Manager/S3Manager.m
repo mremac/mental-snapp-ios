@@ -253,9 +253,6 @@
         return;
     }
     
-    [Banner showFailureBannerWithSubtitle:@"Failed to save in library"];
-
-    
     [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^ {
         [PHAssetChangeRequest creationRequestForAssetFromVideoAtFileURL:videoPath];
         
@@ -269,9 +266,10 @@
         else {
             [[SMobiLogger sharedInterface] error:@"Could not save movie to camera roll." withDescription:[NSString stringWithFormat:@"At: %s, \n(File name: %@ With Error:%@). \n  \n", __FUNCTION__, videoPath, error]];
             NSLog(@"Could not save movie to camera roll. Error: %@", error);
+            
+            [Banner showFailureBannerWithSubtitle:@"Failed to save in library"];
         }
     }];
-    
 }
 
 - (void)uploadProgress:(int64_t)totalBytesSent totalBytesExpectedToSend:(int64_t)totalBytesExpectedToSend {

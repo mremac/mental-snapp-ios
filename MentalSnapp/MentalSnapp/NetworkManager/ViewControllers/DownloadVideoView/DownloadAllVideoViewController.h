@@ -12,8 +12,7 @@
 
 @protocol DownloadVideoDelegate <NSObject>
 
-@optional
-- (void)didDownloadCompleted:(BOOL)suceess;
+- (void)didDownloadCompleted:(BOOL)success;
 
 @end
 

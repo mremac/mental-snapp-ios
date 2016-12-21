@@ -11,12 +11,6 @@
 #import "RequestManager.h"
 #import "Paginate.h"
 
-@interface FilterListTableController ()
-@property (strong, nonatomic) Paginate *filterListPaginate;
-
-@end
-
-
 @implementation FilterListTableController
 @synthesize delegate=_delegate;
 
@@ -24,7 +18,7 @@
 {
     [super viewDidLoad];
     self.title = @"";
-    self.filterListPaginate = [[Paginate alloc] initWithPageNumber:[NSNumber numberWithInt:1] withMoreRecords:YES andPerPageLimit:100];
+    self.filterListPaginate = [[Paginate alloc] initWithPageNumber:[NSNumber numberWithInt:1] withMoreRecords:YES andPerPageLimit:1000];
     [self getFilterList];
     
     __unsafe_unretained FilterListTableController *weakSelf = self;
@@ -57,11 +51,21 @@
         if(indexPath.row == 0)
         {
             cell.textLabel.text = @"None";
+            cell.accessoryType = UITableViewCellAccessoryNone;
         }
         else
         {
             FilterModel *filter = [self.filterListPaginate.pageResults objectAtIndex:(indexPath.row - 1)];
             cell.textLabel.text = filter.filterName;
+            
+            if([self.filterListPaginate.details isEqualToString:filter.filterId])
+            {
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            }
+            else
+            {
+                cell.accessoryType = UITableViewCellAccessoryNone;
+            }
         }
     }
     
@@ -71,8 +75,9 @@
 
 #pragma mark - Table view delegate
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if([self.delegate respondsToSelector:@selector(selectedFilter:)])
     {
         if((self.filterListPaginate.pageResults.count +1) > indexPath.row)
@@ -151,7 +156,12 @@
      }];
 }
 
+#pragma mark - Public methods
 
+- (void)reloadData
+{
+    [self.tableView reloadData];
+}
 
 
 

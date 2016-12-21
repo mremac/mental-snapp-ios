@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="evG-dm-COo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="evG-dm-COo">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -411,7 +411,8 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rk6-7z-3lE" userLabel="Top Header View">
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="LL0-YH-3ra">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="LL0-YH-3ra">
+                                        <color key="tintColor" red="0.058823529409999999" green="0.68627450980000004" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="textColor" red="0.23921568630000001" green="0.23921568630000001" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="search"/>
@@ -480,10 +481,11 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="OVy-ys-l24" firstAttribute="top" secondItem="jZC-uO-hqh" secondAttribute="top" constant="32" id="31X-Y2-VQl"/>
+                                    <constraint firstAttribute="height" constant="100" id="B5R-g1-b6X"/>
                                     <constraint firstAttribute="trailing" secondItem="OVy-ys-l24" secondAttribute="trailing" id="dGD-aD-UAh"/>
                                     <constraint firstItem="OVy-ys-l24" firstAttribute="centerX" secondItem="jZC-uO-hqh" secondAttribute="centerX" id="g88-j7-W2q"/>
                                     <constraint firstItem="OVy-ys-l24" firstAttribute="leading" secondItem="jZC-uO-hqh" secondAttribute="leading" id="gTl-f5-1aN"/>
-                                    <constraint firstItem="OVy-ys-l24" firstAttribute="centerY" secondItem="jZC-uO-hqh" secondAttribute="centerY" constant="20" id="pmm-WD-f5s"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lH8-Rt-juu">
@@ -535,10 +537,20 @@
                                                                 <action selector="dowloadButtonTapped:" destination="NK5-z8-BIQ" eventType="touchUpInside" id="zku-xI-fNu"/>
                                                             </connections>
                                                         </button>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B5K-63-52l">
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="201" id="56x-jq-u3C"/>
+                                                                <constraint firstAttribute="height" constant="14" id="JBz-nK-GMw"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="10"/>
+                                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" secondItem="JFJ-ZD-epa" secondAttribute="trailing" id="042-6d-Vpa"/>
+                                                        <constraint firstAttribute="bottom" secondItem="B5K-63-52l" secondAttribute="bottom" constant="9" id="2Zf-aP-i9e"/>
                                                         <constraint firstItem="qLM-9i-AvB" firstAttribute="centerX" secondItem="JFJ-ZD-epa" secondAttribute="centerX" id="5E9-9t-e3T"/>
                                                         <constraint firstItem="JFJ-ZD-epa" firstAttribute="leading" secondItem="auP-6t-gfh" secondAttribute="leading" id="9Hm-Cs-LhD"/>
                                                         <constraint firstAttribute="bottom" secondItem="JFJ-ZD-epa" secondAttribute="bottom" id="XWU-eZ-FZy"/>
@@ -547,6 +559,7 @@
                                                         <constraint firstItem="qLM-9i-AvB" firstAttribute="centerY" secondItem="JFJ-ZD-epa" secondAttribute="centerY" id="pSh-cU-Rzk"/>
                                                         <constraint firstItem="LfR-PR-cja" firstAttribute="top" secondItem="auP-6t-gfh" secondAttribute="top" id="rpH-jv-cRf"/>
                                                         <constraint firstAttribute="trailing" secondItem="LfR-PR-cja" secondAttribute="trailing" id="upE-3g-9dX"/>
+                                                        <constraint firstAttribute="trailing" secondItem="B5K-63-52l" secondAttribute="trailing" constant="12" id="y79-sq-Yfy"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -562,6 +575,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="descriptionLabel" destination="MJm-ec-1bu" id="KiO-XV-S8R"/>
+                                            <outlet property="timeLabel" destination="B5K-63-52l" id="YdA-E5-thH"/>
                                             <outlet property="videoImageView" destination="JFJ-ZD-epa" id="Qg0-4w-Cuz"/>
                                         </connections>
                                     </tableViewCell>
@@ -577,14 +591,14 @@
                             <constraint firstItem="jZC-uO-hqh" firstAttribute="leading" secondItem="rBX-Fj-WGJ" secondAttribute="leading" id="580-Lb-7UO"/>
                             <constraint firstItem="lH8-Rt-juu" firstAttribute="leading" secondItem="rBX-Fj-WGJ" secondAttribute="leading" id="IY3-fH-Kjj"/>
                             <constraint firstItem="lH8-Rt-juu" firstAttribute="top" secondItem="rk6-7z-3lE" secondAttribute="bottom" id="QfQ-cx-DSs"/>
-                            <constraint firstAttribute="bottom" secondItem="jZC-uO-hqh" secondAttribute="bottom" id="S7n-ce-wMd"/>
                             <constraint firstAttribute="trailing" secondItem="jZC-uO-hqh" secondAttribute="trailing" id="SYs-pj-Hb1"/>
                             <constraint firstItem="rk6-7z-3lE" firstAttribute="leading" secondItem="rBX-Fj-WGJ" secondAttribute="leading" id="U8Y-iP-unc"/>
+                            <constraint firstItem="jZC-uO-hqh" firstAttribute="centerY" secondItem="rBX-Fj-WGJ" secondAttribute="centerY" id="UO1-Dt-ypA"/>
                             <constraint firstAttribute="bottom" secondItem="lH8-Rt-juu" secondAttribute="bottom" id="UzX-fd-W0b"/>
                             <constraint firstAttribute="trailing" secondItem="lH8-Rt-juu" secondAttribute="trailing" id="bgE-6E-jnv"/>
                             <constraint firstItem="rk6-7z-3lE" firstAttribute="top" secondItem="rBX-Fj-WGJ" secondAttribute="top" id="gE3-N0-uNW"/>
                             <constraint firstAttribute="trailing" secondItem="rk6-7z-3lE" secondAttribute="trailing" id="k4L-cw-5yb"/>
-                            <constraint firstItem="jZC-uO-hqh" firstAttribute="top" secondItem="rBX-Fj-WGJ" secondAttribute="top" constant="40" id="vEe-so-1Md"/>
+                            <constraint firstItem="jZC-uO-hqh" firstAttribute="centerX" secondItem="rBX-Fj-WGJ" secondAttribute="centerX" id="mPK-P7-6oV"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="HM1-64-oIR"/>
