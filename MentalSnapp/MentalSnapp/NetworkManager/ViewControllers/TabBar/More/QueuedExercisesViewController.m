@@ -21,6 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[UIApplication sharedApplication] clearBadgeNumbers];
     [self setNavigationBarButtonTitle:@"Queued Excercises"];
     [self setLeftMenuButtons:[NSArray arrayWithObject:[self backButton]]];
     
@@ -126,6 +127,7 @@
             if(success)
             {
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    [[ScheduleManager sharedInstance] removeScheduledNotifications:schedule];
                     NSMutableArray *schedules = [NSMutableArray arrayWithArray:self.queuedExercisesPaginate.pageResults];
                     [schedules removeObjectAtIndex:indexPath.row];
                     self.queuedExercisesPaginate.pageResults = schedules;
@@ -160,6 +162,7 @@
             {
                 [schedules replaceObjectAtIndex:index withObject:response];
                 self.queuedExercisesPaginate.pageResults = schedules;
+                [[ScheduleManager sharedInstance] modifyScheduledNotifications:response];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
                     [self.tableView beginUpdates];

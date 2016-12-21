@@ -10,9 +10,9 @@
 
 @interface PickerViewController ()
 
-@property (assign, nonatomic) NSDate *selectedDate;
-@property (strong, nonatomic) IBOutlet UIDatePicker *datePickerView;
-@property (strong, nonatomic) IBOutlet UIToolbar *toolBar;
+@property (strong, nonatomic) NSDate *selectedDate;
+@property (weak, nonatomic) IBOutlet UIDatePicker *datePickerView;
+@property (weak, nonatomic) IBOutlet UIToolbar *toolBar;
 
 - (IBAction)toolBarDoneButtonAction:(id)sender;
 - (IBAction)toolBarCancelButtonAction:(id)sender;

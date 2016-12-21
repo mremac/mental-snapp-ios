@@ -54,12 +54,11 @@
     // Schedule the notification
     UILocalNotification* localNotification = [[UILocalNotification alloc] init];
     localNotification.fireDate = [NSDate dateWithTimeIntervalSince1970:[schedule.executeAt integerValue]];
-    localNotification.alertBody = schedule.exercise.excerciseName;
-    localNotification.alertAction = @"Show me the item";
+    localNotification.alertBody = [NSString stringWithFormat:@"You have exercise scheduled for: %@", schedule.exercise.excerciseName];
     localNotification.timeZone = [NSTimeZone defaultTimeZone];
     localNotification.applicationIconBadgeNumber = [[UIApplication sharedApplication] applicationIconBadgeNumber] + 1;
     NSMutableDictionary *dictionary = [[schedule toDictionary] mutableCopy];
-    localNotification.userInfo = [NSMutableDictionary dictionaryWithObject:dictionary forKey:@"schedules"];
+    localNotification.userInfo = [NSMutableDictionary dictionaryWithObject:dictionary forKey:@"schedule"];
     
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
 }
@@ -107,12 +106,56 @@
 
 - (void)removeScheduledNotifications:(ScheduleModel *)schedule
 {
-    [[UIApplication sharedApplication] cancelLocalNotification:nil];
+    NSArray *notifications = [[NSMutableArray alloc] init];
+    UIApplication *app = [UIApplication sharedApplication];
+    notifications = app.scheduledLocalNotifications;
+    for (UILocalNotification *event in notifications)
+    {
+        NSDictionary *userInfoCurrent = event.userInfo;
+        if([userInfoCurrent hasValueForKey:@"schedule"])
+        {
+            NSDictionary *scheduleInfo = [userInfoCurrent valueForKey:@"schedule"];
+            ScheduleModel *scheduleNotif = [[ScheduleModel alloc] initWithDictionary:scheduleInfo error:nil];
+            if([schedule.scheduleId isEqualToString:scheduleNotif.scheduleId])
+            {
+                [app cancelLocalNotification:event];
+            }
+        }
+    }
 }
 
 - (void)modifyScheduledNotifications:(ScheduleModel *)schedule
 {
-    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    [self removeScheduledNotifications:schedule];
+    [self addNotificationWithSchedule:schedule];
+}
+
+- (void)didReceiveScheduleNotification:(ScheduleModel *)schedule withState:(UIApplicationState)appState
+{
+    if (appState == UIApplicationStateActive) {
+        //Show the notification in case of active app
+        
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Mental Snapp" message:[NSString stringWithFormat:@"You have exercise scheduled for: %@", schedule.exercise.excerciseName] preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Continue" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [Util openCameraForRecordExercise:schedule.exercise];
+            });
+        }];
+        
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:nil];
+        
+        [alertController addAction:okAction];
+        [alertController addAction:cancelAction];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[[ApplicationDelegate window] rootViewController] presentViewController:alertController animated:YES completion:nil];
+        });
+    }
+    else
+    {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [Util openCameraForRecordExercise:schedule.exercise];
+        });
+    }
 }
 
 @end

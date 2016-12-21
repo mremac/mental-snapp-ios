@@ -41,6 +41,19 @@ void uncaughtExceptionHandler(NSException *exception) {
     [self setupNetworkMonitoring];
     
     [self setUpAmazonS3];
+    
+    // iOS8 or plus
+    if ([application respondsToSelector:@selector(registerUserNotificationSettings:)])
+    {
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge|UIUserNotificationTypeAlert|UIUserNotificationTypeSound) categories:nil];
+        [application registerUserNotificationSettings:settings];
+    }
+    
+    // Handle launching from a notification
+    UILocalNotification *locationNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
+    if (locationNotification) {
+        [self processLocalNotification:locationNotification application:application];
+    }
 
     if ([UserDefaults boolForKey:kIsUserLoggedIn]) {
         [[UserManager sharedManager] setValueInLoggedInUserObjectFromUserDefault];
@@ -92,7 +105,28 @@ void uncaughtExceptionHandler(NSException *exception) {
     return YES;   
 }
 
+-(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
+{
+    [self processLocalNotification:notification application:application];
+}
+
 #pragma mark - Private Methods
+
+- (void)processLocalNotification:(UILocalNotification *)notification application:(UIApplication *)application
+{
+    if([notification.userInfo hasValueForKey:@"schedule"])
+    {
+        NSDictionary *scheduleInfo = [notification.userInfo valueForKey:@"schedule"];
+        [[SMobiLogger sharedInterface] info:@"Received Local Notification" withDescription:[NSString stringWithFormat:@"%@", scheduleInfo]];
+        
+        ScheduleModel *schedule = [[ScheduleModel alloc] initWithDictionary:scheduleInfo error:nil];
+        
+        [[ScheduleManager sharedInstance] didReceiveScheduleNotification:schedule withState:application.applicationState];
+    }
+    
+    // Set icon badge number to zero
+    application.applicationIconBadgeNumber = 0;
+}
 
 - (void)setUpAmazonS3
 {

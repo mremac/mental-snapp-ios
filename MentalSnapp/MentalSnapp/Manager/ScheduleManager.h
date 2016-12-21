@@ -21,4 +21,6 @@
 
 - (void)modifyScheduledNotifications:(ScheduleModel *)schedule;
 
+- (void)didReceiveScheduleNotification:(ScheduleModel *)schedule withState:(UIApplicationState)appState;
+
 @end
