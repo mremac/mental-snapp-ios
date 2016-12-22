@@ -95,9 +95,9 @@
 
 - (void)updatePaginationWith:(Paginate *)page {
     [self addToFeedResultsFrom:page.pageResults];
-    self.pageNumber = page.pageNumber;
+    self.pageNumber = page.perPage;
     self.perPage = page.perPage;
-    NSInteger perPageValue = [self.perPage integerValue];
+    NSInteger perPageValue = page.pageResults.count;
     if (perPageValue < self.perPageLimit) {
         self.hasMoreRecords = NO;
     } else {
