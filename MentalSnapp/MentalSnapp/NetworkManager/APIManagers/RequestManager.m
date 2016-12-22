@@ -265,7 +265,7 @@ NSString *const kDefaultErrorMessage =  @"Error! Please try again.";
 
 - (void)createSchedule:(ScheduleModel *)schedule withCompletionBlock:(completionBlock)block {
     if ([ApplicationDelegate hasNetworkAvailable]) {
-        [[ScheduleInterface alloc] createScheduleWithRequest:[[ScheduleRequest alloc] initWithEditSchedule:schedule] withCompletionBlock:^(BOOL success, id response) {
+        [[ScheduleInterface alloc] createScheduleWithRequest:[[ScheduleRequest alloc] initWithCreateSchedule:schedule] withCompletionBlock:^(BOOL success, id response) {
             block(success, response);
         }];
         

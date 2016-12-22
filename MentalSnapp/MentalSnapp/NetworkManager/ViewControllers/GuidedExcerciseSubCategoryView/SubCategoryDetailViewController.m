@@ -8,6 +8,7 @@
 
 #import "SubCategoryDetailViewController.h"
 #import "PickerViewController.h"
+#import "RequestManager.h"
 
 @interface SubCategoryDetailViewController () <PickerViewControllerDelegate, UIImagePickerControllerDelegate>
 
@@ -64,9 +65,32 @@
     [self.detailTextView setText:self.selectedExcercise.excerciseDescription];
 }
 
+#pragma mark - API Call
+
+- (void)editRecordWithDate:(NSDate *)date
+{
+    [self showInProgress:YES];
+    ScheduleModel *schedule = [[ScheduleModel alloc] init];
+    schedule.exercise = self.selectedExcercise;
+    
+    schedule.executeAt = [NSString stringWithFormat:@"%f", [date timeIntervalSince1970]];
+    [[RequestManager alloc] createSchedule:schedule withCompletionBlock:^(BOOL success, id response) {
+        if(success && [response isKindOfClass:[ScheduleModel class]])
+        {
+            ScheduleModel *scheduleModel = response;
+            NSString *dateTimeValue = [Util displayDateWithTimeInterval:[scheduleModel.executeAt integerValue]];
+            NSString *message = [NSString stringWithFormat:@"Exercise scheduled on %@.", dateTimeValue];
+            [[ScheduleManager sharedInstance] modifyScheduledNotifications:scheduleModel];
+            [Banner showSuccessBannerWithSubtitle:message];
+            
+        }
+        [self showInProgress:NO];
+    }];
+}
+
 #pragma mark - Date Picker view Delegate
 - (void)didSelectDoneButton:(NSDate *)date {
-    
+    [self editRecordWithDate:date];
 }
 - (void)didSelectCancelButton {
     

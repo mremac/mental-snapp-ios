@@ -8,6 +8,7 @@
 
 #import "ScheduleRequest.h"
 #import "Paginate.h"
+#import "GuidedExcercise.h"
 
 @interface ScheduleRequest ()
 
@@ -29,6 +30,19 @@
         }
         [_parameters setObject:[NSNumber numberWithInteger:paginate.perPageLimit] forKey:kJPerPage];
         
+        self.urlPath = kSchedulesAPI;
+    }
+    return self;
+}
+
+- (id)initWithCreateSchedule:(ScheduleModel *)schedule
+{
+    self = [super init];
+    if (self)
+    {
+        NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:schedule.exercise.excerciseId, @"schedulable_id", schedule.exercise.excerciseStringType, @"schedulable_type", schedule.executeAt, @"execute_at", [UserManager sharedManager].userModel.userId, @"user_id",  nil];
+        _parameters = [NSMutableDictionary dictionaryWithObject:dictionary forKey:@"schedules"];
+        [_parameters setObject:[UserManager sharedManager].authorizationToken forKey:@"Authorization"];
         self.urlPath = kSchedulesAPI;
     }
     return self;

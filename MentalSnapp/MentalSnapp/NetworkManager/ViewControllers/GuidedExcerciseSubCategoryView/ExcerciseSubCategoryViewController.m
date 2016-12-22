@@ -26,6 +26,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *recordButton;
 @property (strong, nonatomic) PickerViewController *pickerViewController;
 @property (strong, nonatomic) GuidedExcercise *selectedExcercise;
+@property (strong, nonatomic) GuidedExcercise *calendarExcercise;
 @property (strong, nonatomic) SubCategoryDetailViewController *subCategoryDetailViewController;
 
 @end
@@ -44,6 +45,7 @@
     self.pickerViewController.modalPresentationStyle = UIModalPresentationOverFullScreen;
     [self.pickerViewController setPickerType:dateTime];
     [self.pickerViewController setDateSelection:futureDateOnly];
+    [self.pickerViewController setDelegate:self];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self.excerciseDetailLabel setText:self.excercise.excerciseDescription.trim];
         [self.view layoutIfNeeded];
@@ -113,6 +115,27 @@
     }];
 }
 
+- (void)editRecordWithDate:(NSDate *)date
+{
+    [self showInProgress:YES];
+    ScheduleModel *schedule = [[ScheduleModel alloc] init];
+    schedule.exercise = self.calendarExcercise;
+    
+    schedule.executeAt = [NSString stringWithFormat:@"%f", [date timeIntervalSince1970]];
+    [[RequestManager alloc] createSchedule:schedule withCompletionBlock:^(BOOL success, id response) {
+        if(success && [response isKindOfClass:[ScheduleModel class]])
+        {
+            ScheduleModel *scheduleModel = response;
+            NSString *dateTimeValue = [Util displayDateWithTimeInterval:[scheduleModel.executeAt integerValue]];
+            NSString *message = [NSString stringWithFormat:@"Exercise scheduled on %@.", dateTimeValue];
+            [[ScheduleManager sharedInstance] modifyScheduledNotifications:scheduleModel];
+            [Banner showSuccessBannerWithSubtitle:message];
+            
+        }
+        [self showInProgress:NO];
+    }];
+}
+
 #pragma mark - Table View DataSource Methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -165,7 +188,7 @@
 
 #pragma mark - Date Picker view Delegate
 - (void)didSelectDoneButton:(NSDate *)date {
-
+    [self editRecordWithDate:date];
 }
 
 - (void)didSelectCancelButton {}
@@ -183,7 +206,7 @@
 
 -(IBAction)subcategoryCalenderAction:(id)sender {
     _selectedExcercise  = [self.guidedExcercisePaginate.pageResults objectAtIndex:[sender tag]];
-     [self.pickerViewController setDateSelection:futureDateOnly];
+    self.calendarExcercise = [_selectedExcercise copy];
     [[[ApplicationDelegate window] rootViewController] presentViewController:self.pickerViewController animated:YES completion:nil];
 }
 
@@ -193,6 +216,7 @@
 }
 
 -(IBAction)guidedExcerciseCalenderAction:(id)sender {
+    self.calendarExcercise = [self.excercise copy];
     [[[ApplicationDelegate window] rootViewController] presentViewController:self.pickerViewController animated:YES completion:nil];
 }
 

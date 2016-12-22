@@ -243,7 +243,7 @@
     
     if (dateString && dateString.length > 0)
     {
-        return [NSString stringWithFormat:@" %@ ",dateString];
+        return dateString;
     }
     
     return kEmptyString;

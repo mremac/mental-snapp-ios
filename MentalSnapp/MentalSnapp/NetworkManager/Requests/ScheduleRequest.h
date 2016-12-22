@@ -12,6 +12,7 @@
 @interface ScheduleRequest : Request
 
 - (id)initWithGetSchedules:(Paginate *)paginate;
+- (id)initWithCreateSchedule:(ScheduleModel *)schedule;
 - (id)initWithEditSchedule:(ScheduleModel *)schedule;
 - (id)initWithDeleteSchedule:(ScheduleModel *)schedule;
 
