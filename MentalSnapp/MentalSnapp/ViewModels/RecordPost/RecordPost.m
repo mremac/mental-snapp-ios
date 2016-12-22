@@ -19,7 +19,7 @@
                                                                   @"postDesciption":@"tags",
                                                                   @"videoURL": @"video_url",
                                                                   @"userId": @"user_id",
-                                                                  @"moodId": @"mood_id",//mood_value is not comming in videos call
+                                                                  @"moodId": @"mood_value",
                                                                   @"feelingId": @"feeling_ids",
                                                                   @"excerciseId" : @"exercisable_id",
                                                                   @"createdAt" : @"created_at"
