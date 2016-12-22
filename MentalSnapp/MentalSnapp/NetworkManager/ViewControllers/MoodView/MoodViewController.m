@@ -55,6 +55,7 @@
     // Do any additional setup after loading the view.
     [self setNavigationBarButtonTitle:@"Mental Snapp"];
     [self setRightMenuButtons:[NSArray arrayWithObjects:[self uploadButton], nil]];
+    self.navigationItem.hidesBackButton = YES;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self addMoodWheel];
         [self populateNameOfVideo];
