@@ -377,12 +377,15 @@
 
 #pragma mark - feeling Delegate
 -(void)didSelectFeeling:(Feeling *)feeling {
-    selectedFeeling = feeling;
-    [self populateNameOfVideo];
-    [self.selectedFeelingLabel setText:[NSString stringWithFormat:@" • %@",feeling.feelingName]];
-    self.feelingViewHeightConstraint.constant = 88;
-    self.lastBorderLabelBottomConstraint.constant = 0;
-    [self.view layoutIfNeeded];
+    if(feeling)
+    {
+        selectedFeeling = feeling;
+        [self populateNameOfVideo];
+        [self.selectedFeelingLabel setText:[NSString stringWithFormat:@" • %@",feeling.feelingName]];
+        self.feelingViewHeightConstraint.constant = 88;
+        self.lastBorderLabelBottomConstraint.constant = 0;
+        [self.view layoutIfNeeded];
+    }
 }
 
 #pragma mark - IBActions
