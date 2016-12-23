@@ -383,18 +383,14 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     RecordPost *recordPost = [[self getCurrentPaginate].pageResults objectAtIndex:indexPath.row];
-    if(recordPost){
+    if(recordPost)
+    {
         NSLog([NSString stringWithFormat:@"Cell tapped recordPost: %@", recordPost]);
-//        self.subCategoryDetailViewController = [[UIStoryboard storyboardWithName:KProfileStoryboard bundle:nil] instantiateViewControllerWithIdentifier:kSubCategoryDetailViewController];
-//        self.subCategoryDetailViewController.selectedExcercise = excercixe;
-//        [self.excerciseParentViewController.navigationController pushViewController:self.subCategoryDetailViewController animated:YES];
     }
 }
 
 -(IBAction)popover:(UIButton *)sender
 {
-    //NSLog(@"popover retain count: %d",[popover retainCount]);
-    
     SAFE_ARC_RELEASE(popover); popover=nil;
     
     //the controller we want to present as a popover
@@ -437,8 +433,9 @@
         self.selectedFilter = nil;
         self.filterButton.selected = NO;
         [self.tableView reloadData];
+        [self getRecordPosts];
     }
-    NSLog(filter.filterName);
+
     [popover dismissPopoverAnimated:YES];
 }
 
