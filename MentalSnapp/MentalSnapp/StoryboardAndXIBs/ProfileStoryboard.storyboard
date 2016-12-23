@@ -1478,13 +1478,13 @@
                                             </view>
                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FMp-9k-8dV">
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kGU-dE-gCd">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kGU-dE-gCd">
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="B2Y-1p-oge"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                                         <state key="normal" title="  Add Feeling">
-                                                            <color key="titleColor" red="0.23921568627450979" green="0.23921568627450979" blue="0.23921568627450979" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="titleColor" red="0.23921568630000001" green="0.23921568630000001" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="addFeelingButtonAction:" destination="WFY-y9-0Dv" eventType="touchUpInside" id="1wg-LE-ntK"/>
@@ -1535,7 +1535,7 @@
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Ho-Uu-ex0">
                                                 <subviews>
-                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="What's going on? you can write about  it here. You can also use hashtags (like #happy or tired)." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0eS-OP-ax4">
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="What's going on? you can write about it here. You can also use hashtags (like #happy or tired)." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0eS-OP-ax4">
                                                         <color key="textColor" red="0.35148590686274517" green="0.35148590686274517" blue="0.35148590686274517" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="13"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>

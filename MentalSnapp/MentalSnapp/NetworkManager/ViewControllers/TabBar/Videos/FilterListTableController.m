@@ -51,7 +51,15 @@
         if(indexPath.row == 0)
         {
             cell.textLabel.text = @"None";
-            cell.accessoryType = UITableViewCellAccessoryNone;
+            
+            if(self.filterListPaginate.details && self.filterListPaginate.details.length)
+            {
+                cell.accessoryType = UITableViewCellAccessoryNone;
+            }
+            else
+            {
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            }
         }
         else
         {

@@ -14,7 +14,7 @@
 #import "RequestManager.h"
 #import "RecordPost.h"
 
-#define PlaceHolderTextView @"What's going on? you can write about  it here. You can also use hashtags (like #happy or tired)."
+#define PlaceHolderTextView @"What's going on? you can write about it here. You can also use hashtags (like #happy or tired)."
 #define PlaceHolderColor [UIColor colorWithRed:90.0/255.0 green:90.0/255.0 blue:90.0/255.0 alpha:1.0]
 #define DefaultTextViewColor [UIColor colorWithRed:61.0/255.0 green:61.0/255.0 blue:61.0/255.0 alpha:1.0]
 
