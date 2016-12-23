@@ -163,34 +163,40 @@
     }
 }
 
--(BOOL)isValidateField{
-    if([self.videoNameTextField.text isEqualToString:@""]){
+-(BOOL)isValidateField
+{
+    if([self.videoURLPath isEqualToString:@""])
+    {
+        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Video url is missing."];
+        return NO;
+    }
+    else if([self.videoThumbnailURLPath isEqualToString:@""])
+    {
+        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Video cover image is missing."];
+        return NO;
+    }
+    else if([self.videoNameTextField.text isEqualToString:@""])
+    {
         [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Please enter video title."];
         return NO;
     }
-     if([self.videoThumbnailURLPath isEqualToString:@""]){
-         [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Video cover image is missing."];
-         return NO;
+    else if(selectedMood == KNone)
+    {
+        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Please select you mood."];
+        return NO;
     }
-    if([self.descriptionTextView.text isEqualToString:PlaceHolderTextView] || [self.descriptionTextView.text isEqualToString:@""]){
+    else if(!selectedFeeling)
+    {
+        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Please select feeling."];
+        return NO;
+    }
+    else if([self.descriptionTextView.text isEqualToString:PlaceHolderTextView] || [self.descriptionTextView.text isEqualToString:@""])
+    {
         [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Please enter description."];
         return NO;
     }
     
-    if([self.videoURLPath isEqualToString:@""]){
-        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Video url is missing."];
-        return NO;
-    }
-    if(selectedMood == KNone){
-        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Please select you mood."];
-        return NO;
-    }
-    if(!selectedFeeling){
-        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Please select feeling."];
-        return NO;
-    }
-    
-        return YES;
+    return YES;
 }
 
 - (void)didPerformAPICall {
@@ -225,6 +231,8 @@
         [ApplicationDelegate.tabBarController setSelectTabIndex:1];
         [ApplicationDelegate.tabBarController setSelectedIndex:1];
         [self.navigationController popViewControllerAnimated:NO];
+        
+        [Banner showSuccessBannerWithSubtitle:@"Video uploaded successfully"];
     });
     
 }
@@ -380,12 +388,10 @@
 -(void)didSelectFeeling:(Feeling *)feeling {
     if(feeling)
     {
+        NSString *title = [NSString stringWithFormat:@"  Add Feeling: %@", feeling.feelingName];
+        [self.addFeelingButton setTitle:title forState:UIControlStateNormal];
         selectedFeeling = feeling;
         [self populateNameOfVideo];
-        [self.selectedFeelingLabel setText:[NSString stringWithFormat:@" • %@",feeling.feelingName]];
-        self.feelingViewHeightConstraint.constant = 88;
-        self.lastBorderLabelBottomConstraint.constant = 0;
-        [self.view layoutIfNeeded];
     }
 }
 
