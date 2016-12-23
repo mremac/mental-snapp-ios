@@ -68,8 +68,10 @@
             NSArray *array = navController.viewControllers;
             if(array.count>0 && [[array firstObject] isKindOfClass:[ProfileViewController class]]) {
                 [[UserManager sharedManager] setValueInLoggedInUserObjectFromUserDefault];
-                MainTabBarController *tabBarController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MainTabController"];
-                ApplicationDelegate.window.rootViewController = tabBarController;
+                ApplicationDelegate.tabBarController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MainTabController"];
+                ApplicationDelegate.window.rootViewController = ApplicationDelegate.tabBarController;
+                
+                
             } else {
                 [self.navigationController popViewControllerAnimated:YES];
             }

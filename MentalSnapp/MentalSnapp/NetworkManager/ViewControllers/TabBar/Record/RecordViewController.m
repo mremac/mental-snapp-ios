@@ -22,23 +22,21 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [self setNavigationBarButtonTitle:@"Mental Snapp"];
-    if(![[Util fetchCustomObjectForKey:@"isMoodViewController"] boolValue]) {
-        [Util openCameraView:self WithAnimation:NO];
-    }
 
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
+        
+        if(![UserDefaults boolForKey:kIsCameraDurationAlertShown])
+        {
+            [UserDefaults setBool:YES forKey:kIsCameraDurationAlertShown];
             RecordAlertViewController *recordAlertView = [[UIStoryboard storyboardWithName:KProfileStoryboard bundle:nil] instantiateViewControllerWithIdentifier:kRecordAlertViewController];
             recordAlertView.modalPresentationStyle = UIModalPresentationOverFullScreen;
             [self.presentedViewController presentViewController:recordAlertView animated:NO completion:nil];
-        });
+        }
     });
 }
 
 #pragma mark - Image picker delegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
-    [Util saveCustomObject:[NSNumber numberWithBool:YES] toUserDefaultsForKey:@"isMoodViewController"];
     [picker dismissViewControllerAnimated:YES completion:^{
         MoodViewController *moodViewController = [[UIStoryboard storyboardWithName:KProfileStoryboard bundle:nil] instantiateViewControllerWithIdentifier:kMoodViewController];
         NSURL *urlvideo = [info objectForKey:UIImagePickerControllerMediaURL];

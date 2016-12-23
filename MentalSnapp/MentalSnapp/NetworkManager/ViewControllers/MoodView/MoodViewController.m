@@ -223,7 +223,6 @@
 
 - (void)didSuccessAPI
 {
-    [Util saveCustomObject:[NSNumber numberWithBool:NO] toUserDefaultsForKey:@"isMoodViewController"];
     [Util postNotification:kCleanRecordViewControllerNotification withDict:nil];
     [Util postNotification:kRefreshVideosViewControllerNotification withDict:nil];
     

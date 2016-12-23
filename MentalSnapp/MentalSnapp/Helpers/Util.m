@@ -145,6 +145,7 @@
     if([recordViewController isKindOfClass:[RecordViewController class]])
     {
         recordViewController.exercise = exercise;
+        [Util openCameraView:recordViewController WithAnimation:NO];
     }
 }
 

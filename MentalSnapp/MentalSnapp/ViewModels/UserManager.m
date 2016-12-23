@@ -86,7 +86,8 @@ static dispatch_once_t userOnceToken;
     [UserDefaults removeObjectForKey:@"phone_number"];
     [UserDefaults removeObjectForKey:@"gender"];
     [UserDefaults removeObjectForKey:@"id"];
-    [UserDefaults removeObjectForKey:@"profile_url"];    
+    [UserDefaults removeObjectForKey:@"profile_url"];
+    [UserDefaults removeObjectForKey:kIsCameraDurationAlertShown];
     [UserDefaults synchronize];
 }
 

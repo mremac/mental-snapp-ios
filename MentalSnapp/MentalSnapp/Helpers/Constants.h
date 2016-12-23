@@ -103,6 +103,7 @@ exNS *kUserEmail;
 exNS *kUserPassword;
 exNS *kRememberMe;
 exNS *kIsUserLoggedIn;
+exNS *kIsCameraDurationAlertShown;
 
 #pragma mark - StoryBboard
 exNS *KProfileStoryboard;

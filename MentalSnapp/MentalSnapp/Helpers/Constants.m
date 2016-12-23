@@ -55,6 +55,7 @@ ns *kUserEmail = @"UserEmail";
 ns *kUserPassword = @"UserPassword";
 ns *kRememberMe = @"RememberMe";
 ns *kIsUserLoggedIn = @"IsUserLoggedIn";
+ns *kIsCameraDurationAlertShown = @"IsCameraDurationAlertShown";
 
 #pragma mark - StoryBboard
 ns *KProfileStoryboard = @"ProfileStoryboard";

@@ -5,6 +5,7 @@
 
 #import "MainTabBarController.h"
 #import "GuidedExcerciseViewController.h"
+#import "RecordViewController.h"
 
 @interface MainTabBarController() {
     UIColor *normalColor;
@@ -38,11 +39,22 @@
 
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
     [self setSelectedIndex:item.tag];
-    if(item.tag !=2)
+    
+    if(item.tag == 2)
     {
-        [Util saveCustomObject:[NSNumber numberWithBool:NO] toUserDefaultsForKey:@"isMoodViewController"];
+        UINavigationController *navController = ApplicationDelegate.tabBarController.selectedViewController;
+        [navController popToRootViewControllerAnimated:NO];
+        RecordViewController *recordViewController = (RecordViewController *)navController.topViewController;
+        if([recordViewController isKindOfClass:[RecordViewController class]])
+        {
+            [Util openCameraView:recordViewController WithAnimation:NO];
+        }
+    }
+    else
+    {
         [Util postNotification:kCleanRecordViewControllerNotification withDict:nil];
     }
+    
     [self setSelectTabIndex:item.tag];
 }
 
