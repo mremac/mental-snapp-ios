@@ -48,20 +48,25 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)getDownloadVideos {
+-(void)getDownloadVideos
+{
     [self showDefaultIndicatorProgress:YES];
     [[ApplicationDelegate window] setUserInteractionEnabled:NO];
     [[RequestManager alloc] getRecordPostsWithPaginate:[[Paginate alloc] initWithPageNumber:[NSNumber numberWithInt:1] withMoreRecords:YES andPerPageLimit:100]withCompletionBlock:^(BOOL success, id response) {
         [[ApplicationDelegate window] setUserInteractionEnabled:YES];
-        if(success){
+        if(success && [response isKindOfClass:[Paginate class]])
+        {
             paginate = response;
-            if(paginate.pageResults.count > 0){
-                    [self downloadAllVideo:paginate.pageResults];
-            } else {
+            if(paginate.pageResults.count > 0)
+            {
+                [self downloadAllVideo:paginate.pageResults];
+            }
+            else
+            {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self dismissViewControllerAnimated:YES completion:nil];
                 });
-                [self downloadCompletion:NO];
+                [self downloadCompletion:YES];
             }
         }else {
             dispatch_async(dispatch_get_main_queue(), ^{
