@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		26E53943AD4503D45E53BE0D /* libPods-MentalSnapp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16BE09BFE2D2D9B160A61EE5 /* libPods-MentalSnapp.a */; };
+		5C47E8691E13CC2400DACD12 /* TermsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C47E8681E13CC2400DACD12 /* TermsViewController.m */; };
 		5C5309E01DE6C865005E14A4 /* LoginRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5309DF1DE6C865005E14A4 /* LoginRequest.m */; };
 		5C545E7C1DF02035004610B0 /* ForgotPasswordFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C545E7B1DF02035004610B0 /* ForgotPasswordFirstViewController.m */; };
 		5C545E801DF02281004610B0 /* ForgotPasswordSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C545E7F1DF02281004610B0 /* ForgotPasswordSecondViewController.m */; };
@@ -205,6 +206,8 @@
 /* Begin PBXFileReference section */
 		16BE09BFE2D2D9B160A61EE5 /* libPods-MentalSnapp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MentalSnapp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F7537821A7A1F2617B8A585 /* Pods-MentalSnapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MentalSnapp.release.xcconfig"; path = "Pods/Target Support Files/Pods-MentalSnapp/Pods-MentalSnapp.release.xcconfig"; sourceTree = "<group>"; };
+		5C47E8671E13CC2400DACD12 /* TermsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TermsViewController.h; sourceTree = "<group>"; };
+		5C47E8681E13CC2400DACD12 /* TermsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TermsViewController.m; sourceTree = "<group>"; };
 		5C5309DE1DE6C865005E14A4 /* LoginRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginRequest.h; sourceTree = "<group>"; };
 		5C5309DF1DE6C865005E14A4 /* LoginRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginRequest.m; sourceTree = "<group>"; };
 		5C545E7A1DF02035004610B0 /* ForgotPasswordFirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgotPasswordFirstViewController.h; sourceTree = "<group>"; };
@@ -544,6 +547,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C47E8661E13CC0B00DACD12 /* TermsScreen */ = {
+			isa = PBXGroup;
+			children = (
+				5C47E8671E13CC2400DACD12 /* TermsViewController.h */,
+				5C47E8681E13CC2400DACD12 /* TermsViewController.m */,
+			);
+			path = TermsScreen;
+			sourceTree = "<group>";
+		};
 		5C7BE3C01DE8569200C15CB5 /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -1134,6 +1146,7 @@
 				6A98B12F1DE5A49F009F1412 /* MentalSnappViewController */,
 				6A2428461DE814A900FF15A9 /* ChangePasswordScreen */,
 				6A98B12B1DE5A447009F1412 /* ProfileScreen */,
+				5C47E8661E13CC0B00DACD12 /* TermsScreen */,
 				6AAA01291DE56F8600208022 /* ViewController.h */,
 				6AAA012A1DE56F8600208022 /* ViewController.m */,
 				5C8A3A1E1DE5D04100706925 /* LoginViewController.h */,
@@ -1621,6 +1634,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C47E8691E13CC2400DACD12 /* TermsViewController.m in Sources */,
 				6A3F7A7C1DEC758C0070415C /* GZIP.m in Sources */,
 				5C7BE3D81DE882CC00C15CB5 /* ReportIssueViewController.m in Sources */,
 				6A1D50E21DE5793B0073F479 /* Info.plist in Sources */,

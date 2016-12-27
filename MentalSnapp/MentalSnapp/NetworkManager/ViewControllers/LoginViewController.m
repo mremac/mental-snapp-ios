@@ -39,7 +39,10 @@
         self.userEmailTextField.text = [[NSUserDefaults standardUserDefaults]valueForKey:kUserEmail];
         self.passwordTextField.text = [[NSUserDefaults standardUserDefaults]valueForKey:kUserPassword];
         self.rememberMeButton.selected = YES;
+    } else if ([UserManager sharedManager].userModel.email.trim.length != 0) {
+        _userEmailTextField.text = [UserManager sharedManager].userModel.email;
     }
+    [UserDefaults setBool:NO forKey:kIsUserLoggedIn];
     
     self.navigationController.navigationBar.hidden = YES;
 }
@@ -52,11 +55,11 @@
 
 - (IBAction)loginButtonTapped:(id)sender {
     if (self.userEmailTextField.text.length < 1) {
-        [Banner showSuccessBannerWithSubtitle:@"Enter email"];
+        [Banner showSuccessBannerWithSubtitle:LocalizedString(@"LoginScreenEmailMessage")];
     } else if (![UserManager isValidEmail:self.userEmailTextField.text.trim]) {
-        [Banner showSuccessBannerWithSubtitle:@"Enter valid email"];
+        [Banner showSuccessBannerWithSubtitle:LocalizedString(@"LoginScreenValidEmailMessage")];
     } else if (self.passwordTextField.text.length < 1) {
-        [Banner showSuccessBannerWithSubtitle:@"Enter password"];
+        [Banner showSuccessBannerWithSubtitle:LocalizedString(@"LoginScreenPasswordMessage")];
     } else {
     
         [self showInProgress:YES];
@@ -70,8 +73,17 @@
                 [UserDefaults setBool:YES forKey:kIsUserLoggedIn];
                 [UserDefaults synchronize];
     
-                ApplicationDelegate.tabBarController = [self.storyboard instantiateViewControllerWithIdentifier:@"MainTabController"];
-                ApplicationDelegate.window.rootViewController = ApplicationDelegate.tabBarController;
+                if ([UserManager sharedManager].isFirstTime) {
+                    [UIView transitionWithView:ApplicationDelegate.window
+                                      duration:0.5f
+                                       options:UIViewAnimationOptionTransitionFlipFromLeft
+                                    animations:^{
+                                        ApplicationDelegate.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[UIStoryboard storyboardWithName:KProfileStoryboard bundle:nil] instantiateViewControllerWithIdentifier:KProfileViewControllerIdentifier]];
+                                    } completion:nil];
+                } else {
+                    ApplicationDelegate.tabBarController = [self.storyboard instantiateViewControllerWithIdentifier:@"MainTabController"];
+                    ApplicationDelegate.window.rootViewController = ApplicationDelegate.tabBarController;
+                }
             } 
         }];
     }

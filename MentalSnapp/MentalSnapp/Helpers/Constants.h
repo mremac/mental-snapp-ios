@@ -19,6 +19,8 @@ typedef enum {
 #define ApplicationDelegate ((AppDelegate *)[UIApplication sharedApplication].delegate)
 #define UserDefaults [NSUserDefaults standardUserDefaults]
 
+#define LocalizedString(x) NSLocalizedString(x, @"")
+
 typedef void (^completionBlock)(BOOL success, id response);
 
 #pragma mark - Constant

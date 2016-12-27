@@ -37,6 +37,12 @@
     [self.tableView reloadData];
 }
 
+#pragma mark - IBAction methods
+
+- (IBAction)termsButtonTapped:(id)sender {
+    [self performSegueWithIdentifier:@"ToTermsScreen" sender:self];
+}
+
 #pragma mark - TableView methods
 #pragma mark Datasource
 

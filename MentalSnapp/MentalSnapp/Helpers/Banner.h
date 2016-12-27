@@ -17,6 +17,8 @@
 + (ALAlertBanner *)showFailureBannerWithSubtitle:(NSString *)subtitle;
 + (ALAlertBanner *)showFailureBannerOnTopWithTitle:(NSString *)title subtitle:(NSString *)subtitle;
 
++ (ALAlertBanner *)showRigidBannerWithSubtitle:(NSString *)subtitle;
+
 + (ALAlertBanner *)showBannerWithTitle:(NSString *)title subtitle:(NSString *)subtitle style:(ALAlertBannerStyle)style position:(ALAlertBannerPosition)position;
 
 + (ALAlertBanner *)showNetworkFailureBanner;

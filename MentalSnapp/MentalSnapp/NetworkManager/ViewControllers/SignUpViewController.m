@@ -34,6 +34,8 @@
 @property (strong, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *datePickerViewBottomConstraint;
 
+@property(weak, nonatomic) IBOutlet UIButton *termsAndConditionCheckMarkButton;
+
 @end
 
 @implementation SignUpViewController
@@ -135,39 +137,43 @@
 
 -(BOOL)isValidateFields {
     if ([self.nameTextFeild.text.trim isEqualToString:@""]) {
-        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Please enter name."];
+        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:LocalizedString(@"SignupScreenNameMessage")];
         return NO;
     }
     if([self.emailTextFeild.text.trim isEqualToString:@""]) {
-        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Please enter email."];
+        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:LocalizedString(@"SignupScreenEmailMessage")];
         return NO;
     }
     if(![Util isValidEmail:self.emailTextFeild.text]){
-        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Please enter valid email."];
+        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:LocalizedString(@"SignupScreenValidEmailMessage")];
         return NO;
     }
     if([self.phoneTextField.text.trim isEqualToString:@""]) {
-        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Please enter phone."];
+        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:LocalizedString(@"SignupScreenPhoneMessage")];
         return NO;
     }
     if(![Util validatePhone:self.phoneTextField.text]){
-        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Please enter valid phone."];
+        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:LocalizedString(@"SignupScreenValidPhoneMessage")];
         return NO;
     }
     if([[self.dateOfBirthButton titleForState:UIControlStateNormal] isEqualToString:@""]){
-        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Please enter date of birth."];
+        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:LocalizedString(@"SignupScreenDOBMessage")];
         return NO;
     }
     if ([self.passwordTextField.text.trim isEqualToString:@""]) {
-        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Please enter password."];
+        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:LocalizedString(@"SignupScreenPasswordMessage")];
         return NO;
     }
     if ([self.confirmPasswordTextField.text.trim isEqualToString:@""]) {
-        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Please enter confirm password."];
+        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:LocalizedString(@"SignupScreenConfirmPasswordMessage")];
         return NO;
     }
     if (![self.passwordTextField.text isEqualToString:self.confirmPasswordTextField.text]) {
-        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Password and confirm password fields don't match."];
+        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:LocalizedString(@"SignupScreenPasswordMismatchMessage")];
+        return NO;
+    }
+    if (_termsAndConditionCheckMarkButton.selected == NO) {
+        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:LocalizedString(@"SignupScreenTermsAndConditionNotSelectedMessage")];
         return NO;
     }
     return YES;
@@ -204,12 +210,9 @@
         [[RequestManager alloc] signUpWithUserModel:user withCompletionBlock:^(BOOL success, id response) {
             [self showInProgress:NO];
             if (success) {
-                [UIView transitionWithView:ApplicationDelegate.window
-                                  duration:0.5f
-                                   options:UIViewAnimationOptionTransitionFlipFromLeft
-                                animations:^{
-                                    ApplicationDelegate.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[UIStoryboard storyboardWithName:KProfileStoryboard bundle:nil] instantiateViewControllerWithIdentifier:KProfileViewControllerIdentifier]];
-                                } completion:nil];
+                [[UserManager sharedManager] saveLoggedinUserInfoInUserDefault];
+                [Banner showRigidBannerWithSubtitle:@"A link has been send to your email."];
+                [self.navigationController popToRootViewControllerAnimated:YES];
             }
         }];
     }
@@ -250,10 +253,16 @@
     }];
 }
 
-#pragma mark - IBAction methods
-
 - (IBAction)backButtonTapped:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)termsAndConditionCheckMarkButtonTapped:(id)sender {
+    self.termsAndConditionCheckMarkButton.selected = !self.termsAndConditionCheckMarkButton.selected;
+}
+
+- (IBAction)termsAndConditionButtonTapped:(id)sender {
+    [self performSegueWithIdentifier:@"ToTermsScreen" sender:self];
 }
 
 @end

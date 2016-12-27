@@ -46,19 +46,19 @@
 
 -(BOOL)isValidateFeilds {
     if([self.currentPasswordTextField.text isEqualToString:@""]) {
-        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Please enter current password."];
+        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:LocalizedString(@"CurrentPasswordMessage")];
         return NO;
     }
        if([self.passwordNewTextField.text isEqualToString:@""]) {
-        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Please enter new password."];
+        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:LocalizedString(@"NewPasswordMessage")];
         return NO;
     }
     if([self.reNewPasswordTextField.text isEqualToString:@""]) {
-        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Please enter confirm new password."];
+        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:LocalizedString(@"ConfirmPasswordMessage")];
         return NO;
     }
     if(![self.reNewPasswordTextField.text isEqualToString:self.passwordNewTextField.text]) {
-        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Re-enter new password is not match with new password."];
+        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:LocalizedString(@"NewAndConfirmPasswordMismatchMessage")];
         return NO;
     }
     return YES;
@@ -94,7 +94,7 @@
         [self.reNewPasswordTextField becomeFirstResponder];
     }else  if([textField isEqual:self.reNewPasswordTextField]){
         if(![self.reNewPasswordTextField.text isEqualToString:self.passwordNewTextField.text]) {
-            [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Re-enter new password is not match with new password."];
+            [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:LocalizedString(@"NewAndConfirmPasswordMismatchMessage")];
             return YES;
         }
         [self.reNewPasswordTextField resignFirstResponder];
@@ -111,7 +111,7 @@
         [[RequestManager alloc] changePassword:self.currentPasswordTextField.text andNewPassword:self.passwordNewTextField.text withCompletionBlock:^(BOOL success, id response) {
             [self showInProgress:NO];
             if(success) {
-                [Banner showSuccessBannerWithSubtitle:@"Password changed successfully."];
+                [Banner showSuccessBannerWithSubtitle:LocalizedString(@"PasswordChangeSuccess")];
                 [self backButtonTapped];
             }
         }];

@@ -31,7 +31,8 @@ typedef enum {
     ALAlertBannerStyleNotify,
     ALAlertBannerStyleWarning,
     ALAlertBannerStyleCustomSuccess,
-    ALAlertBannerStyleCustomFailure
+    ALAlertBannerStyleCustomFailure,
+    ALAlertBannerStyleCustomRigid
 } ALAlertBannerStyle;
 
 typedef enum {

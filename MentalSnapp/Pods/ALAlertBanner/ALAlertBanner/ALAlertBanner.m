@@ -698,6 +698,7 @@ static CGFloat const kForceHideAnimationDuration = 0.1f;
     switch (self.style) {
         case ALAlertBannerStyleCustomSuccess:
         case ALAlertBannerStyleCustomFailure:
+        case ALAlertBannerStyleCustomRigid:
             fillColor = [UIColor colorWithRed:(255.0/255.0) green:(255.0/255.0) blue:(255.0/255.0) alpha:1.f];
             break;
         case ALAlertBannerStyleSuccess:

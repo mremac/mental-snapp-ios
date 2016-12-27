@@ -210,23 +210,23 @@
 
 -(BOOL)isValidateFeilds {
     if([self.emailTextFeild.text isEqualToString:@""]) {
-        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Please enter email."];
+        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:LocalizedString(@"ProfileScreenEmailMessage")];
         return NO;
     }
     if(![Util isValidEmail:self.emailTextFeild.text]){
-        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Please enter valid email."];
+        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:LocalizedString(@"ProfileScreenValidEmailMessage")];
         return NO;
     }
     if([self.phoneTextField.text isEqualToString:@""]) {
-        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Please enter phone."];
+        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:LocalizedString(@"ProfileScreenPhoneMessage")];
         return NO;
     }
     if(![Util validatePhone:self.phoneTextField.text]){
-        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Please enter valid phone."];
+        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:LocalizedString(@"ProfileScreenValidPhoneMessage")];
         return NO;
     }
     if([[self.dateOfBirthButton titleForState:UIControlStateNormal] isEqualToString:@""]){
-        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Please enter date of birth."];
+        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:LocalizedString(@"ProfileScreenDOBmessage")];
         return NO;
     }
     return YES;
@@ -249,7 +249,7 @@
              }
              else
              {
-                 [Banner showFailureBannerWithSubtitle:@"Image could not be uploaded. Please try again"];
+                 [Banner showFailureBannerWithSubtitle:LocalizedString(@"ImageUploadFailureMessage")];
                  [self removeProfileImage];
                  [self showInProgress:NO];
              }
@@ -274,7 +274,7 @@
             [[UserManager sharedManager] updateProfileURL:profilePicURL];
             self.userImage = nil;
             [self backButtonTapped];
-            [Banner showSuccessBannerWithSubtitle:@"Successfully updated."];
+            [Banner showSuccessBannerWithSubtitle:LocalizedString(@"UserUpdationMessage")];
         }
         [self showInProgress:NO];
     }];
@@ -298,17 +298,17 @@
 - (void)performImageChangeAction
 {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-    UIAlertAction *alertActionGallery = [UIAlertAction actionWithTitle:@"Choose Photo" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *alertActionGallery = [UIAlertAction actionWithTitle:LocalizedString(@"ChoosePhoto") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self selectPhoto:Gallery];
     } ];
-    UIAlertAction *alertActionCamera = [UIAlertAction actionWithTitle:@"Take Photo" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *alertActionCamera = [UIAlertAction actionWithTitle:LocalizedString(@"TakePhoto") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self selectPhoto:Camera];
     }];
     UIAlertAction *alertActionCancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
     
     if(self.userImage || profilePicURL.trim.length > 0)
     {
-        UIAlertAction *alertActionDeleteImage = [UIAlertAction actionWithTitle:@"Delete Photo" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        UIAlertAction *alertActionDeleteImage = [UIAlertAction actionWithTitle:LocalizedString(@"DeletePhoto") style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
             [self selectPhoto:DeleteImage];
         }];
         
@@ -412,7 +412,7 @@
 #pragma mark - Download Delegate
 -(void)didDownloadCompleted:(BOOL)success {
     if(success){
-        [Banner showFailureBannerWithSubtitle:@"Downloading successfully."];
+        [Banner showFailureBannerWithSubtitle:LocalizedString(@"DownloadCompletionMessage")];
         [self deleteProfileAPI];
     } else {
     }
@@ -478,7 +478,7 @@
     [[RequestManager alloc] userDeactivateWithUserModel:self.user withCompletionBlock:^(BOOL success, id response) {
         if(success){
             [[UserManager sharedManager] logoutUser];
-            [Banner showSuccessBannerOnTopWithTitle:@"Good Bye" subtitle:@"Thank you for using Mentalsnapp. Hope to meet you soon!"];
+            [Banner showSuccessBannerOnTopWithTitle:@"Good Bye" subtitle:LocalizedString(@"DeleteProfileApiMessage")];
         }
         [self showInProgress:NO];
     }];
@@ -492,7 +492,7 @@
 }
 
 -(void)downloadVideoPopUP {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Mental Snapp" message:@"Let us know if you want to download videos you have recorded." preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Mental Snapp" message:LocalizedString(@"DownloadVideoPopupMessage") preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self showDownloadScreen];
@@ -514,7 +514,7 @@
 
 - (IBAction)deleteProfileAction:(id)sender {
 
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Mental Snapp" message:@"Are you sure you want to delete your Profile?" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Mental Snapp" message:LocalizedString(@"DeleteProfilePopupMessage") preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self downloadVideoPopUP];

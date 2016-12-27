@@ -11,6 +11,7 @@
 
 @property (strong, nonatomic) UserModel *userModel;
 @property (strong, nonatomic) NSString *authorizationToken;
+@property (assign, nonatomic) BOOL isFirstTime;
 
 + (UserManager *)sharedManager;
 

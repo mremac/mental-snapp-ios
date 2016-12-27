@@ -1,12 +1,5 @@
-/* 
-  Localizable.strings
-  Skeleton
 
-  Created by Systango on 31/12/14.
-  Copyright (c) 2014 VeoZen. All rights reserved.
-*/
-
-//NSLocalizedString(@"CommonBannerTitle", @"");
+//NSLocalizedString("CommonBannerTitle", "");
 
 "CommonFailureBannerTitle"     = "Sorry";
 "CommonSuccessBannerTitle"     = "Success";
@@ -24,3 +17,58 @@
 "InvalidUsernameMessage" = "Name should be between 4-30 characters.";
 "PasswordTooShortTitle" = "Password too short";
 "PasswordTooShortMessage" = "Password should be at least 8 characters long.";
+
+
+
+//Download all screen:
+"DownloadScreenCancel" = "Are you sure want to stop downloading and delete profile?";
+
+//Moods screen:
+"MoodsTextViewPlaceHolder" = "What's going on? you can write about it here. You can also use hashtags (like #happy or tired).";
+"MoodsVideoUploadFailure" = "Video could not be uploaded. Please try again";
+
+//Change pass screen:
+"CurrentPasswordMessage" = "Please enter current password.";
+"NewPasswordMessage" = "Please enter new password.";
+"ConfirmPasswordMessage" = "Please enter confirm new password.";
+"NewAndConfirmPasswordMismatchMessage" = "Re-enter new password is not match with new password.";
+"PasswordChangeSuccess" = "Password changed successfully.";
+
+//Profile screen:
+"ProfileScreenEmailMessage" = "Please enter email.";
+"ProfileScreenValidEmailMessage" = "Please enter valid email.";
+"ProfileScreenPhoneMessage" = "Please enter phone.";
+"ProfileScreenValidPhoneMessage" = "Please enter valid phone.";
+"ProfileScreenDOBmessage" = "Please enter date of birth.";
+"ImageUploadFailureMessage" = "Image could not be uploaded. Please try again";
+"UserUpdationMessage" = "Successfully updated.";
+"ChoosePhoto" = "Choose Photo";
+"TakePhoto" = "Take Photo";
+"DeletePhoto" = "Delete Photo";
+"DownloadCompletionMessage" = "Downloading successfully.";
+"DeleteProfileApiMessage" = "Thank you for using Mentalsnapp. Hope to meet you soon!";
+"DownloadVideoPopupMessage" = "Let us know if you want to download videos you have recorded.";
+"DeleteProfilePopupMessage" = "Are you sure you want to delete your Profile?";
+
+//Login screen:
+"LoginScreenEmailMessage" = "Enter email";
+"LoginScreenValidEmailMessage" = "Enter valid email";
+"LoginScreenPasswordMessage" = "Enter password";
+
+//Signup screen:
+"SignupScreenNameMessage" = "Please enter name.";
+"SignupScreenEmailMessage" = "Please enter email.";
+"SignupScreenValidEmailMessage" = "Please enter valid email.";
+"SignupScreenPhoneMessage" = "Please enter phone.";
+"SignupScreenValidPhoneMessage" = "Please enter valid phone.";
+"SignupScreenDOBMessage" = "Please enter date of birth.";
+"SignupScreenPasswordMessage" = "Please enter password.";
+"SignupScreenConfirmPasswordMessage" = "Please enter confirm password.";
+"SignupScreenPasswordMismatchMessage" = "Password and confirm password fields don't match.";
+"SignupScreenTermsAndConditionNotSelectedMessage" = "Please agree to Terms and conditions";
+
+//Forgot password screen:
+"ForgotScreenPopupMessage" = "Reset Password link has been sent to your email id.";
+
+//Videos screen tab:
+"VideosScreenDownloadComplete" = "Successfully the video was downloaded.";

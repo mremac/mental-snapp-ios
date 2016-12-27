@@ -161,7 +161,7 @@
         NSArray *horizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[view]|" options:0 metrics:nil views:viewsDictionary];
         [self.paginationContainerView addConstraints:verticalConstraints];
         [self.paginationContainerView addConstraints:horizontalConstraints];
-    }
+    } 
     // Setup some forwarding events to hijack the scrollView
     // Set self as new delegate
     self.pageViewController.dataSource = self;

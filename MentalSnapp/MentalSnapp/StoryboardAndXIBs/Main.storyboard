@@ -786,13 +786,27 @@
                                     <outlet property="delegate" destination="GYI-Bb-r5l" id="qKA-SM-ZfQ"/>
                                 </connections>
                             </tableView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TsC-YM-trH">
+                                <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="15"/>
+                                <state key="normal" title=" Terms and conditions">
+                                    <color key="titleColor" red="0.23921568630000001" green="0.23921568630000001" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="termsAndConditionButtonTapped:" destination="vX0-rh-xaN" eventType="touchUpInside" id="peE-EF-nxC"/>
+                                    <action selector="termsButtonTapped:" destination="GYI-Bb-r5l" eventType="touchUpInside" id="elV-RA-R6U"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="jwR-SG-U8A" firstAttribute="top" secondItem="Vdd-JP-7vU" secondAttribute="bottom" id="0uz-cK-sz0"/>
+                            <constraint firstItem="TsC-YM-trH" firstAttribute="top" secondItem="jwR-SG-U8A" secondAttribute="bottom" id="40S-za-WJ1"/>
+                            <constraint firstAttribute="trailing" secondItem="TsC-YM-trH" secondAttribute="trailing" id="8HU-pB-1Ce"/>
                             <constraint firstAttribute="trailing" secondItem="jwR-SG-U8A" secondAttribute="trailing" id="Q7N-1K-SA5"/>
+                            <constraint firstItem="58I-lG-AYu" firstAttribute="top" secondItem="TsC-YM-trH" secondAttribute="bottom" id="a07-y9-fIx"/>
                             <constraint firstItem="jwR-SG-U8A" firstAttribute="leading" secondItem="aGa-Iv-xqL" secondAttribute="leading" id="lSv-VY-qkB"/>
-                            <constraint firstItem="58I-lG-AYu" firstAttribute="top" secondItem="jwR-SG-U8A" secondAttribute="bottom" id="viD-eC-Q7U"/>
+                            <constraint firstItem="TsC-YM-trH" firstAttribute="leading" secondItem="aGa-Iv-xqL" secondAttribute="leading" id="v7g-FM-hKW"/>
+                            <constraint firstItem="58I-lG-AYu" firstAttribute="top" secondItem="jwR-SG-U8A" secondAttribute="bottom" constant="50" id="viD-eC-Q7U"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="8BS-Ex-vEV"/>
@@ -800,6 +814,7 @@
                         <outlet property="tableView" destination="jwR-SG-U8A" id="Pxb-jN-mNd"/>
                         <segue destination="Tqo-Eu-uS1" kind="show" identifier="goToReportIssueScreen" id="jbd-4W-UgC"/>
                         <segue destination="5Qa-iq-hxT" kind="show" identifier="goToQueuedExercisesScreen" id="p1l-K2-BgC"/>
+                        <segue destination="MB7-ow-wnk" kind="show" identifier="ToTermsScreen" id="enE-yp-rBG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NiE-kp-6Bn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -989,6 +1004,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rar-Z8-Lja" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3168.8000000000002" y="1482.9085457271365"/>
+        </scene>
+        <!--Terms View Controller-->
+        <scene sceneID="5Ah-Hq-j3F">
+            <objects>
+                <viewController id="MB7-ow-wnk" customClass="TermsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vne-AA-sCy"/>
+                        <viewControllerLayoutGuide type="bottom" id="zmp-99-7ce"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Xeg-HJ-9GN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="900"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wfs-Ea-SFz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3169" y="2319"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eSH-DS-Rz5">
@@ -1462,6 +1495,21 @@
                                                             <constraint firstItem="2SP-4E-C1O" firstAttribute="top" secondItem="Ba3-7g-DZE" secondAttribute="top" constant="12" id="nbt-1m-Xjy"/>
                                                         </constraints>
                                                     </view>
+                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="41b-7E-VGO" userLabel="Remember me button">
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="105" id="2Xw-RY-CWU"/>
+                                                            <constraint firstAttribute="height" constant="30" id="4cs-EK-80G"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="13"/>
+                                                        <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        <state key="normal" title="I accept to the" image="RememberMeUnCheck">
+                                                            <color key="titleColor" red="0.23921568630000001" green="0.23921568630000001" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <state key="selected" image="RememberMeCheck"/>
+                                                        <connections>
+                                                            <action selector="termsAndConditionCheckMarkButtonTapped:" destination="vX0-rh-xaN" eventType="touchUpInside" id="HKZ-Yo-JU3"/>
+                                                        </connections>
+                                                    </button>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y9n-ek-PxU" userLabel="BottomView">
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V79-tP-npn">
@@ -1522,9 +1570,19 @@
                                                             <constraint firstItem="V79-tP-npn" firstAttribute="centerX" secondItem="y9n-ek-PxU" secondAttribute="centerX" id="qWd-re-kgf"/>
                                                         </constraints>
                                                     </view>
+                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ry6-VA-hKh">
+                                                        <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="13"/>
+                                                        <state key="normal" title=" Terms and conditions">
+                                                            <color key="titleColor" red="0.23921568630000001" green="0.23921568630000001" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="termsAndConditionButtonTapped:" destination="vX0-rh-xaN" eventType="touchUpInside" id="tMJ-9j-t1J"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
+                                                    <constraint firstItem="ry6-VA-hKh" firstAttribute="height" secondItem="41b-7E-VGO" secondAttribute="height" id="7h1-lV-rrN"/>
                                                     <constraint firstItem="Ejk-K4-LNK" firstAttribute="top" secondItem="ktA-RM-39O" secondAttribute="bottom" id="9EC-Td-7gF"/>
                                                     <constraint firstItem="y9n-ek-PxU" firstAttribute="leading" secondItem="LXD-SX-yFf" secondAttribute="leading" id="CPT-Pb-cd8"/>
                                                     <constraint firstAttribute="trailing" secondItem="wYt-xe-b6R" secondAttribute="trailing" id="Cby-ie-8nr"/>
@@ -1534,16 +1592,21 @@
                                                     <constraint firstItem="wYt-xe-b6R" firstAttribute="leading" secondItem="LXD-SX-yFf" secondAttribute="leading" id="HDh-XO-rNh"/>
                                                     <constraint firstItem="Ba3-7g-DZE" firstAttribute="top" secondItem="Bg4-AZ-imB" secondAttribute="bottom" id="IgL-WO-uMA"/>
                                                     <constraint firstItem="TDc-Wc-Ukc" firstAttribute="top" secondItem="d78-u6-djz" secondAttribute="bottom" id="JP3-a4-ztr"/>
+                                                    <constraint firstItem="41b-7E-VGO" firstAttribute="leading" secondItem="LXD-SX-yFf" secondAttribute="leading" constant="42" id="Mdl-mr-3Uh"/>
+                                                    <constraint firstItem="y9n-ek-PxU" firstAttribute="top" secondItem="41b-7E-VGO" secondAttribute="bottom" id="NPv-sg-hdS"/>
                                                     <constraint firstItem="d78-u6-djz" firstAttribute="top" secondItem="LXD-SX-yFf" secondAttribute="top" id="Ovo-YP-gev"/>
                                                     <constraint firstAttribute="trailing" secondItem="Ejk-K4-LNK" secondAttribute="trailing" id="P0H-M2-QPz"/>
                                                     <constraint firstAttribute="trailing" secondItem="Ba3-7g-DZE" secondAttribute="trailing" id="Qmh-VE-3Sp"/>
+                                                    <constraint firstItem="ry6-VA-hKh" firstAttribute="leading" secondItem="41b-7E-VGO" secondAttribute="trailing" id="WDV-a1-5dH"/>
                                                     <constraint firstAttribute="trailing" secondItem="d78-u6-djz" secondAttribute="trailing" id="Wf8-s4-iEq"/>
-                                                    <constraint firstItem="y9n-ek-PxU" firstAttribute="top" secondItem="Ba3-7g-DZE" secondAttribute="bottom" id="WxW-Re-pjQ"/>
+                                                    <constraint firstItem="y9n-ek-PxU" firstAttribute="top" secondItem="Ba3-7g-DZE" secondAttribute="bottom" constant="30" id="WxW-Re-pjQ"/>
+                                                    <constraint firstItem="ry6-VA-hKh" firstAttribute="centerY" secondItem="41b-7E-VGO" secondAttribute="centerY" id="ZTe-Am-jeg"/>
                                                     <constraint firstItem="TDc-Wc-Ukc" firstAttribute="leading" secondItem="LXD-SX-yFf" secondAttribute="leading" id="a7p-YX-N3c"/>
                                                     <constraint firstAttribute="trailing" secondItem="Bg4-AZ-imB" secondAttribute="trailing" id="aRg-ha-cbF"/>
                                                     <constraint firstItem="Ejk-K4-LNK" firstAttribute="leading" secondItem="LXD-SX-yFf" secondAttribute="leading" id="atk-Vb-qhW"/>
                                                     <constraint firstItem="ktA-RM-39O" firstAttribute="top" secondItem="TDc-Wc-Ukc" secondAttribute="bottom" id="by0-MR-6T6"/>
                                                     <constraint firstAttribute="trailing" secondItem="TDc-Wc-Ukc" secondAttribute="trailing" id="cM6-Op-WnF"/>
+                                                    <constraint firstItem="41b-7E-VGO" firstAttribute="top" secondItem="Ba3-7g-DZE" secondAttribute="bottom" id="dpA-yT-C2Z"/>
                                                     <constraint firstItem="wYt-xe-b6R" firstAttribute="leading" secondItem="LXD-SX-yFf" secondAttribute="leading" id="gPE-Zx-pYk"/>
                                                     <constraint firstAttribute="trailing" secondItem="ktA-RM-39O" secondAttribute="trailing" id="hJo-L3-4jX"/>
                                                     <constraint firstAttribute="trailing" secondItem="wYt-xe-b6R" secondAttribute="trailing" id="npz-S1-rT3"/>
@@ -1643,6 +1706,8 @@
                         <outlet property="phoneTextField" destination="wA1-nw-noe" id="GR1-mj-JBb"/>
                         <outlet property="scrollView" destination="Iu0-VH-WyR" id="fXt-28-5Nw"/>
                         <outlet property="signUpButton" destination="V79-tP-npn" id="CNm-X6-ic5"/>
+                        <outlet property="termsAndConditionCheckMarkButton" destination="41b-7E-VGO" id="fHI-wE-4PV"/>
+                        <segue destination="MB7-ow-wnk" kind="show" identifier="ToTermsScreen" id="wJO-Rt-LLm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aEO-rS-Qil" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1832,5 +1897,8 @@
         <image name="video_placeholder" width="320" height="300"/>
         <image name="video_select" width="63" height="47"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="wJO-Rt-LLm"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
 </document>

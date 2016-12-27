@@ -457,7 +457,7 @@
 {
     if(success)
     {
-        [Banner showSuccessBannerWithSubtitle:@"Successfully the video was downloaded."];
+        [Banner showSuccessBannerWithSubtitle:LocalizedString(@"VideosScreenDownloadComplete")];
     }
 }
 

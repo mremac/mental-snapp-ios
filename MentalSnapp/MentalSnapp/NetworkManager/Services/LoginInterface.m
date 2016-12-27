@@ -46,8 +46,12 @@
         if ([success integerValue] == kStatusSuccess) {
             if ([response hasValueForKey:@"auth_token"]) {
                 [UserManager sharedManager].authorizationToken = [response valueForKey:@"auth_token"];
-                if([response hasValueForKey:@"user"])
-                {
+                [UserManager sharedManager].isFirstTime = NO;
+                if ([response hasValueForKey:@"is_first_user"]) {
+                    [UserManager sharedManager].isFirstTime = [[response valueForKey:@"is_first_user"] boolValue];
+                }
+                
+                if([response hasValueForKey:@"user"] && [response hasValueForKey:@"user"] != nil && [response hasValueForKey:@"user"]!=[NSNull null]) {
                     NSError *error;
                     [UserManager sharedManager].userModel = [[UserModel alloc] initWithDictionary:[response objectForKey:@"user"] error:&error];
                 }

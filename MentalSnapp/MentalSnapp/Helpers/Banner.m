@@ -23,8 +23,17 @@
     return banner;
 }
 
++ (ALAlertBanner *)showRigidBannerWithSubtitle:(NSString *)subtitle {
+    ALAlertBanner *banner = [self showRigidBannerOnTopWithTitle:@"Mental Snapp" subtitle:subtitle];
+    return banner;
+}
+
 + (ALAlertBanner *)showFailureBannerOnTopWithTitle:(NSString *)title subtitle:(NSString *)subtitle {
     return [self showBannerWithTitle:title subtitle:subtitle style:ALAlertBannerStyleCustomFailure position:ALAlertBannerPositionTop];
+}
+
++ (ALAlertBanner *)showRigidBannerOnTopWithTitle:(NSString *)title subtitle:(NSString *)subtitle {
+    return [self showBannerWithTitle:title subtitle:subtitle style:ALAlertBannerStyleCustomRigid position:ALAlertBannerPositionTop];
 }
 
 + (ALAlertBanner *)showBannerWithTitle:(NSString *)title subtitle:(NSString *)subtitle style:(ALAlertBannerStyle)style position:(ALAlertBannerPosition)position
@@ -38,6 +47,9 @@
     if(style == ALAlertBannerStyleCustomFailure)
         banner.secondsToShow = 3.0f;
     
+    if (style == ALAlertBannerStyleCustomRigid) {
+        banner.secondsToShow = 0;
+    }
     [banner show];
     return banner;
 }
