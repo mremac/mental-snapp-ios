@@ -178,7 +178,7 @@
     {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self dismissViewControllerAnimated:YES completion:nil];
-            [self downloadCompletion:YES];
+            [self downloadCompletion:NO];
             [s3manager cancelAllDownloads];
         });
     }
@@ -188,7 +188,7 @@
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self dismissViewControllerAnimated:YES completion:nil];
-                [self downloadCompletion:YES];
+                [self downloadCompletion:NO];
                 [s3manager cancelAllDownloads];
             });
         }];
