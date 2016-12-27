@@ -100,6 +100,12 @@
     [self postObject:request withCompletionBlock:block];
 }
 
+#pragma mark - Stats data
+- (void)getStatsWithRequest:(Request *)request andCompletionBlock:(completionBlock)block
+{
+    [self getObject:request withCompletionBlock:block];
+}
+
 #pragma mark - Login
 
 - (void)loginWithRequest:(Request *)request andCompletionBlock:(completionBlock)block {

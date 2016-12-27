@@ -91,6 +91,7 @@ ns *kFilterListAPI = @"api/v1/filters/get_filters_list";
 ns *kFilteredRecordPosts = @"api/v1/filters/get_filter_posts";
 ns *kSchedulesAPI = @"api/v1/schedules";
 ns *kEditSchedulesAPI = @"api/v1/schedules/%@";
+ns *kGetStatsAPI = @"api/v1/statics/get_stats";
 
 #pragma mark - StoryBoard segue identifiers
 #pragma mark Main

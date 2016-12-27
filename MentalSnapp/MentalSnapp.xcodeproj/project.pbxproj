@@ -131,6 +131,8 @@
 		6AC660F41DE576E500BB8949 /* MentalSnappTests.xctest in Resources */ = {isa = PBXBuildFile; fileRef = EECB25C11CF5AAF10012E315 /* MentalSnappTests.xctest */; };
 		6AC660F51DE576E500BB8949 /* MentalSnappTests.xctest in Resources */ = {isa = PBXBuildFile; fileRef = EECB25C11CF5AAF10012E315 /* MentalSnappTests.xctest */; };
 		EE5108D11CFEEEC200E8A3F9 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE5108D01CFEEEC200E8A3F9 /* Social.framework */; };
+		EF19DA891E12541800483F24 /* HACBarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = EF19DA861E12541800483F24 /* HACBarChart.m */; };
+		EF19DA8A1E12541800483F24 /* HACBarLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = EF19DA881E12541800483F24 /* HACBarLayer.m */; };
 		EF4651791E07D528000C5A34 /* QueuedExercisesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EF4651781E07D528000C5A34 /* QueuedExercisesTableViewCell.m */; };
 		EF46517F1E0810A4000C5A34 /* ScheduleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EF46517E1E0810A4000C5A34 /* ScheduleModel.m */; };
 		EF4651821E081282000C5A34 /* ScheduleInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = EF4651811E081282000C5A34 /* ScheduleInterface.m */; };
@@ -147,6 +149,10 @@
 		EF4F3B421DF9743200CE20FC /* S3Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = EF4F3B411DF9743200CE20FC /* S3Manager.m */; };
 		EF6DA2521DFFCC4300607C7B /* VideosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF6DA2511DFFCC4300607C7B /* VideosViewController.m */; };
 		EF6DA25B1DFFE13300607C7B /* VideoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EF6DA25A1DFFE13300607C7B /* VideoTableViewCell.m */; };
+		EF86F27A1E129D00009D2D49 /* StatsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = EF86F2791E129D00009D2D49 /* StatsRequest.m */; };
+		EF86F27E1E129E8B009D2D49 /* StatsInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = EF86F27D1E129E8B009D2D49 /* StatsInterface.m */; };
+		EF86F2811E12A4BE009D2D49 /* StatsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EF86F2801E12A4BE009D2D49 /* StatsModel.m */; };
+		EF86F2851E137BCD009D2D49 /* MoodDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EF86F2841E137BCD009D2D49 /* MoodDataModel.m */; };
 		EF88E2821E03BFBB00858A8D /* PlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF88E2811E03BFBB00858A8D /* PlayerViewController.m */; };
 		EF88E2841E03C13700858A8D /* PlayerStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF88E2831E03C13700858A8D /* PlayerStoryboard.storyboard */; };
 /* End PBXBuildFile section */
@@ -396,6 +402,10 @@
 		EECB25A51CF5AAF10012E315 /* MentalSnapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MentalSnapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EECB25C11CF5AAF10012E315 /* MentalSnappTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MentalSnappTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EECB25CC1CF5AAF10012E315 /* MentalSnappUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MentalSnappUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF19DA851E12541800483F24 /* HACBarChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HACBarChart.h; sourceTree = "<group>"; };
+		EF19DA861E12541800483F24 /* HACBarChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HACBarChart.m; sourceTree = "<group>"; };
+		EF19DA871E12541800483F24 /* HACBarLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HACBarLayer.h; sourceTree = "<group>"; };
+		EF19DA881E12541800483F24 /* HACBarLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HACBarLayer.m; sourceTree = "<group>"; };
 		EF4651771E07D528000C5A34 /* QueuedExercisesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueuedExercisesTableViewCell.h; sourceTree = "<group>"; };
 		EF4651781E07D528000C5A34 /* QueuedExercisesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueuedExercisesTableViewCell.m; sourceTree = "<group>"; };
 		EF46517D1E0810A4000C5A34 /* ScheduleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleModel.h; sourceTree = "<group>"; };
@@ -429,6 +439,14 @@
 		EF6DA2511DFFCC4300607C7B /* VideosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = VideosViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		EF6DA2591DFFE13300607C7B /* VideoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoTableViewCell.h; sourceTree = "<group>"; };
 		EF6DA25A1DFFE13300607C7B /* VideoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoTableViewCell.m; sourceTree = "<group>"; };
+		EF86F2781E129D00009D2D49 /* StatsRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsRequest.h; sourceTree = "<group>"; };
+		EF86F2791E129D00009D2D49 /* StatsRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsRequest.m; sourceTree = "<group>"; };
+		EF86F27C1E129E8B009D2D49 /* StatsInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsInterface.h; sourceTree = "<group>"; };
+		EF86F27D1E129E8B009D2D49 /* StatsInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsInterface.m; sourceTree = "<group>"; };
+		EF86F27F1E12A4BE009D2D49 /* StatsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsModel.h; sourceTree = "<group>"; };
+		EF86F2801E12A4BE009D2D49 /* StatsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsModel.m; sourceTree = "<group>"; };
+		EF86F2831E137BCD009D2D49 /* MoodDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoodDataModel.h; sourceTree = "<group>"; };
+		EF86F2841E137BCD009D2D49 /* MoodDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoodDataModel.m; sourceTree = "<group>"; };
 		EF88E2801E03BFBB00858A8D /* PlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerViewController.h; sourceTree = "<group>"; };
 		EF88E2811E03BFBB00858A8D /* PlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerViewController.m; sourceTree = "<group>"; };
 		EF88E2831E03C13700858A8D /* PlayerStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PlayerStoryboard.storyboard; sourceTree = "<group>"; };
@@ -790,6 +808,7 @@
 		6AAA00FF1DE56F8500208022 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				EF19DA841E12541800483F24 /* HACBarChart */,
 				EF49E85B1E027AFA00B5AFF7 /* FPPopover */,
 				6AAA01001DE56F8500208022 /* RMMapper */,
 			);
@@ -885,6 +904,8 @@
 				EF49E87A1E028F4D00B5AFF7 /* FilterRequest.m */,
 				EF4651831E0812B7000C5A34 /* ScheduleRequest.h */,
 				EF4651841E0812B7000C5A34 /* ScheduleRequest.m */,
+				EF86F2781E129D00009D2D49 /* StatsRequest.h */,
+				EF86F2791E129D00009D2D49 /* StatsRequest.m */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -908,6 +929,8 @@
 				EF49E8771E028E3F00B5AFF7 /* FilterInterface.m */,
 				EF4651801E081282000C5A34 /* ScheduleInterface.h */,
 				EF4651811E081282000C5A34 /* ScheduleInterface.m */,
+				EF86F27C1E129E8B009D2D49 /* StatsInterface.h */,
+				EF86F27D1E129E8B009D2D49 /* StatsInterface.m */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -983,6 +1006,10 @@
 				EF49E8741E028C5500B5AFF7 /* FilterModel.m */,
 				EF46517D1E0810A4000C5A34 /* ScheduleModel.h */,
 				EF46517E1E0810A4000C5A34 /* ScheduleModel.m */,
+				EF86F27F1E12A4BE009D2D49 /* StatsModel.h */,
+				EF86F2801E12A4BE009D2D49 /* StatsModel.m */,
+				EF86F2831E137BCD009D2D49 /* MoodDataModel.h */,
+				EF86F2841E137BCD009D2D49 /* MoodDataModel.m */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1121,6 +1148,17 @@
 				EECB25CC1CF5AAF10012E315 /* MentalSnappUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		EF19DA841E12541800483F24 /* HACBarChart */ = {
+			isa = PBXGroup;
+			children = (
+				EF19DA851E12541800483F24 /* HACBarChart.h */,
+				EF19DA861E12541800483F24 /* HACBarChart.m */,
+				EF19DA871E12541800483F24 /* HACBarLayer.h */,
+				EF19DA881E12541800483F24 /* HACBarLayer.m */,
+			);
+			path = HACBarChart;
 			sourceTree = "<group>";
 		};
 		EF4651761E07D528000C5A34 /* ExerciseCell */ = {
@@ -1444,6 +1482,7 @@
 				6A288EC51DED8BB100273CCC /* CommentsPaginate.m in Sources */,
 				6A5BBBAE1DFAECA100C67CE9 /* FeelingListViewController.m in Sources */,
 				6AAA014E1DE56F8600208022 /* UIView+Badge.m in Sources */,
+				EF86F27E1E129E8B009D2D49 /* StatsInterface.m in Sources */,
 				6A449EE21DFE774C00EE8875 /* SubCategoryDetailViewController.m in Sources */,
 				6A3EDEDB1DF56A6100C7BB16 /* PickerViewController.m in Sources */,
 				6AAA015B1DE56F8600208022 /* APIInteractorProvider.m in Sources */,
@@ -1455,11 +1494,13 @@
 				6A63D1B31DF0261A00B8E188 /* ExcerciseRequest.m in Sources */,
 				6AAA01421DE56F8600208022 /* NSDate+Properties.m in Sources */,
 				EF4651821E081282000C5A34 /* ScheduleInterface.m in Sources */,
+				EF19DA8A1E12541800483F24 /* HACBarLayer.m in Sources */,
 				6A36F72A1DFAB37100C6A852 /* RecordPost.m in Sources */,
 				6AC660E81DE5740B00BB8949 /* README.md in Sources */,
 				5C7BE3DF1DE886BA00C15CB5 /* RecordViewController.m in Sources */,
 				6A36F72E1DFAB3C000C6A852 /* Feeling.m in Sources */,
 				6A449EF21DFEA2F400EE8875 /* RecordPostRequest.m in Sources */,
+				EF86F2811E12A4BE009D2D49 /* StatsModel.m in Sources */,
 				5C7BE3D41DE86F3900C15CB5 /* MoreTableViewCell.m in Sources */,
 				6AAA01691DE56F8600208022 /* AppSettings.m in Sources */,
 				5C545E7C1DF02035004610B0 /* ForgotPasswordFirstViewController.m in Sources */,
@@ -1485,8 +1526,11 @@
 				6AC660EB1DE5740B00BB8949 /* SMobiLogger.m in Sources */,
 				6A24284A1DE814CD00FF15A9 /* ChangePasswordViewController.m in Sources */,
 				6A5BBBB61DFAFC7300C67CE9 /* FeelingInterface.m in Sources */,
+				EF86F27A1E129D00009D2D49 /* StatsRequest.m in Sources */,
 				EF49E8721E0287CE00B5AFF7 /* FilterListTableController.m in Sources */,
+				EF19DA891E12541800483F24 /* HACBarChart.m in Sources */,
 				6A63D1AB1DF00D2200B8E188 /* GuidedExcercise.m in Sources */,
+				EF86F2851E137BCD009D2D49 /* MoodDataModel.m in Sources */,
 				6A288EC71DED8BB100273CCC /* Paginate.m in Sources */,
 				6A3F7A761DEC6F920070415C /* SupportInterface.m in Sources */,
 				6AAA01401DE56F8600208022 /* Constants.m in Sources */,

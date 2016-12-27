@@ -47,4 +47,7 @@
 - (void)deleteSchedule:(ScheduleModel *)schedule withCompletionBlock:(completionBlock)block;
 - (void)editSchedule:(ScheduleModel *)schedule withCompletionBlock:(completionBlock)block;
 - (void)createSchedule:(ScheduleModel *)schedule withCompletionBlock:(completionBlock)block;
+
+#pragma mark - STATS data
+- (void)getStatsForMonth:(NSInteger)month andYear:(NSInteger)year withCompletionBlock:(completionBlock)block;
 @end

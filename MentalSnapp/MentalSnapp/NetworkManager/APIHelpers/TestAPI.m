@@ -108,6 +108,13 @@
     block(YES, dict);
 }
 
+#pragma mark - Stats data
+- (void)getStatsWithRequest:(Request *)request andCompletionBlock:(completionBlock)block
+{
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"1", @"success", nil];
+    block(YES, dict);
+}
+
 #pragma mark - Login
 - (void)loginWithRequest:(Request *)request andCompletionBlock:(completionBlock)block {
     NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"1", @"success", nil];

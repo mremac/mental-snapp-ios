@@ -44,6 +44,9 @@
 - (void)patchScheduleWithRequest:(Request *)request andCompletionBlock:(completionBlock)block;
 - (void)postScheduleWithRequest:(Request *)request andCompletionBlock:(completionBlock)block;
 
+#pragma mark - Stats data
+- (void)getStatsWithRequest:(Request *)request andCompletionBlock:(completionBlock)block;
+
 #pragma mark - Login
 - (void)loginWithRequest:(Request *)request andCompletionBlock:(completionBlock)block;
 - (void)signUpWithRequest:(Request *)request andCompletionBlock:(completionBlock)block;

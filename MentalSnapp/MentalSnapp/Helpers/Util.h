@@ -26,5 +26,5 @@
 + (NSString*)getMoodString:(MoodType)type;
 + (UIColor*)getMoodColor:(MoodType)type;
 + (NSString *)displayDateWithTimeInterval:(NSTimeInterval)timeInterval;
-
++ (NSNumber *)typeCastTwoDigit:(NSNumber *)value;
 @end

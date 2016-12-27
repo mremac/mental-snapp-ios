@@ -66,6 +66,8 @@
 #import "UserModel.h"
 #import "FilterModel.h"
 #import "ScheduleModel.h"
+#import "StatsModel.h"
+#import "MoodDataModel.h"
 
 //Others
 

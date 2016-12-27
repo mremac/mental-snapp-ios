@@ -9,6 +9,9 @@
 #import <JSONModel/JSONModel.h>
 #import "GuidedExcercise.h"
 
+@protocol RecordPost
+@end
+
 @interface RecordPost : JSONModel
 
 @property(strong, nonatomic) NSString <Optional> *postName;

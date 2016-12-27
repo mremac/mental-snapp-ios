@@ -22,6 +22,8 @@
 #import "FilterInterface.h"
 #import "ScheduleInterface.h"
 #import "ScheduleRequest.h"
+#import "StatsRequest.h"
+#import "StatsInterface.h"
 
 NSString *const kDefaultErrorMessage =  @"Error! Please try again.";
 
@@ -266,6 +268,18 @@ NSString *const kDefaultErrorMessage =  @"Error! Please try again.";
 - (void)createSchedule:(ScheduleModel *)schedule withCompletionBlock:(completionBlock)block {
     if ([ApplicationDelegate hasNetworkAvailable]) {
         [[ScheduleInterface alloc] createScheduleWithRequest:[[ScheduleRequest alloc] initWithCreateSchedule:schedule] withCompletionBlock:^(BOOL success, id response) {
+            block(success, response);
+        }];
+        
+    }else {
+        block(NO, nil);
+    }
+}
+
+#pragma mark - STATS data
+- (void)getStatsForMonth:(NSInteger)month andYear:(NSInteger)year withCompletionBlock:(completionBlock)block {
+    if ([ApplicationDelegate hasNetworkAvailable]) {
+        [[StatsInterface alloc] getStatsWithRequest:[[StatsRequest alloc] initWithGetStatsForMonth:month andYear:year] withCompletionBlock:^(BOOL success, id response) {
             block(success, response);
         }];
         

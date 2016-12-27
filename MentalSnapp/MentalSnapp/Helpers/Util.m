@@ -248,4 +248,18 @@
     
     return kEmptyString;
 }
+
++ (NSNumber *)typeCastTwoDigit:(NSNumber *)value
+{
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    formatter.numberStyle = NSNumberFormatterDecimalStyle;
+    formatter.maximumFractionDigits = 2;
+    formatter.roundingMode = NSNumberFormatterRoundUp;
+    
+    NSString *numberString = [formatter stringFromNumber:value];
+    
+    return [NSNumber numberWithFloat:[numberString floatValue]];
+    
+    
+}
 @end
