@@ -59,6 +59,15 @@
     return [dateFormatter stringFromDate:self];
 }
 
+- (NSString *)stringInUKFormat {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    NSLocale *enUSPOSIXLocale = [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];
+    [dateFormatter setLocale:enUSPOSIXLocale];
+    [dateFormatter setDateFormat:@"dd_MMM_yyyy_HH:mm:ss"];
+    return [dateFormatter stringFromDate:self];
+}
+
+
 + (NSString *)stringFromMilliSecondsInISO8601Format:(NSString *)milliSeconds {
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:[milliSeconds doubleValue]/1000];
     return [date stringInISO8601Format];

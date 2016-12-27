@@ -16,7 +16,7 @@
     [self.guidedExcerciseImageButton setBackgroundColor:[UIColor colorWithRed:233.0/255.0 green:101.0/255.0 blue:58.0/255.0 alpha:1.0]];
         
     [self.guidedExcerciseTitleLabel setTextColor:[UIColor colorWithRed:233.0/255.0 green:101.0/255.0 blue:58.0/255.0 alpha:1.0]];
-    [self.guidedExcerciseTitleLabel setFont:[UIFont fontWithName:@"Roboto-Bold" size:16]];
+    [self.guidedExcerciseTitleLabel setFont:[UIFont fontWithName:@"Roboto-Bold" size:15]];
     self.guidedExcerciseImageButton.layer.masksToBounds = YES;
         
     [self.guidedExcerciseTitleLabel setText:@""];
@@ -49,7 +49,7 @@
     [self.guidedExcerciseImageButton setBackgroundColor:[UIColor clearColor]];
     [self.guidedExcerciseTitleLabel setTextColor:[UIColor clearColor]];
     [self.guidedExcerciseTitleLabel setText:@""];
-    [self.guidedExcerciseImageButton setImage:[UIImage imageNamed:@"defaultExcerciseImage"] forState:UIControlStateNormal];
+    [self.guidedExcerciseImageButton setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
 }
 
 -(void)setUnSelectedViewDetail :(NSInteger )count withAnimation:(BOOL)animate andValue:(CGFloat)value{

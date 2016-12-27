@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -1123,7 +1123,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8vf-eD-UbG">
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jA9-0H-scD">
+                                    <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jA9-0H-scD">
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="136" id="3C1-nX-Znv"/>
@@ -1135,7 +1135,7 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="guidedExcerciseCellCollectionViewCell" id="rL4-6x-GCq" customClass="guidedExcerciseCellCollectionViewCell">
+                                            <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="guidedExcerciseCellCollectionViewCell" id="rL4-6x-GCq" customClass="guidedExcerciseCellCollectionViewCell">
                                                 <rect key="frame" x="0.0" y="0.0" width="125" height="136"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -1150,8 +1150,8 @@
                                                                         <constraint firstAttribute="width" constant="102" id="hh0-UV-PtZ"/>
                                                                     </constraints>
                                                                 </button>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="middleTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="OX8-pN-4wc">
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="middleTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="OX8-pN-4wc">
+                                                                    <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="16"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -1162,7 +1162,7 @@
                                                                 <constraint firstItem="7r4-bw-6vy" firstAttribute="centerY" secondItem="Bos-dC-WMg" secondAttribute="centerY" constant="-16" id="3iS-2E-J7C"/>
                                                                 <constraint firstAttribute="trailing" secondItem="OX8-pN-4wc" secondAttribute="trailing" id="X8s-HU-WNG"/>
                                                                 <constraint firstItem="7r4-bw-6vy" firstAttribute="centerX" secondItem="Bos-dC-WMg" secondAttribute="centerX" id="hyg-3m-4ED"/>
-                                                                <constraint firstItem="OX8-pN-4wc" firstAttribute="top" secondItem="7r4-bw-6vy" secondAttribute="bottom" constant="7" id="ofr-y1-Nyk"/>
+                                                                <constraint firstItem="OX8-pN-4wc" firstAttribute="top" secondItem="7r4-bw-6vy" secondAttribute="bottom" constant="2" id="ofr-y1-Nyk"/>
                                                                 <constraint firstAttribute="bottom" secondItem="OX8-pN-4wc" secondAttribute="bottom" id="qFR-lC-A5m"/>
                                                             </constraints>
                                                         </view>

@@ -94,7 +94,7 @@
 #pragma mark - Private methods
 - (void)populateNameOfVideo {
     if(!isUserEditedName) {
-        NSString *formatedVideoName = (selectedMood!=KNone)?((selectedFeeling)?[NSString stringWithFormat:@"%@_%@_%@_%f",[UserManager sharedManager].userModel.userName,[Util getMoodString:selectedMood],selectedFeeling.feelingName,([[NSDate date] timeIntervalSince1970] * 1000)]:[NSString stringWithFormat:@"%@_%@_%f",[UserManager sharedManager].userModel.userName,[Util getMoodString:selectedMood],([[NSDate date] timeIntervalSince1970] * 1000)]):((selectedFeeling)?[NSString stringWithFormat:@"%@_%@_%f",[UserManager sharedManager].userModel.userName,selectedFeeling.feelingName,([[NSDate date] timeIntervalSince1970] * 1000)]:[NSString stringWithFormat:@"%@_%f",[UserManager sharedManager].userModel.userName,([[NSDate date] timeIntervalSince1970] * 1000)]);
+        NSString *formatedVideoName = (selectedMood!=KNone)?((selectedFeeling)?[NSString stringWithFormat:@"%@_%@_%@_%@",[UserManager sharedManager].userModel.userName,selectedFeeling.feelingName,[Util getMoodString:selectedMood],([[NSDate date] stringInUKFormat])]:[NSString stringWithFormat:@"%@_%@_%@",[UserManager sharedManager].userModel.userName,[Util getMoodString:selectedMood],([[NSDate date] stringInUKFormat])]):((selectedFeeling)?[NSString stringWithFormat:@"%@_%@_%@",[UserManager sharedManager].userModel.userName,selectedFeeling.feelingName,([[NSDate date] stringInUKFormat])]:[NSString stringWithFormat:@"%@_%@",[UserManager sharedManager].userModel.userName,([[NSDate date] stringInUKFormat])]);
         [self.videoNameTextField setText:formatedVideoName];
     }
 }

@@ -19,4 +19,6 @@
 - (NSString *)firstPartOfDate;
 - (NSString *)getMilliSeconds;
 - (NSString *)getSeconds;
+- (NSString *)stringInUKFormat ;
+
 @end
