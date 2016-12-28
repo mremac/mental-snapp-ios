@@ -131,6 +131,8 @@
 		6AC660F41DE576E500BB8949 /* MentalSnappTests.xctest in Resources */ = {isa = PBXBuildFile; fileRef = EECB25C11CF5AAF10012E315 /* MentalSnappTests.xctest */; };
 		6AC660F51DE576E500BB8949 /* MentalSnappTests.xctest in Resources */ = {isa = PBXBuildFile; fileRef = EECB25C11CF5AAF10012E315 /* MentalSnappTests.xctest */; };
 		EE5108D11CFEEEC200E8A3F9 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE5108D01CFEEEC200E8A3F9 /* Social.framework */; };
+		EF11575A1E13F24900DC9945 /* UIMonthYearPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = EF1157591E13F24900DC9945 /* UIMonthYearPicker.m */; };
+		EF11575E1E13F3FC00DC9945 /* MonthYearPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF11575D1E13F3FC00DC9945 /* MonthYearPickerViewController.m */; };
 		EF19DA891E12541800483F24 /* HACBarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = EF19DA861E12541800483F24 /* HACBarChart.m */; };
 		EF19DA8A1E12541800483F24 /* HACBarLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = EF19DA881E12541800483F24 /* HACBarLayer.m */; };
 		EF4651791E07D528000C5A34 /* QueuedExercisesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EF4651781E07D528000C5A34 /* QueuedExercisesTableViewCell.m */; };
@@ -402,6 +404,10 @@
 		EECB25A51CF5AAF10012E315 /* MentalSnapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MentalSnapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EECB25C11CF5AAF10012E315 /* MentalSnappTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MentalSnappTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EECB25CC1CF5AAF10012E315 /* MentalSnappUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MentalSnappUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF1157581E13F24900DC9945 /* UIMonthYearPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIMonthYearPicker.h; sourceTree = "<group>"; };
+		EF1157591E13F24900DC9945 /* UIMonthYearPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIMonthYearPicker.m; sourceTree = "<group>"; };
+		EF11575C1E13F3FC00DC9945 /* MonthYearPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonthYearPickerViewController.h; sourceTree = "<group>"; };
+		EF11575D1E13F3FC00DC9945 /* MonthYearPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonthYearPickerViewController.m; sourceTree = "<group>"; };
 		EF19DA851E12541800483F24 /* HACBarChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HACBarChart.h; sourceTree = "<group>"; };
 		EF19DA861E12541800483F24 /* HACBarChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HACBarChart.m; sourceTree = "<group>"; };
 		EF19DA871E12541800483F24 /* HACBarLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HACBarLayer.h; sourceTree = "<group>"; };
@@ -640,6 +646,8 @@
 			children = (
 				6A3EDED91DF56A6100C7BB16 /* PickerViewController.h */,
 				6A3EDEDA1DF56A6100C7BB16 /* PickerViewController.m */,
+				EF11575C1E13F3FC00DC9945 /* MonthYearPickerViewController.h */,
+				EF11575D1E13F3FC00DC9945 /* MonthYearPickerViewController.m */,
 			);
 			path = PickerPopView;
 			sourceTree = "<group>";
@@ -808,6 +816,7 @@
 		6AAA00FF1DE56F8500208022 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				EF1157571E13F24900DC9945 /* UIMonthYearPicker */,
 				EF19DA841E12541800483F24 /* HACBarChart */,
 				EF49E85B1E027AFA00B5AFF7 /* FPPopover */,
 				6AAA01001DE56F8500208022 /* RMMapper */,
@@ -1148,6 +1157,15 @@
 				EECB25CC1CF5AAF10012E315 /* MentalSnappUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		EF1157571E13F24900DC9945 /* UIMonthYearPicker */ = {
+			isa = PBXGroup;
+			children = (
+				EF1157581E13F24900DC9945 /* UIMonthYearPicker.h */,
+				EF1157591E13F24900DC9945 /* UIMonthYearPicker.m */,
+			);
+			path = UIMonthYearPicker;
 			sourceTree = "<group>";
 		};
 		EF19DA841E12541800483F24 /* HACBarChart */ = {
@@ -1501,6 +1519,7 @@
 				6A36F72E1DFAB3C000C6A852 /* Feeling.m in Sources */,
 				6A449EF21DFEA2F400EE8875 /* RecordPostRequest.m in Sources */,
 				EF86F2811E12A4BE009D2D49 /* StatsModel.m in Sources */,
+				EF11575E1E13F3FC00DC9945 /* MonthYearPickerViewController.m in Sources */,
 				5C7BE3D41DE86F3900C15CB5 /* MoreTableViewCell.m in Sources */,
 				6AAA01691DE56F8600208022 /* AppSettings.m in Sources */,
 				5C545E7C1DF02035004610B0 /* ForgotPasswordFirstViewController.m in Sources */,
@@ -1540,6 +1559,7 @@
 				6AAA015D1DE56F8600208022 /* RealAPI.m in Sources */,
 				EF46517F1E0810A4000C5A34 /* ScheduleModel.m in Sources */,
 				5C545E801DF02281004610B0 /* ForgotPasswordSecondViewController.m in Sources */,
+				EF11575A1E13F24900DC9945 /* UIMonthYearPicker.m in Sources */,
 				6A5BBBB31DFAFB9D00C67CE9 /* FeelingRequest.m in Sources */,
 				6AAA014D1DE56F8600208022 /* UILabel+Properties.m in Sources */,
 			);

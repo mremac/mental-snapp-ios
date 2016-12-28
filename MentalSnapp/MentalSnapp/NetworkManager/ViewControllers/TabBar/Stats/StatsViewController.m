@@ -6,18 +6,25 @@
 #import "StatsViewController.h"
 #import "HACBarChart.h"
 #import "RequestManager.h"
+#import "FPPopoverController.h"
+#import "FPPopoverKeyboardResponsiveController.h"
+#import "MonthYearPickerViewController.h"
 
 static const CGFloat barChartHeight = 160.0;
 static const CGFloat lineChartHeight = 185.0;
 static const CGFloat barChartCellHeight = 210.0;
 static const CGFloat lineChartCellHeight = 185.0;
 
-@interface StatsViewController ()
+@interface StatsViewController ()<FPPopoverControllerDelegate, MonthYearPickerViewControllerDelegate>
+{
+    FPPopoverKeyboardResponsiveController *popover;
+}
 @property (strong, nonatomic) StatsModel *stats;
 @property (strong, nonatomic) HACBarChart *barChartView;
 @property (strong, nonatomic) UILabel *barChartLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIView *noContentView;
+@property (strong, nonatomic) MonthYearPickerViewController *pickerViewController;
 
 @end
 
@@ -28,6 +35,12 @@ static const CGFloat lineChartCellHeight = 185.0;
     
     [self initialiseBarView];
     [self getStatsAPIForMonth:[[NSDate date] month] andYear:[[NSDate date] year]];
+    [self setRightMenuButtons:[NSArray arrayWithObject:[self calendarButtonAction]]];
+    
+    self.pickerViewController = [[UIStoryboard storyboardWithName:KProfileStoryboard bundle:nil] instantiateViewControllerWithIdentifier:kMonthYearPickerViewController];
+    self.pickerViewController.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    [self.pickerViewController setDateSelection:pastDateOnly];
+    [self.pickerViewController setDelegate:self];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -48,7 +61,7 @@ static const CGFloat lineChartCellHeight = 185.0;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if(self.stats)
+    if(self.stats.posts.count > 0)
     {
         [self.noContentView setHidden:YES];
         [self.tableView setHidden:NO];
@@ -97,6 +110,14 @@ static const CGFloat lineChartCellHeight = 185.0;
 }
 
 #pragma mark - Private methods
+
+- (UIBarButtonItem *)calendarButtonAction {
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 4, 30, 30)];
+    [button setImage:[UIImage imageNamed:@"calendar"] forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(calendarButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+    return barButtonItem;
+}
 
 - (UIView *)getBarChartView
 {
@@ -176,6 +197,32 @@ static const CGFloat lineChartCellHeight = 185.0;
     
 }
 
+#pragma mark - IBAction method
+
+- (void)calendarButtonTapped:(UIButton *)sender
+{
+    SAFE_ARC_RELEASE(popover); popover=nil;
+    
+    //the controller we want to present as a popover
+    popover = [[FPPopoverKeyboardResponsiveController alloc] initWithViewController:self.pickerViewController];
+    popover.tint = FPPopoverWhiteTint;
+    popover.border = NO;
+    
+    popover.contentSize = CGSizeMake(self.view.getWidth, 320);
+    popover.arrowDirection = FPPopoverArrowDirectionAny;
+    
+    CGRect frame = sender.frame;
+    frame.origin.y = frame.origin.y - 10;
+    
+    UIButton *view = sender;
+    view.frame = frame;
+    [popover presentPopoverFromView:view];
+    
+    frame.origin.y = frame.origin.y + 10;
+    sender.frame = frame;
+    
+}
+
 #pragma mark - API
 
 - (void)getStatsAPIForMonth:(NSInteger)month andYear:(NSInteger)year
@@ -203,6 +250,19 @@ static const CGFloat lineChartCellHeight = 185.0;
             [self showInProgress:NO];
         });
     }];
+}
+
+#pragma mark - Date Picker view Delegate
+
+- (void)didSelectDoneButton:(NSDate *)date
+{
+    [self getStatsAPIForMonth:[date month] andYear:[date year]];
+    [popover dismissPopoverAnimated:YES];
+}
+
+- (void)didSelectCancelButton
+{
+    [popover dismissPopoverAnimated:YES];
 }
 
 @end

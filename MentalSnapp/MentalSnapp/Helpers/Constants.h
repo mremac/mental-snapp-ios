@@ -151,6 +151,7 @@ exNS *kGoToSignUp;
 exNS *kGoToForgotPasswordFirstScreen;
 exNS *kGoToForgotPasswordSecondScreen;
 exNS *kPickerViewController;
+exNS *kMonthYearPickerViewController;
 
 #pragma mark - TableViewCell identifiers
 exNS *kMoreScreenTableViewCellIdentifier;
