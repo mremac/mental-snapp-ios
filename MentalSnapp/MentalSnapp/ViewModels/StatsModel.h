@@ -15,5 +15,6 @@
 @property(strong, nonatomic) MoodDataModel <Optional> *monthMoodData;
 @property(strong, nonatomic) NSDictionary <Optional> *weekDataInfo;
 @property(strong, nonatomic) NSArray<RecordPost> *posts;
+@property(strong, nonatomic) NSDate <Ignore>*selectedDate;
 
 @end

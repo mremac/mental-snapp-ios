@@ -20,6 +20,14 @@
     self = [super init];
     if (self)
     {
+        _theBestMood = @0;
+        _veryGoodMood = @0;
+        _goodMood = @0;
+        _okMood = @0;
+        _badMood = @0;
+        _veryBadMood = @0;
+        _theWorstMood = @0;
+        
         for (NSString *moodKey in moodInfo.allKeys) {
             
             NSNumber *moodValue = [Util typeCastTwoDigit:[moodInfo valueForKey:moodKey]];

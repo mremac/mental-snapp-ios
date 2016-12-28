@@ -12,9 +12,7 @@ static const CGFloat lineChartHeight = 185.0;
 static const CGFloat barChartCellHeight = 210.0;
 static const CGFloat lineChartCellHeight = 185.0;
 
-@interface StatsViewController (){
-    NSArray *data;
-}
+@interface StatsViewController ()
 @property (strong, nonatomic) StatsModel *stats;
 @property (strong, nonatomic) HACBarChart *barChartView;
 @property (strong, nonatomic) UILabel *barChartLabel;
@@ -38,8 +36,7 @@ static const CGFloat lineChartCellHeight = 185.0;
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    
-    [self.barChartView draw];
+    [self updateBarChartInfo];
 }
 
 #pragma mark - Table view data source
@@ -128,19 +125,10 @@ static const CGFloat lineChartCellHeight = 185.0;
 
 - (void)initBarChartView
 {
-    self.barChartView = [[HACBarChart alloc] initWithFrame:CGRectMake(0, 40, self.view.frame.size.width, barChartHeight)];
-    data = @[
-             @{kHACPercentage:@86, kHACColor  : [Util getMoodColor:1], kHACCustomText : @"The Best\n86%"},
-             @{kHACPercentage:@50,  kHACColor  : [Util getMoodColor:2], kHACCustomText : @"Very Good\n50%"},
-             @{kHACPercentage:@75,  kHACColor  : [Util getMoodColor:3], kHACCustomText : @"Good\n75%"},
-             @{kHACPercentage:@25,  kHACColor  : [Util getMoodColor:4], kHACCustomText : @"OK\n25%"},
-             @{kHACPercentage:@40,  kHACColor  : [Util getMoodColor:5], kHACCustomText : @"Bad\n40%"},
-             @{kHACPercentage:@30,  kHACColor  : [Util getMoodColor:6], kHACCustomText : @"Very Bad\n30%"},
-             @{kHACPercentage:@10,  kHACColor  : [Util getMoodColor:7], kHACCustomText : @"The Worst\n10%"}
-             ];
+    self.barChartView = [[HACBarChart alloc] initWithFrame:CGRectMake(0, 30, self.view.frame.size.width, barChartHeight)];
     
     // Assign data in bar chart
-    self.barChartView.data = data;
+    
     self.barChartView.vertical = YES;
     self.barChartView.showProgressLabel = YES;
     self.barChartView.showDataValue = YES;
@@ -154,29 +142,38 @@ static const CGFloat lineChartCellHeight = 185.0;
 - (void)initBarChartLabelView
 {
     // Set bar chart Y axis label
-    self.barChartLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, barChartHeight + 25, self.view.frame.size.width, 18)];
+    self.barChartLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, barChartHeight + 15, self.view.frame.size.width, 18)];
     [self.barChartLabel setFont:[UIFont fontWithName:@"Roboto" size:13]];
     self.barChartLabel.textAlignment = NSTextAlignmentCenter;
-    [self.barChartLabel setText:@"December"];
     [self.barChartLabel setTextColor:[UIColor appUpdatesBlueColor]];
 }
 
 - (void)updateBarChartInfo
 {
-    //TODO: iterate response as per its keys
-    data = @[
-             @{kHACPercentage:@86, kHACColor  : [Util getMoodColor:1], kHACCustomText : @"The Best\n86%"},
-             @{kHACPercentage:@50,  kHACColor  : [Util getMoodColor:2], kHACCustomText : @"Very Good\n50%"},
-             @{kHACPercentage:@75,  kHACColor  : [Util getMoodColor:3], kHACCustomText : @"Good\n75%"},
-             @{kHACPercentage:@25,  kHACColor  : [Util getMoodColor:4], kHACCustomText : @"OK\n25%"},
-             @{kHACPercentage:@40,  kHACColor  : [Util getMoodColor:5], kHACCustomText : @"Bad\n40%"},
-             @{kHACPercentage:@30,  kHACColor  : [Util getMoodColor:6], kHACCustomText : @"Very Bad\n30%"},
-             @{kHACPercentage:@10,  kHACColor  : [Util getMoodColor:7], kHACCustomText : @"The Worst\n10%"}
-             ];
+    NSMutableArray *statsData = [NSMutableArray array];
+    if(self.stats.barChartMoodData.theBestMood)
+        [statsData addObject:@{kHACPercentage:(self.stats.barChartMoodData.theBestMood), kHACColor  : [Util getMoodColor:1], kHACCustomText : [NSString stringWithFormat:@"The Best\n%@%%", (self.stats.barChartMoodData.theBestMood)]}];
+    if(self.stats.barChartMoodData.veryGoodMood)
+        [statsData addObject:@{kHACPercentage:(self.stats.barChartMoodData.veryGoodMood),  kHACColor  : [Util getMoodColor:2], kHACCustomText : [NSString stringWithFormat:@"Very Good\n%@%%", (self.stats.barChartMoodData.veryGoodMood)]}];
+    if(self.stats.barChartMoodData.goodMood)
+        [statsData addObject:@{kHACPercentage:(self.stats.barChartMoodData.goodMood),  kHACColor  : [Util getMoodColor:3], kHACCustomText : [NSString stringWithFormat:@"Good\n%@%%", (self.stats.barChartMoodData.goodMood)]}];
+    if(self.stats.barChartMoodData.okMood)
+        [statsData addObject:@{kHACPercentage:(self.stats.barChartMoodData.okMood),  kHACColor  : [Util getMoodColor:4], kHACCustomText : [NSString stringWithFormat:@"OK\n%@%%", (self.stats.barChartMoodData.okMood)]}];
+    if(self.stats.barChartMoodData.badMood)
+        [statsData addObject:@{kHACPercentage:(self.stats.barChartMoodData.badMood),  kHACColor  : [Util getMoodColor:5], kHACCustomText : [NSString stringWithFormat:@"Bad\n%@%%", (self.stats.barChartMoodData.badMood)]}];
+    if(self.stats.barChartMoodData.veryBadMood)
+        [statsData addObject:@{kHACPercentage:(self.stats.barChartMoodData.veryBadMood),  kHACColor  : [Util getMoodColor:6], kHACCustomText : [NSString stringWithFormat:@"Very Bad\n%@%%", (self.stats.barChartMoodData.veryBadMood)]}];
+    if(self.stats.barChartMoodData.theWorstMood)
+        [statsData addObject:@{kHACPercentage:(self.stats.barChartMoodData.theWorstMood),  kHACColor  : [Util getMoodColor:7], kHACCustomText : [NSString stringWithFormat:@"The Worst\n%@%%", (self.stats.barChartMoodData.theWorstMood)]}];
     
-    // Assign data in bar chart
-    self.barChartView.data = data;
-    self.barChartLabel.text = @"Dec.";
+    self.barChartView.data = [NSArray arrayWithArray:statsData];
+    [self.barChartView clearChart];
+    [self.barChartView draw];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MMMM yyyy"];
+    self.barChartLabel.text = [formatter stringFromDate:self.stats.selectedDate ? self.stats.selectedDate : [NSDate date]];
+    
 }
 
 #pragma mark - API
@@ -192,6 +189,7 @@ static const CGFloat lineChartCellHeight = 185.0;
                 if(response && [response isKindOfClass:[StatsModel class]])
                 {
                     self.stats = response;
+                    self.stats.selectedDate = [NSDate dateWithYear:year month:month day:1];
                     [self.tableView setHidden:NO];
                     [self.noContentView setHidden:YES];
                     [self.tableView reloadData];
