@@ -27,4 +27,8 @@
 + (UIColor*)getMoodColor:(MoodType)type;
 + (NSString *)displayDateWithTimeInterval:(NSTimeInterval)timeInterval;
 + (NSNumber *)typeCastTwoDigit:(NSNumber *)value;
++ (NSInteger)weeksOfMonth:(NSInteger)month inYear:(NSInteger)year;
++(NSString *) endDateofWeek:(NSInteger)weekNumber inMonth:(NSInteger)month inYear:(NSInteger)year withFormate:(NSString *)formate;
++(NSString *) startDateofWeek:(NSInteger)weekNumber inMonth:(NSInteger)month inYear:(NSInteger)year withFormate:(NSString *)formate;
+
 @end

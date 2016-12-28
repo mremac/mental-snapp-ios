@@ -123,6 +123,7 @@ exNS *kMoodViewController;
 exNS *kFeelingListViewController;
 exNS *kDownloadAllVideoViewController;
 exNS *kPlayerViewController;
+exNS *kLineStatViewController;
 
 #pragma mark - API URL
 exNS *KUserAPI;
@@ -160,6 +161,7 @@ exNS *kSubCategoryExcerciseTableViewCell;
 exNS *kFeelingTableViewCell;
 exNS *kVideoTableViewCellIdentifier;
 exNS *kQueuedExercisesTableViewCellIdentifier;
+exNS *KStatsMoodTableViewCell;
 
 #pragma mark - S3Buckets
 exNS *kAWSPath;

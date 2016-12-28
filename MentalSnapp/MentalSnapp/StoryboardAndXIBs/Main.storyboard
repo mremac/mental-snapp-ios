@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="evG-dm-COo">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="evG-dm-COo">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -360,7 +360,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="evG-dm-COo" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="917-VJ-Diz">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="917-VJ-Diz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -492,7 +492,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="400"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NK5-z8-BIQ" id="e0L-1f-Q4G">
-                                            <frame key="frameInset" width="375" height="400"/>
+                                            <frame key="frameInset" width="375" height="399"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xft-8H-nLy" userLabel="Description View">
@@ -664,7 +664,7 @@
                                     <constraint firstItem="M2d-kf-kpw" firstAttribute="leading" secondItem="ejG-H8-DCy" secondAttribute="leading" id="we4-xI-rIM"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RRR-sQ-bX6">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RRR-sQ-bX6">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="0qT-1c-QuX" id="QUG-q8-rWI"/>
@@ -675,7 +675,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ejG-H8-DCy" firstAttribute="top" secondItem="lmb-WM-kJS" secondAttribute="top" id="583-gg-er5"/>
-                            <constraint firstAttribute="bottom" secondItem="RRR-sQ-bX6" secondAttribute="bottom" id="AgQ-Yr-E9G"/>
+                            <constraint firstAttribute="bottom" secondItem="RRR-sQ-bX6" secondAttribute="bottom" constant="48" id="AgQ-Yr-E9G"/>
                             <constraint firstAttribute="bottom" secondItem="ejG-H8-DCy" secondAttribute="bottom" id="Cd4-iN-03M"/>
                             <constraint firstAttribute="trailing" secondItem="RRR-sQ-bX6" secondAttribute="trailing" id="PHd-cA-DNZ"/>
                             <constraint firstItem="RRR-sQ-bX6" firstAttribute="leading" secondItem="lmb-WM-kJS" secondAttribute="leading" id="Qc6-Nk-Dni"/>
@@ -710,10 +710,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MoreScreenTableViewCellIdentifier" rowHeight="44" id="kF5-0v-ZKn" customClass="MoreTableViewCell">
-                                        <rect key="frame" x="0.0" y="28" width="1000" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kF5-0v-ZKn" id="bej-D8-x61">
-                                            <frame key="frameInset" width="1000" height="44"/>
+                                            <frame key="frameInset" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xIS-9F-UEv" userLabel="ImageContainerView">
@@ -850,7 +850,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="81"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qls-U3-AFd" id="Po7-bZ-wxL">
-                                            <frame key="frameInset" width="375" height="81"/>
+                                            <frame key="frameInset" width="375" height="80"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jGe-za-dLf">
@@ -984,7 +984,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="r1p-Tj-Snl" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" tag="3" title="" image="stats" selectedImage="stats_select" id="tx5-ds-DTt"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TWf-gw-yYx">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="TWf-gw-yYx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1003,7 +1003,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="olk-hQ-QB6" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" tag="2" title="" image="record" selectedImage="record_select" id="16e-aA-4fL"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="a5i-vM-KMF">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="a5i-vM-KMF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

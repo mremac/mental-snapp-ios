@@ -73,6 +73,7 @@ ns *kMoodViewController = @"MoodViewController";
 ns *kFeelingListViewController = @"FeelingListViewController";
 ns *kDownloadAllVideoViewController = @"DownloadAllVideoViewController";
 ns *kPlayerViewController = @"PlayerViewController";
+ns *kLineStatViewController = @"LineStatViewController";
 
 #pragma mark - API URL
 ns *kLoginAPI = @"api/v1/authenticate";
@@ -111,6 +112,7 @@ ns *kSubCategoryExcerciseTableViewCell = @"SubCategoryTableViewCell";
 ns *kFeelingTableViewCell = @"FeelingTableViewCell";
 ns *kVideoTableViewCellIdentifier = @"VideoTableViewCell";
 ns *kQueuedExercisesTableViewCellIdentifier = @"QueuedExercisesTableViewCell";
+ns *KStatsMoodTableViewCell = @"StatsMoodTableViewCell";
 
 #pragma mark - S3Buckets
 ns *kAWSPath = @"https://s3-eu-west-1.amazonaws.com";

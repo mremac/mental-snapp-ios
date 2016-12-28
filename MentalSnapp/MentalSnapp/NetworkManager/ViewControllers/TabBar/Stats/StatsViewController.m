@@ -9,15 +9,25 @@
 #import "FPPopoverController.h"
 #import "FPPopoverKeyboardResponsiveController.h"
 #import "MonthYearPickerViewController.h"
+#import "LineStatViewController.h"
+#import "StatsMoodTableViewCell.h"
+
+@import AVFoundation;
+@import AVKit;
 
 static const CGFloat barChartHeight = 160.0;
 static const CGFloat lineChartHeight = 185.0;
 static const CGFloat barChartCellHeight = 210.0;
-static const CGFloat lineChartCellHeight = 185.0;
+static const CGFloat lineChartCellHeight = 240.0;
 
 @interface StatsViewController ()<FPPopoverControllerDelegate, MonthYearPickerViewControllerDelegate>
 {
     FPPopoverKeyboardResponsiveController *popover;
+    NSArray *data;
+    LineStatViewController *lineChartController;
+    NSInteger selectedWeek;
+    BOOL isNextButtonHidden;
+    BOOL isPreviouseButtonHidden;
 }
 @property (strong, nonatomic) StatsModel *stats;
 @property (strong, nonatomic) HACBarChart *barChartView;
@@ -32,7 +42,7 @@ static const CGFloat lineChartCellHeight = 185.0;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self.tableView registerNib:[UINib nibWithNibName:KStatsMoodTableViewCell bundle:nil] forCellReuseIdentifier:KStatsMoodTableViewCell];
     [self initialiseBarView];
     [self getStatsAPIForMonth:[[NSDate date] month] andYear:[[NSDate date] year]];
     [self setRightMenuButtons:[NSArray arrayWithObject:[self calendarButtonAction]]];
@@ -44,6 +54,7 @@ static const CGFloat lineChartCellHeight = 185.0;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     [self setNavigationBarButtonTitle:@"Mental Snapp"];
 }
 
@@ -71,20 +82,25 @@ static const CGFloat lineChartCellHeight = 185.0;
         [self.noContentView setHidden:NO];
         [self.tableView setHidden:YES];
     }
-    
-    return (section == 0) ? 0 : 7;
+    NSArray *arrayMoods = [[self.stats weekDataInfo] objectAtIndex:selectedWeek];
+    return (section == 0) ? 0 : arrayMoods.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    StatsMoodTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KStatsMoodTableViewCell];
     
     if(cell == nil)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+        cell = [[StatsMoodTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:KStatsMoodTableViewCell];
     }
-    cell.textLabel.text = @"test";
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    NSArray *arrayMoods = [[self.stats weekDataInfo] objectAtIndex:selectedWeek];
+    NSArray *array = [arrayMoods objectAtIndex:indexPath.row];
+    [cell.moodNameLabel setText:[Util getMoodString:[array[0] integerValue]]];
+    [cell.moodValueLabel setText:[NSString stringWithFormat:@"%d Time",[array[1] integerValue]]];
+    [cell.moodNameLabel setTextColor:[Util getMoodColor:[array[0] integerValue]]];
+    [cell.moodValueLabel setTextColor:[Util getMoodColor:[array[0] integerValue]]];
     return cell;
 }
 
@@ -100,8 +116,10 @@ static const CGFloat lineChartCellHeight = 185.0;
 {
     if(section == 0)
         return [self getBarChartView];
-    else
+    else if(section == 1)
         return [self getLineChartView];
+    else
+        return nil;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -131,10 +149,32 @@ static const CGFloat lineChartCellHeight = 185.0;
 
 - (UIView *)getLineChartView
 {
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, lineChartHeight)];
-    UIView *lineChartView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, lineChartHeight)];
-    lineChartView.backgroundColor = [UIColor appGreenColor];
-    [view addSubview:lineChartView];
+    lineChartController = [[UIStoryboard storyboardWithName:KProfileStoryboard bundle:nil] instantiateViewControllerWithIdentifier:kLineStatViewController];
+    lineChartController.parentView = self;
+    lineChartController.selectedWeek = selectedWeek+1;
+    if(self.stats.posts.count){
+        [lineChartController refreshDataForMonth:[self.stats.selectedDate month] andYear:[self.stats.selectedDate year] WithRecords:[NSMutableArray arrayWithArray:self.stats.posts]];
+    }
+    UIView *view = lineChartController.view;
+    
+    NSArray *arrayMoods = [self.stats.weekDataInfo objectAtIndex:selectedWeek];
+    __block NSInteger maxValuedMood = 1;
+    __block NSInteger maxValuedMoodId = 1;
+    [arrayMoods enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        NSArray* newValue = obj;
+        NSInteger value = [newValue[1] integerValue];
+        if (value>maxValuedMood) {
+            maxValuedMood = value;
+            maxValuedMoodId = [newValue[0] integerValue];
+        }
+    }];
+    
+    NSString* string = [NSString stringWithFormat:@"I was %@ in week (%@ - %@)",[Util getMoodString:maxValuedMoodId],[Util startDateofWeek:selectedWeek+1 inMonth:[self.stats.selectedDate month] inYear:[self.stats.selectedDate year] withFormate:@"dd/MM"],[Util endDateofWeek:selectedWeek inMonth:[self.stats.selectedDate month] inYear:[self.stats.selectedDate year] withFormate:@"dd/MM"]];
+    [lineChartController.weekTitleLabel setText:string];
+    [lineChartController.previouseButton addTarget:self action:@selector(previouseButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+    [lineChartController.nextButton addTarget:self action:@selector(nextButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+    [lineChartController.previouseButton setHidden:isPreviouseButtonHidden];
+    [lineChartController.nextButton setHidden:isNextButtonHidden];
     return view;
 }
 
@@ -223,6 +263,38 @@ static const CGFloat lineChartCellHeight = 185.0;
     
 }
 
+- (void)showPlayerWithRecordPost:(RecordPost *)recordPost
+{
+    NSURL *videoURL = [NSURL URLWithString:recordPost.videoURL];
+    // create an AVPlayer
+    AVPlayer *player = [AVPlayer playerWithURL:videoURL];
+    AVPlayerLayer *playerLayer = [AVPlayerLayer playerLayerWithPlayer:player];
+    [playerLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
+    
+    // create a player view controller
+    AVPlayerViewController *avPlayerController = [[AVPlayerViewController alloc]init];
+    avPlayerController.player = player;
+    [player play];
+    
+    // show the view controller
+    avPlayerController.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    [self presentViewController:avPlayerController animated:YES completion:nil];
+}
+
+-(void)lineChartDataForMonth:(NSInteger)month andForYear:(NSInteger)year{
+    RecordPost *post = [self.stats.posts firstObject];
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:[post.createdAt integerValue]];
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitWeekOfMonth fromDate:date];
+    selectedWeek = [components weekOfMonth]-1;
+    for (int i=0; i<selectedWeek; i++) {
+        [[self.stats weekDataInfo] insertObject:[NSArray new] atIndex:i];
+    }
+    NSInteger weekCount = [self.stats weekDataInfo].count;
+    for (int i=weekCount; i<=[Util weeksOfMonth:month inYear:year]; i++) {
+        [[self.stats weekDataInfo] insertObject:[NSArray new] atIndex:i];
+    }
+}
+
 #pragma mark - API
 
 - (void)getStatsAPIForMonth:(NSInteger)month andYear:(NSInteger)year
@@ -237,9 +309,13 @@ static const CGFloat lineChartCellHeight = 185.0;
                 {
                     self.stats = response;
                     self.stats.selectedDate = [NSDate dateWithYear:year month:month day:1];
+                    [self lineChartDataForMonth:month andForYear:year];
                     [self.tableView setHidden:NO];
                     [self.noContentView setHidden:YES];
                     [self.tableView reloadData];
+                    isPreviouseButtonHidden = YES;
+                    NSArray *arrayNextMoods = [[self.stats weekDataInfo] objectAtIndex:selectedWeek+1];
+                    isNextButtonHidden = ([arrayNextMoods count]>0)?NO:YES;
                 }
                 else
                 {
@@ -253,7 +329,6 @@ static const CGFloat lineChartCellHeight = 185.0;
 }
 
 #pragma mark - Date Picker view Delegate
-
 - (void)didSelectDoneButton:(NSDate *)date
 {
     [self getStatsAPIForMonth:[date month] andYear:[date year]];
@@ -263,6 +338,48 @@ static const CGFloat lineChartCellHeight = 185.0;
 - (void)didSelectCancelButton
 {
     [popover dismissPopoverAnimated:YES];
+}
+
+#pragma mark - Line Chart Delegate
+-(void)didSelectWeekSection:(NSInteger)section {
+    NSArray *arrayMoods = [[self.stats weekDataInfo] objectAtIndex:section-1];
+    if(arrayMoods.count>0){
+        selectedWeek = section-1;
+    }
+    
+    __block NSInteger maxValuedMood = 1;
+    __block NSInteger maxValuedMoodId = 1;
+    [arrayMoods enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        NSArray* newValue = obj;
+        NSInteger value = [newValue[1] integerValue];
+        if (value>maxValuedMood) {
+            maxValuedMood = value;
+            maxValuedMoodId = [newValue[0] integerValue];
+        }
+    }];
+    
+    NSString* string = [NSString stringWithFormat:@"I was %@ in week (%@ - %@)",[Util getMoodString:maxValuedMoodId],[Util startDateofWeek:section inMonth:[self.stats.selectedDate month] inYear:[self.stats.selectedDate year] withFormate:@"dd/MM"],[Util endDateofWeek:section inMonth:[self.stats.selectedDate month] inYear:[self.stats.selectedDate year] withFormate:@"dd/MM"]];
+    [lineChartController.weekTitleLabel setText:string];
+
+    NSArray *arrayNextMoods = [[self.stats weekDataInfo] objectAtIndex:selectedWeek+1];
+    isNextButtonHidden = ([arrayNextMoods count]>0)?NO:YES;
+    NSArray *arrayPreMoods = [[self.stats weekDataInfo] objectAtIndex:selectedWeek-1];
+     isPreviouseButtonHidden = ([arrayPreMoods count]>0)?NO:YES;
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
+
+}
+
+-(void)didDoubleTapSection:(id)object {
+    [self showPlayerWithRecordPost:object];
+}
+
+#pragma mark - IBActions
+-(IBAction)nextButtonAction:(id)sender {
+    [self didSelectWeekSection:(selectedWeek+2)];
+}
+
+-(IBAction)previouseButtonAction:(id)sender {
+    [self didSelectWeekSection:(selectedWeek)];
 }
 
 @end

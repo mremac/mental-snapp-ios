@@ -262,4 +262,68 @@
     
     
 }
+
+
++ (NSInteger)weeksOfMonth:(NSInteger)month inYear:(NSInteger)year{
+    NSString *dateString=[NSString stringWithFormat:@"%4d/%d/1",year,month];
+    
+    NSDateFormatter *dfMMddyyyy=[NSDateFormatter new];
+    [dfMMddyyyy setDateFormat:@"yyyy/MM/dd"];
+    NSDate *date=[dfMMddyyyy dateFromString:dateString];
+    
+    NSCalendar *calender = [NSCalendar currentCalendar];
+    NSRange weekRange = [calender rangeOfUnit:NSCalendarUnitWeekOfMonth inUnit:NSCalendarUnitMonth forDate:date];
+    NSInteger weeksCount=weekRange.length;
+    
+    return weeksCount;
+}
+
+
++(NSString *) endDateofWeek:(NSInteger)weekNumber inMonth:(NSInteger)month inYear:(NSInteger)year withFormate:(NSString *)formate{
+    NSCalendar *cal = [NSCalendar currentCalendar];
+    
+    // Start of week:
+    NSDateComponents *comp = [[NSDateComponents alloc] init];
+    comp.weekday = cal.firstWeekday;
+    comp.weekOfMonth = weekNumber; // <-- fill in your week number here
+    comp.year = year;    // <-- fill in your year here
+    comp.month = month;
+    NSDate *startOfWeek = [cal dateFromComponents:comp];
+    
+    // Add 6 days:
+    NSDate *endOfWeek = [cal dateByAddingUnit:NSCalendarUnitDay value:6 toDate:startOfWeek options:0];
+    
+    // Show results:
+    NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
+    fmt.dateStyle = NSDateFormatterShortStyle;
+    fmt.dateFormat = formate;
+//    NSLog(@"%@", [fmt stringFromDate:startOfWeek]);
+//    NSLog(@"%@", [fmt stringFromDate:endOfWeek]);
+    return [fmt stringFromDate:endOfWeek];
+}
+
++(NSString *) startDateofWeek:(NSInteger)weekNumber inMonth:(NSInteger)month inYear:(NSInteger)year withFormate:(NSString *)formate{
+    NSCalendar *cal = [NSCalendar currentCalendar];
+    
+    // Start of week:
+    NSDateComponents *comp = [[NSDateComponents alloc] init];
+    comp.weekday = cal.firstWeekday;
+    comp.weekOfMonth = weekNumber; // <-- fill in your week number here
+    comp.year = year;    // <-- fill in your year here
+    comp.month = month;
+    NSDate *startOfWeek = [cal dateFromComponents:comp];
+    
+    // Add 6 days:
+    NSDate *endOfWeek = [cal dateByAddingUnit:NSCalendarUnitDay value:6 toDate:startOfWeek options:0];
+    
+    // Show results:
+    NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
+    fmt.dateStyle = NSDateFormatterShortStyle;
+    fmt.dateFormat = formate;
+//    NSLog(@"%@", [fmt stringFromDate:startOfWeek]);
+//    NSLog(@"%@", [fmt stringFromDate:endOfWeek]);
+    return [fmt stringFromDate:startOfWeek];
+}
+
+
 @end

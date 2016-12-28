@@ -13,7 +13,7 @@
 @interface StatsModel : JSONModel
 @property(strong, nonatomic) MoodDataModel <Optional> *barChartMoodData;
 @property(strong, nonatomic) MoodDataModel <Optional> *monthMoodData;
-@property(strong, nonatomic) NSDictionary <Optional> *weekDataInfo;
+@property(strong, nonatomic) NSMutableArray <Optional> *weekDataInfo;
 @property(strong, nonatomic) NSArray<RecordPost> *posts;
 @property(strong, nonatomic) NSDate <Ignore>*selectedDate;
 
