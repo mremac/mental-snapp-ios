@@ -28,6 +28,14 @@
     }];
 }
 
+- (void)deleteRecordPostWithRequest:(RecordPostRequest *)recordPostRequest andCompletionBlock:(completionBlock)block {
+    _block = block;
+    id apiInteractorProvider = [[APIInteractorProvider sharedInterface] getAPIInetractor];
+    [apiInteractorProvider deleteRecordPostWithRequest:recordPostRequest andCompletionBlock:^(BOOL success, id response) {
+        [self parseDeleteRecordPostData:response];
+    }];
+}
+
 - (void)parserecordPostListData:(id)response
 {
     NSString *errorMessage;
@@ -76,6 +84,42 @@
 }
 
 - (void)parseRecordPostData:(id)response {
+    
+    NSString *errorMessage;
+    if ([response isKindOfClass:[NSDictionary class]])
+    {
+        NSString *success = nil;
+        if([(NSDictionary *)response hasValueForKey:@"success"]) {
+            success = [response valueForKey:@"success"];
+        }
+        if ([success integerValue] == kStatusSuccess)
+        {
+            self.block([success integerValue], response);
+        }
+        else
+        {
+            if([response hasValueForKey:@"message"])
+            {
+                errorMessage = [response valueForKey:@"message"];
+            }
+            _block([success integerValue], errorMessage);
+        }
+        
+    } else if([response isKindOfClass:[NSError class]]) {
+        
+        errorMessage = ((NSError *)response).localizedDescription;
+        _block(NO, errorMessage);
+    } else {
+        errorMessage = @"Something went wrong while processing your request";
+        _block(NO, errorMessage);
+    }
+    if (errorMessage)
+    {
+        [Banner showFailureBannerWithSubtitle:errorMessage];
+    }
+}
+
+- (void)parseDeleteRecordPostData:(id)response {
     
     NSString *errorMessage;
     if ([response isKindOfClass:[NSDictionary class]])

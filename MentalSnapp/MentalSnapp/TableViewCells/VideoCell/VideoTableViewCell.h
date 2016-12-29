@@ -12,6 +12,6 @@
 
 @interface VideoTableViewCell : UITableViewCell
 
-- (void)assignRecordPost:(RecordPost *)recordPost playBlock:(completionBlock)playBlock downloadBlock:(completionBlock)downloadBlock;
+- (void)assignRecordPost:(RecordPost *)recordPost playBlock:(completionBlock)playBlock downloadBlock:(completionBlock)downloadBlock deleteBlock:(completionBlock)deleteBlock;
 
 @end

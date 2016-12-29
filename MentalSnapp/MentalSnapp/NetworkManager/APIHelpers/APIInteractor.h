@@ -30,6 +30,7 @@
 #pragma mark - Record post data
 - (void)getRecordPostsWithRequest:(Request *)request andCompletionBlock:(completionBlock)block;
 - (void)postRecordPostWithRequest:(Request *)request andCompletionBlock:(completionBlock)block;
+- (void)deleteRecordPostWithRequest:(Request *)request andCompletionBlock:(completionBlock)block;
 
 #pragma mark - Feeling data
 - (void)getFeelingWithRequest:(Request *)request andCompletionBlock:(completionBlock)block;

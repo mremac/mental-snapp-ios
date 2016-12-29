@@ -15,6 +15,7 @@
 
 - (void)getRecordPostsWithRequest:(RecordPostRequest *)recordPostRequest andCompletionBlock:(completionBlock)block;
 - (void)postRecordPostWithRequest:(RecordPostRequest *)recordPostRequest andCompletionBlock:(completionBlock)block;
+- (void)deleteRecordPostWithRequest:(RecordPostRequest *)recordPostRequest andCompletionBlock:(completionBlock)block;
 
 
 @end

@@ -37,6 +37,7 @@
 - (void)getSearchRecordPostsWithPaginate:(Paginate *)paginate withCompletionBlock:(completionBlock)block;
 - (void)getFilteredRecordPostsWithPaginate:(Paginate *)paginate withCompletionBlock:(completionBlock)block;
 - (void)postRecordPost:(RecordPost *)post withCompletionBlock:(completionBlock)block;
+- (void)deleteRecordPost:(RecordPost *)post withCompletionBlock:(completionBlock)block;
 
 #pragma mark - Filter data
 - (void)getFilterListWithPagination:(Paginate *)paginate withCompletionBlock:(completionBlock)block ;

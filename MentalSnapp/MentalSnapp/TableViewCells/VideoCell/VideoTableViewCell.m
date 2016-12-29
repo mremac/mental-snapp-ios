@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (copy, nonatomic) void (^playBlock)(BOOL success, id response);
 @property (copy, nonatomic) void (^downloadBlock)(BOOL success, id response);
+@property (copy, nonatomic) void (^deleteBlock)(BOOL success, id response);
 @property (nonatomic, strong) RecordPost *recordPost;
 
 @end
@@ -36,11 +37,12 @@
 
 #pragma mark - Public methods
 
-- (void)assignRecordPost:(RecordPost *)recordPost playBlock:(completionBlock)playBlock downloadBlock:(completionBlock)downloadBlock
+- (void)assignRecordPost:(RecordPost *)recordPost playBlock:(completionBlock)playBlock downloadBlock:(completionBlock)downloadBlock deleteBlock:(completionBlock)deleteBlock
 {
     self.recordPost = recordPost;
     self.playBlock = playBlock;
     self.downloadBlock = downloadBlock;
+    self.deleteBlock = deleteBlock;
     NSString *a = recordPost.postDesciption;
     
     NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithString:a];
@@ -58,7 +60,11 @@
     
     self.descriptionLabel.attributedText = att;
     self.timeLabel.text = [Util displayDateWithTimeInterval:[recordPost.createdAt integerValue]];
-    [self.videoImageView sd_setImageWithURL:[NSURL URLWithString:recordPost.coverURL] placeholderImage:[UIImage imageNamed:@"video_placeholder"]];
+    [self.videoImageView sd_setImageWithURL:[NSURL URLWithString:recordPost.coverURL] placeholderImage:[UIImage imageNamed:@"video_placeholder"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        _videoImageView.image = [UIImage imageWithCGImage:[_videoImageView.image CGImage]
+                            scale:[_videoImageView.image scale]
+                      orientation: UIImageOrientationRight];
+    }];
     self.videoImageView.layer.borderColor = [[Util getMoodColor:recordPost.moodId.length > 0 ? [recordPost.moodId integerValue] : KNone] CGColor];
 }
 
@@ -70,8 +76,8 @@
 - (IBAction)dowloadButtonTapped:(id)sender {
     self.downloadBlock(YES, self.recordPost);
 }
-
-
-
+- (IBAction)deleteButtonTapped:(id)sender {
+    self.deleteBlock(YES, self.recordPost);
+}
 
 @end

@@ -260,6 +260,14 @@
     [self presentViewController:downloadVideoController animated:NO completion:nil];
 }
 
+-(void)deletePost:(RecordPost *)recordPost {
+    [[RequestManager alloc] deleteRecordPost:recordPost withCompletionBlock:^(BOOL success, id response) {
+        if (success) {
+            [self getRecordPosts];
+        }
+    }];
+}
+
 #pragma mark - API Call
 
 -(void)fetchRecordPosts
@@ -365,6 +373,10 @@
                 NSLog([NSString stringWithFormat:@"Download recordPost: %@", recordPost]);
                 [self showDownloadScreenWithRecordPost:recordPost];
             }
+        } deleteBlock:^(BOOL success, id response) {
+            RecordPost *recordPost = response;
+            NSLog([NSString stringWithFormat:@"Delete recordPost: %@", recordPost]);
+            [self deletePost:recordPost];
         }];
     }
     

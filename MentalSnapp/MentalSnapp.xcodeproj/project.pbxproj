@@ -1596,7 +1596,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MentalSnapp.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9a91fa52-3fed-4522-8ce1-18482dc0e757";
+				PROVISIONING_PROFILE = "0e41a033-2c95-4a78-9e82-bb581b5440c6";
 				PROVISIONING_PROFILE_SPECIFIER = MentalSnappDevelopmentProfile;
 			};
 			name = Debug;
@@ -1607,8 +1607,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Namrata S (7CR67NLY7U)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Namrata S (7CR67NLY7U)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Mental Snapp Ltd (FB6UK8YP2Q)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mental Snapp Ltd (FB6UK8YP2Q)";
 				DEVELOPMENT_TEAM = FB6UK8YP2Q;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited) ";
 				GCC_PREFIX_HEADER = MentalSnapp/MentalSnappPrefixHeader.pch;
@@ -1618,8 +1618,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MentalSnapp.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "46170a10-b409-4638-9c20-21ba496a12db";
-				PROVISIONING_PROFILE_SPECIFIER = MentalSnappDevelopmentProfile;
+				PROVISIONING_PROFILE = "9e3a2728-ff27-4304-a6fc-1f0c50b585cf";
+				PROVISIONING_PROFILE_SPECIFIER = MentalSnappProduction;
 			};
 			name = Release;
 		};

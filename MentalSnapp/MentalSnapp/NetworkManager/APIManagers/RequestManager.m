@@ -191,6 +191,17 @@ NSString *const kDefaultErrorMessage =  @"Error! Please try again.";
     }
 }
 
+- (void)deleteRecordPost:(RecordPost *)post withCompletionBlock:(completionBlock)block {
+    if ([ApplicationDelegate hasNetworkAvailable]) {
+        [[RecordPostInterface alloc] deleteRecordPostWithRequest:[[RecordPostRequest alloc] initForDeleteRecordPost:post] andCompletionBlock:^(BOOL success, id response) {
+            block(success, response);
+        }];
+        
+    }else {
+        block(NO, nil);
+    }
+}
+
 #pragma mark - Feeling data
 - (void)getFeelingWithPaginate:(Paginate *)paginate withCompletionBlock:(completionBlock)block{
     if ([ApplicationDelegate hasNetworkAvailable]) {

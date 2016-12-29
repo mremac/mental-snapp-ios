@@ -100,6 +100,15 @@
     }];
 }
 
+- (void)deleteAPICallWithUrl:(NSString *)url parameters:(NSDictionary *)parameters successBlock:(successBlock)success failureBlock:(failureBlock)failure {
+    
+    [self DELETE:url parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(task, responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(task, error);
+    }];
+}
+
 - (void)multipartApiCallWithUrl:(NSString *)url parameters:(NSDictionary *)parameters data:(NSData *)data name:(NSString *)dataFileName fileName:(NSString *)fileName mimeType:(NSString *)mimeType successBlock:(successBlock)success failureBlock:(failureBlock)failure {
     
     [self POST:url parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {

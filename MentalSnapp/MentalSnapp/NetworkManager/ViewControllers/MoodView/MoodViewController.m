@@ -137,6 +137,7 @@
     CMTime time = CMTimeMake(0, 1);
     CGImageRef imageRef = [imageGenerator copyCGImageAtTime:time actualTime:NULL error:NULL];
     UIImage *thumbnail = [UIImage imageWithCGImage:imageRef];
+    
     if(thumbnail && self.videoThumbnailURLPath.length == 0)
     {
         [[[Util alloc] init] didFinishPickingImageFile:thumbnail fileType:VideoThumbnailImageType completionBlock:^(BOOL success, id response)
@@ -203,12 +204,13 @@
     
     NSString *videoName = self.videoNameTextField.text;
     videoName = [videoName stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+    
     RecordPost *post = [[RecordPost alloc] initWithVideoName:videoName andExcerciseType:((_excercise)?(([_excercise.excerciseStringType isEqualToString:@""])?@"GuidedExcercise":_excercise.excerciseStringType):@"") andCoverURL:self.videoThumbnailURLPath andPostDesciption:self.descriptionTextView.text andVideoURL:self.videoURLPath andUserId:[UserManager sharedManager].userModel.userId andMoodId:[NSString stringWithFormat:@"%ld",(long)selectedMood] andFeelingId:selectedFeeling.feelingId andWithExcercise:_excercise];
     
     [[RequestManager alloc] postRecordPost:post withCompletionBlock:^(BOOL success, id response) {
-        [self didClearStateOnPop];
         if(success)
         {
+            [self didClearStateOnPop];
             [self didSuccessAPI];
         }
     }];
@@ -387,7 +389,7 @@
 -(void)didSelectFeeling:(Feeling *)feeling {
     if(feeling)
     {
-        NSString *title = [NSString stringWithFormat:@"  Add Feeling: %@", feeling.feelingName];
+        NSString *title = [NSString stringWithFormat:@"  Feeling: %@", feeling.feelingName];
         [self.addFeelingButton setTitle:title forState:UIControlStateNormal];
         selectedFeeling = feeling;
         [self populateNameOfVideo];

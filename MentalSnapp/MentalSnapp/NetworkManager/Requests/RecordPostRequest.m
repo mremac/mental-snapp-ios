@@ -82,6 +82,15 @@
     return self;
 }
 
+- (id)initForDeleteRecordPost:(RecordPost *)post {
+    self = [super init];
+    if (self) {
+//        _parameters = [NSMutableDictionary dictionaryWithObjectsAndKeys:post.postId, @"id", nil];
+        self.urlPath = [NSString stringWithFormat:@"%@/%@",kRecordPostAPI, post.postId];
+    }
+    return self;
+}
+
 - (NSMutableDictionary *)getParams {
     if (_parameters) {
         return _parameters;

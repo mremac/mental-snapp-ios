@@ -64,6 +64,10 @@
     [self postObject:request withCompletionBlock:block];
 }
 
+- (void)deleteRecordPostWithRequest:(Request *)request andCompletionBlock:(completionBlock)block {
+    [self deleteObject:request withCompletionBlock:block];
+}
+
 #pragma mark - Feeling data
 - (void)getFeelingWithRequest:(Request *)request andCompletionBlock:(completionBlock)block {
     [self getObject:request withCompletionBlock:block];
@@ -155,6 +159,11 @@
 
 - (void)interactAPIWithDeleteObject:(Request *)deleteObject withCompletionBlock:(completionBlock)block {
     [self initialSetupWithRequest:deleteObject requestType:RequestDELETE];
+    [[NetworkHttpClient sharedInstance] deleteAPICallWithUrl:deleteObject.urlPath parameters:deleteObject.getParams successBlock:^(NSURLSessionDataTask *task, id responseObject) {
+        [self handleSuccessResponse:task response:responseObject withBlock:block];
+    } failureBlock:^(NSURLSessionDataTask *task, NSError *error) {
+        [self handleError:error operation:task withBlock:block];
+    }];
 }
 
 - (void)interactAPIWithMultipartFormRequestWithObject:(Request *)object withCompletionBlock:(completionBlock)block {
