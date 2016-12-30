@@ -172,10 +172,10 @@
         [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:LocalizedString(@"SignupScreenPasswordMismatchMessage")];
         return NO;
     }
-    if (_termsAndConditionCheckMarkButton.selected == NO) {
-        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:LocalizedString(@"SignupScreenTermsAndConditionNotSelectedMessage")];
-        return NO;
-    }
+//    if (_termsAndConditionCheckMarkButton.selected == NO) {
+//        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:LocalizedString(@"SignupScreenTermsAndConditionNotSelectedMessage")];
+//        return NO;
+//    }
     return YES;
 }
 

@@ -53,7 +53,7 @@
             NSString *feelingName = [feeling valueForKey:@"name"];
             
             if (a.length != 0) {
-                a = [NSString stringWithFormat:@"Feeling: %@, %@",feelingName, a];
+                a = [NSString stringWithFormat:@"Feeling %@, %@",feelingName, a];
             } else {
                 a = [NSString stringWithFormat:@"Feeling: %@",feelingName];
             }

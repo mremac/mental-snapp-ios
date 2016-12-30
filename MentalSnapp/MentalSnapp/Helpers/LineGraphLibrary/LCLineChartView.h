@@ -77,7 +77,7 @@ typedef void(^LCLineChartDeselectedItem)();
 @property (strong) UIFont *xScaleFont; /// Font in which scale markings are drawn. Defaults to [UIFont systemFontOfSize:10].
 @property (nonatomic, strong) UIView *selectedView;
 @property (nonatomic, assign) NSInteger selectedWeek;
-
+- (void)hideIndicator;
 - (void)showLegend:(BOOL)show animated:(BOOL)animated;
 
 @end

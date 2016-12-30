@@ -139,9 +139,9 @@ void CGContextAddRoundedRectWithHookSimple(CGContextRef c, CGRect rect, CGFloat 
     frame.size.width = (theFrame.size.width<50)?50:theFrame.size.width-20;
     [self.infoLabel setFrame:frame];
     CGFloat labelHeight = [self.infoLabel getLabelAtrributedTextHeight];
-    frame.size.height = labelHeight;
+    frame.size.height = (labelHeight>60)?60:((labelHeight<30)?30:labelHeight);
     [self.infoLabel setFrame:frame];
-    theFrame.size.height = (labelHeight>75)?75:((labelHeight<75)?75:labelHeight);
+    theFrame.size.height = (labelHeight>60)?60:((labelHeight<30)?30:labelHeight);
 
     {
         theFrame.origin.y = self.tapPoint.y - theFrame.size.height + 2 * SHADOWSIZE + 1;

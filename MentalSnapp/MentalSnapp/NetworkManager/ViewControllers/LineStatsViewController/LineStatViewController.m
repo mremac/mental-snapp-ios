@@ -25,6 +25,11 @@
     // Do any additional setup after loading the view.
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [chartView hideIndicator];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -104,7 +109,7 @@
     if(chartView){
         [chartView removeFromSuperview];
     }
-    
+    [chartView setClipsToBounds:NO];
     chartView = [[LCLineChartView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width-20, 170)];
     chartView.yMin = 7;
     chartView.yMax = 1;

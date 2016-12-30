@@ -261,11 +261,27 @@
 }
 
 -(void)deletePost:(RecordPost *)recordPost {
-    [[RequestManager alloc] deleteRecordPost:recordPost withCompletionBlock:^(BOOL success, id response) {
-        if (success) {
-            [self getRecordPosts];
-        }
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Mental Snapp" message:@"Are you sure want to delete?" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[RequestManager alloc] deleteRecordPost:recordPost withCompletionBlock:^(BOOL success, id response) {
+                if (success) {
+                    [Util postNotification:kCleanRecordViewControllerNotification withDict:nil];
+                    [Util postNotification:kRefreshVideosViewControllerNotification withDict:nil];
+                }
+            }];
+        });
     }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+        });
+    }];
+    
+    [alertController addAction:okAction];
+    [alertController addAction:cancelAction];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self presentViewController:alertController animated:YES completion:nil];
+    });
 }
 
 #pragma mark - API Call
