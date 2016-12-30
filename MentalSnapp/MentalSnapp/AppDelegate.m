@@ -18,7 +18,7 @@
 @implementation AppDelegate
 
 void uncaughtExceptionHandler(NSException *exception) {
-//    [[SMobiLogger sharedInterface] unCaughtExceptionWithDescription:[NSString stringWithFormat:@"At: %s, \n(Exception: %@ \n \n Stack Symbols: %@). \n  \n", __FUNCTION__, [exception description], [exception callStackSymbols]]];
+    [[SMobiLogger sharedInterface] unCaughtExceptionWithDescription:[NSString stringWithFormat:@"At: %s, \n(Exception: %@ \n \n Stack Symbols: %@). \n  \n", __FUNCTION__, [exception description], [exception callStackSymbols]]];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions

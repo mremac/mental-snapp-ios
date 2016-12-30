@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>NetworkMode</key>
-	<string></string>
+	<string>STAGING</string>
 	<key>LocalURL</key>
 	<string>192.168.1.38:3000</string>
 	<key>ProductionURL</key>
