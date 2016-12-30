@@ -120,6 +120,7 @@ exNS *KSupportScreenViewController;
 exNS *kGuidedExcerciseViewController;
 exNS *kExcerciseSubCategoryViewController;
 exNS *kSubCategoryDetailViewController;
+exNS *kSubCategoryPageViewController;
 exNS *kRecordAlertViewController;
 exNS *kMoodViewController;
 exNS *kFeelingListViewController;

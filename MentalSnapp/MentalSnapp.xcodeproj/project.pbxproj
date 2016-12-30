@@ -177,6 +177,7 @@
 		EF86F2851E137BCD009D2D49 /* MoodDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EF86F2841E137BCD009D2D49 /* MoodDataModel.m */; };
 		EF88E2821E03BFBB00858A8D /* PlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF88E2811E03BFBB00858A8D /* PlayerViewController.m */; };
 		EF88E2841E03C13700858A8D /* PlayerStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF88E2831E03C13700858A8D /* PlayerStoryboard.storyboard */; };
+		EFDBB0F31E1676520085B586 /* SubCategoryPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFDBB0F21E1676520085B586 /* SubCategoryPageViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -516,6 +517,8 @@
 		EF88E2801E03BFBB00858A8D /* PlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerViewController.h; sourceTree = "<group>"; };
 		EF88E2811E03BFBB00858A8D /* PlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerViewController.m; sourceTree = "<group>"; };
 		EF88E2831E03C13700858A8D /* PlayerStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PlayerStoryboard.storyboard; sourceTree = "<group>"; };
+		EFDBB0F11E1676520085B586 /* SubCategoryPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubCategoryPageViewController.h; sourceTree = "<group>"; };
+		EFDBB0F21E1676520085B586 /* SubCategoryPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubCategoryPageViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1255,6 +1258,8 @@
 				6AC2A94F1DEED9FB009A21EF /* ExcerciseSubCategoryViewController.m */,
 				6A449EE01DFE774C00EE8875 /* SubCategoryDetailViewController.h */,
 				6A449EE11DFE774C00EE8875 /* SubCategoryDetailViewController.m */,
+				EFDBB0F11E1676520085B586 /* SubCategoryPageViewController.h */,
+				EFDBB0F21E1676520085B586 /* SubCategoryPageViewController.m */,
 			);
 			path = GuidedExcerciseSubCategoryView;
 			sourceTree = "<group>";
@@ -1761,6 +1766,7 @@
 				6A3F7A761DEC6F920070415C /* SupportInterface.m in Sources */,
 				6AAA01401DE56F8600208022 /* Constants.m in Sources */,
 				6AAA01571DE56F8600208022 /* main.m in Sources */,
+				EFDBB0F31E1676520085B586 /* SubCategoryPageViewController.m in Sources */,
 				6A704D801E13923E00830031 /* NSArray+FPAdditions.m in Sources */,
 				6A3DEAB51DF82E9000B6E007 /* RecordAlertViewController.m in Sources */,
 				EF49E87B1E028F4D00B5AFF7 /* FilterRequest.m in Sources */,

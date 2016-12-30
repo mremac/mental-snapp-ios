@@ -12,7 +12,7 @@
 #import "SubCategoryTableViewCell.h"
 #import "GuidedExcercise.h"
 #import "PickerViewController.h"
-#import "SubCategoryDetailViewController.h"
+#import "SubCategoryPageViewController.h"
 
 @interface ExcerciseSubCategoryViewController () <PickerViewControllerDelegate, UIImagePickerControllerDelegate>
 
@@ -27,7 +27,6 @@
 @property (strong, nonatomic) PickerViewController *pickerViewController;
 @property (strong, nonatomic) GuidedExcercise *selectedExcercise;
 @property (strong, nonatomic) GuidedExcercise *calendarExcercise;
-@property (strong, nonatomic) SubCategoryDetailViewController *subCategoryDetailViewController;
 
 @end
 
@@ -178,11 +177,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    GuidedExcercise *excercixe  = [self.guidedExcercisePaginate.pageResults objectAtIndex:indexPath.row];
-    if(excercixe){
-        self.subCategoryDetailViewController = [[UIStoryboard storyboardWithName:KProfileStoryboard bundle:nil] instantiateViewControllerWithIdentifier:kSubCategoryDetailViewController];
-        self.subCategoryDetailViewController.selectedExcercise = excercixe;
-        [self.excerciseParentViewController.navigationController pushViewController:self.subCategoryDetailViewController animated:YES];
+    
+    if(self.guidedExcercisePaginate.pageResults.count > indexPath.row)
+    {
+        SubCategoryPageViewController *subCategoryPageViewController = [[UIStoryboard storyboardWithName:KProfileStoryboard bundle:nil] instantiateViewControllerWithIdentifier:kSubCategoryPageViewController];
+        subCategoryPageViewController.exerciseList = self.guidedExcercisePaginate.pageResults;
+        subCategoryPageViewController.currentIndex = indexPath.row;
+        [self.excerciseParentViewController.navigationController pushViewController:subCategoryPageViewController animated:YES];
     }
 }
 

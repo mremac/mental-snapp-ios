@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -1043,7 +1043,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="81"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kJZ-xh-eMo" id="WYO-1L-Q6w">
-                                            <frame key="frameInset" width="375" height="80"/>
+                                            <frame key="frameInset" width="375" height="80.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1tR-Ds-vMV">
@@ -1380,10 +1380,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="CBl-w3-76o" firstAttribute="top" secondItem="cKR-PV-mzX" secondAttribute="bottom" id="6io-4C-8p9"/>
                             <constraint firstItem="CBl-w3-76o" firstAttribute="leading" secondItem="hwM-KL-BvI" secondAttribute="leading" id="FhY-aI-ZGQ"/>
                             <constraint firstAttribute="trailing" secondItem="CBl-w3-76o" secondAttribute="trailing" id="H4n-Ke-52d"/>
-                            <constraint firstItem="g7d-0m-qoP" firstAttribute="top" secondItem="CBl-w3-76o" secondAttribute="bottom" id="KLV-L3-Kjn"/>
-                            <constraint firstItem="CBl-w3-76o" firstAttribute="top" secondItem="cKR-PV-mzX" secondAttribute="bottom" id="TA5-E2-ilJ"/>
+                            <constraint firstAttribute="bottom" secondItem="CBl-w3-76o" secondAttribute="bottom" id="dV0-aD-Gdy"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1723,7 +1723,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iRe-4J-cDh" id="VTX-Ql-YMd">
-                                            <frame key="frameInset" width="375" height="43"/>
+                                            <frame key="frameInset" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aey-99-ugY">
@@ -1971,6 +1971,23 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9I9-ep-Pdu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-4473" y="-1793"/>
+        </scene>
+        <!--Sub Category Page View Controller-->
+        <scene sceneID="O5J-wz-kO7">
+            <objects>
+                <viewController storyboardIdentifier="SubCategoryPageViewController" id="Qpb-44-nxU" customClass="SubCategoryPageViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NSg-Dg-y0E"/>
+                        <viewControllerLayoutGuide type="bottom" id="wz4-9K-GGM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7dV-Ic-oQ5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zbr-BI-ka5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
     <resources>

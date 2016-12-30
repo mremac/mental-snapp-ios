@@ -13,4 +13,6 @@
 
 @property (strong, nonatomic) GuidedExcercise *selectedExcercise;
 
+@property (assign, nonatomic) NSInteger index;
+
 @end

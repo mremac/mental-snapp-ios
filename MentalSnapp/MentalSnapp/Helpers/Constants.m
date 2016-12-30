@@ -68,6 +68,7 @@ ns * KSupportScreenViewController  = @"SupportScreenViewController";
 ns *kGuidedExcerciseViewController = @"GuidedExcerciseViewController";
 ns *kExcerciseSubCategoryViewController = @"ExcerciseSubCategoryViewController";
 ns *kSubCategoryDetailViewController = @"SubCategoryDetailViewController";
+ns *kSubCategoryPageViewController = @"SubCategoryPageViewController";
 ns *kRecordAlertViewController = @"RecordAlertViewController";
 ns *kMoodViewController = @"MoodViewController";
 ns *kFeelingListViewController = @"FeelingListViewController";
