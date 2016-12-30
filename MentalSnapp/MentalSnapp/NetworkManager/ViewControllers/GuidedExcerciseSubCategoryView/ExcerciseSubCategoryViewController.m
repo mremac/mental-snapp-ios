@@ -207,6 +207,7 @@
 -(IBAction)subcategoryCalenderAction:(id)sender {
     _selectedExcercise  = [self.guidedExcercisePaginate.pageResults objectAtIndex:[sender tag]];
     self.calendarExcercise = [_selectedExcercise copy];
+    [self.pickerViewController updatePickerDate:[NSDate date]];
     [[[ApplicationDelegate window] rootViewController] presentViewController:self.pickerViewController animated:YES completion:nil];
 }
 
@@ -217,6 +218,7 @@
 
 -(IBAction)guidedExcerciseCalenderAction:(id)sender {
     self.calendarExcercise = [self.excercise copy];
+    [self.pickerViewController updatePickerDate:[NSDate date]];
     [[[ApplicationDelegate window] rootViewController] presentViewController:self.pickerViewController animated:YES completion:nil];
 }
 

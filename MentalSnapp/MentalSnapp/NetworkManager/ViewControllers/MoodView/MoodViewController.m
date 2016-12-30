@@ -68,6 +68,7 @@
                                              selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
+    [self addToolBarForDone];
 //[self.scrollView setScrollEnabled:NO];
 }
 
@@ -244,11 +245,33 @@
 }
 
 - (UIBarButtonItem *)uploadButton {
-    UIButton *leftButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 4, 30, 30)];
-    [leftButton setImage:[UIImage imageNamed:@"uploadButton"] forState:UIControlStateNormal];
+    UIButton *leftButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 4, 50, 25)];
+    [leftButton setTitle:@"Upload" forState:UIControlStateNormal];
+    [leftButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [leftButton.titleLabel setFont:[UIFont fontWithName:@"Roboto" size:13]];
+    leftButton.cornerRadius = 5;
+    leftButton.borderColor = [UIColor whiteColor];
+    leftButton.borderWidth = 1.0f;
+   // [leftButton setImage:[UIImage imageNamed:@"uploadButton"] forState:UIControlStateNormal];
     [leftButton addTarget:self action:@selector(uploadButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *leftBarButton = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
     return leftBarButton;
+}
+
+-(void)addToolBarForDone {
+    UIToolbar* numberToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50)];
+    numberToolbar.barStyle = UIBarStyleDefault;
+    UIBarButtonItem *button = [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(uploadButtonAction:)];
+    [button setTitleTextAttributes:
+     [NSDictionary dictionaryWithObjectsAndKeys:
+      [UIColor colorWithRed:15.0/255.0 green:175.0/255.0 blue:199.0/255.0 alpha:1.0], NSForegroundColorAttributeName,nil]
+                          forState:UIControlStateNormal];
+    numberToolbar.items = [NSArray arrayWithObjects:
+                           [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
+                           button,
+                           nil];
+    [numberToolbar sizeToFit];
+    self.descriptionTextView.inputAccessoryView = numberToolbar;
 }
 
 -(void)addMoodWheel {
@@ -403,6 +426,7 @@
 
 #pragma mark - IBActions
 - (IBAction)uploadButtonAction:(id)sender {
+    [self.descriptionTextView resignFirstResponder];
     if(([self isValidateField]))
     {
         [self willUploadVideoOnAWS];

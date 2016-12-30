@@ -230,14 +230,14 @@
         [[UIColor lightGrayColor] set];
         CGContextSetLineDash(c, 0, dashedPattern, 2);
         CGContextMoveToPoint(c, xStart-extraSpace5, round(y+extraSpace10) + 0.5);
-        CGContextAddLineToPoint(c, self.bounds.size.width - extraSpace10, round(y+extraSpace10) + 0.5);
+        CGContextAddLineToPoint(c, self.bounds.size.width, round(y+extraSpace10) + 0.5);
         CGContextStrokePath(c);
 
         i++;
     }
     CGContextSetLineDash(c, 0, dashedPattern, 2);
     CGContextMoveToPoint(c, xStart-extraSpace5, 0);
-    CGContextAddLineToPoint(c, self.bounds.size.width - extraSpace10, round(0) + 0.5);
+    CGContextAddLineToPoint(c, self.bounds.size.width, round(0) + 0.5);
     CGContextStrokePath(c);
 
     NSUInteger j = 1;
@@ -267,7 +267,7 @@
         CGContextAddLineToPoint(c, j*value, self.bounds.size.height-(extraSpace10+extraSpace5));
         CGContextStrokePath(c);
         xValue = j*value;
-        CGFloat maxwidth = (self.frame.size.width-(extraSpace10+xStart))/self.xSteps.count;
+        CGFloat maxwidth = (self.frame.size.width-(xStart))/self.xSteps.count;
         value = (self.xAxisLabelsWidth < maxwidth)?maxwidth:self.xAxisLabelsWidth;
         if(j>=1){
             UIView *view = [[UIView alloc] initWithFrame:CGRectMake(xValue, 0, (j==self.xSteps.count)?value+extraSpace5:value, self.bounds.size.height-(extraSpace10+extraSpace5))];
@@ -283,8 +283,8 @@
     }
 
     CGContextSetLineDash(c, 0, dashedPattern, 2);
-    CGContextMoveToPoint(c, self.frame.size.width-extraSpace12, -0.5);
-    CGContextAddLineToPoint(c, self.bounds.size.width-extraSpace12, round(self.bounds.size.height-(floorf((self.superview.frame.size.width*4)/100))));
+    CGContextMoveToPoint(c, self.frame.size.width, -0.5);
+    CGContextAddLineToPoint(c, self.bounds.size.width, round(self.bounds.size.height-(floorf((self.superview.frame.size.width*4.8)/100))));
     CGContextStrokePath(c);
     
     NSUInteger xCnt = self.xStepsCount;
@@ -327,7 +327,7 @@
                     CGFloat y = yStart + round((1.0 - (datItem.y - self.yMin) / yRangeLen) * availableHeight);
                     CGFloat xDiff = x - prevX;
                     CGFloat yDiff = y - prevY;
-
+                    
                     if(xDiff != 0) {
                         CGFloat xSmoothing = self.smoothPlot ? MIN(30,xDiff) : 0;
                         CGFloat ySmoothing = 0.5;
@@ -342,6 +342,7 @@
                     prevX = x;
                     prevY = y;
                 }
+                
 
                 CGContextAddPath(c, path);
                 CGContextSetStrokeColorWithColor(c, [self.backgroundColor CGColor]);
@@ -368,9 +369,9 @@
                 CGContextFillEllipseInRect(c, CGRectMake(xVal - 5.5, yVal - 5.5, 11, 11));
                 CGSize result = [[UIScreen mainScreen] bounds].size;
                 data.color = [Util getMoodColor:(round(yVal/heightPerStep)+((result.width >= 414)?0:1))];
-                [data.color setFill];
+                [[UIColor clearColor] setFill];
                 
-                CGContextFillEllipseInRect(c, CGRectMake(xVal - 4, yVal - 4, 8, 8));
+                CGContextFillEllipseInRect(c, CGRectMake(xVal - 10, yVal - 10, 30, 30));
                 {
                     CGFloat brightness;
                     CGFloat r,g,b,a;
@@ -385,7 +386,7 @@
 //                    else
 //                        [[UIColor blackColor] setFill];
                 }
-                CGContextFillEllipseInRect(c, CGRectMake(xVal - 2, yVal - 2, 4, 4));
+                CGContextFillEllipseInRect(c, CGRectMake(xVal - 5, yVal - 5, 12, 12));
             } // for
           } // data - draw data points
         } // draw data points
@@ -428,7 +429,7 @@
             CGFloat yVal = round((1.0 - (datItem.y - self.yMin) / yRangeLen) * availableHeight);
             double dist = fabs(xVal - xPos);
             double distY = fabs(yVal - yPos);
-            if((dist < 4 && distY < 4) || (dist == 4 && distY < 4)) {
+            if((dist < 5 && distY < 5) || (dist == 5 && distY < 5)) {
                 minDist = dist;
                 minDistY = distY;
                 closest = datItem;

@@ -44,6 +44,7 @@ static const CGFloat lineChartCellHeight = 240.0;
     [super viewDidLoad];
     [self.tableView registerNib:[UINib nibWithNibName:KStatsMoodTableViewCell bundle:nil] forCellReuseIdentifier:KStatsMoodTableViewCell];
     [self initialiseBarView];
+    [self.noContentView setHidden:YES];
     [self getStatsAPIForMonth:[[NSDate date] month] andYear:[[NSDate date] year]];
     [self setRightMenuButtons:[NSArray arrayWithObject:[self calendarButtonAction]]];
     
@@ -51,6 +52,7 @@ static const CGFloat lineChartCellHeight = 240.0;
     self.pickerViewController.modalPresentationStyle = UIModalPresentationOverFullScreen;
     [self.pickerViewController setDateSelection:pastDateOnly];
     [self.pickerViewController setDelegate:self];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshViewForNewRecord) name:kRefreshVideosViewControllerNotification object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -74,12 +76,12 @@ static const CGFloat lineChartCellHeight = 240.0;
 {
     if(self.stats.posts.count > 0)
     {
-        [self.noContentView setHidden:YES];
+       // [self.noContentView setHidden:YES];
         [self.tableView setHidden:NO];
     }
     else
     {
-        [self.noContentView setHidden:NO];
+       // [self.noContentView setHidden:NO];
         [self.tableView setHidden:YES];
     }
     NSArray *arrayMoods = [[self.stats weekDataInfo] objectAtIndex:selectedWeek];
@@ -129,6 +131,10 @@ static const CGFloat lineChartCellHeight = 240.0;
 
 #pragma mark - Private methods
 
+-(void)refreshViewForNewRecord {
+     [self getStatsAPIForMonth:[[NSDate date] month] andYear:[[NSDate date] year]];
+}
+
 - (UIBarButtonItem *)calendarButtonAction {
     UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 4, 30, 30)];
     [button setImage:[UIImage imageNamed:@"calendar"] forState:UIControlStateNormal];
@@ -169,7 +175,7 @@ static const CGFloat lineChartCellHeight = 240.0;
         }
     }];
     
-    NSString* string = [NSString stringWithFormat:@"I was %@ in week (%@ - %@)",[Util getMoodString:maxValuedMoodId],[Util startDateofWeek:selectedWeek+1 inMonth:[self.stats.selectedDate month] inYear:[self.stats.selectedDate year] withFormate:@"dd/MM"],[Util endDateofWeek:selectedWeek inMonth:[self.stats.selectedDate month] inYear:[self.stats.selectedDate year] withFormate:@"dd/MM"]];
+    NSString* string = [NSString stringWithFormat:@"I was %@ in week (%@ - %@)",[Util getMoodString:maxValuedMoodId],[Util startDateofWeek:selectedWeek+1 inMonth:[self.stats.selectedDate month] inYear:[self.stats.selectedDate year] withFormate:@"dd/MM"],[Util endDateofWeek:selectedWeek+1 inMonth:[self.stats.selectedDate month] inYear:[self.stats.selectedDate year] withFormate:@"dd/MM"]];
     [lineChartController.weekTitleLabel setText:string];
     [lineChartController.previouseButton addTarget:self action:@selector(previouseButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     [lineChartController.nextButton addTarget:self action:@selector(nextButtonAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -308,10 +314,10 @@ static const CGFloat lineChartCellHeight = 240.0;
                 if(response && [response isKindOfClass:[StatsModel class]])
                 {
                     self.stats = response;
+                    [self.tableView setHidden:(self.stats.posts.count > 0)];
+                    [self.noContentView setHidden:(self.stats.posts.count > 0)];
                     self.stats.selectedDate = [NSDate dateWithYear:year month:month day:1];
                     [self lineChartDataForMonth:month andForYear:year];
-                    [self.tableView setHidden:NO];
-                    [self.noContentView setHidden:YES];
                     [self.tableView reloadData];
                     isPreviouseButtonHidden = YES;
                     NSArray *arrayNextMoods = [[self.stats weekDataInfo] objectAtIndex:selectedWeek+1];
@@ -358,7 +364,7 @@ static const CGFloat lineChartCellHeight = 240.0;
         }
     }];
     
-    NSString* string = [NSString stringWithFormat:@"I was %@ in week (%@ - %@)",[Util getMoodString:maxValuedMoodId],[Util startDateofWeek:section inMonth:[self.stats.selectedDate month] inYear:[self.stats.selectedDate year] withFormate:@"dd/MM"],[Util endDateofWeek:section inMonth:[self.stats.selectedDate month] inYear:[self.stats.selectedDate year] withFormate:@"dd/MM"]];
+    NSString* string = [NSString stringWithFormat:@"I was %@ in week (%@ - %@)",[Util getMoodString:maxValuedMoodId],[Util startDateofWeek:section inMonth:[self.stats.selectedDate month] inYear:[self.stats.selectedDate year] withFormate:@"dd/MM"],[Util endDateofWeek:maxValuedMoodId inMonth:[self.stats.selectedDate month] inYear:[self.stats.selectedDate year] withFormate:@"dd/MM"]];
     [lineChartController.weekTitleLabel setText:string];
 
     NSArray *arrayNextMoods = [[self.stats weekDataInfo] objectAtIndex:selectedWeek+1];

@@ -21,14 +21,14 @@
 
 - (id)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {		
-        UIFont *fatFont = [UIFont fontWithName:@"Roboto" size:7];
+        UIFont *fatFont = [UIFont fontWithName:@"Roboto" size:10];
         self.infoLabel = [[UILabel alloc] init]; self.infoLabel.font = fatFont;
         self.infoLabel.backgroundColor = [UIColor clearColor]; self.infoLabel.textColor = [UIColor colorWithRed:61.0/255.0 green:61.0/255.0 blue:61.0/255.0 alpha:1.0];
         self.infoLabel.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth;
         //self.infoLabel.shadowColor = [UIColor blackColor];
         //self.infoLabel.shadowOffset = CGSizeMake(0, -1);
         self.infoLabel.textAlignment = NSTextAlignmentCenter;
-        [self.infoLabel setNumberOfLines:2];
+        [self.infoLabel setNumberOfLines:3];
         [self addSubview:self.infoLabel];
         
         self.backgroundColor = [UIColor clearColor];
@@ -72,7 +72,7 @@ void CGContextAddRoundedRectWithHookSimple(CGContextRef c, CGRect rect, CGFloat 
     [self recalculateFrame];
     
     [self.infoLabel sizeToFit];
-    self.infoLabel.frame = CGRectMake(self.bounds.origin.x + 7, self.bounds.origin.y + 2, (self.frame.size.width<50)?50:self.frame.size.width-20, self.infoLabel.frame.size.height);
+    self.infoLabel.frame = CGRectMake(self.bounds.origin.x + 7, self.bounds.origin.y + 2, (self.frame.size.width<50)?50:self.frame.size.width-20, self.frame.size.height-20);
 }
 
 - (CGSize)sizeThatFits:(CGSize)size {
@@ -122,8 +122,6 @@ void CGContextAddRoundedRectWithHookSimple(CGContextRef c, CGRect rect, CGFloat 
     CGContextFillRoundedRect(c, theRect, 6);
 }
 
-
-
 #define MAX_WIDTH 400
 // calculate own frame to fit within parent frame and be large enough to hold the event.
 - (void)recalculateFrame {
@@ -133,11 +131,18 @@ void CGContextAddRoundedRectWithHookSimple(CGContextRef c, CGRect rect, CGFloat 
     CGRect theRect = self.frame; theRect.origin = CGPointZero;
     if(theFrame.size.width>120){
         theFrame.size.width =120;
-        theFrame.size.height += 10;
     }
     if(theFrame.size.width<60){
         theFrame.size.width =60;
     }
+    CGRect frame =  self.infoLabel.frame;
+    frame.size.width = (theFrame.size.width<50)?50:theFrame.size.width-20;
+    [self.infoLabel setFrame:frame];
+    CGFloat labelHeight = [self.infoLabel getLabelAtrributedTextHeight];
+    frame.size.height = labelHeight;
+    [self.infoLabel setFrame:frame];
+    theFrame.size.height = (labelHeight>75)?75:((labelHeight<75)?75:labelHeight);
+
     {
         theFrame.origin.y = self.tapPoint.y - theFrame.size.height + 2 * SHADOWSIZE + 1;
         theFrame.origin.x = round(self.tapPoint.x - ((theFrame.size.width - 2 * SHADOWSIZE)) / 2.0);
