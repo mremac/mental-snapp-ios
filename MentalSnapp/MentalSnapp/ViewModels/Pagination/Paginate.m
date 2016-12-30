@@ -1,6 +1,6 @@
 //
 //  Feed.m
-//  FeelShare
+//  MentalSnapp
 //
 //  Copyright (c) 2015 Systango. All rights reserved.
 //

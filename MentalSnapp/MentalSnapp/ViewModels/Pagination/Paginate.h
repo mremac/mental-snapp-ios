@@ -1,6 +1,6 @@
 //
 //  Feed.h
-//  FeelShare
+//  MentalSnapp
 //
 //  Copyright (c) 2015 Systango. All rights reserved.
 //
@@ -17,6 +17,7 @@
 @property (nonatomic, strong) NSNumber *perPage;
 @property (nonatomic, assign) NSInteger perPageLimit;
 @property (nonatomic, strong) NSDate *lastUpdatedAt;
+@property (nonatomic, strong) NSString *dateText;
 
 @property (nonatomic) BOOL hasMoreRecords;
 

@@ -13,24 +13,37 @@
 #import "RecordPost.h"
 #import "RequestManager.h"
 #import "Paginate.h"
+#import "PickerViewController.h"
 
 @import AVFoundation;
 @import AVKit;
 
-@interface VideosViewController ()<DownloadVideoDelegate>
+typedef enum : NSUInteger {
+    SearchOwner,
+    CalendarOwner,
+    None
+} SearchTextFieldOwner;
+
+@interface VideosViewController () <DownloadVideoDelegate, PickerViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIView *noContentView;
 @property (weak, nonatomic) IBOutlet UIView *topHeaderView;
 @property (weak, nonatomic) IBOutlet UITextField *searchTextField;
 @property (weak, nonatomic) IBOutlet UIButton *filterButton;
 @property (weak, nonatomic) IBOutlet UIButton *searchButton;
+@property (weak, nonatomic) IBOutlet UIButton *calendarButton;
 @property (weak, nonatomic) IBOutlet UIButton *cancelSearchButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *searchButtonLeadingContraint;
 @property (strong, nonatomic) Paginate *recordPostsPaginate;
 @property (strong, nonatomic) Paginate *searchPaginate;
+@property (strong, nonatomic) Paginate *calendarPaginate;
 @property (strong, nonatomic) Paginate *filterPaginate;
 @property (strong, nonatomic) FilterModel *selectedFilter;
 @property (strong, nonatomic) FilterListTableController *filterListController;
+@property (strong, nonatomic) PickerViewController *pickerViewController;
+@property (strong, nonatomic) NSDate *selectedSearchDate;
+@property (assign, nonatomic) SearchTextFieldOwner textFieldOwner;
+
 @end
 
 @implementation VideosViewController
@@ -56,6 +69,12 @@
     [self.topHeaderView layoutIfNeeded];
     [self changeSearchMode];
     
+    self.pickerViewController = [[UIStoryboard storyboardWithName:KProfileStoryboard bundle:nil] instantiateViewControllerWithIdentifier:kPickerViewController];
+    self.pickerViewController.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    [self.pickerViewController setPickerType:dateOnly];
+    [self.pickerViewController setDateSelection:pastDateOnly];
+    [self.pickerViewController setDelegate:self];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getRecordPosts) name:kRefreshVideosViewControllerNotification object:nil];
 }
 
@@ -63,16 +82,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
- */
 
 #pragma mark - UITextFieldDelegate
 
@@ -99,6 +108,11 @@
     [self didCancelSearch];
 }
 
+- (IBAction)calendarButtonTapped:(UIButton *)sender
+{
+    [[[ApplicationDelegate window] rootViewController] presentViewController:self.pickerViewController animated:YES completion:nil];
+}
+
 #pragma mark - Private methods
 
 - (void)didFilterButtonTapped:(id)sender
@@ -109,7 +123,7 @@
 
 - (void)didSearchBegin
 {
-    if(self.searchButton.isSelected && self.searchTextField.text.trim.length > 0)
+    if((self.searchButton.isSelected || self.calendarButton.isSelected) && self.searchTextField.text.trim.length > 0)
     {
         [self getRecordPosts];
     }
@@ -121,10 +135,11 @@
 
 - (void)didSearchButtonTapped
 {
-    if(self.searchButton.isSelected)
+    if(self.searchButton.isSelected || self.calendarButton.isSelected)
         return;
     
     self.searchButton.selected = YES;
+    self.textFieldOwner = SearchOwner;
     
     [self animateSearch];
 }
@@ -132,32 +147,61 @@
 - (void)didCancelSearch
 {
     self.searchButton.selected = NO;
+    self.calendarButton.selected = NO;
     [self animateSearch];
     [self.tableView reloadData];
 }
 
 - (void)changeSearchMode
 {
-    if(self.searchButton.isSelected)
-    {
-        self.searchButtonLeadingContraint.constant = 0;
-        self.searchTextField.hidden = NO;
-        self.searchTextField.alpha = 1;
-        [self.searchTextField becomeFirstResponder];
-        self.cancelSearchButton.hidden = NO;
-        self.tableView.alpha = 0.5;
-    }
-    else
-    {
-        CGFloat xpos = [self.filterButton getXPos];
-        CGFloat width = [self.searchButton getWidth];
-        self.searchButtonLeadingContraint.constant = xpos - width;
-        self.searchTextField.hidden = YES;
-        self.searchTextField.alpha = 0;
-        [self.searchTextField resignFirstResponder];
-        self.searchTextField.text = kEmptyString;
-        self.cancelSearchButton.hidden = YES;
-        self.tableView.alpha = 1;
+    if (_textFieldOwner == SearchOwner) {
+        if(self.searchButton.isSelected)
+        {
+            self.searchButtonLeadingContraint.constant = 0;
+            self.searchTextField.hidden = NO;
+            self.searchTextField.alpha = 1;
+            [self.searchTextField becomeFirstResponder];
+            self.cancelSearchButton.hidden = NO;
+            self.tableView.alpha = 0.5;
+        }
+        else
+        {
+            CGFloat xpos = [self.calendarButton getXPos];
+            CGFloat width = [self.searchButton getWidth];
+            self.searchButtonLeadingContraint.constant = xpos - width;
+            self.searchTextField.hidden = YES;
+            self.searchTextField.alpha = 0;
+            [self.searchTextField resignFirstResponder];
+            self.searchTextField.text = kEmptyString;
+            self.cancelSearchButton.hidden = YES;
+            self.tableView.alpha = 1;
+            self.textFieldOwner = None;
+        }
+    } else if (_textFieldOwner == CalendarOwner) {
+        if(self.calendarButton.isSelected)
+        {
+            self.searchButtonLeadingContraint.constant = 0;
+            self.searchTextField.hidden = NO;
+            self.searchTextField.alpha = 1;
+            self.searchTextField.text = [self getFormattedTextForDate:self.selectedSearchDate];
+            self.searchTextField.userInteractionEnabled = NO;
+            self.cancelSearchButton.hidden = NO;
+            self.tableView.alpha = 0.5;
+        }
+        else
+        {
+            CGFloat xpos = [self.calendarButton getXPos];
+            CGFloat width = [self.searchButton getWidth];
+            self.searchButtonLeadingContraint.constant = xpos - width;
+            self.searchTextField.hidden = YES;
+            self.searchTextField.alpha = 0;
+            [self.searchTextField resignFirstResponder];
+            self.searchTextField.text = kEmptyString;
+            self.searchTextField.userInteractionEnabled = YES;
+            self.cancelSearchButton.hidden = YES;
+            self.tableView.alpha = 1;
+            self.textFieldOwner = None;
+        }
     }
     [self.topHeaderView layoutIfNeeded];
 }
@@ -215,8 +259,13 @@
         {
             self.searchPaginate.hashTagText = self.selectedFilter.filterId;
         }
-    }
-    else if(self.filterButton.selected)
+    } else if(self.calendarButton.isSelected)
+    {
+        self.calendarPaginate = [[Paginate alloc] initWithPageNumber:[NSNumber numberWithInt:1] withMoreRecords:YES andPerPageLimit:10];
+        self.calendarPaginate.details = self.searchTextField.text.trim;
+        
+        self.calendarPaginate.dateText = [self getFormattedTextForDate:self.selectedSearchDate];
+    } else if(self.filterButton.selected)
     {
         self.filterPaginate = [[Paginate alloc] initWithPageNumber:[NSNumber numberWithInt:1] withMoreRecords:YES andPerPageLimit:10];
         self.filterPaginate.details = self.selectedFilter.filterId;
@@ -229,7 +278,16 @@
 
 - (Paginate *)getCurrentPaginate
 {
-    return self.searchButton.isSelected ? self.searchPaginate : self.filterButton.isSelected ? self.filterPaginate : self.recordPostsPaginate;
+    if (self.searchButton.isSelected) {
+        return self.searchPaginate;
+    } else if (self.calendarButton.isSelected) {
+        return self.calendarPaginate;
+    } else if (self.filterButton.isSelected) {
+        return self.filterPaginate;
+    } else {
+        return self.recordPostsPaginate;
+    }
+//    return self.searchButton.isSelected ? self.searchPaginate : self.filterButton.isSelected ? self.filterPaginate : self.recordPostsPaginate;
 }
 
 - (void)showPlayerWithRecordPost:(RecordPost *)recordPost
@@ -284,6 +342,13 @@
     });
 }
 
+- (NSString *)getFormattedTextForDate:(NSDate *)date {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    
+    return [dateFormatter stringFromDate:date];
+}
+
 #pragma mark - API Call
 
 -(void)fetchRecordPosts
@@ -324,6 +389,12 @@
     if(self.searchButton.isSelected)
     {
         [[RequestManager alloc] getSearchRecordPostsWithPaginate:self.searchPaginate withCompletionBlock:^(BOOL success, id response)
+         {
+             block(success, response);
+         }];
+    } else if (self.calendarButton.isSelected)
+    {
+        [[RequestManager alloc] getSearchRecordPostsWithPaginate:self.calendarPaginate withCompletionBlock:^(BOOL success, id response)
          {
              block(success, response);
          }];
@@ -475,6 +546,21 @@
     {
         [Banner showSuccessBannerWithSubtitle:LocalizedString(@"VideosScreenDownloadComplete")];
     }
+}
+
+#pragma mark - Picker view controller delegate
+
+- (void)didSelectCancelButton {
+    
+}
+
+- (void)didSelectDoneButton:(NSDate *)date {
+    _textFieldOwner = CalendarOwner;
+    self.calendarButton.selected = YES;
+    self.selectedSearchDate = date;
+    [self animateSearch];
+    
+    [self didSearchBegin];
 }
 
 @end

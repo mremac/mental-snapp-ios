@@ -1,6 +1,6 @@
 //
 //  DatePaginate.h
-//  FeelShare
+//  MentalSnapp
 //
 //  Copyright (c) 2015 Systango. All rights reserved.
 //
