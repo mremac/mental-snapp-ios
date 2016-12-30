@@ -22,7 +22,8 @@
                                                                   @"moodId": @"mood_value",
                                                                   @"feelingId": @"feeling_ids",
                                                                   @"excerciseId" : @"exercisable_id",
-                                                                  @"createdAt" : @"created_at"
+                                                                  @"createdAt" : @"created_at",
+                                                                  @"feelings" : @"feelings"
                                                                   }];
 }
 

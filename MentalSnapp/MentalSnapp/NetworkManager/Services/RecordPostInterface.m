@@ -130,7 +130,14 @@
         }
         if ([success integerValue] == kStatusSuccess)
         {
-            self.block([success integerValue], response);
+            NSString *message;
+            if([response hasValueForKey:@"message"])
+            {
+                message = [response valueForKey:@"message"];
+            } else {
+                message = @"Video deleted successfully.";
+            }
+            self.block([success integerValue], message);
         }
         else
         {

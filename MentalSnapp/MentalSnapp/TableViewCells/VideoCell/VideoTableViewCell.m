@@ -45,7 +45,33 @@
     self.deleteBlock = deleteBlock;
     NSString *a = recordPost.postDesciption;
     
-    NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithString:a];
+    NSMutableAttributedString *attText;
+    
+    if (recordPost.feelings.count != 0) {
+        NSDictionary *feeling = [recordPost.feelings firstObject];
+        if ([feeling hasValueForKey:@"name"]) {
+            NSString *feelingName = [feeling valueForKey:@"name"];
+            
+            if (a.length != 0) {
+                a = [NSString stringWithFormat:@"Feeling: %@, %@",feelingName, a];
+            } else {
+                a = [NSString stringWithFormat:@"Feeling: %@",feelingName];
+            }
+            
+            UIFont *boldFont = [UIFont fontWithName:@"Roboto-Bold" size:13.0f];
+            attText = [[NSMutableAttributedString alloc] initWithString:a];
+            [attText addAttribute:NSFontAttributeName value:boldFont range:[a rangeOfString:feelingName]];
+        }
+    }
+    
+    NSMutableAttributedString *att;
+    
+    if (attText == nil) {
+        att = [[NSMutableAttributedString alloc] initWithString:a];
+    } else {
+        att = attText;
+    }
+    
     NSRange foundRange = [a rangeOfString:@"#"];
     
     while (foundRange.location != NSNotFound)

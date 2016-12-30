@@ -120,7 +120,7 @@
              {
                  [Banner showFailureBannerWithSubtitle:@"Video could not be uploaded. Please try again"];
                  // handle failure case
-                 [self didClearStateOnPop];
+                 [self showInProgress:NO];
              }
          }];
     }
@@ -154,7 +154,7 @@
              {
                  [Banner showFailureBannerWithSubtitle:@"Video's thumbnail could not be uploaded. Please try again"];
                  // handle failure case
-                 [self didClearStateOnPop];
+                 [self showInProgress:NO];
              }
          }];
     }
@@ -191,11 +191,11 @@
         [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Please select feeling."];
         return NO;
     }
-    else if([self.descriptionTextView.text isEqualToString:PlaceHolderTextView] || [self.descriptionTextView.text isEqualToString:@""])
-    {
-        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Please enter description."];
-        return NO;
-    }
+//    else if([self.descriptionTextView.text isEqualToString:PlaceHolderTextView] || [self.descriptionTextView.text isEqualToString:@""])
+//    {
+//        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Please enter description."];
+//        return NO;
+//    }
     
     return YES;
 }
@@ -205,9 +205,15 @@
     NSString *videoName = self.videoNameTextField.text;
     videoName = [videoName stringByReplacingOccurrencesOfString:@" " withString:@"_"];
     
-    RecordPost *post = [[RecordPost alloc] initWithVideoName:videoName andExcerciseType:((_excercise)?(([_excercise.excerciseStringType isEqualToString:@""])?@"GuidedExcercise":_excercise.excerciseStringType):@"") andCoverURL:self.videoThumbnailURLPath andPostDesciption:self.descriptionTextView.text andVideoURL:self.videoURLPath andUserId:[UserManager sharedManager].userModel.userId andMoodId:[NSString stringWithFormat:@"%ld",(long)selectedMood] andFeelingId:selectedFeeling.feelingId andWithExcercise:_excercise];
+    NSString *description = _descriptionTextView.text;
+    if ([_descriptionTextView.text isEqualToString:PlaceHolderTextView]) {
+        description = @"";
+    }
+    
+    RecordPost *post = [[RecordPost alloc] initWithVideoName:videoName andExcerciseType:((_excercise)?(([_excercise.excerciseStringType isEqualToString:@""])?@"GuidedExcercise":_excercise.excerciseStringType):@"") andCoverURL:self.videoThumbnailURLPath andPostDesciption:description andVideoURL:self.videoURLPath andUserId:[UserManager sharedManager].userModel.userId andMoodId:[NSString stringWithFormat:@"%ld",(long)selectedMood] andFeelingId:selectedFeeling.feelingId andWithExcercise:_excercise];
     
     [[RequestManager alloc] postRecordPost:post withCompletionBlock:^(BOOL success, id response) {
+        [self showInProgress:NO];
         if(success)
         {
             [self didClearStateOnPop];
@@ -220,7 +226,6 @@
 {
     self.videoURLPath = kEmptyString;
     self.videoThumbnailURLPath = kEmptyString;
-    [self showInProgress:NO];
 }
 
 - (void)didSuccessAPI

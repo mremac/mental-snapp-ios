@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>NetworkMode</key>
-	<string>STAGING</string>
+	<string></string>
 	<key>LocalURL</key>
-	<string>192.168.1.38:4000</string>
+	<string>192.168.1.38:3000</string>
 	<key>ProductionURL</key>
 	<string>www.skeleton-systango.com</string>
 	<key>StagingURL</key>

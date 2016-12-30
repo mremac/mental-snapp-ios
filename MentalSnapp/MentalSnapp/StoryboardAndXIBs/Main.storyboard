@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="evG-dm-COo">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="evG-dm-COo">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -513,7 +513,7 @@
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="auP-6t-gfh" userLabel="Video Container View">
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="video_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="JFJ-ZD-epa" userLabel="Video Image View"/>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="video_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="JFJ-ZD-epa" userLabel="Video Image View"/>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qLM-9i-AvB" userLabel="Play Button">
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="100" id="OpT-vA-ysM"/>
@@ -526,7 +526,7 @@
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LfR-PR-cja" userLabel="Download Button">
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="50" id="aF1-gy-ViH"/>
+                                                                <constraint firstAttribute="width" constant="40" id="aF1-gy-ViH"/>
                                                                 <constraint firstAttribute="height" constant="50" id="b4e-QU-Qhg"/>
                                                             </constraints>
                                                             <state key="normal" image="download_video"/>
@@ -543,6 +543,16 @@
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UGf-lp-BBr" userLabel="Delete Button">
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="50" id="1dU-TT-3u4"/>
+                                                                <constraint firstAttribute="width" constant="40" id="l21-Jn-353"/>
+                                                            </constraints>
+                                                            <state key="normal" image="deleteVideo"/>
+                                                            <connections>
+                                                                <action selector="deleteButtonTapped:" destination="NK5-z8-BIQ" eventType="touchUpInside" id="pX0-kf-NqU"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -550,12 +560,14 @@
                                                         <constraint firstAttribute="bottom" secondItem="B5K-63-52l" secondAttribute="bottom" constant="9" id="2Zf-aP-i9e"/>
                                                         <constraint firstItem="qLM-9i-AvB" firstAttribute="centerX" secondItem="JFJ-ZD-epa" secondAttribute="centerX" id="5E9-9t-e3T"/>
                                                         <constraint firstItem="JFJ-ZD-epa" firstAttribute="leading" secondItem="auP-6t-gfh" secondAttribute="leading" id="9Hm-Cs-LhD"/>
+                                                        <constraint firstAttribute="trailing" secondItem="UGf-lp-BBr" secondAttribute="trailing" constant="10" id="Iee-Lh-ElU"/>
                                                         <constraint firstAttribute="bottom" secondItem="JFJ-ZD-epa" secondAttribute="bottom" id="XWU-eZ-FZy"/>
                                                         <constraint firstItem="JFJ-ZD-epa" firstAttribute="top" secondItem="auP-6t-gfh" secondAttribute="top" id="ctu-9Q-LvR"/>
+                                                        <constraint firstItem="UGf-lp-BBr" firstAttribute="centerY" secondItem="LfR-PR-cja" secondAttribute="centerY" id="dqT-Mz-OhX"/>
                                                         <constraint firstAttribute="height" constant="350" id="gXb-cY-Hvb"/>
                                                         <constraint firstItem="qLM-9i-AvB" firstAttribute="centerY" secondItem="JFJ-ZD-epa" secondAttribute="centerY" id="pSh-cU-Rzk"/>
+                                                        <constraint firstItem="UGf-lp-BBr" firstAttribute="leading" secondItem="LfR-PR-cja" secondAttribute="trailing" id="qJc-o2-g74"/>
                                                         <constraint firstItem="LfR-PR-cja" firstAttribute="top" secondItem="auP-6t-gfh" secondAttribute="top" id="rpH-jv-cRf"/>
-                                                        <constraint firstAttribute="trailing" secondItem="LfR-PR-cja" secondAttribute="trailing" id="upE-3g-9dX"/>
                                                         <constraint firstAttribute="trailing" secondItem="B5K-63-52l" secondAttribute="trailing" constant="12" id="y79-sq-Yfy"/>
                                                     </constraints>
                                                 </view>
@@ -965,7 +977,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ea6-22-dcP" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" tag="4" title="" image="more" selectedImage="more_select" id="pLc-5M-03v"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="osg-Bk-j07">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="osg-Bk-j07">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1003,7 +1015,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="olk-hQ-QB6" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" tag="2" title="" image="record" selectedImage="record_select" id="16e-aA-4fL"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="a5i-vM-KMF">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="a5i-vM-KMF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1022,7 +1034,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="foe-lB-Bwv" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" tag="1" title="" image="video" selectedImage="video_select" id="HrM-Hn-fDR"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fxH-1a-3AF">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="fxH-1a-3AF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.058823529409999999" green="0.68627450980000004" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -1220,7 +1232,7 @@
                                                                 <color key="textColor" red="0.9137254901960784" green="0.396078431372549" blue="0.22745098039215686" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Enter your phone number" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="wA1-nw-noe">
+                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your phone number" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="wA1-nw-noe">
                                                                 <color key="tintColor" red="0.05086936064" green="0.64109499349999999" blue="0.73025193249999998" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="26" id="TnC-jd-Ue9"/>
@@ -1241,16 +1253,6 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cYI-dk-RQi">
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="28" id="4eI-SQ-4oQ"/>
-                                                                    <constraint firstAttribute="width" constant="30" id="tOF-4r-Eoi"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
-                                                                <state key="normal" title="+44">
-                                                                    <color key="titleColor" red="0.32549019610000002" green="0.32549019610000002" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                                </state>
-                                                            </button>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
@@ -1262,11 +1264,9 @@
                                                             <constraint firstItem="0nP-IR-rLF" firstAttribute="top" secondItem="wA1-nw-noe" secondAttribute="bottom" constant="5" id="M3H-gk-T6J"/>
                                                             <constraint firstAttribute="trailing" secondItem="0nP-IR-rLF" secondAttribute="trailing" constant="46" id="R62-zD-0v7"/>
                                                             <constraint firstItem="wA1-nw-noe" firstAttribute="top" secondItem="56H-g1-E0I" secondAttribute="bottom" id="Vse-l3-YcH"/>
-                                                            <constraint firstItem="wA1-nw-noe" firstAttribute="leading" secondItem="cYI-dk-RQi" secondAttribute="trailing" constant="2" id="Z49-a6-nw6"/>
                                                             <constraint firstAttribute="bottom" secondItem="0nP-IR-rLF" secondAttribute="bottom" constant="2" id="mAW-sK-7hW"/>
-                                                            <constraint firstItem="cYI-dk-RQi" firstAttribute="top" secondItem="56H-g1-E0I" secondAttribute="bottom" id="qz2-v7-x3t"/>
                                                             <constraint firstItem="0nP-IR-rLF" firstAttribute="leading" secondItem="ktA-RM-39O" secondAttribute="leading" constant="42" id="rfa-aa-8Ir"/>
-                                                            <constraint firstItem="cYI-dk-RQi" firstAttribute="leading" secondItem="ktA-RM-39O" secondAttribute="leading" constant="42" id="zT1-VO-mMo"/>
+                                                            <constraint firstItem="wA1-nw-noe" firstAttribute="leading" secondItem="ktA-RM-39O" secondAttribute="leading" constant="42" id="thP-X7-J3e"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ejk-K4-LNK" userLabel="DateOfBirthView">
@@ -1810,6 +1810,7 @@
         <image name="RememberMeUnCheck" width="19" height="19"/>
         <image name="backButton" width="15" height="26"/>
         <image name="close" width="19" height="19"/>
+        <image name="deleteVideo" width="29" height="29"/>
         <image name="download_video" width="28" height="28"/>
         <image name="exercise" width="63" height="46"/>
         <image name="exercise_select" width="63" height="46"/>
