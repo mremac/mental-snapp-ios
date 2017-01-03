@@ -369,11 +369,12 @@ static const CGFloat lineChartCellHeight = 240.0;
     
     NSString* string = [NSString stringWithFormat:@"I was %@ in week (%@ - %@)",[Util getMoodString:maxValuedMoodId],[Util startDateofWeek:section inMonth:[self.stats.selectedDate month] inYear:[self.stats.selectedDate year] withFormate:@"dd/MM"],[Util endDateofWeek:maxValuedMoodId inMonth:[self.stats.selectedDate month] inYear:[self.stats.selectedDate year] withFormate:@"dd/MM"]];
     [lineChartController.weekTitleLabel setText:string];
-
-    NSArray *arrayNextMoods = [[self.stats weekDataInfo] objectAtIndex:selectedWeek+1];
-    isNextButtonHidden = ([arrayNextMoods count]>0)?NO:YES;
-    NSArray *arrayPreMoods = [[self.stats weekDataInfo] objectAtIndex:selectedWeek-1];
-     isPreviouseButtonHidden = ([arrayPreMoods count]>0)?NO:YES;
+    if(selectedWeek != 0){
+        NSArray *arrayNextMoods = [[self.stats weekDataInfo] objectAtIndex:selectedWeek+1];
+        isNextButtonHidden = ([arrayNextMoods count]>0)?NO:YES;
+        NSArray *arrayPreMoods = [[self.stats weekDataInfo] objectAtIndex:selectedWeek-1];
+        isPreviouseButtonHidden = ([arrayPreMoods count]>0)?NO:YES;
+    }
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
 
 }
