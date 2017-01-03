@@ -1046,7 +1046,7 @@
                                             <frame key="frameInset" width="375" height="80"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1tR-Ds-vMV">
+                                                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1tR-Ds-vMV">
                                                     <color key="backgroundColor" red="0.058823529411764705" green="0.68627450980392157" blue="0.7803921568627451" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="48" id="OjC-8J-Oov"/>
@@ -1207,9 +1207,9 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="125" height="136"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bos-dC-WMg">
+                                                        <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bos-dC-WMg">
                                                             <subviews>
-                                                                <button opaque="NO" contentMode="scaleAspectFit" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7r4-bw-6vy">
+                                                                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7r4-bw-6vy">
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="102" id="A6M-DT-ICx"/>
                                                                         <constraint firstAttribute="width" constant="102" id="hh0-UV-PtZ"/>
@@ -1233,7 +1233,6 @@
                                                         </view>
                                                     </subviews>
                                                 </view>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="Bos-dC-WMg" secondAttribute="trailing" id="5kq-rs-KU3"/>
                                                     <constraint firstAttribute="bottom" secondItem="Bos-dC-WMg" secondAttribute="bottom" id="ONO-LX-4L8"/>
