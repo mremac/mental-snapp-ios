@@ -102,7 +102,20 @@
         float y = [arr2[item] floatValue];
         RecordPost *post = [array objectAtIndex:item];
         //NSString *label1 = [formatter stringFromDate:[date1 dateByAddingTimeInterval:x]];
-        NSString *label2 = [NSString stringWithFormat:@"%@", post.postDesciption];
+        NSString *a = post.postDesciption;
+        if (post.feelings.count != 0) {
+            NSDictionary *feeling = [post.feelings firstObject];
+            if ([feeling hasValueForKey:@"name"]) {
+                NSString *feelingName = [feeling valueForKey:@"name"];
+                
+                if (a.length != 0) {
+                    a = [NSString stringWithFormat:@"Feeling %@, %@",feelingName, a];
+                } else {
+                    a = [NSString stringWithFormat:@"Feeling %@",feelingName];
+                }
+            }
+        }
+        NSString *label2 = [NSString stringWithFormat:@"%@",a];
         return [LCLineChartDataItem dataItemWithX:x y:y xLabel:@"" dataLabel:label2 withData:post];
     };
     

@@ -211,7 +211,7 @@
             [self showInProgress:NO];
             if (success) {
                 [[UserManager sharedManager] saveLoggedinUserInfoInUserDefault];
-                [Banner showRigidBannerWithSubtitle:@"A link has been send to your email."];
+                [Banner showRigidBannerWithSubtitle:@"A confirmation link has been send to your email."];
                 [self.navigationController popToRootViewControllerAnimated:YES];
             }
         }];

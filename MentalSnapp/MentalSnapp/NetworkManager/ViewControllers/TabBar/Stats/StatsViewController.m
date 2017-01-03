@@ -164,8 +164,8 @@ static const CGFloat lineChartCellHeight = 240.0;
     UIView *view = lineChartController.view;
     
     NSArray *arrayMoods = [self.stats.weekDataInfo objectAtIndex:selectedWeek];
-    __block NSInteger maxValuedMood = 1;
-    __block NSInteger maxValuedMoodId = 1;
+    __block NSInteger maxValuedMood = 0;
+    __block NSInteger maxValuedMoodId = 0;
     [arrayMoods enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         NSArray* newValue = obj;
         NSInteger value = [newValue[1] integerValue];
@@ -348,13 +348,16 @@ static const CGFloat lineChartCellHeight = 240.0;
 
 #pragma mark - Line Chart Delegate
 -(void)didSelectWeekSection:(NSInteger)section {
+    if(section<=0){
+        return;
+    }
     NSArray *arrayMoods = [[self.stats weekDataInfo] objectAtIndex:section-1];
     if(arrayMoods.count>0){
         selectedWeek = section-1;
     }
     
-    __block NSInteger maxValuedMood = 1;
-    __block NSInteger maxValuedMoodId = 1;
+    __block NSInteger maxValuedMood = 0;
+    __block NSInteger maxValuedMoodId = 0;
     [arrayMoods enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         NSArray* newValue = obj;
         NSInteger value = [newValue[1] integerValue];

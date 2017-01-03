@@ -15,6 +15,13 @@
 @property (strong, nonatomic) IBOutlet UIView *mainContainerView;
 @property (strong, nonatomic) IBOutlet UITextView *detailTextView;
 @property (strong, nonatomic) PickerViewController *pickerViewController;
+@property (strong, nonatomic) IBOutlet UIImageView *subcategoryImage;
+@property (strong, nonatomic) IBOutlet UILabel *subcategoryNameLabel;
+@property (strong, nonatomic) IBOutlet UIButton *nextButton;
+@property (strong, nonatomic) IBOutlet UIButton *previouseButton;
+- (IBAction)nextButtonAction:(id)sender;
+- (IBAction)previouseButtonAction:(id)sender;
+
 
 @end
 
@@ -38,6 +45,13 @@
     [self.view layoutIfNeeded];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self.previouseButton setEnabled:(((self.index-1)<0)?NO:YES)];
+    [self.nextButton setEnabled:((self.index+1>=self.allSubExcercises.count)?NO:YES)];
+    [self.previouseButton setAlpha:(((self.index-1)<0)?0.2:1.0)];
+    [self.nextButton setAlpha:((self.index+1>=self.allSubExcercises.count)?0.2:1.0)];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -56,7 +70,14 @@
 
 #pragma mark - Private methods
 - (void)showDetailofCategory {
+    [self.subcategoryImage sd_setImageWithURL:[NSURL URLWithString:self.selectedExcercise.coverURL] placeholderImage:[UIImage imageNamed:@"defaultExcerciseImage"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        if(image){
+            [self.subcategoryImage setImage:image];
+        }
+    }];
+    [self.subcategoryNameLabel setText:self.selectedExcercise.excerciseName];
     [self.detailTextView setText:self.selectedExcercise.excerciseDescription];
+ 
 }
 
 #pragma mark - API Call
@@ -112,4 +133,11 @@
 
 
 
+- (IBAction)nextButtonAction:(id)sender {
+    [self.pageControl setSelectedViewControllerAtIndex:self.index+1];
+}
+
+- (IBAction)previouseButtonAction:(id)sender {
+     [self.pageControl setSelectedViewControllerAtIndex:self.index-1];
+}
 @end

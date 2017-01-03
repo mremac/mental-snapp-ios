@@ -8,10 +8,13 @@
 
 #import "MSViewController.h"
 #import "GuidedExcercise.h"
+#import "SubCategoryPageViewController.h"
 
 @interface SubCategoryDetailViewController : MSViewController
 
 @property (strong, nonatomic) GuidedExcercise *selectedExcercise;
+@property (strong, nonatomic) NSArray *allSubExcercises;
+@property (strong, nonatomic) SubCategoryPageViewController *pageControl;
 
 @property (assign, nonatomic) NSInteger index;
 

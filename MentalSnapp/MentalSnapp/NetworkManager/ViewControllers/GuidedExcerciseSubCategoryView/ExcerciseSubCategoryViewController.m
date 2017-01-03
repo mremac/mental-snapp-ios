@@ -181,6 +181,7 @@
     if(self.guidedExcercisePaginate.pageResults.count > indexPath.row)
     {
         SubCategoryPageViewController *subCategoryPageViewController = [[UIStoryboard storyboardWithName:KProfileStoryboard bundle:nil] instantiateViewControllerWithIdentifier:kSubCategoryPageViewController];
+        subCategoryPageViewController.selectedMainExcercise = self.excercise;
         subCategoryPageViewController.exerciseList = self.guidedExcercisePaginate.pageResults;
         subCategoryPageViewController.currentIndex = indexPath.row;
         [self.excerciseParentViewController.navigationController pushViewController:subCategoryPageViewController animated:YES];

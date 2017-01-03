@@ -58,10 +58,6 @@ The AWS Mobile SDK for iOS is generally licensed under the Apache 2.0 License, w
 The AWS Mobile SDK for iOS is generally licensed under the Apache 2.0 License, with the Amazon Cognito Identity Provider and Amazon Cognito Sync subcomponents being licensed under the Amazon Software License.
 
 
-## CrittercismSDK
-
-See http://www.crittercism.com/terms-services/
-
 ## DateTools
 
 The MIT License (MIT)

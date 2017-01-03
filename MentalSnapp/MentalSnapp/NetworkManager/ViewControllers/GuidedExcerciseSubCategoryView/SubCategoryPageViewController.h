@@ -13,5 +13,6 @@
 @property (strong, nonatomic) UIPageViewController *pageController;
 @property (strong, nonatomic) NSArray *exerciseList;
 @property (assign, nonatomic) NSInteger currentIndex;
-
+@property (strong, nonatomic) GuidedExcercise *selectedMainExcercise;
+-(void)setSelectedViewControllerAtIndex:(NSInteger)index;
 @end

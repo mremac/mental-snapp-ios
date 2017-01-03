@@ -138,6 +138,9 @@
 		6AAA01681DE56F8600208022 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AAA01321DE56F8600208022 /* Main.storyboard */; };
 		6AAA01691DE56F8600208022 /* AppSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AAA01351DE56F8600208022 /* AppSettings.m */; };
 		6AAA016A1DE56F8600208022 /* TestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AAA01371DE56F8600208022 /* TestModel.m */; };
+		6AB79EED1E1BA0E1007032FC /* Crittercism.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AB79EEC1E1BA0E1007032FC /* Crittercism.framework */; };
+		6AB79EF01E1BA0FD007032FC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AB79EEF1E1BA0FD007032FC /* SystemConfiguration.framework */; };
+		6AB79EF21E1BA104007032FC /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AB79EF11E1BA104007032FC /* CoreData.framework */; };
 		6AC2A25F1DED848D00196FFA /* GuidedExcerciseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AC2A25E1DED848D00196FFA /* GuidedExcerciseViewController.m */; };
 		6AC2A9501DEED9FB009A21EF /* ExcerciseSubCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AC2A94F1DEED9FB009A21EF /* ExcerciseSubCategoryViewController.m */; };
 		6AC660E61DE5740B00BB8949 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 6AC660D41DE5740B00BB8949 /* .gitignore */; };
@@ -443,6 +446,9 @@
 		6AAA01371DE56F8600208022 /* TestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestModel.m; sourceTree = "<group>"; };
 		6AAA01391DE56F8600208022 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6AAA013C1DE56F8600208022 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6AB79EEC1E1BA0E1007032FC /* Crittercism.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crittercism.framework; sourceTree = "<group>"; };
+		6AB79EEF1E1BA0FD007032FC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		6AB79EF11E1BA104007032FC /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		6AC2A25D1DED848D00196FFA /* GuidedExcerciseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuidedExcerciseViewController.h; sourceTree = "<group>"; };
 		6AC2A25E1DED848D00196FFA /* GuidedExcerciseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuidedExcerciseViewController.m; sourceTree = "<group>"; };
 		6AC2A94E1DEED9FB009A21EF /* ExcerciseSubCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExcerciseSubCategoryViewController.h; sourceTree = "<group>"; };
@@ -526,9 +532,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6AB79EF21E1BA104007032FC /* CoreData.framework in Frameworks */,
+				6AB79EF01E1BA0FD007032FC /* SystemConfiguration.framework in Frameworks */,
 				6A4AE6691E02CAEB005DF1DA /* Photos.framework in Frameworks */,
 				6A4AE6671E02AAD7005DF1DA /* AssetsLibrary.framework in Frameworks */,
 				EE5108D11CFEEEC200E8A3F9 /* Social.framework in Frameworks */,
+				6AB79EED1E1BA0E1007032FC /* Crittercism.framework in Frameworks */,
 				26E53943AD4503D45E53BE0D /* libPods-MentalSnapp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1320,6 +1329,9 @@
 		DBB04730B22C9A22F3001E5D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6AB79EF11E1BA104007032FC /* CoreData.framework */,
+				6AB79EEF1E1BA0FD007032FC /* SystemConfiguration.framework */,
+				6AB79EEC1E1BA0E1007032FC /* Crittercism.framework */,
 				6A4AE6681E02CAEB005DF1DA /* Photos.framework */,
 				6A4AE6661E02AAD7005DF1DA /* AssetsLibrary.framework */,
 				6A1D50EA1DE57AC30073F479 /* XCTest.framework */,
@@ -1428,7 +1440,6 @@
 				EECB25A31CF5AAF10012E315 /* Resources */,
 				8BF5110F3F922EBC0EC4AEAC /* [CP] Embed Pods Frameworks */,
 				0E6FA0E8690BC4CA828A68C7 /* [CP] Copy Pods Resources */,
-				6A8692ED1E1B8D79006542A2 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1602,19 +1613,6 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MentalSnapp/Pods-MentalSnapp-resources.sh\"\n";
 			showEnvVarsInLog = 0;
-		};
-		6A8692ED1E1B8D79006542A2 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "APP_ID=\"ce415306dce549ea9aec7b5594521ff300555300\"\nAPI_KEY=\"085083b122be28541ced65c638ea5ec1\"\nsource \"${PODS_ROOT}/CrittercismSDK/dsym_upload.sh\"";
 		};
 		8BF5110F3F922EBC0EC4AEAC /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1918,7 +1916,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Namrata S (7CR67NLY7U)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Namrata S (7CR67NLY7U)";
 				DEVELOPMENT_TEAM = FB6UK8YP2Q;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited) ";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PREFIX_HEADER = MentalSnapp/MentalSnappPrefixHeader.pch;
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				INFOPLIST_FILE = MentalSnapp/Info.plist;
@@ -1940,7 +1941,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Mental Snapp Ltd (FB6UK8YP2Q)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mental Snapp Ltd (FB6UK8YP2Q)";
 				DEVELOPMENT_TEAM = FB6UK8YP2Q;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited) ";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PREFIX_HEADER = MentalSnapp/MentalSnappPrefixHeader.pch;
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				INFOPLIST_FILE = MentalSnapp/Info.plist;

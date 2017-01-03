@@ -16,7 +16,7 @@
     [super viewDidLoad];
     
     [self.navigationController setNavigationBarHidden:NO];
-    [self setNavigationBarButtonTitle:[NSString stringWithFormat:@"%@",[self exerciseNameWithIndex:self.currentIndex]]];
+    [self setNavigationBarButtonTitle:[NSString stringWithFormat:@"%@",[self.selectedMainExcercise excerciseName]]];
     [self setLeftMenuButtons:[NSArray arrayWithObject:[self backButton]]];
 
     self.pageController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
@@ -25,12 +25,7 @@
     self.pageController.delegate = self;
     [[self.pageController view] setFrame:[[self view] bounds]];
     
-    SubCategoryDetailViewController *initialViewController = [self viewControllerAtIndex:self.currentIndex];
-    
-    NSArray *viewControllers = [NSArray arrayWithObject:initialViewController];
-    
-    [self.pageController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
-    
+    [self setSelectedViewControllerAtIndex:self.currentIndex];
     [self addChildViewController:self.pageController];
     [[self view] addSubview:[self.pageController view]];
     [self.pageController didMoveToParentViewController:self];
@@ -43,6 +38,18 @@
     // Dispose of any resources that can be recreated.
     
 }
+
+#pragma mark - Public methods
+
+-(void)setSelectedViewControllerAtIndex:(NSInteger)index {
+    SubCategoryDetailViewController *initialViewController = [self viewControllerAtIndex:index];
+    
+    NSArray *viewControllers = [NSArray arrayWithObject:initialViewController];
+    
+    [self.pageController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    
+}
+
 
 #pragma mark - Private methods
 
@@ -78,7 +85,8 @@
         
     SubCategoryDetailViewController *childViewController = [[UIStoryboard storyboardWithName:KProfileStoryboard bundle:nil] instantiateViewControllerWithIdentifier:kSubCategoryDetailViewController];
     childViewController.selectedExcercise = [self.exerciseList objectAtIndex:index];
-    
+    childViewController.allSubExcercises = self.exerciseList;
+    childViewController.pageControl = self;
     childViewController.index = index;
     
     return childViewController;
@@ -92,7 +100,7 @@
     if(completed)
     {
         self.currentIndex = [self currentControllerIndex];
-        [self setNavigationBarButtonTitle:[NSString stringWithFormat:@"%@",[self exerciseNameWithIndex:self.currentIndex]]];
+        //[self setNavigationBarButtonTitle:[NSString stringWithFormat:@"%@",[self exerciseNameWithIndex:self.currentIndex]]];
     }
 }
 
