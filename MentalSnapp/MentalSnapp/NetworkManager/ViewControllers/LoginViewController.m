@@ -61,6 +61,7 @@
     } else if (self.passwordTextField.text.length < 1) {
         [Banner showSuccessBannerWithSubtitle:LocalizedString(@"LoginScreenPasswordMessage")];
     } else {
+        [ALAlertBanner hideAllAlertBanners];
     
         [self showInProgress:YES];
         UserModel *userModel = [[UserModel alloc]initWithUserEmail:self.userEmailTextField.text andPassword:self.passwordTextField.text];
