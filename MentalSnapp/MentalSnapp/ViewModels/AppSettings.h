@@ -22,5 +22,7 @@
 @property (nonatomic, assign) BOOL EnableCoreData;
 @property (nonatomic, assign) BOOL EnableTwitter;
 @property (nonatomic, assign) BOOL EnableFacebook;
+@property (nonatomic, strong) NSString *StagingApteligentKey;
+@property (nonatomic, strong) NSString *ProductionApteligentKey;
 
 @end

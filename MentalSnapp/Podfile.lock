@@ -18,6 +18,7 @@ PODS:
   - AWSCore (2.4.12)
   - AWSS3 (2.4.12):
     - AWSCore (= 2.4.12)
+  - CrittercismSDK (5.6.3)
   - DateTools (1.7.0)
   - Flurry-iOS-SDK/FlurryAds (7.8.2):
     - Flurry-iOS-SDK/FlurrySDK
@@ -37,6 +38,7 @@ DEPENDENCIES:
   - ALAlertBanner (~> 0.3.1)
   - AWSCore
   - AWSS3
+  - CrittercismSDK
   - DateTools
   - Flurry-iOS-SDK/FlurryAds
   - Flurry-iOS-SDK/FlurrySDK
@@ -51,6 +53,7 @@ SPEC CHECKSUMS:
   ALAlertBanner: 08d82be509cd9b70c4ac0ee1e7ac250003a8b34b
   AWSCore: 8ee5b1dc06a0fd562429fe7120113ca93cbfbca6
   AWSS3: 7bb3e095a37ed8334a0b868bbca74ab574b37a4f
+  CrittercismSDK: 8b15532c6ca313477cf66d5a9a45a7b859b74afb
   DateTools: 53288ee8b905fdc75897a1e6b5cc0144b14cba60
   Flurry-iOS-SDK: 8ed76252016d0162a893363c108a010ab97d424c
   JSONModel: 840bc0fcffb24b8454d2c026bf26fea454b8e98d
@@ -59,6 +62,6 @@ SPEC CHECKSUMS:
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
 
-PODFILE CHECKSUM: fea86b2631e3becadcbc46b664a759447e22998c
+PODFILE CHECKSUM: 263031eb8da5bff26135dc4c7be5b7fdf9707187
 
 COCOAPODS: 1.1.1

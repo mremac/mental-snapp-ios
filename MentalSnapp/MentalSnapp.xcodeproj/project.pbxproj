@@ -1428,6 +1428,7 @@
 				EECB25A31CF5AAF10012E315 /* Resources */,
 				8BF5110F3F922EBC0EC4AEAC /* [CP] Embed Pods Frameworks */,
 				0E6FA0E8690BC4CA828A68C7 /* [CP] Copy Pods Resources */,
+				6A8692ED1E1B8D79006542A2 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1601,6 +1602,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MentalSnapp/Pods-MentalSnapp-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		6A8692ED1E1B8D79006542A2 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "APP_ID=\"ce415306dce549ea9aec7b5594521ff300555300\"\nAPI_KEY=\"085083b122be28541ced65c638ea5ec1\"\nsource \"${PODS_ROOT}/CrittercismSDK/dsym_upload.sh\"";
 		};
 		8BF5110F3F922EBC0EC4AEAC /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;

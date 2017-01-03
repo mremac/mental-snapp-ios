@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MentalSnapp/Helpers/LineGraphLibrary/LCLineChartView.m"
-            timestampString = "504776411.421966"
+            timestampString = "505116304.935048"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "369"
-            endingLineNumber = "369"
+            startingLineNumber = "368"
+            endingLineNumber = "368"
             landmarkName = "-drawRect:"
             landmarkType = "7">
          </BreakpointContent>

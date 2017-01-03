@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "Flurry.h"
 #import <AWSCore/AWSCore.h>
+#import <Crittercism/Crittercism.h>
 
 @interface AppDelegate ()
 @property (nonatomic) BOOL isNetworkAvailable;
@@ -32,12 +33,15 @@ void uncaughtExceptionHandler(NSException *exception) {
         [MagicalRecord setupCoreDataStackWithStoreNamed:@"Skeleton"];
     }
     
-    if(appSettings.EnableFlurry)
-    {
-        //init Flurry
-        [Flurry startSession:@"YVV32ZQDD6V64NP45PVY"];
-    }
+  //Add crittercism and apteligent
+    [Crittercism enableWithAppID:[self appteligentAppId]];
     
+//    if(appSettings.EnableFlurry)
+//    {
+//        //init Flurry
+//        [Flurry startSession:@"YVV32ZQDD6V64NP45PVY"];
+//    }
+//
     [self setupNetworkMonitoring];
     
     [self setUpAmazonS3];
@@ -63,6 +67,24 @@ void uncaughtExceptionHandler(NSException *exception) {
     }
     
     return YES;
+}
+
+- (NSString *)appteligentAppId
+{
+    AppSettings *appSettings = [[AppSettingsManager sharedInstance] appSettings];
+    
+    if ([appSettings.NetworkMode isEqualToString:kLiveEnviroment]) // for live machine
+    {
+        return [NSString stringWithFormat:@"%@", appSettings.ProductionApteligentKey];
+    }
+    else if([appSettings.NetworkMode isEqualToString:kStagingEnviroment]) // for staging env
+    {
+        return [NSString stringWithFormat:@"%@", appSettings.StagingApteligentKey];
+    }
+    else // for local env
+    {
+        return [NSString stringWithFormat:@"%@", appSettings.StagingApteligentKey];
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

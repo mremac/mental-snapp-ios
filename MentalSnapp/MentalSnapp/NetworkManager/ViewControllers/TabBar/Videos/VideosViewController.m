@@ -261,7 +261,7 @@
 }
 
 -(void)deletePost:(RecordPost *)recordPost {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Mental Snapp" message:@"Are you sure want to delete?" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Mental Snapp" message:@"Are you sure, you want to delete the video?" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [[RequestManager alloc] deleteRecordPost:recordPost withCompletionBlock:^(BOOL success, id response) {

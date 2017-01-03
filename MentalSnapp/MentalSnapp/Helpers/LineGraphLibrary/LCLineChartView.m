@@ -199,13 +199,12 @@
     [super drawRect:rect];
     CGContextRef c = UIGraphicsGetCurrentContext();
     CGFloat extraSpace10 = floorf((self.superview.frame.size.width*2.7)/100);
-    CGFloat extraSpace12 = floorf((self.superview.frame.size.width*3.2)/100);
     CGFloat extraSpace5 = floorf((self.superview.frame.size.width*1.4)/100);
     CGFloat extraSpace15 = floorf((self.superview.frame.size.width*4)/100);
     CGFloat availableHeight = self.bounds.size.height - 2 * extraSpace10 - extraSpace15;
 
     CGFloat availableWidth = self.bounds.size.width - 2 * extraSpace10 - self.yAxisLabelsWidth;
-    CGFloat xStart = extraSpace10 + self.yAxisLabelsWidth+floorf((self.superview.frame.size.width*4)/100);
+    CGFloat xStart = extraSpace5 + self.yAxisLabelsWidth+floorf((self.superview.frame.size.width*4)/100);
     CGFloat yStart = extraSpace10;
 
     static CGFloat dashedPattern[] = {4,0};
@@ -241,7 +240,7 @@
     CGContextStrokePath(c);
 
     NSUInteger j = 1;
-    CGFloat value = floorf(([self.superview frame].size.width * 15.2)/100);
+    CGFloat value = floorf(([self.superview frame].size.width * 14.0)/100);
     CGFloat xValue = 0;
 
     CGContextSaveGState(c);

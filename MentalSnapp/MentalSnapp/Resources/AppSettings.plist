@@ -26,5 +26,9 @@
 	<false/>
 	<key>EnableFacebook</key>
 	<false/>
+	<key>StagingApteligentKey</key>
+	<string>3043af0221024c33a4ddd776acb17f9a00555300</string>
+	<key>ProductionApteligentKey</key>
+	<string>ce415306dce549ea9aec7b5594521ff300555300</string>
 </dict>
 </plist>

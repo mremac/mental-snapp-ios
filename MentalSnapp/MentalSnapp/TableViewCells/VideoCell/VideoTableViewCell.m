@@ -55,7 +55,7 @@
             if (a.length != 0) {
                 a = [NSString stringWithFormat:@"Feeling %@, %@",feelingName, a];
             } else {
-                a = [NSString stringWithFormat:@"Feeling: %@",feelingName];
+                a = [NSString stringWithFormat:@"Feeling %@",feelingName];
             }
             
             UIFont *boldFont = [UIFont fontWithName:@"Roboto-Bold" size:13.0f];
