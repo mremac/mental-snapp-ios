@@ -70,6 +70,9 @@
     if(self.selectedDate){
         [self.datePickerView setDate:self.selectedDate];
     }
+    NSLocale *locale = [NSLocale localeWithLocaleIdentifier:@"en_US"];;
+    [self.datePickerView setLocale:locale];
+
     [self.datePickerView addTarget:self action:@selector(dateIsChanged:) forControlEvents:UIControlEventValueChanged];
 }
 

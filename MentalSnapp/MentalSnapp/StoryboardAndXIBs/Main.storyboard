@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="evG-dm-COo">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="evG-dm-COo">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -1041,7 +1041,7 @@
                         <viewControllerLayoutGuide type="bottom" id="zmp-99-7ce"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Xeg-HJ-9GN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="900"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BF0-aS-XUF">
@@ -1090,7 +1090,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="olk-hQ-QB6" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" tag="2" title="" image="record" selectedImage="record_select" id="16e-aA-4fL"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="a5i-vM-KMF">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="a5i-vM-KMF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1635,7 +1635,7 @@
                                                     <constraint firstItem="Ba3-7g-DZE" firstAttribute="top" secondItem="Bg4-AZ-imB" secondAttribute="bottom" id="IgL-WO-uMA"/>
                                                     <constraint firstItem="TDc-Wc-Ukc" firstAttribute="top" secondItem="d78-u6-djz" secondAttribute="bottom" id="JP3-a4-ztr"/>
                                                     <constraint firstItem="41b-7E-VGO" firstAttribute="leading" secondItem="LXD-SX-yFf" secondAttribute="leading" constant="42" id="Mdl-mr-3Uh"/>
-                                                    <constraint firstItem="y9n-ek-PxU" firstAttribute="top" secondItem="41b-7E-VGO" secondAttribute="bottom" id="NPv-sg-hdS"/>
+                                                    <constraint firstItem="y9n-ek-PxU" firstAttribute="top" secondItem="41b-7E-VGO" secondAttribute="bottom" constant="-7" id="NPv-sg-hdS"/>
                                                     <constraint firstItem="d78-u6-djz" firstAttribute="top" secondItem="LXD-SX-yFf" secondAttribute="top" id="Ovo-YP-gev"/>
                                                     <constraint firstAttribute="trailing" secondItem="Ejk-K4-LNK" secondAttribute="trailing" id="P0H-M2-QPz"/>
                                                     <constraint firstAttribute="trailing" secondItem="Ba3-7g-DZE" secondAttribute="trailing" id="Qmh-VE-3Sp"/>
@@ -1648,7 +1648,7 @@
                                                     <constraint firstItem="Ejk-K4-LNK" firstAttribute="leading" secondItem="LXD-SX-yFf" secondAttribute="leading" id="atk-Vb-qhW"/>
                                                     <constraint firstItem="ktA-RM-39O" firstAttribute="top" secondItem="TDc-Wc-Ukc" secondAttribute="bottom" id="by0-MR-6T6"/>
                                                     <constraint firstAttribute="trailing" secondItem="TDc-Wc-Ukc" secondAttribute="trailing" id="cM6-Op-WnF"/>
-                                                    <constraint firstItem="41b-7E-VGO" firstAttribute="top" secondItem="Ba3-7g-DZE" secondAttribute="bottom" id="dpA-yT-C2Z"/>
+                                                    <constraint firstItem="41b-7E-VGO" firstAttribute="top" secondItem="Ba3-7g-DZE" secondAttribute="bottom" constant="7" id="dpA-yT-C2Z"/>
                                                     <constraint firstItem="wYt-xe-b6R" firstAttribute="leading" secondItem="LXD-SX-yFf" secondAttribute="leading" id="gPE-Zx-pYk"/>
                                                     <constraint firstAttribute="trailing" secondItem="ktA-RM-39O" secondAttribute="trailing" id="hJo-L3-4jX"/>
                                                     <constraint firstAttribute="trailing" secondItem="wYt-xe-b6R" secondAttribute="trailing" id="npz-S1-rT3"/>
@@ -1672,7 +1672,7 @@
                                 <constraints>
                                     <constraint firstItem="SX9-Av-XQH" firstAttribute="leading" secondItem="Iu0-VH-WyR" secondAttribute="leading" id="0cG-dk-X3E"/>
                                     <constraint firstItem="SX9-Av-XQH" firstAttribute="top" secondItem="Iu0-VH-WyR" secondAttribute="top" id="KMz-CY-xf0"/>
-                                    <constraint firstAttribute="bottom" secondItem="SX9-Av-XQH" secondAttribute="bottom" id="b0u-Cg-lL2"/>
+                                    <constraint firstAttribute="bottom" secondItem="SX9-Av-XQH" secondAttribute="bottom" constant="33" id="b0u-Cg-lL2"/>
                                     <constraint firstItem="SX9-Av-XQH" firstAttribute="width" secondItem="Iu0-VH-WyR" secondAttribute="width" id="bPU-d5-hFI"/>
                                     <constraint firstAttribute="trailing" secondItem="SX9-Av-XQH" secondAttribute="trailing" id="v1C-aT-kfz"/>
                                 </constraints>
@@ -1942,7 +1942,7 @@
         <image name="video_select" width="63" height="47"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="enE-yp-rBG"/>
+        <segue reference="wJO-Rt-LLm"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
 </document>
