@@ -85,7 +85,7 @@
 }
 
 - (void)initGuidedPaginate {
-    self.guidedExcercisePaginate = [[Paginate alloc] initWithPageNumber:[NSNumber numberWithInt:1] withMoreRecords:YES andPerPageLimit:10];
+    self.guidedExcercisePaginate = [[Paginate alloc] initWithPageNumber:[NSNumber numberWithInt:1] withMoreRecords:YES andPerPageLimit:50];
     self.guidedExcercisePaginate.details = self.excercise.excerciseId;
 }
 
@@ -181,7 +181,8 @@
     if(self.guidedExcercisePaginate.pageResults.count > indexPath.row)
     {
         SubCategoryPageViewController *subCategoryPageViewController = [[UIStoryboard storyboardWithName:KProfileStoryboard bundle:nil] instantiateViewControllerWithIdentifier:kSubCategoryPageViewController];
-        subCategoryPageViewController.selectedMainExcercise = self.excercise;
+        subCategoryPageViewController.selectedMainExcercise = [self.guidedExcercisePaginate.pageResults objectAtIndex:indexPath.row];
+        subCategoryPageViewController.selectedGuidedExcercise = self.excercise;
         subCategoryPageViewController.exerciseList = self.guidedExcercisePaginate.pageResults;
         subCategoryPageViewController.currentIndex = indexPath.row;
         [self.excerciseParentViewController.navigationController pushViewController:subCategoryPageViewController animated:YES];

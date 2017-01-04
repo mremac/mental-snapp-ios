@@ -14,5 +14,7 @@
 @property (strong, nonatomic) NSArray *exerciseList;
 @property (assign, nonatomic) NSInteger currentIndex;
 @property (strong, nonatomic) GuidedExcercise *selectedMainExcercise;
+@property (strong, nonatomic) GuidedExcercise *selectedGuidedExcercise;
+
 -(void)setSelectedViewControllerAtIndex:(NSInteger)index;
 @end

@@ -13,7 +13,7 @@
 @interface SubCategoryDetailViewController () <PickerViewControllerDelegate, UIImagePickerControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UIView *mainContainerView;
-@property (strong, nonatomic) IBOutlet UITextView *detailTextView;
+@property (strong, nonatomic) IBOutlet UILabel *detailTextView;
 @property (strong, nonatomic) PickerViewController *pickerViewController;
 @property (strong, nonatomic) IBOutlet UIImageView *subcategoryImage;
 @property (strong, nonatomic) IBOutlet UILabel *subcategoryNameLabel;
@@ -31,8 +31,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self showDetailofCategory];
-    
     self.pickerViewController = [[UIStoryboard storyboardWithName:KProfileStoryboard bundle:nil] instantiateViewControllerWithIdentifier:kPickerViewController];
     self.pickerViewController.modalPresentationStyle = UIModalPresentationOverFullScreen;
     [self.pickerViewController setPickerType:dateTime];
@@ -47,6 +45,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    [self showDetailofCategory];
     [self.previouseButton setEnabled:(((self.index-1)<0)?NO:YES)];
     [self.nextButton setEnabled:((self.index+1>=self.allSubExcercises.count)?NO:YES)];
     [self.previouseButton setAlpha:(((self.index-1)<0)?0.2:1.0)];
@@ -70,14 +69,15 @@
 
 #pragma mark - Private methods
 - (void)showDetailofCategory {
-    [self.subcategoryImage sd_setImageWithURL:[NSURL URLWithString:self.selectedExcercise.coverURL] placeholderImage:[UIImage imageNamed:@"defaultExcerciseImage"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-        if(image){
-            [self.subcategoryImage setImage:image];
-        }
-    }];
-    [self.subcategoryNameLabel setText:self.selectedExcercise.excerciseName];
-    [self.detailTextView setText:self.selectedExcercise.excerciseDescription];
- 
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.subcategoryImage sd_setImageWithURL:[NSURL URLWithString:self.selectedExcercise.coverURL] placeholderImage:[UIImage imageNamed:@"defaultExcerciseImage"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+            if(image){
+                [self.subcategoryImage setImage:image];
+            }
+        }];
+        [self.subcategoryNameLabel setText:self.selectedExcercise.excerciseName];
+        [self.detailTextView setText:self.selectedExcercise.excerciseDescription];
+    });
 }
 
 #pragma mark - API Call

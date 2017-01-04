@@ -146,6 +146,7 @@ exNS *kFilteredRecordPosts;
 exNS *kSchedulesAPI;
 exNS *kEditSchedulesAPI;
 exNS *kGetStatsAPI;
+exNS *KGetSubCategoryQuestionsExcercise;
 
 #pragma mark - StoryBoard segue identifiers
 #pragma mark Main

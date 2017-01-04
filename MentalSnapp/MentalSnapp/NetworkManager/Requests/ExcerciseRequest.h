@@ -13,6 +13,7 @@
 
 - (id)initWithFetchGuidedExcerciseWithPaginate:(Paginate *)paginate;
 - (id)initWithFetchSubCategoryExcerciseWithPaginate:(Paginate *)paginate;
+- (id)initWithFetchSubCategoryQuestionsExcerciseWithPaginate:(Paginate *)paginate;
 
 - (NSMutableDictionary *)getParams;
 

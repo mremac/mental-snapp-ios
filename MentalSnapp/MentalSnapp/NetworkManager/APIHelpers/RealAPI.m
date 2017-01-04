@@ -54,6 +54,9 @@
 - (void)getSubCategoryExcerciseWithRequest:(Request *)request andCompletionBlock:(completionBlock)block {
      [self getObject:request withCompletionBlock:block];
 }
+- (void)getSubCategoryQuestionsExcerciseWithRequest:(Request *)request andCompletionBlock:(completionBlock)block {
+    [self getObject:request withCompletionBlock:block];
+}
 
 #pragma mark - Record post data
 - (void)getRecordPostsWithRequest:(Request *)request andCompletionBlock:(completionBlock)block{

@@ -126,6 +126,11 @@
     block(YES, dict);
 }
 
+- (void)getSubCategoryQuestionsExcerciseWithRequest:(Request *)request andCompletionBlock:(completionBlock)block {
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"1", @"success", nil];
+    block(YES, dict);
+}
+
 - (void)signUpWithRequest:(Request *)request andCompletionBlock:(completionBlock)block {
     
 }

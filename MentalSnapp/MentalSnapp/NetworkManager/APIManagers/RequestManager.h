@@ -28,6 +28,7 @@
 #pragma mark - Excercise
 - (void)getGuidedExcerciseWithPaginate:(Paginate *)paginate withCompletionBlock:(completionBlock)block;
 - (void)getSubCategoryExcerciseWithPaginate:(Paginate *)paginate withCompletionBlock:(completionBlock)block;
+- (void)initWithFetchSubCategoryQuestionsExcerciseWithPaginate:(Paginate *)paginate withCompletionBlock:(completionBlock)block;
 
 #pragma mark - Feeling data
 - (void)getFeelingWithPaginate:(Paginate *)paginate withCompletionBlock:(completionBlock)block;

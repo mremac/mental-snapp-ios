@@ -26,6 +26,7 @@
 #pragma mark - Guided excercise
 - (void)getGuidedExcerciseWithRequest:(Request *)request andCompletionBlock:(completionBlock)block;
 - (void)getSubCategoryExcerciseWithRequest:(Request *)request andCompletionBlock:(completionBlock)block;
+- (void)getSubCategoryQuestionsExcerciseWithRequest:(Request *)request andCompletionBlock:(completionBlock)block;
 
 #pragma mark - Record post data
 - (void)getRecordPostsWithRequest:(Request *)request andCompletionBlock:(completionBlock)block;

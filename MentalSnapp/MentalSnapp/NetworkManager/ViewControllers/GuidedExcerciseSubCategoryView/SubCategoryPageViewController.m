@@ -8,28 +8,30 @@
 
 #import "SubCategoryPageViewController.h"
 #import "SubCategoryDetailViewController.h"
+#import "Paginate.h"
+#import "RequestManager.h"
+
+@interface SubCategoryPageViewController()
+
+@property (strong, nonatomic) Paginate *guidedExcercisePaginate;
+@property (strong, nonatomic) IBOutlet UILabel *noContentLabel;
+
+@end
+
 
 @implementation SubCategoryPageViewController
 
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    
+    [self addPaginationViewController];
+    [self.noContentLabel setHidden:YES];
     [self.navigationController setNavigationBarHidden:NO];
-    [self setNavigationBarButtonTitle:[NSString stringWithFormat:@"%@",[self.selectedMainExcercise excerciseName]]];
+    [self setNavigationBarButtonTitle:[NSString stringWithFormat:@"%@",[self.selectedGuidedExcercise excerciseName]]];
     [self setLeftMenuButtons:[NSArray arrayWithObject:[self backButton]]];
+    [self.noContentLabel setText:[NSString stringWithFormat:@"There are no questions of %@ excercise available yet!",self.selectedMainExcercise.excerciseName]];
+    [self getSubcategoryQuestion];
 
-    self.pageController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
-    
-    self.pageController.dataSource = self;
-    self.pageController.delegate = self;
-    [[self.pageController view] setFrame:[[self view] bounds]];
-    
-    [self setSelectedViewControllerAtIndex:self.currentIndex];
-    [self addChildViewController:self.pageController];
-    [[self view] addSubview:[self.pageController view]];
-    [self.pageController didMoveToParentViewController:self];
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,11 +45,8 @@
 
 -(void)setSelectedViewControllerAtIndex:(NSInteger)index {
     SubCategoryDetailViewController *initialViewController = [self viewControllerAtIndex:index];
-    
     NSArray *viewControllers = [NSArray arrayWithObject:initialViewController];
-    
     [self.pageController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
-    
 }
 
 
@@ -92,6 +91,54 @@
     return childViewController;
     
 }
+
+- (void)initGuidedPaginate {
+    self.guidedExcercisePaginate = [[Paginate alloc] initWithPageNumber:[NSNumber numberWithInt:1] withMoreRecords:YES andPerPageLimit:100];
+    self.guidedExcercisePaginate.details = self.selectedMainExcercise.excerciseId;
+}
+
+-(void)addPaginationViewController {
+    self.pageController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
+    
+    self.pageController.dataSource = self;
+    self.pageController.delegate = self;
+    [[self.pageController view] setFrame:[[self view] bounds]];
+    self.currentIndex = 0;
+      [self addChildViewController:self.pageController];
+    [[self view] addSubview:[self.pageController view]];
+    [self.pageController didMoveToParentViewController:self];
+}
+
+#pragma mark - API
+-(void)getSubcategoryQuestion {
+    [self initGuidedPaginate];
+    [self fetchGuidedExcercise];
+}
+
+-(void)fetchGuidedExcercise {
+    [self showInProgress:YES];
+    [[RequestManager alloc] initWithFetchSubCategoryQuestionsExcerciseWithPaginate:self.guidedExcercisePaginate withCompletionBlock:^(BOOL success, id response) {
+        if(success){
+            [self.guidedExcercisePaginate updatePaginationWith:response];
+            self.exerciseList = self.guidedExcercisePaginate.pageResults;
+            if(self.exerciseList.count>0){
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [self.noContentLabel setHidden:YES];
+                    [self.pageController.view setHidden:NO];
+                    [self setSelectedViewControllerAtIndex:self.currentIndex];
+                });
+            } else {
+                [self.noContentLabel setHidden:NO];
+                [self.pageController.view setHidden:YES];
+            }
+        } else {
+            [self.pageController.view setHidden:YES];
+            [self.noContentLabel setHidden:NO];
+        }
+        [self showInProgress:NO];
+    }];
+}
+
 
 #pragma mark - UIPageViewController delegate
 

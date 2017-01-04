@@ -150,6 +150,19 @@ NSString *const kDefaultErrorMessage =  @"Error! Please try again.";
     
 }
 
+- (void)initWithFetchSubCategoryQuestionsExcerciseWithPaginate:(Paginate *)paginate withCompletionBlock:(completionBlock)block{
+    if ([ApplicationDelegate hasNetworkAvailable]) {
+        
+        [[ExcercixeInterface alloc] getSubCategoryQuestionsExcerciseWithRequest:[[ExcerciseRequest alloc] initWithFetchSubCategoryQuestionsExcerciseWithPaginate:paginate] andCompletionBlock:^(BOOL success, id response) {
+            block(success,response);
+        }];
+        
+    }else {
+        block(NO, nil);
+    }
+    
+}
+
 #pragma mark - Record Post data
 - (void)getRecordPostsWithPaginate:(Paginate *)paginate withCompletionBlock:(completionBlock)block {
     if ([ApplicationDelegate hasNetworkAvailable]) {

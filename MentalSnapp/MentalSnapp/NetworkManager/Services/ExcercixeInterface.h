@@ -15,5 +15,6 @@
 
 - (void)getGuidedExcerciseWithRequest:(ExcerciseRequest *)excerciseRequest andCompletionBlock:(completionBlock)block;
 - (void)getSubCategoryExcerciseWithRequest:(ExcerciseRequest *)excerciseRequest andCompletionBlock:(completionBlock)block;
+- (void)getSubCategoryQuestionsExcerciseWithRequest:(ExcerciseRequest *)excerciseRequest andCompletionBlock:(completionBlock)block;
 
 @end
