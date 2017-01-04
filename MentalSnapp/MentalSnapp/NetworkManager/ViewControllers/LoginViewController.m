@@ -5,7 +5,7 @@
 
 #import "LoginViewController.h"
 #import "RequestManager.h"
-//#import "ForgotPasswordViewController.h"
+#import "WelcomeBackViewController.h"
 
 @interface LoginViewController() <UITextFieldDelegate> {
     NSInteger kLogoTopConstraintDefaultValue;
@@ -82,8 +82,8 @@
                                         ApplicationDelegate.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[UIStoryboard storyboardWithName:KProfileStoryboard bundle:nil] instantiateViewControllerWithIdentifier:KProfileViewControllerIdentifier]];
                                     } completion:nil];
                 } else {
-                    ApplicationDelegate.tabBarController = [self.storyboard instantiateViewControllerWithIdentifier:@"MainTabController"];
-                    ApplicationDelegate.window.rootViewController = ApplicationDelegate.tabBarController;
+                    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                    [self.navigationController pushViewController:[mainStoryboard instantiateViewControllerWithIdentifier:@"WelcomeBackViewController"] animated:YES];
                 }
             } 
         }];

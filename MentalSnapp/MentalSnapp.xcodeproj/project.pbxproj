@@ -24,6 +24,7 @@
 		5C8A3A261DE5D26300706925 /* Banner.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8A3A251DE5D26300706925 /* Banner.m */; };
 		5C8A3A291DE5D5B800706925 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8A3A281DE5D5B800706925 /* UserModel.m */; };
 		5CC7CCAC1DE8476F00DC661F /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC7CCAB1DE8476F00DC661F /* UserManager.m */; };
+		5CD532881E1D2B8B0086598C /* WelcomeBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CD532871E1D2B8B0086598C /* WelcomeBackViewController.m */; };
 		5CF694FD1DEDBED100F00EA2 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF694FC1DEDBED100F00EA2 /* SignUpViewController.m */; };
 		6A1D50E11DE5792C0073F479 /* Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = 6AAA013C1DE56F8600208022 /* Info.plist */; };
 		6A1D50E21DE5793B0073F479 /* Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = 6AAA01391DE56F8600208022 /* Info.plist */; };
@@ -242,6 +243,8 @@
 		5C8A3A281DE5D5B800706925 /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
 		5CC7CCAA1DE8476F00DC661F /* UserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserManager.h; sourceTree = "<group>"; };
 		5CC7CCAB1DE8476F00DC661F /* UserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManager.m; sourceTree = "<group>"; };
+		5CD532861E1D2B8B0086598C /* WelcomeBackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeBackViewController.h; sourceTree = "<group>"; };
+		5CD532871E1D2B8B0086598C /* WelcomeBackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeBackViewController.m; sourceTree = "<group>"; };
 		5CF694FB1DEDBED100F00EA2 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		5CF694FC1DEDBED100F00EA2 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		6A1D50EA1DE57AC30073F479 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -645,6 +648,15 @@
 				5C7BE3D31DE86F3900C15CB5 /* MoreTableViewCell.m */,
 			);
 			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		5CD532851E1D2B8B0086598C /* WelcomeScreen */ = {
+			isa = PBXGroup;
+			children = (
+				5CD532861E1D2B8B0086598C /* WelcomeBackViewController.h */,
+				5CD532871E1D2B8B0086598C /* WelcomeBackViewController.m */,
+			);
+			path = WelcomeScreen;
 			sourceTree = "<group>";
 		};
 		6A2428461DE814A900FF15A9 /* ChangePasswordScreen */ = {
@@ -1159,6 +1171,7 @@
 				6A2428461DE814A900FF15A9 /* ChangePasswordScreen */,
 				6A98B12B1DE5A447009F1412 /* ProfileScreen */,
 				5C47E8661E13CC0B00DACD12 /* TermsScreen */,
+				5CD532851E1D2B8B0086598C /* WelcomeScreen */,
 				6AAA01291DE56F8600208022 /* ViewController.h */,
 				6AAA012A1DE56F8600208022 /* ViewController.m */,
 				5C8A3A1E1DE5D04100706925 /* LoginViewController.h */,
@@ -1739,6 +1752,7 @@
 				5C545E7C1DF02035004610B0 /* ForgotPasswordFirstViewController.m in Sources */,
 				6AAA01451DE56F8600208022 /* NSURL+Properties.m in Sources */,
 				6A5BBBAA1DFAEBCD00C67CE9 /* FeelingTableViewCell.m in Sources */,
+				5CD532881E1D2B8B0086598C /* WelcomeBackViewController.m in Sources */,
 				6AAA014C1DE56F8600208022 /* UIImage+ImageEffects.m in Sources */,
 				6AAA01501DE56F8600208022 /* UIView+ReFrame.m in Sources */,
 				6AAA013E1DE56F8600208022 /* AppDelegate.m in Sources */,
