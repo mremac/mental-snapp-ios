@@ -34,7 +34,7 @@
     [self setNavigationBarButtonTitle:@"Mental Snapp"];
     
     tableViewCellTitles = @[@"Queued Exercises", @"Profile", @"Report an Issue", @"Terms and condition", @"Privacy policy"];
-    tableViewCellTitleImageNames = @[@"MoreQueuedExercise", @"MoreProfile", @"MoreReport", @"MoreProfile", @"MoreReport"];
+    tableViewCellTitleImageNames = @[@"MoreQueuedExercise", @"MoreProfile", @"MoreIssue", @"MoreReport", @"MorePolicy"];
     [self.tableView reloadData];
 }
 

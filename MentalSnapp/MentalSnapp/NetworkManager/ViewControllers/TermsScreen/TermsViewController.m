@@ -28,12 +28,14 @@
     
     NSString *content;
     if (_contentType == TermsAndCondition) {
-        content = @"Terms";
+        content = @"MentaSnappTerms.rtf";
     } else if (_contentType == PrivacyPolicy) {
-        content = @"Privacy";
+        content = @"MentalSnappPrivacy.rtf";
     }
-    
-    [_webView loadHTMLString:content baseURL:nil];
+    _webView.delegate = (id)self;
+    NSString *filePath = [[NSBundle mainBundle] pathForAuxiliaryExecutable:content];
+    NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:filePath];
+    [_webView loadData:[NSData dataWithContentsOfFile:filePath] MIMEType:@"text/rtf" textEncodingName:@"utf-8" baseURL:fileURL];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {

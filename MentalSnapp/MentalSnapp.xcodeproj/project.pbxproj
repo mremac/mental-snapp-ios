@@ -154,6 +154,8 @@
 		6AC660ED1DE5740B00BB8949 /* SMobiLogger.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 6AC660E21DE5740B00BB8949 /* SMobiLogger.podspec */; };
 		6AC660F41DE576E500BB8949 /* MentalSnappTests.xctest in Resources */ = {isa = PBXBuildFile; fileRef = EECB25C11CF5AAF10012E315 /* MentalSnappTests.xctest */; };
 		6AC660F51DE576E500BB8949 /* MentalSnappTests.xctest in Resources */ = {isa = PBXBuildFile; fileRef = EECB25C11CF5AAF10012E315 /* MentalSnappTests.xctest */; };
+		6AEBC5E81E1E320E00B90BC9 /* MentaSnappTerms.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 6AEBC5E61E1E320E00B90BC9 /* MentaSnappTerms.rtf */; };
+		6AEBC5E91E1E320E00B90BC9 /* MentalSnappPrivacy.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 6AEBC5E71E1E320E00B90BC9 /* MentalSnappPrivacy.rtf */; };
 		EE5108D11CFEEEC200E8A3F9 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE5108D01CFEEEC200E8A3F9 /* Social.framework */; };
 		EF11575A1E13F24900DC9945 /* UIMonthYearPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = EF1157591E13F24900DC9945 /* UIMonthYearPicker.m */; };
 		EF11575E1E13F3FC00DC9945 /* MonthYearPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF11575D1E13F3FC00DC9945 /* MonthYearPickerViewController.m */; };
@@ -469,6 +471,8 @@
 		6AC660E11DE5740B00BB8949 /* SMobiLogger.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SMobiLogger.xcdatamodel; sourceTree = "<group>"; };
 		6AC660E21DE5740B00BB8949 /* SMobiLogger.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SMobiLogger.podspec; sourceTree = "<group>"; };
 		6AC660E31DE5740B00BB8949 /* SMobiLogger.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = SMobiLogger.xcodeproj; sourceTree = "<group>"; };
+		6AEBC5E61E1E320E00B90BC9 /* MentaSnappTerms.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = MentaSnappTerms.rtf; sourceTree = "<group>"; };
+		6AEBC5E71E1E320E00B90BC9 /* MentalSnappPrivacy.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = MentalSnappPrivacy.rtf; sourceTree = "<group>"; };
 		8D30F0C0BCD48254CA253F4A /* Pods-MentalSnapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MentalSnapp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MentalSnapp/Pods-MentalSnapp.debug.xcconfig"; sourceTree = "<group>"; };
 		EE5108D01CFEEEC200E8A3F9 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		EECB25A51CF5AAF10012E315 /* MentalSnapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MentalSnapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1191,6 +1195,8 @@
 		6AAA012B1DE56F8600208022 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6AEBC5E61E1E320E00B90BC9 /* MentaSnappTerms.rtf */,
+				6AEBC5E71E1E320E00B90BC9 /* MentalSnappPrivacy.rtf */,
 				6A7D95E11DE6FA050065573E /* RobotoFont */,
 				6AAA012C1DE56F8600208022 /* AppSettings.plist */,
 				6AAA012D1DE56F8600208022 /* Localizable.strings */,
@@ -1583,8 +1589,10 @@
 				6A7D95FB1DE6FA050065573E /* Roboto-ThinItalic.ttf in Resources */,
 				6A7D95FA1DE6FA050065573E /* Roboto-Thin.ttf in Resources */,
 				6AC660E61DE5740B00BB8949 /* .gitignore in Resources */,
+				6AEBC5E91E1E320E00B90BC9 /* MentalSnappPrivacy.rtf in Resources */,
 				6A7D95EF1DE6FA050065573E /* Apache License.txt in Resources */,
 				6AC660E71DE5740B00BB8949 /* LICENSE.txt in Resources */,
+				6AEBC5E81E1E320E00B90BC9 /* MentaSnappTerms.rtf in Resources */,
 				6A7D95F31DE6FA050065573E /* Roboto-BoldItalic.ttf in Resources */,
 				6A7D95F81DE6FA050065573E /* Roboto-MediumItalic.ttf in Resources */,
 				6AAA013F1DE56F8600208022 /* Assets.xcassets in Resources */,

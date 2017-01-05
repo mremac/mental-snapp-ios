@@ -14,6 +14,7 @@
 @property(weak, nonatomic) IBOutlet UIView *welcomeView;
 @property(weak, nonatomic) IBOutlet NSLayoutConstraint *widthConstraint;
 @property(weak, nonatomic) IBOutlet NSLayoutConstraint *heightConstraint;
+@property (strong, nonatomic) IBOutlet UIButton *tapToContinueButton;
 
 @end
 
@@ -30,6 +31,7 @@
     [attText addAttribute:NSFontAttributeName value:boldFont range:[_welcomeBackLabel.text rangeOfString:userName]];
 //    [attText addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:[_welcomeBackLabel.text rangeOfString:userName]];
     _welcomeBackLabel.attributedText = attText;
+    [self.tapToContinueButton setHidden:YES];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -49,6 +51,8 @@
     
     [UIView animateWithDuration:2.f animations:^{
         [self.view layoutIfNeeded];
+    } completion:^(BOOL finished) {
+        [self.tapToContinueButton setHidden:NO];
     }];
 }
 
