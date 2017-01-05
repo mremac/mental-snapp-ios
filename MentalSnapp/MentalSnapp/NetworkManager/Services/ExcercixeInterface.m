@@ -99,7 +99,9 @@
             NSMutableArray *guidedExcercises = [[NSMutableArray alloc] init];
             for (NSDictionary *dictionary in array) {
                 GuidedExcercise *excercise = [[GuidedExcercise alloc] initWithDictionary:dictionary error:&error];
-                [guidedExcercises addObject:excercise];
+                if (excercise != nil) {
+                    [guidedExcercises addObject:excercise];
+                }
             }
             Paginate *pagination = [Paginate getPaginateFrom:response];
             pagination.pageResults = [NSArray arrayWithArray:guidedExcercises];

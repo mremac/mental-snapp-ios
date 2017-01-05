@@ -578,7 +578,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="400"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NK5-z8-BIQ" id="e0L-1f-Q4G">
-                                            <frame key="frameInset" width="320" height="399"/>
+                                            <frame key="frameInset" width="320" height="399.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xft-8H-nLy" userLabel="Description View">
@@ -873,7 +873,7 @@
                                     <outlet property="delegate" destination="GYI-Bb-r5l" id="qKA-SM-ZfQ"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TsC-YM-trH">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TsC-YM-trH">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="15"/>
                                 <state key="normal" title=" Terms and conditions">
@@ -912,6 +912,7 @@
                         <segue destination="Tqo-Eu-uS1" kind="show" identifier="goToReportIssueScreen" id="jbd-4W-UgC"/>
                         <segue destination="5Qa-iq-hxT" kind="show" identifier="goToQueuedExercisesScreen" id="p1l-K2-BgC"/>
                         <segue destination="MB7-ow-wnk" kind="show" identifier="ToTermsScreen" id="enE-yp-rBG"/>
+                        <segue destination="MB7-ow-wnk" kind="show" identifier="ToPrivacyPolicyScreen" id="Gsh-Ni-saQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NiE-kp-6Bn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -974,7 +975,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="81"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qls-U3-AFd" id="Po7-bZ-wxL">
-                                            <frame key="frameInset" width="320" height="80"/>
+                                            <frame key="frameInset" width="320" height="80.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jGe-za-dLf">
@@ -1111,29 +1112,25 @@
                         <viewControllerLayoutGuide type="bottom" id="zmp-99-7ce"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Xeg-HJ-9GN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="900"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BF0-aS-XUF">
-                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="19"/>
-                                <state key="normal" title="Coming Soon...">
-                                    <color key="titleColor" red="0.91372549020000005" green="0.39607843139999999" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="backButtonTapped:" destination="vX0-rh-xaN" eventType="touchUpInside" id="Uxb-cV-nDl"/>
-                                </connections>
-                            </button>
+                            <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tzq-PP-wIC">
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="BF0-aS-XUF" firstAttribute="centerY" secondItem="Xeg-HJ-9GN" secondAttribute="centerY" id="2Ht-eZ-QTH"/>
-                            <constraint firstItem="BF0-aS-XUF" firstAttribute="centerX" secondItem="Xeg-HJ-9GN" secondAttribute="centerX" id="NLP-d7-iqO"/>
+                            <constraint firstItem="Tzq-PP-wIC" firstAttribute="leading" secondItem="Xeg-HJ-9GN" secondAttribute="leading" id="7nv-Fb-k7d"/>
+                            <constraint firstAttribute="trailing" secondItem="Tzq-PP-wIC" secondAttribute="trailing" id="AxY-uO-Akb"/>
+                            <constraint firstItem="zmp-99-7ce" firstAttribute="top" secondItem="Tzq-PP-wIC" secondAttribute="bottom" id="OPh-MO-M8P"/>
+                            <constraint firstItem="Tzq-PP-wIC" firstAttribute="top" secondItem="vne-AA-sCy" secondAttribute="bottom" id="vtL-5A-YcI"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wfs-Ea-SFz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3169" y="2319"/>
+            <point key="canvasLocation" x="3169" y="2312"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eSH-DS-Rz5">
@@ -2012,7 +2009,7 @@
         <image name="video_select" width="63" height="47"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wJO-Rt-LLm"/>
+        <segue reference="Gsh-Ni-saQ"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
 </document>

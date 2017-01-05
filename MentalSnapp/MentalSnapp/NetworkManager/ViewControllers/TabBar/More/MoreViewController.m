@@ -7,6 +7,7 @@
 #import "MoreTableViewCell.h"
 #import "ProfileViewController.h"
 #import "SupportScreenViewController.h"
+#import "TermsViewController.h"
 
 @interface MoreViewController () <UITableViewDelegate, UITableViewDataSource> {
     NSArray *tableViewCellTitles;
@@ -32,8 +33,8 @@
 - (void)initialSetup {
     [self setNavigationBarButtonTitle:@"Mental Snapp"];
     
-    tableViewCellTitles = @[@"Queued Exercises", @"Profile", @"Report an Issue"];
-    tableViewCellTitleImageNames = @[@"MoreQueuedExercise", @"MoreProfile", @"MoreReport"];
+    tableViewCellTitles = @[@"Queued Exercises", @"Profile", @"Report an Issue", @"Terms and condition", @"Privacy policy"];
+    tableViewCellTitleImageNames = @[@"MoreQueuedExercise", @"MoreProfile", @"MoreReport", @"MoreProfile", @"MoreReport"];
     [self.tableView reloadData];
 }
 
@@ -47,7 +48,7 @@
 #pragma mark Datasource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -84,6 +85,14 @@
             [self.navigationController pushViewController:supportScreenViewController animated:YES];
             break;
         }
+        case 3: {
+            [self performSegueWithIdentifier:@"ToTermsScreen" sender:self];
+            break;
+        }
+        case 4: {
+            [self performSegueWithIdentifier:@"ToPrivacyPolicyScreen" sender:self];
+            break;
+        }
             
         default:
             break;
@@ -92,6 +101,16 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 44;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"ToTermsScreen"]) {
+        TermsViewController *termsViewController = segue.destinationViewController;
+        termsViewController.contentType = TermsAndCondition;
+    } else if ([segue.identifier isEqualToString:@"ToPrivacyPolicyScreen"]) {
+        TermsViewController *termsViewController = segue.destinationViewController;
+        termsViewController.contentType = PrivacyPolicy;
+    }
 }
 
 @end
