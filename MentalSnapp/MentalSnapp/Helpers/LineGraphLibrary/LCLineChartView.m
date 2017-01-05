@@ -269,7 +269,7 @@
         CGFloat maxwidth = (self.frame.size.width-(xStart))/self.xSteps.count;
         value = (self.xAxisLabelsWidth < maxwidth)?maxwidth:self.xAxisLabelsWidth;
         if(j>=1){
-            UIView *view = [[UIView alloc] initWithFrame:CGRectMake(xValue, 0, (j==self.xSteps.count)?value+extraSpace5:value, self.bounds.size.height-(extraSpace10+extraSpace5))];
+            UIView *view = [[UIView alloc] initWithFrame:CGRectMake(xValue, 0, (j==self.xSteps.count)?value+extraSpace5:value+extraSpace5, self.bounds.size.height-(extraSpace10+extraSpace5))];
             [view setTag:j+100];
             if(_selectedWeek>0 && (_selectedWeek+100) == view.tag){
                 _selectedView = view;
@@ -443,12 +443,17 @@
         if(self.lineDelegate && [self.lineDelegate respondsToSelector:@selector(didSelectWeekSection:)]){
             int value = (int)(self.bounds.size.width-(xStart))/self.xSteps.count;
             value  = (pos.x+extraSpace5)/value;
+            if(value == 0) {
+                [self hideIndicator];
+                return;
+            }
             [_selectedView setBackgroundColor:[UIColor clearColor]];
             _selectedView = [self.superview viewWithTag:value+100];
             _selectedWeek = value;
             [_selectedView setBackgroundColor:[[UIColor whiteColor] colorWithAlphaComponent:0.8]];
             [self.lineDelegate didSelectWeekSection:value];
         }
+        [self hideIndicator];
         return;
     }
     
