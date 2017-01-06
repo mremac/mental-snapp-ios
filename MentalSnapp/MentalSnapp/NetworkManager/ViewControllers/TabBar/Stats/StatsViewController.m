@@ -84,7 +84,7 @@ static const CGFloat lineChartCellHeight = 240.0;
        // [self.noContentView setHidden:NO];
         [self.tableView setHidden:YES];
     }
-    NSArray *arrayMoods = [[self.stats weekDataInfo] objectAtIndex:selectedWeek];
+    NSArray *arrayMoods = ([self.stats weekDataInfo].count>selectedWeek)?[[self.stats weekDataInfo] objectAtIndex:selectedWeek]:[NSArray new];
     return (section == 0) ? 0 : arrayMoods.count;
 }
 
@@ -329,8 +329,8 @@ static const CGFloat lineChartCellHeight = 240.0;
                     [self.noContentView setHidden:NO];
                 }
             }
-            [self showInProgress:NO];
         });
+        [self showInProgress:NO];
     }];
 }
 

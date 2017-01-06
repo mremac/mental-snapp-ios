@@ -1200,7 +1200,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ea6-22-dcP" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" tag="4" title="" image="more" selectedImage="more_select" id="pLc-5M-03v"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="osg-Bk-j07">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="osg-Bk-j07">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1254,7 +1254,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="r1p-Tj-Snl" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" tag="3" title="" image="stats" selectedImage="stats_select" id="tx5-ds-DTt"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="TWf-gw-yYx">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TWf-gw-yYx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1273,7 +1273,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="olk-hQ-QB6" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" tag="2" title="" image="record" selectedImage="record_select" id="16e-aA-4fL"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="a5i-vM-KMF">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="a5i-vM-KMF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1292,7 +1292,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="foe-lB-Bwv" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" tag="1" title="" image="video" selectedImage="video_select" id="HrM-Hn-fDR"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="fxH-1a-3AF">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fxH-1a-3AF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.058823529409999999" green="0.68627450980000004" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -1793,16 +1793,16 @@
                                                                 </connections>
                                                             </button>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kaG-It-J2d" userLabel="Bottom View">
-                                                                <rect key="frame" x="88" y="103" width="199" height="25"/>
+                                                                <rect key="frame" x="85" y="103" width="205" height="25"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YPU-Y4-Hyr">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="145" height="25"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="151" height="25"/>
                                                                         <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="13"/>
                                                                         <color key="textColor" red="0.23921568630000001" green="0.23921568630000001" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NYK-RA-bl0">
-                                                                        <rect key="frame" x="145" y="0.0" width="54" height="25"/>
+                                                                        <rect key="frame" x="151" y="0.0" width="54" height="25"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="54" id="HoQ-QI-YSn"/>
                                                                         </constraints>
@@ -1837,7 +1837,7 @@
                                                         </constraints>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ry6-VA-hKh">
-                                                        <rect key="frame" x="147" y="519" width="127" height="30"/>
+                                                        <rect key="frame" x="147" y="519" width="129" height="30"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="13"/>
                                                         <state key="normal" title=" Terms and conditions">
                                                             <color key="titleColor" red="0.91372549020000005" green="0.39607843139999999" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>

@@ -318,7 +318,11 @@
 - (void)initialSetupWithRequest:(Request *)request requestType:(NSInteger)requestType {
     VMRequest = request;
     VMRequest.requestType = requestType;
-    NSString *message = [NSString stringWithFormat:@"Info: Performing API call [Request:%@] with [URL:%@] [params: %@]", [request class], request.urlPath, [request getParams]];
+    NSMutableDictionary *dictionary = [[request getParams] mutableCopy];
+    if(![request.urlPath isEqualToString:kLoginAPI]){
+        [dictionary setValue:@"**********" forKey:@"password"];
+    }
+    NSString *message = [NSString stringWithFormat:@"Info: Performing API call [Request:%@] with [URL:%@] [params: %@]", [request class], request.urlPath, dictionary];
     NSLog(message);
     [[SMobiLogger sharedInterface] info:[NSString stringWithFormat:@"%s", __FUNCTION__] withDescription:message];
 }
