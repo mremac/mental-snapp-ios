@@ -24,12 +24,12 @@
     [super viewDidLoad];
     
     NSString *userName = [UserManager sharedManager].userModel.userName;
-    _welcomeBackLabel.text = [NSString stringWithFormat:@"Welcome back\n%@!!",userName];
+    _welcomeBackLabel.text = [NSString stringWithFormat:@"Welcome back \n%@, \nwhat do you want to record today?",userName];
     
-    UIFont *boldFont = [UIFont fontWithName:@"Helvetica Neue" size:27.0f];
+    UIFont *boldFont = [UIFont fontWithName:@"Roboto-Bold" size:22.0f];
     NSMutableAttributedString *attText = [[NSMutableAttributedString alloc] initWithString:_welcomeBackLabel.text];
     [attText addAttribute:NSFontAttributeName value:boldFont range:[_welcomeBackLabel.text rangeOfString:userName]];
-//    [attText addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:[_welcomeBackLabel.text rangeOfString:userName]];
+    [attText addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:233.0/255.0 green:101.0/255.0 blue:58.0/255.0 alpha:1.0] range:[_welcomeBackLabel.text rangeOfString:userName]];
     _welcomeBackLabel.attributedText = attText;
     [self.tapToContinueButton setHidden:YES];
 }

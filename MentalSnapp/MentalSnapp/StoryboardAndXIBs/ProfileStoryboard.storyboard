@@ -1525,7 +1525,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vF0-PD-oRd">
-                                        <rect key="frame" x="8" y="5" width="359" height="458"/>
+                                        <rect key="frame" x="20" y="5" width="335" height="458"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
                                         <color key="textColor" red="0.40392156862745099" green="0.40392156862745099" blue="0.40392156862745099" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1537,11 +1537,11 @@
                                     <constraint firstItem="1ib-fm-041" firstAttribute="top" secondItem="vF0-PD-oRd" secondAttribute="bottom" constant="2" id="DcG-PJ-NKF"/>
                                     <constraint firstItem="vF0-PD-oRd" firstAttribute="top" secondItem="CBl-w3-76o" secondAttribute="top" constant="5" id="Q19-Yj-Uok"/>
                                     <constraint firstAttribute="bottom" secondItem="1ib-fm-041" secondAttribute="bottom" constant="10" id="bv6-1O-52P"/>
-                                    <constraint firstAttribute="trailing" secondItem="vF0-PD-oRd" secondAttribute="trailing" constant="8" id="gGg-mt-Sc4"/>
+                                    <constraint firstAttribute="trailing" secondItem="vF0-PD-oRd" secondAttribute="trailing" constant="20" id="gGg-mt-Sc4"/>
                                     <constraint firstAttribute="trailing" secondItem="UgD-Kj-WC5" secondAttribute="trailing" constant="8" id="hcY-qo-ard"/>
                                     <constraint firstItem="1ib-fm-041" firstAttribute="centerX" secondItem="CBl-w3-76o" secondAttribute="centerX" id="o8Q-tq-Sdc"/>
                                     <constraint firstAttribute="bottom" secondItem="UgD-Kj-WC5" secondAttribute="bottom" constant="8" id="rU3-4k-TMa"/>
-                                    <constraint firstItem="vF0-PD-oRd" firstAttribute="leading" secondItem="CBl-w3-76o" secondAttribute="leading" constant="8" id="u0Z-PK-3IY"/>
+                                    <constraint firstItem="vF0-PD-oRd" firstAttribute="leading" secondItem="CBl-w3-76o" secondAttribute="leading" constant="20" id="u0Z-PK-3IY"/>
                                     <constraint firstAttribute="bottom" secondItem="IyF-V7-eoW" secondAttribute="bottom" constant="8" id="xhe-4k-MHH"/>
                                 </constraints>
                             </view>

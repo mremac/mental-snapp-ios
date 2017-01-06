@@ -21,7 +21,7 @@
 
 - (id)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {		
-        UIFont *fatFont = [UIFont fontWithName:@"Roboto" size:10];
+        UIFont *fatFont = [UIFont fontWithName:@"Roboto" size:9];
         self.infoLabel = [[UILabel alloc] init]; self.infoLabel.font = fatFont;
         self.infoLabel.backgroundColor = [UIColor clearColor]; self.infoLabel.textColor = [UIColor colorWithRed:61.0/255.0 green:61.0/255.0 blue:61.0/255.0 alpha:1.0];
         self.infoLabel.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth;
@@ -132,17 +132,24 @@ void CGContextAddRoundedRectWithHookSimple(CGContextRef c, CGRect rect, CGFloat 
     if(theFrame.size.width>120){
         theFrame.size.width =120;
     }
-    if(theFrame.size.width<60){
-        theFrame.size.width =60;
+    if(theFrame.size.width<70){
+        theFrame.size.width =70;
     }
+    CGFloat labelWidth = [self.infoLabel getLabelAttributedTextboundWidth];
     CGRect frame =  self.infoLabel.frame;
-    frame.size.width = (theFrame.size.width<50)?50:theFrame.size.width-20;
+    frame.size.width = (theFrame.size.width<70)?70:theFrame.size.width-20;
     [self.infoLabel setFrame:frame];
     CGFloat labelHeight = [self.infoLabel getLabelAtrributedTextHeight];
-    frame.size.height = (labelHeight>60)?60:((labelHeight<30)?30:labelHeight);
+    if(labelWidth > 40 && labelWidth<120){
+        labelHeight += (labelHeight/2);
+        if(labelHeight>40 && labelHeight<60){
+            labelHeight = 50;
+        }
+    }
+    frame.size.height = (labelHeight>60)?60:((labelHeight<35)?35:labelHeight);
     [self.infoLabel setFrame:frame];
-    theFrame.size.height = (labelHeight>60)?60:((labelHeight<30)?30:labelHeight);
-
+    theFrame.size.height = (labelHeight>60)?60:((labelHeight<35)?35:labelHeight);
+    
     {
         theFrame.origin.y = self.tapPoint.y - theFrame.size.height + 2 * SHADOWSIZE + 1;
         theFrame.origin.x = round(self.tapPoint.x - ((theFrame.size.width - 2 * SHADOWSIZE)) / 2.0);

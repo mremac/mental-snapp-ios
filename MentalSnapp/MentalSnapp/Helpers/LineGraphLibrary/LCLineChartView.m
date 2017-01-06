@@ -350,7 +350,7 @@
 
                 CGContextAddPath(c, path);
                 CGContextSetStrokeColorWithColor(c, [data.color CGColor]);
-                CGContextSetLineWidth(c, 2);
+                CGContextSetLineWidth(c, 3);
                 CGContextStrokePath(c);
 
                 CGPathRelease(path);
@@ -370,7 +370,7 @@
                 data.color = [Util getMoodColor:(round(yVal/heightPerStep)+((result.width >= 414)?0:1))];
                 [[UIColor clearColor] setFill];
                 
-                CGContextFillEllipseInRect(c, CGRectMake(xVal - 10, yVal - 10, 30, 30));
+                CGContextFillEllipseInRect(c, CGRectMake(xVal - 10, yVal - 10, 35, 35));
                 {
                     CGFloat brightness;
                     CGFloat r,g,b,a;
@@ -385,7 +385,7 @@
 //                    else
 //                        [[UIColor blackColor] setFill];
                 }
-                CGContextFillEllipseInRect(c, CGRectMake(xVal - 5, yVal - 5, 12, 12));
+                CGContextFillEllipseInRect(c, CGRectMake(xVal - 5, yVal - 5, 15, 15));
             } // for
           } // data - draw data points
         } // draw data points
