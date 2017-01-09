@@ -25,7 +25,6 @@
     [self setNavigationBarButtonTitle:@"Queued Excercises"];
     [self setLeftMenuButtons:[NSArray arrayWithObject:[self backButton]]];
     
-    [self.noContentView setHidden:YES];
     self.pickerViewController = [[UIStoryboard storyboardWithName:KProfileStoryboard bundle:nil] instantiateViewControllerWithIdentifier:kPickerViewController];
     self.pickerViewController.modalPresentationStyle = UIModalPresentationOverFullScreen;
     [self.pickerViewController setPickerType:dateTime];
@@ -43,7 +42,8 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
+    [self.noContentView setHidden:YES];
+
     if (self.tabBarController) {
         self.tabBarController.tabBar.hidden = YES;
     }

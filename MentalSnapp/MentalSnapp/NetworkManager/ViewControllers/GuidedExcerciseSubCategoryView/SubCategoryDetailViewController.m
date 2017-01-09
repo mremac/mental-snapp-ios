@@ -97,7 +97,6 @@
             NSString *message = [NSString stringWithFormat:@"Exercise scheduled on %@.", dateTimeValue];
             [[ScheduleManager sharedInstance] modifyScheduledNotifications:scheduleModel];
             [Banner showSuccessBannerWithSubtitle:message];
-            
         }
         [self showInProgress:NO];
     }];

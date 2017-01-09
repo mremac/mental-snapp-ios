@@ -53,7 +53,7 @@
 {
     // Schedule the notification
     UILocalNotification* localNotification = [[UILocalNotification alloc] init];
-    NSDate *fireDate = [[NSDate dateWithTimeIntervalSince1970:[schedule.executeAt integerValue]] dateByAddingTimeInterval:-(NSTimeInterval)((u_int32_t)5*60)];
+    NSDate *fireDate = [NSDate dateWithTimeIntervalSince1970:[schedule.executeAt integerValue]];
     localNotification.fireDate = fireDate;
     localNotification.alertBody = [NSString stringWithFormat:@"You have exercise scheduled for: %@", ([schedule.exercise.excerciseStringType isEqualToString:@"Question"])?schedule.exercise.excerciseDescription:schedule.exercise.excerciseName];
     localNotification.timeZone = [NSTimeZone defaultTimeZone];

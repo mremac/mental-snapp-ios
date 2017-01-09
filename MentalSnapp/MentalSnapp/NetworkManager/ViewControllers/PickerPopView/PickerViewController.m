@@ -27,7 +27,7 @@
    
     switch (_dateSelection) {
         case futureDateOnly:
-            [self.datePickerView setMinimumDate:[[NSDate date] dateByAddingTimeInterval:(NSTimeInterval)((u_int32_t)6*60)]];
+            [self.datePickerView setMinimumDate:[NSDate date]];
             break;
         case pastDateOnly:
             [self.datePickerView setMaximumDate:[NSDate date]];
