@@ -269,7 +269,7 @@
         CGFloat maxwidth = (self.frame.size.width-(xStart))/self.xSteps.count;
         value = (self.xAxisLabelsWidth < maxwidth)?maxwidth:self.xAxisLabelsWidth;
         if(j>=1){
-            UIView *view = [[UIView alloc] initWithFrame:CGRectMake(xValue, 0, (j==self.xSteps.count)?value+extraSpace5:value+extraSpace5, self.bounds.size.height-(extraSpace10+extraSpace5))];
+            UIView *view = [[UIView alloc] initWithFrame:CGRectMake(xValue, 0, (j==self.xSteps.count)?value+extraSpace5:value+((j==1)?extraSpace5:0), self.bounds.size.height-(extraSpace10+extraSpace5))];
             [view setTag:j+100];
             if(_selectedWeek>0 && (_selectedWeek+100) == view.tag){
                 _selectedView = view;
@@ -385,7 +385,7 @@
 //                    else
 //                        [[UIColor blackColor] setFill];
                 }
-                CGContextFillEllipseInRect(c, CGRectMake(xVal - 5, yVal - 5, 15, 15));
+                CGContextFillEllipseInRect(c, CGRectMake(xVal - 5, yVal - 7, 15, 15));
             } // for
           } // data - draw data points
         } // draw data points

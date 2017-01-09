@@ -7,7 +7,7 @@
 	<key>LocalURL</key>
 	<string>192.168.1.38:3000</string>
 	<key>ProductionURL</key>
-	<string>www.skeleton-systango.com</string>
+	<string>52.214.169.101</string>
 	<key>StagingURL</key>
 	<string>mentalsnapp.systech-soft.com</string>
 	<key>URLPathSubstring</key>

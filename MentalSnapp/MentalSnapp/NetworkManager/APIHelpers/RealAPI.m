@@ -273,6 +273,10 @@
     }
     else if (error.localizedDescription != nil)
     {
+        if([error.description containsString:@"request timed"])
+        {
+            [error setValue:@"Low network. Please try again later." forKey:NSLocalizedDescriptionKey];
+        }
         NSString *message = [NSString stringWithFormat:@"\n Error :Failure with error: %@", [error localizedDescription]];
         NSLog(message);
         [[SMobiLogger sharedInterface] error:[NSString stringWithFormat:@"%s", __FUNCTION__] withDescription:message];
@@ -306,10 +310,19 @@
             //*> Show Alert
 //            [ApplicationDelegate showAlertWithMessage:@"Your session expire" isLogout:YES];
         }
+        if([error.description containsString:@"request timed"])
+        {
+            [error setValue:@"Low network. Please try again later." forKey:NSLocalizedDescriptionKey];
+        }
+        
         block(NO, serializedData);
     }
     else
     {
+        if([error.description containsString:@"request timed"])
+        {
+            [error setValue:@"Low network. Please try again later." forKey:NSLocalizedDescriptionKey];
+        }
         block(NO, error.description);
     }
     
@@ -319,7 +332,7 @@
     VMRequest = request;
     VMRequest.requestType = requestType;
     NSMutableDictionary *dictionary = [[request getParams] mutableCopy];
-    if(![request.urlPath isEqualToString:kLoginAPI]){
+    if([request.urlPath isEqualToString:kLoginAPI]){
         [dictionary setValue:@"**********" forKey:@"password"];
     }
     NSString *message = [NSString stringWithFormat:@"Info: Performing API call [Request:%@] with [URL:%@] [params: %@]", [request class], request.urlPath, dictionary];

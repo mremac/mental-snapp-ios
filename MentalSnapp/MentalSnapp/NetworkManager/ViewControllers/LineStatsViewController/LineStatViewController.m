@@ -63,10 +63,14 @@
     }
     if([date2 month]>month){
         NSCalendar * calendar = [NSCalendar currentCalendar];
-        NSDate * plusOneMonthDate = [date1 dateByAddingMonths: 0];
+        NSDate * plusOneMonthDate = [date2 dateByAddingMonths: 0];
         NSDateComponents * plusOneMonthDateComponents = [calendar components:NSCalendarUnitMonth fromDate: plusOneMonthDate];
         NSDate * endOfMonth = [[calendar dateFromComponents: plusOneMonthDateComponents] dateByAddingTimeInterval: -1]; // One second before the start of next month
-        date2 = [NSDate dateFromString:[endOfMonth stringInISO8601Format] format:@"dd-MM-yyyy"];
+        if(endOfMonth.year != year){
+            date2 = [NSDate dateWithYear:year month:month day:endOfMonth.day];
+        } else {
+            date2 = [NSDate dateFromString:[endOfMonth stringInISO8601Format] format:@"dd-MM-yyyy"];
+        }
     }
     
     d.xMin = [date1 timeIntervalSince1970];
@@ -161,20 +165,5 @@
     [self.chatContainerView addSubview:chartView];
     [self.headingLabel setText:[NSString stringWithFormat:@" %d/%d's Analysis",month,year]];
 }
-
-//{
-//    "posts": [
-//
-//              "created_at": "1481699731", 12/14/2016, 2
-//              "created_at": "1481892140", 12/16/2016, 6
-//              "created_at": "1481894171", 12/16/2016, 3
-//              "created_at": "1481895231", 12/16/2016, 2
-//              "created_at": "1482237516", 12/20/2016, 2
-//              "created_at": "1482400692", 12/22/2016, 5
-//              "created_at": "1482401545", 12/22/2016, 6
-//              "created_at": "1482405623", 12/22/2016, 1
-//              ]
-//}
-
 
 @end

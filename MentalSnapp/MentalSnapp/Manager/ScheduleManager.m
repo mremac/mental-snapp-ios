@@ -54,7 +54,7 @@
     // Schedule the notification
     UILocalNotification* localNotification = [[UILocalNotification alloc] init];
     localNotification.fireDate = [NSDate dateWithTimeIntervalSince1970:[schedule.executeAt integerValue]];
-    localNotification.alertBody = [NSString stringWithFormat:@"You have exercise scheduled for: %@", schedule.exercise.excerciseName];
+    localNotification.alertBody = [NSString stringWithFormat:@"You have exercise scheduled for: %@", ([schedule.exercise.excerciseStringType isEqualToString:@"Question"])?schedule.exercise.excerciseDescription:schedule.exercise.excerciseName];
     localNotification.timeZone = [NSTimeZone defaultTimeZone];
     localNotification.applicationIconBadgeNumber = [[UIApplication sharedApplication] applicationIconBadgeNumber] + 1;
     NSMutableDictionary *dictionary = [[schedule toDictionary] mutableCopy];
@@ -135,7 +135,7 @@
     if (appState == UIApplicationStateActive) {
         //Show the notification in case of active app
         
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Mental Snapp" message:[NSString stringWithFormat:@"You have exercise scheduled for: %@", schedule.exercise.excerciseName] preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Mental Snapp" message:[NSString stringWithFormat:@"You have exercise scheduled for: %@",([schedule.exercise.excerciseStringType isEqualToString:@"Question"])?schedule.exercise.excerciseDescription:schedule.exercise.excerciseName] preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Continue" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [Util openCameraForRecordExercise:schedule.exercise];
