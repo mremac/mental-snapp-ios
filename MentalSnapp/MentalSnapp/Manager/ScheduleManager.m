@@ -53,7 +53,8 @@
 {
     // Schedule the notification
     UILocalNotification* localNotification = [[UILocalNotification alloc] init];
-    localNotification.fireDate = [NSDate dateWithTimeIntervalSince1970:[schedule.executeAt integerValue]];
+    NSDate *fireDate = [[NSDate dateWithTimeIntervalSince1970:[schedule.executeAt integerValue]] dateByAddingTimeInterval:-(NSTimeInterval)((u_int32_t)5*60)];
+    localNotification.fireDate = fireDate;
     localNotification.alertBody = [NSString stringWithFormat:@"You have exercise scheduled for: %@", ([schedule.exercise.excerciseStringType isEqualToString:@"Question"])?schedule.exercise.excerciseDescription:schedule.exercise.excerciseName];
     localNotification.timeZone = [NSTimeZone defaultTimeZone];
     localNotification.applicationIconBadgeNumber = [[UIApplication sharedApplication] applicationIconBadgeNumber] + 1;
@@ -134,7 +135,8 @@
 {
     if (appState == UIApplicationStateActive) {
         //Show the notification in case of active app
-        
+        [[UIApplication sharedApplication] clearBadgeNumbers];
+
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Mental Snapp" message:[NSString stringWithFormat:@"You have exercise scheduled for: %@",([schedule.exercise.excerciseStringType isEqualToString:@"Question"])?schedule.exercise.excerciseDescription:schedule.exercise.excerciseName] preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Continue" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             dispatch_async(dispatch_get_main_queue(), ^{

@@ -273,10 +273,7 @@
     }
     else if (error.localizedDescription != nil)
     {
-        if([error.description containsString:@"request timed"])
-        {
-            [error setValue:@"Low network. Please try again later." forKey:NSLocalizedDescriptionKey];
-        }
+
         NSString *message = [NSString stringWithFormat:@"\n Error :Failure with error: %@", [error localizedDescription]];
         NSLog(message);
         [[SMobiLogger sharedInterface] error:[NSString stringWithFormat:@"%s", __FUNCTION__] withDescription:message];
@@ -291,7 +288,7 @@
 //                [Banner showFailureBannerWithSubtitle:[serializedData valueForKey:@"error"]];
             }
         } else {
-            serializedData = [NSMutableDictionary dictionaryWithObject:error.localizedDescription forKey:@"message"];
+            serializedData = [NSMutableDictionary dictionaryWithObject:([error.localizedDescription containsString:@"request timed"])?@"Low network. Please try again later.":error.localizedDescription forKey:@"message"];
 //            [Banner showFailureBannerWithSubtitle:error.localizedDescription];
         }
         serializedData = [serializedData mutableCopy];
@@ -310,20 +307,18 @@
             //*> Show Alert
 //            [ApplicationDelegate showAlertWithMessage:@"Your session expire" isLogout:YES];
         }
-        if([error.description containsString:@"request timed"])
-        {
-            [error setValue:@"Low network. Please try again later." forKey:NSLocalizedDescriptionKey];
-        }
         
         block(NO, serializedData);
     }
     else
     {
-        if([error.description containsString:@"request timed"])
+        if([error.localizedDescription containsString:@"request timed"])
         {
-            [error setValue:@"Low network. Please try again later." forKey:NSLocalizedDescriptionKey];
+            block(NO, @"Low network. Please try again later.");
+
+        } else {
+            block(NO, error.description);
         }
-        block(NO, error.description);
     }
     
 }

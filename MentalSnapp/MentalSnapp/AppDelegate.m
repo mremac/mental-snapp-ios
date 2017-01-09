@@ -26,7 +26,8 @@ void uncaughtExceptionHandler(NSException *exception) {
 {
     NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
     AppSettings *appSettings = [[AppSettingsManager sharedInstance] fetchSettings];
-    
+    [[UIApplication sharedApplication] clearBadgeNumbers];
+
     if(appSettings.EnableCoreData)
     {
         // Setup CoreData with MagicalRecord
@@ -100,6 +101,8 @@ void uncaughtExceptionHandler(NSException *exception) {
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    [[UIApplication sharedApplication] clearBadgeNumbers];
+
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
