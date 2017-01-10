@@ -26,8 +26,6 @@
         self.navigationController.navigationBar.hidden = NO;
     }
     
-    NI
-    
     NSString *content;
     if (_contentType == TermsAndCondition) {
         content = @"MentaSnappTerms.rtf";
