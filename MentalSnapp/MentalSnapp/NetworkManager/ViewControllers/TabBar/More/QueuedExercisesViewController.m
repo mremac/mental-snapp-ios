@@ -112,6 +112,12 @@
                     [self.noContentView setHidden:NO];
                 }
             }
+            else
+            {
+                [self.tableView setHidden:YES];
+                [self.noContentView setHidden:NO];
+            }
+
             [self.tableView.infiniteScrollingView stopAnimating];
             [self showInProgress:NO];
         });
@@ -184,12 +190,12 @@
 {
     if(self.queuedExercisesPaginate.pageResults.count > 0)
     {
-        [self.noContentView setHidden:YES];
+        //[self.noContentView setHidden:YES];
         [self.tableView setHidden:NO];
     }
     else
     {
-        [self.noContentView setHidden:NO];
+       // [self.noContentView setHidden:NO];
         [self.tableView setHidden:YES];
     }
     

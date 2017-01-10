@@ -26,6 +26,8 @@
         self.navigationController.navigationBar.hidden = NO;
     }
     
+    NI
+    
     NSString *content;
     if (_contentType == TermsAndCondition) {
         content = @"MentaSnappTerms.rtf";
@@ -36,6 +38,7 @@
     NSString *filePath = [[NSBundle mainBundle] pathForAuxiliaryExecutable:content];
     NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:filePath];
     [_webView loadData:[NSData dataWithContentsOfFile:filePath] MIMEType:@"text/rtf" textEncodingName:@"utf-8" baseURL:fileURL];
+    _webView.scrollView.contentInset = UIEdgeInsetsMake(0.0,10.0,0.0,10.0);
 }
 
 - (void)viewDidDisappear:(BOOL)animated {

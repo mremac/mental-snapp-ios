@@ -48,7 +48,7 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
     [dateFormatter setDateFormat:@"dd MMM."];
     NSDateFormatter *timeFormatter = [[NSDateFormatter alloc]init];
-    [timeFormatter setDateFormat:@"h:mm a"];
+    [timeFormatter setDateFormat:@"hh:mm a"];
     
     NSString *relativeDateValue = [dateAndTime isToday] ? @"Today" : [dateAndTime isTomorrow] ? @"Tomorrow" : [dateFormatter stringFromDate:dateAndTime];
     

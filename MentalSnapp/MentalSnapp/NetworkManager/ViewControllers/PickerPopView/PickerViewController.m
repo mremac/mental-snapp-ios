@@ -25,9 +25,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
    
+    [self.datePickerView addTarget:self action:@selector(dateIsChanged:) forControlEvents:UIControlEventValueChanged];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     switch (_dateSelection) {
         case futureDateOnly:
-            [self.datePickerView setMinimumDate:[NSDate date]];
+            [self.datePickerView setMinimumDate:[[NSDate date] dateByAddingTimeInterval:(NSTimeInterval)((u_int32_t)10*60)]];
             break;
         case pastDateOnly:
             [self.datePickerView setMaximumDate:[NSDate date]];
@@ -47,7 +52,7 @@
             self.datePickerView.date = maxDate;
             break;
         }
-
+            
         default:
             break;
     }
@@ -62,7 +67,7 @@
         case timeOnly:
             [self.datePickerView setDatePickerMode:UIDatePickerModeTime];
             break;
-
+            
         default:
             [self.datePickerView setDatePickerMode:UIDatePickerModeDate];
             break;
@@ -73,7 +78,6 @@
     NSLocale *locale = [NSLocale localeWithLocaleIdentifier:@"en_US"];;
     [self.datePickerView setLocale:locale];
 
-    [self.datePickerView addTarget:self action:@selector(dateIsChanged:) forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -88,7 +88,7 @@
     ScheduleModel *schedule = [[ScheduleModel alloc] init];
     schedule.exercise = self.selectedExcercise;
     
-    schedule.executeAt = [NSString stringWithFormat:@"%f", [date timeIntervalSince1970]];
+    schedule.executeAt = [NSString stringWithFormat:@"%f", [[date dateByAddingTimeInterval:(10*60)] timeIntervalSince1970]];
     [[RequestManager alloc] createSchedule:schedule withCompletionBlock:^(BOOL success, id response) {
         if(success && [response isKindOfClass:[ScheduleModel class]])
         {

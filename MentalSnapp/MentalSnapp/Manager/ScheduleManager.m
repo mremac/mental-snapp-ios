@@ -53,15 +53,17 @@
 {
     // Schedule the notification
     UILocalNotification* localNotification = [[UILocalNotification alloc] init];
-    NSDate *fireDate = [NSDate dateWithTimeIntervalSince1970:[schedule.executeAt integerValue]];
-    localNotification.fireDate = fireDate;
-    localNotification.alertBody = [NSString stringWithFormat:@"You have exercise scheduled for: %@", ([schedule.exercise.excerciseStringType isEqualToString:@"Question"])?schedule.exercise.excerciseDescription:schedule.exercise.excerciseName];
-    localNotification.timeZone = [NSTimeZone defaultTimeZone];
-    localNotification.applicationIconBadgeNumber = [[UIApplication sharedApplication] applicationIconBadgeNumber] + 1;
-    NSMutableDictionary *dictionary = [[schedule toDictionary] mutableCopy];
-    localNotification.userInfo = [NSMutableDictionary dictionaryWithObject:dictionary forKey:@"schedule"];
+    NSDate *fireDate =[[NSDate dateWithTimeIntervalSince1970:[schedule.executeAt integerValue]] dateByAddingTimeInterval:-(NSTimeInterval)((u_int32_t)5*60)];
+    if([[NSDate date] timeIntervalSince1970]<=[fireDate timeIntervalSince1970]) {
+        localNotification.fireDate = fireDate;
+        localNotification.alertBody = [NSString stringWithFormat:@"You have exercise scheduled for: %@", ([schedule.exercise.excerciseStringType isEqualToString:@"Question"])?schedule.exercise.excerciseDescription:schedule.exercise.excerciseName];
+        localNotification.timeZone = [NSTimeZone defaultTimeZone];
+        localNotification.applicationIconBadgeNumber = [[UIApplication sharedApplication] applicationIconBadgeNumber] + 1;
+        NSMutableDictionary *dictionary = [[schedule toDictionary] mutableCopy];
+        localNotification.userInfo = [NSMutableDictionary dictionaryWithObject:dictionary forKey:@"schedule"];
     
-    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+        [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+    }
 }
 
 - (void)updateNotifications
