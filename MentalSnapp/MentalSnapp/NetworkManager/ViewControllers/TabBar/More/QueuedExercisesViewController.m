@@ -22,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [[UIApplication sharedApplication] clearBadgeNumbers];
-    [self setNavigationBarButtonTitle:@"Queued Excercises"];
+    [self setNavigationBarButtonTitle:@"Queued Exercises"];
     [self setLeftMenuButtons:[NSArray arrayWithObject:[self backButton]]];
     
     self.pickerViewController = [[UIStoryboard storyboardWithName:KProfileStoryboard bundle:nil] instantiateViewControllerWithIdentifier:kPickerViewController];
