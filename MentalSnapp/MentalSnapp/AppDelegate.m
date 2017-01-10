@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "Flurry.h"
 #import <AWSCore/AWSCore.h>
 #import <Crittercism/Crittercism.h>
 
