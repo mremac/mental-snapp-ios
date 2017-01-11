@@ -16,7 +16,6 @@
 @import AVKit;
 
 static const CGFloat barChartHeight = 160.0;
-static const CGFloat lineChartHeight = 185.0;
 static const CGFloat barChartCellHeight = 210.0;
 static const CGFloat lineChartCellHeight = 240.0;
 
@@ -100,7 +99,7 @@ static const CGFloat lineChartCellHeight = 240.0;
     NSArray *arrayMoods = [[self.stats weekDataInfo] objectAtIndex:selectedWeek];
     NSArray *array = [arrayMoods objectAtIndex:indexPath.row];
     [cell.moodNameLabel setText:[Util getMoodString:[array[0] integerValue]]];
-    [cell.moodValueLabel setText:[NSString stringWithFormat:@"%d Time",[array[1] integerValue]]];
+    [cell.moodValueLabel setText:[NSString stringWithFormat:@"%ld Time",(long)[array[1] integerValue]]];
     [cell.moodNameLabel setTextColor:[Util getMoodColor:[array[0] integerValue]]];
     [cell.moodValueLabel setTextColor:[Util getMoodColor:[array[0] integerValue]]];
     return cell;

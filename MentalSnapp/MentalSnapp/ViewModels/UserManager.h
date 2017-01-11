@@ -4,6 +4,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "RecordViewController.h"
 
 @class UserModel;
 
@@ -12,6 +13,7 @@
 @property (strong, nonatomic) UserModel *userModel;
 @property (strong, nonatomic) NSString *authorizationToken;
 @property (assign, nonatomic) BOOL isFirstTime;
+@property (strong, nonatomic) RecordViewController *recordViewController;
 
 + (UserManager *)sharedManager;
 

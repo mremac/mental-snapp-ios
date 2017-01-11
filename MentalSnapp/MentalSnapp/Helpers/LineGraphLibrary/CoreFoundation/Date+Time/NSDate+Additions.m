@@ -36,7 +36,8 @@ BOOL is24HourFormat() {
     return is24Hour;
 }
 
-#define DATE_COMPONENTS (NSYearCalendarUnit| NSMonthCalendarUnit | NSDayCalendarUnit | NSWeekCalendarUnit |  NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit | NSWeekdayCalendarUnit | NSWeekdayOrdinalCalendarUnit | NSTimeZoneCalendarUnit)
+#define DATE_COMPONENTS (NSCalendarUnitYear| NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitWeekOfMonth | NSCalendarUnitWeekOfYear |  NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond | NSCalendarUnitWeekday | NSCalendarUnitWeekdayOrdinal | NSCalendarUnitTimeZone)
+
 
 @implementation NSDate (DatePrinters)
 
@@ -137,14 +138,14 @@ BOOL is24HourFormat() {
 
 - (NSDate *)justTime {
 	NSCalendar *calendar = curCalendar();
-	static unsigned unitFlags = NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+	static unsigned unitFlags = NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
 	NSDateComponents *components = [calendar components:unitFlags fromDate:self];
 	return [calendar dateFromComponents:components];
 }
 
 - (NSDate *)justHour {
 	NSCalendar *calendar = curCalendar();
-	static unsigned unitFlags = NSHourCalendarUnit;
+	static unsigned unitFlags = NSCalendarUnitHour;
 	NSDateComponents *components = [calendar components:unitFlags fromDate:self];
 	return [calendar dateFromComponents:components];
 }
@@ -173,7 +174,7 @@ BOOL is24HourFormat() {
 
 - (NSDate *)dateRoundedToMinutes:(NSUInteger)minutes {
 	NSCalendar *calendar = curCalendar();
-	static unsigned unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit;
+	static unsigned unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute;
 	NSDateComponents *comps = [calendar components:unitFlags fromDate:self];
 	NSInteger dateMinutes = [comps minute];
 	if(minutes == 0) dateMinutes = 0;
@@ -205,7 +206,7 @@ BOOL is24HourFormat() {
 //    NSAssert2(result == testResult, @"Fast daysSinceDate result differes from slow variant: %d instead of %d", result, testResult);
 //#endif
     
-    NSInteger result = [curCalendar() components:NSDayCalendarUnit fromDate:date toDate:self options:0].day;
+    NSInteger result = [curCalendar() components:NSCalendarUnitDay fromDate:date toDate:self options:0].day;
     return result;
 }
 
@@ -215,8 +216,8 @@ BOOL is24HourFormat() {
 
 - (BOOL)isWeekend {
     NSCalendar *cal = curCalendar();
-    NSRange weekdayRange = [cal maximumRangeOfUnit:NSWeekdayCalendarUnit];
-    NSDateComponents *components = [cal components:NSWeekdayCalendarUnit fromDate:self];
+    NSRange weekdayRange = [cal maximumRangeOfUnit:NSCalendarUnitWeekday];
+    NSDateComponents *components = [cal components:NSCalendarUnitWeekday fromDate:self];
     NSUInteger weekdayOfDate = [components weekday];
     
     return weekdayOfDate == weekdayRange.location || weekdayOfDate == weekdayRange.length;

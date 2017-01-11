@@ -51,7 +51,7 @@
                     [UserManager sharedManager].isFirstTime = [[response valueForKey:@"is_first_user"] boolValue];
                 }
                 
-                if([response hasValueForKey:@"user"] && [response hasValueForKey:@"user"] != nil && [response hasValueForKey:@"user"]!=[NSNull null]) {
+                if([response hasValueForKey:@"user"]) {
                     NSError *error;
                     [UserManager sharedManager].userModel = [[UserModel alloc] initWithDictionary:[response objectForKey:@"user"] error:&error];
                 }

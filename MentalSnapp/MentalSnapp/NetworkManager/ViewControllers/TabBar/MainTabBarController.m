@@ -30,8 +30,7 @@
     [self addViewInTabBar];
     [self addGuidedExcerciseTab];
     [self setTabBarItems];
-    [[UIApplication sharedApplication] setStatusBarHidden:NO
-                                            withAnimation:UIStatusBarAnimationFade];
+
 }
 - (BOOL)prefersStatusBarHidden {
     return YES;
@@ -42,13 +41,13 @@
     
     if(item.tag == 2)
     {
-        UINavigationController *navController = ApplicationDelegate.tabBarController.selectedViewController;
-        [navController popToRootViewControllerAnimated:NO];
-        RecordViewController *recordViewController = (RecordViewController *)navController.topViewController;
-        if([recordViewController isKindOfClass:[RecordViewController class]])
-        {
-            [Util openCameraView:recordViewController WithAnimation:NO];
-        }
+//        UINavigationController *navController = ApplicationDelegate.tabBarController.selectedViewController;
+//        [navController popToRootViewControllerAnimated:NO];
+//        RecordViewController *recordViewController = (RecordViewController *)navController.topViewController;
+//        if([recordViewController isKindOfClass:[RecordViewController class]])
+//        {
+//            [Util openCameraView:recordViewController WithAnimation:NO];
+//        }
     }
     else
     {
@@ -63,7 +62,7 @@
     [_view2 setBackgroundColor:normalColor];
     [_view3 setBackgroundColor:normalColor];
     [_view4 setBackgroundColor:normalColor];
-    [_view5 setBackgroundColor:normalColor];
+//    [_view5 setBackgroundColor:normalColor];
     [[subViews objectAtIndex:index] setBackgroundColor:selectionColor];
 }
 
@@ -72,34 +71,34 @@
     _view2 = [UIView new];
     _view3 = [UIView new];
     _view4 = [UIView new];
-    _view5 = [UIView new];
+    //_view5 = [UIView new];
     
     [_view1 setBackgroundColor:selectionColor];
     [_view2 setBackgroundColor:normalColor];
     [_view3 setBackgroundColor:normalColor];
     [_view4 setBackgroundColor:normalColor];
-    [_view5 setBackgroundColor:normalColor];
+   // [_view5 setBackgroundColor:normalColor];
     
     [self.tabBar addSubview:_view1];
     [self.tabBar addSubview:_view2];
     [self.tabBar addSubview:_view3];
     [self.tabBar addSubview:_view4];
-    [self.tabBar addSubview:_view5];
+   // [self.tabBar addSubview:_view5];
     
     CGFloat tabBarHeight = self.tabBar.frame.size.height;
-    CGFloat itemWidth = self.view.frame.size.width / 5;
+    CGFloat itemWidth = self.view.frame.size.width / 4;
     [_view1 setFrame:CGRectMake(0, 0, itemWidth, tabBarHeight)];
     [_view2 setFrame:CGRectMake(_view1.frame.size.width+_view1.frame.origin.x, 0, itemWidth, tabBarHeight)];
     [_view3 setFrame:CGRectMake(_view2.frame.size.width+_view2.frame.origin.x, 0, itemWidth, tabBarHeight)];
     [_view4 setFrame:CGRectMake(_view3.frame.size.width+_view3.frame.origin.x, 0, itemWidth, tabBarHeight)];
-    [_view5 setFrame:CGRectMake(_view4.frame.size.width+_view4.frame.origin.x, 0, itemWidth, tabBarHeight)];
+   // [_view5 setFrame:CGRectMake(_view4.frame.size.width+_view4.frame.origin.x, 0, itemWidth, tabBarHeight)];
     
     [self addVerticalLineToRightOfView:_view1];
     [self addVerticalLineToRightOfView:_view2];
     [self addVerticalLineToRightOfView:_view3];
-    [self addVerticalLineToRightOfView:_view4];
+   // [self addVerticalLineToRightOfView:_view4];
     
-    subViews = [NSMutableArray arrayWithObjects:_view1, _view2, _view3, _view4, _view5, nil];
+    subViews = [NSMutableArray arrayWithObjects:_view1, _view2, _view3, _view4,nil];
 }
 
 - (void)addVerticalLineToRightOfView:(UIView *)view {
@@ -120,21 +119,21 @@
     tabBarItem1.image =[[UIImage imageNamed:@"video"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     tabBarItem1.selectedImage = [[UIImage imageNamed:@"video_select"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
-    UITabBarItem *tabBarItem2 = [self.tabBar.items objectAtIndex:2];
-    tabBarItem2.image =[[UIImage imageNamed:@"record_tab"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    tabBarItem2.selectedImage = [[UIImage imageNamed:@"record_select"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+//    UITabBarItem *tabBarItem2 = [self.tabBar.items objectAtIndex:2];
+//    tabBarItem2.image =[[UIImage imageNamed:@"record_tab"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+//    tabBarItem2.selectedImage = [[UIImage imageNamed:@"record_select"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
-    UITabBarItem *tabBarItem3 = [self.tabBar.items objectAtIndex:3];
+    UITabBarItem *tabBarItem3 = [self.tabBar.items objectAtIndex:2];
     tabBarItem3.image =[[UIImage imageNamed:@"stats"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     tabBarItem3.selectedImage = [[UIImage imageNamed:@"stats_select"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
-    UITabBarItem *tabBarItem4 = [self.tabBar.items objectAtIndex:4];
+    UITabBarItem *tabBarItem4 = [self.tabBar.items objectAtIndex:3];
     tabBarItem4.image =[[UIImage imageNamed:@"more"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     tabBarItem4.selectedImage = [[UIImage imageNamed:@"more_select"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     tabBarItem0.imageInsets = UIEdgeInsetsMake(5, 0, -5, 0);
     tabBarItem1.imageInsets = UIEdgeInsetsMake(5, 0, -5, 0);
-    tabBarItem2.imageInsets = UIEdgeInsetsMake(5, 0, -5, 0);
+   // tabBarItem2.imageInsets = UIEdgeInsetsMake(5, 0, -5, 0);
     tabBarItem3.imageInsets = UIEdgeInsetsMake(5, 0, -5, 0);
     tabBarItem4.imageInsets = UIEdgeInsetsMake(5, 0, -5, 0);
 }

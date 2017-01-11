@@ -128,6 +128,7 @@ exNS *kFeelingListViewController;
 exNS *kDownloadAllVideoViewController;
 exNS *kPlayerViewController;
 exNS *kLineStatViewController;
+exNS *kRecordViewController;
 
 #pragma mark - API URL
 exNS *KUserAPI;

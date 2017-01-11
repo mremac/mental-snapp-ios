@@ -75,6 +75,7 @@ ns *kFeelingListViewController = @"FeelingListViewController";
 ns *kDownloadAllVideoViewController = @"DownloadAllVideoViewController";
 ns *kPlayerViewController = @"PlayerViewController";
 ns *kLineStatViewController = @"LineStatViewController";
+ns *kRecordViewController = @"RecordViewController";
 
 #pragma mark - API URL
 ns *kLoginAPI = @"api/v1/authenticate";

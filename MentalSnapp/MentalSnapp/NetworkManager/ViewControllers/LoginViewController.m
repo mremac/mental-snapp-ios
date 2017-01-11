@@ -29,8 +29,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[UIApplication sharedApplication] setStatusBarHidden:YES
-                                            withAnimation:UIStatusBarAnimationFade];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -83,9 +81,11 @@
                                     } completion:nil];
                 } else {
                     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                    [self.navigationController pushViewController:[mainStoryboard instantiateViewControllerWithIdentifier:@"WelcomeBackViewController"] animated:YES];
+                    ApplicationDelegate.tabBarController = [mainStoryboard instantiateViewControllerWithIdentifier:@"MainTabController"];
+                    ApplicationDelegate.window.rootViewController = ApplicationDelegate.tabBarController;
+                    [[ScheduleManager sharedInstance] fetchAllSchedules];;
                 }
-            } 
+            }
         }];
     }
 }

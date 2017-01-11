@@ -12,6 +12,7 @@
 #import "ExcerciseSubCategoryViewController.h"
 #import "RequestManager.h"
 #import "GuidedExcercise.h"
+#import "RecordViewController.h"
 
 #define _minsScreeniPhoneSwipe ([[UIScreen mainScreen] bounds].size.width * 1/4)
 
@@ -96,14 +97,13 @@
 #pragma mark - Private methods
 
 -(void)showDetailOfSelectedExcercise:(GuidedExcercise *)exercise {
-//    [self.selectedExcerciseName setText:exercise.excerciseName];
-//    [self.guidedExcerciseLabelHeightConstraint setConstant:51];
-//    if([exercise.excerciseDescription isEqualToString:@""]){
-//        [self.guidedExcerciseLabelHeightConstraint setConstant:0];
+//    if(exercise == nil){
+//        [self.selectedExcerciseName setText:@"Freeform"];
+//        [self.selectedExcerciseDescription setText:@"Record any video"];
 //    } else {
+//        [self.selectedExcerciseName setText:exercise.excerciseName];
 //        [self.selectedExcerciseDescription setText:exercise.excerciseDescription];
 //    }
-//    [self.view layoutIfNeeded];
 }
 
 - (UIViewController *)viewControllerAtIndex:(NSUInteger)index {
@@ -114,8 +114,7 @@
     if(indexPath.item != _selectedIndexPath){
         guidedExcerciseCellCollectionViewCell *selectedCell = (guidedExcerciseCellCollectionViewCell *)[self.guidedExcerciseCollectionView cellForItemAtIndexPath:indexPath];
         [selectedCell setSelectedViewDetail:([self.guidedExcercisePaginate.pageResults count]+1) withAnimation:animate andValue:(animate?0:growValue)];
-        //[self showDetailOfSelectedExcercise:selectedCell.excercise];
-
+//        [self showDetailOfSelectedExcercise:((selectedCell.excercise == nil)?nil:selectedCell.excercise)];
         guidedExcerciseCellCollectionViewCell *unSelectedcell = (guidedExcerciseCellCollectionViewCell *)[self.guidedExcerciseCollectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:_selectedIndexPath inSection:0]];
         [unSelectedcell setUnSelectedViewDetail:([self.guidedExcercisePaginate.pageResults count]+1) withAnimation:animate andValue:(animate?0:value)];
     }
@@ -126,7 +125,7 @@
         [self.guidedExcerciseCollectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
         guidedExcerciseCellCollectionViewCell *selectedCell = (guidedExcerciseCellCollectionViewCell *)[self.guidedExcerciseCollectionView cellForItemAtIndexPath:indexPath];
         [selectedCell setSelectedViewDetail:([self.guidedExcercisePaginate.pageResults count]+1) withAnimation:animate andValue:(animate?0:growValue)];
-        //[self showDetailOfSelectedExcercise:selectedCell.excercise];
+       // [self showDetailOfSelectedExcercise:((selectedCell.excercise == nil)?nil:selectedCell.excercise)];
 
         guidedExcerciseCellCollectionViewCell *unSelectedcell = (guidedExcerciseCellCollectionViewCell *)[self.guidedExcerciseCollectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:_selectedIndexPath inSection:0]];
         [unSelectedcell setUnSelectedViewDetail:([self.guidedExcercisePaginate.pageResults count]+1) withAnimation:animate andValue:(animate?0:value)];
@@ -142,7 +141,7 @@
         guidedExcerciseCellCollectionViewCell *selectedCell = (guidedExcerciseCellCollectionViewCell *)[self.guidedExcerciseCollectionView cellForItemAtIndexPath:indexPath];
         [selectedCell setSelectedViewDetail:([self.guidedExcercisePaginate.pageResults count]+1) withAnimation:animate andValue:(animate?0:growValue)];
         guidedExcerciseCellCollectionViewCell *unSelectedcell = (guidedExcerciseCellCollectionViewCell *)[self.guidedExcerciseCollectionView cellForItemAtIndexPath:unselectedIndexPath];
-        //[self showDetailOfSelectedExcercise:selectedCell.excercise];
+      // [self showDetailOfSelectedExcercise:((selectedCell.excercise == nil)?nil:selectedCell.excercise)];
 
         [unSelectedcell setUnSelectedViewDetail:([self.guidedExcercisePaginate.pageResults count]+1) withAnimation:animate andValue:(animate?0:value)];
         _selectedIndexPath = indexPath.item;
@@ -192,7 +191,15 @@
     [self didMoveToParentViewController:self];
     UIStoryboard *profileStoryboard = [UIStoryboard storyboardWithName:KProfileStoryboard bundle:nil];
     self.guideExcerciseViewControllers = [[NSMutableArray alloc] init];
-    int tag=1;
+    int tag=2;
+    
+    RecordViewController *recordViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:kRecordViewController];
+    CGRect frame = self.pageViewController.view.frame;
+    frame.origin.y=0;
+    [recordViewController setViewTag:1];
+    [recordViewController.view setFrame:frame];
+    [self.guideExcerciseViewControllers addObject:recordViewController];
+    
     if(self.guidedExcercisePaginate && self.guidedExcercisePaginate.pageResults.count>0){
         for (GuidedExcercise *excercise in [self.guidedExcercisePaginate pageResults]) {
             ExcerciseSubCategoryViewController *guidedExcercisePage = [profileStoryboard instantiateViewControllerWithIdentifier:kExcerciseSubCategoryViewController];
@@ -205,18 +212,18 @@
             [guidedExcercisePage setExcerciseParentViewController:self];
             [self.guideExcerciseViewControllers addObject:guidedExcercisePage];
         }
+    }
         self.lastContentOffset = pageScrollView.contentOffset.x;
         self.index = 0;
         if(self.guideExcerciseViewControllers.count>0){
-            ExcerciseSubCategoryViewController *guidedExcercisePage = (ExcerciseSubCategoryViewController *) [self viewControllerAtIndex:0];
+            RecordViewController *recordView = (RecordViewController *) [self viewControllerAtIndex:0];
             CGRect frame = self.pageViewController.view.frame;
             frame.origin.y=0;
-            [guidedExcercisePage.view setFrame:frame];
-            self.selectedViewTag = guidedExcercisePage.viewTag;
-            [self.pageViewController setViewControllers:[NSArray arrayWithObject:guidedExcercisePage] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
-           // [self showDetailOfSelectedExcercise:guidedExcercisePage.excercise];
+            [recordView.view setFrame:frame];
+            self.selectedViewTag = recordView.viewTag;
+            [self.pageViewController setViewControllers:[NSArray arrayWithObject:recordView] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+            //[self showDetailOfSelectedExcercise:nil];
         }
-    }
 }
 
 - (void)initGuidedPaginate {
@@ -237,9 +244,7 @@
                 [self.guidedExcerciseCollectionView reloadData];
                 if(_guidedExcercisePaginate.pageResults.count>0){
                     [self.noContentView setHidden:YES];
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [self defaultSettings];
-                    });
+                    [self defaultSettings];
                 } else {
                     [self.noContentView setHidden:NO];
                 }
@@ -282,7 +287,7 @@
             }
             else if(translatedPoint.x < 0.0) // right slide
             {
-                if(_selectedIndexPath < ([self.guidedExcercisePaginate.pageResults count])){
+                if(_selectedIndexPath < ([self.guideExcerciseViewControllers count])){
                     // change right slide alpha value
                     translatedPoint.y = 0;
                     translatedPoint.x = -translatedPoint.x;
@@ -308,12 +313,12 @@
                         [controller.view setFrame:frame];
                         self.selectedViewTag = controller.viewTag;
                         [self.pageViewController setViewControllers:@[controller] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:nil];
-                      //  [self showDetailOfSelectedExcercise:controller.excercise];
+                     //   [self showDetailOfSelectedExcercise:((controller.excercise == nil)?nil:controller.excercise)];
                     }
                 }
                 else if (translatedPoint.x < 0.0)
                 {
-                    if(_selectedIndexPath < ([self.guidedExcercisePaginate.pageResults count])){
+                    if(_selectedIndexPath < ([self.guideExcerciseViewControllers count])){
                         [self showSelectedExcerciseForIndexpath:[NSIndexPath indexPathForRow:(_selectedIndexPath+1) inSection:0] withAnimation:YES andGrowValue:0 andShrinkValue:0];
                         ExcerciseSubCategoryViewController *controller = [self.guideExcerciseViewControllers objectAtIndex:((_selectedIndexPath)-1)];
                         CGRect frame = self.pageViewController.view.frame;
@@ -321,7 +326,7 @@
                         [controller.view setFrame:frame];
                         self.selectedViewTag = controller.viewTag;
                         [self.pageViewController setViewControllers:@[controller] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
-                        // [self showDetailOfSelectedExcercise:controller.excercise];
+                      //  [self showDetailOfSelectedExcercise:((controller.excercise == nil)?nil:controller.excercise)];
                     }
                 }
                 else
@@ -340,15 +345,17 @@
 #pragma mark - Collection view Data Souarce
 
 -(NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return (self.guidedExcercisePaginate.pageResults.count>0)?(self.guidedExcercisePaginate.pageResults.count+2):3;
+    return (self.guideExcerciseViewControllers.count>0)?(self.guideExcerciseViewControllers.count+2):3;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     guidedExcerciseCellCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kguidedExcerciseCellCollectionViewCell forIndexPath:indexPath];
     cell.index = indexPath.item;
     [cell setDefaultViewDetail];
-    if(indexPath.item <= [self.guidedExcercisePaginate.pageResults count]){
+    if(indexPath.item <= [self.guideExcerciseViewControllers count]) {
         if(indexPath.item != 0 && indexPath.item !=([self.guidedExcercisePaginate.pageResults count]+1)) {
-            [cell setExcercise:[self.guidedExcercisePaginate.pageResults objectAtIndex:indexPath.item-1]];
+            if(1 != indexPath.item){
+                [cell setExcercise:[self.guidedExcercisePaginate.pageResults objectAtIndex:indexPath.item-1]];
+            }
             if(self.selectedIndexPath == indexPath.item){
                 [cell setSelectedViewDetail:([self.guidedExcercisePaginate.pageResults count]+1) withAnimation:YES andValue:0];
             } else {
@@ -356,6 +363,7 @@
             }
         }
     } else {
+        
         if(indexPath.item != 0 && indexPath.item !=2) {
             if(1 == indexPath.item){
                 self.selectedIndexPath = 1;
@@ -381,7 +389,7 @@
         [controller.view setFrame:frame];
         self.selectedViewTag = controller.viewTag;
         [self.pageViewController setViewControllers:@[controller] direction:(scrollDirectionLeft)?UIPageViewControllerNavigationDirectionReverse:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
-       //  [self showDetailOfSelectedExcercise:controller.excercise];
+//        [self showDetailOfSelectedExcercise:((controller.excercise == nil)?nil:controller.excercise)];
     }
 }
 

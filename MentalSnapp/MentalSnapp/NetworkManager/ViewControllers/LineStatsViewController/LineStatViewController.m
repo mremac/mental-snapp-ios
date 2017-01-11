@@ -59,7 +59,7 @@
     NSDate *date2 = [formatter dateFromString:endDateOfLastWeek];
 
     if([date1 month]<month){
-        date1 = [NSDate dateFromString:[NSString stringWithFormat:@"01-%d-%d",month,year] format:@"dd-MM-yyyy"];
+        date1 = [NSDate dateFromString:[NSString stringWithFormat:@"01-%ld-%ld",(long)month,(long)year] format:@"dd-MM-yyyy"];
     }
     if([date2 month]>month){
         NSCalendar * calendar = [NSCalendar currentCalendar];
@@ -163,7 +163,7 @@
         [view removeFromSuperview];
     }
     [self.chatContainerView addSubview:chartView];
-    [self.headingLabel setText:[NSString stringWithFormat:@" %d/%d's Analysis",month,year]];
+    [self.headingLabel setText:[NSString stringWithFormat:@" %d/%ld's Analysis",month,(long)year]];
 }
 
 @end

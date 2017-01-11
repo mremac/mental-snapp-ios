@@ -45,9 +45,6 @@
     selectedGender = NoneGender;
     [self setMaxDate18Year];
     [self.datePicker addTarget:self action:@selector(dateIsChanged:) forControlEvents:UIControlEventValueChanged];
-    //[self.maleGenderButton setSelected:YES];
-    [[UIApplication sharedApplication] setStatusBarHidden:YES
-                                            withAnimation:UIStatusBarAnimationFade];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardDidHide) name:UIKeyboardWillHideNotification object:nil];
 }
 

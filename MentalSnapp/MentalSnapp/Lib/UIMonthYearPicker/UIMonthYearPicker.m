@@ -73,7 +73,7 @@ const NSInteger numberOfComponents = 2;
 
 - (void) setMaximumDate:(NSDate *)aMaximumDate{
     
-    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSYearCalendarUnit fromDate:aMaximumDate];
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitYear fromDate:aMaximumDate];
     maxYear = [components year];
     if (maxYear < minYear) {
         minYear = maxYear;
@@ -86,7 +86,7 @@ const NSInteger numberOfComponents = 2;
 }
 
 - (void) setMinimumDate:(NSDate *)aMinimumDate{
-    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSYearCalendarUnit fromDate:aMinimumDate];
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitYear fromDate:aMinimumDate];
     minYear = [components year];
     if (maxYear < minYear) {
         maxYear = minYear;
@@ -106,9 +106,9 @@ const NSInteger numberOfComponents = 2;
     NSInteger dateYear;
     NSInteger dateMonth;
     
-    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSMonthCalendarUnit fromDate:aDate];
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitMonth fromDate:aDate];
     dateMonth = [components month];
-    components = [[NSCalendar currentCalendar] components:NSYearCalendarUnit fromDate:aDate];
+    components = [[NSCalendar currentCalendar] components:NSCalendarUnitYear fromDate:aDate];
     dateYear = [components year];
     
     [self selectRow: dateMonth - 1
@@ -246,7 +246,7 @@ const NSInteger numberOfComponents = 2;
     CGRect frame = CGRectMake(0.f, 0.f, [self componentWidth],rowHeight);
     
     UILabel *label = [[UILabel alloc] initWithFrame:frame];
-    label.textAlignment = UITextAlignmentCenter;
+    label.textAlignment = NSTextAlignmentCenter;
     label.backgroundColor = [UIColor clearColor];
     label.font = [UIFont boldSystemFontOfSize:18.f];
     label.userInteractionEnabled = NO;

@@ -16,7 +16,6 @@
 		5C7BE3D01DE85BDC00C15CB5 /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7BE3CF1DE85BDC00C15CB5 /* MoreViewController.m */; };
 		5C7BE3D41DE86F3900C15CB5 /* MoreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7BE3D31DE86F3900C15CB5 /* MoreTableViewCell.m */; };
 		5C7BE3D81DE882CC00C15CB5 /* ReportIssueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7BE3D71DE882CC00C15CB5 /* ReportIssueViewController.m */; };
-		5C7BE3DC1DE8869700C15CB5 /* ExerciseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7BE3DB1DE8869700C15CB5 /* ExerciseViewController.m */; };
 		5C7BE3DF1DE886BA00C15CB5 /* RecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7BE3DE1DE886BA00C15CB5 /* RecordViewController.m */; };
 		5C7BE3E21DE886D600C15CB5 /* StatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7BE3E11DE886D600C15CB5 /* StatsViewController.m */; };
 		5C7BE3E51DE8877400C15CB5 /* QueuedExercisesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7BE3E41DE8877400C15CB5 /* QueuedExercisesViewController.m */; };
@@ -229,8 +228,6 @@
 		5C7BE3D31DE86F3900C15CB5 /* MoreTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreTableViewCell.m; sourceTree = "<group>"; };
 		5C7BE3D61DE882CC00C15CB5 /* ReportIssueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportIssueViewController.h; sourceTree = "<group>"; };
 		5C7BE3D71DE882CC00C15CB5 /* ReportIssueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportIssueViewController.m; sourceTree = "<group>"; };
-		5C7BE3DA1DE8869700C15CB5 /* ExerciseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseViewController.h; sourceTree = "<group>"; };
-		5C7BE3DB1DE8869700C15CB5 /* ExerciseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseViewController.m; sourceTree = "<group>"; };
 		5C7BE3DD1DE886BA00C15CB5 /* RecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordViewController.h; sourceTree = "<group>"; };
 		5C7BE3DE1DE886BA00C15CB5 /* RecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordViewController.m; sourceTree = "<group>"; };
 		5C7BE3E01DE886D600C15CB5 /* StatsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsViewController.h; sourceTree = "<group>"; };
@@ -580,22 +577,12 @@
 			children = (
 				5C7BE3C21DE8570100C15CB5 /* MainTabBarController.h */,
 				5C7BE3C31DE8570100C15CB5 /* MainTabBarController.m */,
-				5C7BE3C51DE85B6100C15CB5 /* Exercise */,
 				5C7BE3C71DE85B6100C15CB5 /* Record */,
 				5C7BE3C91DE85B6100C15CB5 /* Videos */,
 				5C7BE3C81DE85B6100C15CB5 /* Stats */,
 				5C7BE3CD1DE85BD200C15CB5 /* More */,
 			);
 			path = TabBar;
-			sourceTree = "<group>";
-		};
-		5C7BE3C51DE85B6100C15CB5 /* Exercise */ = {
-			isa = PBXGroup;
-			children = (
-				5C7BE3DA1DE8869700C15CB5 /* ExerciseViewController.h */,
-				5C7BE3DB1DE8869700C15CB5 /* ExerciseViewController.m */,
-			);
-			path = Exercise;
 			sourceTree = "<group>";
 		};
 		5C7BE3C71DE85B6100C15CB5 /* Record */ = {
@@ -1696,7 +1683,6 @@
 				5CC7CCAC1DE8476F00DC661F /* UserManager.m in Sources */,
 				6AAA01531DE56F8600208022 /* NSObject+RMArchivable.m in Sources */,
 				EF49E8781E028E3F00B5AFF7 /* FilterInterface.m in Sources */,
-				5C7BE3DC1DE8869700C15CB5 /* ExerciseViewController.m in Sources */,
 				5C8A3A261DE5D26300706925 /* Banner.m in Sources */,
 				EF49E8681E027AFA00B5AFF7 /* FPPopoverController.m in Sources */,
 				6AC2A9501DEED9FB009A21EF /* ExcerciseSubCategoryViewController.m in Sources */,

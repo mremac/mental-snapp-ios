@@ -135,17 +135,12 @@
     return [emailTest evaluateWithObject:email];
 }
 
-+ (void)openCameraForRecordExercise:(GuidedExcercise *)exercise
-{
-    [ApplicationDelegate.tabBarController setSelectTabIndex:2];
-    [ApplicationDelegate.tabBarController setSelectedIndex:2];
-    UINavigationController *navController = ApplicationDelegate.tabBarController.selectedViewController;
-    [navController popToRootViewControllerAnimated:NO];
-    RecordViewController *recordViewController = (RecordViewController *)navController.topViewController;
-    if([recordViewController isKindOfClass:[RecordViewController class]])
++ (void)openCameraForRecordExercise:(GuidedExcercise *)exercise {
+    [UserManager sharedManager].recordViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:kRecordViewController];
+    if([[UserManager sharedManager].recordViewController isKindOfClass:[RecordViewController class]])
     {
-        recordViewController.exercise = exercise;
-        [Util openCameraView:recordViewController WithAnimation:NO];
+        [UserManager sharedManager].recordViewController.exercise = exercise;
+        [Util openCameraView:[UserManager sharedManager].recordViewController WithAnimation:NO];
     }
 }
 
@@ -265,7 +260,7 @@
 
 
 + (NSInteger)weeksOfMonth:(NSInteger)month inYear:(NSInteger)year{
-    NSString *dateString=[NSString stringWithFormat:@"%4d/%d/1",year,month];
+    NSString *dateString=[NSString stringWithFormat:@"%4ld/%ld/1",(long)year,(long)month];
     
     NSDateFormatter *dfMMddyyyy=[NSDateFormatter new];
     [dfMMddyyyy setDateFormat:@"yyyy/MM/dd"];
@@ -312,10 +307,7 @@
     comp.year = year;    // <-- fill in your year here
     comp.month = month;
     NSDate *startOfWeek = [cal dateFromComponents:comp];
-    
-    // Add 6 days:
-    NSDate *endOfWeek = [cal dateByAddingUnit:NSCalendarUnitDay value:6 toDate:startOfWeek options:0];
-    
+        
     // Show results:
     NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
     fmt.dateStyle = NSDateFormatterShortStyle;

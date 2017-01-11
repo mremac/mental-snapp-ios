@@ -25,6 +25,16 @@
 
 @implementation LCLineChartDataItem
 
+- (id)initWithhX:(double)x y:(double)y xLabel:(NSString *)xLabel dataLabel:(NSString *)dataLabel {
+    if((self = [super init])) {
+        self.x = x;
+        self.y = y;
+        self.xLabel = xLabel;
+        self.dataLabel = dataLabel;
+    }
+    return self;
+}
+
 - (id)initWithhX:(double)x y:(double)y xLabel:(NSString *)xLabel dataLabel:(NSString *)dataLabel withData:(id)dataObject {
     if((self = [super init])) {
         self.x = x;
