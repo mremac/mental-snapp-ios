@@ -41,8 +41,10 @@
 }
 
 - (IBAction)tapToContinue:(id)sender {
-    ApplicationDelegate.tabBarController = [self.storyboard instantiateViewControllerWithIdentifier:@"MainTabController"];
-    ApplicationDelegate.window.rootViewController = ApplicationDelegate.tabBarController;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        ApplicationDelegate.tabBarController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MainTabController"];
+        ApplicationDelegate.window.rootViewController = ApplicationDelegate.tabBarController;
+    });
 }
 
 - (void)animateWelcomeView {

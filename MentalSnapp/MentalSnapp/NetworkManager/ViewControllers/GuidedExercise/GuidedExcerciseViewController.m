@@ -170,7 +170,7 @@
 
 -(void)addViewControllerInPagination {
     [self didMoveToParentViewController:self];
-    UIStoryboard *profileStoryboard = [UIStoryboard storyboardWithName:KProfileStoryboard bundle:[NSBundle mainBundle]];
+    UIStoryboard *profileStoryboard = [UIStoryboard storyboardWithName:KProfileStoryboard bundle:nil];
     self.guideExcerciseViewControllers = [[NSMutableArray alloc] init];
     int tag=1;
     if(self.guidedExcercisePaginate && self.guidedExcercisePaginate.pageResults.count>0){

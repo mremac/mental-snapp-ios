@@ -184,7 +184,7 @@
     }
     else if(selectedMood == KNone)
     {
-        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Please select you mood."];
+        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:@"Please select your mood."];
         return NO;
     }
     else if(!selectedFeeling)

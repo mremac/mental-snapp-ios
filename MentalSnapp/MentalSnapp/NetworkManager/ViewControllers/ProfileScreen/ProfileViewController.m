@@ -51,7 +51,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self.maleGenderButton setSelected:YES];
+//    [self.maleGenderButton setSelected:YES];
     [[UserManager sharedManager] setValueInLoggedInUserObjectFromUserDefault];
     self.user = [UserManager sharedManager].userModel;
     [self setNavigationBarButtonTitle:@"Profile"];
@@ -193,18 +193,23 @@
 -(void)showDataOfUsers {
     if(self.user){
         profilePicURL = self.user.profilePicURL;
-        selectedGender = ([self.user.gender caseInsensitiveCompare:@"female"])?0:1;
+        selectedGender = ([self.user.gender caseInsensitiveCompare:@"female"]==NSOrderedSame)?0:(([self.user.gender isEqualToString:@""])?2:1);
         [self.userNameLabel setText:self.user.userName];
         [self.emailTextFeild setText:self.user.email];
         NSMutableString *phoneNumber = [NSMutableString stringWithString:self.user.phoneNumber] ;
-        [phoneNumber insertString:@" " atIndex:0];
-        [phoneNumber insertString:@" " atIndex:5];
-        [self.phoneTextField setText:phoneNumber];
-        [self.maleGenderButton setSelected:(selectedGender == MaleGender)?YES:NO];
-        [self.femaleGenderButton setSelected:(selectedGender == MaleGender)?NO:YES];
+        if(phoneNumber.length>0){
+            [phoneNumber insertString:@" " atIndex:0];
+            [phoneNumber insertString:@" " atIndex:5];
+        }
+        [self.phoneTextField setText:((phoneNumber.length>0)?phoneNumber:@"")];
+        [self.maleGenderButton setSelected:(selectedGender == MaleGender)?YES:((selectedGender == FemaleGender)?NO:NO)];
+        [self.femaleGenderButton setSelected:(selectedGender == MaleGender)?NO:((selectedGender == FemaleGender)?YES:NO)];
         [self displayProfileImageFromURL];
         selectedDate = [NSDate dateFromString:self.user.dateOfBirth format:@"yyyy-MM-dd"];
-        [self.dateOfBirthButton setTitle:[NSDate stringFromDate:selectedDate format:@"dd MMM yyyy"] forState:UIControlStateNormal];
+        [self.dateOfBirthButton setTitle:(self.user.dateOfBirth.length<=0)?@"Enter your date of birth":[NSDate stringFromDate:selectedDate format:@"dd MMM yyyy"] forState:UIControlStateNormal];
+        if(self.user.dateOfBirth.length<=0) {
+            [self.dateOfBirthButton setTitleColor:[UIColor colorWithRed:210.0/255.0 green:210.0/255.0 blue:210.0/255.0 alpha:1.0] forState:UIControlStateNormal];
+        }
     }
 }
 
@@ -217,18 +222,24 @@
         [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:LocalizedString(@"ProfileScreenValidEmailMessage")];
         return NO;
     }
-    if([self.phoneTextField.text isEqualToString:@""]) {
-        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:LocalizedString(@"ProfileScreenPhoneMessage")];
+//    if([self.phoneTextField.text isEqualToString:@""]) {
+//        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:LocalizedString(@"ProfileScreenPhoneMessage")];
+//        return NO;
+//    }
+    
+    if((self.phoneTextField.text.length>0) && (self.phoneTextField.text.length<11)) {
+        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:LocalizedString(@"SignupScreenPhoneMessage")];
         return NO;
     }
-    if(![Util validatePhone:self.phoneTextField.text]){
+    
+    if((self.phoneTextField.text.length>0) && ![Util validatePhone:self.phoneTextField.text]){
         [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:LocalizedString(@"ProfileScreenValidPhoneMessage")];
         return NO;
     }
-    if([[self.dateOfBirthButton titleForState:UIControlStateNormal] isEqualToString:@""]){
-        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:LocalizedString(@"ProfileScreenDOBmessage")];
-        return NO;
-    }
+//    if([[self.dateOfBirthButton titleForState:UIControlStateNormal] isEqualToString:@""]){
+//        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:LocalizedString(@"ProfileScreenDOBmessage")];
+//        return NO;
+//    }
     return YES;
 }
 
@@ -266,7 +277,8 @@
     NSString *phoneNumber = self.phoneTextField.text;
     phoneNumber = [phoneNumber stringByReplacingOccurrencesOfString:@"+44" withString:@""];
     phoneNumber = [phoneNumber stringByReplacingOccurrencesOfString:@" " withString:@""];
-    UserModel *user = [[UserModel alloc] initWithUserId:self.user.userId andEmail:self.emailTextFeild.text andUserName:self.user.userName andPhone:phoneNumber andGender:[NSString stringWithFormat:@"%@",(selectedGender == MaleGender)?@"male":@"female"] andDateOfBirth:[self.dateOfBirthButton titleForState:UIControlStateNormal] andProfilePic:profilePicURL];
+    NSString *dateOfBirth= (([[self.dateOfBirthButton titleForState:UIControlStateNormal] isEqualToString:@"Enter your date of birth"])?@"":[self.dateOfBirthButton titleForState:UIControlStateNormal]);
+    UserModel *user = [[UserModel alloc] initWithUserId:self.user.userId andEmail:self.emailTextFeild.text andUserName:self.user.userName andPhone:phoneNumber andGender:[NSString stringWithFormat:@"%@",(selectedGender == MaleGender)?@"male":((selectedGender == FemaleGender)?@"female":@"")] andDateOfBirth:dateOfBirth andProfilePic:profilePicURL];
     
     [[RequestManager alloc] editUserWithUserModel:user withCompletionBlock:^(BOOL success, id response) {
         if(success)
@@ -383,6 +395,7 @@
 #pragma mark - Date Picker view Delegate
 - (void)didSelectDoneButton:(NSDate *)date {
     selectedDate = date;
+    [self.dateOfBirthButton setTitleColor:[UIColor colorWithRed:83.0/255.0 green:83.0/255.0 blue:83.0/255.0 alpha:1.0] forState:UIControlStateNormal];
     [self.dateOfBirthButton setTitle:[NSDate stringFromDate:date format:@"dd MMM yyyy"] forState:UIControlStateNormal];
 }
 - (void)didSelectCancelButton {

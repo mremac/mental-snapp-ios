@@ -42,10 +42,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    selectedGender = NoneGender;
     [self setMaxDate18Year];
     [self.datePicker addTarget:self action:@selector(dateIsChanged:) forControlEvents:UIControlEventValueChanged];
-    [self.maleGenderButton setSelected:YES];
+    //[self.maleGenderButton setSelected:YES];
     [[UIApplication sharedApplication] setStatusBarHidden:YES
                                             withAnimation:UIStatusBarAnimationFade];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardDidHide) name:UIKeyboardWillHideNotification object:nil];
@@ -148,18 +148,24 @@
         [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:LocalizedString(@"SignupScreenValidEmailMessage")];
         return NO;
     }
-    if([self.phoneTextField.text.trim isEqualToString:@""]) {
-        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:LocalizedString(@"SignupScreenPhoneMessage")];
-        return NO;
-    }
-    if(![Util validatePhone:self.phoneTextField.text]){
+//    if([self.phoneTextField.text.trim isEqualToString:@""]) {
+//        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:LocalizedString(@"SignupScreenPhoneMessage")];
+//        return NO;
+//    }
+    
+    if((self.phoneTextField.text.length>0) && (self.phoneTextField.text.length<11)) {
+          [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:LocalizedString(@"SignupScreenValidPhoneMessage")];
+          return NO;
+       }
+    
+    if((self.phoneTextField.text.length>0) && ![Util validatePhone:self.phoneTextField.text]){
         [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:LocalizedString(@"SignupScreenValidPhoneMessage")];
         return NO;
     }
-    if([[self.dateOfBirthButton titleForState:UIControlStateNormal] isEqualToString:@""]){
-        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:LocalizedString(@"SignupScreenDOBMessage")];
-        return NO;
-    }
+//    if([[self.dateOfBirthButton titleForState:UIControlStateNormal] isEqualToString:@""]){
+//        [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:LocalizedString(@"SignupScreenDOBMessage")];
+//        return NO;
+//    }
     if ([self.passwordTextField.text.trim isEqualToString:@""]) {
         [Banner showFailureBannerOnTopWithTitle:@"Error" subtitle:LocalizedString(@"SignupScreenPasswordMessage")];
         return NO;
@@ -201,8 +207,8 @@
         user.userName = self.nameTextFeild.text.trim;
         user.email = self.emailTextFeild.text.trim;
         user.phoneNumber = phoneNumber;
-        user.dateOfBirth = self.dateOfBirthButton.titleLabel.text;
-        user.gender = [NSString stringWithFormat:@"%@",(selectedGender == MaleGender)?@"male":@"female"];
+        user.dateOfBirth = ([self.dateOfBirthButton.titleLabel.text isEqualToString:@"Enter your date of birth"])?@"":self.dateOfBirthButton.titleLabel.text;
+        user.gender = [NSString stringWithFormat:@"%@",(selectedGender == MaleGender)?@"male":((selectedGender == FemaleGender)?@"female":@"")];
         user.password = self.passwordTextField.text;
         user.confirmPassword = self.confirmPasswordTextField.text;
         user.phoneCountryCode = @"+44";
