@@ -1583,7 +1583,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1eW-2P-KqG">
-                                <rect key="frame" x="43" y="174" width="281" height="200"/>
+                                <rect key="frame" x="43" y="173.5" width="281" height="200"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alert" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rwd-yS-Scr">
                                         <rect key="frame" x="14" y="19" width="253" height="30"/>
@@ -2197,7 +2197,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There are no excercise questions available yet!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ee2-l1-3mU">
-                                <rect key="frame" x="40" y="295" width="295" height="40"/>
+                                <rect key="frame" x="40" y="294.5" width="295" height="40"/>
                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="17"/>
                                 <color key="textColor" red="0.91372549020000005" green="0.39607843139999999" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
