@@ -33,7 +33,7 @@
 - (void)initialSetup {
     [self setNavigationBarButtonTitle:@"Mental Snapp"];
     
-    tableViewCellTitles = @[@"Queued Exercises", @"Profile", @"Report an Issue", @"Terms and conditions", @"Privacy policy"];
+    tableViewCellTitles = @[@"Queued Exercises", @"Profile", @"Technical support", @"Terms and conditions", @"Privacy policy"];
     tableViewCellTitleImageNames = @[@"MoreQueuedExercise", @"MoreProfile", @"MoreIssue", @"MoreReport", @"MorePolicy"];
     [self.tableView reloadData];
 }
