@@ -319,7 +319,7 @@
                 CGMutablePathRef path = CGPathCreateMutable();
                 CGFloat prevX = xStart + round(((datItem.x - data.xMin) / xRangeLen) * availableWidth);
                 CGFloat prevY = yStart + round((1.0 - (datItem.y - self.yMin) / yRangeLen) * availableHeight);
-                CGPathMoveToPoint(path, NULL, prevX-5, prevY);
+                CGPathMoveToPoint(path, NULL, prevX-10, prevY);
                 for(NSUInteger i = 1; i < data.itemCount; ++i) {
                     LCLineChartDataItem *datItem = data.getData(i);
                     CGFloat x = xStart + round(((datItem.x - data.xMin) / xRangeLen) * availableWidth);
@@ -336,7 +336,7 @@
                         CGPathAddCurveToPoint(path, NULL, controlPt1.x, controlPt1.y, controlPt2.x, controlPt2.y, x, y);
                     }
                     else {
-                        CGPathAddLineToPoint(path, NULL, x-5, y);
+                        CGPathAddLineToPoint(path, NULL, x-10, y);
                     }
                     prevX = x;
                     prevY = y;
@@ -370,7 +370,7 @@
                 data.color = [Util getMoodColor:(round(yVal/heightPerStep)+((result.width >= 414)?0:1))];
                 [[UIColor clearColor] setFill];
                 
-                CGContextFillEllipseInRect(c, CGRectMake(xVal - 12, yVal - 10, 35, 35));
+                CGContextFillEllipseInRect(c, CGRectMake(xVal - 16, yVal - 10, 35, 35));
                 {
                     CGFloat brightness;
                     CGFloat r,g,b,a;
@@ -385,7 +385,7 @@
 //                    else
 //                        [[UIColor blackColor] setFill];
                 }
-                CGContextFillEllipseInRect(c, CGRectMake(xVal - 12, yVal - 7, 15, 15));
+                CGContextFillEllipseInRect(c, CGRectMake(xVal - 16, yVal - 7, 15, 15));
             } // for
           } // data - draw data points
         } // draw data points

@@ -37,7 +37,7 @@ NSString *const supportTextViewPlaceholder = @"Write your text...";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setPlaceHolderFor:self.textView];
-    [self setNavigationBarButtonTitle:@"Technical support"];
+    [self setNavigationBarButtonTitle:@"Technical Support"];
     [self setLeftMenuButtons:[NSArray arrayWithObject:[self backButton]]];
     [self performSelectorInBackground:@selector(fetchLogs) withObject:(nil)];
     [self.deleteScreenShotButton setHidden:YES];

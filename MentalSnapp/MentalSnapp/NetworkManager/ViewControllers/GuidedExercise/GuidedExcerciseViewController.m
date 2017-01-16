@@ -39,6 +39,7 @@
 @property (assign, nonatomic) BOOL noDataAvailable;
 @property (strong, nonatomic) IBOutlet UILabel *selectedExcerciseName;
 @property (strong, nonatomic) IBOutlet UILabel *selectedExcerciseDescription;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *guidedExcerciseLabelHeightConstraint;
 
 @end
 
@@ -95,8 +96,14 @@
 #pragma mark - Private methods
 
 -(void)showDetailOfSelectedExcercise:(GuidedExcercise *)exercise {
-    [self.selectedExcerciseName setText:exercise.excerciseName];
-    [self.selectedExcerciseDescription setText:exercise.excerciseDescription];
+//    [self.selectedExcerciseName setText:exercise.excerciseName];
+//    [self.guidedExcerciseLabelHeightConstraint setConstant:51];
+//    if([exercise.excerciseDescription isEqualToString:@""]){
+//        [self.guidedExcerciseLabelHeightConstraint setConstant:0];
+//    } else {
+//        [self.selectedExcerciseDescription setText:exercise.excerciseDescription];
+//    }
+//    [self.view layoutIfNeeded];
 }
 
 - (UIViewController *)viewControllerAtIndex:(NSUInteger)index {
@@ -107,7 +114,7 @@
     if(indexPath.item != _selectedIndexPath){
         guidedExcerciseCellCollectionViewCell *selectedCell = (guidedExcerciseCellCollectionViewCell *)[self.guidedExcerciseCollectionView cellForItemAtIndexPath:indexPath];
         [selectedCell setSelectedViewDetail:([self.guidedExcercisePaginate.pageResults count]+1) withAnimation:animate andValue:(animate?0:growValue)];
-        [self showDetailOfSelectedExcercise:selectedCell.excercise];
+        //[self showDetailOfSelectedExcercise:selectedCell.excercise];
 
         guidedExcerciseCellCollectionViewCell *unSelectedcell = (guidedExcerciseCellCollectionViewCell *)[self.guidedExcerciseCollectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:_selectedIndexPath inSection:0]];
         [unSelectedcell setUnSelectedViewDetail:([self.guidedExcercisePaginate.pageResults count]+1) withAnimation:animate andValue:(animate?0:value)];
@@ -119,7 +126,7 @@
         [self.guidedExcerciseCollectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
         guidedExcerciseCellCollectionViewCell *selectedCell = (guidedExcerciseCellCollectionViewCell *)[self.guidedExcerciseCollectionView cellForItemAtIndexPath:indexPath];
         [selectedCell setSelectedViewDetail:([self.guidedExcercisePaginate.pageResults count]+1) withAnimation:animate andValue:(animate?0:growValue)];
-        [self showDetailOfSelectedExcercise:selectedCell.excercise];
+        //[self showDetailOfSelectedExcercise:selectedCell.excercise];
 
         guidedExcerciseCellCollectionViewCell *unSelectedcell = (guidedExcerciseCellCollectionViewCell *)[self.guidedExcerciseCollectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:_selectedIndexPath inSection:0]];
         [unSelectedcell setUnSelectedViewDetail:([self.guidedExcercisePaginate.pageResults count]+1) withAnimation:animate andValue:(animate?0:value)];
@@ -135,7 +142,7 @@
         guidedExcerciseCellCollectionViewCell *selectedCell = (guidedExcerciseCellCollectionViewCell *)[self.guidedExcerciseCollectionView cellForItemAtIndexPath:indexPath];
         [selectedCell setSelectedViewDetail:([self.guidedExcercisePaginate.pageResults count]+1) withAnimation:animate andValue:(animate?0:growValue)];
         guidedExcerciseCellCollectionViewCell *unSelectedcell = (guidedExcerciseCellCollectionViewCell *)[self.guidedExcerciseCollectionView cellForItemAtIndexPath:unselectedIndexPath];
-        [self showDetailOfSelectedExcercise:selectedCell.excercise];
+        //[self showDetailOfSelectedExcercise:selectedCell.excercise];
 
         [unSelectedcell setUnSelectedViewDetail:([self.guidedExcercisePaginate.pageResults count]+1) withAnimation:animate andValue:(animate?0:value)];
         _selectedIndexPath = indexPath.item;
@@ -207,7 +214,7 @@
             [guidedExcercisePage.view setFrame:frame];
             self.selectedViewTag = guidedExcercisePage.viewTag;
             [self.pageViewController setViewControllers:[NSArray arrayWithObject:guidedExcercisePage] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
-            [self showDetailOfSelectedExcercise:guidedExcercisePage.excercise];
+           // [self showDetailOfSelectedExcercise:guidedExcercisePage.excercise];
         }
     }
 }
@@ -301,7 +308,7 @@
                         [controller.view setFrame:frame];
                         self.selectedViewTag = controller.viewTag;
                         [self.pageViewController setViewControllers:@[controller] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:nil];
-                        [self showDetailOfSelectedExcercise:controller.excercise];
+                      //  [self showDetailOfSelectedExcercise:controller.excercise];
                     }
                 }
                 else if (translatedPoint.x < 0.0)
@@ -314,8 +321,7 @@
                         [controller.view setFrame:frame];
                         self.selectedViewTag = controller.viewTag;
                         [self.pageViewController setViewControllers:@[controller] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
-                         [self showDetailOfSelectedExcercise:controller.excercise];
-
+                        // [self showDetailOfSelectedExcercise:controller.excercise];
                     }
                 }
                 else
@@ -375,7 +381,7 @@
         [controller.view setFrame:frame];
         self.selectedViewTag = controller.viewTag;
         [self.pageViewController setViewControllers:@[controller] direction:(scrollDirectionLeft)?UIPageViewControllerNavigationDirectionReverse:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
-         [self showDetailOfSelectedExcercise:controller.excercise];
+       //  [self showDetailOfSelectedExcercise:controller.excercise];
     }
 }
 

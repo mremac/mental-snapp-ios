@@ -30,6 +30,9 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    NSLocale *locale = [NSLocale localeWithLocaleIdentifier:@"en_US"];;
+    [self.datePickerView setLocale:locale];
+
     switch (_dateSelection) {
         case futureDateOnly:
             [self.datePickerView setMinimumDate:[[NSDate date] dateByAddingTimeInterval:(NSTimeInterval)((u_int32_t)10*60)]];
@@ -48,7 +51,6 @@
             NSDate * maxDate = [gregorian dateByAddingComponents: comps toDate: currentDate options: 0];
             [comps setYear: -120];
             NSDate * minDate = [gregorian dateByAddingComponents: comps toDate: currentDate options: 0];
-            
             self.datePickerView.minimumDate = minDate;
             self.datePickerView.maximumDate = maxDate;
             self.datePickerView.date = maxDate;
@@ -77,8 +79,6 @@
     if(self.selectedDate){
         [self.datePickerView setDate:self.selectedDate];
     }
-    NSLocale *locale = [NSLocale localeWithLocaleIdentifier:@"en_US"];;
-    [self.datePickerView setLocale:locale];
 
 }
 
