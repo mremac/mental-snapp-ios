@@ -113,10 +113,10 @@
 -(void)showScrollSelectedExcerciseForIndexpath:(NSIndexPath *)indexPath withAnimation:(BOOL)animate andGrowValue:(CGFloat)growValue andShrinkValue:(CGFloat)value{
     if(indexPath.item != _selectedIndexPath){
         guidedExcerciseCellCollectionViewCell *selectedCell = (guidedExcerciseCellCollectionViewCell *)[self.guidedExcerciseCollectionView cellForItemAtIndexPath:indexPath];
-        [selectedCell setSelectedViewDetail:([self.guidedExcercisePaginate.pageResults count]+1) withAnimation:animate andValue:(animate?0:growValue)];
+        [selectedCell setSelectedViewDetail:([self.guidedExcercisePaginate.pageResults count]+2) withAnimation:animate andValue:(animate?0:growValue)];
 //        [self showDetailOfSelectedExcercise:((selectedCell.excercise == nil)?nil:selectedCell.excercise)];
         guidedExcerciseCellCollectionViewCell *unSelectedcell = (guidedExcerciseCellCollectionViewCell *)[self.guidedExcerciseCollectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:_selectedIndexPath inSection:0]];
-        [unSelectedcell setUnSelectedViewDetail:([self.guidedExcercisePaginate.pageResults count]+1) withAnimation:animate andValue:(animate?0:value)];
+        [unSelectedcell setUnSelectedViewDetail:([self.guidedExcercisePaginate.pageResults count]+2) withAnimation:animate andValue:(animate?0:value)];
     }
 }
 
@@ -124,11 +124,11 @@
     if(indexPath.item != _selectedIndexPath){
         [self.guidedExcerciseCollectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
         guidedExcerciseCellCollectionViewCell *selectedCell = (guidedExcerciseCellCollectionViewCell *)[self.guidedExcerciseCollectionView cellForItemAtIndexPath:indexPath];
-        [selectedCell setSelectedViewDetail:([self.guidedExcercisePaginate.pageResults count]+1) withAnimation:animate andValue:(animate?0:growValue)];
+        [selectedCell setSelectedViewDetail:([self.guidedExcercisePaginate.pageResults count]+2) withAnimation:animate andValue:(animate?0:growValue)];
        // [self showDetailOfSelectedExcercise:((selectedCell.excercise == nil)?nil:selectedCell.excercise)];
 
         guidedExcerciseCellCollectionViewCell *unSelectedcell = (guidedExcerciseCellCollectionViewCell *)[self.guidedExcerciseCollectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:_selectedIndexPath inSection:0]];
-        [unSelectedcell setUnSelectedViewDetail:([self.guidedExcercisePaginate.pageResults count]+1) withAnimation:animate andValue:(animate?0:value)];
+        [unSelectedcell setUnSelectedViewDetail:([self.guidedExcercisePaginate.pageResults count]+2) withAnimation:animate andValue:(animate?0:value)];
         _selectedIndexPath = indexPath.item;
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             isSelectedTab = NO;
@@ -139,11 +139,11 @@
 -(void)showPreSelectedExcerciseForIndexpath:(NSIndexPath *)indexPath AndUnselectedIndexPath:(NSIndexPath *)unselectedIndexPath withAnimation:(BOOL)animate andGrowValue:(CGFloat)growValue andShrinkValue:(CGFloat)value{
         [self.guidedExcerciseCollectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
         guidedExcerciseCellCollectionViewCell *selectedCell = (guidedExcerciseCellCollectionViewCell *)[self.guidedExcerciseCollectionView cellForItemAtIndexPath:indexPath];
-        [selectedCell setSelectedViewDetail:([self.guidedExcercisePaginate.pageResults count]+1) withAnimation:animate andValue:(animate?0:growValue)];
+        [selectedCell setSelectedViewDetail:([self.guidedExcercisePaginate.pageResults count]+2) withAnimation:animate andValue:(animate?0:growValue)];
         guidedExcerciseCellCollectionViewCell *unSelectedcell = (guidedExcerciseCellCollectionViewCell *)[self.guidedExcerciseCollectionView cellForItemAtIndexPath:unselectedIndexPath];
       // [self showDetailOfSelectedExcercise:((selectedCell.excercise == nil)?nil:selectedCell.excercise)];
 
-        [unSelectedcell setUnSelectedViewDetail:([self.guidedExcercisePaginate.pageResults count]+1) withAnimation:animate andValue:(animate?0:value)];
+        [unSelectedcell setUnSelectedViewDetail:([self.guidedExcercisePaginate.pageResults count]+2) withAnimation:animate andValue:(animate?0:value)];
         _selectedIndexPath = indexPath.item;
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             isSelectedTab = NO;
@@ -352,14 +352,14 @@
     cell.index = indexPath.item;
     [cell setDefaultViewDetail];
     if(indexPath.item <= [self.guideExcerciseViewControllers count]) {
-        if(indexPath.item != 0 && indexPath.item !=([self.guidedExcercisePaginate.pageResults count]+1)) {
+        if(indexPath.item != 0 && indexPath.item !=([self.guidedExcercisePaginate.pageResults count]+2)) {
             if(1 != indexPath.item){
-                [cell setExcercise:[self.guidedExcercisePaginate.pageResults objectAtIndex:indexPath.item-1]];
+                [cell setExcercise:[self.guidedExcercisePaginate.pageResults objectAtIndex:indexPath.item-2]];
             }
             if(self.selectedIndexPath == indexPath.item){
-                [cell setSelectedViewDetail:([self.guidedExcercisePaginate.pageResults count]+1) withAnimation:YES andValue:0];
+                [cell setSelectedViewDetail:([self.guidedExcercisePaginate.pageResults count]+2) withAnimation:YES andValue:0];
             } else {
-                [cell setUnSelectedViewDetail:([self.guidedExcercisePaginate.pageResults count]+1) withAnimation:YES andValue:0];
+                [cell setUnSelectedViewDetail:([self.guidedExcercisePaginate.pageResults count]+2) withAnimation:YES andValue:0];
             }
         }
     } else {
@@ -379,7 +379,7 @@
     if(indexPath.row == 0 || indexPath.row>=([self.guidedExcercisePaginate.pageResults count]+2)){
         return;
     }
-    if(indexPath.item <= [self.guidedExcercisePaginate.pageResults count]){
+    if(indexPath.item <= [self.guidedExcercisePaginate.pageResults count]+1){
         isSelectedTab = YES;
         BOOL scrollDirectionLeft = (indexPath.row < _selectedIndexPath)?YES:NO;
         [self showSelectedExcerciseForIndexpath:indexPath withAnimation:YES andGrowValue:0 andShrinkValue:0];
@@ -437,13 +437,13 @@
             }
         } else if (self.lastContentOffset < scrollView.contentOffset.x) {
             
-            if(self.selectedViewTag>=self.guidedExcercisePaginate.pageResults.count){
+            if(self.selectedViewTag>=(self.guidedExcercisePaginate.pageResults.count+1)){
                 return;
             }
             
             if(offset.x<(([self.guidedExcerciseCollectionView getWidth]/3)*_selectedIndexPath)) {
                 [self.guidedExcerciseCollectionView setContentOffset:offset];
-                if(self.selectedViewTag<self.guidedExcercisePaginate.pageResults.count){
+                if(self.selectedViewTag<(self.guidedExcercisePaginate.pageResults.count+1)){
                     self.selectedViewTag = (_selectedIndexPath+1);
                     [self showScrollSelectedExcerciseForIndexpath:[NSIndexPath indexPathForRow:(_selectedIndexPath+1) inSection:0] withAnimation:NO andGrowValue:growRadius andShrinkValue:shrinkRadius];
                 } else {
