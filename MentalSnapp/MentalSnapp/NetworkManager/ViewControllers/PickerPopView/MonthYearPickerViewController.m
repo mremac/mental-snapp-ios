@@ -21,7 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    _datePicker.isOptionalDate = _isOptionalDate;
     self.datePicker._delegate = self;
     
     self.dateFormatter = [[NSDateFormatter alloc] init];
@@ -86,8 +86,8 @@
 #pragma mark Toolbar IBActions
 - (IBAction)toolBarDoneButtonAction:(id)sender
 {
-    if([self.delegate respondsToSelector:@selector(didSelectDoneButton:)]){
-        [self.delegate didSelectDoneButton:self.datePicker.date];
+    if([self.delegate respondsToSelector:@selector(didSelectDoneButton:withDay:)]){
+        [self.delegate didSelectDoneButton:self.datePicker.date withDay:self.datePicker.selectedDay];
     }
     [self dismissViewControllerAnimated:YES completion:nil];
 }

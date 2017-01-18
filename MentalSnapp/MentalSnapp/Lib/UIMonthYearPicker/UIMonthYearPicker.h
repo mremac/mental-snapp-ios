@@ -20,6 +20,8 @@ typedef void (^UIMonthYearPickerValueChangeBlock)(NSDate *newDate);
 @property (nonatomic, strong) NSDate *date;
 @property (nonatomic, strong) NSDate *minimumDate;
 @property (nonatomic, strong) NSDate *maximumDate;
+@property (nonatomic, assign) BOOL isOptionalDate;
+@property (nonatomic, assign) NSInteger selectedDay;
 
 - (void)selectToday;
 

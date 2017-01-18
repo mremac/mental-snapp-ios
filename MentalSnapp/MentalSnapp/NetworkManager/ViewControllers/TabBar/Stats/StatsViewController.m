@@ -334,7 +334,7 @@ static const CGFloat lineChartCellHeight = 240.0;
 }
 
 #pragma mark - Date Picker view Delegate
-- (void)didSelectDoneButton:(NSDate *)date
+- (void)didSelectDoneButton:(NSDate *)date withDay:(NSInteger)day
 {
     [self getStatsAPIForMonth:[date month] andYear:[date year]];
     [popover dismissPopoverAnimated:YES];

@@ -19,13 +19,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MentalSnapp/NetworkManager/ViewControllers/GuidedExercise/GuidedExcerciseViewController.m"
-            timestampString = "505820436.777373"
+            filePath = "MentalSnapp/NetworkManager/ViewControllers/TabBar/Videos/VideosViewController.m"
+            timestampString = "506439585.170229"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
-            landmarkName = "-defaultSettings"
+            startingLineNumber = "583"
+            endingLineNumber = "583"
+            landmarkName = "-didSelectDoneButton:withDay:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -35,13 +35,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MentalSnapp/NetworkManager/ViewControllers/GuidedExercise/GuidedExcerciseViewController.m"
-            timestampString = "505820501.025518"
+            filePath = "MentalSnapp/NetworkManager/ViewControllers/PickerPopView/MonthYearPickerViewController.m"
+            timestampString = "506438719.611232"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "149"
-            endingLineNumber = "149"
-            landmarkName = "-defaultSettings"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
+            landmarkName = "-toolBarDoneButtonAction:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -51,13 +51,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MentalSnapp/NetworkManager/ViewControllers/GuidedExercise/GuidedExcerciseViewController.m"
-            timestampString = "505820594.694484"
+            filePath = "MentalSnapp/NetworkManager/ViewControllers/TabBar/Stats/StatsViewController.m"
+            timestampString = "506438884.327608"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "175"
-            endingLineNumber = "175"
-            landmarkName = "-addViewControllerInPagination"
+            startingLineNumber = "339"
+            endingLineNumber = "339"
+            landmarkName = "-didSelectDoneButton:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -67,61 +67,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MentalSnapp/NetworkManager/ViewControllers/GuidedExercise/GuidedExcerciseViewController.m"
-            timestampString = "505821133.933921"
+            filePath = "MentalSnapp/NetworkManager/Requests/RecordPostRequest.m"
+            timestampString = "506439726.284412"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "333"
-            endingLineNumber = "333"
-            landmarkName = "-collectionView:cellForItemAtIndexPath:"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "-initWithGetSearchRecordPostsWithPaginate:"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__54-[GuidedExcerciseViewController panGestureRecognizer:]_block_invoke"
-                  moduleName = "MentalSnapp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/NPhadtare/mentalsnapp/MentalSnapp/MentalSnapp/NetworkManager/ViewControllers/GuidedExercise/GuidedExcerciseViewController.m"
-                  timestampString = "506327487.699084"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "335"
-                  endingLineNumber = "335"
-                  offsetFromSymbolStart = "1870">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__copy_helper_block_.205"
-                  moduleName = "MentalSnapp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/NPhadtare/mentalsnapp/MentalSnapp/MentalSnapp/NetworkManager/ViewControllers/GuidedExercise/GuidedExcerciseViewController.m"
-                  timestampString = "506327487.701206"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "335"
-                  endingLineNumber = "335"
-                  offsetFromSymbolStart = "34">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__destroy_helper_block_.206"
-                  moduleName = "MentalSnapp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/NPhadtare/mentalsnapp/MentalSnapp/MentalSnapp/NetworkManager/ViewControllers/GuidedExercise/GuidedExcerciseViewController.m"
-                  timestampString = "506327487.70312"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "335"
-                  endingLineNumber = "335"
-                  offsetFromSymbolStart = "18">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -24,9 +24,12 @@
 @property (nonatomic, strong) NSIndexPath *todayIndexPath;
 @property (nonatomic, strong) NSArray *months;
 @property (nonatomic, strong) NSArray *years;
+@property (nonatomic, strong) NSArray *days;
+@property (nonatomic, assign) NSInteger todaysDay;
 
 -(NSArray *)nameOfYears;
 -(NSArray *)nameOfMonths;
+-(NSArray *)nameOfdays;
 -(CGFloat)componentWidth;
 
 -(UILabel *)labelForComponent:(NSInteger)component selected:(BOOL)selected;
@@ -36,6 +39,7 @@
 -(NSInteger)bigRowYearCount;
 -(NSString *)currentMonthName;
 -(NSString *)currentYearName;
+-(NSString *)currentDayName;
 
 @end
 
@@ -50,6 +54,7 @@ const NSInteger numberOfComponents = 2;
 @synthesize todayIndexPath;
 @synthesize months;
 @synthesize years = _years;
+@synthesize days = _days;
 @synthesize _delegate = _privateDelegate;
 @synthesize maximumDate;
 @synthesize minimumDate;
@@ -63,10 +68,11 @@ const NSInteger numberOfComponents = 2;
     
     self.months = [self nameOfMonths];
     self.years = [self nameOfYears];
+    self.days = [self nameOfdays];
     [self reloadAllComponents];
 
     self.todayIndexPath = [self todayPath];
-    
+    self.todaysDay = [[NSDate date] day];
     self.delegate = self;
     self.dataSource = self;
 }
@@ -132,10 +138,24 @@ const NSInteger numberOfComponents = 2;
     
     NSInteger yearCount = [self.years count];
     NSString *year = [self.years objectAtIndex:([self selectedRowInComponent:YEAR] % yearCount)];
-    
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init]; [formatter setDateFormat:@"MMMM:yyyy"];
-    NSDate *date = [formatter dateFromString:[NSString stringWithFormat:@"%@:%@", month, year]];
-    
+    NSDate *date;
+    if(_isOptionalDate){
+        NSInteger daysCount = [self.days count];
+        NSNumber *day = [self.days objectAtIndex:([self selectedRowInComponent:2] % daysCount)];
+        if([day integerValue]!=0){
+            self.selectedDay = [day integerValue];
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init]; [formatter setDateFormat:@"dd:MMMM:yyyy"];
+            date = [formatter dateFromString:[NSString stringWithFormat:@"%ld:%@:%@",(long)[day integerValue], month, year]];
+        } else {
+            self.selectedDay = 0;
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init]; [formatter setDateFormat:@"MMMM:yyyy"];
+            date = [formatter dateFromString:[NSString stringWithFormat:@"%@:%@", month, year]];
+        }
+    } else {
+        self.selectedDay = 0;
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init]; [formatter setDateFormat:@"MMMM:yyyy"];
+        date = [formatter dateFromString:[NSString stringWithFormat:@"%@:%@", month, year]];
+    }
     return date;
 }
 
@@ -161,12 +181,20 @@ const NSInteger numberOfComponents = 2;
             selected = YES;
         }
     }
-    else
+    else if(component == YEAR)
     {
         NSInteger yearCount = [self.years count];
         NSString *yearName = [self.years objectAtIndex:(row % yearCount)];
         NSString *currenrYearName  = [self currentYearName];
         if([yearName isEqualToString:currenrYearName])
+        {
+            selected = YES;
+        }
+    } else {
+        NSInteger dayCount = [self.days count];
+        NSNumber *dayName = [self.days objectAtIndex:(row % dayCount)];
+        NSString *currenrDayName  = [self currentDayName];
+        if([[NSString stringWithFormat:@"%ld",(long)[dayName integerValue]] isEqualToString:currenrDayName])
         {
             selected = YES;
         }
@@ -202,19 +230,27 @@ const NSInteger numberOfComponents = 2;
 #pragma mark - UIPickerViewDataSource
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
-    return numberOfComponents;
+    return (_isOptionalDate)?3:numberOfComponents;
 }
 
 -(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-    if(component == MONTH)
+        if(component == MONTH)
     {
         return [self bigRowMonthCount];
+    } else if(component == YEAR){
+        return [self bigRowYearCount];
+    } else {
+        return [self bigRowDayCount];
     }
-    return [self bigRowYearCount];
 }
 
 #pragma mark - Util
+-(NSInteger)bigRowDayCount
+{
+    return [self.days count]  * bigRowCount;
+}
+
 -(NSInteger)bigRowMonthCount
 {
     return [self.months count]  * bigRowCount;
@@ -227,7 +263,7 @@ const NSInteger numberOfComponents = 2;
 
 -(CGFloat)componentWidth
 {
-    return CGRectGetWidth(self.bounds) / numberOfComponents;
+    return CGRectGetWidth(self.bounds) / ((_isOptionalDate)?3:numberOfComponents);
 }
 
 -(NSString *)titleForRow:(NSInteger)row forComponent:(NSInteger)component
@@ -236,9 +272,14 @@ const NSInteger numberOfComponents = 2;
     {
         NSInteger monthCount = [self.months count];
         return [self.months objectAtIndex:(row % monthCount)];
+    } else if(component == YEAR) {
+        NSInteger yearCount = [self.years count];
+        return [self.years objectAtIndex:(row % yearCount)];
+    }else {
+        NSInteger daysCount = [self.days count];
+        NSNumber *day = [self.days objectAtIndex:(row % daysCount)];
+        return [NSString stringWithFormat:@"%ld",(long)[day integerValue]];
     }
-    NSInteger yearCount = [self.years count];
-    return [self.years objectAtIndex:(row % yearCount)];
 }
 
 -(UILabel *)labelForComponent:(NSInteger)component selected:(BOOL)selected
@@ -254,6 +295,19 @@ const NSInteger numberOfComponents = 2;
     
     return label;
 }
+
+-(NSArray *)nameOfdays {
+     NSCalendar *c = [NSCalendar currentCalendar];
+    NSRange days = [c rangeOfUnit:NSCalendarUnitDay
+                           inUnit:NSCalendarUnitMonth
+                          forDate:[NSDate dateWithYear:[self.currentYearName integerValue] month:[self.currentMonthName integerValue] day:1]];
+    NSMutableArray *array  = [[NSMutableArray alloc] init];
+    for (int i= 0; i<=days.length; i++) {
+        [array addObject:[NSNumber numberWithInt:i]];
+    }
+    return array;
+}
+
 
 -(NSArray *)nameOfMonths
 {
@@ -281,6 +335,10 @@ const NSInteger numberOfComponents = 2;
     
     [self selectRow: self.todayIndexPath.section
         inComponent: YEAR
+           animated: NO];
+    
+    [self selectRow: self.todaysDay
+        inComponent: 2
            animated: NO];
 }
 
@@ -318,6 +376,13 @@ const NSInteger numberOfComponents = 2;
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"MMMM"];
+    return [formatter stringFromDate:[NSDate date]];
+}
+
+-(NSString *)currentDayName
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"dd"];
     return [formatter stringFromDate:[NSDate date]];
 }
 

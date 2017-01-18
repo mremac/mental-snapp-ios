@@ -17,7 +17,7 @@ typedef NS_ENUM(NSInteger, DateSelection){
 
 @protocol MonthYearPickerViewControllerDelegate <NSObject>
 
-- (void)didSelectDoneButton:(NSDate *)date;
+- (void)didSelectDoneButton:(NSDate *)date withDay:(NSInteger)day;
 - (void)didSelectCancelButton;
 
 @end
@@ -26,5 +26,6 @@ typedef NS_ENUM(NSInteger, DateSelection){
 
 @property (assign, nonatomic) id <MonthYearPickerViewControllerDelegate> delegate;
 @property (assign, nonatomic) DateSelection dateSelection;
+@property (assign, nonatomic) BOOL isOptionalDate;
 
 @end

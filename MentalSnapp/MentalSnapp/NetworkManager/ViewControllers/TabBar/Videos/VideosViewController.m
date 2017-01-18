@@ -13,7 +13,8 @@
 #import "RecordPost.h"
 #import "RequestManager.h"
 #import "Paginate.h"
-#import "PickerViewController.h"
+#import "MonthYearPickerViewController.h"
+#import "FPPopoverKeyboardResponsiveController.h"
 
 @import AVFoundation;
 @import AVKit;
@@ -24,7 +25,7 @@ typedef enum : NSUInteger {
     None
 } SearchTextFieldOwner;
 
-@interface VideosViewController () <DownloadVideoDelegate, PickerViewControllerDelegate>
+@interface VideosViewController () <DownloadVideoDelegate, MonthYearPickerViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIView *noContentView;
 @property (weak, nonatomic) IBOutlet UIView *topHeaderView;
@@ -40,9 +41,11 @@ typedef enum : NSUInteger {
 @property (strong, nonatomic) Paginate *filterPaginate;
 @property (strong, nonatomic) FilterModel *selectedFilter;
 @property (strong, nonatomic) FilterListTableController *filterListController;
-@property (strong, nonatomic) PickerViewController *pickerViewController;
+@property (strong, nonatomic) MonthYearPickerViewController *pickerViewController;
 @property (strong, nonatomic) NSDate *selectedSearchDate;
 @property (assign, nonatomic) SearchTextFieldOwner textFieldOwner;
+@property (assign, nonatomic) NSInteger selectedDay;
+
 
 @end
 
@@ -69,9 +72,10 @@ typedef enum : NSUInteger {
     [self.topHeaderView layoutIfNeeded];
     [self changeSearchMode];
     
-    self.pickerViewController = [[UIStoryboard storyboardWithName:KProfileStoryboard bundle:nil] instantiateViewControllerWithIdentifier:kPickerViewController];
+    self.pickerViewController = [[UIStoryboard storyboardWithName:KProfileStoryboard bundle:nil] instantiateViewControllerWithIdentifier:kMonthYearPickerViewController];
     self.pickerViewController.modalPresentationStyle = UIModalPresentationOverFullScreen;
-    [self.pickerViewController setPickerType:dateOnly];
+   // [self.pickerViewController setPickerType:dateOnly];
+    self.pickerViewController.isOptionalDate = YES;
     [self.pickerViewController setDateSelection:pastDateOnly];
     [self.pickerViewController setDelegate:self];
     
@@ -110,7 +114,26 @@ typedef enum : NSUInteger {
 
 - (IBAction)calendarButtonTapped:(UIButton *)sender
 {
-    [[[ApplicationDelegate window] rootViewController] presentViewController:self.pickerViewController animated:YES completion:nil];
+    SAFE_ARC_RELEASE(popover); popover=nil;
+    
+    //the controller we want to present as a popover
+    popover = [[FPPopoverKeyboardResponsiveController alloc] initWithViewController:self.pickerViewController];
+    popover.tint = FPPopoverWhiteTint;
+    popover.border = NO;
+    
+    popover.contentSize = CGSizeMake(self.view.getWidth, 320);
+    popover.arrowDirection = FPPopoverArrowDirectionAny;
+    
+    CGRect frame = sender.frame;
+    frame.origin.y = frame.origin.y - 10;
+    
+    UIButton *view = sender;
+    view.frame = frame;
+    [popover presentPopoverFromView:view];
+    
+    frame.origin.y = frame.origin.y + 10;
+    sender.frame = frame;
+    //[[[ApplicationDelegate window] rootViewController] presentViewController:self.pickerViewController animated:YES completion:nil];
 }
 
 #pragma mark - Private methods
@@ -345,7 +368,9 @@ typedef enum : NSUInteger {
 - (NSString *)getFormattedTextForDate:(NSDate *)date {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-    
+    if(self.selectedDay == 0){
+        [dateFormatter setDateFormat:@"yyyy-MM"];
+    }
     return [dateFormatter stringFromDate:date];
 }
 
@@ -551,16 +576,18 @@ typedef enum : NSUInteger {
 #pragma mark - Picker view controller delegate
 
 - (void)didSelectCancelButton {
-    
+    [popover dismissPopoverAnimated:YES];
 }
 
-- (void)didSelectDoneButton:(NSDate *)date {
+- (void)didSelectDoneButton:(NSDate *)date withDay:(NSInteger)day{
     _textFieldOwner = CalendarOwner;
     self.calendarButton.selected = YES;
+    self.selectedDay = day;
     self.selectedSearchDate = date;
     [self animateSearch];
     
     [self didSearchBegin];
+    [popover dismissPopoverAnimated:YES];
 }
 
 @end
