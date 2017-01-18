@@ -151,7 +151,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MainLogo" translatesAutoresizingMaskIntoConstraints="NO" id="acv-bn-27g">
-                                <rect key="frame" x="68.5" y="80" width="183" height="65"/>
+                                <rect key="frame" x="69" y="80" width="183" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="zei-y0-u6i"/>
                                 </constraints>
@@ -281,16 +281,16 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Z5-HP-fNx" userLabel="Bottom View">
-                                <rect key="frame" x="67.5" y="516" width="185.5" height="25"/>
+                                <rect key="frame" x="67" y="516" width="186" height="25"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dv3-Lh-7vu">
-                                        <rect key="frame" x="0.0" y="0.0" width="131.5" height="25"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="132" height="25"/>
                                         <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="13"/>
                                         <color key="textColor" red="0.23921568630000001" green="0.23921568630000001" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="83Z-0P-B8U">
-                                        <rect key="frame" x="131.5" y="0.0" width="54" height="25"/>
+                                        <rect key="frame" x="132" y="0.0" width="54" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="54" id="NT9-hh-Sws"/>
                                         </constraints>
@@ -397,7 +397,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mental Snapp" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oLN-9k-qy7">
-                                        <rect key="frame" x="100.5" y="28" width="120" height="21"/>
+                                        <rect key="frame" x="100" y="28" width="120" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="120" id="8J8-uW-PXA"/>
                                             <constraint firstAttribute="height" constant="21" id="oco-w1-8WX"/>
@@ -512,6 +512,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="foe-lB-Bwv" kind="relationship" relationship="viewControllers" id="tV1-A2-NZB"/>
+                        <segue destination="lDa-jD-BCj" kind="relationship" relationship="viewControllers" id="qRy-dg-8RX"/>
                         <segue destination="r1p-Tj-Snl" kind="relationship" relationship="viewControllers" id="jmh-de-Q6S"/>
                         <segue destination="ea6-22-dcP" kind="relationship" relationship="viewControllers" id="jNU-a3-sz6"/>
                     </connections>
@@ -800,16 +801,16 @@
                                 <rect key="frame" x="20" y="194" width="280" height="180"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome back" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qgC-X1-qzL">
-                                        <rect key="frame" x="0.0" y="5" width="280" height="23"/>
+                                        <rect key="frame" x="0.0" y="5" width="280" height="32"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="19"/>
                                         <color key="textColor" red="0.4039215686" green="0.4039215686" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fcp-Zq-IPR">
-                                        <rect key="frame" x="89.5" y="120" width="100" height="60"/>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fcp-Zq-IPR">
+                                        <rect key="frame" x="90" y="180" width="100" height="0.0"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="G8R-yB-Mre"/>
-                                            <constraint firstAttribute="height" constant="60" id="GA6-jp-ukT"/>
+                                            <constraint firstAttribute="height" id="GA6-jp-ukT"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                         <state key="normal" image="record_big"/>
@@ -817,8 +818,8 @@
                                             <action selector="recordButtonAction:" destination="HzT-Gg-GUH" eventType="touchUpInside" id="iol-Mt-eY0"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Record Now" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6DR-Gq-rgz">
-                                        <rect key="frame" x="89.5" y="161" width="100" height="19"/>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Record Now" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6DR-Gq-rgz">
+                                        <rect key="frame" x="90" y="161" width="100" height="19"/>
                                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="16"/>
                                         <color key="textColor" red="0.098039215686274508" green="0.62745098039215685" blue="0.72941176470588232" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -849,11 +850,12 @@
                     <connections>
                         <outlet property="recordButton" destination="fcp-Zq-IPR" id="Muw-2L-fB9"/>
                         <outlet property="welcomeLabel" destination="qgC-X1-qzL" id="aRc-5J-U6T"/>
+                        <outlet property="welcomeView" destination="l3x-l4-g3s" id="b31-Wa-Nyo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aba-Gd-N5D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2580" y="-168"/>
+            <point key="canvasLocation" x="3503" y="-170"/>
         </scene>
         <!--Stats View Controller-->
         <scene sceneID="5qI-4k-rVz">
@@ -871,7 +873,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Stats to show" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M2d-kf-kpw">
-                                        <rect key="frame" x="0.0" y="274.5" width="320" height="20"/>
+                                        <rect key="frame" x="0.0" y="274" width="320" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="uUl-Du-63t"/>
                                         </constraints>
@@ -917,7 +919,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Of-Vi-UlR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3503" y="576"/>
+            <point key="canvasLocation" x="3503" y="554"/>
         </scene>
         <!--More View Controller-->
         <scene sceneID="FXF-zc-RQ0">
@@ -1088,7 +1090,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Queued Exercises to display" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nkG-JK-tZe" userLabel="No Queued Excercises to display">
-                                        <rect key="frame" x="0.0" y="274.5" width="320" height="20"/>
+                                        <rect key="frame" x="0.0" y="274" width="320" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="fJ8-mI-E0B"/>
                                         </constraints>
@@ -1212,7 +1214,7 @@
         <scene sceneID="wPs-Ww-mx8">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ea6-22-dcP" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="3" title="" image="more" selectedImage="more_select" id="pLc-5M-03v"/>
+                    <tabBarItem key="tabBarItem" tag="4" title="" image="more" selectedImage="more_select" id="pLc-5M-03v"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="osg-Bk-j07">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -1266,7 +1268,7 @@
         <scene sceneID="eSH-DS-Rz5">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="r1p-Tj-Snl" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="2" title="" image="stats" selectedImage="stats_select" id="tx5-ds-DTt"/>
+                    <tabBarItem key="tabBarItem" tag="3" title="" image="stats" selectedImage="stats_select" id="tx5-ds-DTt"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="TWf-gw-yYx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -1323,7 +1325,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="173"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MainLogo" translatesAutoresizingMaskIntoConstraints="NO" id="I9e-HL-xL6">
-                                        <rect key="frame" x="101.5" y="60" width="183" height="65"/>
+                                        <rect key="frame" x="101" y="60" width="183" height="65"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="65" id="0Sr-b9-4q7"/>
                                         </constraints>
@@ -2135,6 +2137,25 @@
             </objects>
             <point key="canvasLocation" x="1611" y="-886"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="S4H-4h-HtN">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lDa-jD-BCj" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" tag="2" title="" image="record_tab" selectedImage="record_select" id="war-Nc-7aI"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="OOE-bY-sfA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="HzT-Gg-GUH" kind="relationship" relationship="rootViewController" id="qM0-Vy-K3f"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KME-eY-1Kz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2580" y="-170"/>
+        </scene>
     </scenes>
     <resources>
         <image name="MainLogo" width="183" height="67"/>
@@ -2157,6 +2178,8 @@
         <image name="more_select" width="64" height="46"/>
         <image name="play_video" width="90" height="90"/>
         <image name="record_big" width="36" height="36"/>
+        <image name="record_select" width="63" height="46"/>
+        <image name="record_tab" width="63" height="46"/>
         <image name="search_videos" width="21" height="21"/>
         <image name="selected_filter_videos" width="27" height="19"/>
         <image name="stats" width="63" height="46"/>

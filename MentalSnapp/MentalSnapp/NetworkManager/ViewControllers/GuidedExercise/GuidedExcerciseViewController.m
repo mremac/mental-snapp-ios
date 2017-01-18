@@ -198,6 +198,7 @@
     frame.origin.y=0;
     [recordViewController setViewTag:1];
     [recordViewController.view setFrame:frame];
+    recordViewController.isExerciseView = YES;
     [self.guideExcerciseViewControllers addObject:recordViewController];
     
     if(self.guidedExcercisePaginate && self.guidedExcercisePaginate.pageResults.count>0){

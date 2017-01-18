@@ -10,6 +10,8 @@
 @interface RecordViewController () <UIImagePickerControllerDelegate>
 @property (strong, nonatomic) IBOutlet UILabel *welcomeLabel;
 @property (strong, nonatomic) IBOutlet UIButton *recordButton;
+@property (strong, nonatomic) IBOutlet UIView *welcomeView;
+
 
 - (IBAction)recordButtonAction:(id)sender;
 
@@ -38,7 +40,12 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    //[self setNavigationBarButtonTitle:@"Mental Snapp"];
+    if(_isExerciseView) {
+        [self.welcomeView setHidden:NO];
+    } else {
+        [self setNavigationBarButtonTitle:@"Mental Snapp"];
+        [self.welcomeView setHidden:YES];
+    }
 }
 
 #pragma mark - Image picker delegate
@@ -52,7 +59,7 @@
             moodViewController.excercise = self.exercise;
         }
         
-        //[ApplicationDelegate.tabBarController setSelectTabIndex:1];
+    //[ApplicationDelegate.tabBarController setSelectTabIndex:1];
         UINavigationController *navController = ApplicationDelegate.tabBarController.selectedViewController;
         //[navController popToRootViewControllerAnimated:NO];
         [navController pushViewController:moodViewController animated:YES];
@@ -61,8 +68,8 @@
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
     self.exercise = nil;
-//    [ApplicationDelegate.tabBarController setSelectTabIndex:0];
-//    [ApplicationDelegate.tabBarController setSelectedIndex:0];
+    [ApplicationDelegate.tabBarController setSelectTabIndex:0];
+    [ApplicationDelegate.tabBarController setSelectedIndex:0];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [picker dismissViewControllerAnimated:YES completion:nil];
     });

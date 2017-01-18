@@ -136,11 +136,15 @@
 }
 
 + (void)openCameraForRecordExercise:(GuidedExcercise *)exercise {
-    [UserManager sharedManager].recordViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:kRecordViewController];
-    if([[UserManager sharedManager].recordViewController isKindOfClass:[RecordViewController class]])
+//    [UserManager sharedManager].recordViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:kRecordViewController];
+    [ApplicationDelegate.tabBarController setSelectTabIndex:2];
+    [ApplicationDelegate.tabBarController setSelectedIndex:2];
+     UINavigationController *navController = ApplicationDelegate.tabBarController.selectedViewController;
+    RecordViewController *recordViewController = [[navController viewControllers] objectAtIndex:0];
+    if([recordViewController isKindOfClass:[RecordViewController class]])
     {
         [UserManager sharedManager].recordViewController.exercise = exercise;
-        [Util openCameraView:[UserManager sharedManager].recordViewController WithAnimation:NO];
+        [Util openCameraView:recordViewController WithAnimation:NO];
     }
 }
 

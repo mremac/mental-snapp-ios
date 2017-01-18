@@ -55,7 +55,7 @@
     // Do any additional setup after loading the view.
     [self setNavigationBarButtonTitle:@"Mental Snapp"];
     [self setRightMenuButtons:[NSArray arrayWithObjects:[self uploadButton], nil]];
-    [self setLeftMenuButtons:[NSArray arrayWithObjects:[self backButton], nil]];
+//    [self setLeftMenuButtons:[NSArray arrayWithObjects:[self backButton], nil]];
 
     self.navigationItem.hidesBackButton = YES;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -81,7 +81,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-//    [ApplicationDelegate.tabBarController setSelectTabIndex:2];
+    [ApplicationDelegate.tabBarController setSelectTabIndex:2];
 }
 
 /*
