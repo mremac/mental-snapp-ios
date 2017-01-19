@@ -327,13 +327,13 @@
             if(data.itemCount >= 2) {
                 LCLineChartDataItem *datItem = data.getData(0);
                 CGMutablePathRef path = CGPathCreateMutable();
-                CGFloat prevX = xStart + round(((datItem.x - data.xMin) / xRangeLen) * availableWidth);
-                CGFloat prevY = yStart + round((1.0 - (datItem.y - self.yMin) / yRangeLen) * availableHeight);
-                CGPathMoveToPoint(path, NULL, prevX-10, prevY);
+                CGFloat prevX = xStart + round((((datItem.x) - data.xMin) / xRangeLen) * availableWidth);
+                CGFloat prevY = yStart + round((1.0 - ((datItem.y) - self.yMin) / yRangeLen) * availableHeight);
+                CGPathMoveToPoint(path, NULL, prevX-12, prevY);
                 for(NSUInteger i = 1; i < data.itemCount; ++i) {
                     LCLineChartDataItem *datItem = data.getData(i);
-                    CGFloat x = xStart + round(((datItem.x - data.xMin) / xRangeLen) * availableWidth);
-                    CGFloat y = yStart + round((1.0 - (datItem.y - self.yMin) / yRangeLen) * availableHeight);
+                    CGFloat x = xStart + round((((datItem.x) - data.xMin) / xRangeLen) * availableWidth);
+                    CGFloat y = yStart + round((1.0 - ((datItem.y) - self.yMin) / yRangeLen) * availableHeight);
                     CGFloat xDiff = x - prevX;
                     CGFloat yDiff = y - prevY;
                     
@@ -343,10 +343,10 @@
                         CGFloat slope = yDiff / xDiff;
                         CGPoint controlPt1 = CGPointMake(prevX + xSmoothing, prevY + ySmoothing * slope * xSmoothing);
                         CGPoint controlPt2 = CGPointMake(x - xSmoothing, y - ySmoothing * slope * xSmoothing);
-                        CGPathAddCurveToPoint(path, NULL, controlPt1.x, controlPt1.y, controlPt2.x, controlPt2.y, x, y);
+                        CGPathAddCurveToPoint(path, NULL, controlPt1.x-6, controlPt1.y-6, controlPt2.x-6, controlPt2.y-6, x-6, y-6);
                     }
                     else {
-                        CGPathAddLineToPoint(path, NULL, x-10, y);
+                        CGPathAddLineToPoint(path, NULL, x-12, y);
                     }
                     prevX = x;
                     prevY = y;
@@ -380,7 +380,7 @@
                 data.color = [Util getMoodColor:(round(yVal/heightPerStep)+((result.width >= 414)?0:1))];
                 [[UIColor clearColor] setFill];
                 
-                CGContextFillEllipseInRect(c, CGRectMake(xVal - 16, yVal - 10, 35, 35));
+                CGContextFillEllipseInRect(c, CGRectMake(xVal - 18, yVal - 10, 35, 35));
                 {
                     CGFloat brightness;
                     CGFloat r,g,b,a;
@@ -395,7 +395,7 @@
 //                    else
 //                        [[UIColor blackColor] setFill];
                 }
-                CGContextFillEllipseInRect(c, CGRectMake(xVal - 16, yVal - 7, 15, 15));
+                CGContextFillEllipseInRect(c, CGRectMake(xVal - 18, yVal - 10, 15, 15));
             } // for
           } // data - draw data points
         } // draw data points
@@ -436,15 +436,15 @@
             
             CGFloat xVal = round((xRangeLen == 0 ? 0.0 : ((datItem.x - data.xMin) / xRangeLen)) * availableWidth);
             CGFloat yVal = round((1.0 - (datItem.y - self.yMin) / yRangeLen) * availableHeight);
-            double dist = fabs(xVal - xPos);
-            double distY = fabs(yVal - yPos);
-            if((dist < 5 && distY < 5) || (dist == 5 && distY < 5)) {
+            double dist = fabs((xVal-18) - xPos);
+            double distY = fabs((yVal-10) - yPos);
+            if((dist < 10 && distY < 15) || (dist == 10 && distY < 15)) {
                 minDist = dist;
                 minDistY = distY;
                 closest = datItem;
                 closestData = data;
                 closestIdx = i;
-                closestPos = CGPointMake(xStart + xVal - 3, yStart + yVal - 7);
+                closestPos = CGPointMake(xStart + xVal - 18, yStart + yVal - 10);
             }
         }
     }
@@ -549,15 +549,15 @@
             
             CGFloat xVal = round((xRangeLen == 0 ? 0.0 : ((datItem.x - data.xMin) / xRangeLen)) * availableWidth);
             CGFloat yVal = round((1.0 - (datItem.y - self.yMin) / yRangeLen) * availableHeight);
-            double dist = fabs(xVal - xPos);
-            double distY = fabs(yVal - yPos);
-            if((dist < 4 && distY < 4) || (dist == 4 && distY < 4)) {
+            double dist = fabs((xVal-18) - xPos);
+            double distY = fabs((yVal-10) - yPos);
+            if((dist < 10 && distY < 15) || (dist == 10 && distY < 15)) {
                 minDist = dist;
                 minDistY = distY;
                 closest = datItem;
                 closestData = data;
                 closestIdx = i;
-                closestPos = CGPointMake(xStart + xVal - 3, yStart + yVal - 7);
+                closestPos = CGPointMake(xStart + xVal - 18, yStart + yVal - 10);
             }
         }
     }
