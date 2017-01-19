@@ -111,7 +111,8 @@ const NSInteger numberOfComponents = 2;
     
     NSInteger dateYear;
     NSInteger dateMonth;
-    
+    NSInteger dateday;
+
     NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitMonth fromDate:aDate];
     dateMonth = [components month];
     components = [[NSCalendar currentCalendar] components:NSCalendarUnitYear fromDate:aDate];
@@ -128,6 +129,11 @@ const NSInteger numberOfComponents = 2;
     
     [self selectRow: rowIndex
         inComponent: YEAR
+           animated: animated];
+    components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay fromDate:aDate];
+    dateday = [components day];
+    [self selectRow: dateday-1
+        inComponent: 2
            animated: animated];
 }
 
@@ -278,6 +284,9 @@ const NSInteger numberOfComponents = 2;
     }else {
         NSInteger daysCount = [self.days count];
         NSNumber *day = [self.days objectAtIndex:(row % daysCount)];
+        if([day integerValue] == 0){
+            return @"None";
+        }
         return [NSString stringWithFormat:@"%ld",(long)[day integerValue]];
     }
 }
@@ -302,7 +311,7 @@ const NSInteger numberOfComponents = 2;
                            inUnit:NSCalendarUnitMonth
                           forDate:[NSDate dateWithYear:[self.currentYearName integerValue] month:[self.currentMonthName integerValue] day:1]];
     NSMutableArray *array  = [[NSMutableArray alloc] init];
-    for (int i= 0; i<=days.length; i++) {
+    for (int i= 1; i<=days.length; i++) {
         [array addObject:[NSNumber numberWithInt:i]];
     }
     return array;

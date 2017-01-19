@@ -151,13 +151,13 @@
          if(success)
          {
              [self.filterListPaginate updatePaginationWith:response];
-             NSMutableArray *array = [[NSMutableArray alloc] initWithArray:self.filterListPaginate.pageResults];
-             FilterModel *filter = [FilterModel new];
-             filter.filterName = @"Freeform";
-             filter.filterId = @"0";
-             filter.filterType = @"";
-             [array insertObject:filter atIndex:0];
-             self.filterListPaginate.pageResults = array;
+//             NSMutableArray *array = [[NSMutableArray alloc] initWithArray:self.filterListPaginate.pageResults];
+//             FilterModel *filter = [FilterModel new];
+//             filter.filterName = @"Freeform";
+//             filter.filterId = @"0";
+//             filter.filterType = @"";
+//             [array insertObject:filter atIndex:0];
+//             self.filterListPaginate.pageResults = array;
              if([self.filterListPaginate.pageResults count] > 0)
              {
                  dispatch_async(dispatch_get_main_queue(), ^{

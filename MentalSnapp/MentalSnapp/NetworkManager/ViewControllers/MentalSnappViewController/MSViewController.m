@@ -54,8 +54,11 @@
 }
 
 - (UIBarButtonItem *)backButton {
-    UIButton *leftButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 4, 25, 30)];
+    UIButton *leftButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 4, 60, 30)];
     [leftButton setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
+    [leftButton setTitle:@" Back" forState:UIControlStateNormal];
+    [leftButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [leftButton.titleLabel setFont:[UIFont fontWithName:@"Roboto-Light" size:16]];
     [leftButton addTarget:self action:@selector(backButtonTapped) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *leftBarButton = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
     return leftBarButton;
