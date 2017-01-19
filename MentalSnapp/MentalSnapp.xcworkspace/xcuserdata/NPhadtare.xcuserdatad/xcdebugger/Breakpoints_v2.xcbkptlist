@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MentalSnapp/NetworkManager/ViewControllers/TabBar/Videos/VideosViewController.m"
-            timestampString = "506439585.170229"
+            timestampString = "506503193.814946"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "583"
-            endingLineNumber = "583"
+            startingLineNumber = "585"
+            endingLineNumber = "585"
             landmarkName = "-didSelectDoneButton:withDay:"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,6 +74,38 @@
             startingLineNumber = "47"
             endingLineNumber = "47"
             landmarkName = "-initWithGetSearchRecordPostsWithPaginate:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MentalSnapp/NetworkManager/ViewControllers/TabBar/Videos/VideosViewController.m"
+            timestampString = "506503116.062373"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "350"
+            endingLineNumber = "350"
+            landmarkName = "-deletePost:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MentalSnapp/Manager/S3Manager.m"
+            timestampString = "506503137.877649"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "305"
+            endingLineNumber = "305"
+            landmarkName = "-deleteObjectFromS3"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

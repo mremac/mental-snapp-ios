@@ -347,6 +347,12 @@ typedef enum : NSUInteger {
         dispatch_async(dispatch_get_main_queue(), ^{
             [[RequestManager alloc] deleteRecordPost:recordPost withCompletionBlock:^(BOOL success, id response) {
                 if (success) {
+                    S3Manager * s3Manager = [[S3Manager alloc] initWithFileURL:nil s3Key:[recordPost.videoURL lastPathComponent] mediaUploadProgressBarView:nil progressBarLabel:nil fileType:VideoFileType contentLength:0];
+                    [s3Manager deleteObjectFromS3];
+                    
+                    S3Manager * s3ThumbManager = [[S3Manager alloc] initWithFileURL:nil s3Key:[recordPost.coverURL lastPathComponent] mediaUploadProgressBarView:nil progressBarLabel:nil fileType:VideoFileType contentLength:0];
+                    [s3ThumbManager deleteObjectFromS3];
+                    
                     [Util postNotification:kCleanRecordViewControllerNotification withDict:nil];
                     [Util postNotification:kRefreshVideosViewControllerNotification withDict:nil];
                 }

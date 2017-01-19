@@ -279,4 +279,38 @@
     NSLog([NSString stringWithFormat:@"Progress: %f", ((float)totalBytesSent/(float)totalBytesExpectedToSend)])
 }
 
+-(void) deleteObjectFromS3 {
+    AWSS3 *s3 = [AWSS3 defaultS3];
+    AWSS3DeleteObjectRequest *deleteRequest = [AWSS3DeleteObjectRequest new];
+    
+    AppSettings *appSettings = [AppSettingsManager sharedInstance].appSettings;
+    NSString *bucketName = kEmptyString;
+    
+    if (self.fileType == VideoFileType)
+    {
+        bucketName = ([appSettings.NetworkMode isEqualToString:kLiveEnviroment]) ? kLiveVideoBucket : kStagingVideoBucket;
+    }
+    else if (self.fileType == VideoThumbnailImageType)
+    {
+        bucketName = ([appSettings.NetworkMode isEqualToString:kLiveEnviroment]) ? kLiveVideoThumbnailImageBucket : kStagingVideoThumbnailImageBucket;
+    }
+    else if (self.fileType == ImageProfile)
+    {
+        bucketName = ([appSettings.NetworkMode isEqualToString:kLiveEnviroment]) ? kLiveProfileImageBucket : kStagingProfileImageBucket;
+    }
+    
+    deleteRequest.bucket = bucketName;
+    deleteRequest.key = self.s3Key;
+    [[s3 deleteObject:deleteRequest] continueWithBlock:^id(AWSTask *task) {
+        if(task.error != nil){
+            if(task.error.code != AWSS3TransferManagerErrorCancelled && task.error.code != AWSS3TransferManagerErrorPaused){
+                NSLog(@"%s Error: [%@]",__PRETTY_FUNCTION__, task.error);
+            }
+        }else{
+            // Completed logic here
+        }
+        return nil;
+    }];
+}
+
 @end

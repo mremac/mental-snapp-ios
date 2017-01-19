@@ -24,5 +24,6 @@ typedef NS_ENUM(NSInteger, UploadFileType){
 -(void)cancelAllDownloads;
 -(void)pauseAllDownloads;
 -(void)resumeAllDownloads;
+-(void) deleteObjectFromS3;
 
 @end
