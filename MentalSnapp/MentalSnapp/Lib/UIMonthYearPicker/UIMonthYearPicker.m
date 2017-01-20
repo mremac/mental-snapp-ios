@@ -130,11 +130,14 @@ const NSInteger numberOfComponents = 2;
     [self selectRow: rowIndex
         inComponent: YEAR
            animated: animated];
-    components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay fromDate:aDate];
-    dateday = [components day];
-    [self selectRow: dateday-1
-        inComponent: 2
-           animated: animated];
+    
+    if(_isOptionalDate){
+        components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay fromDate:aDate];
+        dateday = [components day];
+        [self selectRow: dateday-1
+            inComponent: 2
+               animated: animated];
+    }
 }
 
 -(NSDate *)date
