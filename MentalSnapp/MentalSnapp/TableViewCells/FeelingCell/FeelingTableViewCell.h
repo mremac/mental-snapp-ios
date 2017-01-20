@@ -10,9 +10,8 @@
 
 @interface FeelingTableViewCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
-@property (strong, nonatomic) IBOutlet UIImageView *checkmarkImage;
+@property (strong, nonatomic) IBOutlet UIButton *checkmarkImage;
 @property (strong, nonatomic) IBOutlet UIView *bgView;
-
-
+@property (strong, nonatomic) IBOutlet UIButton *feelingColorButton;
 
 @end

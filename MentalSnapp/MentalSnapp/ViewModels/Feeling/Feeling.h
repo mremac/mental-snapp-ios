@@ -11,4 +11,8 @@
 @interface Feeling : JSONModel
 @property(strong, nonatomic) NSString <Optional> *feelingName;
 @property(strong, nonatomic) NSString <Optional> *feelingId;
+@property(strong, nonatomic) NSString <Optional> *feelingRedColor;
+@property(strong, nonatomic) NSString <Optional> *feelingBlueColor;
+@property(strong, nonatomic) NSString <Optional> *feelingGreenColor;
+
 @end

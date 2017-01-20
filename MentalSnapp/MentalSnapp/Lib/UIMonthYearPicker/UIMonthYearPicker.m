@@ -314,7 +314,7 @@ const NSInteger numberOfComponents = 2;
                            inUnit:NSCalendarUnitMonth
                           forDate:[NSDate dateWithYear:[self.currentYearName integerValue] month:[self.currentMonthName integerValue] day:1]];
     NSMutableArray *array  = [[NSMutableArray alloc] init];
-    for (int i= 1; i<=days.length; i++) {
+    for (int i= 0; i<=days.length; i++) {
         [array addObject:[NSNumber numberWithInt:i]];
     }
     return array;

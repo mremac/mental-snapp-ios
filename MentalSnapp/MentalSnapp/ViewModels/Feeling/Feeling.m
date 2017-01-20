@@ -13,7 +13,10 @@
 + (JSONKeyMapper *)keyMapper {
     return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{
                                                                   @"feelingId": @"id",
-                                                                  @"feelingName": @"name"
+                                                                  @"feelingName": @"name",
+                                                                  @"feelingRedColor": @"red",
+                                                                  @"feelingBlueColor": @"blue",
+                                                                  @"feelingGreenColor": @"green"
                                                                   }];
 }
 

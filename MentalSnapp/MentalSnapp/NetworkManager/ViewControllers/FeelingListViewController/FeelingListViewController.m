@@ -71,7 +71,7 @@
 }
 
 - (void)updatePaginateDetails {
-    self.paginate = [[Paginate alloc] initWithPageNumber:[NSNumber numberWithInt:1] withMoreRecords:YES andPerPageLimit:50];
+    self.paginate = [[Paginate alloc] initWithPageNumber:[NSNumber numberWithInt:1] withMoreRecords:YES andPerPageLimit:100];
     self.paginate.pageResults = [NSArray new];
 }
 
@@ -79,7 +79,7 @@
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"feelingName contains[cd] %@",searchText];
     NSArray *array = [self.paginate.pageResults filteredArrayUsingPredicate:predicate];
     if(array.count > 0){
-        self.searchPaginate = [[Paginate alloc] initWithPageNumber:[NSNumber numberWithInt:1] withMoreRecords:YES andPerPageLimit:50];
+        self.searchPaginate = [[Paginate alloc] initWithPageNumber:[NSNumber numberWithInt:1] withMoreRecords:YES andPerPageLimit:100];
         self.searchPaginate.details = searchText;
         self.searchPaginate.pageResults = array;
         self.searchPaginate.pageNumber = [NSNumber numberWithInt:1];
@@ -155,14 +155,25 @@
 }
 
 #pragma mark - Table View DataSource Methods
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     if(self.isSearchInProgress)
     {
         return self.searchPaginate.pageResults.count;
     }
     return self.paginate.pageResults.count;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if(self.isSearchInProgress)
+    {
+        NSDictionary *dictionary = [self.searchPaginate.pageResults objectAtIndex:section];
+        NSArray *arraySearchofFeeling = dictionary[@"sub_feelings"];
+        return arraySearchofFeeling.count;
+    }
+    NSDictionary *dictionary = [self.paginate.pageResults objectAtIndex:section];
+    NSArray *arrayofFeeling = dictionary[@"sub_feelings"];
+    return arrayofFeeling.count;
 }
 
 
@@ -176,31 +187,59 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [cell.bgView setBackgroundColor:[UIColor whiteColor]];
+    [cell.feelingColorButton setBackgroundColor:[UIColor clearColor]];
     [cell.checkmarkImage setHidden:YES];
     Feeling *feeling;
-    if(self.isSearchInProgress)
-    {
-        feeling = [[self.searchPaginate pageResults] objectAtIndex:indexPath.row];
+    NSArray *arrayFeelings;
+    if(self.isSearchInProgress) {
+        NSDictionary *dictionary = [self.searchPaginate.pageResults objectAtIndex:indexPath.section];
+        arrayFeelings = dictionary[@"sub_feelings"];
+    } else {
+        NSDictionary *dictionary = [self.paginate.pageResults objectAtIndex:indexPath.section];
+        arrayFeelings = dictionary[@"sub_feelings"];
     }
-    else
-    {
-        feeling = [[self.paginate pageResults] objectAtIndex:indexPath.row];
-    }
+    
+    feeling = [arrayFeelings objectAtIndex:indexPath.row];
     
     if([self.selectedFeeling.feelingId isEqualToString:feeling.feelingId]){
         _selectedCell = cell;
-        [cell.bgView setBackgroundColor:[UIColor colorWithRed:252.0/255.0 green:232.0/255.0 blue:226.0/255.0 alpha:1.0]];
+//        [cell.bgView setBackgroundColor:[UIColor colorWithRed:252.0/255.0 green:232.0/255.0 blue:226.0/255.0 alpha:1.0]];
         [cell.checkmarkImage setHidden:NO];
     }
-
+    [cell.feelingColorButton setBackgroundColor:[UIColor colorWithRed:[feeling.feelingRedColor floatValue]/255.0 green:[feeling.feelingGreenColor floatValue]/255.0 blue:[feeling.feelingBlueColor floatValue]/255.0 alpha:1.0]];
     [cell.nameLabel setText:feeling.feelingName];
     return cell;
 }
 
 #pragma mark - Table View Delegate Methods
+
+- (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
+    NSDictionary *dictionary;
+    if(self.isSearchInProgress) {
+        dictionary = [self.searchPaginate.pageResults objectAtIndex:section];
+    } else {
+        dictionary = [self.paginate.pageResults objectAtIndex:section];
+    }
+    CGFloat red = [dictionary[@"red"] floatValue];
+    CGFloat green = [dictionary[@"green"] floatValue];
+    CGFloat blue = [dictionary[@"blue"] floatValue];
+    [view setBackgroundColor:[UIColor colorWithRed:red/255.0 green:green/255.0 blue:blue/255.0 alpha:1.0f]];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, self.view.frame.size.width-20, 44)];
+    NSString *stringName = dictionary[@"name"];
+    [label setText:stringName.uppercaseString];
+    [label setTextColor:[UIColor whiteColor]];
+    [label setFont:[UIFont fontWithName:@"Roboto" size:16]];
+    [label setBackgroundColor:[UIColor clearColor]];
+    [label setTextAlignment:NSTextAlignmentLeft];
+    [view addSubview:label];
+    return view;
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return UITableViewAutomaticDimension;
 }
+
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 44;
 }
@@ -221,7 +260,7 @@
         _selectedNewFeeling = [[self.paginate pageResults] objectAtIndex:indexPath.row];
     }
     _selectedCell = [tableView cellForRowAtIndexPath:indexPath];
-    [_selectedCell.bgView setBackgroundColor:[UIColor colorWithRed:252.0/255.0 green:232.0/255.0 blue:226.0/255.0 alpha:1.0]];
+//   [_selectedCell.bgView setBackgroundColor:[UIColor colorWithRed:252.0/255.0 green:232.0/255.0 blue:226.0/255.0 alpha:1.0]];
      [_selectedCell.checkmarkImage setHidden:NO];
 }
 

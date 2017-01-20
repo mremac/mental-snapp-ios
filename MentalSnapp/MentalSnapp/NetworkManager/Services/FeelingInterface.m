@@ -34,14 +34,21 @@
         {
             NSError *error;
             NSArray *array = [response objectForKey:@"feelings"];
-            NSMutableArray *feelings = [[NSMutableArray alloc] init];
+            NSMutableArray *mainFeelings = [[NSMutableArray alloc] init];
+
             for (NSDictionary *dictionary in array) {
-                Feeling *feeling = [[Feeling alloc] initWithDictionary:dictionary error:&error];
-                [feelings addObject:feeling];
+                NSArray *feelingArray = dictionary[@"sub_feelings"];
+                NSMutableArray *feelings = [[NSMutableArray alloc] init];
+                for (NSDictionary *feelingDictionary in feelingArray) {
+                    Feeling *feeling = [[Feeling alloc] initWithDictionary:feelingDictionary error:&error];
+                    [feelings addObject:feeling];
+                }
+                [dictionary setValue:feelings forKey:@"sub_feelings"];
+                [mainFeelings addObject:dictionary];
             }
             Paginate *pagination = [Paginate getPaginateFrom:response];
-            pagination.pageResults = [NSArray arrayWithArray:feelings];
-            pagination.pageNumber = [NSNumber numberWithInteger:feelings.count];
+            pagination.pageResults = [NSArray arrayWithArray:mainFeelings];
+            pagination.pageNumber = [NSNumber numberWithInteger:mainFeelings.count];
             self.block([success integerValue], pagination);
         }
         else

@@ -8,6 +8,7 @@
 
 #import "VideoTableViewCell.h"
 #import "RecordPost.h"
+#import "Feeling.h"
 
 @interface VideoTableViewCell()
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
@@ -17,6 +18,7 @@
 @property (copy, nonatomic) void (^downloadBlock)(BOOL success, id response);
 @property (copy, nonatomic) void (^deleteBlock)(BOOL success, id response);
 @property (nonatomic, strong) RecordPost *recordPost;
+@property (strong, nonatomic) IBOutlet UIButton *feelingColorButton;
 
 @end
 
@@ -48,9 +50,10 @@
     NSMutableAttributedString *attText;
     
     if (recordPost.feelings.count != 0) {
-        NSDictionary *feeling = [recordPost.feelings firstObject];
-        if ([feeling hasValueForKey:@"name"]) {
-            NSString *feelingName = [feeling valueForKey:@"name"];
+        NSDictionary *feelingDict = [recordPost.feelings firstObject];
+        Feeling *feeling = [[Feeling alloc] initWithDictionary:feelingDict error:nil];
+        if (feeling.feelingName) {
+            NSString *feelingName = feeling.feelingName;
             
             if (a.length != 0) {
                 a = [NSString stringWithFormat:@"Feeling %@, %@",feelingName, a];
@@ -62,8 +65,8 @@
             attText = [[NSMutableAttributedString alloc] initWithString:a];
             [attText addAttribute:NSFontAttributeName value:boldFont range:[a rangeOfString:feelingName]];
         }
-    }
-    
+        [self.feelingColorButton setBackgroundColor:[UIColor colorWithRed:[feeling.feelingRedColor floatValue]/255.0 green:[feeling.feelingGreenColor floatValue]/255.0 blue:[feeling.feelingBlueColor floatValue]/255.0 alpha:1.0]];
+    }    
     NSMutableAttributedString *att;
     
     if (attText == nil) {

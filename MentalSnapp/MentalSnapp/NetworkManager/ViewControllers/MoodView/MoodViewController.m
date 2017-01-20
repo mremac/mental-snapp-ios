@@ -39,6 +39,7 @@
 @property (strong, nonatomic) FeelingListViewController *feelingListViewController;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *feelingViewHeightConstraint;
 @property (strong, nonatomic) IBOutlet UILabel *selectedFeelingLabel;
+@property (strong, nonatomic) IBOutlet UIButton *feelingColorButton;
 
 @property(nonatomic, strong) NSString *videoURLPath;
 @property(nonatomic, strong) NSString *videoThumbnailURLPath;
@@ -421,6 +422,7 @@
     {
         NSString *title = [NSString stringWithFormat:@"  Feeling: %@", feeling.feelingName];
         [self.addFeelingButton setTitle:title forState:UIControlStateNormal];
+        [self.feelingColorButton setBackgroundColor:[UIColor colorWithRed:[feeling.feelingRedColor floatValue]/255.0 green:[feeling.feelingGreenColor floatValue]/255.0 blue:[feeling.feelingBlueColor floatValue]/255.0 alpha:1.0]];
         selectedFeeling = feeling;
         [self populateNameOfVideo];
     }
