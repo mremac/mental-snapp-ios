@@ -79,5 +79,7 @@ typedef void(^LCLineChartDeselectedItem)();
 @property (nonatomic, assign) NSInteger selectedWeek;
 - (void)hideIndicator;
 - (void)showLegend:(BOOL)show animated:(BOOL)animated;
+@property (nonatomic, assign) NSInteger month; /// label to be shown on the x axis
+@property (nonatomic, assign) NSInteger year; /// label to be shown directly at the data item
 
 @end

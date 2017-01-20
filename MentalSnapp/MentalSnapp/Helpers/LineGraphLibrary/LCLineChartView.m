@@ -213,6 +213,11 @@
     CGFloat extraSpace15 = floorf((self.superview.frame.size.width*4)/100);
     CGFloat availableHeight = self.bounds.size.height - 2 * extraSpace10 - extraSpace15;
 
+    CGFloat extraSpace18 = floorf((self.superview.frame.size.width*5.9)/100);
+    CGFloat extraSpace6 = floorf((self.superview.frame.size.width*2.2)/100);
+    CGFloat extraSpace12 = floorf((self.superview.frame.size.width*3.8)/100);
+
+    
     CGFloat availableWidth = self.bounds.size.width - 2 * extraSpace10 - self.yAxisLabelsWidth;
     CGFloat xStart = extraSpace5 + self.yAxisLabelsWidth+floorf((self.superview.frame.size.width*4)/100);
     CGFloat yStart = extraSpace10;
@@ -329,7 +334,7 @@
                 CGMutablePathRef path = CGPathCreateMutable();
                 CGFloat prevX = xStart + round((((datItem.x) - data.xMin) / xRangeLen) * availableWidth);
                 CGFloat prevY = yStart + round((1.0 - ((datItem.y) - self.yMin) / yRangeLen) * availableHeight);
-                CGPathMoveToPoint(path, NULL, prevX-12, prevY);
+                CGPathMoveToPoint(path, NULL, prevX-extraSpace12, prevY);
                 for(NSUInteger i = 1; i < data.itemCount; ++i) {
                     LCLineChartDataItem *datItem = data.getData(i);
                     CGFloat x = xStart + round((((datItem.x) - data.xMin) / xRangeLen) * availableWidth);
@@ -343,10 +348,10 @@
                         CGFloat slope = yDiff / xDiff;
                         CGPoint controlPt1 = CGPointMake(prevX + xSmoothing, prevY + ySmoothing * slope * xSmoothing);
                         CGPoint controlPt2 = CGPointMake(x - xSmoothing, y - ySmoothing * slope * xSmoothing);
-                        CGPathAddCurveToPoint(path, NULL, controlPt1.x-6, controlPt1.y-6, controlPt2.x-6, controlPt2.y-6, x-6, y-6);
+                        CGPathAddCurveToPoint(path, NULL, controlPt1.x-extraSpace6, controlPt1.y-extraSpace6, controlPt2.x-extraSpace6, controlPt2.y-extraSpace6, x-extraSpace6, y-extraSpace6);
                     }
                     else {
-                        CGPathAddLineToPoint(path, NULL, x-12, y);
+                        CGPathAddLineToPoint(path, NULL, x-extraSpace12, y);
                     }
                     prevX = x;
                     prevY = y;
@@ -380,7 +385,7 @@
                 data.color = [Util getMoodColor:(round(yVal/heightPerStep)+((result.width >= 414)?0:1))];
                 [[UIColor clearColor] setFill];
                 
-                CGContextFillEllipseInRect(c, CGRectMake(xVal - 18, yVal - 10, 35, 35));
+                CGContextFillEllipseInRect(c, CGRectMake(xVal - extraSpace18, yVal - 10, 35, 35));
                 {
                     CGFloat brightness;
                     CGFloat r,g,b,a;
@@ -395,7 +400,7 @@
 //                    else
 //                        [[UIColor blackColor] setFill];
                 }
-                CGContextFillEllipseInRect(c, CGRectMake(xVal - 18, yVal - 10, 15, 15));
+                CGContextFillEllipseInRect(c, CGRectMake(xVal - extraSpace18, yVal - 10, 15, 15));
             } // for
           } // data - draw data points
         } // draw data points
@@ -410,6 +415,7 @@
     CGFloat extraSpace15 = floorf((self.superview.frame.size.width*4)/100);
     CGFloat extraSpace10 = floorf((self.superview.frame.size.width*2.7)/100);
     CGFloat extraSpace5 = floorf((self.superview.frame.size.width*1.4)/100);
+    CGFloat extraSpace18 = floorf((self.superview.frame.size.width*6.2)/100);
 
     CGPoint pos = [touch locationInView:self];
     CGFloat xStart = extraSpace10 + self.yAxisLabelsWidth+extraSpace15;
@@ -436,7 +442,7 @@
             
             CGFloat xVal = round((xRangeLen == 0 ? 0.0 : ((datItem.x - data.xMin) / xRangeLen)) * availableWidth);
             CGFloat yVal = round((1.0 - (datItem.y - self.yMin) / yRangeLen) * availableHeight);
-            double dist = fabs((xVal-18) - xPos);
+            double dist = fabs((xVal-extraSpace18) - xPos);
             double distY = fabs((yVal-10) - yPos);
             if((dist < 10 && distY < 15) || (dist == 10 && distY < 15)) {
                 minDist = dist;
@@ -444,7 +450,7 @@
                 closest = datItem;
                 closestData = data;
                 closestIdx = i;
-                closestPos = CGPointMake(xStart + xVal - 18, yStart + yVal - 10);
+                closestPos = CGPointMake(xStart + xVal - extraSpace18, yStart + yVal - 10);
             }
         }
     }
@@ -523,6 +529,7 @@
     CGFloat extraSpace15 = floorf((self.superview.frame.size.width*4)/100);
     CGFloat extraSpace10 = floorf((self.superview.frame.size.width*2.7)/100);
     //CGFloat extraSpace5 = floorf((self.superview.frame.size.width*1.4)/100);
+    CGFloat extraSpace18 = floorf((self.superview.frame.size.width*6.2)/100);
 
     CGPoint pos = [touch locationInView:self];
     CGFloat xStart = extraSpace10 + self.yAxisLabelsWidth+extraSpace15;
@@ -549,7 +556,7 @@
             
             CGFloat xVal = round((xRangeLen == 0 ? 0.0 : ((datItem.x - data.xMin) / xRangeLen)) * availableWidth);
             CGFloat yVal = round((1.0 - (datItem.y - self.yMin) / yRangeLen) * availableHeight);
-            double dist = fabs((xVal-18) - xPos);
+            double dist = fabs((xVal-extraSpace18) - xPos);
             double distY = fabs((yVal-10) - yPos);
             if((dist < 10 && distY < 15) || (dist == 10 && distY < 15)) {
                 minDist = dist;
@@ -557,7 +564,7 @@
                 closest = datItem;
                 closestData = data;
                 closestIdx = i;
-                closestPos = CGPointMake(xStart + xVal - 18, yStart + yVal - 10);
+                closestPos = CGPointMake(xStart + xVal - extraSpace18, yStart + yVal - 10);
             }
         }
     }

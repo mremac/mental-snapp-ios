@@ -130,6 +130,8 @@
     chartView = [[LCLineChartView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width-20, 170)];
     chartView.yMin = 7;
     chartView.yMax = 1;
+    chartView.month = month;
+    chartView.year = year;
     chartView.selectedWeek = _selectedWeek;
     chartView.ySteps = @[@"T Worst",
                          [NSString stringWithFormat:@"V Bad"],
