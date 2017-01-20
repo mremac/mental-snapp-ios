@@ -524,13 +524,27 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5ke-mk-NdW" userLabel="DateOfBirthView">
                                                         <rect key="frame" x="0.0" y="67" width="414" height="77"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DATE OF BIRTH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6EF-WR-T0G">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6EF-WR-T0G">
                                                                 <rect key="frame" x="42" y="22" width="263" height="21"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="21" id="SKc-Z8-sWj"/>
                                                                 </constraints>
-                                                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
-                                                                <color key="textColor" red="0.9137254901960784" green="0.396078431372549" blue="0.22745098039215686" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <attributedString key="attributedText">
+                                                                    <fragment content="DATE OF BIRTH  ">
+                                                                        <attributes>
+                                                                            <color key="NSColor" red="0.9137254901960784" green="0.396078431372549" blue="0.22745098039215686" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            <font key="NSFont" size="12" name="Roboto-Medium"/>
+                                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                        </attributes>
+                                                                    </fragment>
+                                                                    <fragment content="(optional)">
+                                                                        <attributes>
+                                                                            <color key="NSColor" red="0.9137254901960784" green="0.396078431372549" blue="0.22745098039215686" alpha="0.82999999999999996" colorSpace="calibratedRGB"/>
+                                                                            <font key="NSFont" size="12" name="Roboto-Medium"/>
+                                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                        </attributes>
+                                                                    </fragment>
+                                                                </attributedString>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0lm-6U-f2r">
@@ -575,13 +589,27 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Z8-ZH-2rA" userLabel="PhoneView">
                                                         <rect key="frame" x="0.0" y="144" width="414" height="77"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PHONE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bTa-vd-otI">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bTa-vd-otI">
                                                                 <rect key="frame" x="43" y="22" width="267" height="21"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="21" id="zNH-dm-0EK"/>
                                                                 </constraints>
-                                                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
-                                                                <color key="textColor" red="0.9137254901960784" green="0.396078431372549" blue="0.22745098039215686" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <attributedString key="attributedText">
+                                                                    <fragment content="PHONE  ">
+                                                                        <attributes>
+                                                                            <color key="NSColor" red="0.9137254901960784" green="0.396078431372549" blue="0.22745098039215686" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            <font key="NSFont" size="12" name="Roboto-Medium"/>
+                                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                        </attributes>
+                                                                    </fragment>
+                                                                    <fragment content="(optional)">
+                                                                        <attributes>
+                                                                            <color key="NSColor" red="0.9137254901960784" green="0.396078431372549" blue="0.22745098039215686" alpha="0.82999999999999996" colorSpace="calibratedRGB"/>
+                                                                            <font key="NSFont" size="12" name="Roboto-Medium"/>
+                                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                        </attributes>
+                                                                    </fragment>
+                                                                </attributedString>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your phone number" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="tvl-jf-kdZ">
@@ -638,13 +666,27 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9M9-54-equ" userLabel="GenderView">
                                                         <rect key="frame" x="0.0" y="221" width="414" height="90"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I AM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KEK-L0-r9k">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KEK-L0-r9k">
                                                                 <rect key="frame" x="42" y="22" width="267" height="21"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="21" id="b3f-Mk-v5O"/>
                                                                 </constraints>
-                                                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
-                                                                <color key="textColor" red="0.9137254901960784" green="0.396078431372549" blue="0.22745098039215686" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <attributedString key="attributedText">
+                                                                    <fragment content="I AM  ">
+                                                                        <attributes>
+                                                                            <color key="NSColor" red="0.9137254901960784" green="0.396078431372549" blue="0.22745098039215686" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            <font key="NSFont" size="12" name="Roboto-Medium"/>
+                                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                        </attributes>
+                                                                    </fragment>
+                                                                    <fragment content="(optional)">
+                                                                        <attributes>
+                                                                            <color key="NSColor" red="0.9137254901960784" green="0.396078431372549" blue="0.22745098039215686" alpha="0.82999999999999996" colorSpace="calibratedRGB"/>
+                                                                            <font key="NSFont" size="12" name="Roboto-Medium"/>
+                                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                        </attributes>
+                                                                    </fragment>
+                                                                </attributedString>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kBJ-Tw-VDK">
@@ -2252,7 +2294,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There are no excercise questions available yet!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ee2-l1-3mU">
-                                <rect key="frame" x="40" y="329.33333333333331" width="334" height="40"/>
+                                <rect key="frame" x="40" y="329.66666666666669" width="334" height="40"/>
                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="17"/>
                                 <color key="textColor" red="0.91372549020000005" green="0.39607843139999999" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>

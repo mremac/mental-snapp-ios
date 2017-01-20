@@ -45,7 +45,7 @@
                                                         title:title
                                                      subtitle:subtitle];
     if(style == ALAlertBannerStyleCustomFailure)
-        banner.secondsToShow = 3.0f;
+        banner.secondsToShow = 5.0f;
     
     if (style == ALAlertBannerStyleCustomRigid) {
         banner.secondsToShow = 0;
@@ -61,7 +61,7 @@
                                                      position:ALAlertBannerPositionTop
                                                         title:@"No Network Connection"
                                                      subtitle:@"You have lost your network connection. Please check your connection and try again."];
-    banner.secondsToShow = 3.0f;
+    banner.secondsToShow = 5.0f;
     [banner show];
     return  banner;
 }
