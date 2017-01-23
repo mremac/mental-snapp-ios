@@ -347,7 +347,7 @@
     }
     else if(self.tint == FPPopoverOtherTint)
     {
-        UIColor *lightGradientColor = [UIColor colorWithRed:15.0/255.0 green:175.0/255.0 blue:200.0/255.0 alpha:1.0];
+        UIColor *lightGradientColor = [UIColor colorWithRed:15.0/255.0 green:175.0/255.0 blue:198.0/255.0 alpha:1.0];
         UIColor *darkGradientColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1.0];
         
         CGFloat locations[2] = {0.0, 1.0};

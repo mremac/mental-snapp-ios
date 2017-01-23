@@ -267,7 +267,7 @@
     UIBarButtonItem *button = [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(uploadButtonAction:)];
     [button setTitleTextAttributes:
      [NSDictionary dictionaryWithObjectsAndKeys:
-      [UIColor colorWithRed:15.0/255.0 green:175.0/255.0 blue:199.0/255.0 alpha:1.0], NSForegroundColorAttributeName,nil]
+      [UIColor colorWithRed:15.0/255.0 green:175.0/255.0 blue:198.0/255.0 alpha:1.0], NSForegroundColorAttributeName,nil]
                           forState:UIControlStateNormal];
     numberToolbar.items = [NSArray arrayWithObjects:
                            [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],

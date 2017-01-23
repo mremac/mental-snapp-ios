@@ -101,7 +101,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="42j-z9-0Jm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5414" y="-1337"/>
+            <point key="canvasLocation" x="-5772" y="-1352"/>
         </scene>
         <!--Month Year Picker View Controller-->
         <scene sceneID="skW-HM-f0T">
@@ -182,7 +182,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a15-HT-stQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5415.1999999999998" y="-1337.1814092953525"/>
+            <point key="canvasLocation" x="-5067" y="-1359"/>
         </scene>
         <!--Change Password View Controller-->
         <scene sceneID="jjm-xT-6Yh">
@@ -413,7 +413,7 @@
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y4q-jg-2iD">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
-                                                        <color key="backgroundColor" red="0.050980392156862744" green="0.63921568627450975" blue="0.72941176470588232" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="backgroundColor" red="0.043137254901960784" green="0.63137254901960782" blue="0.71764705882352942" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="100" id="a8M-oH-EmU"/>
                                                         </constraints>
@@ -451,7 +451,7 @@
                                                             <constraint firstAttribute="height" constant="26" id="sDb-VH-27q"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="19"/>
-                                                        <color key="textColor" red="0.058823529411764705" green="0.68627450980392157" blue="0.7803921568627451" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="textColor" red="0.058823529411764705" green="0.68627450980392157" blue="0.77647058823529413" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -875,7 +875,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" red="0.050980392156862744" green="0.63921568627450975" blue="0.72941176470588232" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.043005936733623705" green="0.62981131693148451" blue="0.71739253393665159" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="zPg-Vc-cCP" firstAttribute="width" secondItem="Yit-ki-He4" secondAttribute="width" id="3gl-ez-wJ5"/>
                                     <constraint firstItem="zPg-Vc-cCP" firstAttribute="leading" secondItem="Yit-ki-He4" secondAttribute="leading" id="62w-D3-c7b"/>
@@ -1191,7 +1191,7 @@
                                             <subviews>
                                                 <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1tR-Ds-vMV">
                                                     <rect key="frame" x="8" y="16" width="48" height="48"/>
-                                                    <color key="backgroundColor" red="0.058823529411764705" green="0.68627450980392157" blue="0.7803921568627451" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.058823529411764705" green="0.68627450980392157" blue="0.77647058823529413" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="48" id="OjC-8J-Oov"/>
                                                         <constraint firstAttribute="width" constant="48" id="eLI-Br-gSh"/>
@@ -1707,7 +1707,7 @@
                                             <constraint firstAttribute="height" constant="30" id="RPI-ae-kzc"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="21"/>
-                                        <color key="textColor" red="0.058823529409999999" green="0.68627450980000004" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="0.058823529411764705" green="0.68627450980392157" blue="0.77647058823529413" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can record videos that are up to 2 minutes long." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V1q-d5-III">
@@ -2337,7 +2337,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There are no excercise questions available yet!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ee2-l1-3mU">
-                                <rect key="frame" x="40" y="329.33333333333331" width="334" height="40"/>
+                                <rect key="frame" x="40" y="329.66666666666669" width="334" height="40"/>
                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="17"/>
                                 <color key="textColor" red="0.91372549020000005" green="0.39607843139999999" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>

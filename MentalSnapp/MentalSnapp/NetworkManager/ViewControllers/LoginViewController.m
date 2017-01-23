@@ -77,7 +77,14 @@
                                       duration:0.5f
                                        options:UIViewAnimationOptionTransitionFlipFromLeft
                                     animations:^{
-                                        ApplicationDelegate.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[UIStoryboard storyboardWithName:KProfileStoryboard bundle:nil] instantiateViewControllerWithIdentifier:KProfileViewControllerIdentifier]];
+                                        UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:[[UIStoryboard storyboardWithName:KProfileStoryboard bundle:nil] instantiateViewControllerWithIdentifier:KProfileViewControllerIdentifier]];
+                                        [[UINavigationBar appearance] setShadowImage:[UIImage new]];
+                                        [[UINavigationBar appearance] setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+                                        [[UINavigationBar appearance]  setTranslucent:NO];
+                                        controller.navigationBar.translucent = NO;
+                                        controller.navigationBar.shadowImage = [UIImage new];
+                                        controller.navigationBar.backIndicatorImage = [UIImage new];
+                                        ApplicationDelegate.window.rootViewController = controller;
                                     } completion:nil];
                 } else {
                     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];

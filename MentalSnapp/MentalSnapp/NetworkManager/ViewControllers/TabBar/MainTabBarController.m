@@ -26,7 +26,7 @@
     [super viewDidLoad];
     
     selectionColor = [UIColor colorWithRed:233/255.f green:101/255.f blue:58/255.f alpha:1.f];
-    normalColor = [UIColor colorWithRed:15/255.f green:175/255.f blue:199/255.f alpha:1.f];
+    normalColor = [UIColor colorWithRed:15/255.f green:175/255.f blue:198/255.f alpha:1.f];
     [self addViewInTabBar];
     [self addGuidedExcerciseTab];
     [self setTabBarItems];

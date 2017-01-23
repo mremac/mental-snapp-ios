@@ -68,7 +68,7 @@
      [self.pickerViewController setDateSelection:past18Year];
     [self.pickerViewController setDelegate:self];
     
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:15/255.f green:175/255.f blue:199/255.f alpha:1.f];
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:15/255.f green:175/255.f blue:198/255.f alpha:1.f];
     [[UINavigationBar appearance] setShadowImage:[UIImage new]];
     [[UINavigationBar appearance] setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance]  setTranslucent:NO];
@@ -86,7 +86,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self.changepasswordView setBackgroundColor:[UIColor colorWithRed:235.0/255.0 green:235.0/255.0 blue:235.0/255.0 alpha:1.0]];
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:15/255.f green:175/255.f blue:199/255.f alpha:1.f];
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:15/255.f green:175/255.f blue:198/255.f alpha:1.f];
     [[UINavigationBar appearance] setShadowImage:[UIImage new]];
     [[UINavigationBar appearance] setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance]  setTranslucent:NO];

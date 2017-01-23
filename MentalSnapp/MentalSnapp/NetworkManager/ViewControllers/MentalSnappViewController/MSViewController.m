@@ -95,7 +95,7 @@
     [centralButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     centralButton.userInteractionEnabled = NO;
     [centralButton addTarget:self action:@selector(centerTitleButtonTapped) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:15/255.f green:175/255.f blue:199/255.f alpha:1.f];
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:15.0/255.f green:175.0/255.0f blue:198.0/255.0f alpha:1.0f];
     [[UINavigationBar appearance] setShadowImage:[UIImage new]];
     [[UINavigationBar appearance] setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance]  setTranslucent:NO];
