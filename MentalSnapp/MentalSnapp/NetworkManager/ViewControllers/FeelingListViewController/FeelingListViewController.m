@@ -77,11 +77,23 @@
 
 -(void)updateSearchDeatil:(NSString *)searchText {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"feelingName contains[cd] %@",searchText];
-    NSArray *array = [self.paginate.pageResults filteredArrayUsingPredicate:predicate];
-    if(array.count > 0){
+    //NSArray *array = [self.paginate.pageResults filteredArrayUsingPredicate:predicate];
+    NSMutableArray *filteredArrayList = [NSMutableArray new];
+    for (NSMutableDictionary *dictionary in self.paginate.pageResults) {
+        NSArray *array = dictionary[@"sub_feelings"];
+        array = [array filteredArrayUsingPredicate:predicate];
+        if(array.count>0){
+            NSMutableDictionary *dictionaryFiltered = [dictionary mutableCopy];
+            [dictionaryFiltered setValue:array forKey:@"sub_feelings"];
+            [filteredArrayList addObject:dictionaryFiltered];
+        }
+    }
+    
+    
+    if(filteredArrayList.count > 0){
         self.searchPaginate = [[Paginate alloc] initWithPageNumber:[NSNumber numberWithInt:1] withMoreRecords:YES andPerPageLimit:100];
         self.searchPaginate.details = searchText;
-        self.searchPaginate.pageResults = array;
+        self.searchPaginate.pageResults = filteredArrayList;
         self.searchPaginate.pageNumber = [NSNumber numberWithInt:1];
         self.searchPaginate.hasMoreRecords = YES;
         [self.tableView reloadData];

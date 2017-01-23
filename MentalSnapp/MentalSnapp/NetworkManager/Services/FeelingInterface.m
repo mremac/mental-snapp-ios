@@ -43,6 +43,7 @@
                     Feeling *feeling = [[Feeling alloc] initWithDictionary:feelingDictionary error:&error];
                     [feelings addObject:feeling];
                 }
+                
                 [dictionary setValue:feelings forKey:@"sub_feelings"];
                 [mainFeelings addObject:dictionary];
             }

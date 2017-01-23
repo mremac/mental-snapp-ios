@@ -17,6 +17,7 @@
 @property(weak, nonatomic) IBOutlet UIView *passwordView;
 @property(weak, nonatomic) IBOutlet UIButton *loginButton;
 @property(weak, nonatomic) IBOutlet UIButton *rememberMeButton;
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @property(weak, nonatomic) IBOutlet UITextField *userEmailTextField;
 @property(weak, nonatomic) IBOutlet UITextField *passwordTextField;
@@ -29,6 +30,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardDidHide) name:UIKeyboardWillHideNotification object:nil];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -47,6 +51,13 @@
 
 - (BOOL)prefersStatusBarHidden {
     return YES;
+}
+
+#pragma mark - Keyboard methods
+- (void)keyboardDidHide {
+        [UIView animateWithDuration:0.3f animations:^{
+            [self.scrollView setContentOffset:CGPointMake(0, 0)];
+        }];
 }
 
 #pragma mark - IBAction methods
@@ -118,6 +129,19 @@
 }
 
 #pragma mark - TextField Delegate methods
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField{
+    
+        CGRect superRect = [textField convertRect:textField.frame toView:_scrollView];
+        [UIView animateWithDuration:0.3f animations:^{
+            //This calculation ensures that the selected textField will be in the upper 3rd part of view
+            [self.scrollView setContentOffset:CGPointMake(0, superRect.origin.y - _scrollView.frame.size.height / 3)];
+        }];
+}
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if(textField == self.userEmailTextField) {

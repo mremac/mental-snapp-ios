@@ -19,6 +19,7 @@
 @property (copy, nonatomic) void (^deleteBlock)(BOOL success, id response);
 @property (nonatomic, strong) RecordPost *recordPost;
 @property (strong, nonatomic) IBOutlet UIButton *feelingColorButton;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *feelingColorButtonWidthConstraint;
 
 @end
 
@@ -65,7 +66,13 @@
             attText = [[NSMutableAttributedString alloc] initWithString:a];
             [attText addAttribute:NSFontAttributeName value:boldFont range:[a rangeOfString:feelingName]];
         }
-        [self.feelingColorButton setBackgroundColor:[UIColor colorWithRed:[feeling.feelingRedColor floatValue]/255.0 green:[feeling.feelingGreenColor floatValue]/255.0 blue:[feeling.feelingBlueColor floatValue]/255.0 alpha:1.0]];
+        self.feelingColorButtonWidthConstraint.constant = 14;
+        if(feeling.feelingRedColor == nil){
+            [self.feelingColorButton setBackgroundColor:[UIColor colorWithRed:[feeling.feelingRedColor floatValue]/255.0 green:[feeling.feelingGreenColor floatValue]/255.0 blue:[feeling.feelingBlueColor floatValue]/255.0 alpha:0.0]];
+            self.feelingColorButtonWidthConstraint.constant = 0;
+        } else {
+            [self.feelingColorButton setBackgroundColor:[UIColor colorWithRed:[feeling.feelingRedColor floatValue]/255.0 green:[feeling.feelingGreenColor floatValue]/255.0 blue:[feeling.feelingBlueColor floatValue]/255.0 alpha:1.0]];
+        }
     }    
     NSMutableAttributedString *att;
     

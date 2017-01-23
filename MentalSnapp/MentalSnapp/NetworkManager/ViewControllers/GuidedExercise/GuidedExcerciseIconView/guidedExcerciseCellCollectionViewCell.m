@@ -31,7 +31,7 @@
             }
 
         } else {
-            [self.guidedExcerciseTitleLabel setText:@"Freeform"];
+            [self.guidedExcerciseTitleLabel setText:@"Free form"];
             [self.guidedExcerciseImageButton setImage:[UIImage imageNamed:@"chart_large"] forState:UIControlStateNormal];
         }
         
@@ -82,7 +82,7 @@
                 [self.guidedExcerciseImageButton setImage:[UIImage imageNamed:@"defaultExcerciseImage"] forState:UIControlStateNormal];
             }
         } else {
-            [self.guidedExcerciseTitleLabel setText:@"Freeform"];
+            [self.guidedExcerciseTitleLabel setText:@"Free form"];
             [self.guidedExcerciseImageButton setImage:[UIImage imageNamed:@"chart"] forState:UIControlStateNormal];
         }
         if(animate){

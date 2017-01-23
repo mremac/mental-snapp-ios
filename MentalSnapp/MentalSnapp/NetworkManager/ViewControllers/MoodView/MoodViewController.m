@@ -422,7 +422,11 @@
     {
         NSString *title = [NSString stringWithFormat:@"  Feeling: %@", feeling.feelingName];
         [self.addFeelingButton setTitle:title forState:UIControlStateNormal];
-        [self.feelingColorButton setBackgroundColor:[UIColor colorWithRed:[feeling.feelingRedColor floatValue]/255.0 green:[feeling.feelingGreenColor floatValue]/255.0 blue:[feeling.feelingBlueColor floatValue]/255.0 alpha:1.0]];
+        if(feeling.feelingRedColor == nil)
+        {        [self.feelingColorButton setBackgroundColor:[UIColor colorWithRed:[feeling.feelingRedColor floatValue]/255.0 green:[feeling.feelingGreenColor floatValue]/255.0 blue:[feeling.feelingBlueColor floatValue]/255.0 alpha:0.0]];
+        } else {
+            [self.feelingColorButton setBackgroundColor:[UIColor colorWithRed:[feeling.feelingRedColor floatValue]/255.0 green:[feeling.feelingGreenColor floatValue]/255.0 blue:[feeling.feelingBlueColor floatValue]/255.0 alpha:1.0]];
+        }
         selectedFeeling = feeling;
         [self populateNameOfVideo];
     }

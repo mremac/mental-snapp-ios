@@ -98,7 +98,7 @@
 
 -(void)showDetailOfSelectedExcercise:(GuidedExcercise *)exercise {
 //    if(exercise == nil){
-//        [self.selectedExcerciseName setText:@"Freeform"];
+//        [self.selectedExcerciseName setText:@"Free form"];
 //        [self.selectedExcerciseDescription setText:@"Record any video"];
 //    } else {
 //        [self.selectedExcerciseName setText:exercise.excerciseName];

@@ -153,7 +153,7 @@
              [self.filterListPaginate updatePaginationWith:response];
              NSMutableArray *array = [[NSMutableArray alloc] initWithArray:self.filterListPaginate.pageResults];
              FilterModel *filter = [FilterModel new];
-             filter.filterName = @"Freeform";
+             filter.filterName = @"Free form";
              filter.filterId = @"0";
              filter.filterType = @"";
              [array insertObject:filter atIndex:0];
