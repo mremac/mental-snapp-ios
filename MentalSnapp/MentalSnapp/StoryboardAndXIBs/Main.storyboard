@@ -1740,6 +1740,22 @@
                                                                     <action selector="genderButtonAction:" destination="vX0-rh-xaN" eventType="touchUpInside" id="X1o-pF-5U3"/>
                                                                 </connections>
                                                             </button>
+                                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TJU-6C-d1g">
+                                                                <rect key="frame" x="219" y="48" width="81" height="22"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="22" id="0Ct-6X-C5Y"/>
+                                                                    <constraint firstAttribute="width" constant="81" id="gSB-sI-lJe"/>
+                                                                </constraints>
+                                                                <state key="normal" title="Female" image="other">
+                                                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                </state>
+                                                                <state key="selected" image="other_active">
+                                                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="genderButtonAction:" destination="vX0-rh-xaN" eventType="touchUpInside" id="RNA-WD-eex"/>
+                                                                </connections>
+                                                            </button>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
@@ -1747,6 +1763,8 @@
                                                             <constraint firstItem="8Ao-Ok-zaE" firstAttribute="leading" secondItem="gHa-jf-VCD" secondAttribute="leading" id="RHK-fJ-vl1"/>
                                                             <constraint firstItem="AOd-6V-2gs" firstAttribute="top" secondItem="8Ao-Ok-zaE" secondAttribute="top" id="dBH-zw-j2i"/>
                                                             <constraint firstItem="AOd-6V-2gs" firstAttribute="leading" secondItem="8Ao-Ok-zaE" secondAttribute="trailing" constant="15" id="ecC-iv-JEW"/>
+                                                            <constraint firstItem="TJU-6C-d1g" firstAttribute="top" secondItem="AOd-6V-2gs" secondAttribute="top" id="hNe-3t-FLN"/>
+                                                            <constraint firstItem="TJU-6C-d1g" firstAttribute="leading" secondItem="AOd-6V-2gs" secondAttribute="trailing" constant="14" id="s9Z-3I-cbk"/>
                                                             <constraint firstAttribute="height" constant="90" id="sBi-nL-5pt"/>
                                                             <constraint firstItem="gHa-jf-VCD" firstAttribute="top" secondItem="wYt-xe-b6R" secondAttribute="top" constant="22" id="tFa-0i-ALJ"/>
                                                             <constraint firstItem="gHa-jf-VCD" firstAttribute="leading" secondItem="wYt-xe-b6R" secondAttribute="leading" constant="42" id="vqp-cW-apN"/>
@@ -2070,6 +2088,7 @@
                         <outlet property="femaleGenderButton" destination="AOd-6V-2gs" id="ZNy-oz-Opr"/>
                         <outlet property="maleGenderButton" destination="8Ao-Ok-zaE" id="UKa-L2-Wwh"/>
                         <outlet property="nameTextFeild" destination="CS9-gU-oIl" id="ZUO-fk-89k"/>
+                        <outlet property="otherGenderButton" destination="TJU-6C-d1g" id="Wgi-cO-EeE"/>
                         <outlet property="passwordTextField" destination="jgo-X4-2KM" id="Y47-x9-fbD"/>
                         <outlet property="phoneFieldView" destination="ktA-RM-39O" id="xgs-o1-rmF"/>
                         <outlet property="phoneTextField" destination="wA1-nw-noe" id="GR1-mj-JBb"/>
@@ -2285,6 +2304,8 @@
         <image name="male_desable" width="67" height="15"/>
         <image name="more" width="64" height="46"/>
         <image name="more_select" width="64" height="46"/>
+        <image name="other" width="54" height="16"/>
+        <image name="other_active" width="54" height="16"/>
         <image name="play_video" width="90" height="90"/>
         <image name="record_big" width="36" height="36"/>
         <image name="record_select" width="63" height="46"/>

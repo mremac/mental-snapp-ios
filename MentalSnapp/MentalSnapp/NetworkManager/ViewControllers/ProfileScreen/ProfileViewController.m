@@ -35,6 +35,7 @@
 @property (strong, nonatomic) PickerViewController *pickerViewController;
 @property (strong, nonatomic) UIImage *userImage;
 @property (strong, nonatomic) IBOutlet UIView *changepasswordView;
+@property (strong, nonatomic) IBOutlet UIButton *otherGenderButton;
 
 - (IBAction)genderButtonAction:(id)sender;
 - (IBAction)changePasswordButtonAction:(id)sender;
@@ -193,7 +194,7 @@
 -(void)showDataOfUsers {
     if(self.user){
         profilePicURL = self.user.profilePicURL;
-        selectedGender = ([self.user.gender caseInsensitiveCompare:@"female"]==NSOrderedSame)?0:(([self.user.gender isEqualToString:@""])?2:1);
+        selectedGender = ([self.user.gender caseInsensitiveCompare:@"female"]==NSOrderedSame)?1:(([self.user.gender caseInsensitiveCompare:@"other"]==NSOrderedSame)?2:(([self.user.gender isEqualToString:@""])?3:0));
         [self.userNameLabel setText:self.user.userName];
         [self.emailTextFeild setText:self.user.email];
         NSMutableString *phoneNumber = [NSMutableString stringWithString:self.user.phoneNumber] ;
@@ -202,8 +203,10 @@
             [phoneNumber insertString:@" " atIndex:5];
         }
         [self.phoneTextField setText:((phoneNumber.length>0)?phoneNumber:@"")];
-        [self.maleGenderButton setSelected:(selectedGender == MaleGender)?YES:((selectedGender == FemaleGender)?NO:NO)];
+        [self.maleGenderButton setSelected:(selectedGender == MaleGender)?YES:NO];
         [self.femaleGenderButton setSelected:(selectedGender == MaleGender)?NO:((selectedGender == FemaleGender)?YES:NO)];
+        [self.otherGenderButton setSelected:(selectedGender == OtherGender)?YES:NO];
+
         [self displayProfileImageFromURL];
         selectedDate = [NSDate dateFromString:self.user.dateOfBirth format:@"yyyy-MM-dd"];
         [self.dateOfBirthButton setTitle:(self.user.dateOfBirth.length<=0)?@"Enter your date of birth":[NSDate stringFromDate:selectedDate format:@"dd MMM yyyy"] forState:UIControlStateNormal];
@@ -278,7 +281,7 @@
     phoneNumber = [phoneNumber stringByReplacingOccurrencesOfString:@"+44" withString:@""];
     phoneNumber = [phoneNumber stringByReplacingOccurrencesOfString:@" " withString:@""];
     NSString *dateOfBirth= (([[self.dateOfBirthButton titleForState:UIControlStateNormal] isEqualToString:@"Enter your date of birth"])?@"":[self.dateOfBirthButton titleForState:UIControlStateNormal]);
-    UserModel *user = [[UserModel alloc] initWithUserId:self.user.userId andEmail:self.emailTextFeild.text andUserName:self.user.userName andPhone:phoneNumber andGender:[NSString stringWithFormat:@"%@",(selectedGender == MaleGender)?@"male":((selectedGender == FemaleGender)?@"female":@"")] andDateOfBirth:dateOfBirth andProfilePic:profilePicURL];
+    UserModel *user = [[UserModel alloc] initWithUserId:self.user.userId andEmail:self.emailTextFeild.text andUserName:self.user.userName andPhone:phoneNumber andGender:[NSString stringWithFormat:@"%@",(selectedGender == MaleGender)?@"male":((selectedGender == FemaleGender)?@"female":((selectedGender == OtherGender)?@"other":@""))] andDateOfBirth:dateOfBirth andProfilePic:profilePicURL];
     
     [[RequestManager alloc] editUserWithUserModel:user withCompletionBlock:^(BOOL success, id response) {
         if(success)
@@ -448,9 +451,16 @@
     if([sender tag] == MaleGender){
         self.maleGenderButton.selected = YES;
         self.femaleGenderButton.selected = NO;
-    } else {
+        self.otherGenderButton.selected = NO;
+
+    } else if([sender tag] == FemaleGender) {
         self.maleGenderButton.selected = NO;
         self.femaleGenderButton.selected = YES;
+        self.otherGenderButton.selected = NO;
+    } else {
+        self.maleGenderButton.selected = NO;
+        self.femaleGenderButton.selected = NO;
+        self.otherGenderButton.selected = YES;
     }
  }
 

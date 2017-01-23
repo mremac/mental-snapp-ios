@@ -721,14 +721,32 @@
                                                                     <action selector="genderButtonAction:" destination="LIS-ij-MlS" eventType="touchUpInside" id="K9s-Rc-dER"/>
                                                                 </connections>
                                                             </button>
+                                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oaa-UH-tAH">
+                                                                <rect key="frame" x="219" y="48" width="81" height="22"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="22" id="WxZ-gf-aAQ"/>
+                                                                    <constraint firstAttribute="width" constant="81" id="epw-VM-691"/>
+                                                                </constraints>
+                                                                <state key="normal" title="Female" image="other">
+                                                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                </state>
+                                                                <state key="selected" image="other_active">
+                                                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="genderButtonAction:" destination="LIS-ij-MlS" eventType="touchUpInside" id="lRo-ex-bJB"/>
+                                                                </connections>
+                                                            </button>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="trailing" secondItem="KEK-L0-r9k" secondAttribute="trailing" constant="105" id="39s-I5-Bgc"/>
+                                                            <constraint firstItem="Oaa-UH-tAH" firstAttribute="leading" secondItem="RQp-v8-5ok" secondAttribute="trailing" constant="14" id="3Un-4d-mhs"/>
                                                             <constraint firstItem="kBJ-Tw-VDK" firstAttribute="leading" secondItem="KEK-L0-r9k" secondAttribute="leading" id="D3t-wy-Gb6"/>
                                                             <constraint firstItem="RQp-v8-5ok" firstAttribute="leading" secondItem="kBJ-Tw-VDK" secondAttribute="trailing" constant="15" id="E04-dq-MYY"/>
                                                             <constraint firstItem="KEK-L0-r9k" firstAttribute="leading" secondItem="9M9-54-equ" secondAttribute="leading" constant="42" id="G3o-XR-SAo"/>
                                                             <constraint firstAttribute="height" constant="90" id="Rf5-AM-GHZ"/>
+                                                            <constraint firstItem="Oaa-UH-tAH" firstAttribute="top" secondItem="RQp-v8-5ok" secondAttribute="top" id="Rij-7m-zsu"/>
                                                             <constraint firstItem="KEK-L0-r9k" firstAttribute="top" secondItem="9M9-54-equ" secondAttribute="top" constant="22" id="bY3-UP-fDJ"/>
                                                             <constraint firstItem="kBJ-Tw-VDK" firstAttribute="top" secondItem="KEK-L0-r9k" secondAttribute="bottom" constant="5" id="cTk-cE-6fb"/>
                                                             <constraint firstItem="RQp-v8-5ok" firstAttribute="top" secondItem="kBJ-Tw-VDK" secondAttribute="top" id="kfz-qK-Thk"/>
@@ -885,6 +903,7 @@
                         <outlet property="emailTextFeild" destination="5Ht-Cx-5Ag" id="A7G-Fp-iDO"/>
                         <outlet property="femaleGenderButton" destination="RQp-v8-5ok" id="tbl-YP-oI0"/>
                         <outlet property="maleGenderButton" destination="kBJ-Tw-VDK" id="Ca6-q1-uRX"/>
+                        <outlet property="otherGenderButton" destination="Oaa-UH-tAH" id="32Q-eV-QgF"/>
                         <outlet property="phoneFieldView" destination="4Z8-ZH-2rA" id="UhW-FB-icC"/>
                         <outlet property="phoneTextField" destination="tvl-jf-kdZ" id="LaU-sg-Afl"/>
                         <outlet property="profilePictureImageView" destination="dcE-rn-We5" id="Rig-yu-eNa"/>
@@ -2318,7 +2337,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There are no excercise questions available yet!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ee2-l1-3mU">
-                                <rect key="frame" x="40" y="329" width="334" height="40"/>
+                                <rect key="frame" x="40" y="329.33333333333331" width="334" height="40"/>
                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="17"/>
                                 <color key="textColor" red="0.91372549020000005" green="0.39607843139999999" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -2354,6 +2373,8 @@
         <image name="male_desable" width="67" height="15"/>
         <image name="moodWheelbg" width="320" height="247"/>
         <image name="nextButton" width="11" height="15"/>
+        <image name="other" width="54" height="16"/>
+        <image name="other_active" width="54" height="16"/>
         <image name="previousButton" width="11" height="15"/>
         <image name="profile-image" width="85" height="86"/>
         <image name="record" width="23" height="23"/>

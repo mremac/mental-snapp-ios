@@ -30,6 +30,7 @@
 @property (strong, nonatomic) IBOutlet UIView *emailFieldview;
 @property (strong, nonatomic) IBOutlet UIView *phoneFieldView;
 @property (strong, nonatomic) IBOutlet UIView *dateOfBirthView;
+@property (strong, nonatomic) IBOutlet UIButton *otherGenderButton;
 
 @property (strong, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *datePickerViewBottomConstraint;
@@ -189,9 +190,15 @@
     if([sender tag] == MaleGender){
         self.maleGenderButton.selected = YES;
         self.femaleGenderButton.selected = NO;
-    } else {
+        self.otherGenderButton.selected = NO;
+    } else if([sender tag] == FemaleGender) {
         self.maleGenderButton.selected = NO;
         self.femaleGenderButton.selected = YES;
+        self.otherGenderButton.selected = NO;
+    } else {
+        self.maleGenderButton.selected = NO;
+        self.femaleGenderButton.selected = NO;
+        self.otherGenderButton.selected = YES;
     }
 }
 
@@ -205,7 +212,7 @@
         user.email = self.emailTextFeild.text.trim;
         user.phoneNumber = phoneNumber;
         user.dateOfBirth = ([self.dateOfBirthButton.titleLabel.text isEqualToString:@"Enter your date of birth"])?@"":self.dateOfBirthButton.titleLabel.text;
-        user.gender = [NSString stringWithFormat:@"%@",(selectedGender == MaleGender)?@"male":((selectedGender == FemaleGender)?@"female":@"")];
+        user.gender = [NSString stringWithFormat:@"%@",(selectedGender == MaleGender)?@"male":((selectedGender == FemaleGender)?@"female":((selectedGender == OtherGender)?@"other":@""))];
         user.password = self.passwordTextField.text;
         user.confirmPassword = self.confirmPasswordTextField.text;
         user.phoneCountryCode = @"+44";

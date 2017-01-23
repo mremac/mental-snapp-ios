@@ -64,6 +64,7 @@ typedef NS_ENUM(NSInteger, RequestType){
 typedef NS_ENUM(NSInteger, genderType){
     MaleGender,
     FemaleGender,
+    OtherGender,
     NoneGender
   };
 
