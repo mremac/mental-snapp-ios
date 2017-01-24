@@ -134,13 +134,20 @@
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
-    
-        CGRect superRect = [textField convertRect:textField.frame toView:_scrollView];
-        [UIView animateWithDuration:0.3f animations:^{
-            //This calculation ensures that the selected textField will be in the upper 3rd part of view
-            [self.scrollView setContentOffset:CGPointMake(0, (superRect.origin.y - _scrollView.frame.size.height / 3)-100)];
-        }];
+    CGPoint point = (([textField isEqual:self.userEmailTextField])?self.userEmailTextField.frame.origin:self.passwordView.frame.origin);
+    point.y = point.y-50;
+    point.x = 0;
+    [self.scrollView setContentOffset:point];
 }
+
+//- (void)textFieldDidBeginEditing:(UITextField *)textField{
+//
+//        CGRect superRect = [textField convertRect:textField.frame toView:_scrollView];
+//        [UIView animateWithDuration:0.3f animations:^{
+//            //This calculation ensures that the selected textField will be in the upper 3rd part of view
+//            [self.scrollView setContentOffset:CGPointMake(0, (superRect.origin.y - _scrollView.frame.size.height / 3)-50)];
+//        }];
+//}
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if(textField == self.userEmailTextField) {
