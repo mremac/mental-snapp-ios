@@ -2059,8 +2059,7 @@
                                                                 <constraint firstAttribute="width" constant="18" id="oOY-ej-XfT"/>
                                                                 <constraint firstAttribute="height" constant="14" id="xty-dX-JWw"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                                            <state key="normal" title="✓">
+                                                            <state key="normal" image="checkmark">
                                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
                                                         </button>
@@ -2337,7 +2336,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There are no excercise questions available yet!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ee2-l1-3mU">
-                                <rect key="frame" x="40" y="329.66666666666669" width="334" height="40"/>
+                                <rect key="frame" x="40" y="329" width="334" height="40"/>
                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="17"/>
                                 <color key="textColor" red="0.91372549020000005" green="0.39607843139999999" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -2366,6 +2365,7 @@
         <image name="bannerFailure.png" width="20" height="16"/>
         <image name="banner_img" width="320" height="150"/>
         <image name="calendar_big" width="36" height="36"/>
+        <image name="checkmark" width="18" height="14"/>
         <image name="delete" width="18" height="22"/>
         <image name="female" width="67" height="15"/>
         <image name="female_disable" width="67" height="15"/>

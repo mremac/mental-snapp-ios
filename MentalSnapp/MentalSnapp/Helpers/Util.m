@@ -135,17 +135,20 @@
     return [emailTest evaluateWithObject:email];
 }
 
-+ (void)openCameraForRecordExercise:(GuidedExcercise *)exercise {
-//    [UserManager sharedManager].recordViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:kRecordViewController];
++ (void)openCameraForRecordExercise:(GuidedExcercise *)exercise {    
     [ApplicationDelegate.tabBarController setSelectTabIndex:2];
     [ApplicationDelegate.tabBarController setSelectedIndex:2];
+   
      UINavigationController *navController = ApplicationDelegate.tabBarController.selectedViewController;
     RecordViewController *recordViewController = [[navController viewControllers] objectAtIndex:0];
+    [UserManager sharedManager].recordViewController = recordViewController;
     if([recordViewController isKindOfClass:[RecordViewController class]])
     {
-        [UserManager sharedManager].recordViewController.exercise = exercise;
+        recordViewController.exercise = exercise;
         [Util openCameraView:recordViewController WithAnimation:NO];
     }
+
+
 }
 
 + (void)openCameraView:(id)target WithAnimation:(BOOL)animate {
