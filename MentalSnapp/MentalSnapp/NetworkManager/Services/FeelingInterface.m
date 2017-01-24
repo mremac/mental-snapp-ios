@@ -36,7 +36,8 @@
             NSArray *array = [response objectForKey:@"feelings"];
             NSMutableArray *mainFeelings = [[NSMutableArray alloc] init];
 
-            for (NSDictionary *dictionary in array) {
+            for (NSMutableDictionary *dictionary in array) {
+                NSMutableDictionary *newDictionary= [[NSMutableDictionary alloc] initWithDictionary:dictionary];
                 NSArray *feelingArray = dictionary[@"sub_feelings"];
                 NSMutableArray *feelings = [[NSMutableArray alloc] init];
                 for (NSDictionary *feelingDictionary in feelingArray) {
@@ -44,8 +45,8 @@
                     [feelings addObject:feeling];
                 }
                 
-                [dictionary setValue:feelings forKey:@"sub_feelings"];
-                [mainFeelings addObject:dictionary];
+                [newDictionary setObject:feelings forKey:@"sub_feelings"];
+                [mainFeelings addObject:newDictionary];
             }
             Paginate *pagination = [Paginate getPaginateFrom:response];
             pagination.pageResults = [NSArray arrayWithArray:mainFeelings];

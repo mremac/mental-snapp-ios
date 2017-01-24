@@ -32,7 +32,6 @@
     [super viewDidLoad];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardDidHide) name:UIKeyboardWillHideNotification object:nil];
-
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -139,7 +138,7 @@
         CGRect superRect = [textField convertRect:textField.frame toView:_scrollView];
         [UIView animateWithDuration:0.3f animations:^{
             //This calculation ensures that the selected textField will be in the upper 3rd part of view
-            [self.scrollView setContentOffset:CGPointMake(0, superRect.origin.y - _scrollView.frame.size.height / 3)];
+            [self.scrollView setContentOffset:CGPointMake(0, (superRect.origin.y - _scrollView.frame.size.height / 3)-100)];
         }];
 }
 

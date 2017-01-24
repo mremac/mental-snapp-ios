@@ -225,6 +225,10 @@
 
 #pragma mark - Table View Delegate Methods
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 44;
+}
+
 - (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
     NSDictionary *dictionary;
@@ -263,14 +267,16 @@
          [_selectedCell.checkmarkImage setHidden:YES];
     }
     
-    if(self.isSearchInProgress)
-    {
-        _selectedNewFeeling = [[self.searchPaginate pageResults] objectAtIndex:indexPath.row];
+    NSArray *arrayFeelings;
+    if(self.isSearchInProgress) {
+        NSDictionary *dictionary = [self.searchPaginate.pageResults objectAtIndex:indexPath.section];
+        arrayFeelings = dictionary[@"sub_feelings"];
+    } else {
+        NSDictionary *dictionary = [self.paginate.pageResults objectAtIndex:indexPath.section];
+        arrayFeelings = dictionary[@"sub_feelings"];
     }
-    else
-    {
-        _selectedNewFeeling = [[self.paginate pageResults] objectAtIndex:indexPath.row];
-    }
+    
+    _selectedNewFeeling = [arrayFeelings objectAtIndex:indexPath.row];
     _selectedCell = [tableView cellForRowAtIndexPath:indexPath];
 //   [_selectedCell.bgView setBackgroundColor:[UIColor colorWithRed:252.0/255.0 green:232.0/255.0 blue:226.0/255.0 alpha:1.0]];
      [_selectedCell.checkmarkImage setHidden:NO];
