@@ -37,6 +37,7 @@ static dispatch_once_t userOnceToken;
     [UserDefaults setValue:_userModel.email forKey:@"email"];
     [UserDefaults setValue:_userModel.password forKey:@"password"];
     [UserDefaults setValue:_userModel.userName forKey:@"name"];
+    [UserDefaults setValue:_userModel.firstName forKey:@"first_name"];
     [UserDefaults setValue:_userModel.userId forKey:@"id"];
     [UserDefaults setValue:_userModel.profilePicURL forKey:@"profile_url"];
     [UserDefaults setValue:_userModel.dateOfBirth forKey:@"date_of_birth"];
@@ -49,7 +50,7 @@ static dispatch_once_t userOnceToken;
 {
     _authorizationToken = [UserDefaults valueForKey:@"authorizationToken"];
     _userModel.email = [UserDefaults valueForKey:@"email"];
-    _userModel.userName = [UserDefaults valueForKey:@"name"];
+    _userModel.userName = [UserDefaults valueForKey:@"name"]?:[UserDefaults valueForKey:@"first_name"];
     _userModel.password = [UserDefaults valueForKey:@"password"];
     _userModel.dateOfBirth = [UserDefaults valueForKey:@"date_of_birth"];
     _userModel.phoneNumber = [UserDefaults valueForKey:@"phone_number"];

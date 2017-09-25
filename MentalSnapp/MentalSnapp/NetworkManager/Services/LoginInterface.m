@@ -98,8 +98,7 @@
                 [[ScheduleManager sharedInstance] fetchAllSchedules];
             }
             self.block([success integerValue], @"Signup successfull.");
-        } else
-        {
+        } else {
             NSString *errorMessage = nil;
             if([response hasValueForKey:@"message"])
             {

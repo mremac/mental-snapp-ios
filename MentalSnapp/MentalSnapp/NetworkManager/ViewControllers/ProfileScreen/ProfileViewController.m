@@ -281,7 +281,7 @@
     phoneNumber = [phoneNumber stringByReplacingOccurrencesOfString:@"+44" withString:@""];
     phoneNumber = [phoneNumber stringByReplacingOccurrencesOfString:@" " withString:@""];
     NSString *dateOfBirth= (([[self.dateOfBirthButton titleForState:UIControlStateNormal] isEqualToString:@"Enter your date of birth"])?@"":[self.dateOfBirthButton titleForState:UIControlStateNormal]);
-    UserModel *user = [[UserModel alloc] initWithUserId:self.user.userId andEmail:self.emailTextFeild.text andUserName:self.user.userName andPhone:phoneNumber andGender:[NSString stringWithFormat:@"%@",(selectedGender == MaleGender)?@"male":((selectedGender == FemaleGender)?@"female":((selectedGender == OtherGender)?@"other":@""))] andDateOfBirth:dateOfBirth andProfilePic:profilePicURL];
+    UserModel *user = [[UserModel alloc] initWithUserId:self.user.userId andEmail:self.emailTextFeild.text andUserName:self.user.userName andFirstName:self.user.firstName andPhone:phoneNumber andGender:[NSString stringWithFormat:@"%@",(selectedGender == MaleGender)?@"male":((selectedGender == FemaleGender)?@"female":((selectedGender == OtherGender)?@"other":@""))] andDateOfBirth:dateOfBirth andProfilePic:profilePicURL];
     
     [[RequestManager alloc] editUserWithUserModel:user withCompletionBlock:^(BOOL success, id response) {
         if(success)

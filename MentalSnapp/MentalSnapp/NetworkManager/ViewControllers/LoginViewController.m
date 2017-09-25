@@ -17,6 +17,7 @@
 @property(weak, nonatomic) IBOutlet UIView *passwordView;
 @property(weak, nonatomic) IBOutlet UIButton *loginButton;
 @property(weak, nonatomic) IBOutlet UIButton *rememberMeButton;
+@property(weak, nonatomic) IBOutlet UIButton *showHideButton;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @property(weak, nonatomic) IBOutlet UITextField *userEmailTextField;
@@ -32,6 +33,7 @@
     [super viewDidLoad];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardDidHide) name:UIKeyboardWillHideNotification object:nil];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -60,6 +62,22 @@
 }
 
 #pragma mark - IBAction methods
+
+- (IBAction)showHide:(id)sender {
+    if(self.showHideButton.selected){
+        NSLog(@"YES");
+        self.showHideButton.selected = NO;
+    } else{
+        NSLog(@"NO");
+        self.showHideButton.selected = YES;
+    }
+    
+        BOOL isFirstResponder = self.passwordTextField.isFirstResponder; //store whether textfield is firstResponder
+        
+        if (isFirstResponder) [self.passwordTextField resignFirstResponder]; //resign first responder if needed, so that setting the attribute to YES works
+        self.passwordTextField.secureTextEntry = !self.passwordTextField.secureTextEntry; //change the secureText attribute to opposite
+//        if (isFirstResponder) [self.passwordTextField becomeFirstResponder]; //give the field focus again, if it was first responder initially
+}
 
 - (IBAction)loginButtonTapped:(id)sender {
     if (self.userEmailTextField.text.length < 1) {

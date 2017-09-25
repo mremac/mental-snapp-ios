@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>NetworkMode</key>
-	<string>STAGING</string>
+	<string>PRODUCTION</string>
 	<key>LocalURL</key>
-	<string>192.168.1.38:3000</string>
+	<string>api.mentalsnapp.com/</string>
 	<key>ProductionURL</key>
-	<string>api.mentalsnapp.com</string>
+	<string>api.mentalsnapp.com/v1/</string>
 	<key>StagingURL</key>
 	<string>mentalsnapp.systech-soft.com</string>
 	<key>URLPathSubstring</key>
 	<string>/appspot</string>
 	<key>EnableSecureConnection</key>
-	<false/>
+	<true/>
 	<key>EnablePullToRefresh</key>
 	<false/>
 	<key>EnableBanner</key>

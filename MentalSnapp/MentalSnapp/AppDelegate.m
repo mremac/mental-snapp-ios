@@ -35,7 +35,11 @@ void uncaughtExceptionHandler(NSException *exception) {
     
   //Add crittercism and apteligent
     [Crittercism enableWithAppID:[self appteligentAppId]];
-    [Crittercism setUsername:([UserDefaults boolForKey:kIsUserLoggedIn])?[UserManager sharedManager].userModel.userName:@""];
+    [Crittercism setUsername:([UserDefaults boolForKey:kIsUserLoggedIn])?[UserManager sharedManager].userModel.userName:@" "];
+    if([UserManager sharedManager].userModel.userName == nil){
+        [UserManager sharedManager].userModel.userName = @" ";
+        [Crittercism setUsername:@" "];
+    }
 
 //    if(appSettings.EnableFlurry)
 //    {

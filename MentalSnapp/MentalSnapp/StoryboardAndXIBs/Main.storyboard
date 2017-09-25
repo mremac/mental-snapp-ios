@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="evG-dm-COo">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="evG-dm-COo">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -152,13 +152,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MainLogo" translatesAutoresizingMaskIntoConstraints="NO" id="acv-bn-27g">
-                                <rect key="frame" x="69" y="55" width="183" height="65"/>
+                                <rect key="frame" x="68.5" y="55" width="183" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="zei-y0-u6i"/>
                                 </constraints>
                             </imageView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Esa-zq-KOA" userLabel="TitleLineLabel">
-                                <rect key="frame" x="69" y="122" width="183" height="0.0"/>
+                                <rect key="frame" x="68.5" y="122" width="183" height="0.0"/>
                                 <constraints>
                                     <constraint firstAttribute="height" id="cf0-XP-F29"/>
                                 </constraints>
@@ -166,35 +166,35 @@
                                     <fragment content="record your">
                                         <attributes>
                                             <color key="NSColor" red="0.058823529411764705" green="0.68627450980392157" blue="0.77647058823529413" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="15" name="Roboto-Bold"/>
+                                            <font key="NSFont" metaFont="system" size="15"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                     <fragment content=" ">
                                         <attributes>
                                             <color key="NSColor" red="0.098039215686274508" green="0.62745098039215685" blue="0.72941176470588232" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="15" name="Roboto-Bold"/>
+                                            <font key="NSFont" metaFont="system" size="15"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                     <fragment content="own">
                                         <attributes>
                                             <color key="NSColor" red="0.9137254901960784" green="0.396078431372549" blue="0.22745098039215686" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="15" name="Roboto-Bold"/>
+                                            <font key="NSFont" metaFont="system" size="15"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                     <fragment content=" ">
                                         <attributes>
                                             <color key="NSColor" red="0.098039215686274508" green="0.62745098039215685" blue="0.72941176470588232" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="15" name="Roboto-Bold"/>
+                                            <font key="NSFont" metaFont="system" size="15"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                     <fragment content="story">
                                         <attributes>
                                             <color key="NSColor" red="0.058823529411764705" green="0.68627450980392157" blue="0.77647058823529413" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="15" name="Roboto-Bold"/>
+                                            <font key="NSFont" metaFont="system" size="15"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
@@ -332,7 +332,7 @@ Try it for yourself - record your own story.</string>
                                                 <rect key="frame" x="35" y="286" width="250" height="33"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="spR-9C-EbN">
-                                                        <rect key="frame" x="0.0" y="0.0" width="250" height="33"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="180" height="33"/>
                                                         <color key="tintColor" red="0.05086936064" green="0.64109499349999999" blue="0.73025193249999998" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="textColor" red="0.23921568630000001" green="0.23921568630000001" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="15"/>
@@ -348,16 +348,44 @@ Try it for yourself - record your own story.</string>
                                                             <constraint firstAttribute="height" constant="1" id="XpQ-K5-fS3"/>
                                                         </constraints>
                                                     </view>
+                                                    <button opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M6K-17-VI1" userLabel="Show/Hide button">
+                                                        <rect key="frame" x="188" y="2" width="62" height="30"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="30" id="QE5-c4-4xj"/>
+                                                            <constraint firstAttribute="width" constant="62" id="dUj-kx-agD"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="13"/>
+                                                        <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        <state key="normal" title="Show" image="RememberMeUnCheck">
+                                                            <color key="titleColor" red="0.23921568630000001" green="0.23921568630000001" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <state key="selected" image="RememberMeCheck"/>
+                                                        <connections>
+                                                            <action selector="showHide:" destination="TDq-WX-GFJ" eventType="touchUpInside" id="tXU-Ym-0Ln"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="M6K-17-VI1" secondAttribute="trailing" id="17a-F2-EQS"/>
                                                     <constraint firstAttribute="bottom" secondItem="spR-9C-EbN" secondAttribute="bottom" id="56D-gq-vjV"/>
                                                     <constraint firstItem="spR-9C-EbN" firstAttribute="top" secondItem="ujz-dU-Ep7" secondAttribute="top" id="IYG-aw-zMN"/>
                                                     <constraint firstItem="spR-9C-EbN" firstAttribute="leading" secondItem="ujz-dU-Ep7" secondAttribute="leading" id="Jeq-gX-EaD"/>
+                                                    <constraint firstItem="rm2-0O-Pg8" firstAttribute="top" secondItem="M6K-17-VI1" secondAttribute="bottom" id="LvB-PB-E6e"/>
                                                     <constraint firstAttribute="trailing" secondItem="rm2-0O-Pg8" secondAttribute="trailing" id="MOb-WG-xPo"/>
-                                                    <constraint firstAttribute="trailing" secondItem="spR-9C-EbN" secondAttribute="trailing" id="Vcv-xF-MkH"/>
+                                                    <constraint firstItem="M6K-17-VI1" firstAttribute="leading" secondItem="spR-9C-EbN" secondAttribute="trailing" constant="8" id="VBG-y9-GE5"/>
                                                     <constraint firstItem="rm2-0O-Pg8" firstAttribute="leading" secondItem="ujz-dU-Ep7" secondAttribute="leading" id="hjv-sl-vVS"/>
                                                     <constraint firstAttribute="bottom" secondItem="rm2-0O-Pg8" secondAttribute="bottom" id="lCh-uy-384"/>
                                                 </constraints>
+                                                <variation key="default">
+                                                    <mask key="subviews">
+                                                        <exclude reference="M6K-17-VI1"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=regular-widthClass=compact">
+                                                    <mask key="subviews">
+                                                        <include reference="M6K-17-VI1"/>
+                                                    </mask>
+                                                </variation>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ETv-hJ-QYz" userLabel="ForgotPassButton">
                                                 <rect key="frame" x="181" y="330" width="104" height="21"/>
@@ -410,16 +438,16 @@ Try it for yourself - record your own story.</string>
                                                 </connections>
                                             </button>
                                             <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Z5-HP-fNx" userLabel="Bottom View">
-                                                <rect key="frame" x="67" y="417" width="186" height="0.0"/>
+                                                <rect key="frame" x="67.5" y="417" width="185.5" height="0.0"/>
                                                 <subviews>
                                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dv3-Lh-7vu">
-                                                        <rect key="frame" x="0.0" y="0.0" width="132" height="0.0"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="131.5" height="0.0"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="13"/>
                                                         <color key="textColor" red="0.23921568630000001" green="0.23921568630000001" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="83Z-0P-B8U">
-                                                        <rect key="frame" x="132" y="0.0" width="54" height="0.0"/>
+                                                        <rect key="frame" x="131.5" y="0.0" width="54" height="0.0"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="54" id="NT9-hh-Sws"/>
                                                         </constraints>
@@ -513,6 +541,7 @@ Try it for yourself - record your own story.</string>
                         <outlet property="passwordView" destination="ujz-dU-Ep7" id="Shr-K5-9Oq"/>
                         <outlet property="rememberMeButton" destination="V6Y-Y7-Jfb" id="bVR-2q-KUh"/>
                         <outlet property="scrollView" destination="oPv-PS-qMD" id="sC5-Y3-UGP"/>
+                        <outlet property="showHideButton" destination="M6K-17-VI1" id="Twy-NE-bLp"/>
                         <outlet property="titleLabel" destination="Esa-zq-KOA" id="Jjp-vP-lCz"/>
                         <outlet property="userEmailTextField" destination="MLs-bD-VAG" id="N4W-zs-yfM"/>
                         <segue destination="vX0-rh-xaN" kind="show" identifier="toSignUp" id="2uq-zL-J4U"/>
@@ -801,7 +830,7 @@ Try it for yourself - record your own story.</string>
                                         <rect key="frame" x="0.0" y="28" width="320" height="400"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NK5-z8-BIQ" id="e0L-1f-Q4G">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="399"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="399.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xft-8H-nLy" userLabel="Description View">
@@ -1286,7 +1315,7 @@ Try it for yourself - record your own story.</string>
                                         <rect key="frame" x="0.0" y="28" width="320" height="81"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qls-U3-AFd" id="Po7-bZ-wxL">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="80.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jGe-za-dLf">
@@ -1409,11 +1438,11 @@ Try it for yourself - record your own story.</string>
                         <viewControllerLayoutGuide type="bottom" id="zmp-99-7ce"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Xeg-HJ-9GN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="900"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView opaque="NO" contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tzq-PP-wIC">
-                                <rect key="frame" x="0.0" y="20" width="375" height="880"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
@@ -1507,35 +1536,35 @@ Try it for yourself - record your own story.</string>
                                             <fragment content="record your">
                                                 <attributes>
                                                     <color key="NSColor" red="0.058823529411764705" green="0.68627450980392157" blue="0.77647058823529413" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <font key="NSFont" size="15" name="Roboto-Bold"/>
+                                                    <font key="NSFont" metaFont="system" size="15"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 </attributes>
                                             </fragment>
                                             <fragment content=" ">
                                                 <attributes>
                                                     <color key="NSColor" red="0.23921568627450979" green="0.23921568627450979" blue="0.23921568627450979" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <font key="NSFont" size="15" name="Roboto-Bold"/>
+                                                    <font key="NSFont" metaFont="system" size="15"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 </attributes>
                                             </fragment>
                                             <fragment content="own">
                                                 <attributes>
                                                     <color key="NSColor" red="0.9137254901960784" green="0.396078431372549" blue="0.22745098039215686" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <font key="NSFont" size="15" name="Roboto-Bold"/>
+                                                    <font key="NSFont" metaFont="system" size="15"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 </attributes>
                                             </fragment>
                                             <fragment content=" ">
                                                 <attributes>
                                                     <color key="NSColor" red="0.23921568627450979" green="0.23921568627450979" blue="0.23921568627450979" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <font key="NSFont" size="15" name="Roboto-Bold"/>
+                                                    <font key="NSFont" metaFont="system" size="15"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 </attributes>
                                             </fragment>
                                             <fragment content="story">
                                                 <attributes>
                                                     <color key="NSColor" red="0.058823529411764705" green="0.68627450980392157" blue="0.77647058823529413" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <font key="NSFont" size="15" name="Roboto-Bold"/>
+                                                    <font key="NSFont" metaFont="system" size="15"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 </attributes>
                                             </fragment>
@@ -1692,14 +1721,14 @@ Try it for yourself - record your own story.</string>
                                                                     <fragment content="PHONE  ">
                                                                         <attributes>
                                                                             <color key="NSColor" red="0.9137254901960784" green="0.396078431372549" blue="0.22745098039215686" alpha="1" colorSpace="calibratedRGB"/>
-                                                                            <font key="NSFont" size="12" name="Roboto-Medium"/>
+                                                                            <font key="NSFont" metaFont="cellTitle"/>
                                                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                         </attributes>
                                                                     </fragment>
                                                                     <fragment content="(optional)">
                                                                         <attributes>
                                                                             <color key="NSColor" red="0.9137254901960784" green="0.396078431372549" blue="0.22745098039215686" alpha="0.83017241379310347" colorSpace="calibratedRGB"/>
-                                                                            <font key="NSFont" size="12" name="Roboto-Medium"/>
+                                                                            <font key="NSFont" metaFont="cellTitle"/>
                                                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                         </attributes>
                                                                     </fragment>
@@ -1770,14 +1799,14 @@ Try it for yourself - record your own story.</string>
                                                                     <fragment content="DATE OF BIRTH   ">
                                                                         <attributes>
                                                                             <color key="NSColor" red="0.9137254901960784" green="0.396078431372549" blue="0.22745098039215686" alpha="1" colorSpace="calibratedRGB"/>
-                                                                            <font key="NSFont" size="12" name="Roboto-Medium"/>
+                                                                            <font key="NSFont" metaFont="cellTitle"/>
                                                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                         </attributes>
                                                                     </fragment>
                                                                     <fragment content="(optional)">
                                                                         <attributes>
                                                                             <color key="NSColor" red="0.9137254901960784" green="0.396078431372549" blue="0.22745098039215686" alpha="0.82999999999999996" colorSpace="calibratedRGB"/>
-                                                                            <font key="NSFont" size="12" name="Roboto-Medium"/>
+                                                                            <font key="NSFont" metaFont="cellTitle"/>
                                                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                         </attributes>
                                                                     </fragment>
@@ -1834,14 +1863,14 @@ Try it for yourself - record your own story.</string>
                                                                     <fragment content="I AM   ">
                                                                         <attributes>
                                                                             <color key="NSColor" red="0.9137254901960784" green="0.396078431372549" blue="0.22745098039215686" alpha="1" colorSpace="calibratedRGB"/>
-                                                                            <font key="NSFont" size="12" name="Roboto-Medium"/>
+                                                                            <font key="NSFont" metaFont="cellTitle"/>
                                                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                         </attributes>
                                                                     </fragment>
                                                                     <fragment content="(optional)">
                                                                         <attributes>
                                                                             <color key="NSColor" red="0.9137254901960784" green="0.396078431372549" blue="0.22745098039215686" alpha="0.82999999999999996" colorSpace="calibratedRGB"/>
-                                                                            <font key="NSFont" size="12" name="Roboto-Medium"/>
+                                                                            <font key="NSFont" metaFont="cellTitle"/>
                                                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                         </attributes>
                                                                     </fragment>
@@ -2460,7 +2489,7 @@ Try it for yourself - record your own story.</string>
         <image name="video_select" width="63" height="47"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wJO-Rt-LLm"/>
+        <segue reference="enE-yp-rBG"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
 </document>

@@ -28,8 +28,11 @@
     
     UIFont *boldFont = [UIFont fontWithName:@"Roboto-Bold" size:22.0f];
     NSMutableAttributedString *attText = [[NSMutableAttributedString alloc] initWithString:_welcomeLabel.text];
+    if(userName != NULL){
     [attText addAttribute:NSFontAttributeName value:boldFont range:[_welcomeLabel.text rangeOfString:userName]];
     [attText addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:233.0/255.0 green:101.0/255.0 blue:58.0/255.0 alpha:1.0] range:[_welcomeLabel.text rangeOfString:userName]];
+    }
+    
     _welcomeLabel.attributedText = attText;
     
     _welcomeLabel.transform = CGAffineTransformScale(_welcomeLabel.transform, 0.35, 0.35);
