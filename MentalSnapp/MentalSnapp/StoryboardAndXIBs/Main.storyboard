@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="evG-dm-COo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="evG-dm-COo">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -152,13 +153,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MainLogo" translatesAutoresizingMaskIntoConstraints="NO" id="acv-bn-27g">
-                                <rect key="frame" x="68.5" y="55" width="183" height="65"/>
+                                <rect key="frame" x="68.5" y="75" width="183" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="zei-y0-u6i"/>
                                 </constraints>
                             </imageView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Esa-zq-KOA" userLabel="TitleLineLabel">
-                                <rect key="frame" x="68.5" y="122" width="183" height="0.0"/>
+                                <rect key="frame" x="68.5" y="142" width="183" height="0.0"/>
                                 <constraints>
                                     <constraint firstAttribute="height" id="cf0-XP-F29"/>
                                 </constraints>
@@ -201,10 +202,10 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oPv-PS-qMD">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oPv-PS-qMD">
                                 <rect key="frame" x="0.0" y="137" width="320" height="431"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gSP-Cz-GE4">
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gSP-Cz-GE4">
                                         <rect key="frame" x="0.0" y="1" width="320" height="429"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sdu-hs-z7Y">
@@ -214,7 +215,7 @@
                                                 </constraints>
                                                 <string key="text">Mental Snapp is a video diary service
 for anyone actively managing their mental health.
-We believe in the power of film to change outcomes.
+Make space - Create Change - Raise Confidence.
 Try it for yourself - record your own story.</string>
                                                 <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="13"/>
                                                 <color key="textColor" red="0.23921568627450979" green="0.23921568627450979" blue="0.23921568627450979" alpha="1" colorSpace="calibratedRGB"/>
@@ -388,7 +389,7 @@ Try it for yourself - record your own story.</string>
                                                 </variation>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ETv-hJ-QYz" userLabel="ForgotPassButton">
-                                                <rect key="frame" x="181" y="330" width="104" height="21"/>
+                                                <rect key="frame" x="178" y="330" width="107" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="pCi-Ma-n75"/>
                                                 </constraints>
@@ -416,7 +417,7 @@ Try it for yourself - record your own story.</string>
                                                     <action selector="rememberMeButtonTapped:" destination="TDq-WX-GFJ" eventType="touchUpInside" id="hRN-nO-zFN"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fww-a6-6m4" userLabel="Login">
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fww-a6-6m4" userLabel="Login">
                                                 <rect key="frame" x="33" y="372" width="254" height="40"/>
                                                 <color key="backgroundColor" red="0.91372549020000005" green="0.39607843139999999" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
@@ -437,17 +438,17 @@ Try it for yourself - record your own story.</string>
                                                     <action selector="loginButtonTapped:" destination="TDq-WX-GFJ" eventType="touchUpInside" id="kUH-JV-C0B"/>
                                                 </connections>
                                             </button>
-                                            <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Z5-HP-fNx" userLabel="Bottom View">
-                                                <rect key="frame" x="67.5" y="417" width="185.5" height="0.0"/>
+                                            <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Z5-HP-fNx" userLabel="Bottom View">
+                                                <rect key="frame" x="64" y="417" width="192.5" height="0.0"/>
                                                 <subviews>
-                                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dv3-Lh-7vu">
-                                                        <rect key="frame" x="0.0" y="0.0" width="131.5" height="0.0"/>
+                                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Don't have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dv3-Lh-7vu">
+                                                        <rect key="frame" x="0.0" y="0.0" width="138.5" height="0.0"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="13"/>
                                                         <color key="textColor" red="0.23921568630000001" green="0.23921568630000001" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="83Z-0P-B8U">
-                                                        <rect key="frame" x="131.5" y="0.0" width="54" height="0.0"/>
+                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="83Z-0P-B8U">
+                                                        <rect key="frame" x="138.5" y="0.0" width="54" height="0.0"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="54" id="NT9-hh-Sws"/>
                                                         </constraints>
@@ -677,7 +678,7 @@ Try it for yourself - record your own story.</string>
                 <navigationController storyboardIdentifier="MSNavController" automaticallyAdjustsScrollViewInsets="NO" id="evG-dm-COo" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="917-VJ-Diz">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1417,7 +1418,7 @@ Try it for yourself - record your own story.</string>
                     <tabBarItem key="tabBarItem" tag="4" title="" image="more" selectedImage="more_select" id="pLc-5M-03v"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="osg-Bk-j07">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1471,7 +1472,7 @@ Try it for yourself - record your own story.</string>
                     <tabBarItem key="tabBarItem" tag="3" title="" image="stats" selectedImage="stats_select" id="tx5-ds-DTt"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="TWf-gw-yYx">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1490,7 +1491,7 @@ Try it for yourself - record your own story.</string>
                     <tabBarItem key="tabBarItem" tag="1" title="" image="video" selectedImage="video_select" id="HrM-Hn-fDR"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fxH-1a-3AF">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.058823529409999999" green="0.68627450980000004" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="barTintColor" red="0.058823529409999999" green="0.68627450980000004" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -2080,16 +2081,16 @@ Try it for yourself - record your own story.</string>
                                                                 </connections>
                                                             </button>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kaG-It-J2d" userLabel="Bottom View">
-                                                                <rect key="frame" x="88" y="103" width="199" height="25"/>
+                                                                <rect key="frame" x="85" y="103" width="205" height="25"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YPU-Y4-Hyr">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="145" height="25"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="151" height="25"/>
                                                                         <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="13"/>
                                                                         <color key="textColor" red="0.23921568630000001" green="0.23921568630000001" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NYK-RA-bl0">
-                                                                        <rect key="frame" x="145" y="0.0" width="54" height="25"/>
+                                                                        <rect key="frame" x="151" y="0.0" width="54" height="25"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="54" id="HoQ-QI-YSn"/>
                                                                         </constraints>
@@ -2124,7 +2125,7 @@ Try it for yourself - record your own story.</string>
                                                         </constraints>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ry6-VA-hKh">
-                                                        <rect key="frame" x="147" y="519" width="127" height="30"/>
+                                                        <rect key="frame" x="147" y="519" width="129" height="30"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="13"/>
                                                         <state key="normal" title=" Terms and conditions">
                                                             <color key="titleColor" red="0.91372549020000005" green="0.39607843139999999" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
@@ -2441,7 +2442,7 @@ Try it for yourself - record your own story.</string>
                     <tabBarItem key="tabBarItem" tag="2" title="" image="record_tab" selectedImage="record_select" id="war-Nc-7aI"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="OOE-bY-sfA">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -2460,7 +2461,7 @@ Try it for yourself - record your own story.</string>
         <image name="RememberMeCheck" width="19" height="19"/>
         <image name="RememberMeUnCheck" width="19" height="19"/>
         <image name="backButton" width="15" height="26"/>
-        <image name="banner_img" width="320" height="150"/>
+        <image name="banner_img" width="632" height="400"/>
         <image name="calendar_blue" width="23" height="23"/>
         <image name="calendar_orange" width="23" height="23"/>
         <image name="close" width="19" height="19"/>

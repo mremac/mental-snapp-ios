@@ -47,6 +47,12 @@
       "idiom" : "iphone",
       "filename" : "180x180.png",
       "scale" : "3x"
+    },
+    {
+      "size" : "1024x1024",
+      "idiom" : "ios-marketing",
+      "filename" : "Mental Snapp app icon (1).png",
+      "scale" : "1x"
     }
   ],
   "info" : {

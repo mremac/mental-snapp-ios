@@ -1503,7 +1503,7 @@
 				TargetAttributes = {
 					EECB25A41CF5AAF10012E315 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = S7HKE9UJVE;
+						DevelopmentTeam = FB6UK8YP2Q;
 						ProvisioningStyle = Automatic;
 					};
 					EECB25C01CF5AAF10012E315 = {
@@ -1923,7 +1923,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Namrata S (7CR67NLY7U)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = S7HKE9UJVE;
+				DEVELOPMENT_TEAM = FB6UK8YP2Q;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1933,7 +1933,7 @@
 				INFOPLIST_FILE = MentalSnapp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ms-em-app";
+				PRODUCT_BUNDLE_IDENTIFIER = com.MentalSnapp.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1948,7 +1948,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Mental Snapp Ltd (FB6UK8YP2Q)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = S7HKE9UJVE;
+				DEVELOPMENT_TEAM = FB6UK8YP2Q;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1958,7 +1958,7 @@
 				INFOPLIST_FILE = MentalSnapp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ms-em-app";
+				PRODUCT_BUNDLE_IDENTIFIER = com.MentalSnapp.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

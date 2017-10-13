@@ -40,6 +40,7 @@ static const CGFloat lineChartCellHeight = 240.0;
 @implementation StatsViewController
 
 - (void)viewDidLoad {
+    NSLog(@"THIS");
     [super viewDidLoad];
     [self.tableView registerNib:[UINib nibWithNibName:KStatsMoodTableViewCell bundle:nil] forCellReuseIdentifier:KStatsMoodTableViewCell];
     [self initialiseBarView];
@@ -89,6 +90,7 @@ static const CGFloat lineChartCellHeight = 240.0;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"THAT");
     StatsMoodTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KStatsMoodTableViewCell];
     
     if(cell == nil)
@@ -115,12 +117,13 @@ static const CGFloat lineChartCellHeight = 240.0;
 
 - (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    if(section == 0)
+    if(section == 0){
         return [self getBarChartView];
-    else if(section == 1)
+    }else if(section == 1){
         return [self getLineChartView];
-    else
+    }else{
         return nil;
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -186,6 +189,7 @@ static const CGFloat lineChartCellHeight = 240.0;
 - (void)initialiseBarView
 {
     [self initBarChartView];
+    NSLog(@"THAT");
     [self initBarChartLabelView];
 }
 
@@ -239,7 +243,6 @@ static const CGFloat lineChartCellHeight = 240.0;
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"MMMM yyyy"];
     self.barChartLabel.text = [formatter stringFromDate:self.stats.selectedDate ? self.stats.selectedDate : [NSDate date]];
-    
 }
 
 #pragma mark - IBAction method
