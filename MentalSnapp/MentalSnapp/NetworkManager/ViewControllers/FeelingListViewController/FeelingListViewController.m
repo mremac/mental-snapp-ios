@@ -10,6 +10,7 @@
 #import "Paginate.h"
 #import "FeelingTableViewCell.h"
 #import "RequestManager.h"
+#import <Google/Analytics.h>
 
 @interface FeelingListViewController ()
 
@@ -25,6 +26,12 @@
 @end
 
 @implementation FeelingListViewController
+
+- (void)viewWillAppear:(BOOL)animated{
+    id<GAITracker> tracker = [GAI sharedInstance].defaultTracker;
+    [tracker set:kGAIScreenName value:@"Feelings-List"];
+    [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

@@ -7,6 +7,7 @@
 //
 
 #import "PickerViewController.h"
+#import <GoogleAnalytics/GAI.h>
 
 @interface PickerViewController ()
 

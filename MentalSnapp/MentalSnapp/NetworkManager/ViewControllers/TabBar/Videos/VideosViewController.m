@@ -483,6 +483,12 @@ typedef enum : NSUInteger {
                 RecordPost *recordPost = response;
                 NSLog([NSString stringWithFormat:@"Play recordPost: %@", recordPost]);
                 [self showPlayerWithRecordPost:recordPost];
+                id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+                
+                [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_action"
+                                                                      action:@"button_press"
+                                                                       label:@"play"
+                                                                       value:nil] build]];
             }
         } downloadBlock:^(BOOL success, id response) {
             if([response isKindOfClass:[RecordPost class]])
@@ -490,11 +496,23 @@ typedef enum : NSUInteger {
                 RecordPost *recordPost = response;
                 NSLog([NSString stringWithFormat:@"Download recordPost: %@", recordPost]);
                 [self showDownloadScreenWithRecordPost:recordPost];
+                id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+                
+                [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_action"
+                                                                      action:@"button_press"
+                                                                       label:@"download"
+                                                                       value:nil] build]];
             }
         } deleteBlock:^(BOOL success, id response) {
             RecordPost *recordPost = response;
             NSLog([NSString stringWithFormat:@"Delete recordPost: %@", recordPost]);
             [self deletePost:recordPost];
+            id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+            
+            [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_action"
+                                                                  action:@"button_press"
+                                                                   label:@"delete"
+                                                                   value:nil] build]];
         }];
     }
     

@@ -75,7 +75,8 @@
         BOOL isFirstResponder = self.passwordTextField.isFirstResponder; //store whether textfield is firstResponder
         
         if (isFirstResponder) [self.passwordTextField resignFirstResponder]; //resign first responder if needed, so that setting the attribute to YES works
-        self.passwordTextField.secureTextEntry = !self.passwordTextField.secureTextEntry; //change the secureText attribute to opposite
+        self.passwordTextField.secureTextEntry = !self.passwordTextField.secureTextEntry;
+    //change the secureText attribute to opposite
 //        if (isFirstResponder) [self.passwordTextField becomeFirstResponder]; //give the field focus again, if it was first responder initially
 }
 
@@ -94,7 +95,8 @@
         [[RequestManager alloc] loginWithUserModel:userModel withCompletionBlock:^(BOOL success, id response) {
             [self showInProgress:NO];
             if (success){
-                [UserDefaults setBool:self.rememberMeButton.selected forKey:kRememberMe];
+//                [UserDefaults setBool:self.rememberMeButton.selected forKey:kRememberMe];
+                [UserDefaults setBool:NO forKey:kRememberMe];
                 [UserDefaults setValue:self.userEmailTextField.text forKey:kUserEmail];
                 [UserDefaults setValue:self.passwordTextField.text forKey:kUserPassword];
                 [UserDefaults setBool:YES forKey:kIsUserLoggedIn];

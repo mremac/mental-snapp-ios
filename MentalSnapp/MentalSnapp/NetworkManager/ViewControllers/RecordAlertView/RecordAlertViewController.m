@@ -7,6 +7,7 @@
 //
 
 #import "RecordAlertViewController.h"
+#import <GoogleAnalytics/GAI.h>
 
 @interface RecordAlertViewController ()
 @property (strong, nonatomic) IBOutlet UIView *alertContainerView;

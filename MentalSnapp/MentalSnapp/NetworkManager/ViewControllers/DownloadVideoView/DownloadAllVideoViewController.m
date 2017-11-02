@@ -11,6 +11,7 @@
 #import "Paginate.h"
 #import "S3Manager.h"
 #import "RecordPost.h"
+#import <GoogleAnalytics/GAI.h>
 
 @interface DownloadAllVideoViewController ()
 {
@@ -27,6 +28,12 @@
 @end
 
 @implementation DownloadAllVideoViewController
+
+- (void)viewWillAppear:(BOOL)animated{
+    id<GAITracker> tracker = [GAI sharedInstance].defaultTracker;
+    [tracker set:kGAIScreenName value:@"Download-Videos"];
+    [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

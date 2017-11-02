@@ -9,6 +9,7 @@
 #import "GZIP.h"
 #import "UserManager.h"
 #import "RequestManager.h"
+#import <GoogleAnalytics/GAI.h>
 
 #define KsupportDefaultColor [UIColor colorWithRed:83.0/255.0 green:83.0/255.0 blue:83.0/255.0 alpha:1.0]
 #define KsupportPlaceHolderColor [UIColor colorWithRed:183.0/255.0 green:183.0/255.0 blue:183.0/255.0 alpha:1.0]

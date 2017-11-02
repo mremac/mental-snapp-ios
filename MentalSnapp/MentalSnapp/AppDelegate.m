@@ -7,8 +7,11 @@
 //
 
 #import "AppDelegate.h"
+#import "RequestManager.h"
+#import "UserManager.h"
 #import <AWSCore/AWSCore.h>
 #import <Crittercism/Crittercism.h>
+#import <GoogleAnalytics/GAI.h>
 
 @interface AppDelegate ()
 @property (nonatomic) BOOL isNetworkAvailable;
@@ -23,6 +26,17 @@ void uncaughtExceptionHandler(NSException *exception) {
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    GAI *gai = [GAI sharedInstance];
+    [gai trackerWithTrackingId:@"UA-92763376-1"];
+    
+    // Optional: automatically report uncaught exceptions.
+    gai.trackUncaughtExceptions = YES;
+    
+    // Optional: set Logger to VERBOSE for debug information.
+    // Remove before app release.
+    gai.logger.logLevel = kGAILogLevelVerbose;
+    
+    
     NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
     AppSettings *appSettings = [[AppSettingsManager sharedInstance] fetchSettings];
     [[UIApplication sharedApplication] clearBadgeNumbers];
@@ -100,6 +114,14 @@ void uncaughtExceptionHandler(NSException *exception) {
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    [[UserManager sharedManager] setValueInLoggedInUserObjectFromUserDefault];
+    UserModel *user = [UserManager sharedManager].userModel;
+    
+    [[RequestManager alloc] userLogoutWithUserModel:user withCompletionBlock:^(BOOL success, id response) {
+        if(success){
+            [[UserManager sharedManager] logoutUser];
+        }
+    }];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {

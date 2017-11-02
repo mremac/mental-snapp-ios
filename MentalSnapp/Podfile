@@ -6,6 +6,8 @@ pod 'SDWebImage', '~>3.7'
 pod 'SVPullToRefresh'
 pod "MagicalRecord"
 pod 'ALAlertBanner', '~>0.3.1'
+pod 'GoogleAnalytics'
+pod 'Google/Analytics'
 
 source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '9.1'

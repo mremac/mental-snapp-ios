@@ -19,6 +19,23 @@ PODS:
   - AWSS3 (2.4.12):
     - AWSCore (= 2.4.12)
   - DateTools (1.7.0)
+  - FirebaseAnalytics (3.9.0):
+    - FirebaseCore (~> 3.6)
+    - FirebaseInstanceID (~> 1.0)
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+  - FirebaseCore (3.6.0):
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+  - FirebaseInstanceID (1.0.10):
+    - FirebaseCore (~> 3.6)
+  - Google/Analytics (3.1.0):
+    - Google/Core
+    - GoogleAnalytics (~> 3.12)
+  - Google/Core (3.1.0):
+    - FirebaseAnalytics (~> 3.2)
+  - GoogleAnalytics (3.17.0)
+  - GoogleToolboxForMac/Defines (2.1.1)
+  - GoogleToolboxForMac/NSData+zlib (2.1.1):
+    - GoogleToolboxForMac/Defines (= 2.1.1)
   - JSONModel (1.7.0)
   - JTProgressHUD (1.0.5)
   - MagicalRecord (2.3.2):
@@ -35,6 +52,8 @@ DEPENDENCIES:
   - AWSCore
   - AWSS3
   - DateTools
+  - Google/Analytics
+  - GoogleAnalytics
   - JSONModel
   - JTProgressHUD
   - MagicalRecord
@@ -47,12 +66,18 @@ SPEC CHECKSUMS:
   AWSCore: 8ee5b1dc06a0fd562429fe7120113ca93cbfbca6
   AWSS3: 7bb3e095a37ed8334a0b868bbca74ab574b37a4f
   DateTools: 53288ee8b905fdc75897a1e6b5cc0144b14cba60
+  FirebaseAnalytics: e5fe8486efc01bec33f6bf82e2fa9fce4b124052
+  FirebaseCore: 9691ee2ade70c098d7cf92440f4303f16d83ca75
+  FirebaseInstanceID: b9eedd6846fb5e1f0f7279e1deaa7a7e4cf8392e
+  Google: 98da4b1a60ed0beb80a290387a28333406a1eb90
+  GoogleAnalytics: f42cc53a87a51fe94334821868d9c8481ff47a7b
+  GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   JSONModel: 840bc0fcffb24b8454d2c026bf26fea454b8e98d
   JTProgressHUD: 7eb019487a92731c8716c15f19e94690cf35f644
   MagicalRecord: 53bed74b4323b930992a725be713e53b37d19755
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
 
-PODFILE CHECKSUM: 4d4ea998f494d0869059947d608752c69cda93fa
+PODFILE CHECKSUM: 4ce8c89f1756ba7bb53b0eef1bd6407089666191
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.1

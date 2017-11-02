@@ -6,6 +6,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <GoogleAnalytics/GAI.h>
+#import <Google/Analytics.h>
 
 @interface MSViewController : UIViewController
 

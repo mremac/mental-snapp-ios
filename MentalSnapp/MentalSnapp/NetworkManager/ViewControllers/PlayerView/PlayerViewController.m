@@ -8,6 +8,7 @@
 
 #import "PlayerViewController.h"
 #import "RecordPost.h"
+#import <GoogleAnalytics/GAI.h>
 
 @import AVFoundation;
 @import AVKit;
@@ -17,6 +18,12 @@
 @end
 
 @implementation PlayerViewController
+
+- (void)viewWillAppear:(BOOL)animated{
+    id<GAITracker> tracker = [GAI sharedInstance].defaultTracker;
+    [tracker set:kGAIScreenName value:@"Download-Videos"];
+    [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

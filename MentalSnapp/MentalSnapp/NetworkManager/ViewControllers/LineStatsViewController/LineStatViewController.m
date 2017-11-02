@@ -8,6 +8,7 @@
 
 #import "LineStatViewController.h"
 #import "LineChart.h"
+#import <GoogleAnalytics/GAI.h>
 
 @interface LineStatViewController ()
 {
@@ -19,6 +20,12 @@
 @end
 
 @implementation LineStatViewController
+
+- (void)viewWillAppear:(BOOL)animated{
+    id<GAITracker> tracker = [GAI sharedInstance].defaultTracker;
+    [tracker set:kGAIScreenName value:@"Mood-Graph"];
+    [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

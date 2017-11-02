@@ -8,6 +8,7 @@
 
 #import "MonthYearPickerViewController.h"
 #import "UIMonthYearPicker.h"
+#import <GoogleAnalytics/GAI.h>
 
 @interface MonthYearPickerViewController ()<UIMonthYearPickerDelegate>
 

@@ -13,6 +13,7 @@
 #import "FeelingListViewController.h"
 #import "RequestManager.h"
 #import "RecordPost.h"
+#import <GoogleAnalytics/GAI.h>
 
 #define PlaceHolderTextView LocalizedString(@"MoodsTextViewPlaceHolder")
 #define PlaceHolderColor [UIColor colorWithRed:90.0/255.0 green:90.0/255.0 blue:90.0/255.0 alpha:1.0]
@@ -50,6 +51,12 @@
 @end
 
 @implementation MoodViewController
+
+- (void)viewWillAppear:(BOOL)animated{
+    id<GAITracker> tracker = [GAI sharedInstance].defaultTracker;
+    [tracker set:kGAIScreenName value:@"Video-Upload"];
+    [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

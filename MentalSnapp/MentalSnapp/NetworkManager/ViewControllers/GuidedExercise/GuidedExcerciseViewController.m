@@ -13,6 +13,7 @@
 #import "RequestManager.h"
 #import "GuidedExcercise.h"
 #import "RecordViewController.h"
+#import <GoogleAnalytics/GAI.h>
 
 #define _minsScreeniPhoneSwipe ([[UIScreen mainScreen] bounds].size.width * 1/4)
 
